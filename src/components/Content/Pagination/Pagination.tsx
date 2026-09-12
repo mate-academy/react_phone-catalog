@@ -39,7 +39,8 @@ export const Pagination: React.FC<Props> = ({
               [style.pagination__button_active]: +page === pageNum,
             })}
             type="button"
-            aria-label="pagination"
+            aria-label={`Go to page ${pageNum}`}
+            aria-current={page === pageNum ? 'page' : undefined}
             onClick={() => setPage(pageNum)}
           >
             {pageNum}
@@ -62,7 +63,7 @@ export const Pagination: React.FC<Props> = ({
       <button
         className={style.pagination__button_page_disabled}
         type="button"
-        aria-label="pagination"
+        aria-label="More pages"
         disabled
       >
         ...
@@ -75,7 +76,7 @@ export const Pagination: React.FC<Props> = ({
       <button
         className={style.pagination__button}
         type="button"
-        aria-label="pagination"
+        aria-label="Go to previous page"
         onClick={handlePrevPage}
         data-cy="paginationLeft"
         disabled={page === 1}
@@ -88,7 +89,7 @@ export const Pagination: React.FC<Props> = ({
       <button
         className={style.pagination__button}
         type="button"
-        aria-label="pagination"
+        aria-label="Go to next page"
         onClick={handleNextPage}
         data-cy="paginationRight"
         disabled={maxPage === page}

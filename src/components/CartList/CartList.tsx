@@ -82,7 +82,7 @@ export const CartList: React.FC = () => {
 
                   <Link
                     className={style.cartList__link}
-                    to={`../${product.category}/:${product.itemId}`}
+                    to={`../${product.category}/${product.itemId}`}
                   >
                     <div className={style.container_img}>
                       <img
@@ -130,9 +130,9 @@ export const CartList: React.FC = () => {
               <span
                 className={style.cartList__price_about}
               >{`Total for ${amontOfProducе} items`}</span>
-              <Link to="../checkout" className={style.cartList__price_button}>
-                Checkout
-              </Link>
+              <p className={style.cartList__price_demo}>
+                Frontend demo — checkout and payments are not available.
+              </p>
             </div>
           </div>
         </>

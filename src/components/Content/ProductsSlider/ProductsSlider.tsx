@@ -9,12 +9,16 @@ type Props = {
   produkts: Products[];
   title: string;
   handleClick: (click: string) => void;
+  canGoBack?: boolean;
+  canGoForward?: boolean;
 };
 
 export const ProductsSlider: React.FC<Props> = ({
   title,
   produkts,
   handleClick,
+  canGoBack = true,
+  canGoForward = true,
 }) => {
   return (
     <div className={style.sliders}>
@@ -27,6 +31,7 @@ export const ProductsSlider: React.FC<Props> = ({
               aria-label="Back"
               onClick={() => handleClick('back')}
               className={style.sliders__button}
+              disabled={!canGoBack}
             >
               {' '}
               <IoIosArrowBack />{' '}
@@ -36,6 +41,7 @@ export const ProductsSlider: React.FC<Props> = ({
               aria-label="Forward"
               onClick={() => handleClick('forward')}
               className={style.sliders__button}
+              disabled={!canGoForward}
             >
               <IoIosArrowForward />
             </button>

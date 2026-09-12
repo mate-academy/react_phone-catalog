@@ -1,16 +1,28 @@
 import {Details} from './type/Details';
 import {Products} from './type/Productes';
 
-const API_URL = '/react_phone-catalog/api';
+const API_URL = `${import.meta.env.BASE_URL}api`;
 
 function wait(delay: number) {
   return new Promise(resolve => setTimeout(resolve, delay));
 }
 
+async function fetchJson<T>(url: string): Promise<T> {
+  await wait(300);
+
+  const response = await fetch(url);
+
+  if (!response.ok) {
+    throw new Error(
+      `Request failed: ${response.status} ${response.statusText}`,
+    );
+  }
+
+  return response.json() as Promise<T>;
+}
+
 async function fetchProducts(): Promise<Products[]> {
-  return wait(500)
-    .then(() => fetch(`${API_URL}/products.json`))
-    .then(response => response.json());
+  return fetchJson<Products[]>(`${API_URL}/products.json`);
 }
 
 export async function getProducts(): Promise<Products[]> {
@@ -38,13 +50,8 @@ export async function getAccessories(): Promise<Products[]> {
 export async function fetchDetails(
   category: string,
   itemId: string,
-): Promise<Details[]> {
-  return wait(500)
-    .then(() => fetch(`${API_URL}/${category}.json`))
-    .then(response => response.json())
-    .then((data: Details[]) => {
-      const filter = data.filter(d => d.id === itemId);
+): Promise<Details | undefined> {
+  const data = await fetchJson<Details[]>(`${API_URL}/${category}.json`);
 
-      return filter;
-    });
+  return data.find(detail => detail.id === itemId);
 }

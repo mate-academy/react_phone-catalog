@@ -9,6 +9,7 @@ import {AccessoriesPage} from './pages/AccessoriesPage';
 import {NotFoundPage} from './components/NotFoundPage';
 import {Favourites} from './pages/FavouritesPage';
 import {CartPage} from './pages/CartPage';
+import {RightsPage} from './pages/RightsPage';
 
 import './App.scss';
 
@@ -25,15 +26,8 @@ export const App = () => {
           <Route path="tablets/:productId" element={<ProductDetailsPage />} />
           <Route path="favourites" element={<Favourites />} />
           <Route path="cart" element={<CartPage />} />
+          <Route path="rights" element={<RightsPage />} />
           <Route path="accessories" element={<AccessoriesPage />} />
-          <Route
-            path="/checkout"
-            element={
-              <h1 style={{textAlign: 'center'}}>
-                We have not yet implemented this functionality
-              </h1>
-            }
-          />
           <Route
             path="accessories/:productId"
             element={<ProductDetailsPage />}

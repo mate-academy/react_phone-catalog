@@ -42,9 +42,9 @@ export const Card: React.FC<Props> = ({produkt}) => {
   return (
     <div className={styles.card}>
       <div className={styles.card__container}>
-        <Link to={`../${produkt.category}/:${produkt.itemId}`}>
+        <Link to={`../${produkt.category}/${produkt.itemId}`}>
           <div className={styles.card__img}>
-            <img src={produkt.image} alt="" />
+            <img src={produkt.image} alt={produkt.name} />
           </div>
           <h3 className={styles.card__title}>{produkt.name}</h3>
           <div className={styles.card__prices}>
@@ -87,6 +87,8 @@ export const Card: React.FC<Props> = ({produkt}) => {
             type="button"
             className={styles.card__favorit}
             onClick={() => handleSelectIdFavorit(+produkt.id)}
+            aria-label={`${hasElementFavorit() ? 'Remove' : 'Add'} ${produkt.name} ${hasElementFavorit() ? 'from' : 'to'} favourites`}
+            aria-pressed={hasElementFavorit()}
           >
             {(!hasElementFavorit() && <FaRegHeart />) || (
               <FaHeart style={{color: 'red'}} />

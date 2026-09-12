@@ -1,4 +1,3 @@
-import {v4 as uuidv4} from 'uuid';
 import classNames from 'classnames';
 import {FaRegHeart, FaHeart} from 'react-icons/fa';
 import {useContext, useEffect, useState} from 'react';
@@ -106,9 +105,10 @@ export const Options: React.FC<Props> = ({
               <button
                 disabled={isProductInfoLoading}
                 type="button"
-                aria-label="color"
+                aria-label={`Select ${color} color`}
+                aria-pressed={color === selectColor}
                 onClick={() => handleSelectColor(color)}
-                key={uuidv4()}
+                key={color}
                 className={classNames(style.options__colorDiv, {
                   [style.options__color_actice]: color === selectColor,
                   [style.loader]: isProductInfoLoading,
@@ -128,9 +128,10 @@ export const Options: React.FC<Props> = ({
               {details.capacityAvailable.map(capacity => (
                 <button
                   type="button"
-                  aria-label="capacity"
+                  aria-label={`Select ${capacity} capacity`}
+                  aria-pressed={capacity === selectCapacity}
                   onClick={() => handleSelectCapacity(capacity.toLowerCase())}
-                  key={uuidv4()}
+                  key={capacity}
                   className={classNames(style.options__capacity_div, {
                     [style.options__capacity_actice]:
                       capacity !== selectCapacity,
@@ -157,7 +158,6 @@ export const Options: React.FC<Props> = ({
 
           <div className={style.options__button}>
             <button
-              key={uuidv4()}
               type="button"
               onClick={() => handleClickCart(id)}
               className={classNames(style.options__button_by, {
@@ -167,9 +167,9 @@ export const Options: React.FC<Props> = ({
               {!hasElementCart() ? 'Add to cart' : 'Added'}
             </button>
             <button
-              key={uuidv4()}
               type="button"
-              aria-label="like"
+              aria-label={`${hasElementFavorit() ? 'Remove product from' : 'Add product to'} favourites`}
+              aria-pressed={hasElementFavorit()}
               className={style.options__button_like}
               onClick={() => handleClickFavorit(id)}
             >

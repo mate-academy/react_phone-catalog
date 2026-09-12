@@ -3,25 +3,58 @@
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 @font-face {
   font-family: Mont;
   font-weight: 400;
-  src: url(../public/fonts/Mont-Regular.otf);
+  src: url('/fonts/Mont-Regular.otf');
 }
 
 @font-face {
   font-family: Mont;
   font-weight: bold;
-  src: url(../public/fonts/Mont-Bold.otf);
+  src: url('/fonts/Mont-Bold.otf');
 }
 
 @font-face {
   font-family: Mont;
   font-weight: 600;
-  src: url(../public/fonts/Mont-SemiBold.otf);
+  src: url('/fonts/Mont-SemiBold.otf');
 }
 
 body,
 button {
-  font-family: 'Mont';
+  font-family: Mont, Arial, sans-serif;
+}
+
+.legalPage {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 48px 24px;
+
+  h1,
+  p {
+    margin-bottom: 24px;
+  }
+
+  p {
+    line-height: 1.6;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

@@ -1,7 +1,6 @@
-import {useContext, useEffect, useRef, useState} from 'react';
+import {useRef} from 'react';
 import {IoSearch} from 'react-icons/io5';
-
-import {ProductContext} from '../../../../context/ProductContext';
+import {useSearchParams} from 'react-router-dom';
 
 import style from './Search.module.scss';
 
@@ -10,26 +9,25 @@ type Props = {
 };
 
 export const Search: React.FC<Props> = ({category}) => {
-  const [onChange, setOnChange] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams();
   const inputRef = useRef<HTMLInputElement>(null);
-
-  const {product, setVisibleProduct} = useContext(ProductContext);
 
   const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     let newValue: string = event.target.value;
 
     newValue = newValue.replace(/[^a-zA-Zа-яА-Я0-9\s]/g, '');
 
-    setOnChange(newValue);
-  };
+    const nextParams = new URLSearchParams(searchParams);
 
-  useEffect(() => {
-    setVisibleProduct(
-      product.filter(p =>
-        p.name.toLowerCase().includes(onChange.toLowerCase()),
-      ),
-    );
-  }, [onChange]);
+    if (newValue) {
+      nextParams.set('query', newValue);
+    } else {
+      nextParams.delete('query');
+    }
+
+    nextParams.delete('page');
+    setSearchParams(nextParams, {replace: true});
+  };
 
   const handleClick = () => {
     if (inputRef.current) {
@@ -43,11 +41,19 @@ export const Search: React.FC<Props> = ({category}) => {
         ref={inputRef}
         className={style.search__input}
         type="text"
+        aria-label={`Search in ${category}`}
         onChange={handleOnChange}
-        value={onChange}
+        value={searchParams.get('query') || ''}
         placeholder={`Search in ${category}...`}
       />
-      <IoSearch className={style.search__icon} onClick={handleClick} />
+      <button
+        type="button"
+        className={style.search__button}
+        onClick={handleClick}
+        aria-label="Focus product search"
+      >
+        <IoSearch className={style.search__icon} />
+      </button>
     </div>
   );
 };

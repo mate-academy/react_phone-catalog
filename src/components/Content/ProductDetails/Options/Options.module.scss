@@ -1,4 +1,4 @@
-@import '../../../utils/mixins.scss';
+@use '../../../utils/mixins' as *;
 
 .options {
   &__header {

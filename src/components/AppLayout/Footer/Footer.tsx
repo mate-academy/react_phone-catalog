@@ -11,9 +11,13 @@ export const Footer = () => {
   const [footerMenu, setFooterMenu] = useState(false);
 
   const scrollToTop = () => {
+    const reducedMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)',
+    ).matches;
+
     window.scrollTo({
       top: 0,
-      behavior: 'smooth',
+      behavior: reducedMotion ? 'auto' : 'smooth',
     });
   };
 
@@ -38,7 +42,7 @@ export const Footer = () => {
       <div className={style.footer__container}>
         <div className={style.footer__logo}>
           <Link to="/home">
-            <img src="./img/svg/LOGO.svg" alt="logo" />
+            <img src="./img/svg/LOGO.svg" alt="Phone Catalog" />
           </Link>
         </div>
         <div className={style.footer__menu}>
@@ -56,8 +60,8 @@ export const Footer = () => {
           >
             Contacts
           </Link>
-          <Link className={style.footer__button} to="/">
-            rights
+          <Link className={style.footer__button} to="/rights">
+            Copyright
           </Link>
         </div>
         <div>
@@ -93,10 +97,10 @@ export const Footer = () => {
         </Link>
         <Link
           className={style.footer__mobi__button}
-          to="/"
+          to="/rights"
           onClick={() => setFooterMenu(!footerMenu)}
         >
-          rights
+          Copyright
         </Link>
         {showButton && (
           <button

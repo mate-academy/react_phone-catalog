@@ -19,15 +19,13 @@ const defaultContextValues = {
   setSelectIdCart: () => {},
   priceList: [],
   setPriceList: () => {},
-  visibleProduct: [],
-  setVisibleProduct: () => {},
   product: [],
   setProduct: () => {},
 };
 
 export const ProductContext = React.createContext<{
   favourites: Products[];
-  setFavourites: (v: Products[]) => void;
+  setFavourites: React.Dispatch<React.SetStateAction<Products[]>>;
   productExists: {
     hasProdPriceList: boolean;
     id: string | number;
@@ -36,9 +34,7 @@ export const ProductContext = React.createContext<{
   selectIdCart: ProductExistsState;
   setSelectIdCart: React.Dispatch<React.SetStateAction<ProductExistsState>>;
   priceList: PriceList[];
-  setPriceList: (v: PriceList[]) => void;
-  visibleProduct: Products[];
-  setVisibleProduct: (v: Products[]) => void;
+  setPriceList: React.Dispatch<React.SetStateAction<PriceList[]>>;
   product: Products[];
   setProduct: React.Dispatch<React.SetStateAction<Products[]>>;
 }>(defaultContextValues);
@@ -60,10 +56,6 @@ export const ProductProvider: React.FC<Props> = ({children}) => {
   const [priceList, setPriceList] = useState<PriceList[]>(priceListLocale);
   const [selectIdCart, setSelectIdCart] = useState<ProductExistsState>(null);
   const [product, setProduct] = useState<Products[]>([]);
-  const [visibleProduct, setVisibleProduct] = useLocaleStorage<Products[]>(
-    'visibleProduct',
-    [],
-  );
 
   useEffect(() => {
     getProducts().then((data: Products[]) => {
@@ -74,14 +66,16 @@ export const ProductProvider: React.FC<Props> = ({children}) => {
       }
 
       if (!productExists?.hasProdPriceList) {
-        setFavourites([...favourites, newProduct]);
+        setFavourites(current => [...current, newProduct]);
       }
 
       if (productExists?.hasProdPriceList) {
-        setFavourites(favourites.filter(p => p.id !== productExists?.id));
+        setFavourites(current =>
+          current.filter(p => p.id !== productExists?.id),
+        );
       }
     });
-  }, [productExists]);
+  }, [productExists, setFavourites]);
 
   useEffect(() => {
     getProducts().then((data: Products[]) => {
@@ -123,7 +117,7 @@ export const ProductProvider: React.FC<Props> = ({children}) => {
 
   useEffect(() => {
     setPriceListLocale(priceList);
-  }, [priceList]);
+  }, [priceList, setPriceListLocale]);
 
   const value = useMemo(() => {
     return {
@@ -135,8 +129,6 @@ export const ProductProvider: React.FC<Props> = ({children}) => {
       setSelectIdCart,
       priceList,
       setPriceList,
-      visibleProduct,
-      setVisibleProduct,
       product,
       setProduct,
     };
@@ -149,8 +141,6 @@ export const ProductProvider: React.FC<Props> = ({children}) => {
     setSelectIdCart,
     priceList,
     setPriceList,
-    visibleProduct,
-    setVisibleProduct,
     product,
     setProduct,
   ]);

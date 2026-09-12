@@ -1,4 +1,4 @@
-@import '../../utils/mixins.scss';
+@use '../../utils/mixins' as *;
 
 .category {
   display: flex;
@@ -54,24 +54,24 @@
 
 .phones {
   background: #ffe4cb;
-  background-image: url(../../../../public/img/category-phones.png);
-  background-position: +70px +10px;
+  background-image: url('/img/category-phones.png');
+  background-position: 70px 10px;
   background-size: cover;
   background-repeat: no-repeat;
 }
 
 .tablets {
   background: #85868b;
-  background-image: url(../../../../public/img/category-tablets.png);
-  background-position: +20px +20px;
+  background-image: url('/img/category-tablets.png');
+  background-position: 20px 20px;
   background-size: 150%;
   background-repeat: no-repeat;
 }
 
 .accessories {
   background: #b03d62;
-  background-image: url(../../../../public//img/category-accessories.png);
-  background-position: +30px +50px;
+  background-image: url('/img/category-accessories.png');
+  background-position: 30px 50px;
   background-size: 190%;
   background-repeat: no-repeat;
 }

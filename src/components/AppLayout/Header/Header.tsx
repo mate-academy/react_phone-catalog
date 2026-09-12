@@ -13,53 +13,45 @@ import style from './Header.module.scss';
 
 export const Header: React.FC = () => {
   const {priceList, favourites} = useContext(ProductContext);
-  const [search, setSearch] = useState(false);
   const [mobileMenu, setMobileMenu] = useState(false);
-  const [open, setOpen] = useState(false);
 
   const location = useLocation();
   const {pathname} = location;
   const category = pathname.slice(1);
-
-  useEffect(() => {
-    if (category === 'phones') {
-      setSearch(true);
-
-      return;
-    }
-
-    if (category === 'tablets') {
-      setSearch(true);
-
-      return;
-    }
-
-    if (category === 'accessories') {
-      setSearch(true);
-
-      return;
-    }
-
-    setSearch(false);
-  }, [category]);
+  const showSearch = ['phones', 'tablets', 'accessories'].includes(category);
 
   const getLinkClass = ({isActive}: {isActive: boolean}) =>
     classNames(style.navbar__brand__menu__item, {
       [style.isActive]: isActive,
-      [style.open]: open,
     });
 
   const getLinkClassRight = ({isActive}: {isActive: boolean}) =>
     classNames(style.navbar__rightMenu__item, {
       [style.isActive]: isActive,
-      [style.open]: open,
     });
 
   const countPriceList = priceList.reduce((acc, e) => acc + e.number, 0);
 
   useEffect(() => {
-    setTimeout(() => setOpen(false), 100);
-  }, [open]);
+    if (!mobileMenu) {
+      return undefined;
+    }
+
+    const previousOverflow = document.body.style.overflow;
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setMobileMenu(false);
+      }
+    };
+
+    document.body.style.overflow = 'hidden';
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [mobileMenu]);
 
   return (
     <>
@@ -67,8 +59,8 @@ export const Header: React.FC = () => {
         <div className={style.navbar__container}>
           <div className={style.navbar__brand}>
             <div className={style.navbar__brand__logo}>
-              <Link to="/home">
-                <img src="./img/svg/LOGO.svg" alt="logo" />
+              <Link to="/home" aria-label="Phone Catalog home">
+                <img src="./img/svg/LOGO.svg" alt="Phone Catalog" />
               </Link>
             </div>
             <div className={style.navbar__brand__menu}>
@@ -87,13 +79,17 @@ export const Header: React.FC = () => {
             </div>
           </div>
           <div className={style.navbar__rightMenu}>
-            {search && (
+            {showSearch && (
               <div className={style.navbar__rightMenu__item_search}>
                 <Search category={category} />
               </div>
             )}
 
-            <NavLink to="./favourites" className={getLinkClassRight}>
+            <NavLink
+              to="./favourites"
+              className={getLinkClassRight}
+              aria-label={`Favourites, ${favourites.length} items`}
+            >
               <FaRegHeart className={style.navbar__rightMenu__item_icon} />
               {favourites.length !== 0 && (
                 <div
@@ -114,7 +110,11 @@ export const Header: React.FC = () => {
               )}
             </NavLink>
 
-            <NavLink to="./cart" className={getLinkClassRight}>
+            <NavLink
+              to="./cart"
+              className={getLinkClassRight}
+              aria-label={`Shopping cart, ${countPriceList} items`}
+            >
               <FiShoppingBag className={style.navbar__rightMenu__item_icon} />
               {priceList.length !== 0 && (
                 <div
@@ -139,8 +139,12 @@ export const Header: React.FC = () => {
 
       <nav className={style.navbar_mobi}>
         <div className={style.navbar_mobi__top}>
-          <Link to="/home" className={style.navbar_mobi__logo}>
-            <img src="./img/svg/LOGO.svg" alt="logo" />
+          <Link
+            to="/home"
+            className={style.navbar_mobi__logo}
+            aria-label="Phone Catalog home"
+          >
+            <img src="./img/svg/LOGO.svg" alt="Phone Catalog" />
           </Link>
 
           <div>
@@ -149,6 +153,7 @@ export const Header: React.FC = () => {
                 to="./favourites"
                 className={style.navbar_mobi__icon}
                 onClick={() => setMobileMenu(false)}
+                aria-label={`Favourites, ${favourites.length} items`}
               >
                 <FaRegHeart className={style.navbar__rightMenu__item_icon} />
                 <div
@@ -172,6 +177,7 @@ export const Header: React.FC = () => {
                 to="./cart"
                 className={style.navbar_mobi__icon}
                 onClick={() => setMobileMenu(false)}
+                aria-label={`Shopping cart, ${countPriceList} items`}
               >
                 <FiShoppingBag className={style.navbar__rightMenu__item_icon} />
                 <div
@@ -191,38 +197,33 @@ export const Header: React.FC = () => {
             )}
             <button
               type="button"
-              className={(style.navbar_mobi__close, style.navbar_mobi__button)}
+              className={style.navbar_mobi__button}
               onClick={() => setMobileMenu(!mobileMenu)}
+              aria-label={
+                mobileMenu ? 'Close navigation menu' : 'Open navigation menu'
+              }
+              aria-expanded={mobileMenu}
+              aria-controls="mobile-navigation"
             >
               {mobileMenu ? (
-                <IoCloseSharp
-                  className={classNames(style.navbar_mobi__close_icon, {
-                    [style.open]: open,
-                  })}
-                  onClick={() => setOpen(true)}
-                />
+                <IoCloseSharp className={style.navbar_mobi__close_icon} />
               ) : (
-                <RxHamburgerMenu
-                  className={classNames(style.navbar_mobi__menu_icon, {
-                    [style.open]: open,
-                  })}
-                  onClick={() => setOpen(true)}
-                />
+                <RxHamburgerMenu className={style.navbar_mobi__menu_icon} />
               )}
             </button>
           </div>
         </div>
 
         <div
+          id="mobile-navigation"
           className={style.navbar_mobi__menu}
-          style={!mobileMenu ? {display: 'none'} : {display: 'block'}}
+          hidden={!mobileMenu}
         >
           <NavLink
             to="/"
             className={({isActive}) =>
               classNames(style.navbar_mobi__link, {
                 [style.isActive]: isActive,
-                [style.open]: open,
               })
             }
             onClick={() => setMobileMenu(false)}
@@ -234,7 +235,6 @@ export const Header: React.FC = () => {
             className={({isActive}) =>
               classNames(style.navbar_mobi__link, {
                 [style.isActive]: isActive,
-                [style.open]: open,
               })
             }
             onClick={() => setMobileMenu(false)}
@@ -246,7 +246,6 @@ export const Header: React.FC = () => {
             className={({isActive}) =>
               classNames(style.navbar_mobi__link, {
                 [style.isActive]: isActive,
-                [style.open]: open,
               })
             }
             onClick={() => setMobileMenu(false)}
@@ -258,7 +257,6 @@ export const Header: React.FC = () => {
             className={({isActive}) =>
               classNames(style.navbar_mobi__link, {
                 [style.isActive]: isActive,
-                [style.open]: open,
               })
             }
             onClick={() => setMobileMenu(false)}

@@ -9,7 +9,7 @@ export type Details = {
   cell: string[];
   color: string;
   colorsAvailable: string[];
-  description: {};
+  description: object;
   images: string[];
   priceDiscount: number;
   priceRegular: number;

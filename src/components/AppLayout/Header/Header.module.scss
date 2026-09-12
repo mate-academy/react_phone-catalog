@@ -1,4 +1,4 @@
-@import '../../utils/mixins.scss';
+@use '../../utils/mixins' as *;
 
 .navbar_mobi {
   box-sizing: border-box;

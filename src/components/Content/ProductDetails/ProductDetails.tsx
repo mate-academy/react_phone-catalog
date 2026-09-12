@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import {useEffect, useMemo, useState} from 'react';
 import {IoIosArrowBack} from 'react-icons/io';
 import {Link} from 'react-router-dom';
 
@@ -16,58 +16,44 @@ import {Breadcrumb} from '../Breadcrumb';
 
 type Props = {
   backUrl: string;
-  details: Details | undefined;
+  details: Details;
   path: string[];
 };
 
 export const ProductDetails: React.FC<Props> = ({backUrl, details, path}) => {
   const [selectColor, setSelectColor] = useState<string | null>(null);
   const [selectCapacity, setSelectCapacity] = useState<string | null>(null);
-  const [produktsNewIndex, setProduktsNewIndex] = useState<number[]>([0, 4]);
-  const [produkts, setProdukts] = useState<Products[]>([]);
+  const [recommendationIndex, setRecommendationIndex] = useState(0);
+  const [recommendations, setRecommendations] = useState<Products[]>([]);
+  const [recommendationError, setRecommendationError] = useState(false);
 
   useEffect(() => {
-    getProducts().then(data => {
-      let updatedNewPrice = data;
-
-      if (updatedNewPrice && details?.id) {
+    setRecommendationIndex(0);
+    setRecommendationError(false);
+    getProducts()
+      .then(data => {
         setSelectColor(details.color);
         setSelectCapacity(details.capacity);
-        updatedNewPrice = updatedNewPrice.filter(
-          product => product.itemId !== details?.id,
+        setRecommendations(
+          data.filter(product => product.itemId !== details?.id),
         );
-      }
+      })
+      .catch(() => setRecommendationError(true));
+  }, [details]);
 
-      updatedNewPrice = updatedNewPrice.slice(
-        produktsNewIndex[0],
-        produktsNewIndex[1],
-      );
-
-      setProdukts(updatedNewPrice);
-    });
-  }, [produktsNewIndex, details]);
-
-  if (!details) {
-    return null;
-  }
+  const visibleRecommendations = useMemo(
+    () => recommendations.slice(recommendationIndex, recommendationIndex + 4),
+    [recommendationIndex, recommendations],
+  );
 
   const handleNewClick = (click: string) => {
-    const numProdukts = produkts.filter(produkt => !produkt.price).length;
-
-    setProduktsNewIndex((prevState: number[]) => {
+    setRecommendationIndex(previousIndex => {
       if (click === 'back') {
-        if (prevState[0] === 0) {
-          return prevState;
-        }
-
-        return [prevState[0] - 1, prevState[1] - 1];
+        return Math.max(0, previousIndex - 1);
       }
 
-      if (prevState[1] === numProdukts) {
-        return prevState;
-      }
-
-      return [prevState[0] + 1, prevState[1] + 1];
+      const lastStartIndex = Math.max(0, recommendations.length - 4);
+      return Math.min(lastStartIndex, previousIndex + 1);
     });
   };
 
@@ -103,11 +89,17 @@ export const ProductDetails: React.FC<Props> = ({backUrl, details, path}) => {
         </div>
       </div>
 
-      <ProductsSlider
-        produkts={produkts}
-        title="You may also like"
-        handleClick={handleNewClick}
-      />
+      {recommendationError ? (
+        <p role="alert">Recommendations are temporarily unavailable.</p>
+      ) : (
+        <ProductsSlider
+          produkts={visibleRecommendations}
+          title="You may also like"
+          handleClick={handleNewClick}
+          canGoBack={recommendationIndex > 0}
+          canGoForward={recommendationIndex < recommendations.length - 4}
+        />
+      )}
     </div>
   );
 };

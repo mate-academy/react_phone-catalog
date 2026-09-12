@@ -1,4 +1,4 @@
-@import '../../utils/mixins.scss';
+@use '../../utils/mixins' as *;
 
 .container {
   display: flex;
@@ -28,7 +28,7 @@
 .detailsSlideFoto__prevImg {
   width: auto;
   height: 100%;
-  
+
   @include buttonTransitionZoom;
 }
 

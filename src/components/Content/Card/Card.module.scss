@@ -1,4 +1,4 @@
-@import './../../utils/mixins.scss';
+@use './../../utils/mixins' as *;
 
 .card {
   &__container {
@@ -8,7 +8,7 @@
     height: 507px;
     border: 1px solid #e2e6e9;
     padding: 24px;
-    
+
     @include buttonTransitionWhite;
   }
 

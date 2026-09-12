@@ -1,4 +1,4 @@
-import {useContext, useEffect, useState} from 'react';
+import {useMemo} from 'react';
 import {useSearchParams} from 'react-router-dom';
 
 import {Products} from '../../../type/Productes';
@@ -7,97 +7,92 @@ import {Loader} from '../../Loader';
 import {SortProduct} from '../../../type/type';
 import {Pagination} from '../Pagination';
 import {NoResults} from '../../NoResults';
-import {ProductContext} from '../../../context/ProductContext';
 
 import style from './ProductsList.module.scss';
 import {Breadcrumb} from '../Breadcrumb';
+import {
+  filterAndSortProducts,
+  paginateProducts,
+} from '../../../utils/catalogPipeline';
 
 type Props = {
   loader: boolean;
   title: string;
-  visibleProduct: Products[];
+  product: Products[];
   path: string[];
+  error?: string | null;
+  onRetry?: () => void;
 };
 
 export const ProductsList: React.FC<Props> = ({
-  visibleProduct,
   loader,
   title,
+  product,
   path,
+  error,
+  onRetry,
 }) => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const params = new URLSearchParams(searchParams);
-  const search = params.get('sort');
-  const itemsPage = params.get('itemsPage');
-  const [itemsOnPage, setItemsOnPage] = useState<string>(itemsPage || '16');
-  const [sortBy, setSortBy] = useState(search || SortProduct.None);
-  const [page, setPage] = useState(Number(params.get('page')) || 1);
-  const {product, setVisibleProduct} = useContext(ProductContext);
+  const sortBy = searchParams.get('sort') || SortProduct.None;
+  const itemsOnPage = searchParams.get('itemsPage') || '16';
+  const page = Math.max(1, Number(searchParams.get('page')) || 1);
+  const query = (searchParams.get('query') || '').trim().toLowerCase();
+
+  const updateParams = (updates: Record<string, string | null>) => {
+    const params = new URLSearchParams(searchParams);
+
+    Object.entries(updates).forEach(([key, value]) => {
+      if (!value) {
+        params.delete(key);
+      } else {
+        params.set(key, value);
+      }
+    });
+
+    setSearchParams(params);
+  };
 
   const handleItemsPerPageChange = (
     event: React.ChangeEvent<HTMLSelectElement>,
   ) => {
-    setPage(1);
-
     const newValue = event.target.value;
-
-    setItemsOnPage(newValue);
-    params.set('itemsPage', newValue);
-    setSearchParams(params);
+    updateParams({itemsPage: newValue, page: null});
   };
 
   const handleSortByChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const newValue = event.target.value;
 
-    setSortBy(newValue);
-    setPage(1);
-
-    params.set('sort', newValue);
-    setSearchParams(params);
+    updateParams({sort: newValue, page: null});
   };
 
-  useEffect(() => {
-    let updatedPhones = [...product];
+  const filteredProducts = useMemo(
+    () => filterAndSortProducts(product, query, sortBy),
+    [product, query, sortBy],
+  );
 
-    switch (sortBy) {
-      case SortProduct.Name:
-        updatedPhones.sort((a, b) => a.name.localeCompare(b.name));
-        break;
-      case SortProduct.Age:
-        updatedPhones.sort((a, b) => b.year - a.year);
-        break;
-      case SortProduct.Price:
-        updatedPhones.sort((a, b) => a.price - b.fullPrice);
-        break;
-      default:
-        break;
-    }
+  const visibleProducts = useMemo(
+    () => paginateProducts(filteredProducts, page, itemsOnPage),
+    [filteredProducts, itemsOnPage, page],
+  );
 
-    if (Number(itemsOnPage)) {
-      const startIndex = (page - 1) * +itemsOnPage;
-      const endIndex = startIndex + +itemsOnPage;
-
-      updatedPhones = updatedPhones.slice(startIndex, endIndex);
-    }
-
-    setVisibleProduct(updatedPhones);
-  }, [product, page, itemsOnPage, sortBy]);
-
-  useEffect(() => {
-    if (page === 1) {
-      params.delete('page');
-      setSearchParams(params);
-
-      return;
-    }
-
-    params.set('page', `${page}`);
-    setSearchParams(params);
-  }, [page]);
+  const setPage = (nextPage: React.SetStateAction<number>) => {
+    const value = typeof nextPage === 'function' ? nextPage(page) : nextPage;
+    updateParams({page: value === 1 ? null : String(value)});
+  };
 
   return (
     <div className={style.productPage}>
-      {product.length === 0 && !loader ? (
+      {error ? (
+        <div role="alert">
+          <h1>Could not load products</h1>
+          <p>{error}</p>
+          {onRetry && (
+            <button type="button" onClick={onRetry}>
+              Try again
+            </button>
+          )}
+        </div>
+      ) : filteredProducts.length === 0 && !loader ? (
         <NoResults title={title} />
       ) : (
         <>
@@ -109,13 +104,14 @@ export const ProductsList: React.FC<Props> = ({
               <h1 className={style.productPage__title}>{title}</h1>
               <span
                 className={style.productPage__numPhone}
-              >{`${product.length} models`}</span>
+              >{`${filteredProducts.length} models`}</span>
               <div className={style.productPage__sort}>
                 <div className={style.productPage__select}>
                   <span className={style.productPage__select_title}>
                     Sort by
                   </span>
                   <select
+                    aria-label="Sort products"
                     className={style.select}
                     onChange={handleSortByChange}
                     value={sortBy}
@@ -146,6 +142,7 @@ export const ProductsList: React.FC<Props> = ({
                     Items on page
                   </span>
                   <select
+                    aria-label="Items per page"
                     className={style.select}
                     data-cy="perPageSelector"
                     onChange={handleItemsPerPageChange}
@@ -167,7 +164,7 @@ export const ProductsList: React.FC<Props> = ({
                 </div>
               </div>
               <div className={style.productPage__cards}>
-                {visibleProduct.map((phone: Products) => (
+                {visibleProducts.map((phone: Products) => (
                   <div className={style.productPage__card} key={phone.id}>
                     <Card produkt={phone} />
                   </div>
@@ -175,7 +172,7 @@ export const ProductsList: React.FC<Props> = ({
               </div>
 
               <Pagination
-                total={product.length}
+                total={filteredProducts.length}
                 perPage={itemsOnPage}
                 page={page}
                 setPage={setPage}

@@ -19,8 +19,7 @@ export const Home: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    const updatedHotPrice = produkts
-
+    const updatedHotPrice = [...produkts]
       .sort((a, b) => b.price - a.price)
       .filter(produkt => produkt.price)
       .slice(produktsHotIndex[0], produktsHotIndex[1]);
@@ -29,7 +28,7 @@ export const Home: React.FC = () => {
   }, [produkts, produktsHotIndex]);
 
   useEffect(() => {
-    const updatedNewPrice = produkts
+    const updatedNewPrice = [...produkts]
       .sort((a, b) => b.year - a.year)
       .slice(produktsNewIndex[0], produktsNewIndex[1]);
 
@@ -57,7 +56,7 @@ export const Home: React.FC = () => {
   };
 
   const handleNewClick = (click: string) => {
-    const numProdukts = produkts.filter(produkt => !produkt.price).length;
+    const numProdukts = produkts.length;
 
     setProduktsNewIndex((prevState: number[]) => {
       if (click === 'back') {
@@ -87,12 +86,16 @@ export const Home: React.FC = () => {
         produkts={hotPrice}
         title="Hot prices"
         handleClick={handleHotClick}
+        canGoBack={produktsHotIndex[0] > 0}
+        canGoForward={produktsHotIndex[1] < produkts.length}
       />
       <ShopByCategory />
       <ProductsSlider
         produkts={newProdukts}
         title="Brand new models"
         handleClick={handleNewClick}
+        canGoBack={produktsNewIndex[0] > 0}
+        canGoForward={produktsNewIndex[1] < produkts.length}
       />
     </>
   );

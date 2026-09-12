@@ -1,136 +1,104 @@
 import classNames from 'classnames';
 import {IoIosArrowBack, IoIosArrowForward} from 'react-icons/io';
-import {IoRemoveOutline} from 'react-icons/io5';
-import {useEffect, useRef, useState} from 'react';
+import {useEffect, useState} from 'react';
 
 import style from './Slidebar.module.scss';
 
-const banner = [
-  'img/banner-accessories.png',
-  'img/banner-phones.png',
-  'img/banner-tablets.png',
+const banners = [
+  {src: 'img/banner-accessories.png', alt: 'Browse phone accessories'},
+  {src: 'img/banner-phones.png', alt: 'Explore the latest mobile phones'},
+  {src: 'img/banner-tablets.png', alt: 'Discover tablets for work and play'},
 ];
 
 export const Sliderbar = () => {
-  const [imgUrl, setImgUrl] = useState(banner[0]);
+  const [imageIndex, setImageIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const [imgIndex, setImgIndex] = useState(0);
-  const [intervalId, setIntervalId] = useState<NodeJS.Timer | null>(null);
-  const idRef = useRef<NodeJS.Timer | null>(null);
-  const timeoutIdRef = useRef<NodeJS.Timer | null>(null);
+  const [reducedMotion, setReducedMotion] = useState(
+    () => window.matchMedia('(prefers-reduced-motion: reduce)').matches,
+  );
 
-  const handlePreviousSlide = () => {
-    setIsTransitioning(true);
-    setTimeout(() => {
-      setIsTransitioning(false);
-      setImgIndex(prevIndex => (prevIndex - 1 + banner.length) % banner.length);
-    }, 500);
-  };
-
-  const handleNextSlide = () => {
-    if (intervalId) {
-      clearInterval(intervalId);
-      setIntervalId(null);
+  const showSlide = (nextIndex: number) => {
+    if (reducedMotion) {
+      setImageIndex((nextIndex + banners.length) % banners.length);
+      return;
     }
 
     setIsTransitioning(true);
-    setTimeout(() => {
-      setImgIndex(prevIndex => (prevIndex + 1) % banner.length);
-      setTimeout(() => {
-        setIsTransitioning(false);
-        if (idRef.current) {
-          clearInterval(idRef.current);
-        }
-
-        idRef.current = setInterval(() => {
-          handleNextSlide();
-        }, 5000);
-      }, 300);
-    }, 600);
+    window.setTimeout(() => {
+      setImageIndex((nextIndex + banners.length) % banners.length);
+      setIsTransitioning(false);
+    }, 300);
   };
-
-  const getClassIndecator = (e: string) =>
-    classNames({[style.isNotActive]: imgUrl !== e});
 
   useEffect(() => {
-    if (!intervalId) {
-      timeoutIdRef.current = setTimeout(() => {
-        idRef.current = setInterval(() => {
-          handleNextSlide();
-        }, 5000);
-        setIntervalId(idRef.current);
-      }, 1000);
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const handleChange = () => setReducedMotion(mediaQuery.matches);
+
+    mediaQuery.addEventListener('change', handleChange);
+
+    if (reducedMotion) {
+      return () => mediaQuery.removeEventListener('change', handleChange);
     }
+
+    const intervalId = window.setInterval(() => {
+      setImageIndex(index => (index + 1) % banners.length);
+    }, 5000);
 
     return () => {
-      if (idRef.current) {
-        clearInterval(idRef.current);
-      }
-
-      if (timeoutIdRef.current) {
-        clearTimeout(timeoutIdRef.current);
-      }
+      window.clearInterval(intervalId);
+      mediaQuery.removeEventListener('change', handleChange);
     };
-  }, []);
-
-  useEffect(() => {
-    setImgUrl(banner[imgIndex]);
-  }, [imgIndex]);
-
-  const handleClickIndecator = (index: number) => {
-    if (intervalId) {
-      clearInterval(intervalId);
-      setIntervalId(null);
-    }
-
-    setIsTransitioning(true);
-    setTimeout(() => {
-      setIsTransitioning(false);
-      setImgIndex(index);
-    }, 500);
-  };
+  }, [reducedMotion]);
 
   return (
     <div className={style.slider}>
       <div className={style.slider__container}>
         <button
-          onClick={handlePreviousSlide}
+          onClick={() => showSlide(imageIndex - 1)}
           type="button"
-          aria-label="previous"
+          aria-label="Previous slide"
           className={style.slider__button}
         >
           <IoIosArrowBack />
         </button>
         <div className={style.slider__img}>
-          {banner.map((img, i) => (
+          {banners.map((banner, index) => (
             <img
               className={classNames({
-                [style.transitioning_none]: i !== imgIndex,
+                [style.transitioning_none]: index !== imageIndex,
                 [style.transitioning]: isTransitioning,
                 [style.transitioning_in]: !isTransitioning,
               })}
-              src={img}
-              key={img}
-              alt="Baner Imeges"
+              src={banner.src}
+              key={banner.src}
+              alt={banner.alt}
+              aria-hidden={index !== imageIndex}
             />
           ))}
         </div>
         <button
-          onClick={handleNextSlide}
+          onClick={() => showSlide(imageIndex + 1)}
           type="button"
-          aria-label="next"
+          aria-label="Next slide"
           className={style.slider__button}
         >
           <IoIosArrowForward />
         </button>
       </div>
       <div className={style.slider__indicator}>
-        {banner.map((e, index) => (
-          <IoRemoveOutline
-            onClick={() => handleClickIndecator(index)}
-            key={+index}
-            className={getClassIndecator(e)}
-          />
+        {banners.map((banner, index) => (
+          <button
+            type="button"
+            onClick={() => showSlide(index)}
+            key={banner.src}
+            className={classNames(style.slider__indicatorButton, {
+              [style.isNotActive]: imageIndex !== index,
+            })}
+            aria-label={`Show slide ${index + 1}: ${banner.alt}`}
+            aria-current={imageIndex === index ? 'true' : undefined}
+          >
+            <span aria-hidden="true" />
+          </button>
         ))}
       </div>
     </div>

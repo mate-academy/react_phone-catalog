@@ -10,16 +10,29 @@ type Props = {
 export const Breadcrumb: React.FC<Props> = ({path}) => {
   return (
     <div className={style.breadcrumb}>
-      <Link to="/home" className={style.breadcrumb__home}>
+      <Link
+        to="/home"
+        className={style.breadcrumb__home}
+        aria-label="Phone Catalog home"
+      >
         <img src="./img/svg/Home.svg" alt="" />
       </Link>
 
-      {path.map(e => (
-        <div key={`${e}`} className={style.breadcrumb__map}>
+      {path.map((item, index) => (
+        <div key={item} className={style.breadcrumb__map}>
           <IoIosArrowForward className={style.breadcrumb__arrow} />
-          <Link to={`/${e.toLowerCase()}`} className={style.breadcrumb__path}>
-            {e}
-          </Link>
+          {index === path.length - 1 ? (
+            <span className={style.breadcrumb__path} aria-current="page">
+              {item}
+            </span>
+          ) : (
+            <Link
+              to={`/${item.toLowerCase()}`}
+              className={style.breadcrumb__path}
+            >
+              {item}
+            </Link>
+          )}
         </div>
       ))}
     </div>

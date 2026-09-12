@@ -35,18 +35,19 @@ export const DetailsSlideFoto: React.FC<Prons> = ({details}) => {
             className={classNames(styles.detailsSlideFoto__button, {
               [styles.detailsSlideFoto__button_active]: img === selectetImg,
             })}
+            aria-label={`Show ${name} image ${images.indexOf(img) + 1}`}
           >
             <img
               className={styles.detailsSlideFoto__prevImg}
               src={img}
-              alt={name}
+              alt={`${name}, thumbnail ${images.indexOf(img) + 1}`}
             />
           </button>
         ))}
       </div>
 
       <div className={styles.selectedPhoto}>
-        <img src={selectetImg} alt="Select foto" />
+        <img src={selectetImg} alt={`${name}, selected product view`} />
       </div>
     </div>
   );

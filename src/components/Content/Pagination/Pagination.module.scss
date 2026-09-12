@@ -1,4 +1,4 @@
-@import '../../utils/mixins.scss';
+@use '../../utils/mixins' as *;
 
 .pagination {
   display: flex;
@@ -16,9 +16,8 @@
     cursor: pointer;
     display: flex;
     align-items: center;
-    
-    @include buttonTransitionWhite;
 
+    @include buttonTransitionWhite;
   }
 
   &__button_page {

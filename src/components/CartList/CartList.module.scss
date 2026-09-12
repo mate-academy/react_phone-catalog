@@ -1,4 +1,4 @@
-@import '../utils/mixins.scss';
+@use '../utils/mixins' as *;
 
 .title {
   text-align: center;
@@ -161,24 +161,12 @@
       margin-bottom: 24px;
     }
 
-    &_button {
-      color: #fff;
-      display: flex;
-      justify-content: center;
-      margin: auto;
-      align-items: center;
-      background-color: #313237;
+    &_demo {
       width: 320px;
-      height: 48px;
-      cursor: pointer;
-      text-decoration: none;
-
-      @include buttonTransitionBlack;
-
-      &:active {
-        color: #313237;
-        background-color: #fff;
-      }
+      margin: auto;
+      color: #89939a;
+      font-size: 14px;
+      line-height: 20px;
     }
   }
 }
