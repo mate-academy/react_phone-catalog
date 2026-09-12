@@ -13,3 +13,16 @@ raw_reports
 reports
 cypress/screenshots
 cypress/videos
+
+# Local editor/tool config that landed here by accident — contains an API key
+.continue
+%USERPROFILE%*
+
+# Stray file from a mistyped shell redirect
+nul
+
+# Figma exports and review screenshots: source material, not part of the app
+images
+Categories.png
+Hot prices.png
+New models slider.png

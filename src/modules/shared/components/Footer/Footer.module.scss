@@ -1,0 +1,91 @@
+.footerWrapper {
+  border-top: 1px solid #e2e6e9;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 32px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+
+  transition: opacity 0.2s ease-in-out;
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.logoImg {
+  display: block;
+  height: 32px;
+  width: auto;
+  object-fit: contain;
+}
+
+.links {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.link {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #89939a;
+  transition: color 0.2s ease-in-out;
+
+  &:hover {
+    color: #313237;
+  }
+}
+
+.backToTop {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.backToTopLabel {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #89939a;
+  transition: color 0.2s ease-in-out;
+}
+
+.backToTopButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+
+  color: #313237;
+  background: none;
+  border: 1px solid #b4bdc3;
+  cursor: pointer;
+
+  transition: border-color 0.2s ease-in-out;
+}
+
+.backToTop:hover .backToTopLabel {
+  color: #313237;
+}
+
+.backToTop:hover .backToTopButton {
+  border-color: #313237;
+}
+

@@ -1,0 +1,147 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px;
+  border: 1px solid #e2e6ee;
+  transition: box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.card img {
+  width: 100%;
+  height: 208px;
+  object-fit: contain;
+  transition: transform 0.3s;
+}
+
+.imageLink:hover img {
+  transform: scale(1.1);
+}
+
+.card h2 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.card h2 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.priceRow {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  margin: 0;
+  font-size: 22px;
+  line-height: 1.4;
+}
+
+.priceRow strong {
+  font-weight: 800;
+}
+
+.card del {
+  font-weight: 400;
+  color: #89939a;
+}
+
+.divider {
+  height: 1px;
+  background-color: #e2e6e9;
+}
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.specRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+
+  span:first-child {
+    color: #89939a;
+  }
+
+  span:last-child {
+    color: #313237;
+    font-weight: 600;
+  }
+}
+
+/* Actions row: Add to cart + favorite */
+.actions {
+  display: grid;
+  grid-template-columns: 1fr 40px;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 0 8px;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  background: #313237;
+  border: 1px solid #313237;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+  &:hover {
+    background-color: #0f1121;
+  }
+
+  &:disabled {
+    cursor: default;
+  }
+}
+
+.buttonActive {
+  color: #313237;
+  background: #fff;
+  border: 1px solid #e2e6ee;
+
+  &:hover {
+    background-color: #fff;
+  }
+}
+
+.favorite {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  width: 40px;
+  font-size: 20px;
+  color: #313237;
+  cursor: pointer;
+  background: #fff;
+  border: 1px solid #b4bdc3;
+  transition: border-color 0.3s ease;
+
+  &:hover {
+    border-color: #313237;
+  }
+}
+
+.favoriteActive {
+  color: #eb5757;
+}
+

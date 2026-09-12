@@ -1,0 +1,264 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  height: 64px;
+  padding: 0 24px;
+
+  background-color: #fff;
+  border-bottom: 1px solid #e2e6e9;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding-right: 24px;
+
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.logoImg {
+  display: block;
+  height: 32px;
+  width: auto;
+  object-fit: contain;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.navLink {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 24px;
+
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #89939a;
+
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #313237;
+  }
+}
+
+.navLinkActive {
+  color: #313237;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: #313237;
+  }
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.iconLink {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  min-width: 64px;
+
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #89939a;
+
+  border-left: 1px solid #e2e6e9;
+
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #313237;
+  }
+}
+
+.iconHeart,
+.iconCart {
+  font-size: 22px;
+  line-height: 1;
+}
+
+.badge {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 14px;
+  height: 14px;
+  padding: 0 4px;
+
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
+
+  background-color: #eb5757;
+  border-radius: 50%;
+}
+
+.burger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  min-width: 48px;
+  font-size: 22px;
+  color: #313237;
+  cursor: pointer;
+  background: none;
+  border: 0;
+  border-left: 1px solid #e2e6e9;
+}
+
+.mobileMenu {
+  position: fixed;
+  top: 64px;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  display: none;
+  flex-direction: column;
+  background-color: #fff;
+  border-bottom: 1px solid #e2e6e9;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.menuLink {
+  display: block;
+  padding: 16px 24px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #89939a;
+  border-bottom: 1px solid #e2e6e9;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #313237;
+  }
+}
+
+.menuLinkActive {
+  display: block;
+  padding: 16px 24px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #313237;
+  border-bottom: 1px solid #e2e6e9;
+}
+
+.searchSlot {
+  display: flex;
+  align-items: center;
+  width: 232px;
+  padding: 0 16px;
+}
+
+/* Tablet: the nav stays, but it has to give room to the search field. */
+@media (max-width: 1199px) {
+  .logo {
+    padding-right: 16px;
+  }
+
+  .navLink {
+    padding: 0 16px;
+  }
+}
+
+/* Too narrow for logo + nav + search on one line, so the search drops
+   to a second row rather than pushing the page wider. */
+@media (max-width: 900px) {
+  .header {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 0 16px;
+  }
+
+  .left,
+  .icons {
+    order: 1;
+    height: 64px;
+  }
+
+  .icons {
+    order: 2;
+  }
+
+  .searchSlot {
+    order: 3;
+    width: 100%;
+    padding: 0 0 12px;
+  }
+
+  .mobileMenu {
+    top: 112px;
+  }
+}
+
+/* Mobile styles */
+@media (max-width: 639px) {
+  .nav {
+    display: none;
+  }
+
+  .burger {
+    display: flex;
+  }
+
+  .mobileMenu {
+    display: flex;
+  }
+
+  .logo {
+    padding-right: 0;
+  }
+
+  .iconLink {
+    min-width: 56px;
+  }
+}
+

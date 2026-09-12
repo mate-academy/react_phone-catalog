@@ -1,1 +1,567 @@
-// not empty
+$transition: 0.3s ease;
+$transition-slow: 0.5s ease;
+
+@import './styles/fonts';
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.App__main {
+  flex: 1;
+}
+
+body {
+  margin: 0;
+  color: #313237;
+  font-family: Mont, Arial, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button,
+a {
+  transition: $transition;
+}
+
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 32px;
+}
+
+.page__title {
+  margin: 0 0 8px;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: #313237;
+}
+
+.page__count {
+  margin: 0 0 24px;
+  font-size: 14px;
+  color: #89939a;
+}
+
+.page__empty {
+  font-size: 16px;
+  color: #89939a;
+}
+
+.catalog-controls {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  margin: 24px 0;
+}
+
+.catalog-controls label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #89939a;
+}
+
+.catalog-controls input,
+.catalog-controls select {
+  padding: 10px 12px;
+  font-family: inherit;
+  font-size: 14px;
+  color: #313237;
+  background-color: #fff;
+  border: 1px solid #b4bdc3;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color $transition, box-shadow $transition;
+}
+
+.catalog-controls__sort select {
+  min-width: 176px;
+}
+
+.catalog-controls select {
+  min-width: 136px;
+  padding-right: 36px;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='m4 6 4 4 4-4' stroke='%23313237' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+}
+
+.catalog-controls select:hover {
+  border-color: #313237;
+}
+
+.catalog-controls :where(input):focus,
+.catalog-controls :where(select):focus {
+  border-color: #313237;
+  box-shadow: 0 0 0 3px rgba(49, 50, 55, 0.1);
+}
+
+.pagination {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.pagination button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  min-height: 32px;
+  color: #313237;
+  cursor: pointer;
+  border: 1px solid #e2e6ee;
+  background: #fff;
+  transition: border-color $transition, background-color $transition;
+}
+
+.pagination .active {
+  color: #fff;
+  background: #313237;
+}
+
+.pagination__dots {
+  padding: 0 4px;
+}
+
+.cart-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 32px;
+}
+
+.cart-list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cart-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 80px 1fr auto auto;
+  align-items: center;
+  gap: 24px;
+  padding: 24px 16px 16px;
+  border: 1px solid #e2e6e9;
+}
+
+.cart-item__close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+  color: #89939a;
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  transition: color $transition, border-color $transition;
+}
+
+.cart-item__close:hover {
+  color: #313237;
+  border-color: #e2e6e9;
+}
+
+.cart-item__image {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.cart-item__name {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #313237;
+  text-decoration: none;
+  transition: color $transition;
+}
+
+.cart-item__name:hover {
+  color: #0f1121;
+}
+
+.cart-item__quantity {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cart-item__quantity :where(button) {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  cursor: pointer;
+  color: #313237;
+  font-size: 18px;
+  background: #fff;
+  border: 1px solid #b4bdc3;
+  border-radius: 50%;
+  transition: border-color $transition;
+}
+
+.cart-item__quantity :where(button):disabled {
+  color: #b4bdc3;
+  cursor: not-allowed;
+}
+
+.cart-item__quantity :where(button):not(:disabled):hover {
+  border-color: #313237;
+}
+
+.cart-item__quantity-value {
+  min-width: 20px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.cart-item__price {
+  font-size: 16px;
+  font-weight: 800;
+  color: #313237;
+}
+
+.cart-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 40px 0;
+  text-align: center;
+}
+
+.cart-empty img {
+  width: 200px;
+  opacity: 0.7;
+}
+
+.cart-empty p {
+  font-size: 18px;
+  color: #89939a;
+}
+
+.cart-total {
+  flex-shrink: 0;
+  max-width: 260px;
+  width: 100%;
+
+  padding: 24px;
+  text-align: center;
+  border: 1px solid #e2e6e9;
+}
+
+.cart-total__count {
+  margin: 0;
+  font-size: 14px;
+  color: #89939a;
+}
+
+.cart-total__price {
+  margin: 8px 0 24px;
+  font-size: 28px;
+  font-weight: 800;
+  color: #313237;
+}
+
+.cart-total__button {
+  width: 100%;
+  padding: 14px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  background: #313237;
+
+  border: 1px solid #313237;
+  transition: background-color $transition;
+}
+
+.cart-total__button:hover {
+  background-color: #0f1121;
+}
+
+.cart-total__note {
+  margin: 8px 0 0;
+  font-size: 12px;
+  color: #89939a;
+}
+
+.breadcrumbs a {
+  color: inherit;
+}
+
+.not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  min-height: 300px;
+  text-align: center;
+}
+
+.not-found__title {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 800;
+  color: #313237;
+}
+
+.not-found__link {
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  color: #316cea;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.slider {
+  display: grid;
+  grid-template-columns: 32px 1fr 32px;
+  gap: 16px;
+  align-items: stretch;
+}
+
+.slider__viewport {
+  position: relative;
+  overflow: hidden;
+  height: 400px;
+}
+
+.slider__track {
+  display: flex;
+  height: 100%;
+  transition: transform $transition-slow;
+}
+
+.slider__image {
+  display: block;
+  flex: 0 0 100%;
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+}
+
+.slider__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+  color: #313237;
+  cursor: pointer;
+  background: #fafbfc;
+  border: 1px solid #e2e6e9;
+  transition: border-color $transition;
+
+  &:hover {
+    border-color: #313237;
+  }
+}
+
+.dots {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px;
+}
+
+.dots button {
+  width: 24px;
+  height: 4px;
+  cursor: pointer;
+  background: #b4bdc3;
+  border: 0;
+}
+
+.dots button.active {
+  background: #313237;
+}
+
+/* ---- Home page ---- */
+.home section {
+  margin-top: 80px;
+}
+
+.home__section-title {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: #313237;
+}
+
+.home__error {
+  color: #e0392b;
+}
+
+.section-topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+/* ---- Categories ---- */
+.categories {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.category-card {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.category-card__image-wrapper {
+  overflow: hidden;
+  border-radius: 8px;
+  margin-bottom: 24px;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background-color: #f2f2f2;
+}
+
+.category-card__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform $transition;
+}
+
+.category-card:hover .category-card__image {
+  transform: scale(1.1);
+}
+
+.category-card__title {
+  margin: 0 0 4px;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #313237;
+}
+
+.category-card__count {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #89939a;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 768px) {
+  .cart-content {
+    flex-direction: column;
+  }
+
+  .cart-list {
+    width: 100%;
+  }
+
+  .cart-item {
+    grid-template-columns: 70px 1fr auto;
+    gap: 12px;
+    padding: 40px 12px 12px;
+  }
+
+  .cart-item__quantity {
+    grid-column: 2 / 3;
+  }
+
+  .cart-item__price {
+    text-align: right;
+  }
+
+  .cart-total {
+    max-width: none;
+  }
+}
+
+@media (max-width: 639px) {
+  .page {
+    padding: 16px;
+  }
+
+  .categories {
+    grid-template-columns: 1fr;
+  }
+
+  .home__section-title {
+    font-size: 24px;
+  }
+
+  .slider__viewport {
+    height: 320px;
+  }
+
+  .slider__image {
+    height: 320px;
+  }
+
+  .slider__button {
+    height: 320px;
+  }
+}
+
+/* Kept at the end of the file so stylelint's no-descending-specificity rule
+   sees these after every lower-specificity "… button" selector above. */
+.pagination button:hover {
+  border-color: #313237;
+}
+
+.pagination button:disabled {
+  color: #b4bdc3;
+  cursor: default;
+  border-color: #e2e6ee;
+}

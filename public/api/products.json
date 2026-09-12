@@ -2713,6 +2713,48 @@
     "color": "gold",
     "ram": "6GB",
     "year": 2022,
-    "image": "img/phones/apple-iphone-14-pro/gold/00.webp"
+        "image": "img/phones/apple-iphone-14-pro/gold/00.webp"
+  },
+  {
+    "id": 195,
+    "category": "phones",
+    "itemId": "apple-iphone-14-pro-256gb-silver",
+    "name": "Apple iPhone 14 Pro 256GB Silver",
+    "fullPrice": 1250,
+    "price": 1150,
+    "screen": "6.1' OLED",
+    "capacity": "256GB",
+    "color": "silver",
+    "ram": "6GB",
+    "year": 2022,
+    "image": "img/brand-new/silver.png"
+  },
+  {
+    "id": 196,
+    "category": "phones",
+    "itemId": "apple-iphone-14-pro-256gb-deeppurple",
+    "name": "Apple iPhone 14 Pro 256GB Deep Purple",
+    "fullPrice": 1250,
+    "price": 1150,
+    "screen": "6.1' OLED",
+    "capacity": "256GB",
+    "color": "deeppurple",
+    "ram": "6GB",
+    "year": 2022,
+    "image": "img/brand-new/deeppurple.png"
+  },
+  {
+    "id": 197,
+    "category": "phones",
+    "itemId": "apple-iphone-14-pro-256gb-productred",
+    "name": "Apple iPhone 14 Pro 256GB Product Red",
+    "fullPrice": 1250,
+    "price": 1150,
+    "screen": "6.1' OLED",
+    "capacity": "256GB",
+    "color": "productred",
+    "ram": "6GB",
+    "year": 2022,
+    "image": "img/brand-new/productred.png"
   }
 ]
