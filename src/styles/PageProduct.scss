@@ -1,0 +1,142 @@
+@use './index.scss' as *;
+
+.product-page{
+    justify-items: center;
+}
+
+@include phone {
+    .sort-By {
+        grid-column: span 2;
+        height: 59px;
+        width: 100%;
+    }   
+}
+
+@include tablet {
+    .sort-By {
+        grid-column: span 4;
+        
+    }
+
+}
+
+@include phone {
+    .form {
+        grid-column: span 2;
+        height: 59px;
+    }
+}
+
+@include tablet {
+    .form {
+        grid-column: span 3;
+        width: 100%;
+    }
+
+}
+
+.item {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 40px;
+    background-color: #323542;
+    padding: 10px 12px;
+    color: white;
+    background-image: url('../images/Chevron\ \(Arrow\ Down\).png');
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
+}
+
+.option{
+    background-color:#0F1121;
+    color: #75767F;
+
+}
+
+p {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: #75767F;
+}
+
+
+.pagnation {
+    grid-column: 1 / -1;
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+
+
+
+    .active {
+        background-color: #905BFF;
+    }
+
+
+}
+
+.page--item {
+    height: 32px;
+    width: 32px;
+
+    text-align: center;
+    border: 1px solid $bacround-color-gree;
+
+    &:hover {
+        background-color: #3B3E4A;
+    }
+}
+
+.page--link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    align-content: center;
+    cursor: pointer;
+
+}
+
+
+.arrow {
+    background-color: #323542;
+
+    &:hover {
+        background-color: #4A4D58;
+    }
+}
+
+
+.disebled {
+    background-color: #0F1121;
+    cursor: default;
+
+    &:hover {
+        background-color: #0F1121;
+    }
+
+}
+
+.title{
+    grid-column: 1 / -1;
+    
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+}
+
+.titelOf{
+    display: none;
+}
+
+.section-titel{
+    margin-top: 24px;
+    margin-bottom: 40px;
+}

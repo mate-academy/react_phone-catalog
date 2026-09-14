@@ -1,0 +1,75 @@
+@use '../../styles/index' as *;
+
+.titel {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    grid-column: 1 / -1;
+    width: 100%;
+    &--text{
+        @include typografy-titel-information;
+    }
+    &__chevron {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+
+        &--item {
+            @include typografy-important-information;
+
+            text-align: center;
+            height: 32px;
+            width: 32px;
+            border: 1px solid $bacround-color-gree;
+            cursor: pointer;
+                user-select: none;
+            &--link {
+                display: block;
+                height: 32px;
+                width: 32px;
+                align-content: center;
+
+
+                &--photo {
+                    display: block;
+                }
+            }
+        }
+    }
+}
+
+
+
+.container__card-photo {
+    display: block;
+    height: 270px;
+    width: 208px;
+    place-items: center center;
+
+    .card-photo {
+        display: block;
+        height: 196px;
+        width: auto;
+    }
+}
+
+.section--line {
+    border: #fff solid 1px;
+
+    border-top: 1px;
+    width: 208px;
+
+
+}
+
+
+
+.active {
+    background-color: #3B3E4A;
+
+}
+
+.disabled {
+    cursor: default;
+}

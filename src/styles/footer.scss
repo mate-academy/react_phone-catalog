@@ -1,0 +1,92 @@
+@use './index.scss' as *;
+
+@include phone {
+    .footer {
+        display: flex;
+        align-items: start;
+        width: 100%;
+        justify-content: space-around;
+        height: fit-content;
+        border-top: 1px solid #3B3E4A;
+        flex-direction: column;
+        gap: 32px;
+        padding: 32px 16px;
+
+        &__list {
+            display: flex;
+            place-content: start space-between;
+            justify-items: start;
+            margin: 0;
+            padding: 0;
+            gap: 16px;
+            flex-direction: column;
+
+            &__item {
+
+
+                &--link {
+                    color: #F1F2F9;
+                }
+            }
+        }
+
+        &__back {
+            color: #89939A;
+            cursor: pointer;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+
+            &--link {
+                color: #89939A;
+                display: flex;
+                gap: 16px;
+                align-items: center;
+
+                &--arrow {
+                    height: 32px;
+                    width: 32px;
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    color: #F1F2F9;
+                    background-color: #323542;
+                }
+            }
+        }
+    }
+
+}
+
+@include tablet {
+    .footer {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        justify-content: space-around;
+        height: 96px;
+        flex-direction: row;
+        padding: 32px 0;
+        gap: 0;
+
+        &__list {
+            flex-direction: row;
+            justify-content: space-between;
+
+            margin: 0;
+            padding: 0;
+            gap: 106px;
+
+            &__item {
+                &--link {
+                    color: #F1F2F9;
+                }
+            }
+        }
+
+        &__back {
+            width: fit-content;
+        }
+    }
+}

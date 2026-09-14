@@ -1,0 +1,193 @@
+@use '../../styles/index' as *;
+
+
+@include phone {
+    .navigation {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        justify-content: space-between;
+        text-transform: uppercase;
+
+        &__list {
+            display: flex;
+            margin-top: 24px;
+            gap: 16px;
+            width: 100%;
+            height: fit-content;
+            flex-direction: column;
+            place-items: center center;
+        }
+    }
+
+    .navigation__list__item--link {
+        position: relative;
+        height: 27px;
+        color: #75767F;
+
+        &--active {
+            color: #F1F2F9;
+
+            &::after {
+                content: "";
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: -8px;
+                height: 4px;
+                background: #F1F2F9;
+            }
+        }
+    }
+
+    .shopping-bag {
+        display: flex;
+        position: absolute;
+        height: 64px;
+        width: 100%;
+        bottom: 0;
+        &__link {
+            border-top: 1px solid #323542;
+            border-right: 1px solid   #323542;
+            width: 50%;
+            place-content: center center;
+            place-items: center center;
+
+            &--count {
+                position: relative;
+                width: 12px;
+                height: 12px;
+                background-color: red;
+                color: $color-white;
+                border-radius: 50%;
+                padding: 0 2px;
+                font-size: 9px;
+                font-weight: bold;
+                left: 10px;
+                bottom:20px;
+
+            }
+
+            &--item {
+                display: block;
+                height: 16px;
+                width: 16px;
+            }
+        }
+    }
+
+
+
+}
+
+
+
+@include tablet {
+
+    .navigation {
+        display: flex;
+        gap: 24px;
+        width: fit-content;
+        height: 64px;
+        justify-self: start;
+        justify-content: center;
+
+        &__list {
+            width: fit-content;
+            place-items: center center;
+            justify-content: space-between;
+            flex-direction: row;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 64px;
+
+            &__item {
+                display: block;
+
+                &--link {
+                    display: block;
+                    text-decoration: none;
+                    color: #75767F;
+                }
+            }
+
+        }
+    }
+
+
+
+    .shopping-bag {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        right: 0;
+        margin: 0;
+        width: auto;
+        top: 0;
+
+        &__link {
+            position: relative;
+            border-left: 1px solid #323542;
+            display: block;
+            height: 64px;
+            width: 64px;
+            justify-items: center;
+            align-content: center;
+
+            &--count {
+                position: absolute;
+                width: 12px;
+                height: 12px;
+                background-color: red;
+                color: $color-white;
+                border-radius: 50%;
+                padding: 0 2px;
+                font-size: 9px;
+                font-weight: bold;
+                top: 18px;
+                left: 35px;
+
+
+            }
+
+
+            &--item {
+                display: block;
+                width: 16px;
+                height: 16px;
+
+            }
+        }
+    }
+
+}
+
+@include desktop {
+    .orders-count {
+        left: 35px;
+    }
+
+
+    .navigation__list__item--link {
+        position: relative;
+        height: 27px;
+        color: #75767F;
+
+        &--active {
+            color: #F1F2F9;
+
+            &::after {
+                content: "";
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: -18px;
+                height: 4px;
+                background: #F1F2F9;
+            }
+        }
+    }
+}

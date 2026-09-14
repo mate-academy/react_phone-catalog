@@ -1,0 +1,178 @@
+@use './index.scss' as *;
+
+.header {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #3B3E4A;
+    width: 100%;
+    gap: 24px;
+
+    &__logo {
+        display: flex;
+        width: 124px;
+        height: 64px;
+        align-items: center;
+        justify-content: center;
+
+        &__link {
+            display: block;
+
+            width: 80px;
+            height: 28px;
+
+            &--item {
+                display: block;
+                width: 80px;
+                height: 28px;
+
+            }
+        }
+    }
+
+
+
+    @include phone {
+        &__navigation {
+            display: none;
+
+        }
+    }
+
+    @include tablet {
+        .header {
+            justify-content: start;
+        }
+
+        &__navigation {
+            display: flex;
+
+        }
+    }
+
+    @include desktop {
+        &__navigation {
+            display: flex;
+
+        }
+    }
+
+
+
+
+    @include phone {
+        &__burge-menu--item {
+            position: relative;
+            border-left: 1px solid #323542;
+            right: 0;
+            justify-items: center;
+            align-content: center;
+            background: url(../images/Menu.png) 50% no-repeat;
+            display: flex;
+            height: 64px;
+            width: 64px;
+            cursor: pointer;
+
+            &:hover {
+                background: url(../images/Icon-Burger-menu-hover.png) 50% no-repeat;
+            }
+        }
+
+        .burger-menu--active {
+            position: relative;
+            border-left: 1px solid #323542;
+
+            justify-items: center;
+            align-content: center;
+            background: url(../images/Close.png) 50% no-repeat;
+            display: flex;
+            height: 64px;
+            width: 64px;
+            cursor: pointer;
+
+            &:hover {
+                background: url(../images/Close.png) 50% no-repeat;
+            }
+        }
+    }
+
+    @include tablet {
+        &__burge-menu--item {
+            display: none;
+        }
+    }
+
+    @include desktop {
+        &__burge-menu--item {
+            display: none;
+        }
+    }
+
+}
+
+@include phone {
+    .mobile-menu {
+        position: fixed;
+        inset: 0;
+        inset: 65px 0 0;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateX(-100%);
+        transition: transform .3s ease, opacity .3s ease;
+
+        &.mobile-men--active {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateX(0);
+            z-index: 50;
+            background-color: #0f1121;
+            overflow-y: hidden;
+
+            &html {
+                overflow: hidden;
+                scrollbar-gutter: stable;
+
+                /* зберігає місце під скролбар */
+            }
+        }
+    }
+}
+
+@include tablet {
+    .mobile-menu {
+        position: fixed;
+        inset: 0;
+
+        background: #0f1121;
+
+        opacity: 0;
+        pointer-events: none;
+        transform: translateX(-100%);
+        transition: all .3s;
+    }
+}
+
+@include desktop {
+    .mobile-menu {
+        position: fixed;
+        inset: 0;
+
+        background: #0f1121;
+
+        opacity: 0;
+        pointer-events: none;
+        transform: translateX(-100%);
+        transition: all .3s;
+    }
+}
+
+@include phone {
+    .header {
+        justify-content: space-between;
+    }
+}
+
+@include tablet {
+    .header {
+        justify-content: start;
+    }
+}

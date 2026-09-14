@@ -1,0 +1,49 @@
+select option {
+  background-color: #fff;
+  color: #333;
+  font-family: sans-serif;
+  font-size: 16px;
+}
+
+select option:disabled {
+  color: #999;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+
+
+
+
+html {
+  background-color: #0F1121;
+  color: #F1F2F9;
+
+  gap: 0;
+}
+
+.offCalss {
+  display: none;
+}
+
+body {
+  gap: 0;
+}
+
+button {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+}

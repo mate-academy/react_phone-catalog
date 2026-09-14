@@ -1,0 +1,13 @@
+@use '../../styles/index' as *;
+
+.titel-favorite {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    width: 100%;
+    grid-column: 1 / -1;
+
+    &--item {
+        @include typografy-titel;
+    }
+}

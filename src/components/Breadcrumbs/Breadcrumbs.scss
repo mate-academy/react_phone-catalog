@@ -1,0 +1,24 @@
+.breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    font-size: 12px;
+
+    a {
+        text-decoration: none;
+        color: #89939A;
+
+        &:hover {
+            color: white;
+        }
+    }
+
+    span {
+        color: #89939A;
+    }
+}
+
+.NotActive{
+    color: white;
+}
