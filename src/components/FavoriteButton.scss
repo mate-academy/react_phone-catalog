@@ -1,0 +1,35 @@
+.favorite-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: #323542;
+  border: 1px solid #4a4d5e;
+  border-radius: 48px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-color: #e2e6e9;
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.2s ease;
+  }
+
+  &--active {
+    border-color: transparent;
+    box-shadow: 0 0 10px rgba(235, 87, 87, 0.4);
+
+    .favorite-btn__icon {
+      transform: scale(1.1);
+    }
+  }
+
+  &:active .favorite-btn__icon {
+    transform: scale(0.9);
+  }
+}

@@ -1,0 +1,18 @@
+.product-page__add-to-cart,
+.product-card__add-btn {
+  background-color: #905BFF;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+  &--selected,
+  &.product-page__add-to-cart--selected {
+    background-color: #323542 !important;
+    color: #f1f2f9 !important;
+
+    &:hover {
+      background-color: #3b3e4d !important;
+    }
+  }
+}

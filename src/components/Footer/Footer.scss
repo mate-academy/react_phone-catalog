@@ -1,0 +1,120 @@
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-Bold.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+}
+
+.footer {
+  width: 100%;
+  background-color: #0f1121;
+  border-top: 1px solid #323542;
+  margin-top: auto;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding: 32px 16px;
+    box-sizing: border-box;
+
+    @media (min-width: 640px) {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding: 32px 24px;
+    }
+
+    @media (min-width: 1200px) {
+      padding: 32px 152px;
+    }
+  }
+
+  &__logo {
+    display: inline-block;
+    font-weight: 800;
+    font-size: 14px;
+    line-height: 1;
+    color: #fff;
+    margin-right: 0;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: Mont, sans-serif;
+  }
+
+  &__icon {
+    display: inline-block;
+    width: 12px;
+    height: auto;
+    margin-left: 2px;
+    vertical-align: baseline;
+  }
+
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    font-family: Mont, sans-serif;
+
+    @media (min-width: 640px) {
+      flex-direction: row;
+      gap: 14px;
+    }
+
+    @media (min-width: 1200px) {
+      flex-direction: row;
+      gap: 106px;
+    }
+  }
+
+  &__link {
+    font-size: 12px;
+    font-weight: 800;
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: #905bff;
+    }
+  }
+
+  &__back-to-top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    font-family: Mont, sans-serif;
+
+    @media (min-width: 640px) {
+      justify-content: flex-end;
+    }
+  }
+
+  &__back-text {
+    font-size: 12px;
+    font-weight: 700;
+    color: #75767f;
+  }
+
+  &__back-btn {
+    width: 32px;
+    height: 32px;
+    background-color: #323542;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #4a4d5d;
+    }
+  }
+}
