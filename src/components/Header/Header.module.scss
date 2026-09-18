@@ -1,3 +1,106 @@
+@import '../../styles/variables';
+
 .header {
-  border: 1px solid red;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: $header-height;
+  background-color: $c-bg;
+  border-bottom: 1px solid $c-border;
+  z-index: 100;
+
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    max-width: $width-container;
+    margin: 0 auto;
+    padding: 0 $spacing-medium;
+  }
+
+  &__logo {
+    font-weight: 900;
+    font-size: 18px;
+    color: $c-text-main;
+    text-decoration: none;
+  }
+
+  &__nav {
+    display: flex;
+    gap: $spacing-large;
+    height: 100%;
+  }
+
+  &__link {
+    color: $c-text-secondary;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    position: relative;
+    transition: color 0.3s;
+
+    &:hover {
+      color: $c-text-main;
+    }
+
+    &--active {
+      color: $c-text-main;
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background-color: $c-text-main;
+      }
+    }
+  }
+
+  &__actions {
+    display: flex;
+    height: 100%;
+  }
+
+  &__icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: $header-height;
+    height: 100%;
+    color: $c-text-main;
+    border-left: 1px solid $c-border;
+    text-decoration: none;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: $c-surface;
+    }
+
+    &:last-child {
+      border-right: 1px solid $c-border;
+    }
+  }
+
+  &__badge {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background-color: $c-danger;
+    color: $c-text-main;
+    font-size: 10px;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 14px;
+    height: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }

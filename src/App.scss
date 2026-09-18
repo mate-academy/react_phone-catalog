@@ -1,1 +1,19 @@
-// not empty
+@import './styles/variables';
+
+body {
+  background-color: $c-bg;
+  color: $c-text-main;
+  font-family: Mont, 'Helvetica Neue', sans-serif;
+  margin: 0;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  &__main {
+    flex: 1;
+    padding-top: $header-height;
+  }
+}

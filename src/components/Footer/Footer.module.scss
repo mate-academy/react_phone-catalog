@@ -1,3 +1,69 @@
+@import '../../styles/variables';
+
 .footer {
-  border: 2px solid blue;
+  background-color: $c-bg;
+  border-top: 1px solid $c-border;
+  padding: $spacing-large 0;
+  margin-top: auto;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__logo {
+    font-weight: 900;
+    font-size: 18px;
+    color: $c-text-main;
+    text-decoration: none;
+  }
+
+  &__nav {
+    display: flex;
+    gap: $spacing-medium;
+  }
+
+  &__link {
+    color: $c-text-secondary;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    transition: color 0.3s;
+
+    &:hover {
+      color: $c-text-main;
+    }
+  }
+
+  &__back {
+    display: flex;
+    align-items: center;
+    gap: $spacing-small;
+  }
+
+  &__back-text {
+    font-size: 12px;
+    font-weight: 600;
+    color: $c-text-secondary;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: $c-surface;
+    border: 1px solid $c-border;
+    color: $c-text-main;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: $c-border;
+    }
+  }
 }
