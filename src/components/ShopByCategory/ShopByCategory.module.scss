@@ -1,0 +1,50 @@
+@import '../../styles/variables';
+
+.category {
+  margin-bottom: 56px;
+
+  &__title {
+    font-size: 32px;
+    font-weight: 800;
+    color: $c-text-main;
+    letter-spacing: -0.01em;
+    margin-bottom: $spacing-medium;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  &__card {
+    display: block;
+    text-decoration: none;
+
+    &:hover .category__image {
+      transform: scale(1.1);
+    }
+  }
+
+  &__imageContainer {
+    overflow: hidden;
+    background-color: $c-surface;
+    margin-bottom: $spacing-medium;
+    aspect-ratio: 1;
+    border-radius: 8px;
+  }
+
+  &__name {
+    font-size: 20px;
+    font-weight: 700;
+    color: $c-text-main;
+    margin-bottom: 4px;
+  }
+
+  &__count {
+    font-size: 14px;
+    font-weight: 600;
+    color: $c-text-secondary;
+  }
+}

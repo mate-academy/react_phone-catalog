@@ -1,0 +1,68 @@
+@import '../../styles/variables';
+
+.slider {
+  display: flex;
+  align-items: center;
+  position: relative;
+  gap: $spacing-small;
+  margin-bottom: 56px;
+  max-height: 432px;
+
+  &__content {
+    overflow: hidden;
+    flex-grow: 1;
+    position: relative;
+    border-radius: 8px; // Для заокруглених стилів макета
+  }
+
+  &__track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  &__image {
+    width: 100%;
+    max-height: 400px; // Адаптувати під реальну висоту банерів
+    flex-shrink: 0;
+    object-fit: cover;
+  }
+
+  &__btn {
+    width: 32px;
+    height: 400px; // Адаптувати під реальну висоту банерів
+    background-color: transparent;
+    border: 1px solid $c-border;
+    color: $c-text-main;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.3s;
+
+    &:hover {
+      border-color: $c-text-main;
+    }
+  }
+
+  &__dots {
+    position: absolute;
+    bottom: -24px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+  }
+
+  &__dot {
+    width: 14px;
+    height: 4px;
+    background-color: $c-border;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &--active {
+      background-color: $c-text-main;
+    }
+  }
+}

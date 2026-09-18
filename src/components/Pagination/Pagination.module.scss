@@ -1,0 +1,50 @@
+@import '../../styles/variables';
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-small;
+  margin-top: $spacing-large;
+
+  &__pages {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__btn,
+  &__page {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $c-border;
+    background-color: $c-surface;
+    color: $c-text-main;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition:
+      border-color 0.3s,
+      color 0.3s;
+
+    &:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    &:hover:not(:disabled) {
+      border-color: $c-text-main;
+    }
+
+    &--active {
+      background-color: $c-primary;
+      border-color: $c-primary;
+      color: $c-text-main;
+
+      &:hover:not(:disabled) {
+        border-color: $c-primary;
+      }
+    }
+  }
+}

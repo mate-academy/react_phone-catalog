@@ -1,3 +1,53 @@
-.CatalogPage {
-  border: 1px solid red;
+@import '../../styles/variables';
+
+.catalog {
+  padding-bottom: $spacing-large;
+
+  &__title {
+    font-size: 32px;
+    font-weight: 800;
+    color: $c-text-main;
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+
+  &__count {
+    font-size: 14px;
+    font-weight: 600;
+    color: $c-text-secondary;
+    margin-bottom: $spacing-large;
+  }
+
+  &__filters {
+    display: flex;
+    gap: $spacing-medium;
+    margin-bottom: $spacing-large;
+  }
+
+  &__filter {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__filter-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: $c-text-secondary;
+  }
+}
+
+.select {
+  select {
+    background-color: $c-surface;
+    border: 1px solid $c-border;
+    color: $c-text-main;
+    height: 40px;
+    font-weight: 600;
+
+    &:focus {
+      border-color: $c-primary;
+      box-shadow: none;
+    }
+  }
 }
