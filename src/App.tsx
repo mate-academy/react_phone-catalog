@@ -1,6 +1,9 @@
 import { Routes, Route } from 'react-router-dom';
 import { Header } from './components/Header';
 import './App.scss';
+import { HomePage } from './pages/HomePage';
+import { NotFoundPage } from './pages/NotFoundPage';
+import { Footer } from './components/Footer';
 
 export const App = () => (
   <div className="App">
@@ -8,10 +11,10 @@ export const App = () => (
     <Header />
     <main>
       <Routes>
-        <Route path="/" element={<div>Home PAGE</div>} />
-        <Route path="*" element={<div>Not Found</div>} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </main>
-    <footer>Підвал</footer>
+    <Footer />
   </div>
 );
