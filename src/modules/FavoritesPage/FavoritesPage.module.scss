@@ -1,0 +1,70 @@
+.page {
+  max-width: 1136px;
+  margin: 0 auto;
+  padding: 32px 16px;
+}
+
+.navPath {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.homeIcon {
+  display: flex;
+  align-items: center;
+}
+
+.separator {
+  color: #89939a;
+  font-size: 14px;
+}
+
+.current {
+  font-size: 12px;
+  font-weight: 600;
+  color: #89939a;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #0f0f11;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #89939a;
+  margin-bottom: 32px;
+}
+
+.emptyBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 64px 0;
+}
+
+.emptyText {
+  font-size: 20px;
+  font-weight: 600;
+  color: #0f0f11;
+  margin-bottom: 24px;
+}
+
+.shopBtn {
+  padding: 12px 32px;
+  background-color: #4e61eb;
+  color: #fff;
+  border-radius: 9999px;
+  text-decoration: none;
+  font-weight: 700;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: #3b4ecc;
+  }
+}

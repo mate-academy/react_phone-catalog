@@ -1,0 +1,35 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 64px 16px;
+  text-align: center;
+}
+
+.image {
+  max-width: 320px;
+  margin-bottom: 24px;
+  object-fit: contain;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #0f0f11;
+  margin-bottom: 24px;
+}
+
+.homeBtn {
+  padding: 12px 32px;
+  background-color: #4e61eb;
+  color: #fff;
+  border-radius: 9999px;
+  text-decoration: none;
+  font-weight: 700;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: #3b4ecc;
+  }
+}

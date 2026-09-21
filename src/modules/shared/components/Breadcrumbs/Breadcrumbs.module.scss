@@ -1,0 +1,66 @@
+.breadcrumbs {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.backButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  color: #89939a;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0;
+  width: fit-content;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: #0f0f11;
+  }
+}
+
+.backArrow {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.navPath {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.homeIcon {
+  display: flex;
+  align-items: center;
+}
+
+.separator {
+  color: #89939a;
+  font-size: 14px;
+}
+
+.link {
+  color: #0f0f11;
+  text-decoration: none;
+  text-transform: capitalize;
+
+  &:hover {
+    color: #4e61eb;
+  }
+}
+
+.current {
+  color: #89939a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 400px;
+}

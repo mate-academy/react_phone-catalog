@@ -1,0 +1,74 @@
+.section {
+  margin-bottom: 56px;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #0f0f11;
+  margin-bottom: 24px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.imageBox {
+  height: 360px;
+  border-radius: 24px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 24px;
+  padding: 24px;
+  position: relative;
+}
+
+.phonesBg {
+  background-color: #686460;
+}
+
+.tabletsBg {
+  background-color: #8d8d92;
+}
+
+.accessoriesBg {
+  background-color: #973d5f;
+}
+
+.image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .image {
+  transform: scale(1.05);
+}
+
+.categoryTitle {
+  font-size: 20px;
+  font-weight: 600;
+  color: #0f0f11;
+  margin-bottom: 4px;
+}
+
+.count {
+  font-size: 14px;
+  color: #89939a;
+}

@@ -1,0 +1,63 @@
+.section {
+  margin-bottom: 56px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #0f0f11;
+  letter-spacing: -0.01em;
+}
+
+.controls {
+  display: flex;
+  gap: 16px;
+}
+
+.button {
+  width: 40px;
+  height: 40px;
+  border-radius: 9999px;
+  border: 1px solid #e2e6e9;
+  background-color: #fff;
+  color: #0f0f11;
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  &:hover:not(:disabled) {
+    border-color: #4e61eb;
+    color: #4e61eb;
+  }
+}
+
+.carousel {
+  overflow: hidden;
+  width: 100%;
+}
+
+.track {
+  display: flex;
+  gap: 16px;
+  transition: transform 0.4s ease-in-out;
+}
+
+.cardItem {
+  flex: 0 0 272px;
+}

@@ -1,0 +1,152 @@
+@use '../../../../styles/variables' as *;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 64px;
+  padding: 0 32px;
+  background-color: $color-white;
+  border-bottom: 1px solid $color-elements;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.nav {
+  display: flex;
+  gap: 32px;
+}
+
+.navLink {
+  position: relative;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: $color-secondary;
+  text-decoration: none;
+  line-height: 64px;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: $color-text;
+  }
+}
+
+.navLinkActive {
+  color: $color-text;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: $color-primary;
+    border-radius: 3px 3px 0 0;
+  }
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.actionBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 64px;
+  height: 64px;
+  border-left: 1px solid $color-elements;
+  text-decoration: none;
+  position: relative;
+  transition: background-color 0.3s ease;
+
+  &:last-child {
+    border-right: 1px solid $color-elements;
+  }
+
+  &:hover {
+    background-color: $color-surface;
+  }
+}
+
+.actionBtnActive {
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: $color-primary;
+    border-radius: 3px 3px 0 0;
+  }
+}
+
+.iconWrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.badge {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  border-radius: $radius-full;
+  background-color: $color-primary;
+  color: $color-white;
+  font-size: 9px;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid $color-white;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.searchBox {
+  margin-right: 16px;
+}
+
+.searchInput {
+  width: 220px;
+  height: 36px;
+  padding: 0 16px;
+  border-radius: 9999px;
+  border: 1px solid #e2e6e9;
+  outline: none;
+  font-size: 14px;
+  transition: border-color 0.2s ease, width 0.2s ease;
+
+  &:focus {
+    border-color: #4e61eb;
+    width: 260px;
+  }
+}

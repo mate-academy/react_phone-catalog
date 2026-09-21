@@ -1,0 +1,148 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  border: 1px solid #e2e6e9;
+  border-radius: 16px;
+  background-color: #fff;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+
+  &:hover {
+    border-color: transparent;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+}
+
+.imageWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 210px;
+  width: 100%;
+  margin-bottom: 24px;
+  overflow: hidden;
+  padding: 8px;
+}
+
+.image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+  transition: transform 0.3s ease-in-out;
+}
+
+.imageWrapper:hover .image,
+.card:hover .image {
+  transform: scale(1.05);
+}
+
+.title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #0f0f11;
+  text-decoration: none;
+  margin-bottom: 8px;
+  line-height: 21px;
+  min-height: 42px;
+
+  &:hover {
+    color: #4e61eb;
+  }
+}
+
+.prices {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.price {
+  font-size: 22px;
+  font-weight: 700;
+  color: #0f0f11;
+}
+
+.fullPrice {
+  font-size: 22px;
+  color: #89939a;
+  text-decoration: line-through;
+}
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+  border-top: 1px solid #e2e6e9;
+  padding-top: 16px;
+}
+
+.specRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #89939a;
+
+  span:last-child {
+    color: #0f0f11;
+    font-weight: 600;
+  }
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.buttonAdd {
+  flex-grow: 1;
+  height: 40px;
+  border: none;
+  background-color: #4e61eb;
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #3b4ecc;
+  }
+}
+
+.buttonAdded {
+  background-color: #fff;
+  color: #27ae60;
+  border: 1px solid #e2e6e9;
+
+  &:hover {
+    background-color: #fafbfc;
+  }
+}
+
+.buttonFavorite {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #e2e6e9;
+  background-color: #fff;
+  border-radius: 9999px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-color: #0f0f11;
+  }
+}
+
+.buttonFavoriteActive {
+  border-color: #eb5757;
+  background-color: #fff0f0;
+}

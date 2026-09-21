@@ -1,0 +1,65 @@
+@use '../../../../styles/variables' as *;
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32px;
+  background-color: $color-white;
+  border-top: 1px solid $color-elements;
+  margin-top: auto;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.links {
+  display: flex;
+  gap: 32px;
+}
+
+.link {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: $color-secondary;
+  text-decoration: none;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: $color-text;
+  }
+}
+
+.backToTop {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.backText {
+  font-size: 12px;
+  font-weight: 600;
+  color: $color-secondary;
+}
+
+.scrollBtn {
+  width: 32px;
+  height: 32px;
+  border-radius: $radius-full;
+  border: 1px solid $color-elements;
+  background-color: $color-white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-color: $color-text;
+    background-color: $color-surface;
+  }
+}
