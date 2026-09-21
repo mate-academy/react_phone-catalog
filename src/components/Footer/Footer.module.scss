@@ -1,0 +1,105 @@
+@use '../../styles/mixins' as *;
+
+.footer {
+  width: 100%;
+  background-color: #fff;
+  border-top: 1px solid #e2e6e9;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
+
+  @include tablet-up {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 32px 24px;
+    gap: 0;
+  }
+
+  @include desktop {
+    padding: 32px;
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+
+  img {
+    height: 32px;
+    width: auto;
+  }
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+
+  @include tablet-up {
+    flex-direction: row;
+    justify-content: center;
+    gap: 32px;
+    width: auto;
+  }
+}
+
+.link {
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #89939a;
+  text-decoration: none;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: #313237;
+  }
+}
+
+.backToTop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  align-self: center; /* Центрируем кнопку на мобильных */
+
+  @include tablet-up {
+    align-self: auto;
+  }
+}
+
+.backToTopText {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15px;
+  color: #89939a;
+}
+
+.backToTopBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background-color: #fff;
+  border: 1px solid #b4bdc3;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+  padding: 0;
+
+  &:hover {
+    border-color: #313237;
+  }
+}

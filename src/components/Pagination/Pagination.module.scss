@@ -1,0 +1,55 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background-color: #fff;
+  border: 1px solid #b4bdc3;
+  border-radius: 0;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  color: #313237;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  svg path {
+    stroke: #313237;
+    transition: stroke 0.2s ease;
+  }
+
+  &:disabled {
+    border-color: #e2e6e9;
+    color: #b4bdc3;
+    cursor: not-allowed;
+
+    svg path {
+      stroke: #b4bdc3;
+    }
+  }
+
+  &:hover:not(:disabled) {
+    border-color: #313237;
+  }
+
+  &.active {
+    background-color: #313237;
+    border-color: #313237;
+    color: #fff;
+  }
+}
+
+.arrow {
+  /* stylelint-disable-next-line property-no-unknown */
+  composes: item;
+}

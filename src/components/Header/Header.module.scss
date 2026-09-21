@@ -1,0 +1,136 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 64px;
+  background-color: #fff;
+  border-bottom: 1px solid #e2e6e9;
+  padding: 0 16px;
+
+  @media (min-width: 640px) {
+    padding: 0 24px;
+  }
+
+  @media (min-width: 1200px) {
+    height: 64px;
+    padding: 0 32px;
+  }
+}
+
+.leftContent {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+
+  @media (min-width: 1200px) {
+    gap: 48px;
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+
+  img {
+    height: 24px;
+    width: auto;
+  }
+}
+
+.nav {
+  display: none;
+
+  @media (min-width: 640px) {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+}
+
+.navLink {
+  position: relative;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #89939a;
+  text-decoration: none;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  transition: color 0.3s;
+
+  &:hover {
+    color: #0f0f11;
+  }
+
+  &.active {
+    color: #0f0f11;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background-color: #0f0f11;
+    }
+  }
+}
+
+.rightContent {
+  display: flex;
+  align-items: center;
+}
+
+.iconBtn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 64px;
+  border-left: 1px solid #e2e6e9;
+  text-decoration: none;
+
+  &:last-child {
+    border-right: 1px solid #e2e6e9;
+  }
+
+  @media (min-width: 640px) {
+    width: 64px;
+  }
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.badge {
+  position: absolute;
+  top: 14px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 14px;
+  height: 14px;
+  padding: 0 3px;
+  background-color: #eb5757;
+  color: #fff;
+  font-size: 9px;
+  font-weight: 700;
+  border-radius: 50%;
+  border: 1px solid #fff;
+
+  @media (min-width: 640px) {
+    top: 18px;
+    right: 18px;
+  }
+}

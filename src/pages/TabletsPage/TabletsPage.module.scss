@@ -1,0 +1,95 @@
+.page {
+  width: 100%;
+  margin: 0 auto;
+  padding: 24px 16px 80px;
+  box-sizing: border-box;
+
+  // Mobile (320px - 639px)
+  @media (max-width: 639px) {
+    padding: 16px 16px 64px;
+  }
+
+  // Tablet (640px - 1199px)
+  @media (min-width: 640px) and (max-width: 1199px) {
+    padding: 24px 24px 64px;
+  }
+
+  // Desktop (1200px+)
+  @media (min-width: 1200px) {
+    max-width: 1200px;
+    padding: 32px 32px 80px;
+  }
+}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  font-size: 12px;
+  line-height: 15px;
+  color: #89939a;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s;
+
+    &:hover {
+      color: #0f0f11;
+    }
+  }
+
+  span {
+    color: #b4bdc3;
+  }
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  color: #0f0f11;
+  margin-bottom: 8px;
+
+  @media (max-width: 639px) {
+    font-size: 22px;
+    line-height: 31px;
+  }
+}
+
+.subtitle {
+  font-size: 14px;
+  line-height: 21px;
+  color: #89939a;
+  margin-bottom: 32px;
+  font-weight: 600;
+}
+
+// АДАПТИВНАЯ СЕТКА КАТАЛОГА ПО FIGMA
+.productsGrid {
+  display: grid;
+  gap: 16px;
+
+  // Mobile (320px - 639px): 1 колонка
+  grid-template-columns: 1fr;
+
+  // Tablet (640px - 1199px): 3 колонки
+  @media (min-width: 640px) and (max-width: 1199px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  // Desktop / Desktop Large (1200px+): 4 колонки
+  @media (min-width: 1200px) {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+}
+
+.emptyMessage {
+  font-size: 18px;
+  color: #89939a;
+  margin-top: 48px;
+  text-align: center;
+}

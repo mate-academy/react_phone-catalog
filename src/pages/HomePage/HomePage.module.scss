@@ -1,0 +1,281 @@
+@use '../../styles/mixins' as *;
+
+.container {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 16px 64px;
+
+  @include tablet {
+    padding: 32px 24px 80px;
+  }
+
+  @include desktop {
+    padding: 32px 32px 80px;
+  }
+
+  @include desktop-xl {
+    padding: 48px 32px 96px;
+  }
+}
+
+.title {
+  margin: 0 0 32px;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  color: #313237;
+
+  @include tablet-up {
+    margin-bottom: 56px;
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+.section {
+  width: 100%;
+  margin-bottom: 56px;
+
+  @include tablet-up {
+    margin-bottom: 80px;
+  }
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.sectionTitle {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 31px;
+  color: #313237;
+
+  @include tablet-up {
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+.bannerSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  width: 100%;
+  margin-bottom: 56px;
+
+  @include tablet-up {
+    margin-bottom: 80px;
+  }
+}
+
+.bannerContainer {
+  display: flex;
+  align-items: stretch;
+  gap: 16px;
+  width: 100%;
+}
+
+.bannerNavButton {
+  display: none;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  padding: 0;
+  background-color: #fff;
+  border: 1px solid #b4bdc3;
+  border-radius: 0;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+
+  &:hover {
+    border-color: #313237;
+  }
+
+  @include tablet-up {
+    display: flex;
+  }
+}
+
+.bannerWindow {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+
+  @include tablet {
+    height: 320px;
+    aspect-ratio: auto;
+  }
+
+  @include desktop {
+    height: 400px;
+    aspect-ratio: auto;
+  }
+
+  @include desktop-xl {
+    height: 400px;
+    aspect-ratio: auto;
+  }
+}
+
+.bannerTrack {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.bannerSlide {
+  flex-shrink: 0;
+  min-width: 100%;
+  height: 100%;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.dots {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.dot {
+  width: 14px;
+  height: 4px;
+  padding: 0;
+  background-color: #e2e6e9;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &.dotActive {
+    background-color: #313237;
+  }
+}
+
+.categoriesGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  width: 100%;
+
+  @include tablet-up {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+}
+
+.categoryCard {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  text-decoration: none;
+}
+
+.categoryImageWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 24px;
+  overflow: hidden;
+  background-color: #89939a1a;
+  aspect-ratio: 1 / 1;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  &:hover img {
+    transform: scale(1.05);
+  }
+}
+
+.categoryName {
+  margin: 0 0 4px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #313237;
+}
+
+.categoryCount {
+  font-size: 14px;
+  font-weight: 600;
+  color: #89939a;
+}
+
+.sliderButtons {
+  display: flex;
+  gap: 16px;
+}
+
+.sliderBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background-color: #fff;
+  border: 1px solid #b4bdc3;
+  border-radius: 0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    border-color: #313237;
+  }
+}
+
+.productsList {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 16px;
+  width: 100%;
+  padding-bottom: 16px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.productCardWrapper {
+  flex-shrink: 0;
+  width: 212px;
+
+  @include tablet {
+    width: 237px;
+  }
+
+  @include desktop {
+    width: 272px;
+  }
+
+  @include desktop-xl {
+    width: 272px;
+  }
+}
