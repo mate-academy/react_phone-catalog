@@ -1,21 +1,21 @@
 .button {
-    width: 100%;
-    background-color: var(--color-accent);
-    color: var(--color-white);
-    border-radius: 48px;
-    
-    @include hover-transition;
+  width: 100%;
+  background-color: var(--color-accent);
+  color: var(--color-white);
+  border-radius: 48px;
 
-    &:active{
-      background-color: var(--color-white);
-      color: var(--color-accent);
-      border: 1px solid var(--color-elements);
-      box-sizing: border-box;
-    }
+  @include hover-transition;
 
-    &:hover:not(:active){
-      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
-    }
+  &:disabled {
+    background-color: var(--color-white);
+    color: var(--color-accent);
+    border: 1px solid var(--color-elements);
+    box-sizing: border-box;
+  }
+
+  &:hover:not(:disabled) {
+    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+  }
 }
 
 .title {

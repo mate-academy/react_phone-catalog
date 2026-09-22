@@ -24,9 +24,11 @@
   "zoom": "Zoom",
 
   "addToCart": "Add to cart",
+  "addedToCart": "Added to cart",
   "youMayAlsoLike": "You may also like",
   "sortBy": "Sort by",
   "itemsOnPage": "Items on page",
   "backToTop": "Back to top",
-  "items": "items"
+  "items": "items",
+  "cart": "Cart"
 }

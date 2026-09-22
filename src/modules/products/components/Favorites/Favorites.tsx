@@ -1,9 +1,9 @@
 import { useContext, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import { useProductsQuery } from '@/modules/products/queries';
+import { useAppSelector } from '@/redux/hooks';
 import { ProductCard, Pagination } from '@/shared/components';
 import {
   Dropdown,
@@ -19,7 +19,7 @@ import styles from './Favorites.module.scss';
 
 export const Favorites = () => {
   const { t } = useTranslation();
-  const favoriteIds = useSelector(state => state.favorites.favorite_ids);
+  const favoriteIds = useAppSelector(state => state.favorites.favorite_ids);
 
   const {
     page,

@@ -1,9 +1,9 @@
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
 import Cart from '@/assets/icons/cart.svg?react';
 import Heart from '@/assets/icons/heart.svg?react';
+import { useAppSelector } from '@/redux/hooks';
 import { ROUTES } from '@/shared/constants';
 import { useBodyScrollLock } from '@/shared/hooks';
 import { cn } from '@/shared/utils';
@@ -16,7 +16,7 @@ type MenuProps = {
 
 export const Menu = ({ isVisible }: MenuProps) => {
   const { t } = useTranslation();
-  const countFavorites = useSelector(
+  const countFavorites = useAppSelector(
     state => state.favorites.favorite_ids.length,
   );
 
@@ -60,7 +60,10 @@ export const Menu = ({ isVisible }: MenuProps) => {
 
         {/* <Button className={styles.menu__button} aria-label="Cart"> */}
         <NavLink to={ROUTES.CART} className={styles.button__link}>
-          <Cart />
+          <div className={styles.icon}>
+            <Cart className={styles.menu__img} />
+            {countFavorites > 0 && <div className={styles.badge}>{10}</div>}
+          </div>
         </NavLink>
         {/* </Button> */}
       </div>

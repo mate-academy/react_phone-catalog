@@ -5,7 +5,7 @@ import HeartActive from '@/assets/icons/heart-active.svg?react';
 import Heart from '@/assets/icons/heart.svg?react';
 import { Property } from '@/shared/components';
 import { AccentButton, CircleButton, Line } from '@/shared/components/ui';
-import { useFavoriteButton } from '@/shared/hooks';
+import { useFavoriteButton, useCartButton } from '@/shared/hooks';
 import { Product } from '@/shared/types';
 import { cn, getImageUrl } from '@/shared/utils';
 
@@ -23,6 +23,7 @@ export const ProductCard = ({
 }: Props) => {
   const { t } = useTranslation();
   const { isFavorite, onFavoriteClick } = useFavoriteButton(product.itemId);
+  const { isSelected, onSelectClick } = useCartButton(product.itemId);
 
   const {
     image,
@@ -59,7 +60,11 @@ export const ProductCard = ({
       </div>
 
       <div className={styles.card__buttons}>
-        <AccentButton title={t('addToCart')} />
+        <AccentButton
+          title={t(isSelected ? 'addedToCart' : 'addToCart')}
+          onClick={onSelectClick}
+          disabled={isSelected}
+        />
         <CircleButton onClick={onFavoriteClick}>
           {isFavorite ? <HeartActive /> : <Heart />}
         </CircleButton>
