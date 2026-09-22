@@ -2,6 +2,13 @@
 
 .home {
   padding-bottom: $spacing-large;
+
+  &__title {
+    font-size: 32px;
+    font-weight: 800;
+    color: $c-text-main;
+    margin: 32px;
+  }
 }
 
 .visually-hidden {

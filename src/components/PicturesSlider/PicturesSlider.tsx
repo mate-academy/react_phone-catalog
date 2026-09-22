@@ -32,30 +32,30 @@ export const PicturesSlider = () => {
 
   return (
     <div className={styles.slider} data-cy="PicturesSlider">
-      <button className={styles.slider__btn} onClick={prevSlide}>
-        <i className="fas fa-chevron-left"></i>
-      </button>
-
-      <div className={styles.slider__content}>
-        <div
-          className={styles.slider__track}
-          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-        >
-          {BANNERS.map((banner, index) => (
-            <img
-              key={index}
-              src={banner}
-              alt={`Banner ${index + 1}`}
-              className={styles.slider__image}
-            />
-          ))}
+      <div className={styles.slider__container}>
+        <button className={styles.slider__btn} onClick={prevSlide}>
+          <i className="fas fa-chevron-left"></i>
+        </button>
+        <div className={styles.slider__content}>
+          <div
+            className={styles.slider__track}
+            style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+          >
+            {BANNERS.map((banner, index) => (
+              <img
+                key={index}
+                src={banner}
+                alt={`Banner ${index + 1}`}
+                className={styles.slider__image}
+              />
+            ))}
+          </div>
         </div>
+
+        <button className={styles.slider__btn} onClick={nextSlide}>
+          <i className="fas fa-chevron-right"></i>
+        </button>
       </div>
-
-      <button className={styles.slider__btn} onClick={nextSlide}>
-        <i className="fas fa-chevron-right"></i>
-      </button>
-
       <div className={styles.slider__dots}>
         {BANNERS.map((_, index) => (
           <button

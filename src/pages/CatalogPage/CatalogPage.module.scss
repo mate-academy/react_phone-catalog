@@ -38,7 +38,7 @@
 }
 
 .select {
-  select {
+  &__control {
     background-color: $c-surface;
     border: 1px solid $c-border;
     color: $c-text-main;

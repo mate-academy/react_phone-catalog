@@ -97,6 +97,7 @@ export const CatalogPage = () => {
             </label>
             <div className="select">
               <select
+                className={styles.select__control}
                 id="sort"
                 value={sort}
                 onChange={e => updateParams('sort', e.target.value, 'age')}
@@ -117,6 +118,7 @@ export const CatalogPage = () => {
             </label>
             <div className="select">
               <select
+                className={styles.select__control}
                 id="perPage"
                 value={perPageParam}
                 onChange={e => updateParams('perPage', e.target.value, 'all')}

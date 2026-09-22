@@ -1,3 +1,40 @@
-.Breadcrumbs {
-  border: 1px solid green;
+@import '../../styles/variables';
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: $spacing-large;
+  margin-top: $spacing-medium;
+
+  &__home,
+  &__link {
+    color: $c-text-secondary;
+    text-decoration: none;
+    transition: color 0.3s;
+    text-transform: capitalize;
+    font-size: 14px;
+
+    &:hover {
+      color: $c-text-main;
+    }
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  &__separator {
+    color: $c-text-secondary;
+    font-size: 10px;
+  }
+
+  &__text--active {
+    color: $c-text-secondary;
+    text-transform: capitalize;
+    font-size: 14px;
+    pointer-events: none;
+  }
 }

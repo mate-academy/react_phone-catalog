@@ -2,11 +2,16 @@
 
 .slider {
   display: flex;
-  align-items: center;
-  position: relative;
-  gap: $spacing-small;
+  flex-direction: column;
+  gap: 24px;
   margin-bottom: 56px;
-  max-height: 432px;
+
+  &__container {
+    display: flex;
+    align-items: center;
+    gap: $spacing-small;
+    max-height: 432px;
+  }
 
   &__content {
     overflow: hidden;
@@ -45,11 +50,8 @@
   }
 
   &__dots {
-    position: absolute;
-    bottom: -24px;
-    left: 50%;
-    transform: translateX(-50%);
     display: flex;
+    justify-content: center;
     gap: 12px;
   }
 
