@@ -1,3 +1,32 @@
-.CatalogPage {
-  border: 1px solid red;
+@import '../../styles/variables';
+
+.favorites {
+  padding-bottom: $spacing-large;
+
+  &__breadcrumbs {
+    margin-bottom: $spacing-medium;
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: 800;
+    color: $c-text-main;
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+
+  &__count {
+    font-size: 14px;
+    font-weight: 600;
+    color: $c-text-secondary;
+    margin-bottom: $spacing-large;
+  }
+
+  &__empty {
+    font-size: 20px;
+    font-weight: 600;
+    color: $c-text-secondary;
+    text-align: center;
+    padding: 48px 0;
+  }
 }

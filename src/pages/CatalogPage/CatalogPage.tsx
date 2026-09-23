@@ -11,7 +11,6 @@ export const CatalogPage = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
-
   const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation();
   const category = location.pathname.slice(1);
@@ -29,13 +28,26 @@ export const CatalogPage = () => {
       .finally(() => setIsLoading(false));
   }, [category]);
 
+  const query = searchParams.get('query') || '';
   const sort = searchParams.get('sort') || 'age';
   const perPageParam = searchParams.get('perPage') || 'all';
   const pageParam = searchParams.get('page') || '1';
   const currentPage = parseInt(pageParam, 10) || 1;
 
+  // Фільтрація за пошуковим запитом
+  const searchedProducts = useMemo(() => {
+    if (!query.trim()) {
+      return products;
+    }
+
+    return products.filter(p =>
+      p.name.toLowerCase().includes(query.toLowerCase().trim()),
+    );
+  }, [products, query]);
+
+  // Сортування відфільтрованого списку
   const sortedProducts = useMemo(() => {
-    const sorted = [...products];
+    const sorted = [...searchedProducts];
 
     switch (sort) {
       case 'age':
@@ -47,7 +59,7 @@ export const CatalogPage = () => {
       default:
         return sorted;
     }
-  }, [products, sort]);
+  }, [searchedProducts, sort]);
 
   const perPage =
     perPageParam === 'all' ? sortedProducts.length : parseInt(perPageParam, 10);
@@ -81,15 +93,20 @@ export const CatalogPage = () => {
   const showPagination =
     perPageParam !== 'all' && sortedProducts.length > perPage;
 
+  const hasNoSearchResults =
+    !isLoading &&
+    !isError &&
+    products.length > 0 &&
+    searchedProducts.length === 0;
+
   return (
     <div className={styles.catalog} data-cy="CatalogPage">
       <h1 className={styles.catalog__title}>
         {category.charAt(0).toUpperCase() + category.slice(1)} page
       </h1>
+      <p className={styles.catalog__count}>{searchedProducts.length} models</p>
 
-      <p className={styles.catalog__count}>{products.length} models</p>
-
-      {!isLoading && !isError && products.length > 0 && (
+      {!isLoading && !isError && searchedProducts.length > 0 && (
         <div className={styles.catalog__filters}>
           <div className={styles.catalog__filter}>
             <label htmlFor="sort" className={styles['catalog__filter-label']}>
@@ -151,10 +168,11 @@ export const CatalogPage = () => {
         <p>There are no {category} yet</p>
       )}
 
-      {!isLoading && !isError && products.length > 0 && (
+      {hasNoSearchResults && <p>There are no {category} matching the query</p>}
+
+      {!isLoading && !isError && searchedProducts.length > 0 && (
         <>
           <ProductsList products={visibleProducts} />
-
           {showPagination && (
             <Pagination
               total={sortedProducts.length}

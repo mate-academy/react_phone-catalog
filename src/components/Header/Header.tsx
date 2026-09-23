@@ -1,13 +1,65 @@
-import { NavLink, Link } from 'react-router-dom';
+import { useState, useEffect, useCallback } from 'react';
+import { NavLink, Link, useLocation, useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
 import { useStore } from '../../context/StoreContext';
 import styles from './Header.module.scss';
 
 export const Header = () => {
   const { cart, favorites } = useStore();
+  const { pathname } = useLocation();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const totalCartQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
   const totalFavorites = favorites.length;
+
+  const showSearch = [
+    '/phones',
+    '/tablets',
+    '/accessories',
+    '/favorites',
+  ].includes(pathname);
+
+  const queryParam = searchParams.get('query') || '';
+  const [appliedQuery, setAppliedQuery] = useState(queryParam);
+
+  useEffect(() => {
+    setAppliedQuery(queryParam);
+  }, [queryParam]);
+
+  // Debounce функция для обновления URL
+  const updateQueryInUrl = useCallback(
+    (newQuery: string) => {
+      const params = new URLSearchParams(searchParams);
+
+      if (newQuery.trim()) {
+        params.set('query', newQuery);
+      } else {
+        params.delete('query');
+      }
+
+      setSearchParams(params);
+    },
+    [searchParams, setSearchParams],
+  );
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (appliedQuery !== queryParam) {
+        updateQueryInUrl(appliedQuery);
+      }
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, [appliedQuery, queryParam, updateQueryInUrl]);
+
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setAppliedQuery(e.target.value);
+  };
+
+  const handleClearSearch = () => {
+    setAppliedQuery('');
+    updateQueryInUrl('');
+  };
 
   const getLinkClass = ({ isActive }: { isActive: boolean }) =>
     classNames(styles.header__link, {
@@ -17,38 +69,65 @@ export const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.header__container}>
-        <Link to="/" className={styles.header__logo}>
-          NICE GADGETS
-        </Link>
+        <div className={styles.header__left}>
+          <Link to="/" className={styles.header__logo}>
+            NICE GADGETS
+          </Link>
 
-        <nav className={styles.header__nav}>
-          <NavLink to="/" className={getLinkClass}>
-            HOME
-          </NavLink>
-          <NavLink to="/phones" className={getLinkClass}>
-            PHONES
-          </NavLink>
-          <NavLink to="/tablets" className={getLinkClass}>
-            TABLETS
-          </NavLink>
-          <NavLink to="/accessories" className={getLinkClass}>
-            ACCESSORIES
-          </NavLink>
-        </nav>
+          <nav className={styles.header__nav}>
+            <NavLink to="/" className={getLinkClass}>
+              HOME
+            </NavLink>
+            <NavLink to="/phones" className={getLinkClass}>
+              PHONES
+            </NavLink>
+            <NavLink to="/tablets" className={getLinkClass}>
+              TABLETS
+            </NavLink>
+            <NavLink to="/accessories" className={getLinkClass}>
+              ACCESSORIES
+            </NavLink>
+          </nav>
+        </div>
 
-        <div className={styles.header__actions}>
-          <NavLink to="/favorites" className={styles.header__icon}>
-            <i className="far fa-heart"></i>
-            {totalFavorites > 0 && (
-              <span className={styles.header__badge}>{totalFavorites}</span>
-            )}
-          </NavLink>
-          <NavLink to="/cart" className={styles.header__icon}>
-            <i className="fas fa-shopping-bag"></i>
-            {totalCartQuantity > 0 && (
-              <span className={styles.header__badge}>{totalCartQuantity}</span>
-            )}
-          </NavLink>
+        <div className={styles.header__right}>
+          {showSearch && (
+            <div className={styles.header__search}>
+              <input
+                type="text"
+                className={styles['header__search-input']}
+                placeholder={`Search in ${pathname.slice(1)}...`}
+                value={appliedQuery}
+                onChange={handleSearchChange}
+              />
+              {appliedQuery && (
+                <button
+                  className={styles['header__search-clear']}
+                  onClick={handleClearSearch}
+                  aria-label="Clear search"
+                >
+                  <i className="fas fa-times"></i>
+                </button>
+              )}
+            </div>
+          )}
+
+          <div className={styles.header__actions}>
+            <NavLink to="/favorites" className={styles.header__icon}>
+              <i className="far fa-heart"></i>
+              {totalFavorites > 0 && (
+                <span className={styles.header__badge}>{totalFavorites}</span>
+              )}
+            </NavLink>
+            <NavLink to="/cart" className={styles.header__icon}>
+              <i className="fas fa-shopping-bag"></i>
+              {totalCartQuantity > 0 && (
+                <span className={styles.header__badge}>
+                  {totalCartQuantity}
+                </span>
+              )}
+            </NavLink>
+          </div>
         </div>
       </div>
     </header>

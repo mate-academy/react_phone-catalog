@@ -27,6 +27,13 @@
     text-decoration: none;
   }
 
+  &__left {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+    height: 100%;
+  }
+
   &__nav {
     display: flex;
     gap: $spacing-large;
@@ -50,6 +57,7 @@
 
     &--active {
       color: $c-text-main;
+
       &::after {
         content: '';
         position: absolute;
@@ -58,6 +66,47 @@
         right: 0;
         height: 3px;
         background-color: $c-text-main;
+      }
+    }
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+
+  &__search {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 16px;
+    border-left: 1px solid $c-border;
+
+    &-input {
+      background: transparent;
+      border: none;
+      color: $c-text-main;
+      font-size: 14px;
+      outline: none;
+      width: 180px;
+
+      &::placeholder {
+        color: $c-text-secondary;
+      }
+    }
+
+    &-clear {
+      background: none;
+      border: none;
+      color: $c-text-secondary;
+      cursor: pointer;
+      font-size: 12px;
+      padding: 4px;
+
+      &:hover {
+        color: $c-text-main;
       }
     }
   }
