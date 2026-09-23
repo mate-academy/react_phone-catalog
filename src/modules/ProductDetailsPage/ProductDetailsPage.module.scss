@@ -1,0 +1,188 @@
+@use '../../styles/mixins' as *;
+
+.page {
+  @include container;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.back {
+  margin-top: 24px;
+}
+
+.title {
+  @include h2;
+
+  margin-top: 16px;
+}
+
+.top {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  margin-top: 32px;
+
+  @include on-tablet {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    gap: 16px;
+  }
+
+  @include on-desktop {
+    gap: 64px;
+  }
+}
+
+.options {
+  width: 100%;
+
+  @include on-desktop {
+    max-width: 320px;
+  }
+}
+
+.prices {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.price {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 41px;
+}
+
+.fullPrice {
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 28px;
+  text-decoration: line-through;
+  color: var(--c-secondary);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.addToCart {
+  @include primary-button;
+
+  width: 263px;
+
+  @include on-tablet {
+     width: 180px;
+  }
+}
+
+.addToCartAdded {
+  border: 1px solid var(--c-elements);
+  background-color: var(--c-surface);
+  color: var(--c-green);
+
+  &:disabled {
+    cursor: default;
+  }
+
+  &:hover:not(:disabled) {
+    background-color: var(--c-surface);
+    box-shadow: none;
+  }
+}
+
+.favButton {
+  @include round-button;
+
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+}
+
+.favButtonActive {
+  color: var(--c-red);
+}
+
+.shortSpecs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 32px;
+}
+
+.specRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.specName {
+  @include small-text;
+
+  flex-shrink: 0;
+  color: var(--c-secondary);
+}
+
+.specValue {
+  @include small-text;
+
+  text-align: right;
+}
+
+.sections {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 56px;
+  margin-top: 56px;
+
+  @include on-desktop {
+    grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+    gap: 64px;
+    margin-top: 80px;
+  }
+}
+
+.notFound {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 40px 0;
+  text-align: center;
+}
+
+.notFoundTitle {
+  @include h1;
+}
+
+.notFoundText {
+  @include body-text;
+
+  color: var(--c-secondary);
+}
+
+.notFoundImage {
+  width: 100%;
+  max-width: 320px;
+}
+
+.notFoundLink {
+  @include primary-button;
+
+  min-width: 180px;
+}
+
+.recommendations {
+  margin-top: 64px;
+
+  @include on-tablet {
+    margin-top: 80px;
+  }
+
+  @include on-desktop {
+    margin-top: 80px;
+  }
+}

@@ -1,0 +1,233 @@
+@use '../../styles/mixins' as *;
+
+.header {
+  position: sticky;
+  z-index: 50;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 48px;
+  background-color: var(--c-surface);
+  box-shadow: 0 1px 10px var(--c-shadow);
+
+  @include on-desktop {
+    height: 64px;
+  }
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.logo {
+  padding-inline: 16px;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+}
+
+.nav {
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+    gap: 32px;
+    height: 100%;
+    margin-left: 24px;
+  }
+
+  @include on-desktop {
+    gap: 64px;
+    margin-left: 48px;
+  }
+}
+
+.navLink {
+  @include uppercase-text;
+  @include transition(color);
+
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  color: var(--c-secondary);
+
+  &:hover {
+    color: var(--c-text);
+  }
+}
+
+.navLinkActive {
+  color: var(--c-text);
+
+  &::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    border-radius: 3px 3px 0 0;
+    background-color: var(--c-accent);
+  }
+}
+
+.right {
+  display: flex;
+  height: 100%;
+}
+
+.cell {
+  @include transition(background-color);
+
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 48px;
+  height: 100%;
+  padding: 0;
+  border-left: 1px solid var(--c-elements);
+  color: var(--c-text);
+
+  &:hover {
+    background-color: var(--c-surface-2);
+  }
+
+  @include on-desktop {
+    width: 64px;
+  }
+}
+
+.iconLink {
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+  }
+}
+
+.iconLinkActive {
+  color: var(--c-accent);
+
+  &::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    border-radius: 3px 3px 0 0;
+    background-color: var(--c-accent);
+  }
+}
+
+.iconWrapper {
+  position: relative;
+  display: flex;
+}
+
+.badge {
+  position: absolute;
+  top: -7px;
+  right: -9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-width: 14px;
+  height: 14px;
+  padding: 0 3px;
+  border: 1px solid var(--c-surface);
+  border-radius: 8px;
+  background-color: var(--c-accent);
+  color: var(--c-static-white);
+  font-size: 9px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.burger {
+  @include on-tablet {
+    display: none;
+  }
+}
+
+.menu {
+  position: fixed;
+  z-index: 40;
+  inset: 48px 0 0;
+  display: flex;
+  flex-direction: column;
+  visibility: hidden;
+  background-color: var(--c-bg);
+  transform: translateX(-100%);
+  transition:
+    transform 0.3s,
+    visibility 0.3s;
+
+  @include on-tablet {
+    display: none;
+  }
+}
+
+.menuOpen {
+  visibility: visible;
+  transform: translateX(0);
+}
+
+.menuNav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  flex-grow: 1;
+  padding: 40px 0;
+  overflow-y: auto;
+}
+
+.menuNavLink {
+  @include uppercase-text;
+  @include transition(color);
+
+  padding-bottom: 6px;
+  border-bottom: 2px solid transparent;
+  color: var(--c-secondary);
+
+  &:hover {
+    color: var(--c-text);
+  }
+}
+
+.menuNavLinkActive {
+  border-color: var(--c-accent);
+  color: var(--c-text);
+}
+
+.menuBottom {
+  display: flex;
+  height: 64px;
+  border-top: 1px solid var(--c-elements);
+  background-color: var(--c-surface);
+}
+
+.menuBottomLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  color: var(--c-text);
+
+  & + & {
+    border-left: 1px solid var(--c-elements);
+  }
+}
+
+.menuBottomLinkActive {
+  color: var(--c-accent);
+}

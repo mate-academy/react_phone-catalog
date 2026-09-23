@@ -1,0 +1,53 @@
+@use '../../styles/mixins' as *;
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.home {
+  display: flex;
+  color: var(--c-text);
+}
+
+.homeIcon {
+  @include transition(transform);
+
+  .home:hover & {
+    transform: scale(1.15);
+  }
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.chevron {
+  flex-shrink: 0;
+  color: var(--c-icons);
+}
+
+.link {
+  @include small-text;
+  @include transition(color);
+
+  color: var(--c-text);
+
+  &:hover {
+    color: var(--c-accent);
+  }
+}
+
+.current {
+  @include small-text;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--c-secondary);
+}

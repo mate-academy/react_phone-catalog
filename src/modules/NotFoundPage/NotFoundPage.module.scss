@@ -1,0 +1,27 @@
+@use '../../styles/mixins' as *;
+
+.page {
+  @include container;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  padding-top: 40px;
+  text-align: center;
+}
+
+.title {
+  @include h1;
+}
+
+.image {
+  width: 100%;
+  max-width: 400px;
+}
+
+.homeLink {
+  @include primary-button;
+
+  min-width: 180px;
+}

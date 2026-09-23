@@ -1,0 +1,29 @@
+@use '../../styles/mixins' as *;
+
+.logo {
+  @include transition(transform);
+
+  display: flex;
+  flex-direction: column;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--c-text);
+
+  &:hover {
+    transform: scale(1.06);
+  }
+}
+
+.line {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.hand {
+  font-size: 10px;
+  line-height: 1;
+}

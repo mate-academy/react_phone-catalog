@@ -1,0 +1,95 @@
+@use '../../styles/mixins' as *;
+
+.options {
+  width: 100%;
+}
+
+.optionLabel {
+  @include small-text;
+
+  display: block;
+  color: var(--c-secondary);
+}
+
+.colors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+  list-style: none;
+}
+
+.color {
+  @include transition(border-color);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--c-elements);
+  border-radius: 50%;
+  background-color: transparent;
+
+  &:hover {
+    border-color: var(--c-icons);
+  }
+}
+
+.colorActive {
+  border-color: var(--c-accent);
+}
+
+.colorInner {
+  display: block;
+  width: 24px;
+  height: 24px;
+  border: 1px solid rgba(0, 0, 0, 10%);
+  border-radius: 50%;
+}
+
+.divider {
+  height: 1px;
+  margin: 24px 0;
+  background-color: var(--c-elements);
+}
+
+.capacities {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+  list-style: none;
+}
+
+.capacity {
+  @include body-text;
+  @include transition((background-color, border-color, color));
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  height: 32px;
+  padding: 0 12px;
+  border: 1px solid var(--c-icons);
+  border-radius: 8px;
+  background-color: var(--c-surface);
+  color: var(--c-text);
+
+  &:hover {
+    border-color: var(--c-text);
+  }
+}
+
+.capacityActive {
+  border-color: var(--c-accent);
+  background-color: var(--c-accent);
+  color: var(--c-btn-text);
+
+  &:hover {
+    border-color: var(--c-accent);
+  }
+}

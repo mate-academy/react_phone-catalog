@@ -1,0 +1,60 @@
+@use '../../styles/mixins' as *;
+
+.slider {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.title {
+  @include h2;
+}
+
+.buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.button {
+  @include round-button;
+
+  width: 32px;
+  height: 32px;
+}
+
+.list {
+  display: flex;
+  gap: 16px;
+  margin: -16px;
+  padding: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: 16px;
+  scrollbar-width: none;
+  list-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.item {
+  flex-shrink: 0;
+  width: 212px;
+  scroll-snap-align: start;
+
+  @include on-tablet {
+    width: 237px;
+  }
+
+  @include on-desktop {
+    width: 272px;
+  }
+}

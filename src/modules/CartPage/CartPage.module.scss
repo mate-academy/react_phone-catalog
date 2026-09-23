@@ -1,0 +1,180 @@
+@use '../../styles/mixins' as *;
+
+.page {
+  @include container;
+}
+
+.title {
+  @include h1;
+
+  margin-top: 16px;
+  margin-bottom: 32px;
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+.emptyImage {
+  width: 100%;
+  max-width: 280px;
+  max-height: 240px;
+  object-fit: contain;
+
+  @include on-tablet {
+    max-width: 320px;
+    max-height: 280px;
+  }
+}
+
+.emptyText {
+  @include h3;
+
+  color: var(--c-secondary);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @include on-desktop {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    gap: 16px;
+    align-items: start;
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  list-style: none;
+}
+
+.item {
+  @include card-surface;
+
+  display: grid;
+  grid-template-areas:
+    'remove image name'
+    'quantity quantity price';
+  grid-template-columns: auto 80px 1fr;
+  gap: 16px;
+  align-items: center;
+  padding: 16px;
+
+  @include on-tablet {
+    grid-template-areas: 'remove image name quantity price';
+    grid-template-columns: auto 80px 1fr auto auto;
+    padding: 16px 24px;
+  }
+}
+
+.remove {
+  @include transition(color);
+
+  grid-area: remove;
+  display: flex;
+  padding: 0;
+  color: var(--c-icons);
+
+  &:hover {
+    color: var(--c-text);
+  }
+}
+
+.imageLink {
+  grid-area: image;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80px;
+}
+
+.image {
+  @include hover-scale;
+
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.name {
+  @include body-text;
+  @include transition(color);
+
+  grid-area: name;
+  font-weight: 600;
+
+  &:hover {
+    color: var(--c-accent);
+  }
+}
+
+.quantity {
+  grid-area: quantity;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.quantityButton {
+  @include round-button;
+
+  width: 32px;
+  height: 32px;
+}
+
+.quantityValue {
+  @include body-text;
+
+  min-width: 20px;
+  text-align: center;
+}
+
+.itemPrice {
+  @include h3;
+
+  grid-area: price;
+  justify-self: end;
+  text-align: right;
+}
+
+.summary {
+  @include card-surface;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px;
+}
+
+.total {
+  @include h2;
+}
+
+.totalLabel {
+  @include body-text;
+
+  margin-top: 4px;
+  color: var(--c-secondary);
+}
+
+.summaryDivider {
+  width: 100%;
+  height: 1px;
+  margin: 16px 0 24px;
+  background-color: var(--c-elements);
+}
+
+.checkout {
+  @include primary-button;
+
+  width: 100%;
+}

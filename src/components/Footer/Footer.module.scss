@@ -1,0 +1,77 @@
+@use '../../styles/mixins' as *;
+
+.footer {
+  background-color: var(--c-surface);
+  box-shadow: 0 -1px 10px var(--c-shadow);
+}
+
+.inner {
+  @include container;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
+  padding-top: 32px;
+  padding-bottom: 32px;
+
+  @include on-tablet {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  list-style: none;
+
+  @include on-tablet {
+    flex-direction: row;
+    gap: 32px;
+  }
+
+  @include on-desktop {
+    gap: 64px;
+  }
+}
+
+.link {
+  @include uppercase-text;
+  @include transition(color);
+
+  color: var(--c-secondary);
+
+  &:hover {
+    color: var(--c-text);
+  }
+}
+
+.backToTop {
+  @include small-text;
+  @include transition(color);
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+  color: var(--c-secondary);
+
+  &:hover {
+    color: var(--c-text);
+  }
+}
+
+.backToTopButton {
+  @include round-button;
+
+  width: 32px;
+  height: 32px;
+
+  .backToTop:hover & {
+    border-color: var(--c-text);
+  }
+}

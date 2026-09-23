@@ -1,0 +1,37 @@
+@use '../../styles/mixins' as *;
+
+.section {
+  min-width: 0;
+}
+
+.sectionTitle {
+  @include h3;
+
+  font-weight: 700;
+}
+
+.sectionDivider {
+  height: 1px;
+  margin: 16px 0 32px;
+  background-color: var(--c-elements);
+}
+
+.aboutBlock + .aboutBlock {
+  margin-top: 32px;
+}
+
+.aboutTitle {
+  @include h4;
+
+  margin-bottom: 16px;
+}
+
+.aboutText {
+  @include body-text;
+
+  color: var(--c-secondary);
+
+  & + & {
+    margin-top: 8px;
+  }
+}

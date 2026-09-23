@@ -1,0 +1,140 @@
+@use '../../styles/mixins' as *;
+
+.card {
+  @include card-surface;
+  @include transition(box-shadow);
+
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  height: 100%;
+  padding: 32px;
+
+  &:hover {
+    box-shadow: 0 8px 24px var(--c-shadow-strong);
+  }
+}
+
+.imageLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 196px;
+  margin-bottom: 24px;
+}
+
+.image {
+  @include hover-scale;
+
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.title {
+  @include transition(color);
+
+  display: block;
+  min-height: 42px;
+
+  &:hover {
+    color: var(--c-accent);
+  }
+}
+
+.titleText {
+  @include body-text;
+
+  font-weight: 600;
+}
+
+.prices {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.price {
+  @include h3;
+}
+
+.fullPrice {
+  @include h3;
+
+  font-weight: 400;
+  text-decoration: line-through;
+  color: var(--c-secondary);
+}
+
+.divider {
+  height: 1px;
+  margin: 8px 0 16px;
+  background-color: var(--c-elements);
+}
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.specRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.specName {
+  @include small-text;
+
+  color: var(--c-secondary);
+}
+
+.specValue {
+  @include small-text;
+
+  text-align: right;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.addButton {
+  @include primary-button;
+
+  height: 40px;
+  padding: 0 8px;
+  flex-grow: 1;
+}
+
+.addButtonAdded {
+  border: 1px solid var(--c-elements);
+  background-color: var(--c-surface);
+  color: var(--c-green);
+
+  &:disabled {
+    cursor: default;
+  }
+
+  &:hover:not(:disabled) {
+    background-color: var(--c-surface);
+    box-shadow: none;
+  }
+}
+
+.favButton {
+  @include round-button;
+
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+}
+
+.favButtonActive {
+  color: var(--c-red);
+}

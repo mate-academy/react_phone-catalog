@@ -1,0 +1,19 @@
+@use '../../styles/mixins' as *;
+
+.error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 64px 0;
+}
+
+.title {
+  @include h3;
+
+  color: var(--c-secondary);
+}
+
+.button {
+  @include primary-button;
+}

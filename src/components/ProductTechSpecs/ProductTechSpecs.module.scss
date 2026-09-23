@@ -1,0 +1,45 @@
+@use '../../styles/mixins' as *;
+
+.section {
+  min-width: 0;
+}
+
+.sectionTitle {
+  @include h3;
+
+  font-weight: 700;
+}
+
+.sectionDivider {
+  height: 1px;
+  margin: 16px 0 32px;
+  background-color: var(--c-elements);
+}
+
+.specsList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+}
+
+.row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.name {
+  @include body-text;
+
+  flex-shrink: 0;
+  color: var(--c-secondary);
+}
+
+.value {
+  @include body-text;
+
+  margin: 0;
+  text-align: right;
+}

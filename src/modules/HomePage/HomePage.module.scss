@@ -1,0 +1,155 @@
+@use '../../styles/mixins' as *;
+
+.page {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+
+  > section:not(.hero) {
+    @include container;
+  }
+
+  @include on-tablet {
+    gap: 64px;
+  }
+
+  @include on-desktop {
+    gap: 80px;
+  }
+}
+
+.hero {
+  padding: 0;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    padding-inline: 32px;
+  }
+}
+
+.heroTitle {
+  margin: 0 auto 24px;
+  max-width: 300px;
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -1%;
+
+  @include on-tablet {
+    margin: 0 0 32px;
+    max-width: 500px;
+    font-size: 48px;
+    line-height: 56px;
+  }
+
+  @include on-desktop {
+    max-width: none;
+    margin: 0 auto 56px;
+  }
+}
+
+.slider {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: 16px;
+
+  width: 100%;
+}
+
+.sliderViewport {
+  width: 100%;
+  overflow: hidden;
+  touch-action: pan-y;
+
+  @media (max-width: 639px) {
+    aspect-ratio: 1 / 1;
+  }
+
+  @include on-tablet {
+    max-width: 490px;
+  }
+
+  @include on-desktop {
+    max-width: 1040px;
+  }
+}
+
+.sliderTrack {
+  display: flex;
+  width: 100%;
+  transition: transform 0.5s ease;
+}
+
+.slide {
+  flex: 0 0 100%;
+  min-width: 0;
+}
+
+.slideImage {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  @media (max-width: 639px) {
+    aspect-ratio: 1 / 1;
+  }
+
+  @include on-tablet {
+    height: 190px;
+    border-radius: 8px;
+  }
+
+  @include on-desktop {
+    height: 400px;
+  }
+}
+
+.sliderButton {
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  flex-shrink: 0;
+
+  border: 1px solid #b4bdc3;
+  border-radius: 999px;
+  background: transparent;
+
+  font-size: 26px;
+  line-height: 1;
+
+  @include on-tablet {
+    display: flex;
+  }
+}
+
+.dots {
+  max-width: 80px;
+  height: 24px;
+  margin: 8px auto 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: .5rem;
+}
+
+.dot {
+  width: 14px;
+  height: 4px;
+  background-color: #E2E6E9;
+  border: none;
+}
+
+.activeDot {
+  background-color: #0F0F11;
+}

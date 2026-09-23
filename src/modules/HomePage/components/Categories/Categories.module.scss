@@ -1,0 +1,69 @@
+@use '../../../../styles/mixins' as *;
+
+.categories {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.title {
+  @include h2;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+
+  @include on-tablet {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+}
+
+.category {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.imageWrapper {
+  aspect-ratio: 1 / 1;
+  margin-bottom: 16px;
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.phones {
+  background-color: #6d6474;
+}
+
+.tablets {
+  background-color: #8d8d92;
+}
+
+.accessories {
+  background-color: #973d5f;
+}
+
+.image {
+  @include transition(transform);
+
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  .category:hover & {
+    transform: scale(1.1);
+  }
+}
+
+.name {
+  @include h4;
+  @include transition(color);
+
+  .category:hover & {
+    color: var(--c-accent);
+  }
+}

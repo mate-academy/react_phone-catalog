@@ -1,0 +1,20 @@
+@use '../../styles/mixins' as *;
+
+.back {
+  @include small-text;
+  @include transition(color);
+
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0;
+  color: var(--c-secondary);
+
+  &:hover {
+    color: var(--c-text);
+  }
+}
+
+.icon {
+  color: var(--c-text);
+}

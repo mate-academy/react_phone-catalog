@@ -1,0 +1,65 @@
+@use '../../styles/mixins' as *;
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.arrow {
+  @include round-button;
+
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+}
+
+.pages {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  list-style: none;
+}
+
+.page {
+  @include button-text;
+  @include transition((background-color, border-color, color));
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--c-elements);
+  border-radius: 50%;
+  background-color: var(--c-surface);
+  color: var(--c-text);
+
+  &:hover {
+    border-color: var(--c-text);
+  }
+
+  &:disabled {
+    cursor: default;
+  }
+}
+
+.pageActive {
+  border-color: var(--c-accent);
+  background-color: var(--c-accent);
+  color: var(--c-btn-text);
+
+  &:hover {
+    border-color: var(--c-accent);
+  }
+}
+
+.dots {
+  @include button-text;
+
+  color: var(--c-secondary);
+}

@@ -1,0 +1,29 @@
+@use '../../styles/mixins' as *;
+
+.page {
+  @include container;
+}
+
+.title {
+  @include h1;
+
+  margin-top: 24px;
+
+  @include on-desktop {
+    margin-top: 40px;
+  }
+}
+
+.count {
+  @include body-text;
+
+  margin-top: 8px;
+  margin-bottom: 32px;
+  color: var(--c-secondary);
+}
+
+.empty {
+  @include h3;
+
+  color: var(--c-secondary);
+}
