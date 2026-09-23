@@ -1,0 +1,40 @@
+// Точки перелома строго по Figma
+$mobile-max: 639px;
+$tablet-min: 640px;
+$tablet-max: 1199px;
+$desktop-exact: 1200px;
+
+// 1. Mobile (320px - 639px)
+@mixin mobile {
+  @media (max-width: #{$mobile-max}) {
+    @content;
+  }
+}
+
+// 2. Tablet (640px - 1199px)
+@mixin tablet {
+  @media (min-width: #{$tablet-min}) and (max-width: #{$tablet-max}) {
+    @content;
+  }
+}
+
+// 3. Tablet и выше (от 640px)
+@mixin tablet-up {
+  @media (min-width: #{$tablet-min}) {
+    @content;
+  }
+}
+
+// 4. Desktop (ровно 1200px / фиксированный)
+@mixin desktop {
+  @media (min-width: #{$desktop-exact}) and (max-width: 1279px) {
+    @content;
+  }
+}
+
+// 5. Desktop XL (1200px+)
+@mixin desktop-xl {
+  @media (min-width: 1280px) {
+    @content;
+  }
+}

@@ -1,0 +1,55 @@
+@use '../../styles/mixins' as *;
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 40px;
+  margin-bottom: 0;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  color: #313237;
+  cursor: pointer;
+  background-color: #fff;
+  border: 1px solid #b4bdc3;
+  border-radius: 0;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+
+  // Если в SVG стоит stroke="currentColor", цвет стрелки наследуется от color кнопки
+
+  @media (hover: hover) {
+    &:hover:not(:disabled) {
+      border-color: #313237;
+    }
+  }
+
+  &:disabled {
+    color: #b4bdc3;
+    border-color: #e2e6e9;
+    cursor: not-allowed;
+  }
+
+  &.active {
+    color: #fff;
+    background-color: #313237;
+    border-color: #313237;
+  }
+}
+
+.arrow {
+  /* stylelint-disable-next-line property-no-unknown */
+  composes: item;
+}

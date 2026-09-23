@@ -1,0 +1,173 @@
+.page {
+  width: 100%;
+  margin: 0 auto;
+  padding: 24px 16px 80px;
+  box-sizing: border-box;
+
+  // Mobile (320px - 639px)
+  @media (max-width: 639px) {
+    padding: 16px 16px 64px;
+  }
+
+  // Tablet (640px - 1199px)
+  @media (min-width: 640px) and (max-width: 1199px) {
+    padding: 24px 24px 64px;
+  }
+
+  // Desktop (1200px+)
+  @media (min-width: 1200px) {
+    max-width: 1200px;
+    padding: 32px 32px 80px;
+  }
+}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  font-size: 12px;
+  line-height: 15px;
+  color: #89939a;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s;
+
+    &:hover {
+      color: #0f0f11;
+    }
+  }
+
+  span {
+    color: #b4bdc3;
+  }
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  color: #0f0f11;
+  margin-bottom: 8px;
+
+  @media (max-width: 639px) {
+    font-size: 22px;
+    line-height: 31px;
+  }
+}
+
+.subtitle {
+  font-size: 14px;
+  line-height: 21px;
+  color: #89939a;
+  margin-bottom: 32px;
+  font-weight: 600;
+}
+
+// БЛОК ФИЛЬТРОВ (Sort by / Items on page)
+.filters {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  gap: 16px;
+  margin-bottom: 24px;
+  width: 100%;
+  box-sizing: border-box;
+
+  @media (max-width: 479px) {
+    gap: 12px;
+  }
+}
+
+.filterGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1 1 auto;
+  max-width: 176px;
+  min-width: 0;
+  box-sizing: border-box;
+
+  @media (max-width: 479px) {
+    max-width: 100%;
+  }
+}
+
+.filterGroupSmall {
+  /* stylelint-disable-next-line property-no-unknown */
+  composes: filterGroup;
+  max-width: 128px;
+
+  @media (max-width: 479px) {
+    max-width: 100%;
+  }
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15px;
+  color: #89939a;
+  white-space: nowrap;
+}
+
+.select {
+  width: 100%;
+  height: 40px;
+  padding: 0 12px;
+  box-sizing: border-box;
+  background-color: #fff;
+  border: 1px solid #b4bdc3;
+  border-radius: 0;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  color: #313237;
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+
+  background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 6L8 10L12 6' stroke='%2389939A' stroke-width='1' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 32px;
+  transition: border-color 0.2s ease;
+
+  &:hover {
+    border-color: #89939a;
+  }
+
+  &:focus {
+    border-color: #313237;
+  }
+}
+
+// СЕТКА КАТАЛОГА (1 колонка mobile, 3 колонки tablet, 4 колонки desktop)
+.productsGrid {
+  display: grid;
+  gap: 16px;
+
+  // Mobile (320px - 639px)
+  grid-template-columns: 1fr;
+
+  // Tablet (640px - 1199px)
+  @media (min-width: 640px) and (max-width: 1199px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  // Desktop / Desktop Large (1200px+)
+  @media (min-width: 1200px) {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+}
+
+.emptyMessage {
+  font-size: 18px;
+  color: #89939a;
+  margin-top: 48px;
+  text-align: center;
+}
