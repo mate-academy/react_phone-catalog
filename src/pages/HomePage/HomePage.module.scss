@@ -7,7 +7,9 @@
     font-size: 32px;
     font-weight: 800;
     color: $c-text-main;
-    margin: 32px;
+    margin-top: $spacing-medium;
+    margin-bottom: $spacing-large;
+    letter-spacing: -0.01em;
   }
 }
 

@@ -17,42 +17,11 @@ export const ProductDetailsPage = () => {
   }>();
   const navigate = useNavigate();
   const { cart, favorites, addToCart, toggleFavorite } = useStore();
-
   const [product, setProduct] = useState<ProductDetails | null>(null);
   const [suggested, setSuggested] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const [mainImage, setMainImage] = useState<string>('');
-
-  // useEffect(() => {
-  //   if (!productId) {
-  //     return;
-  //   }
-
-  //   setIsLoading(true);
-  //   setIsError(false);
-
-  //   // Завантажуємо деталі товару та рекомендовані товари паралельно
-  //   Promise.all([getProductById(productId), getProducts()])
-  //     .then(([detailsData, allProducts]) => {
-  //       setProduct(detailsData);
-
-  //       setMainImage(detailsData.images[0]);
-
-  //       // Рандомізуємо та беремо 8 товарів для "You may also like"
-  //       const filteredSuggested = allProducts.filter(
-  //         p => p.itemId !== productId,
-  //       );
-
-  //       setSuggested(
-  //         filteredSuggested.sort(() => 0.5 - Math.random()).slice(0, 8),
-  //       );
-  //     })
-  //     .catch(() => {
-  //       return setIsError(true);
-  //     })
-  //     .finally(() => setIsLoading(false));
-  // }, [productId]);
 
   useEffect(() => {
     if (!productId || !category) {
@@ -61,13 +30,11 @@ export const ProductDetailsPage = () => {
 
     setIsLoading(true);
     setIsError(false);
-
     Promise.all([getProductById(category, productId), getProducts()])
       .then(([detailsData, allProducts]) => {
         setProduct(detailsData);
         setMainImage(detailsData.images[0]);
 
-        // "You may also like"
         const filteredSuggested = allProducts.filter(
           p => p.itemId !== productId,
         );
@@ -100,17 +67,16 @@ export const ProductDetailsPage = () => {
   const inCart = cart.some(item => item.id === product.id);
   const isFavorite = favorites.some(item => item.id === product.id);
 
-  // Хелпери для генерації посилань на інші конфігурації
   const getProductUrl = (newColor: string, newCapacity: string) => {
     const capacityFormatted = newCapacity.toLowerCase().replace(' ', '');
+    const colorFormatted = newColor.toLowerCase().replace(/ /g, '-');
 
-    return `/${category}/${product.namespaceId}-${capacityFormatted}-${newColor}`;
+    return `/${category}/${product.namespaceId}-${capacityFormatted}-${colorFormatted}`;
   };
 
   return (
     <div className={styles.details} data-cy="ProductDetailsPage">
       <Breadcrumbs />
-
       <button
         className={styles.details__back}
         onClick={() => navigate(-1)}
@@ -119,9 +85,7 @@ export const ProductDetailsPage = () => {
         <i className="fas fa-chevron-left"></i>
         <span>Back</span>
       </button>
-
       <h1 className={styles.details__title}>{product.name}</h1>
-
       <div className="columns is-desktop is-variable is-8">
         <div className="column is-half-desktop">
           <div className={styles.gallery}>
@@ -151,7 +115,6 @@ export const ProductDetailsPage = () => {
             </div>
           </div>
         </div>
-
         <div className="column is-half-desktop">
           <div className={styles.options}>
             <div className={styles.options__block}>
@@ -178,7 +141,6 @@ export const ProductDetailsPage = () => {
                 ))}
               </div>
             </div>
-
             <div className={styles.options__block}>
               <span className={styles['options__header-title']}>
                 Select capacity
@@ -198,7 +160,6 @@ export const ProductDetailsPage = () => {
                 ))}
               </div>
             </div>
-
             <div className={styles.details__prices}>
               <span className={styles['details__price-discount']}>
                 ${product.priceDiscount}
@@ -207,7 +168,6 @@ export const ProductDetailsPage = () => {
                 ${product.priceRegular}
               </span>
             </div>
-
             <div className={styles.details__actions}>
               <button
                 className={classNames(styles['details__add-to-cart'], {
@@ -228,7 +188,6 @@ export const ProductDetailsPage = () => {
                 <i className={isFavorite ? 'fas fa-heart' : 'far fa-heart'}></i>
               </button>
             </div>
-
             <div className={styles.details__specs_short}>
               <div className={styles.spec}>
                 <span className={styles['spec-name']}>Screen</span>
@@ -254,7 +213,6 @@ export const ProductDetailsPage = () => {
           </div>
         </div>
       </div>
-
       <div
         className="columns is-desktop is-variable is-8"
         style={{ marginTop: '56px', marginBottom: '56px' }}
@@ -275,7 +233,6 @@ export const ProductDetailsPage = () => {
             ))}
           </div>
         </div>
-
         <div className="column is-half-desktop">
           <h2 className={styles.details__subtitle}>Tech specs</h2>
           <div className={styles.details__divider} />
@@ -298,7 +255,6 @@ export const ProductDetailsPage = () => {
           </div>
         </div>
       </div>
-
       <ProductsSlider title="You may also like" products={suggested} />
     </div>
   );

@@ -30,7 +30,8 @@ export const HomePage = () => {
   return (
     <div className={styles.home} data-cy="HomePage">
       <h1 className={styles['visually-hidden']}>Product Catalog</h1>
-      <h2 className={styles.home__title}>{'Welcome to Nice Gadgets store!'}</h2>
+      <h2 className={styles.home__title}>Welcome to Nice Gadgets store!</h2>
+
       <PicturesSlider />
 
       {isLoading ? (

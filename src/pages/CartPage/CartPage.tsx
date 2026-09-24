@@ -47,7 +47,6 @@ export const CartPage = () => {
               ))}
             </div>
           </div>
-
           <div className="column is-4-desktop">
             <div className={styles.cart__checkout}>
               <span className={styles['cart__checkout-price']}>
@@ -56,9 +55,7 @@ export const CartPage = () => {
               <span className={styles['cart__checkout-count']}>
                 Total for {totalQuantity} item{totalQuantity > 1 ? 's' : ''}
               </span>
-
               <div className={styles['cart__checkout-divider']} />
-
               <button
                 className={styles['cart__checkout-btn']}
                 onClick={handleCheckout}

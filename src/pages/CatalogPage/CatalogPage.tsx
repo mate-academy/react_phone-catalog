@@ -34,7 +34,6 @@ export const CatalogPage = () => {
   const pageParam = searchParams.get('page') || '1';
   const currentPage = parseInt(pageParam, 10) || 1;
 
-  // Фільтрація за пошуковим запитом
   const searchedProducts = useMemo(() => {
     if (!query.trim()) {
       return products;
@@ -45,7 +44,6 @@ export const CatalogPage = () => {
     );
   }, [products, query]);
 
-  // Сортування відфільтрованого списку
   const sortedProducts = useMemo(() => {
     const sorted = [...searchedProducts];
 
@@ -83,7 +81,7 @@ export const CatalogPage = () => {
       params.set(key, value);
     }
 
-    if (key === 'perPage' || key === 'sort') {
+    if (key === 'perPage' || key === 'sort' || key === 'query') {
       params.delete('page');
     }
 
@@ -99,13 +97,23 @@ export const CatalogPage = () => {
     products.length > 0 &&
     searchedProducts.length === 0;
 
+  const getCategoryTitle = (cat: string) => {
+    switch (cat) {
+      case 'phones':
+        return 'Phones';
+      case 'tablets':
+        return 'Tablets';
+      case 'accessories':
+        return 'Accessories';
+      default:
+        return cat.charAt(0).toUpperCase() + cat.slice(1);
+    }
+  };
+
   return (
     <div className={styles.catalog} data-cy="CatalogPage">
-      <h1 className={styles.catalog__title}>
-        {category.charAt(0).toUpperCase() + category.slice(1)} page
-      </h1>
+      <h1 className={styles.catalog__title}>{getCategoryTitle(category)}</h1>
       <p className={styles.catalog__count}>{searchedProducts.length} models</p>
-
       {!isLoading && !isError && searchedProducts.length > 0 && (
         <div className={styles.catalog__filters}>
           <div className={styles.catalog__filter}>
@@ -125,7 +133,6 @@ export const CatalogPage = () => {
               </select>
             </div>
           </div>
-
           <div className={styles.catalog__filter}>
             <label
               htmlFor="perPage"
@@ -149,9 +156,7 @@ export const CatalogPage = () => {
           </div>
         </div>
       )}
-
       {isLoading && <Loader />}
-
       {isError && (
         <div className="has-text-danger">
           Something went wrong.
@@ -163,13 +168,10 @@ export const CatalogPage = () => {
           </button>
         </div>
       )}
-
       {!isLoading && !isError && products.length === 0 && (
         <p>There are no {category} yet</p>
       )}
-
       {hasNoSearchResults && <p>There are no {category} matching the query</p>}
-
       {!isLoading && !isError && searchedProducts.length > 0 && (
         <>
           <ProductsList products={visibleProducts} />
