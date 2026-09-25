@@ -1,0 +1,31 @@
+@use '@styles/variables/variables.scss' as vars;
+
+.overlay {
+  position: fixed;
+  padding: 16px;
+  inset: 0;
+  background: rgba($color: vars.$primary-color, $alpha: 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 16px;
+  padding: 24px;
+  flex-direction: column;
+  background-color: vars.$white-color;
+}
+
+.closeBtn {
+  align-self: flex-end;
+  padding: 0;
+  background-color: vars.$white-color;
+  border: none;
+  cursor: pointer;
+}

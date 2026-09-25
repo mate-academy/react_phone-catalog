@@ -1,0 +1,82 @@
+@use '@styles/mixins/mixins';
+@use '@styles/variables/variables.scss' as vars;
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: vars.$header-height-mobile;
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+  padding-top: 24px;
+  background-color: vars.$white-color;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.linkContainer {
+  display: flex;
+  height: 27px;
+}
+
+.link, .activeLink {
+  display: flex;
+  align-items: center;
+  position: relative;
+  font-size: 12px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.link {
+  color: vars.$secondary-color;
+}
+
+.activeLink {
+  color: vars.$primary-color;
+}
+
+.link::after, .activeLink::after {
+  @extend %underline;
+}
+
+.activeLink::after {
+  @extend %activate-underline;
+}
+
+.bottom {
+  display: flex;
+
+  box-shadow: 0 -1px 0 0 vars.$elements-color;
+  width: 100%;
+
+  margin-top: auto;
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  flex: 1;
+  padding: 24px 72px;
+
+  box-shadow: -1px 0 0 0 vars.$elements-color;
+
+  @extend %underline;
+}
+
+.activeIcon::after {
+  @extend %activate-underline;
+}
+
+.favorites, .cart {
+  position: relative;
+}

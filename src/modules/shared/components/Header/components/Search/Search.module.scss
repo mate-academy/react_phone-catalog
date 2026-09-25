@@ -1,0 +1,73 @@
+@use '@styles/variables/variables.scss' as vars;
+@use '@styles/mixins/mixins.scss' as mixins;
+
+
+.searchContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  position: relative;
+}
+
+.search {
+  width: 90%;
+
+  border: 1px solid vars.$icons-color;
+  background-color: vars.$white-color;
+  outline: none;
+
+  &:focus {
+    box-shadow: 1px 0 10px 2px vars.$secondary-color;
+  }
+}
+
+.productsList {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  position: absolute;
+  top: 100%;
+  padding: 10px;
+  width: 90%;
+
+  background-color: vars.$white-color;
+  border: 1px solid vars.$icons-color;
+  border-top: none;
+}
+
+.productsItem {
+  list-style: none;
+}
+
+.productLink {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  width: 100%;
+}
+
+.prodInfo {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.prodTitle {
+  @include mixins.text-style('body');
+
+  color: vars.$primary-color;
+}
+
+.prodPrice {
+  @include mixins.text-style('body');
+
+  color: vars.$primary-color;
+}
+
+.prodImg {
+  object-fit: contain;
+  width: 50px;
+  height: auto;
+}

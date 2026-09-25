@@ -1,0 +1,50 @@
+@use '@styles/variables/variables.scss' as vars;
+@use '@styles/mixins/mixins.scss' as mixins;
+
+.category {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  text-decoration: none;
+  transition: all .2s ease-in;
+
+  &Title {
+  @include mixins.text-style('h4', true);
+
+  @media screen and (min-width: vars.$tablet-width) {
+    @include mixins.text-style('h4', false);
+  }
+
+  @media screen and (min-width: vars.$desktop-width) {
+    @include mixins.text-style('h4', false);
+  }
+}
+
+  &:hover {
+    transform: scale(1.02);
+  }
+}
+
+.imgContainer {
+  width: 100%;
+  overflow: hidden;
+}
+
+.categoryImg {
+  width: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.counter {
+  @include mixins.text-style('body', false);
+  
+  color: vars.$secondary-color;
+}

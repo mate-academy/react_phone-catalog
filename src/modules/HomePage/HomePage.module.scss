@@ -1,0 +1,63 @@
+@use '@styles/variables/variables.scss' as vars;
+@use '@styles/mixins/mixins.scss' as mixins;
+
+.main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 56px;
+
+  @media screen and (min-width: vars.$tablet-width) {
+    gap: 64px;
+  }
+
+  @media screen and (min-width: vars.$desktop-width) {
+    gap: 80px;
+  }
+}
+
+.sliderSection {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+
+  @media screen and (min-width: vars.$tablet-width) {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+.titleHidden {
+  display: none;
+}
+
+.title {
+  @include mixins.text-style('h1', $is-mobile: true);
+
+  &Container {
+    padding: 16px;
+
+    @media screen and (min-width: vars.$tablet-width) {
+      padding: 0;
+    }
+  }
+
+  @media screen and (min-width: vars.$tablet-width) {
+    @include mixins.text-style('h1', $is-mobile: false);
+  }
+
+  @media screen and (min-width: vars.$desktop-width) {
+    @include mixins.text-style('h1', $is-mobile: false);
+  }
+}
+
+.titleMargin {
+  margin: 24px 0;
+
+  @media screen and (min-width: vars.$tablet-width) {
+    margin: 32px 0;
+  }
+
+  @media screen and (min-width: vars.$desktop-width) {
+   margin: 56px 0;
+  }
+}
