@@ -1,0 +1,38 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.rights {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px 16px;
+  max-width: 700px;
+
+  @include on-tablet {
+    padding: 32px 24px;
+  }
+
+  @include on-desktop {
+    padding: 40px 32px;
+  }
+
+   @include on-design {
+    padding: 40px 152px;
+    max-width: 1000px;
+  }
+}
+
+.title {
+  font-weight: 700;
+  font-size: 20px;
+  margin: 0;
+  color: var(--primary-color);
+}
+
+.paragraph {
+  margin: 0;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--secondary-color);
+}

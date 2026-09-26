@@ -1,0 +1,20 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.models {
+  padding-inline: 16px;
+  margin-block: 56px;
+
+  @include on-tablet {
+    margin-block: 64px;
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    padding-inline: 32px;
+  }
+
+  @include on-design {
+    padding-inline: 152px;
+  }
+}

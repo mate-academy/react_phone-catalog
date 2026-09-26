@@ -1,0 +1,128 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.products {
+  display: flex;
+  flex-direction: column;
+  padding: 24px 16px;
+
+  @include on-tablet {
+    padding: 24px 32px;
+  }
+
+  @include on-design {
+    padding-inline: 152px;
+  }
+}
+
+.breadcrumbs {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+
+  @include on-tablet {
+    margin-left: 8px;
+  }
+
+  @include on-desktop {
+    margin-left: 0;
+  }
+}
+
+.current {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: $secondary-color;
+}
+
+.title {
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -1%;
+  color: var(--primary-color);
+  margin-block: 24px 8px;
+}
+
+.count {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: $secondary-color;
+  margin-block: 0 32px;
+
+  @include on-tablet {
+     margin-block: 0 40px;
+  }
+}
+
+.productsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px 16px;
+  animation: slide-in 300ms ease;
+
+  @include on-tablet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.pagination {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  padding-block: 24px 40px;
+}
+
+.button {
+  width:32px;
+  height:32px;
+  background-color: var(--white-color);
+  border: 1px solid $grey-color;
+  color: $primary-color;
+}
+
+.pageButtons {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pageButton {
+  width: 32px;
+  height:32px;
+  background-color: $white-color;
+  border: 1px solid $grey-color;
+  color: $primary-color;
+}
+
+.active {
+  width: 32px;
+  height:32px;
+  background-color: $primary-color;
+  color: $white-color;
+}

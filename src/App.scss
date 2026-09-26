@@ -1,1 +1,29 @@
-// not empty
+:root {
+  --primary-color: #313237;
+  --secondary-color: #89939a;
+  --icons-color: #b4bdc4;
+  --elements-color: #e2e6e9;
+  --hover-color: #fafbfc;
+  --background-color: #fff;
+  --button-background: #fff;
+}
+
+[data-theme='dark'] {
+  --primary-color: #f1f2f9;
+  --secondary-color: #89939a;
+  --icons-color: #4a4d58;
+  --elements-color: #3b3e4a;
+  --hover-color: #323542;
+  --background-color: #0f1121;
+  --button-background: #323542;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app__content {
+  flex: 1;
+}

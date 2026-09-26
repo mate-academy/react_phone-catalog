@@ -1,0 +1,25 @@
+@import './utilities';
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Mont, sans-serif;
+  background-color: var(--background-color);
+  color: var(--primary-color);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font: inherit;
+}

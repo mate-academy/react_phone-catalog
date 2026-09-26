@@ -1,0 +1,55 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px 16px;
+
+  @include on-tablet {
+    padding: 32px 24px;
+  }
+
+  @include on-desktop {
+    padding: 40px 32px;
+  }
+
+  @include on-design {
+    padding: 40px 152px;
+  }
+}
+
+.title {
+  font-weight: 700;
+  font-size: 20px;
+  margin: 0;
+}
+
+.item {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+
+  @include on-tablet {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 16px;
+  }
+}
+
+.value {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--secondary-color);
+}
+
+.link {
+  color: var(--secondary-color);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

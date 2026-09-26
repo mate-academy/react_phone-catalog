@@ -1,0 +1,233 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.title {
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -1%;
+  padding: 24px 16px;
+  margin: 0;
+
+  @include on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+    padding: 32px 24px;
+  }
+
+  @include on-desktop {
+    padding: 56px 32px;
+  }
+
+  @include on-design {
+    padding: 56px 152px;
+  }
+}
+
+.banner {
+  display: flex;
+  gap: 19px;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    padding-inline: 32px;
+    gap: 16px;
+  }
+
+  @include on-design {
+    padding-inline: 152px;
+  }
+}
+
+.button {
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--button-background);
+    cursor: pointer;
+    width: 32px;
+    height: 189px;
+    border: 1px solid var(--primary-color);
+    transition: border-color 0.3s;
+
+    &:hover {
+      border-color: var(--primary-color);
+    }
+  }
+
+  @include on-desktop {
+    height: 400px;
+  }
+}
+
+.imageContainer {
+  width: 100%;
+  height: min(100vw, 440px);
+
+  overflow: hidden;
+
+  @include on-tablet {
+    height: 189px;
+    flex: 1;
+  }
+
+  @include on-desktop {
+    height: 400px;
+  }
+}
+
+.slideContent {
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: self-start;
+    width: 50%;
+    height: 100%;
+    background-color: #242424;
+  }
+}
+
+.slideImageWrapper {
+  width: 100%;
+  height: 100%;
+
+  @include on-tablet {
+    width: 50%;
+  }
+}
+
+.slideImageWrapper picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.slide {
+  width: 100%;
+  height: 100%;
+
+  @include on-tablet {
+    display: flex;
+  }
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pagination {
+  margin: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 18px 0 0;
+  gap: 14px;
+}
+
+.dot {
+  width: 14px;
+  height: 4px;
+  background-color: var(--icons-color);
+  border: none;
+}
+
+.active {
+  background-color: var(--primary-color);
+}
+
+.slideTitle {
+  margin: 0;
+  padding: 20px 22px 0;
+  line-height: 24px;
+  font-weight: 800;
+  font-size: 22px;
+
+  background: linear-gradient(
+    90deg,
+    #f35aa5 0%,
+    #b75cff 50%,
+    #6b7cff 100%
+  );
+
+  background-clip: text;
+  -webkit-background-clip: text;
+
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+
+  @include on-desktop {
+  padding: 32px 32px 0;
+  line-height: 46px;
+  font-weight: 800;
+  font-size: 44px;
+  }
+}
+
+.slidesSubtitle {
+  margin: 8px 0 40px;
+  padding-left: 24px;
+
+  font-size: 8px;
+  line-height: 10px;
+
+  color: $white-color;
+
+  @include on-desktop {
+    font-size: 14px;
+    margin: 16px 0 100;
+    padding-left: 32px;
+  }
+}
+
+.slideButton {
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 24px;
+
+    width: 110px;
+    height: 30px;
+
+    border: 1px solid $secondary-color;
+    border-radius: 20px;
+
+    color: $white-color;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    text-decoration: none;
+
+    &:hover {
+      border-color: $white-color;
+    }
+  }
+
+  @include on-desktop {
+    width: 160px;
+    height: 48px;
+    margin-left: 32px;
+  }
+}
+
+.emoji {
+  color: #f5c542;
+
+  -webkit-text-fill-color: #f5c542;
+}

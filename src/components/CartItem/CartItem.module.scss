@@ -1,0 +1,98 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.cart {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border: 2px solid var(--elements-color);
+  padding: 16px;
+
+  @include on-tablet {
+    flex-direction: row;
+    align-items: center;
+    gap: 24px;
+    padding: 24px;
+  }
+}
+
+.product {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+
+  @include on-tablet {
+    gap: 24px;
+    flex: 1;
+    min-width: 0;
+  }
+}
+
+.removeButton {
+  display: flex;
+  gap: 4px;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  align-items: center;
+  color: $secondary-color;
+  width: 16px;
+  height: 16px;
+}
+
+.image {
+  width: 80px;
+  height: 80px;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: $secondary-color;
+  margin: 0;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+}
+
+.price {
+  margin-block: 0;
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 140%;
+}
+
+.details {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 16px;
+
+  @include on-tablet {
+    margin-bottom: 0;
+    gap: 24px;
+    align-items: center;
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+}
+
+.quantity {
+  width: 32px;
+  text-align: center;
+}
+
+.quantityButton {
+  gap: 4px;
+  background-color: transparent;
+  padding: 0;
+  align-items: center;
+  color: $secondary-color;
+  border: 1px solid $secondary-color;
+  width: 32px;
+  height: 32px;
+}

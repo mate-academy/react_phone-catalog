@@ -1,0 +1,161 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  border: 1px solid $grey-color;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.titleLink {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: $secondary-color;
+  }
+}
+
+.imageLink {
+  height: 196px;
+  display: block;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+ }
+
+.title {
+  font-weight: 600;
+  font-size: 14px;
+  margin-block: 24px 8px;
+  align-self: center;
+  min-height: 40px;
+}
+
+.imageContainer {
+  height: 196px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.image {
+  width: 90%;
+  height: 90%;
+  align-self: center;
+  object-fit: contain;
+
+  transition: transform 0.3s ease;
+}
+
+.imageLink:hover .image {
+  transform: scale(1.1);
+}
+
+.priceContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.price {
+  font-family: Mont, sans-serif;
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 140%;
+  margin: 0;
+}
+
+.fullPrice {
+  font-family: Mont, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 140%;
+  color: $secondary-color;
+  text-decoration: line-through;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: $grey-color;
+  margin: 8px 0;
+}
+
+.features {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  row-gap: 8px;
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.label {
+  color: var(--secondary-color);
+  margin: 0;
+}
+
+.value {
+  color: var(--primary-color);
+  margin: 0;
+}
+
+.buttonContainer {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.button {
+  flex: 1;
+  height: 40px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: $primary-color;
+  cursor: pointer;
+  color: $white-color;
+  font-family: Mont, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  text-align: center;
+  transition: box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 #17203166;
+  }
+}
+
+.favouriteButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border: 1px solid $icons-color;
+  cursor: pointer;
+
+  width: 40px;
+  height: 40px;
+  transition: border-color 0.3s ease;
+
+  img {
+    transition: transform 0.3s ease;
+  }
+
+  &:hover {
+    border-color: $primary-color;
+
+    img {
+      transform: scale(1.1);
+    }
+  }
+}

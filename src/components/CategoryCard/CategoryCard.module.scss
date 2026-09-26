@@ -1,0 +1,46 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.link {
+  text-decoration: none;
+  color: inherit;
+  flex: 1;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.03);
+  }
+}
+
+.title {
+  font-weight: 700;
+  font-size: 20px;
+  margin-block: 24px 4px;
+
+  &:hover {
+    color: $secondary-color;
+  }
+
+  @include on-desktop {
+    font-weight: 600;
+    font-size: 20px;
+  }
+}
+
+.models {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: $secondary-color;
+  margin: 0;
+
+  @include on-desktop {
+    font-weight: 500;
+    font-size: 14px;
+  }
+}

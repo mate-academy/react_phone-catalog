@@ -1,0 +1,47 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.shopByCategory {
+  display: flex;
+  flex-direction: column;
+  margin: 0 16px ;
+
+  @include on-tablet {
+    margin: 0 24px ;
+  }
+
+  @include on-desktop {
+    margin: 0 32px ;
+  }
+
+  @include on-design {
+    margin: 0 152px;
+
+  }
+}
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @include on-tablet {
+    flex-direction: row;
+    gap: 16px;
+  }
+}
+
+.title {
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 140%;
+  margin-block: 0 24px;
+
+  @include on-tablet {
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+

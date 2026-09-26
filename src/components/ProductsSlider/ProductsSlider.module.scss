@@ -1,0 +1,88 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.products {
+  width: 100%;
+
+  @include on-desktop {
+    grid-column: 1/-1;
+  }
+}
+
+.top {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  @include on-desktop {
+    margin: 24px 0;
+  }
+}
+
+.title {
+  font-weight: 800;
+  font-size: 22px;
+  max-width: 140px;
+
+  @include on-tablet {
+    font-size: 32px;
+    line-height: 41px;
+    max-width: none;
+    margin: 0;
+  }
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  background-color: var(--button-background);
+  border: 1px solid $grey-color;
+  cursor: pointer;
+  color: $icons-color;
+  transition: color .3s;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &:hover:not(:disabled) {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+  }
+}
+
+.sliderWindow {
+  width: 100%;
+  overflow: hidden;
+}
+
+.cards {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  width: 100%;
+  transition: transform 300ms ease;
+}
+
+.cardWrapper {
+  flex: 0 0 100%;
+  min-width: 0;
+
+  @include on-tablet {
+    flex-basis: calc((100% - 16px) / 2);
+  }
+
+  @include on-desktop {
+    flex-basis: calc((100% - 48px) / 4);
+  }
+}

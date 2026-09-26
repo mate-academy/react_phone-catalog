@@ -1,0 +1,2054 @@
+[
+  {
+    "id": "apple-ipad-pro-11-2021-128gb-spacegray",
+    "category": "tablets",
+    "namespaceId": "apple-ipad-pro-11-2021",
+    "name": "Apple iPad Pro 11 (2021) 128GB Космічний сірий",
+    "capacityAvailable": [
+      "128GB",
+      "256GB",
+      "512GB",
+      "1TB",
+      "2TB"
+    ],
+    "capacity": "128GB",
+    "priceRegular": 799,
+    "priceDiscount": 749,
+    "colorsAvailable": [
+      "spacegray",
+      "silver"
+    ],
+    "color": "spacegray",
+    "images": [
+      "img/tablets/apple-ipad-pro-11-2021/spacegray/00.webp",
+      "img/tablets/apple-ipad-pro-11-2021/spacegray/01.webp",
+      "img/tablets/apple-ipad-pro-11-2021/spacegray/02.webp"
+    ],
+    "description": [
+      {
+        "title": "Потужна продуктивність",
+        "text": [
+          "Відчуйте неймовірну потужність і продуктивність Apple iPad Pro 11. Завдяки чипу M1 він забезпечує новий рівень швидкодії, працюючи швидше й ефективніше, ніж будь-коли.",
+          "Редагування фото, створення ілюстрацій або багатозадачність із вимогливими застосунками — iPad Pro 11 легко впорається з усім."
+        ]
+      },
+      {
+        "title": "Вражаючий дисплей Liquid Retina",
+        "text": [
+          "Насолоджуйтеся яскравим і захопливим зображенням на дисплеї Liquid Retina в iPad Pro 11. Завдяки технологіям ProMotion і True Tone екран адаптується до вашого оточення, забезпечуючи плавне прокручування, точну передачу кольорів і неймовірну деталізацію.",
+          "Від перегляду фільмів до монтажу відео — дисплей iPad Pro 11 оживляє ваш контент із вражаючою чіткістю."
+        ]
+      },
+      {
+        "title": "Універсальна система камер",
+        "text": [
+          "Знімайте вражаючі фото та відео за допомогою передової системи камер iPad Pro 11. 12MP надширококутна фронтальна камера, 12MP ширококутна основна камера та сканер LiDAR дають змогу робити якісні кадри й користуватися можливостями доповненої реальності.",
+          "Відеодзвінки, сканування документів або запис відео 4K — система камер iPad Pro 11 забезпечує відмінний результат."
+        ]
+      }
+    ],
+    "screen": "11' Liquid Retina",
+    "resolution": "2388x1668",
+    "processor": "Apple M1",
+    "ram": "8GB",
+    "camera": "12MP + 12MP",
+    "zoom": "Digital zoom up to 5x",
+    "cell": [
+      "Not applicable"
+    ]
+  },
+  {
+    "id": "apple-ipad-pro-11-2021-256gb-spacegray",
+    "category": "tablets",
+    "namespaceId": "apple-ipad-pro-11-2021",
+    "name": "Apple iPad Pro 11 (2021) 256GB Космічний сірий",
+    "capacityAvailable": [
+      "128GB",
+      "256GB",
+      "512GB",
+      "1TB",
+      "2TB"
+    ],
+    "capacity": "256GB",
+    "priceRegular": 829,
+    "priceDiscount": 799,
+    "colorsAvailable": [
+      "spacegray",
+      "silver"
+    ],
+    "color": "spacegray",
+    "images": [
+      "img/tablets/apple-ipad-pro-11-2021/spacegray/00.webp",
+      "img/tablets/apple-ipad-pro-11-2021/spacegray/01.webp",
+      "img/tablets/apple-ipad-pro-11-2021/spacegray/02.webp"
+    ],
+    "description": [
+      {
+        "title": "Потужна продуктивність",
+        "text": [
+          "Відчуйте неймовірну потужність і продуктивність Apple iPad Pro 11. Завдяки чипу M1 він забезпечує новий рівень швидкодії, працюючи швидше й ефективніше, ніж будь-коли.",
+          "Редагування фото, створення ілюстрацій або багатозадачність із вимогливими застосунками — iPad Pro 11 легко впорається з усім."
+        ]
+      },
+      {
+        "title": "Вражаючий дисплей Liquid Retina",
+        "text": [
+          "Насолоджуйтеся яскравим і захопливим зображенням на дисплеї Liquid Retina в iPad Pro 11. Завдяки технологіям ProMotion і True Tone екран адаптується до вашого оточення, забезпечуючи плавне прокручування, точну передачу кольорів і неймовірну деталізацію.",
+          "Від перегляду фільмів до монтажу відео — дисплей iPad Pro 11 оживляє ваш контент із вражаючою чіткістю."
+        ]
+      },
+      {
+        "title": "Універсальна система камер",
+        "text": [
+          "Знімайте вражаючі фото та відео за допомогою передової системи камер iPad Pro 11. 12MP надширококутна фронтальна камера, 12MP ширококутна основна камера та сканер LiDAR дають змогу робити якісні кадри й користуватися можливостями доповненої реальності.",
+          "Відеодзвінки, сканування документів або запис відео 4K — система камер iPad Pro 11 забезпечує відмінний результат."
+        ]
+      }
+    ],
+    "screen": "11' Liquid Retina",
+    "resolution": "2388x1668",
+    "processor": "Apple M1",
+    "ram": "8GB",
+    "camera": "12MP + 12MP",
+    "zoom": "Digital zoom up to 5x",
+    "cell": [
+      "Not applicable"
+    ]
+  },
+  {
+    "id": "apple-ipad-pro-11-2021-512gb-spacegray",
+    "category": "tablets",
+    "namespaceId": "apple-ipad-pro-11-2021",
+    "name": "Apple iPad Pro 11 (2021) 512GB Космічний сірий",
+    "capacityAvailable": [
+      "128GB",
+      "256GB",
+      "512GB",
+      "1TB",
+      "2TB"
+    ],
+    "capacity": "512GB",
+    "priceRegular": 869,
+    "priceDiscount": 819,
+    "colorsAvailable": [
+      "spacegray",
+      "silver"
+    ],
+    "color": "spacegray",
+    "images": [
+      "img/tablets/apple-ipad-pro-11-2021/spacegray/00.webp",
+      "img/tablets/apple-ipad-pro-11-2021/spacegray/01.webp",
+      "img/tablets/apple-ipad-pro-11-2021/spacegray/02.webp"
+    ],
+    "description": [
+      {
+        "title": "Потужна продуктивність",
+        "text": [
+          "Відчуйте неймовірну потужність і продуктивність Apple iPad Pro 11. Завдяки чипу M1 він забезпечує новий рівень швидкодії, працюючи швидше й ефективніше, ніж будь-коли.",
+          "Редагування фото, створення ілюстрацій або багатозадачність із вимогливими застосунками — iPad Pro 11 легко впорається з усім."
+        ]
+      },
+      {
+        "title": "Вражаючий дисплей Liquid Retina",
+        "text": [
+          "Насолоджуйтеся яскравим і захопливим зображенням на дисплеї Liquid Retina в iPad Pro 11. Завдяки технологіям ProMotion і True Tone екран адаптується до вашого оточення, забезпечуючи плавне прокручування, точну передачу кольорів і неймовірну деталізацію.",
+          "Від перегляду фільмів до монтажу відео — дисплей iPad Pro 11 оживляє ваш контент із вражаючою чіткістю."
+        ]
+      },
+      {
+        "title": "Універсальна система камер",
+        "text": [
+          "Знімайте вражаючі фото та відео за допомогою передової системи камер iPad Pro 11. 12MP надширококутна фронтальна камера, 12MP ширококутна основна камера та сканер LiDAR дають змогу робити якісні кадри й користуватися можливостями доповненої реальності.",
+          "Відеодзвінки, сканування документів або запис відео 4K — система камер iPad Pro 11 забезпечує відмінний результат."
+        ]
+      }
+    ],
+    "screen": "11' Liquid Retina",
+    "resolution": "2388x1668",
+    "processor": "Apple M1",
+    "ram": "8GB",
+    "camera": "12MP + 12MP",
+    "zoom": "Digital zoom up to 5x",
+    "cell": [
+      "Not applicable"
+    ]
+  },
+  {
+    "id": "apple-ipad-pro-11-2021-1tb-spacegray",
+    "category": "tablets",
+    "namespaceId": "apple-ipad-pro-11-2021",
+    "name": "Apple iPad Pro 11 (2021) 1TB Космічний сірий",
+    "capacityAvailable": [
+      "128GB",
+      "256GB",
+      "512GB",
+      "1TB",
+      "2TB"
+    ],
+    "capacity": "1TB",
+    "priceRegular": 899,
+    "priceDiscount": 879,
+    "colorsAvailable": [
+      "spacegray",
+      "silver"
+    ],
+    "color": "spacegray",
+    "images": [
+      "img/tablets/apple-ipad-pro-11-2021/spacegray/00.webp",
+      "img/tablets/apple-ipad-pro-11-2021/spacegray/01.webp",
+      "img/tablets/apple-ipad-pro-11-2021/spacegray/02.webp"
+    ],
+    "description": [
+      {
+        "title": "Потужна продуктивність",
+        "text": [
+          "Відчуйте неймовірну потужність і продуктивність Apple iPad Pro 11. Завдяки чипу M1 він забезпечує новий рівень швидкодії, працюючи швидше й ефективніше, ніж будь-коли.",
+          "Редагування фото, створення ілюстрацій або багатозадачність із вимогливими застосунками — iPad Pro 11 легко впорається з усім."
+        ]
+      },
+      {
+        "title": "Вражаючий дисплей Liquid Retina",
+        "text": [
+          "Насолоджуйтеся яскравим і захопливим зображенням на дисплеї Liquid Retina в iPad Pro 11. Завдяки технологіям ProMotion і True Tone екран адаптується до вашого оточення, забезпечуючи плавне прокручування, точну передачу кольорів і неймовірну деталізацію.",
+          "Від перегляду фільмів до монтажу відео — дисплей iPad Pro 11 оживляє ваш контент із вражаючою чіткістю."
+        ]
+      },
+      {
+        "title": "Універсальна система камер",
+        "text": [
+          "Знімайте вражаючі фото та відео за допомогою передової системи камер iPad Pro 11. 12MP надширококутна фронтальна камера, 12MP ширококутна основна камера та сканер LiDAR дають змогу робити якісні кадри й користуватися можливостями доповненої реальності.",
+          "Відеодзвінки, сканування документів або запис відео 4K — система камер iPad Pro 11 забезпечує відмінний результат."
+        ]
+      }
+    ],
+    "screen": "11' Liquid Retina",
+    "resolution": "2388x1668",
+    "processor": "Apple M1",
+    "ram": "16GB",
+    "camera": "12MP + 12MP",
+    "zoom": "Digital zoom up to 5x",
+    "cell": [
+      "Not applicable"
+    ]
+  },
+  {
+    "id": "apple-ipad-pro-11-2021-2tb-spacegray",
+    "category": "tablets",
+    "namespaceId": "apple-ipad-pro-11-2021",
+    "name": "Apple iPad Pro 11 (2021) 2TB Космічний сірий",
+    "capacityAvailable": [
+      "128GB",
+      "256GB",
+      "512GB",
+      "1TB",
+      "2TB"
+    ],
+    "capacity": "2TB",
+    "priceRegular": 999,
+    "priceDiscount": 939,
+    "colorsAvailable": [
+      "spacegray",
+      "silver"
+    ],
+    "color": "spacegray",
+    "images": [
+      "img/tablets/apple-ipad-pro-11-2021/spacegray/00.webp",
+      "img/tablets/apple-ipad-pro-11-2021/spacegray/01.webp",
+      "img/tablets/apple-ipad-pro-11-2021/spacegray/02.webp"
+    ],
+    "description": [
+      {
+        "title": "Потужна продуктивність",
+        "text": [
+          "Відчуйте неймовірну потужність і продуктивність Apple iPad Pro 11. Завдяки чипу M1 він забезпечує новий рівень швидкодії, працюючи швидше й ефективніше, ніж будь-коли.",
+          "Редагування фото, створення ілюстрацій або багатозадачність із вимогливими застосунками — iPad Pro 11 легко впорається з усім."
+        ]
+      },
+      {
+        "title": "Вражаючий дисплей Liquid Retina",
+        "text": [
+          "Насолоджуйтеся яскравим і захопливим зображенням на дисплеї Liquid Retina в iPad Pro 11. Завдяки технологіям ProMotion і True Tone екран адаптується до вашого оточення, забезпечуючи плавне прокручування, точну передачу кольорів і неймовірну деталізацію.",
+          "Від перегляду фільмів до монтажу відео — дисплей iPad Pro 11 оживляє ваш контент із вражаючою чіткістю."
+        ]
+      },
+      {
+        "title": "Універсальна система камер",
+        "text": [
+          "Знімайте вражаючі фото та відео за допомогою передової системи камер iPad Pro 11. 12MP надширококутна фронтальна камера, 12MP ширококутна основна камера та сканер LiDAR дають змогу робити якісні кадри й користуватися можливостями доповненої реальності.",
+          "Відеодзвінки, сканування документів або запис відео 4K — система камер iPad Pro 11 забезпечує відмінний результат."
+        ]
+      }
+    ],
+    "screen": "11' Liquid Retina",
+    "resolution": "2388x1668",
+    "processor": "Apple M1",
+    "ram": "16GB",
+    "camera": "12MP + 12MP",
+    "zoom": "Digital zoom up to 5x",
+    "cell": [
+      "Not applicable"
+    ]
+  },
+  {
+    "id": "apple-ipad-pro-11-2021-128gb-silver",
+    "category": "tablets",
+    "namespaceId": "apple-ipad-pro-11-2021",
+    "name": "Apple iPad Pro 11 (2021) 128GB Сріблястий",
+    "capacityAvailable": [
+      "128GB",
+      "256GB",
+      "512GB",
+      "1TB",
+      "2TB"
+    ],
+    "capacity": "128GB",
+    "priceRegular": 799,
+    "priceDiscount": 749,
+    "colorsAvailable": [
+      "spacegray",
+      "silver"
+    ],
+    "color": "silver",
+    "images": [
+      "img/tablets/apple-ipad-pro-11-2021/silver/00.webp",
+      "img/tablets/apple-ipad-pro-11-2021/silver/01.webp",
+      "img/tablets/apple-ipad-pro-11-2021/silver/02.webp"
+    ],
+    "description": [
+      {
+        "title": "Потужна продуктивність",
+        "text": [
+          "Відчуйте неймовірну потужність і продуктивність Apple iPad Pro 11. Завдяки чипу M1 він забезпечує новий рівень швидкодії, працюючи швидше й ефективніше, ніж будь-коли.",
+          "Редагування фото, створення ілюстрацій або багатозадачність із вимогливими застосунками — iPad Pro 11 легко впорається з усім."
+        ]
+      },
+      {
+        "title": "Вражаючий дисплей Liquid Retina",
+        "text": [
+          "Насолоджуйтеся яскравим і захопливим зображенням на дисплеї Liquid Retina в iPad Pro 11. Завдяки технологіям ProMotion і True Tone екран адаптується до вашого оточення, забезпечуючи плавне прокручування, точну передачу кольорів і неймовірну деталізацію.",
+          "Від перегляду фільмів до монтажу відео — дисплей iPad Pro 11 оживляє ваш контент із вражаючою чіткістю."
+        ]
+      },
+      {
+        "title": "Універсальна система камер",
+        "text": [
+          "Знімайте вражаючі фото та відео за допомогою передової системи камер iPad Pro 11. 12MP надширококутна фронтальна камера, 12MP ширококутна основна камера та сканер LiDAR дають змогу робити якісні кадри й користуватися можливостями доповненої реальності.",
+          "Відеодзвінки, сканування документів або запис відео 4K — система камер iPad Pro 11 забезпечує відмінний результат."
+        ]
+      }
+    ],
+    "screen": "11' Liquid Retina",
+    "resolution": "2388x1668",
+    "processor": "Apple M1",
+    "ram": "8GB",
+    "camera": "12MP + 12MP",
+    "zoom": "Digital zoom up to 5x",
+    "cell": [
+      "Not applicable"
+    ]
+  },
+  {
+    "id": "apple-ipad-pro-11-2021-256gb-silver",
+    "category": "tablets",
+    "namespaceId": "apple-ipad-pro-11-2021",
+    "name": "Apple iPad Pro 11 (2021) 256GB Сріблястий",
+    "capacityAvailable": [
+      "128GB",
+      "256GB",
+      "512GB",
+      "1TB",
+      "2TB"
+    ],
+    "capacity": "256GB",
+    "priceRegular": 829,
+    "priceDiscount": 799,
+    "colorsAvailable": [
+      "spacegray",
+      "silver"
+    ],
+    "color": "silver",
+    "images": [
+      "img/tablets/apple-ipad-pro-11-2021/silver/00.webp",
+      "img/tablets/apple-ipad-pro-11-2021/silver/01.webp",
+      "img/tablets/apple-ipad-pro-11-2021/silver/02.webp"
+    ],
+    "description": [
+      {
+        "title": "Потужна продуктивність",
+        "text": [
+          "Відчуйте неймовірну потужність і продуктивність Apple iPad Pro 11. Завдяки чипу M1 він забезпечує новий рівень швидкодії, працюючи швидше й ефективніше, ніж будь-коли.",
+          "Редагування фото, створення ілюстрацій або багатозадачність із вимогливими застосунками — iPad Pro 11 легко впорається з усім."
+        ]
+      },
+      {
+        "title": "Вражаючий дисплей Liquid Retina",
+        "text": [
+          "Насолоджуйтеся яскравим і захопливим зображенням на дисплеї Liquid Retina в iPad Pro 11. Завдяки технологіям ProMotion і True Tone екран адаптується до вашого оточення, забезпечуючи плавне прокручування, точну передачу кольорів і неймовірну деталізацію.",
+          "Від перегляду фільмів до монтажу відео — дисплей iPad Pro 11 оживляє ваш контент із вражаючою чіткістю."
+        ]
+      },
+      {
+        "title": "Універсальна система камер",
+        "text": [
+          "Знімайте вражаючі фото та відео за допомогою передової системи камер iPad Pro 11. 12MP надширококутна фронтальна камера, 12MP ширококутна основна камера та сканер LiDAR дають змогу робити якісні кадри й користуватися можливостями доповненої реальності.",
+          "Відеодзвінки, сканування документів або запис відео 4K — система камер iPad Pro 11 забезпечує відмінний результат."
+        ]
+      }
+    ],
+    "screen": "11' Liquid Retina",
+    "resolution": "2388x1668",
+    "processor": "Apple M1",
+    "ram": "8GB",
+    "camera": "12MP + 12MP",
+    "zoom": "Digital zoom up to 5x",
+    "cell": [
+      "Not applicable"
+    ]
+  },
+  {
+    "id": "apple-ipad-pro-11-2021-512gb-silver",
+    "category": "tablets",
+    "namespaceId": "apple-ipad-pro-11-2021",
+    "name": "Apple iPad Pro 11 (2021) 512GB Сріблястий",
+    "capacityAvailable": [
+      "128GB",
+      "256GB",
+      "512GB",
+      "1TB",
+      "2TB"
+    ],
+    "capacity": "512GB",
+    "priceRegular": 869,
+    "priceDiscount": 819,
+    "colorsAvailable": [
+      "spacegray",
+      "silver"
+    ],
+    "color": "silver",
+    "images": [
+      "img/tablets/apple-ipad-pro-11-2021/silver/00.webp",
+      "img/tablets/apple-ipad-pro-11-2021/silver/01.webp",
+      "img/tablets/apple-ipad-pro-11-2021/silver/02.webp"
+    ],
+    "description": [
+      {
+        "title": "Потужна продуктивність",
+        "text": [
+          "Відчуйте неймовірну потужність і продуктивність Apple iPad Pro 11. Завдяки чипу M1 він забезпечує новий рівень швидкодії, працюючи швидше й ефективніше, ніж будь-коли.",
+          "Редагування фото, створення ілюстрацій або багатозадачність із вимогливими застосунками — iPad Pro 11 легко впорається з усім."
+        ]
+      },
+      {
+        "title": "Вражаючий дисплей Liquid Retina",
+        "text": [
+          "Насолоджуйтеся яскравим і захопливим зображенням на дисплеї Liquid Retina в iPad Pro 11. Завдяки технологіям ProMotion і True Tone екран адаптується до вашого оточення, забезпечуючи плавне прокручування, точну передачу кольорів і неймовірну деталізацію.",
+          "Від перегляду фільмів до монтажу відео — дисплей iPad Pro 11 оживляє ваш контент із вражаючою чіткістю."
+        ]
+      },
+      {
+        "title": "Універсальна система камер",
+        "text": [
+          "Знімайте вражаючі фото та відео за допомогою передової системи камер iPad Pro 11. 12MP надширококутна фронтальна камера, 12MP ширококутна основна камера та сканер LiDAR дають змогу робити якісні кадри й користуватися можливостями доповненої реальності.",
+          "Відеодзвінки, сканування документів або запис відео 4K — система камер iPad Pro 11 забезпечує відмінний результат."
+        ]
+      }
+    ],
+    "screen": "11' Liquid Retina",
+    "resolution": "2388x1668",
+    "processor": "Apple M1",
+    "ram": "8GB",
+    "camera": "12MP + 12MP",
+    "zoom": "Digital zoom up to 5x",
+    "cell": [
+      "Not applicable"
+    ]
+  },
+  {
+    "id": "apple-ipad-pro-11-2021-1tb-silver",
+    "category": "tablets",
+    "namespaceId": "apple-ipad-pro-11-2021",
+    "name": "Apple iPad Pro 11 (2021) 1TB Сріблястий",
+    "capacityAvailable": [
+      "128GB",
+      "256GB",
+      "512GB",
+      "1TB",
+      "2TB"
+    ],
+    "capacity": "1TB",
+    "priceRegular": 899,
+    "priceDiscount": 879,
+    "colorsAvailable": [
+      "spacegray",
+      "silver"
+    ],
+    "color": "silver",
+    "images": [
+      "img/tablets/apple-ipad-pro-11-2021/silver/00.webp",
+      "img/tablets/apple-ipad-pro-11-2021/silver/01.webp",
+      "img/tablets/apple-ipad-pro-11-2021/silver/02.webp"
+    ],
+    "description": [
+      {
+        "title": "Потужна продуктивність",
+        "text": [
+          "Відчуйте неймовірну потужність і продуктивність Apple iPad Pro 11. Завдяки чипу M1 він забезпечує новий рівень швидкодії, працюючи швидше й ефективніше, ніж будь-коли.",
+          "Редагування фото, створення ілюстрацій або багатозадачність із вимогливими застосунками — iPad Pro 11 легко впорається з усім."
+        ]
+      },
+      {
+        "title": "Вражаючий дисплей Liquid Retina",
+        "text": [
+          "Насолоджуйтеся яскравим і захопливим зображенням на дисплеї Liquid Retina в iPad Pro 11. Завдяки технологіям ProMotion і True Tone екран адаптується до вашого оточення, забезпечуючи плавне прокручування, точну передачу кольорів і неймовірну деталізацію.",
+          "Від перегляду фільмів до монтажу відео — дисплей iPad Pro 11 оживляє ваш контент із вражаючою чіткістю."
+        ]
+      },
+      {
+        "title": "Універсальна система камер",
+        "text": [
+          "Знімайте вражаючі фото та відео за допомогою передової системи камер iPad Pro 11. 12MP надширококутна фронтальна камера, 12MP ширококутна основна камера та сканер LiDAR дають змогу робити якісні кадри й користуватися можливостями доповненої реальності.",
+          "Відеодзвінки, сканування документів або запис відео 4K — система камер iPad Pro 11 забезпечує відмінний результат."
+        ]
+      }
+    ],
+    "screen": "11' Liquid Retina",
+    "resolution": "2388x1668",
+    "processor": "Apple M1",
+    "ram": "16GB",
+    "camera": "12MP + 12MP",
+    "zoom": "Digital zoom up to 5x",
+    "cell": [
+      "Not applicable"
+    ]
+  },
+  {
+    "id": "apple-ipad-pro-11-2021-2tb-silver",
+    "category": "tablets",
+    "namespaceId": "apple-ipad-pro-11-2021",
+    "name": "Apple iPad Pro 11 (2021) 2TB Сріблястий",
+    "capacityAvailable": [
+      "128GB",
+      "256GB",
+      "512GB",
+      "1TB",
+      "2TB"
+    ],
+    "capacity": "2TB",
+    "priceRegular": 999,
+    "priceDiscount": 939,
+    "colorsAvailable": [
+      "spacegray",
+      "silver"
+    ],
+    "color": "silver",
+    "images": [
+      "img/tablets/apple-ipad-pro-11-2021/silver/00.webp",
+      "img/tablets/apple-ipad-pro-11-2021/silver/01.webp",
+      "img/tablets/apple-ipad-pro-11-2021/silver/02.webp"
+    ],
+    "description": [
+      {
+        "title": "Потужна продуктивність",
+        "text": [
+          "Відчуйте неймовірну потужність і продуктивність Apple iPad Pro 11. Завдяки чипу M1 він забезпечує новий рівень швидкодії, працюючи швидше й ефективніше, ніж будь-коли.",
+          "Редагування фото, створення ілюстрацій або багатозадачність із вимогливими застосунками — iPad Pro 11 легко впорається з усім."
+        ]
+      },
+      {
+        "title": "Вражаючий дисплей Liquid Retina",
+        "text": [
+          "Насолоджуйтеся яскравим і захопливим зображенням на дисплеї Liquid Retina в iPad Pro 11. Завдяки технологіям ProMotion і True Tone екран адаптується до вашого оточення, забезпечуючи плавне прокручування, точну передачу кольорів і неймовірну деталізацію.",
+          "Від перегляду фільмів до монтажу відео — дисплей iPad Pro 11 оживляє ваш контент із вражаючою чіткістю."
+        ]
+      },
+      {
+        "title": "Універсальна система камер",
+        "text": [
+          "Знімайте вражаючі фото та відео за допомогою передової системи камер iPad Pro 11. 12MP надширококутна фронтальна камера, 12MP ширококутна основна камера та сканер LiDAR дають змогу робити якісні кадри й користуватися можливостями доповненої реальності.",
+          "Відеодзвінки, сканування документів або запис відео 4K — система камер iPad Pro 11 забезпечує відмінний результат."
+        ]
+      }
+    ],
+    "screen": "11' Liquid Retina",
+    "resolution": "2388x1668",
+    "processor": "Apple M1",
+    "ram": "16GB",
+    "camera": "12MP + 12MP",
+    "zoom": "Digital zoom up to 5x",
+    "cell": [
+      "Not applicable"
+    ]
+  },
+  {
+    "id": "apple-ipad-air-4th-gen-256gb-rose-gold",
+    "category": "tablets",
+    "namespaceId": "apple-ipad-air-4th-gen",
+    "name": "Apple iPad Air (4th Gen) 256GB Рожеве золото",
+    "capacityAvailable": [
+      "64GB",
+      "256GB"
+    ],
+    "capacity": "256GB",
+    "priceRegular": 749,
+    "priceDiscount": 699,
+    "colorsAvailable": [
+      "rose gold",
+      "silver",
+      "green",
+      "sky blue"
+    ],
+    "color": "rose gold",
+    "images": [
+      "img/tablets/apple-ipad-air-4th-gen/rose-gold/00.webp",
+      "img/tablets/apple-ipad-air-4th-gen/rose-gold/01.webp",
+      "img/tablets/apple-ipad-air-4th-gen/rose-gold/02.webp",
+      "img/tablets/apple-ipad-air-4th-gen/rose-gold/03.webp"
+    ],
+    "description": [
+      {
+        "title": "Тонкий, легкий і потужний",
+        "text": [
+          "Apple iPad Air (4-го покоління) поєднує витончений дизайн із потужною продуктивністю. Завдяки тонкому й легкому корпусу його зручно брати із собою куди завгодно.",
+          "Завдяки чипу A14 Bionic із Neural Engine iPad Air забезпечує швидку й ефективну роботу, тому чудово підходить для багатозадачності, ігор і творчих завдань."
+        ]
+      },
+      {
+        "title": "Вражаючий дисплей Liquid Retina",
+        "text": [
+          "Пориньте в яскраве зображення на дисплеї Liquid Retina в iPad Air. Завдяки True Tone і широкій колірній гамі P3 він передає природні кольори та неймовірну деталізацію.",
+          "Перегляд фільмів, редагування фото чи вебсерфінг — дисплей iPad Air забезпечує захопливе й комфортне візуальне враження."
+        ]
+      },
+      {
+        "title": "Універсальні можливості та підтримка Apple Pencil",
+        "text": [
+          "Відкрийте нові можливості завдяки універсальним функціям iPad Air. Він підтримує Apple Pencil 2-го покоління, що дає змогу точно робити нотатки, малювати ескізи й додавати позначки до документів.",
+          "З Touch ID, вбудованим у верхню кнопку, ви можете безпечно розблоковувати iPad, підтверджувати покупки та входити в застосунки одним дотиком."
+        ]
+      }
+    ],
+    "screen": "10.9' Liquid Retina",
+    "resolution": "2360x1640",
+    "processor": "Apple A14 Bionic",
+    "ram": "4GB",
+    "camera": "12MP",
+    "zoom": "Digital zoom up to 5x",
+    "cell": [
+      "Not applicable"
+    ]
+  },
+  {
+    "id": "apple-ipad-air-4th-gen-64gb-rose-gold",
+    "category": "tablets",
+    "namespaceId": "apple-ipad-air-4th-gen",
+    "name": "Apple iPad Air (4th Gen) 64GB Рожеве золото",
+    "capacityAvailable": [
+      "64GB",
+      "256GB"
+    ],
+    "capacity": "64GB",
+    "priceRegular": 599,
+    "priceDiscount": 549,
+    "colorsAvailable": [
+      "rose gold",
+      "silver",
+      "green",
+      "sky blue"
+    ],
+    "color": "rose gold",
+    "images": [
+      "img/tablets/apple-ipad-air-4th-gen/rose-gold/00.webp",
+      "img/tablets/apple-ipad-air-4th-gen/rose-gold/01.webp",
+      "img/tablets/apple-ipad-air-4th-gen/rose-gold/02.webp",
+      "img/tablets/apple-ipad-air-4th-gen/rose-gold/03.webp"
+    ],
+    "description": [
+      {
+        "title": "Тонкий, легкий і потужний",
+        "text": [
+          "Apple iPad Air (4-го покоління) поєднує витончений дизайн із потужною продуктивністю. Завдяки тонкому й легкому корпусу його зручно брати із собою куди завгодно.",
+          "Завдяки чипу A14 Bionic із Neural Engine iPad Air забезпечує швидку й ефективну роботу, тому чудово підходить для багатозадачності, ігор і творчих завдань."
+        ]
+      },
+      {
+        "title": "Вражаючий дисплей Liquid Retina",
+        "text": [
+          "Пориньте в яскраве зображення на дисплеї Liquid Retina в iPad Air. Завдяки True Tone і широкій колірній гамі P3 він передає природні кольори та неймовірну деталізацію.",
+          "Перегляд фільмів, редагування фото чи вебсерфінг — дисплей iPad Air забезпечує захопливе й комфортне візуальне враження."
+        ]
+      },
+      {
+        "title": "Універсальні можливості та підтримка Apple Pencil",
+        "text": [
+          "Відкрийте нові можливості завдяки універсальним функціям iPad Air. Він підтримує Apple Pencil 2-го покоління, що дає змогу точно робити нотатки, малювати ескізи й додавати позначки до документів.",
+          "З Touch ID, вбудованим у верхню кнопку, ви можете безпечно розблоковувати iPad, підтверджувати покупки та входити в застосунки одним дотиком."
+        ]
+      }
+    ],
+    "screen": "10.9' Liquid Retina",
+    "resolution": "2360x1640",
+    "processor": "Apple A14 Bionic",
+    "ram": "4GB",
+    "camera": "12MP",
+    "zoom": "Digital zoom up to 5x",
+    "cell": [
+      "Not applicable"
+    ]
+  },
+  {
+    "id": "apple-ipad-air-4th-gen-64gb-silver",
+    "category": "tablets",
+    "namespaceId": "apple-ipad-air-4th-gen",
+    "name": "Apple iPad Air (4th Gen) 64GB Сріблястий",
+    "capacityAvailable": [
+      "64GB",
+      "256GB"
+    ],
+    "capacity": "64GB",
+    "priceRegular": 599,
+    "priceDiscount": 549,
+    "colorsAvailable": [
+      "rose gold",
+      "silver",
+      "green",
+      "sky blue"
+    ],
+    "color": "silver",
+    "images": [
+      "img/tablets/apple-ipad-air-4th-gen/silver/00.webp",
+      "img/tablets/apple-ipad-air-4th-gen/silver/01.webp",
+      "img/tablets/apple-ipad-air-4th-gen/silver/02.webp",
+      "img/tablets/apple-ipad-air-4th-gen/silver/03.webp"
+    ],
+    "description": [
+      {
+        "title": "Тонкий, легкий і потужний",
+        "text": [
+          "Apple iPad Air (4-го покоління) поєднує витончений дизайн із потужною продуктивністю. Завдяки тонкому й легкому корпусу його зручно брати із собою куди завгодно.",
+          "Завдяки чипу A14 Bionic із Neural Engine iPad Air забезпечує швидку й ефективну роботу, тому чудово підходить для багатозадачності, ігор і творчих завдань."
+        ]
+      },
+      {
+        "title": "Вражаючий дисплей Liquid Retina",
+        "text": [
+          "Пориньте в яскраве зображення на дисплеї Liquid Retina в iPad Air. Завдяки True Tone і широкій колірній гамі P3 він передає природні кольори та неймовірну деталізацію.",
+          "Перегляд фільмів, редагування фото чи вебсерфінг — дисплей iPad Air забезпечує захопливе й комфортне візуальне враження."
+        ]
+      },
+      {
+        "title": "Універсальні можливості та підтримка Apple Pencil",
+        "text": [
+          "Відкрийте нові можливості завдяки універсальним функціям iPad Air. Він підтримує Apple Pencil 2-го покоління, що дає змогу точно робити нотатки, малювати ескізи й додавати позначки до документів.",
+          "З Touch ID, вбудованим у верхню кнопку, ви можете безпечно розблоковувати iPad, підтверджувати покупки та входити в застосунки одним дотиком."
+        ]
+      }
+    ],
+    "screen": "10.9' Liquid Retina",
+    "resolution": "2360x1640",
+    "processor": "Apple A14 Bionic",
+    "ram": "4GB",
+    "camera": "12MP",
+    "zoom": "Digital zoom up to 5x",
+    "cell": [
+      "Not applicable"
+    ]
+  },
+  {
+    "id": "apple-ipad-air-4th-gen-256gb-silver",
+    "category": "tablets",
+    "namespaceId": "apple-ipad-air-4th-gen",
+    "name": "Apple iPad Air (4th Gen) 256GB Сріблястий",
+    "capacityAvailable": [
+      "64GB",
+      "256GB"
+    ],
+    "capacity": "256GB",
+    "priceRegular": 749,
+    "priceDiscount": 699,
+    "colorsAvailable": [
+      "rose gold",
+      "silver",
+      "green",
+      "sky blue"
+    ],
+    "color": "silver",
+    "images": [
+      "img/tablets/apple-ipad-air-4th-gen/silver/00.webp",
+      "img/tablets/apple-ipad-air-4th-gen/silver/01.webp",
+      "img/tablets/apple-ipad-air-4th-gen/silver/02.webp",
+      "img/tablets/apple-ipad-air-4th-gen/silver/03.webp"
+    ],
+    "description": [
+      {
+        "title": "Тонкий, легкий і потужний",
+        "text": [
+          "Apple iPad Air (4-го покоління) поєднує витончений дизайн із потужною продуктивністю. Завдяки тонкому й легкому корпусу його зручно брати із собою куди завгодно.",
+          "Завдяки чипу A14 Bionic із Neural Engine iPad Air забезпечує швидку й ефективну роботу, тому чудово підходить для багатозадачності, ігор і творчих завдань."
+        ]
+      },
+      {
+        "title": "Вражаючий дисплей Liquid Retina",
+        "text": [
+          "Пориньте в яскраве зображення на дисплеї Liquid Retina в iPad Air. Завдяки True Tone і широкій колірній гамі P3 він передає природні кольори та неймовірну деталізацію.",
+          "Перегляд фільмів, редагування фото чи вебсерфінг — дисплей iPad Air забезпечує захопливе й комфортне візуальне враження."
+        ]
+      },
+      {
+        "title": "Універсальні можливості та підтримка Apple Pencil",
+        "text": [
+          "Відкрийте нові можливості завдяки універсальним функціям iPad Air. Він підтримує Apple Pencil 2-го покоління, що дає змогу точно робити нотатки, малювати ескізи й додавати позначки до документів.",
+          "З Touch ID, вбудованим у верхню кнопку, ви можете безпечно розблоковувати iPad, підтверджувати покупки та входити в застосунки одним дотиком."
+        ]
+      }
+    ],
+    "screen": "10.9' Liquid Retina",
+    "resolution": "2360x1640",
+    "processor": "Apple A14 Bionic",
+    "ram": "4GB",
+    "camera": "12MP",
+    "zoom": "Digital zoom up to 5x",
+    "cell": [
+      "Not applicable"
+    ]
+  },
+  {
+    "id": "apple-ipad-air-4th-gen-256gb-green",
+    "category": "tablets",
+    "namespaceId": "apple-ipad-air-4th-gen",
+    "name": "Apple iPad Air (4th Gen) 256GB Зелений",
+    "capacityAvailable": [
+      "64GB",
+      "256GB"
+    ],
+    "capacity": "256GB",
+    "priceRegular": 749,
+    "priceDiscount": 699,
+    "colorsAvailable": [
+      "rose gold",
+      "silver",
+      "green",
+      "sky blue"
+    ],
+    "color": "green",
+    "images": [
+      "img/tablets/apple-ipad-air-4th-gen/green/00.webp",
+      "img/tablets/apple-ipad-air-4th-gen/green/01.webp",
+      "img/tablets/apple-ipad-air-4th-gen/green/02.webp",
+      "img/tablets/apple-ipad-air-4th-gen/green/03.webp"
+    ],
+    "description": [
+      {
+        "title": "Тонкий, легкий і потужний",
+        "text": [
+          "Apple iPad Air (4-го покоління) поєднує витончений дизайн із потужною продуктивністю. Завдяки тонкому й легкому корпусу його зручно брати із собою куди завгодно.",
+          "Завдяки чипу A14 Bionic із Neural Engine iPad Air забезпечує швидку й ефективну роботу, тому чудово підходить для багатозадачності, ігор і творчих завдань."
+        ]
+      },
+      {
+        "title": "Вражаючий дисплей Liquid Retina",
+        "text": [
+          "Пориньте в яскраве зображення на дисплеї Liquid Retina в iPad Air. Завдяки True Tone і широкій колірній гамі P3 він передає природні кольори та неймовірну деталізацію.",
+          "Перегляд фільмів, редагування фото чи вебсерфінг — дисплей iPad Air забезпечує захопливе й комфортне візуальне враження."
+        ]
+      },
+      {
+        "title": "Універсальні можливості та підтримка Apple Pencil",
+        "text": [
+          "Відкрийте нові можливості завдяки універсальним функціям iPad Air. Він підтримує Apple Pencil 2-го покоління, що дає змогу точно робити нотатки, малювати ескізи й додавати позначки до документів.",
+          "З Touch ID, вбудованим у верхню кнопку, ви можете безпечно розблоковувати iPad, підтверджувати покупки та входити в застосунки одним дотиком."
+        ]
+      }
+    ],
+    "screen": "10.9' Liquid Retina",
+    "resolution": "2360x1640",
+    "processor": "Apple A14 Bionic",
+    "ram": "4GB",
+    "camera": "12MP",
+    "zoom": "Digital zoom up to 5x",
+    "cell": [
+      "Not applicable"
+    ]
+  },
+  {
+    "id": "apple-ipad-air-4th-gen-64gb-green",
+    "category": "tablets",
+    "namespaceId": "apple-ipad-air-4th-gen",
+    "name": "Apple iPad Air (4th Gen) 64GB Зелений",
+    "capacityAvailable": [
+      "64GB",
+      "256GB"
+    ],
+    "capacity": "64GB",
+    "priceRegular": 599,
+    "priceDiscount": 549,
+    "colorsAvailable": [
+      "rose gold",
+      "silver",
+      "green",
+      "sky blue"
+    ],
+    "color": "green",
+    "images": [
+      "img/tablets/apple-ipad-air-4th-gen/green/00.webp",
+      "img/tablets/apple-ipad-air-4th-gen/green/01.webp",
+      "img/tablets/apple-ipad-air-4th-gen/green/02.webp",
+      "img/tablets/apple-ipad-air-4th-gen/green/03.webp"
+    ],
+    "description": [
+      {
+        "title": "Тонкий, легкий і потужний",
+        "text": [
+          "Apple iPad Air (4-го покоління) поєднує витончений дизайн із потужною продуктивністю. Завдяки тонкому й легкому корпусу його зручно брати із собою куди завгодно.",
+          "Завдяки чипу A14 Bionic із Neural Engine iPad Air забезпечує швидку й ефективну роботу, тому чудово підходить для багатозадачності, ігор і творчих завдань."
+        ]
+      },
+      {
+        "title": "Вражаючий дисплей Liquid Retina",
+        "text": [
+          "Пориньте в яскраве зображення на дисплеї Liquid Retina в iPad Air. Завдяки True Tone і широкій колірній гамі P3 він передає природні кольори та неймовірну деталізацію.",
+          "Перегляд фільмів, редагування фото чи вебсерфінг — дисплей iPad Air забезпечує захопливе й комфортне візуальне враження."
+        ]
+      },
+      {
+        "title": "Універсальні можливості та підтримка Apple Pencil",
+        "text": [
+          "Відкрийте нові можливості завдяки універсальним функціям iPad Air. Він підтримує Apple Pencil 2-го покоління, що дає змогу точно робити нотатки, малювати ескізи й додавати позначки до документів.",
+          "З Touch ID, вбудованим у верхню кнопку, ви можете безпечно розблоковувати iPad, підтверджувати покупки та входити в застосунки одним дотиком."
+        ]
+      }
+    ],
+    "screen": "10.9' Liquid Retina",
+    "resolution": "2360x1640",
+    "processor": "Apple A14 Bionic",
+    "ram": "4GB",
+    "camera": "12MP",
+    "zoom": "Digital zoom up to 5x",
+    "cell": [
+      "Not applicable"
+    ]
+  },
+  {
+    "id": "apple-ipad-air-4th-gen-64gb-sky-blue",
+    "category": "tablets",
+    "namespaceId": "apple-ipad-air-4th-gen",
+    "name": "Apple iPad Air (4th Gen) 64GB Небесно-блакитний",
+    "capacityAvailable": [
+      "64GB",
+      "256GB"
+    ],
+    "capacity": "64GB",
+    "priceRegular": 599,
+    "priceDiscount": 549,
+    "colorsAvailable": [
+      "rose gold",
+      "silver",
+      "green",
+      "sky blue"
+    ],
+    "color": "sky blue",
+    "images": [
+      "img/tablets/apple-ipad-air-4th-gen/sky-blue/00.webp",
+      "img/tablets/apple-ipad-air-4th-gen/sky-blue/01.webp",
+      "img/tablets/apple-ipad-air-4th-gen/sky-blue/02.webp",
+      "img/tablets/apple-ipad-air-4th-gen/sky-blue/03.webp"
+    ],
+    "description": [
+      {
+        "title": "Тонкий, легкий і потужний",
+        "text": [
+          "Apple iPad Air (4-го покоління) поєднує витончений дизайн із потужною продуктивністю. Завдяки тонкому й легкому корпусу його зручно брати із собою куди завгодно.",
+          "Завдяки чипу A14 Bionic із Neural Engine iPad Air забезпечує швидку й ефективну роботу, тому чудово підходить для багатозадачності, ігор і творчих завдань."
+        ]
+      },
+      {
+        "title": "Вражаючий дисплей Liquid Retina",
+        "text": [
+          "Пориньте в яскраве зображення на дисплеї Liquid Retina в iPad Air. Завдяки True Tone і широкій колірній гамі P3 він передає природні кольори та неймовірну деталізацію.",
+          "Перегляд фільмів, редагування фото чи вебсерфінг — дисплей iPad Air забезпечує захопливе й комфортне візуальне враження."
+        ]
+      },
+      {
+        "title": "Універсальні можливості та підтримка Apple Pencil",
+        "text": [
+          "Відкрийте нові можливості завдяки універсальним функціям iPad Air. Він підтримує Apple Pencil 2-го покоління, що дає змогу точно робити нотатки, малювати ескізи й додавати позначки до документів.",
+          "З Touch ID, вбудованим у верхню кнопку, ви можете безпечно розблоковувати iPad, підтверджувати покупки та входити в застосунки одним дотиком."
+        ]
+      }
+    ],
+    "screen": "10.9' Liquid Retina",
+    "resolution": "2360x1640",
+    "processor": "Apple A14 Bionic",
+    "ram": "4GB",
+    "camera": "12MP",
+    "zoom": "Digital zoom up to 5x",
+    "cell": [
+      "Not applicable"
+    ]
+  },
+  {
+    "id": "apple-ipad-air-4th-gen-256gb-sky-blue",
+    "category": "tablets",
+    "namespaceId": "apple-ipad-air-4th-gen",
+    "name": "Apple iPad Air (4th Gen) 256GB Небесно-блакитний",
+    "capacityAvailable": [
+      "64GB",
+      "256GB"
+    ],
+    "capacity": "256GB",
+    "priceRegular": 749,
+    "priceDiscount": 699,
+    "colorsAvailable": [
+      "rose gold",
+      "silver",
+      "green",
+      "sky blue"
+    ],
+    "color": "sky blue",
+    "images": [
+      "img/tablets/apple-ipad-air-4th-gen/sky-blue/00.webp",
+      "img/tablets/apple-ipad-air-4th-gen/sky-blue/01.webp",
+      "img/tablets/apple-ipad-air-4th-gen/sky-blue/02.webp",
+      "img/tablets/apple-ipad-air-4th-gen/sky-blue/03.webp"
+    ],
+    "description": [
+      {
+        "title": "Тонкий, легкий і потужний",
+        "text": [
+          "Apple iPad Air (4-го покоління) поєднує витончений дизайн із потужною продуктивністю. Завдяки тонкому й легкому корпусу його зручно брати із собою куди завгодно.",
+          "Завдяки чипу A14 Bionic із Neural Engine iPad Air забезпечує швидку й ефективну роботу, тому чудово підходить для багатозадачності, ігор і творчих завдань."
+        ]
+      },
+      {
+        "title": "Вражаючий дисплей Liquid Retina",
+        "text": [
+          "Пориньте в яскраве зображення на дисплеї Liquid Retina в iPad Air. Завдяки True Tone і широкій колірній гамі P3 він передає природні кольори та неймовірну деталізацію.",
+          "Перегляд фільмів, редагування фото чи вебсерфінг — дисплей iPad Air забезпечує захопливе й комфортне візуальне враження."
+        ]
+      },
+      {
+        "title": "Універсальні можливості та підтримка Apple Pencil",
+        "text": [
+          "Відкрийте нові можливості завдяки універсальним функціям iPad Air. Він підтримує Apple Pencil 2-го покоління, що дає змогу точно робити нотатки, малювати ескізи й додавати позначки до документів.",
+          "З Touch ID, вбудованим у верхню кнопку, ви можете безпечно розблоковувати iPad, підтверджувати покупки та входити в застосунки одним дотиком."
+        ]
+      }
+    ],
+    "screen": "10.9' Liquid Retina",
+    "resolution": "2360x1640",
+    "processor": "Apple A14 Bionic",
+    "ram": "4GB",
+    "camera": "12MP",
+    "zoom": "Digital zoom up to 5x",
+    "cell": [
+      "Not applicable"
+    ]
+  },
+  {
+    "id": "apple-ipad-mini-6th-gen-64gb-spacegray",
+    "category": "tablets",
+    "namespaceId": "apple-ipad-mini-6th-gen",
+    "name": "Apple iPad Mini (6th Gen) 64GB Космічний сірий",
+    "capacityAvailable": [
+      "64GB",
+      "256GB"
+    ],
+    "capacity": "64GB",
+    "priceRegular": 499,
+    "priceDiscount": 469,
+    "colorsAvailable": [
+      "spacegray",
+      "starlight",
+      "pink"
+    ],
+    "color": "spacegray",
+    "images": [
+      "img/tablets/apple-ipad-mini-6th-gen/spacegray/00.webp",
+      "img/tablets/apple-ipad-mini-6th-gen/spacegray/01.webp",
+      "img/tablets/apple-ipad-mini-6th-gen/spacegray/02.webp"
+    ],
+    "description": [
+      {
+        "title": "Компактний і портативний",
+        "text": [
+          "Відчуйте можливості iPad у компактному форматі з Apple iPad Mini (6-го покоління). 8,3-дюймовий дисплей Liquid Retina і тонкий дизайн роблять його ідеальним для продуктивності та розваг у дорозі.",
+          "Читання, ігри чи перегляд відео — iPad Mini забезпечує вражаюче зображення в портативному форматі."
+        ]
+      },
+      {
+        "title": "Чип A15 Bionic і Neural Engine",
+        "text": [
+          "iPad Mini (6-го покоління) оснащений потужним чипом A15 Bionic і Neural Engine, що забезпечують швидку й ефективну роботу. Він легко справляється з вимогливими завданнями та графічно насиченими застосунками, тож підходить і для роботи, і для розваг.",
+          "Насолоджуйтеся плавною багатозадачністю, захопливими іграми та безперебійною роботою застосунків на iPad Mini."
+        ]
+      },
+      {
+        "title": "Покращені камери та Center Stage",
+        "text": [
+          "Знімайте вражаючі фото та відео за допомогою покращених камер iPad Mini. 12MP фронтальна камера та 12MP основна камера дають змогу робити якісні знімки й записувати чудові відео.",
+          "iPad Mini також підтримує Center Stage — функцію, яка автоматично тримає вас у кадрі під час відеодзвінків, роблячи спілкування живішим і динамічнішим."
+        ]
+      }
+    ],
+    "screen": "8.3' Liquid Retina",
+    "resolution": "2266x1488",
+    "processor": "Apple A15 Bionic",
+    "ram": "4GB",
+    "camera": "12MP",
+    "zoom": "Digital zoom up to 5x",
+    "cell": [
+      "Not applicable"
+    ]
+  },
+  {
+    "id": "apple-ipad-mini-6th-gen-256gb-spacegray",
+    "category": "tablets",
+    "namespaceId": "apple-ipad-mini-6th-gen",
+    "name": "Apple iPad Mini (6th Gen) 256GB Космічний сірий",
+    "capacityAvailable": [
+      "64GB",
+      "256GB"
+    ],
+    "capacity": "256GB",
+    "priceRegular": 649,
+    "priceDiscount": 599,
+    "colorsAvailable": [
+      "spacegray",
+      "starlight",
+      "pink"
+    ],
+    "color": "spacegray",
+    "images": [
+      "img/tablets/apple-ipad-mini-6th-gen/spacegray/00.webp",
+      "img/tablets/apple-ipad-mini-6th-gen/spacegray/01.webp",
+      "img/tablets/apple-ipad-mini-6th-gen/spacegray/02.webp"
+    ],
+    "description": [
+      {
+        "title": "Компактний і портативний",
+        "text": [
+          "Відчуйте можливості iPad у компактному форматі з Apple iPad Mini (6-го покоління). 8,3-дюймовий дисплей Liquid Retina і тонкий дизайн роблять його ідеальним для продуктивності та розваг у дорозі.",
+          "Читання, ігри чи перегляд відео — iPad Mini забезпечує вражаюче зображення в портативному форматі."
+        ]
+      },
+      {
+        "title": "Чип A15 Bionic і Neural Engine",
+        "text": [
+          "iPad Mini (6-го покоління) оснащений потужним чипом A15 Bionic і Neural Engine, що забезпечують швидку й ефективну роботу. Він легко справляється з вимогливими завданнями та графічно насиченими застосунками, тож підходить і для роботи, і для розваг.",
+          "Насолоджуйтеся плавною багатозадачністю, захопливими іграми та безперебійною роботою застосунків на iPad Mini."
+        ]
+      },
+      {
+        "title": "Покращені камери та Center Stage",
+        "text": [
+          "Знімайте вражаючі фото та відео за допомогою покращених камер iPad Mini. 12MP фронтальна камера та 12MP основна камера дають змогу робити якісні знімки й записувати чудові відео.",
+          "iPad Mini також підтримує Center Stage — функцію, яка автоматично тримає вас у кадрі під час відеодзвінків, роблячи спілкування живішим і динамічнішим."
+        ]
+      }
+    ],
+    "screen": "8.3' Liquid Retina",
+    "resolution": "2266x1488",
+    "processor": "Apple A15 Bionic",
+    "ram": "4GB",
+    "camera": "12MP",
+    "zoom": "Digital zoom up to 5x",
+    "cell": [
+      "Not applicable"
+    ]
+  },
+  {
+    "id": "apple-ipad-mini-6th-gen-256gb-starlight",
+    "category": "tablets",
+    "namespaceId": "apple-ipad-mini-6th-gen",
+    "name": "Apple iPad Mini (6th Gen) 256GB Сяйна зірка",
+    "capacityAvailable": [
+      "64GB",
+      "256GB"
+    ],
+    "capacity": "256GB",
+    "priceRegular": 649,
+    "priceDiscount": 599,
+    "colorsAvailable": [
+      "spacegray",
+      "starlight",
+      "pink"
+    ],
+    "color": "starlight",
+    "images": [
+      "img/tablets/apple-ipad-mini-6th-gen/starlight/00.webp",
+      "img/tablets/apple-ipad-mini-6th-gen/starlight/01.webp",
+      "img/tablets/apple-ipad-mini-6th-gen/starlight/02.webp"
+    ],
+    "description": [
+      {
+        "title": "Компактний і портативний",
+        "text": [
+          "Відчуйте можливості iPad у компактному форматі з Apple iPad Mini (6-го покоління). 8,3-дюймовий дисплей Liquid Retina і тонкий дизайн роблять його ідеальним для продуктивності та розваг у дорозі.",
+          "Читання, ігри чи перегляд відео — iPad Mini забезпечує вражаюче зображення в портативному форматі."
+        ]
+      },
+      {
+        "title": "Чип A15 Bionic і Neural Engine",
+        "text": [
+          "iPad Mini (6-го покоління) оснащений потужним чипом A15 Bionic і Neural Engine, що забезпечують швидку й ефективну роботу. Він легко справляється з вимогливими завданнями та графічно насиченими застосунками, тож підходить і для роботи, і для розваг.",
+          "Насолоджуйтеся плавною багатозадачністю, захопливими іграми та безперебійною роботою застосунків на iPad Mini."
+        ]
+      },
+      {
+        "title": "Покращені камери та Center Stage",
+        "text": [
+          "Знімайте вражаючі фото та відео за допомогою покращених камер iPad Mini. 12MP фронтальна камера та 12MP основна камера дають змогу робити якісні знімки й записувати чудові відео.",
+          "iPad Mini також підтримує Center Stage — функцію, яка автоматично тримає вас у кадрі під час відеодзвінків, роблячи спілкування живішим і динамічнішим."
+        ]
+      }
+    ],
+    "screen": "8.3' Liquid Retina",
+    "resolution": "2266x1488",
+    "processor": "Apple A15 Bionic",
+    "ram": "4GB",
+    "camera": "12MP",
+    "zoom": "Digital zoom up to 5x",
+    "cell": [
+      "Not applicable"
+    ]
+  },
+  {
+    "id": "apple-ipad-mini-6th-gen-64gb-starlight",
+    "category": "tablets",
+    "namespaceId": "apple-ipad-mini-6th-gen",
+    "name": "Apple iPad Mini (6th Gen) 64GB Сяйна зірка",
+    "capacityAvailable": [
+      "64GB",
+      "256GB"
+    ],
+    "capacity": "64GB",
+    "priceRegular": 499,
+    "priceDiscount": 469,
+    "colorsAvailable": [
+      "spacegray",
+      "starlight",
+      "pink"
+    ],
+    "color": "starlight",
+    "images": [
+      "img/tablets/apple-ipad-mini-6th-gen/starlight/00.webp",
+      "img/tablets/apple-ipad-mini-6th-gen/starlight/01.webp",
+      "img/tablets/apple-ipad-mini-6th-gen/starlight/02.webp"
+    ],
+    "description": [
+      {
+        "title": "Компактний і портативний",
+        "text": [
+          "Відчуйте можливості iPad у компактному форматі з Apple iPad Mini (6-го покоління). 8,3-дюймовий дисплей Liquid Retina і тонкий дизайн роблять його ідеальним для продуктивності та розваг у дорозі.",
+          "Читання, ігри чи перегляд відео — iPad Mini забезпечує вражаюче зображення в портативному форматі."
+        ]
+      },
+      {
+        "title": "Чип A15 Bionic і Neural Engine",
+        "text": [
+          "iPad Mini (6-го покоління) оснащений потужним чипом A15 Bionic і Neural Engine, що забезпечують швидку й ефективну роботу. Він легко справляється з вимогливими завданнями та графічно насиченими застосунками, тож підходить і для роботи, і для розваг.",
+          "Насолоджуйтеся плавною багатозадачністю, захопливими іграми та безперебійною роботою застосунків на iPad Mini."
+        ]
+      },
+      {
+        "title": "Покращені камери та Center Stage",
+        "text": [
+          "Знімайте вражаючі фото та відео за допомогою покращених камер iPad Mini. 12MP фронтальна камера та 12MP основна камера дають змогу робити якісні знімки й записувати чудові відео.",
+          "iPad Mini також підтримує Center Stage — функцію, яка автоматично тримає вас у кадрі під час відеодзвінків, роблячи спілкування живішим і динамічнішим."
+        ]
+      }
+    ],
+    "screen": "8.3' Liquid Retina",
+    "resolution": "2266x1488",
+    "processor": "Apple A15 Bionic",
+    "ram": "4GB",
+    "camera": "12MP",
+    "zoom": "Digital zoom up to 5x",
+    "cell": [
+      "Not applicable"
+    ]
+  },
+  {
+    "id": "apple-ipad-mini-6th-gen-64gb-pink",
+    "category": "tablets",
+    "namespaceId": "apple-ipad-mini-6th-gen",
+    "name": "Apple iPad Mini (6th Gen) 64GB Рожевий",
+    "capacityAvailable": [
+      "64GB",
+      "256GB"
+    ],
+    "capacity": "64GB",
+    "priceRegular": 499,
+    "priceDiscount": 469,
+    "colorsAvailable": [
+      "spacegray",
+      "starlight",
+      "pink"
+    ],
+    "color": "pink",
+    "images": [
+      "img/tablets/apple-ipad-mini-6th-gen/pink/00.webp",
+      "img/tablets/apple-ipad-mini-6th-gen/pink/01.webp",
+      "img/tablets/apple-ipad-mini-6th-gen/pink/02.webp"
+    ],
+    "description": [
+      {
+        "title": "Компактний і портативний",
+        "text": [
+          "Відчуйте можливості iPad у компактному форматі з Apple iPad Mini (6-го покоління). 8,3-дюймовий дисплей Liquid Retina і тонкий дизайн роблять його ідеальним для продуктивності та розваг у дорозі.",
+          "Читання, ігри чи перегляд відео — iPad Mini забезпечує вражаюче зображення в портативному форматі."
+        ]
+      },
+      {
+        "title": "Чип A15 Bionic і Neural Engine",
+        "text": [
+          "iPad Mini (6-го покоління) оснащений потужним чипом A15 Bionic і Neural Engine, що забезпечують швидку й ефективну роботу. Він легко справляється з вимогливими завданнями та графічно насиченими застосунками, тож підходить і для роботи, і для розваг.",
+          "Насолоджуйтеся плавною багатозадачністю, захопливими іграми та безперебійною роботою застосунків на iPad Mini."
+        ]
+      },
+      {
+        "title": "Покращені камери та Center Stage",
+        "text": [
+          "Знімайте вражаючі фото та відео за допомогою покращених камер iPad Mini. 12MP фронтальна камера та 12MP основна камера дають змогу робити якісні знімки й записувати чудові відео.",
+          "iPad Mini також підтримує Center Stage — функцію, яка автоматично тримає вас у кадрі під час відеодзвінків, роблячи спілкування живішим і динамічнішим."
+        ]
+      }
+    ],
+    "screen": "8.3' Liquid Retina",
+    "resolution": "2266x1488",
+    "processor": "Apple A15 Bionic",
+    "ram": "4GB",
+    "camera": "12MP",
+    "zoom": "Digital zoom up to 5x",
+    "cell": [
+      "Not applicable"
+    ]
+  },
+  {
+    "id": "apple-ipad-mini-6th-gen-256gb-pink",
+    "category": "tablets",
+    "namespaceId": "apple-ipad-mini-6th-gen",
+    "name": "Apple iPad Mini (6th Gen) 256GB Рожевий",
+    "capacityAvailable": [
+      "64GB",
+      "256GB"
+    ],
+    "capacity": "256GB",
+    "priceRegular": 649,
+    "priceDiscount": 619,
+    "colorsAvailable": [
+      "spacegray",
+      "starlight",
+      "pink"
+    ],
+    "color": "pink",
+    "images": [
+      "img/tablets/apple-ipad-mini-6th-gen/pink/00.webp",
+      "img/tablets/apple-ipad-mini-6th-gen/pink/01.webp",
+      "img/tablets/apple-ipad-mini-6th-gen/pink/02.webp"
+    ],
+    "description": [
+      {
+        "title": "Компактний і портативний",
+        "text": [
+          "Відчуйте можливості iPad у компактному форматі з Apple iPad Mini (6-го покоління). 8,3-дюймовий дисплей Liquid Retina і тонкий дизайн роблять його ідеальним для продуктивності та розваг у дорозі.",
+          "Читання, ігри чи перегляд відео — iPad Mini забезпечує вражаюче зображення в портативному форматі."
+        ]
+      },
+      {
+        "title": "Чип A15 Bionic і Neural Engine",
+        "text": [
+          "iPad Mini (6-го покоління) оснащений потужним чипом A15 Bionic і Neural Engine, що забезпечують швидку й ефективну роботу. Він легко справляється з вимогливими завданнями та графічно насиченими застосунками, тож підходить і для роботи, і для розваг.",
+          "Насолоджуйтеся плавною багатозадачністю, захопливими іграми та безперебійною роботою застосунків на iPad Mini."
+        ]
+      },
+      {
+        "title": "Покращені камери та Center Stage",
+        "text": [
+          "Знімайте вражаючі фото та відео за допомогою покращених камер iPad Mini. 12MP фронтальна камера та 12MP основна камера дають змогу робити якісні знімки й записувати чудові відео.",
+          "iPad Mini також підтримує Center Stage — функцію, яка автоматично тримає вас у кадрі під час відеодзвінків, роблячи спілкування живішим і динамічнішим."
+        ]
+      }
+    ],
+    "screen": "8.3' Liquid Retina",
+    "resolution": "2266x1488",
+    "processor": "Apple A15 Bionic",
+    "ram": "4GB",
+    "camera": "12MP",
+    "zoom": "Digital zoom up to 5x",
+    "cell": [
+      "Not applicable"
+    ]
+  },
+  {
+    "id": "apple-ipad-10-2-2020-128gb-gold",
+    "category": "tablets",
+    "namespaceId": "apple-ipad-10-2-2020",
+    "name": "Apple iPad 10.2 (2020) 128GB Золотий",
+    "capacityAvailable": [
+      "32GB",
+      "128GB"
+    ],
+    "capacity": "128GB",
+    "priceRegular": 429,
+    "priceDiscount": 399,
+    "colorsAvailable": [
+      "gold",
+      "silver",
+      "spacegray"
+    ],
+    "color": "gold",
+    "images": [
+      "img/tablets/apple-ipad-10-2-2020/gold/00.webp",
+      "img/tablets/apple-ipad-10-2-2020/gold/01.webp",
+      "img/tablets/apple-ipad-10-2-2020/gold/02.webp",
+      "img/tablets/apple-ipad-10-2-2020/gold/03.webp"
+    ],
+    "description": [
+      {
+        "title": "Універсальний і доступний",
+        "text": [
+          "Apple iPad 10.2 (2020) — універсальний і доступний варіант для щоденних завдань і розваг. Вебсерфінг, перегляд потокового контенту чи робота з продуктивними застосунками — він забезпечує плавний і швидкий відгук.",
+          "Великий 10,2-дюймовий дисплей Retina забезпечує чудове враження від перегляду будь-якого контенту."
+        ]
+      },
+      {
+        "title": "Потужна продуктивність",
+        "text": [
+          "Відчуйте потужну продуктивність завдяки чипу A12 Bionic в iPad 10.2. Він забезпечує швидку й ефективну багатозадачність, дозволяючи плавно працювати з кількома застосунками одночасно.",
+          "Від ігор до редагування документів — iPad 10.2 легко впорається з усім."
+        ]
+      },
+      {
+        "title": "Підтримка Apple Pencil і Smart Keyboard",
+        "text": [
+          "Розкрийте свою креативність і продуктивність завдяки підтримці Apple Pencil і Smart Keyboard. Робіть нотатки, малюйте та створюйте ескізи з точністю за допомогою Apple Pencil 1-го покоління, а Smart Keyboard перетворить ваш iPad на легкий ноутбук.",
+          "iPad 10.2 адаптується до ваших потреб — незалежно від того, чи ви студент, професіонал або творча людина."
+        ]
+      }
+    ],
+    "screen": "10.2' Retina",
+    "resolution": "2160x1620",
+    "processor": "Apple A12 Bionic",
+    "ram": "3GB",
+    "camera": "8MP",
+    "zoom": "Digital zoom up to 5x",
+    "cell": [
+      "Not applicable"
+    ]
+  },
+  {
+    "id": "apple-ipad-10-2-2020-32gb-gold",
+    "category": "tablets",
+    "namespaceId": "apple-ipad-10-2-2020",
+    "name": "Apple iPad 10.2 (2020) 32GB Золотий",
+    "capacityAvailable": [
+      "32GB",
+      "128GB"
+    ],
+    "capacity": "32GB",
+    "priceRegular": 329,
+    "priceDiscount": 299,
+    "colorsAvailable": [
+      "gold",
+      "silver",
+      "spacegray"
+    ],
+    "color": "gold",
+    "images": [
+      "img/tablets/apple-ipad-10-2-2020/gold/00.webp",
+      "img/tablets/apple-ipad-10-2-2020/gold/01.webp",
+      "img/tablets/apple-ipad-10-2-2020/gold/02.webp",
+      "img/tablets/apple-ipad-10-2-2020/gold/03.webp"
+    ],
+    "description": [
+      {
+        "title": "Універсальний і доступний",
+        "text": [
+          "Apple iPad 10.2 (2020) — універсальний і доступний варіант для щоденних завдань і розваг. Вебсерфінг, перегляд потокового контенту чи робота з продуктивними застосунками — він забезпечує плавний і швидкий відгук.",
+          "Великий 10,2-дюймовий дисплей Retina забезпечує чудове враження від перегляду будь-якого контенту."
+        ]
+      },
+      {
+        "title": "Потужна продуктивність",
+        "text": [
+          "Відчуйте потужну продуктивність завдяки чипу A12 Bionic в iPad 10.2. Він забезпечує швидку й ефективну багатозадачність, дозволяючи плавно працювати з кількома застосунками одночасно.",
+          "Від ігор до редагування документів — iPad 10.2 легко впорається з усім."
+        ]
+      },
+      {
+        "title": "Підтримка Apple Pencil і Smart Keyboard",
+        "text": [
+          "Розкрийте свою креативність і продуктивність завдяки підтримці Apple Pencil і Smart Keyboard. Робіть нотатки, малюйте та створюйте ескізи з точністю за допомогою Apple Pencil 1-го покоління, а Smart Keyboard перетворить ваш iPad на легкий ноутбук.",
+          "iPad 10.2 адаптується до ваших потреб — незалежно від того, чи ви студент, професіонал або творча людина."
+        ]
+      }
+    ],
+    "screen": "10.2' Retina",
+    "resolution": "2160x1620",
+    "processor": "Apple A12 Bionic",
+    "ram": "3GB",
+    "camera": "8MP",
+    "zoom": "Digital zoom up to 5x",
+    "cell": [
+      "Not applicable"
+    ]
+  },
+  {
+    "id": "apple-ipad-10-2-2020-32gb-silver",
+    "category": "tablets",
+    "namespaceId": "apple-ipad-10-2-2020",
+    "name": "Apple iPad 10.2 (2020) 32GB Сріблястий",
+    "capacityAvailable": [
+      "32GB",
+      "128GB"
+    ],
+    "capacity": "32GB",
+    "priceRegular": 329,
+    "priceDiscount": 299,
+    "colorsAvailable": [
+      "gold",
+      "silver",
+      "spacegray"
+    ],
+    "color": "silver",
+    "images": [
+      "img/tablets/apple-ipad-10-2-2020/silver/00.webp",
+      "img/tablets/apple-ipad-10-2-2020/silver/01.webp",
+      "img/tablets/apple-ipad-10-2-2020/silver/02.webp",
+      "img/tablets/apple-ipad-10-2-2020/silver/03.webp"
+    ],
+    "description": [
+      {
+        "title": "Універсальний і доступний",
+        "text": [
+          "Apple iPad 10.2 (2020) — універсальний і доступний варіант для щоденних завдань і розваг. Вебсерфінг, перегляд потокового контенту чи робота з продуктивними застосунками — він забезпечує плавний і швидкий відгук.",
+          "Великий 10,2-дюймовий дисплей Retina забезпечує чудове враження від перегляду будь-якого контенту."
+        ]
+      },
+      {
+        "title": "Потужна продуктивність",
+        "text": [
+          "Відчуйте потужну продуктивність завдяки чипу A12 Bionic в iPad 10.2. Він забезпечує швидку й ефективну багатозадачність, дозволяючи плавно працювати з кількома застосунками одночасно.",
+          "Від ігор до редагування документів — iPad 10.2 легко впорається з усім."
+        ]
+      },
+      {
+        "title": "Підтримка Apple Pencil і Smart Keyboard",
+        "text": [
+          "Розкрийте свою креативність і продуктивність завдяки підтримці Apple Pencil і Smart Keyboard. Робіть нотатки, малюйте та створюйте ескізи з точністю за допомогою Apple Pencil 1-го покоління, а Smart Keyboard перетворить ваш iPad на легкий ноутбук.",
+          "iPad 10.2 адаптується до ваших потреб — незалежно від того, чи ви студент, професіонал або творча людина."
+        ]
+      }
+    ],
+    "screen": "10.2' Retina",
+    "resolution": "2160x1620",
+    "processor": "Apple A12 Bionic",
+    "ram": "3GB",
+    "camera": "8MP",
+    "zoom": "Digital zoom up to 5x",
+    "cell": [
+      "Not applicable"
+    ]
+  },
+  {
+    "id": "apple-ipad-10-2-2020-128gb-silver",
+    "category": "tablets",
+    "namespaceId": "apple-ipad-10-2-2020",
+    "name": "Apple iPad 10.2 (2020) 128GB Сріблястий",
+    "capacityAvailable": [
+      "32GB",
+      "128GB"
+    ],
+    "capacity": "128GB",
+    "priceRegular": 429,
+    "priceDiscount": 399,
+    "colorsAvailable": [
+      "gold",
+      "silver",
+      "spacegray"
+    ],
+    "color": "silver",
+    "images": [
+      "img/tablets/apple-ipad-10-2-2020/silver/00.webp",
+      "img/tablets/apple-ipad-10-2-2020/silver/01.webp",
+      "img/tablets/apple-ipad-10-2-2020/silver/02.webp",
+      "img/tablets/apple-ipad-10-2-2020/silver/03.webp"
+    ],
+    "description": [
+      {
+        "title": "Універсальний і доступний",
+        "text": [
+          "Apple iPad 10.2 (2020) — універсальний і доступний варіант для щоденних завдань і розваг. Вебсерфінг, перегляд потокового контенту чи робота з продуктивними застосунками — він забезпечує плавний і швидкий відгук.",
+          "Великий 10,2-дюймовий дисплей Retina забезпечує чудове враження від перегляду будь-якого контенту."
+        ]
+      },
+      {
+        "title": "Потужна продуктивність",
+        "text": [
+          "Відчуйте потужну продуктивність завдяки чипу A12 Bionic в iPad 10.2. Він забезпечує швидку й ефективну багатозадачність, дозволяючи плавно працювати з кількома застосунками одночасно.",
+          "Від ігор до редагування документів — iPad 10.2 легко впорається з усім."
+        ]
+      },
+      {
+        "title": "Підтримка Apple Pencil і Smart Keyboard",
+        "text": [
+          "Розкрийте свою креативність і продуктивність завдяки підтримці Apple Pencil і Smart Keyboard. Робіть нотатки, малюйте та створюйте ескізи з точністю за допомогою Apple Pencil 1-го покоління, а Smart Keyboard перетворить ваш iPad на легкий ноутбук.",
+          "iPad 10.2 адаптується до ваших потреб — незалежно від того, чи ви студент, професіонал або творча людина."
+        ]
+      }
+    ],
+    "screen": "10.2' Retina",
+    "resolution": "2160x1620",
+    "processor": "Apple A12 Bionic",
+    "ram": "3GB",
+    "camera": "8MP",
+    "zoom": "Digital zoom up to 5x",
+    "cell": [
+      "Not applicable"
+    ]
+  },
+  {
+    "id": "apple-ipad-10-2-2020-128gb-spacegray",
+    "category": "tablets",
+    "namespaceId": "apple-ipad-10-2-2020",
+    "name": "Apple iPad 10.2 (2020) 128GB Космічний сірий",
+    "capacityAvailable": [
+      "32GB",
+      "128GB"
+    ],
+    "capacity": "128GB",
+    "priceRegular": 429,
+    "priceDiscount": 399,
+    "colorsAvailable": [
+      "gold",
+      "silver",
+      "spacegray"
+    ],
+    "color": "spacegray",
+    "images": [
+      "img/tablets/apple-ipad-10-2-2020/spacegray/00.webp",
+      "img/tablets/apple-ipad-10-2-2020/spacegray/01.webp",
+      "img/tablets/apple-ipad-10-2-2020/spacegray/02.webp",
+      "img/tablets/apple-ipad-10-2-2020/spacegray/03.webp"
+    ],
+    "description": [
+      {
+        "title": "Універсальний і доступний",
+        "text": [
+          "Apple iPad 10.2 (2020) — універсальний і доступний варіант для щоденних завдань і розваг. Вебсерфінг, перегляд потокового контенту чи робота з продуктивними застосунками — він забезпечує плавний і швидкий відгук.",
+          "Великий 10,2-дюймовий дисплей Retina забезпечує чудове враження від перегляду будь-якого контенту."
+        ]
+      },
+      {
+        "title": "Потужна продуктивність",
+        "text": [
+          "Відчуйте потужну продуктивність завдяки чипу A12 Bionic в iPad 10.2. Він забезпечує швидку й ефективну багатозадачність, дозволяючи плавно працювати з кількома застосунками одночасно.",
+          "Від ігор до редагування документів — iPad 10.2 легко впорається з усім."
+        ]
+      },
+      {
+        "title": "Підтримка Apple Pencil і Smart Keyboard",
+        "text": [
+          "Розкрийте свою креативність і продуктивність завдяки підтримці Apple Pencil і Smart Keyboard. Робіть нотатки, малюйте та створюйте ескізи з точністю за допомогою Apple Pencil 1-го покоління, а Smart Keyboard перетворить ваш iPad на легкий ноутбук.",
+          "iPad 10.2 адаптується до ваших потреб — незалежно від того, чи ви студент, професіонал або творча людина."
+        ]
+      }
+    ],
+    "screen": "10.2' Retina",
+    "resolution": "2160x1620",
+    "processor": "Apple A12 Bionic",
+    "ram": "3GB",
+    "camera": "8MP",
+    "zoom": "Digital zoom up to 5x",
+    "cell": [
+      "Not applicable"
+    ]
+  },
+  {
+    "id": "apple-ipad-10-2-2020-32gb-spacegray",
+    "category": "tablets",
+    "namespaceId": "apple-ipad-10-2-2020",
+    "name": "Apple iPad 10.2 (2020) 32GB Космічний сірий",
+    "capacityAvailable": [
+      "32GB",
+      "128GB"
+    ],
+    "capacity": "32GB",
+    "priceRegular": 329,
+    "priceDiscount": 299,
+    "colorsAvailable": [
+      "gold",
+      "silver",
+      "spacegray"
+    ],
+    "color": "spacegray",
+    "images": [
+      "img/tablets/apple-ipad-10-2-2020/spacegray/00.webp",
+      "img/tablets/apple-ipad-10-2-2020/spacegray/01.webp",
+      "img/tablets/apple-ipad-10-2-2020/spacegray/02.webp",
+      "img/tablets/apple-ipad-10-2-2020/spacegray/03.webp"
+    ],
+    "description": [
+      {
+        "title": "Універсальний і доступний",
+        "text": [
+          "Apple iPad 10.2 (2020) — універсальний і доступний варіант для щоденних завдань і розваг. Вебсерфінг, перегляд потокового контенту чи робота з продуктивними застосунками — він забезпечує плавний і швидкий відгук.",
+          "Великий 10,2-дюймовий дисплей Retina забезпечує чудове враження від перегляду будь-якого контенту."
+        ]
+      },
+      {
+        "title": "Потужна продуктивність",
+        "text": [
+          "Відчуйте потужну продуктивність завдяки чипу A12 Bionic в iPad 10.2. Він забезпечує швидку й ефективну багатозадачність, дозволяючи плавно працювати з кількома застосунками одночасно.",
+          "Від ігор до редагування документів — iPad 10.2 легко впорається з усім."
+        ]
+      },
+      {
+        "title": "Підтримка Apple Pencil і Smart Keyboard",
+        "text": [
+          "Розкрийте свою креативність і продуктивність завдяки підтримці Apple Pencil і Smart Keyboard. Робіть нотатки, малюйте та створюйте ескізи з точністю за допомогою Apple Pencil 1-го покоління, а Smart Keyboard перетворить ваш iPad на легкий ноутбук.",
+          "iPad 10.2 адаптується до ваших потреб — незалежно від того, чи ви студент, професіонал або творча людина."
+        ]
+      }
+    ],
+    "screen": "10.2' Retina",
+    "resolution": "2160x1620",
+    "processor": "Apple A12 Bionic",
+    "ram": "3GB",
+    "camera": "8MP",
+    "zoom": "Digital zoom up to 5x",
+    "cell": [
+      "Not applicable"
+    ]
+  },
+  {
+    "id": "apple-ipad-mini-5th-gen-256gb-silver",
+    "category": "tablets",
+    "namespaceId": "apple-ipad-mini-5th-gen",
+    "name": "Apple iPad Mini (5th Gen) 256GB Сріблястий",
+    "capacityAvailable": [
+      "64GB",
+      "256GB"
+    ],
+    "capacity": "256GB",
+    "priceRegular": 549,
+    "priceDiscount": 499,
+    "colorsAvailable": [
+      "silver",
+      "spacegray",
+      "gold"
+    ],
+    "color": "silver",
+    "images": [
+      "img/tablets/apple-ipad-mini-5th-gen/silver/00.webp",
+      "img/tablets/apple-ipad-mini-5th-gen/silver/01.webp"
+    ],
+    "description": [
+      {
+        "title": "Компактний і потужний",
+        "text": [
+          "Apple iPad Mini (5-го покоління) поєднує компактний розмір із серйозною продуктивністю. У дорозі чи вдома — він чудово підходить для роботи, розваг і творчості.",
+          "Завдяки чипу A12 Bionic iPad Mini працює швидко й ефективно, дозволяючи плавно запускати вимогливі застосунки та ігри."
+        ]
+      },
+      {
+        "title": "Дисплей Retina і True Tone",
+        "text": [
+          "Насолоджуйтеся вражаючим зображенням на дисплеї Retina в iPad Mini. Технологія True Tone налаштовує колірну температуру екрана відповідно до навколишнього освітлення, забезпечуючи природне й комфортне сприйняття.",
+          "Від читання електронних книжок до перегляду фото — дисплей iPad Mini оживляє контент яскравими кольорами та чіткими деталями."
+        ]
+      },
+      {
+        "title": "Підтримка Apple Pencil і Smart Keyboard",
+        "text": [
+          "Розкрийте свою креативність і продуктивність завдяки підтримці Apple Pencil і Smart Keyboard. Робіть нотатки, створюйте ескізи та точно додавайте позначки до документів за допомогою Apple Pencil 1-го покоління, а Smart Keyboard перетворить iPad Mini на універсальну робочу станцію.",
+          "iPad Mini адаптується до ваших потреб, стаючи потужним інструментом і для роботи, і для розваг."
+        ]
+      }
+    ],
+    "screen": "7.9' Retina",
+    "resolution": "2048x1536",
+    "processor": "Apple A12 Bionic",
+    "ram": "3GB",
+    "camera": "8MP",
+    "zoom": "Digital zoom up to 5x",
+    "cell": [
+      "Not applicable"
+    ]
+  },
+  {
+    "id": "apple-ipad-mini-5th-gen-64gb-silver",
+    "category": "tablets",
+    "namespaceId": "apple-ipad-mini-5th-gen",
+    "name": "Apple iPad Mini (5th Gen) 64GB Сріблястий",
+    "capacityAvailable": [
+      "64GB",
+      "256GB"
+    ],
+    "capacity": "64GB",
+    "priceRegular": 549,
+    "priceDiscount": 499,
+    "colorsAvailable": [
+      "silver",
+      "spacegray",
+      "gold"
+    ],
+    "color": "silver",
+    "images": [
+      "img/tablets/apple-ipad-mini-5th-gen/silver/00.webp",
+      "img/tablets/apple-ipad-mini-5th-gen/silver/01.webp"
+    ],
+    "description": [
+      {
+        "title": "Компактний і потужний",
+        "text": [
+          "Apple iPad Mini (5-го покоління) поєднує компактний розмір із серйозною продуктивністю. У дорозі чи вдома — він чудово підходить для роботи, розваг і творчості.",
+          "Завдяки чипу A12 Bionic iPad Mini працює швидко й ефективно, дозволяючи плавно запускати вимогливі застосунки та ігри."
+        ]
+      },
+      {
+        "title": "Дисплей Retina і True Tone",
+        "text": [
+          "Насолоджуйтеся вражаючим зображенням на дисплеї Retina в iPad Mini. Технологія True Tone налаштовує колірну температуру екрана відповідно до навколишнього освітлення, забезпечуючи природне й комфортне сприйняття.",
+          "Від читання електронних книжок до перегляду фото — дисплей iPad Mini оживляє контент яскравими кольорами та чіткими деталями."
+        ]
+      },
+      {
+        "title": "Підтримка Apple Pencil і Smart Keyboard",
+        "text": [
+          "Розкрийте свою креативність і продуктивність завдяки підтримці Apple Pencil і Smart Keyboard. Робіть нотатки, створюйте ескізи та точно додавайте позначки до документів за допомогою Apple Pencil 1-го покоління, а Smart Keyboard перетворить iPad Mini на універсальну робочу станцію.",
+          "iPad Mini адаптується до ваших потреб, стаючи потужним інструментом і для роботи, і для розваг."
+        ]
+      }
+    ],
+    "screen": "7.9' Retina",
+    "resolution": "2048x1536",
+    "processor": "Apple A12 Bionic",
+    "ram": "3GB",
+    "camera": "8MP",
+    "zoom": "Digital zoom up to 5x",
+    "cell": [
+      "Not applicable"
+    ]
+  },
+  {
+    "id": "apple-ipad-mini-5th-gen-64gb-spacegray",
+    "category": "tablets",
+    "namespaceId": "apple-ipad-mini-5th-gen",
+    "name": "Apple iPad Mini (5th Gen) 64GB Космічний сірий",
+    "capacityAvailable": [
+      "64GB",
+      "256GB"
+    ],
+    "capacity": "64GB",
+    "priceRegular": 549,
+    "priceDiscount": 499,
+    "colorsAvailable": [
+      "silver",
+      "spacegray",
+      "gold"
+    ],
+    "color": "spacegray",
+    "images": [
+      "img/tablets/apple-ipad-mini-5th-gen/spacegray/00.webp",
+      "img/tablets/apple-ipad-mini-5th-gen/spacegray/01.webp"
+    ],
+    "description": [
+      {
+        "title": "Компактний і потужний",
+        "text": [
+          "Apple iPad Mini (5-го покоління) поєднує компактний розмір із серйозною продуктивністю. У дорозі чи вдома — він чудово підходить для роботи, розваг і творчості.",
+          "Завдяки чипу A12 Bionic iPad Mini працює швидко й ефективно, дозволяючи плавно запускати вимогливі застосунки та ігри."
+        ]
+      },
+      {
+        "title": "Дисплей Retina і True Tone",
+        "text": [
+          "Насолоджуйтеся вражаючим зображенням на дисплеї Retina в iPad Mini. Технологія True Tone налаштовує колірну температуру екрана відповідно до навколишнього освітлення, забезпечуючи природне й комфортне сприйняття.",
+          "Від читання електронних книжок до перегляду фото — дисплей iPad Mini оживляє контент яскравими кольорами та чіткими деталями."
+        ]
+      },
+      {
+        "title": "Підтримка Apple Pencil і Smart Keyboard",
+        "text": [
+          "Розкрийте свою креативність і продуктивність завдяки підтримці Apple Pencil і Smart Keyboard. Робіть нотатки, створюйте ескізи та точно додавайте позначки до документів за допомогою Apple Pencil 1-го покоління, а Smart Keyboard перетворить iPad Mini на універсальну робочу станцію.",
+          "iPad Mini адаптується до ваших потреб, стаючи потужним інструментом і для роботи, і для розваг."
+        ]
+      }
+    ],
+    "screen": "7.9' Retina",
+    "resolution": "2048x1536",
+    "processor": "Apple A12 Bionic",
+    "ram": "3GB",
+    "camera": "8MP",
+    "zoom": "Digital zoom up to 5x",
+    "cell": [
+      "Not applicable"
+    ]
+  },
+  {
+    "id": "apple-ipad-mini-5th-gen-256gb-spacegray",
+    "category": "tablets",
+    "namespaceId": "apple-ipad-mini-5th-gen",
+    "name": "Apple iPad Mini (5th Gen) 256GB Космічний сірий",
+    "capacityAvailable": [
+      "64GB",
+      "256GB"
+    ],
+    "capacity": "256GB",
+    "priceRegular": 549,
+    "priceDiscount": 499,
+    "colorsAvailable": [
+      "silver",
+      "spacegray",
+      "gold"
+    ],
+    "color": "spacegray",
+    "images": [
+      "img/tablets/apple-ipad-mini-5th-gen/spacegray/00.webp",
+      "img/tablets/apple-ipad-mini-5th-gen/spacegray/01.webp"
+    ],
+    "description": [
+      {
+        "title": "Компактний і потужний",
+        "text": [
+          "Apple iPad Mini (5-го покоління) поєднує компактний розмір із серйозною продуктивністю. У дорозі чи вдома — він чудово підходить для роботи, розваг і творчості.",
+          "Завдяки чипу A12 Bionic iPad Mini працює швидко й ефективно, дозволяючи плавно запускати вимогливі застосунки та ігри."
+        ]
+      },
+      {
+        "title": "Дисплей Retina і True Tone",
+        "text": [
+          "Насолоджуйтеся вражаючим зображенням на дисплеї Retina в iPad Mini. Технологія True Tone налаштовує колірну температуру екрана відповідно до навколишнього освітлення, забезпечуючи природне й комфортне сприйняття.",
+          "Від читання електронних книжок до перегляду фото — дисплей iPad Mini оживляє контент яскравими кольорами та чіткими деталями."
+        ]
+      },
+      {
+        "title": "Підтримка Apple Pencil і Smart Keyboard",
+        "text": [
+          "Розкрийте свою креативність і продуктивність завдяки підтримці Apple Pencil і Smart Keyboard. Робіть нотатки, створюйте ескізи та точно додавайте позначки до документів за допомогою Apple Pencil 1-го покоління, а Smart Keyboard перетворить iPad Mini на універсальну робочу станцію.",
+          "iPad Mini адаптується до ваших потреб, стаючи потужним інструментом і для роботи, і для розваг."
+        ]
+      }
+    ],
+    "screen": "7.9' Retina",
+    "resolution": "2048x1536",
+    "processor": "Apple A12 Bionic",
+    "ram": "3GB",
+    "camera": "8MP",
+    "zoom": "Digital zoom up to 5x",
+    "cell": [
+      "Not applicable"
+    ]
+  },
+  {
+    "id": "apple-ipad-mini-5th-gen-256gb-gold",
+    "category": "tablets",
+    "namespaceId": "apple-ipad-mini-5th-gen",
+    "name": "Apple iPad Mini (5th Gen) 256GB Золотий",
+    "capacityAvailable": [
+      "64GB",
+      "256GB"
+    ],
+    "capacity": "256GB",
+    "priceRegular": 549,
+    "priceDiscount": 499,
+    "colorsAvailable": [
+      "silver",
+      "spacegray",
+      "gold"
+    ],
+    "color": "gold",
+    "images": [
+      "img/tablets/apple-ipad-mini-5th-gen/gold/00.webp",
+      "img/tablets/apple-ipad-mini-5th-gen/gold/01.webp"
+    ],
+    "description": [
+      {
+        "title": "Компактний і потужний",
+        "text": [
+          "Apple iPad Mini (5-го покоління) поєднує компактний розмір із серйозною продуктивністю. У дорозі чи вдома — він чудово підходить для роботи, розваг і творчості.",
+          "Завдяки чипу A12 Bionic iPad Mini працює швидко й ефективно, дозволяючи плавно запускати вимогливі застосунки та ігри."
+        ]
+      },
+      {
+        "title": "Дисплей Retina і True Tone",
+        "text": [
+          "Насолоджуйтеся вражаючим зображенням на дисплеї Retina в iPad Mini. Технологія True Tone налаштовує колірну температуру екрана відповідно до навколишнього освітлення, забезпечуючи природне й комфортне сприйняття.",
+          "Від читання електронних книжок до перегляду фото — дисплей iPad Mini оживляє контент яскравими кольорами та чіткими деталями."
+        ]
+      },
+      {
+        "title": "Підтримка Apple Pencil і Smart Keyboard",
+        "text": [
+          "Розкрийте свою креативність і продуктивність завдяки підтримці Apple Pencil і Smart Keyboard. Робіть нотатки, створюйте ескізи та точно додавайте позначки до документів за допомогою Apple Pencil 1-го покоління, а Smart Keyboard перетворить iPad Mini на універсальну робочу станцію.",
+          "iPad Mini адаптується до ваших потреб, стаючи потужним інструментом і для роботи, і для розваг."
+        ]
+      }
+    ],
+    "screen": "7.9' Retina",
+    "resolution": "2048x1536",
+    "processor": "Apple A12 Bionic",
+    "ram": "3GB",
+    "camera": "8MP",
+    "zoom": "Digital zoom up to 5x",
+    "cell": [
+      "Not applicable"
+    ]
+  },
+  {
+    "id": "apple-ipad-mini-5th-gen-64gb-gold",
+    "category": "tablets",
+    "namespaceId": "apple-ipad-mini-5th-gen",
+    "name": "Apple iPad Mini (5th Gen) 64GB Золотий",
+    "capacityAvailable": [
+      "64GB",
+      "256GB"
+    ],
+    "capacity": "64GB",
+    "priceRegular": 549,
+    "priceDiscount": 499,
+    "colorsAvailable": [
+      "silver",
+      "spacegray",
+      "gold"
+    ],
+    "color": "gold",
+    "images": [
+      "img/tablets/apple-ipad-mini-5th-gen/gold/00.webp",
+      "img/tablets/apple-ipad-mini-5th-gen/gold/01.webp"
+    ],
+    "description": [
+      {
+        "title": "Компактний і потужний",
+        "text": [
+          "Apple iPad Mini (5-го покоління) поєднує компактний розмір із серйозною продуктивністю. У дорозі чи вдома — він чудово підходить для роботи, розваг і творчості.",
+          "Завдяки чипу A12 Bionic iPad Mini працює швидко й ефективно, дозволяючи плавно запускати вимогливі застосунки та ігри."
+        ]
+      },
+      {
+        "title": "Дисплей Retina і True Tone",
+        "text": [
+          "Насолоджуйтеся вражаючим зображенням на дисплеї Retina в iPad Mini. Технологія True Tone налаштовує колірну температуру екрана відповідно до навколишнього освітлення, забезпечуючи природне й комфортне сприйняття.",
+          "Від читання електронних книжок до перегляду фото — дисплей iPad Mini оживляє контент яскравими кольорами та чіткими деталями."
+        ]
+      },
+      {
+        "title": "Підтримка Apple Pencil і Smart Keyboard",
+        "text": [
+          "Розкрийте свою креативність і продуктивність завдяки підтримці Apple Pencil і Smart Keyboard. Робіть нотатки, створюйте ескізи та точно додавайте позначки до документів за допомогою Apple Pencil 1-го покоління, а Smart Keyboard перетворить iPad Mini на універсальну робочу станцію.",
+          "iPad Mini адаптується до ваших потреб, стаючи потужним інструментом і для роботи, і для розваг."
+        ]
+      }
+    ],
+    "screen": "7.9' Retina",
+    "resolution": "2048x1536",
+    "processor": "Apple A12 Bionic",
+    "ram": "3GB",
+    "camera": "8MP",
+    "zoom": "Digital zoom up to 5x",
+    "cell": [
+      "Not applicable"
+    ]
+  }
+]
