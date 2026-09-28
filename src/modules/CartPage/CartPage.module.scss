@@ -1,0 +1,72 @@
+@use '../shared/styles/mixins' as *;
+
+.wrapper {
+  @include page-width;
+
+  padding-block: var(--space-4) var(--space-7);
+}
+
+.title {
+  margin-bottom: var(--space-5);
+  font-size: var(--fs-h2);
+}
+
+.empty {
+  padding: var(--space-7) 0;
+  font-size: var(--fs-h3);
+  color: var(--color-text-secondary);
+  text-align: center;
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  align-items: flex-start;
+}
+
+@media (min-width: 1024px) {
+  .layout {
+    flex-direction: row;
+  }
+}
+
+.list {
+  flex: 1;
+  width: 100%;
+  min-width: 0;
+}
+
+.summary {
+  @include card-surface;
+
+  width: 100%;
+  padding: var(--space-4);
+  text-align: center;  
+
+@media (min-width: 1024px) {
+    position: sticky;
+    top: calc(var(--header-height) + var(--space-4));
+    flex-shrink: 0;
+    width: 320px;
+  }
+}
+
+.total {
+  margin-bottom: var(--space-1);
+  font-family: var(--font-display);
+  font-size: var(--fs-h1);
+  font-weight: 800;
+}
+
+.totalCount {
+  margin-bottom: var(--space-4);
+  font-size: var(--fs-small);
+  color: var(--color-text-secondary);
+}
+
+.checkoutButton {
+  @include pill-button;
+
+  width: 100%;
+}

@@ -1,0 +1,19 @@
+@use '../../styles/mixins' as *;
+
+.button {
+  @include reset-button;
+
+  display: inline-flex;
+  gap: var(--space-1);
+  align-items: center;
+
+  margin-bottom: var(--space-4);
+
+  font-size: var(--fs-small);
+  font-weight: 600;
+  color: var(--color-text-secondary);
+
+  &:hover {
+    color: var(--color-primary-light);
+  }
+}

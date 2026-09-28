@@ -1,0 +1,62 @@
+@use '../shared/styles/mixins' as *;
+
+.wrapper {
+  @include page-width;
+
+  padding-block: var(--space-5) var(--space-7);
+}
+
+.hiddenTitle {
+  @include visually-hidden;
+}
+
+.slider {
+  margin-bottom: var(--space-7);
+}
+
+.categories {
+  margin-bottom: var(--space-7);
+}
+
+.sectionTitle {
+  margin-bottom: var(--space-4);
+  font-size: var(--fs-h2);
+}
+
+.categoryGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.categoryCard {
+  @include card-surface;
+  @include scale-on-hover(1.02);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  min-height: 220px;
+  padding: var(--space-4);
+
+  background: linear-gradient(
+    160deg,
+    var(--color-surface-raised),
+    var(--color-surface)
+  );
+}
+
+.categoryName {
+  margin-bottom: var(--space-1);
+  font-size: var(--fs-h3);
+}
+
+.categoryCount {
+  font-size: var(--fs-small);
+  color: var(--color-text-secondary);
+}

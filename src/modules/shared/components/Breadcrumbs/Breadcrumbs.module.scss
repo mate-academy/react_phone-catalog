@@ -1,0 +1,33 @@
+.list {
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+
+  margin-bottom: var(--space-4);
+
+  font-size: var(--fs-small);
+  color: var(--color-text-secondary);
+}
+
+.item {
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+
+  &:hover {
+    color: var(--color-primary-light);
+  }
+}
+
+.separator {
+  color: var(--color-text-muted);
+}
+
+.current {
+  color: var(--color-text);
+}

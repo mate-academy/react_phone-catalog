@@ -1,0 +1,177 @@
+@use '../../styles/mixins' as *;
+
+.header {
+  position: sticky;
+  z-index: 20;
+  top: 0;
+
+  min-height: var(--header-height);
+  border-bottom: 1px solid var(--color-border);
+
+  background-color: var(--color-bg);
+}
+
+.inner {
+  @include page-width;
+
+  display: flex;
+  gap: var(--space-5);
+  align-items: center;
+
+  width: 100%;
+  height: 100%;
+  padding-inline: var(--page-padding-inline);
+}
+
+.logo {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--color-text);
+  letter-spacing: -0.02em;
+
+  span {
+    color: var(--color-primary-light);
+  }
+}
+
+.nav {
+  display: none;
+  gap: var(--space-4);
+
+  @media (min-width: 768px) {
+    display: flex;
+  }
+}
+
+.navLink {
+  padding: var(--space-2) 0;
+  border-bottom: 2px solid transparent;
+
+  font-size: var(--fs-small);
+  font-weight: 600;
+  color: var(--color-text-secondary);
+
+  transition: color var(--transition-fast);
+
+  &:hover {
+    color: var(--color-text);
+  }
+
+  &.active {
+    border-color: var(--color-primary);
+    color: var(--color-text);
+  }
+}
+
+.search {
+  display: none;
+  margin-left: auto;
+
+  @media (min-width: 640px) {
+    display: block;
+  }
+}
+
+.actions {
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+  margin-left: auto;
+
+  @media (min-width: 640px) {
+    margin-left: 0;
+  }
+}
+
+.iconLink {
+  @include icon-button;
+
+  position: relative;
+  text-decoration: none;
+}
+
+.badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 18px;
+  height: 20px;
+  padding: 0 4px;
+  border: 2px solid var(--color-bg);
+  border-radius: var(--radius-pill);
+
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
+
+  background-color: var(--color-primary);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.wrapper {
+  display: inline-flex;
+  gap: var(--space-2);
+  align-items: center;
+  justify-content: center;
+
+  margin-top: var(--space-6);
+  margin-inline: auto; // центрирует сам компактный блок внутри родителя
+}
+
+.ellipsis {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 40px;
+  height: 40px;
+
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+.menuButton {
+  @include icon-button;
+
+  @media (min-width: 768px) {
+    display: none;
+  }
+}
+
+.mobileNav {
+  @include page-width;
+
+  position: fixed;
+  z-index: 30;
+  inset: var(--header-height) 0 0 0;
+
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+
+  padding: var(--space-4) var(--page-padding-inline);
+
+  background-color: var(--color-bg);
+
+  @media (min-width: 768px) {
+    display: none;
+  }
+}
+
+.mobileSearchBar {
+  display: block;
+  padding: var(--space-3) var(--page-padding-inline);
+  border-top: 1px solid var(--color-border);
+
+  @media (min-width: 640px) {
+    display: none;
+  }
+}

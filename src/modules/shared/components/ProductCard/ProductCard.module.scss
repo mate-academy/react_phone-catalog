@@ -1,0 +1,143 @@
+@use '../../styles/mixins' as *;
+
+.card {
+  @include card-surface;
+
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: var(--space-4);
+}
+
+.imageLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-4);
+}
+
+.image {
+  max-height: 176px;
+  object-fit: contain;
+
+  @include scale-on-hover(1.1);
+}
+
+.name {
+  margin-bottom: var(--space-3);
+  font-size: var(--fs-small);
+  font-weight: 500;
+
+  @include truncate-lines(2);
+
+  &Link {
+    color: var(--color-text);
+
+    &:hover {
+      color: var(--color-primary-light);
+    }
+  }
+}
+
+.prices {
+  display: flex;
+  gap: var(--space-2);
+  align-items: baseline;
+  margin-bottom: var(--space-4);
+}
+
+.price {
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  font-weight: 700;
+}
+
+.fullPrice {
+  font-size: var(--fs-small);
+  color: var(--color-text-muted);
+  text-decoration: line-through;
+}
+
+.divider {
+  height: 1px;
+  margin-bottom: var(--space-4);
+  background-color: var(--color-border);
+}
+
+.specs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-2);
+
+  margin-bottom: var(--space-4);
+
+  font-size: var(--fs-tiny);
+  color: var(--color-text-secondary);
+}
+
+.spec {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+
+  dt {
+    color: var(--color-text-muted);
+  }
+
+  dd {
+    margin: 0;
+    font-weight: 500;
+    color: var(--color-text);
+  }
+}
+
+.actions {
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+  margin-top: auto;
+}
+
+.addButton {
+  @include pill-button;
+
+  flex: 1;
+  min-width: 0;
+
+  &.added {
+    border: 1px solid var(--color-primary);
+    color: var(--color-primary-light);
+    background-color: var(--color-surface-raised);
+
+    &:hover {
+      background-color: var(--color-surface-raised);
+    }
+  }
+}
+
+.favButton {
+  @include icon-button;
+
+  flex-shrink: 0;
+
+  &.active {
+    border-color: var(--color-danger);
+    color: var(--color-danger);
+  }
+}
+
+@media (max-width: 639px) {
+  .actions {
+    gap: var(--space-1);
+  }
+
+  .addButton {
+    padding: 0 10px;
+    font-size: var(--fs-tiny);
+  }
+
+  .favButton {
+    width: 36px;
+    height: 36px;
+  }
+}

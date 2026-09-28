@@ -1,0 +1,18 @@
+@use '../shared/styles/mixins' as *;
+
+.wrapper {
+  @include page-width;
+
+  padding-block: var(--space-4) var(--space-7);
+}
+
+.title {
+  margin-bottom: var(--space-1);
+  font-size: var(--fs-h2);
+}
+
+.count {
+  margin-bottom: var(--space-5);
+  font-size: var(--fs-small);
+  color: var(--color-text-secondary);
+}
