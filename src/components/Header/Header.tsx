@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { NavLink, Link, useLocation, useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
 import { useStore } from '../../context/StoreContext';
+import { useDebounce } from '../../hooks/useDebounce';
 import styles from './Header.module.scss';
 
 export const Header = () => {
@@ -21,12 +22,8 @@ export const Header = () => {
 
   const queryParam = searchParams.get('query') || '';
   const [appliedQuery, setAppliedQuery] = useState(queryParam);
+  const debouncedQuery = useDebounce(appliedQuery, 500);
 
-  useEffect(() => {
-    setAppliedQuery(queryParam);
-  }, [queryParam]);
-
-  // Debounce функция для обновления URL
   const updateQueryInUrl = useCallback(
     (newQuery: string) => {
       const params = new URLSearchParams(searchParams);
@@ -43,14 +40,14 @@ export const Header = () => {
   );
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      if (appliedQuery !== queryParam) {
-        updateQueryInUrl(appliedQuery);
-      }
-    }, 500);
+    setAppliedQuery(queryParam);
+  }, [queryParam]);
 
-    return () => clearTimeout(timer);
-  }, [appliedQuery, queryParam, updateQueryInUrl]);
+  useEffect(() => {
+    if (debouncedQuery !== queryParam) {
+      updateQueryInUrl(debouncedQuery);
+    }
+  }, [debouncedQuery, queryParam, updateQueryInUrl]);
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setAppliedQuery(e.target.value);

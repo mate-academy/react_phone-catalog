@@ -14,7 +14,6 @@ export const Breadcrumbs = () => {
       {paths.map((path, index) => {
         const isLast = index === paths.length - 1;
         const to = `/${paths.slice(0, index + 1).join('/')}`;
-        // Форматуємо текст: прибираємо дефіси та робимо першу літеру великою (для категорій)
         const title = path.replace(/-/g, ' ');
 
         return (

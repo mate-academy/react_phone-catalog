@@ -10,6 +10,24 @@ import { ProductsSlider } from '../../components/ProductsSlider';
 import { useStore } from '../../context/StoreContext';
 import styles from './ProductDetailsPage.module.scss';
 
+const mapProductDetailsToProduct = (
+  details: ProductDetails,
+  category: string,
+): Product => ({
+  id: details.id,
+  category: category,
+  itemId: details.id,
+  name: details.name,
+  fullPrice: details.priceRegular,
+  price: details.priceDiscount, // Вирішує проблему NaN у кошику
+  screen: details.screen,
+  capacity: details.capacity,
+  color: details.color,
+  ram: details.ram,
+  year: 0,
+  image: details.images[0],
+});
+
 export const ProductDetailsPage = () => {
   const { productId, category } = useParams<{
     productId: string;
@@ -76,15 +94,18 @@ export const ProductDetailsPage = () => {
 
   return (
     <div className={styles.details} data-cy="ProductDetailsPage">
-      <Breadcrumbs />
+      {/* Кнопка перенесена НАД Breadcrumbs і додано Bulma-клас відступу mb-4 */}
       <button
-        className={styles.details__back}
+        className={`${styles.details__back} mb-4`}
         onClick={() => navigate(-1)}
         data-cy="backButton"
       >
         <i className="fas fa-chevron-left"></i>
         <span>Back</span>
       </button>
+
+      <Breadcrumbs />
+
       <h1 className={styles.details__title}>{product.name}</h1>
       <div className="columns is-desktop is-variable is-8">
         <div className="column is-half-desktop">
@@ -173,17 +194,26 @@ export const ProductDetailsPage = () => {
                 className={classNames(styles['details__add-to-cart'], {
                   [styles['details__add-to-cart--added']]: inCart,
                 })}
-                onClick={() =>
-                  !inCart && addToCart(product as unknown as Product)
-                }
+                onClick={() => {
+                  if (!inCart && product && category) {
+                    addToCart(mapProductDetailsToProduct(product, category));
+                  }
+                }}
               >
                 {inCart ? 'Added to cart' : 'Add to cart'}
               </button>
+
               <button
                 className={classNames(styles.details__favorite, {
                   [styles['details__favorite--active']]: isFavorite,
                 })}
-                onClick={() => toggleFavorite(product as unknown as Product)}
+                onClick={() => {
+                  if (product && category) {
+                    toggleFavorite(
+                      mapProductDetailsToProduct(product, category),
+                    );
+                  }
+                }}
               >
                 <i className={isFavorite ? 'fas fa-heart' : 'far fa-heart'}></i>
               </button>

@@ -1,11 +1,18 @@
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { getProducts } from '../../api/api';
 import { Product } from '../../types/Product';
 import { Loader } from '../../components/Loader';
 import { ProductsList } from '../../components/ProductsList';
 import { Pagination } from '../../components/Pagination';
+import { Breadcrumbs } from '../../components/Breadcrumbs';
 import styles from './CatalogPage.module.scss';
+
+const CATEGORY_TITLES: Record<string, string> = {
+  phones: 'Mobile phones',
+  tablets: 'Tablets',
+  accessories: 'Accessories',
+};
 
 export const CatalogPage = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -19,11 +26,7 @@ export const CatalogPage = () => {
     setIsLoading(true);
     setIsError(false);
     getProducts()
-      .then(data => {
-        const filtered = data.filter(p => p.category === category);
-
-        setProducts(filtered);
-      })
+      .then(data => setProducts(data.filter(p => p.category === category)))
       .catch(() => setIsError(true))
       .finally(() => setIsLoading(false));
   }, [category]);
@@ -34,43 +37,30 @@ export const CatalogPage = () => {
   const pageParam = searchParams.get('page') || '1';
   const currentPage = parseInt(pageParam, 10) || 1;
 
-  const searchedProducts = useMemo(() => {
-    if (!query.trim()) {
-      return products;
-    }
+  const normalizedQuery = query.trim().toLowerCase();
 
-    return products.filter(p =>
-      p.name.toLowerCase().includes(query.toLowerCase().trim()),
-    );
-  }, [products, query]);
+  const searchedProducts = normalizedQuery
+    ? products.filter(p => p.name.toLowerCase().includes(normalizedQuery))
+    : products;
 
-  const sortedProducts = useMemo(() => {
-    const sorted = [...searchedProducts];
+  const sortedProducts = [...searchedProducts];
 
-    switch (sort) {
-      case 'age':
-        return sorted.sort((a, b) => b.year - a.year);
-      case 'title':
-        return sorted.sort((a, b) => a.name.localeCompare(b.name));
-      case 'price':
-        return sorted.sort((a, b) => a.price - b.price);
-      default:
-        return sorted;
-    }
-  }, [searchedProducts, sort]);
+  if (sort === 'age') {
+    sortedProducts.sort((a, b) => b.year - a.year);
+  } else if (sort === 'title') {
+    sortedProducts.sort((a, b) => a.name.localeCompare(b.name));
+  } else if (sort === 'price') {
+    sortedProducts.sort((a, b) => a.price - b.price);
+  }
 
   const perPage =
     perPageParam === 'all' ? sortedProducts.length : parseInt(perPageParam, 10);
 
-  const visibleProducts = useMemo(() => {
-    if (perPageParam === 'all') {
-      return sortedProducts;
-    }
-
-    const start = (currentPage - 1) * perPage;
-
-    return sortedProducts.slice(start, start + perPage);
-  }, [sortedProducts, currentPage, perPage, perPageParam]);
+  const start = (currentPage - 1) * perPage;
+  const visibleProducts =
+    perPageParam === 'all'
+      ? sortedProducts
+      : sortedProducts.slice(start, start + perPage);
 
   const updateParams = (key: string, value: string, defaultValue: string) => {
     const params = new URLSearchParams(searchParams);
@@ -81,7 +71,7 @@ export const CatalogPage = () => {
       params.set(key, value);
     }
 
-    if (key === 'perPage' || key === 'sort' || key === 'query') {
+    if (['perPage', 'sort', 'query'].includes(key)) {
       params.delete('page');
     }
 
@@ -90,30 +80,20 @@ export const CatalogPage = () => {
 
   const showPagination =
     perPageParam !== 'all' && sortedProducts.length > perPage;
-
   const hasNoSearchResults =
     !isLoading &&
     !isError &&
     products.length > 0 &&
     searchedProducts.length === 0;
 
-  const getCategoryTitle = (cat: string) => {
-    switch (cat) {
-      case 'phones':
-        return 'Phones';
-      case 'tablets':
-        return 'Tablets';
-      case 'accessories':
-        return 'Accessories';
-      default:
-        return cat.charAt(0).toUpperCase() + cat.slice(1);
-    }
-  };
-
   return (
     <div className={styles.catalog} data-cy="CatalogPage">
-      <h1 className={styles.catalog__title}>{getCategoryTitle(category)}</h1>
+      <Breadcrumbs />
+      <h1 className={styles.catalog__title}>
+        {CATEGORY_TITLES[category] || category}
+      </h1>
       <p className={styles.catalog__count}>{searchedProducts.length} models</p>
+
       {!isLoading && !isError && searchedProducts.length > 0 && (
         <div className={styles.catalog__filters}>
           <div className={styles.catalog__filter}>
@@ -156,7 +136,9 @@ export const CatalogPage = () => {
           </div>
         </div>
       )}
+
       {isLoading && <Loader />}
+
       {isError && (
         <div className="has-text-danger">
           Something went wrong.
@@ -168,10 +150,13 @@ export const CatalogPage = () => {
           </button>
         </div>
       )}
+
       {!isLoading && !isError && products.length === 0 && (
         <p>There are no {category} yet</p>
       )}
+
       {hasNoSearchResults && <p>There are no {category} matching the query</p>}
+
       {!isLoading && !isError && searchedProducts.length > 0 && (
         <>
           <ProductsList products={visibleProducts} />

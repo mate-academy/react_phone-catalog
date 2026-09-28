@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState } from 'react';
 import { PicturesSlider } from '../../components/PicturesSlider';
 import { ProductsSlider } from '../../components/ProductsSlider';
 import { ShopByCategory } from '../../components/ShopByCategory';
@@ -6,7 +6,6 @@ import { getProducts } from '../../api/api';
 import { Product } from '../../types/Product';
 import { Loader } from '../../components/Loader';
 import styles from './HomePage.module.scss';
-
 export const HomePage = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -17,15 +16,12 @@ export const HomePage = () => {
       .finally(() => setIsLoading(false));
   }, []);
 
-  const hotPriceProducts = useMemo(() => {
-    return [...products]
-      .filter(p => p.fullPrice > p.price)
-      .sort((a, b) => b.fullPrice - b.price - (a.fullPrice - a.price));
-  }, [products]);
+  // Прибрано useMemo
+  const hotPriceProducts = [...products]
+    .filter(p => p.fullPrice > p.price)
+    .sort((a, b) => b.fullPrice - b.price - (a.fullPrice - a.price));
 
-  const brandNewProducts = useMemo(() => {
-    return [...products].sort((a, b) => b.year - a.year);
-  }, [products]);
+  const brandNewProducts = [...products].sort((a, b) => b.year - a.year);
 
   return (
     <div className={styles.home} data-cy="HomePage">
