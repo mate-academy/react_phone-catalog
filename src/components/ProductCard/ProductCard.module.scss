@@ -1,0 +1,143 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 32px;
+  background: var(--color-surface-1);
+  border: 1px solid var(--color-surface-1);
+  transition:
+    border-color var(--transition),
+    transform var(--transition);
+}
+
+.card:hover {
+  border-color: var(--color-elements);
+}
+
+.imageLink {
+  display: grid;
+  height: 196px;
+  margin-bottom: 24px;
+  overflow: hidden;
+  place-items: center;
+}
+
+.image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform var(--transition);
+}
+
+.imageLink:hover .image {
+  transform: scale(1.1);
+}
+
+.title {
+  display: block;
+  min-height: 42px;
+  margin-bottom: 8px;
+  color: var(--color-white);
+  line-height: 21px;
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.title:hover {
+  color: var(--color-accent);
+}
+
+.priceRow {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding-bottom: 8px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--color-elements);
+}
+
+.price,
+.fullPrice {
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 31px;
+}
+
+.fullPrice {
+  color: var(--color-secondary);
+  font-weight: 600;
+  text-decoration: line-through;
+}
+
+.specs {
+  display: grid;
+  gap: 8px;
+  margin: 0 0 16px;
+  color: var(--color-secondary);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.specs div {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.specs dd {
+  margin: 0;
+  color: var(--color-white);
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: 1fr 40px;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.cartButton,
+.favoriteButton {
+  min-height: 40px;
+  border: 0;
+  color: var(--color-white);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background-color var(--transition),
+    border-color var(--transition),
+    color var(--transition);
+}
+
+.cartButton {
+  background: var(--color-accent);
+}
+
+.cartButton:hover {
+  background: var(--color-accent-hover);
+}
+
+.cartButtonAdded {
+  background: var(--color-surface-2);
+}
+
+.favoriteButton {
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-icons);
+}
+
+.favoriteButton:hover {
+  border-color: var(--color-white);
+}
+
+.favoriteButtonActive {
+  color: var(--color-red);
+}
+
+@media (max-width: 639px) {
+  .card {
+    padding: 24px;
+  }
+}

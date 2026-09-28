@@ -1,0 +1,16 @@
+.home {
+  padding-top: 24px;
+}
+
+.welcome {
+  margin: 0;
+  font-size: 48px;
+  line-height: 56px;
+}
+
+@media (max-width: 767px) {
+  .welcome {
+    font-size: 32px;
+    line-height: 41px;
+  }
+}

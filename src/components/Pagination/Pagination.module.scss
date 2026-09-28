@@ -1,0 +1,57 @@
+.pagination {
+  position: sticky;
+  bottom: 16px;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 40px;
+  pointer-events: none;
+}
+
+.pages {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  pointer-events: auto;
+}
+
+.button,
+.dots {
+  display: grid;
+  min-width: 32px;
+  height: 32px;
+  border: 1px solid var(--color-elements);
+  color: var(--color-white);
+  background: var(--color-surface-1);
+  font: inherit;
+  cursor: pointer;
+  place-items: center;
+}
+
+.button {
+  cursor: pointer;
+  transition:
+    background-color var(--transition),
+    border-color var(--transition);
+}
+
+.dots {
+  color: var(--color-secondary);
+  background: var(--color-surface-1);
+}
+
+.button:disabled {
+  color: var(--color-secondary);
+  cursor: not-allowed;
+}
+
+.button:hover:not(:disabled) {
+  border-color: var(--color-icons);
+  background: var(--color-surface-2);
+}
+
+.buttonActive {
+  border-color: var(--color-accent);
+  background: var(--color-accent);
+}

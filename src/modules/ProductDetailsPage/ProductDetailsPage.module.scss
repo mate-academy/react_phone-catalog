@@ -1,0 +1,224 @@
+.state {
+  min-height: 360px;
+}
+
+.backButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+  margin-bottom: 16px;
+  border: 0;
+  color: var(--color-white);
+  background: transparent;
+  font: inherit;
+  cursor: pointer;
+  transition: color var(--transition);
+}
+
+.backButton:hover {
+  color: var(--color-accent);
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
+  gap: 64px;
+  margin-top: 40px;
+}
+
+.options {
+  max-width: 320px;
+}
+
+.optionGroup {
+  padding: 0 0 24px;
+  margin: 0 0 24px;
+  border: 0;
+  border-bottom: 1px solid var(--color-elements);
+}
+
+.optionGroup legend {
+  margin-bottom: 12px;
+  color: var(--color-secondary);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.colors,
+.capacities {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.color input,
+.capacities input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.color span {
+  display: block;
+  width: 32px;
+  height: 32px;
+  border: 2px solid var(--color-black);
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px var(--color-elements);
+  cursor: pointer;
+  transition: box-shadow var(--transition);
+}
+
+.capacities span {
+  display: grid;
+  min-width: 56px;
+  height: 32px;
+  padding-inline: 8px;
+  border: 1px solid var(--color-icons);
+  color: var(--color-white);
+  cursor: pointer;
+  place-items: center;
+  transition:
+    background-color var(--transition),
+    border-color var(--transition),
+    color var(--transition);
+}
+
+.color:hover span {
+  box-shadow: 0 0 0 1px var(--color-white);
+}
+
+.color input:checked + span {
+  box-shadow: 0 0 0 1px var(--color-white);
+}
+
+.capacities input:checked + span,
+.capacities label:hover span {
+  border-color: var(--color-white);
+  color: var(--color-black);
+  background: var(--color-white);
+}
+
+.priceRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  font-size: 32px;
+  font-weight: 800;
+}
+
+.priceRow del {
+  color: var(--color-secondary);
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: 1fr 48px;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+
+.cartButton,
+.favoriteButton {
+  min-height: 48px;
+  border: 0;
+  color: var(--color-white);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background-color var(--transition),
+    border-color var(--transition);
+}
+
+.cartButton {
+  background: var(--color-accent);
+}
+
+.cartButton:hover {
+  background: var(--color-accent-hover);
+}
+
+.cartButtonAdded {
+  background: var(--color-surface-2);
+}
+
+.favoriteButton {
+  border: 1px solid var(--color-icons);
+  background: var(--color-surface-2);
+}
+
+.favoriteButton:hover {
+  border-color: var(--color-white);
+}
+
+.favoriteButtonActive {
+  color: var(--color-red);
+}
+
+.summarySpecs,
+.techSpecs dl {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+}
+
+.summarySpecs div,
+.techSpecs div {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.summarySpecs dt,
+.techSpecs dt {
+  color: var(--color-secondary);
+}
+
+.summarySpecs dd,
+.techSpecs dd {
+  margin: 0;
+  color: var(--color-white);
+  text-align: right;
+}
+
+.infoGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 36%);
+  gap: 64px;
+  margin-top: 80px;
+}
+
+.about h2,
+.techSpecs h2 {
+  padding-bottom: 16px;
+  margin-bottom: 32px;
+  border-bottom: 1px solid var(--color-elements);
+}
+
+.about article + article {
+  margin-top: 32px;
+}
+
+.about h3 {
+  margin: 0 0 16px;
+}
+
+.about p {
+  color: var(--color-secondary);
+}
+
+@media (max-width: 899px) {
+  .hero,
+  .infoGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .options {
+    max-width: none;
+  }
+}

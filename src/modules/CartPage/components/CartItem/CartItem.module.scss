@@ -1,0 +1,91 @@
+.item {
+  display: grid;
+  grid-template-columns: 24px 80px 1fr auto 96px;
+  align-items: center;
+  gap: 24px;
+  padding: 24px;
+  background: var(--color-surface-1);
+}
+
+.removeButton,
+.quantity button {
+  display: grid;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--color-elements);
+  color: var(--color-white);
+  background: var(--color-surface-1);
+  cursor: pointer;
+  place-items: center;
+  transition:
+    background-color var(--transition),
+    border-color var(--transition),
+    color var(--transition);
+}
+
+.removeButton {
+  width: 24px;
+  height: 24px;
+  color: var(--color-icons);
+  border: 0;
+}
+
+.quantity button:disabled {
+  color: var(--color-elements);
+  cursor: not-allowed;
+}
+
+.removeButton:hover,
+.quantity button:hover:not(:disabled) {
+  color: var(--color-white);
+  border-color: var(--color-white);
+}
+
+.imageLink {
+  display: grid;
+  height: 80px;
+  place-items: center;
+}
+
+.imageLink img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform var(--transition);
+}
+
+.imageLink:hover img {
+  transform: scale(1.1);
+}
+
+.title {
+  color: var(--color-white);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.title:hover {
+  color: var(--color-accent);
+}
+
+.quantity {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.item strong {
+  font-size: 22px;
+  text-align: right;
+}
+
+@media (max-width: 767px) {
+  .item {
+    grid-template-columns: 24px 72px 1fr;
+  }
+
+  .quantity,
+  .item strong {
+    grid-column: 2 / -1;
+  }
+}
