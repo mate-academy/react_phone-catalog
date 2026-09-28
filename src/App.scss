@@ -1,1 +1,131 @@
-// not empty
+@font-face {
+  font-family: Mont;
+  font-style: normal;
+  font-weight: 400;
+  src: url('/fonts/Mont-Regular.otf') format('opentype');
+}
+
+@font-face {
+  font-family: Mont;
+  font-style: normal;
+  font-weight: 600;
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+}
+
+@font-face {
+  font-family: Mont;
+  font-style: normal;
+  font-weight: 800;
+  src: url('/fonts/Mont-Bold.otf') format('opentype');
+}
+
+:root {
+  --color-secondary: #75767f;
+  --color-icons: #4a4d58;
+  --color-elements: #3b3e4a;
+  --color-surface-2: #323542;
+  --color-surface-1: #161827;
+  --color-black: #0f1121;
+  --color-white: #f1f2f9;
+  --color-accent: #905bff;
+  --color-accent-hover: #a378ff;
+  --color-green: #27ae60;
+  --color-red: #eb5757;
+  --page-width: 1136px;
+  --page-padding: 24px;
+  --transition: 0.25s ease;
+  --transition-slow: 0.45s ease;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  margin: 0;
+  color: var(--color-white);
+  background: var(--color-black);
+  font-family: Mont, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+button,
+select,
+input {
+  font-family: inherit;
+}
+
+.App {
+  min-height: 100vh;
+}
+
+.page-container {
+  max-width: var(--page-width);
+  min-height: calc(100vh - 240px);
+  padding: 40px var(--page-padding) 0;
+  margin: 0 auto;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 40px;
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 56px;
+}
+
+h2 {
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+}
+
+h3 {
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 31px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 767px) {
+  :root {
+    --page-padding: 16px;
+  }
+
+  .page-container {
+    padding-top: 24px;
+  }
+
+  h1 {
+    font-size: 32px;
+    line-height: 41px;
+  }
+
+  h2 {
+    font-size: 22px;
+    line-height: 31px;
+  }
+}

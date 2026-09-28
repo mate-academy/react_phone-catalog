@@ -1,0 +1,33 @@
+.breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 40px;
+  color: var(--color-secondary);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.homeLink,
+.item a {
+  color: var(--color-white);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.homeLink:hover,
+.item a:hover {
+  color: var(--color-accent);
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.item i {
+  color: var(--color-icons);
+  font-size: 10px;
+}

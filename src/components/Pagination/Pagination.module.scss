@@ -1,0 +1,43 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 40px;
+}
+
+.pages {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.button {
+  display: grid;
+  min-width: 32px;
+  height: 32px;
+  border: 1px solid var(--color-elements);
+  color: var(--color-white);
+  background: var(--color-surface-1);
+  font: inherit;
+  cursor: pointer;
+  place-items: center;
+  transition:
+    background-color var(--transition),
+    border-color var(--transition);
+}
+
+.button:disabled {
+  color: var(--color-secondary);
+  cursor: not-allowed;
+}
+
+.button:hover:not(:disabled) {
+  border-color: var(--color-icons);
+  background: var(--color-surface-2);
+}
+
+.buttonActive {
+  border-color: var(--color-accent);
+  background: var(--color-accent);
+}

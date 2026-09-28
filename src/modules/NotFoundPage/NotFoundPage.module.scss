@@ -1,0 +1,22 @@
+.page {
+  display: grid;
+  min-height: 520px;
+  justify-items: center;
+  align-content: center;
+  text-align: center;
+}
+
+.page img {
+  max-width: min(100%, 320px);
+}
+
+.page a {
+  color: var(--color-accent);
+  font-weight: 700;
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.page a:hover {
+  color: var(--color-accent-hover);
+}

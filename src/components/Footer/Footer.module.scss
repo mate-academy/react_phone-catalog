@@ -1,0 +1,71 @@
+.footer {
+  margin-top: 80px;
+  border-top: 1px solid var(--color-elements);
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: var(--page-width);
+  min-height: 96px;
+  padding: 0 var(--page-padding);
+  margin: 0 auto;
+}
+
+.logo {
+  display: grid;
+  color: var(--color-white);
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 12px;
+}
+
+.github {
+  color: var(--color-white);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color var(--transition);
+}
+
+.github:hover {
+  color: var(--color-accent);
+}
+
+.topButton {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border: 0;
+  color: var(--color-secondary);
+  background: transparent;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: color var(--transition);
+}
+
+.topButton:hover {
+  color: var(--color-white);
+}
+
+.topButton span {
+  display: grid;
+  width: 32px;
+  height: 32px;
+  background: var(--color-surface-2);
+  place-items: center;
+}
+
+@media (max-width: 639px) {
+  .content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    padding-block: 32px;
+  }
+}
