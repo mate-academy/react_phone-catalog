@@ -1,0 +1,81 @@
+.picturesSlider {
+  margin-bottom: 80px;
+
+  &__content {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 18px;
+  }
+
+  &__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 102px;
+    background-color: #323542;
+    border: 1px solid #323542;
+    border-radius: 16px;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+
+    &:hover {
+      background-color: #4a4d5e;
+      border-color: #8993a4;
+    }
+  }
+
+  &__bannerContainer {
+    flex-grow: 1;
+    overflow: hidden;
+    border-radius: 16px;
+  }
+
+  &__track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  &__slide {
+    min-width: 100%;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0f1114;
+    overflow: hidden;
+  }
+
+  &__image {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    object-position: center;
+  }
+
+  &__pagination {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  &__dot {
+    width: 14px;
+    height: 4px;
+    background-color: #323542;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    padding: 0;
+    transition: background-color 0.3s, width 0.3s;
+
+    &--active {
+      width: 28px;
+      background-color: #fff;
+    }
+  }
+}

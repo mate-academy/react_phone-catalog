@@ -1,1 +1,21 @@
-// not empty
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Mont, system-ui, -apple-system, sans-serif;
+  background-color: #0f1121;
+  color: #fff;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  &__main {
+    flex-grow: 1;
+  }
+}

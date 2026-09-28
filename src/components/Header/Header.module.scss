@@ -1,0 +1,137 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: #fff;
+  border-bottom: 1px solid #e2e6e9;
+  height: 64px;
+  width: 100%;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  padding-left: 24px;
+  padding-right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.navGroup {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  height: 100%;
+}
+
+.logoLink {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 28px;
+  width: auto;
+}
+
+.nav {
+  display: flex;
+  gap: 32px;
+  height: 64px;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  box-sizing: border-box;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #89939a;
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: color 0.3s;
+  border-bottom: 2px solid transparent;
+
+  &:hover {
+    color: #313237;
+  }
+}
+
+.linkActive {
+  color: #313237;
+  border-bottom-color: #313237;
+}
+
+.actions {
+  display: flex;
+  height: 100%;
+}
+
+.iconBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-left: 1px solid #e2e6e9;
+  text-decoration: none;
+  transition: background-color 0.3s;
+  box-sizing: border-box;
+  border-bottom: 2px solid transparent;
+
+  &:hover {
+    background-color: #fafbfc;
+  }
+}
+
+.iconBtnActive {
+  border-bottom-color: #313237;
+}
+
+.iconWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.favIcon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23313237'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z'/%3E%3C/svg%3E");
+}
+
+.cartIcon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23313237'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z'/%3E%3C/svg%3E");
+}
+
+.badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: #eb5757;
+  color: #fff;
+  font-size: 9px;
+  font-weight: 700;
+  border-radius: 50%;
+  min-width: 14px;
+  height: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  border: 1px solid #fff;
+  line-height: 1;
+}
