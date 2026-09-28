@@ -1,15 +1,23 @@
 import { Product, ProductCategory, ProductDetails } from '../types/Product';
 
-const API_ROOT = `${import.meta.env.BASE_URL}api`;
+const API_ROOTS = [
+  `${import.meta.env.BASE_URL}api`,
+  './api',
+  '/react_phone-catalog/api',
+];
 
 const request = async <T>(path: string): Promise<T> => {
-  const response = await fetch(`${API_ROOT}/${path}`);
+  const responses = await Promise.allSettled(
+    API_ROOTS.map(apiRoot => fetch(`${apiRoot}/${path}`)),
+  );
 
-  if (!response.ok) {
-    throw new Error('Unable to load data');
+  for (const responseResult of responses) {
+    if (responseResult.status === 'fulfilled' && responseResult.value.ok) {
+      return responseResult.value.json() as Promise<T>;
+    }
   }
 
-  return response.json() as Promise<T>;
+  throw new Error('Unable to load data');
 };
 
 export const getProducts = () => request<Product[]>('products.json');
