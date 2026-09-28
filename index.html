@@ -9,6 +9,23 @@
       href="/react_phone-catalog/favicon.svg"
     />
     <title>Nice Gadgets</title>
+    <script>
+      (() => {
+        const redirectUrl = sessionStorage.getItem('redirectUrl');
+
+        sessionStorage.removeItem('redirectUrl');
+
+        if (redirectUrl && redirectUrl !== window.location.href) {
+          const url = new URL(redirectUrl);
+
+          window.history.replaceState(
+            null,
+            '',
+            `${url.pathname}${url.search}${url.hash}`,
+          );
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
