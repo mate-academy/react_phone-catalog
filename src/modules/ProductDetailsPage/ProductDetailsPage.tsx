@@ -158,7 +158,7 @@ export const ProductDetailsPage = () => {
       <button
         type="button"
         className={styles.backButton}
-        onClick={() => navigate(-1)}
+        onClick={() => navigate(`/${productDetails.category}`)}
       >
         <i className="fa-solid fa-chevron-left" />
         Back

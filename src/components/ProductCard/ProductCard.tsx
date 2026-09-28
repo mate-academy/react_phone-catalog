@@ -16,10 +16,20 @@ export const ProductCard = ({ product }: Props) => {
   const { isFavorite, toggleFavorite } = useFavorites();
   const isAddedToCart = isInCart(product.itemId);
   const isAddedToFavorites = isFavorite(product.itemId);
+  const handleProductOpen = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
 
   return (
     <article className={styles.card}>
-      <Link to={`/product/${product.itemId}`} className={styles.imageLink}>
+      <Link
+        to={`/product/${product.itemId}`}
+        className={styles.imageLink}
+        onClick={handleProductOpen}
+      >
         <img
           className={styles.image}
           src={getAssetUrl(product.image)}
@@ -27,7 +37,11 @@ export const ProductCard = ({ product }: Props) => {
         />
       </Link>
 
-      <Link to={`/product/${product.itemId}`} className={styles.title}>
+      <Link
+        to={`/product/${product.itemId}`}
+        className={styles.title}
+        onClick={handleProductOpen}
+      >
         {product.name}
       </Link>
 

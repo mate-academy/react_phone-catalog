@@ -1,8 +1,11 @@
 .pagination {
+  position: sticky;
+  bottom: 16px;
   display: flex;
   justify-content: center;
   gap: 16px;
   margin-top: 40px;
+  pointer-events: none;
 }
 
 .pages {
@@ -10,9 +13,11 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 8px;
+  pointer-events: auto;
 }
 
-.button {
+.button,
+.dots {
   display: grid;
   min-width: 32px;
   height: 32px;
@@ -22,9 +27,18 @@
   font: inherit;
   cursor: pointer;
   place-items: center;
+}
+
+.button {
+  cursor: pointer;
   transition:
     background-color var(--transition),
     border-color var(--transition);
+}
+
+.dots {
+  color: var(--color-secondary);
+  background: var(--color-surface-1);
 }
 
 .button:disabled {
