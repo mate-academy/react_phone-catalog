@@ -1,0 +1,50 @@
+@use '../../assets/scss/variables' as *;
+@use '../../assets/scss/mixins' as *;
+
+.breadcrumbs {
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__home {
+    @include flex-center;
+    
+    color: $color-icons;
+    transition: color $transition-fast;
+
+    &:hover {
+      color: $color-primary;
+    }
+  }
+
+  &__separator {
+    width: 12px;
+    height: 12px;
+    color: $color-icons;
+  }
+
+  &__link {
+    @include font-body;
+    
+    color: $color-secondary;
+    transition: color $transition-fast;
+
+    &:hover {
+      color: $color-primary;
+    }
+  }
+
+  &__current {
+    @include font-body;
+    
+    color: $color-primary;
+  }
+}

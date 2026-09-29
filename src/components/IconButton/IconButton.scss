@@ -1,0 +1,72 @@
+@use '../../assets/scss/variables' as *;
+@use '../../assets/scss/mixins' as *;
+
+.icon-button {
+  @include button-reset;
+  @include flex-center;
+  
+  position: relative;
+  width: 40px;
+  height: 40px;
+  color: $color-icons;
+  transition: color $transition-fast, border-color $transition-fast,
+    background-color $transition-fast;
+
+  &--square {
+    border: 1px solid $color-elements;
+    border-radius: $border-radius-sm;
+
+    &:hover:not(.icon-button--disabled) {
+      border-color: $color-primary;
+      color: $color-primary;
+      background-color: $color-hover-bg;
+    }
+  }
+
+  &--plain {
+    border: none;
+    color: $color-primary;
+
+    &:hover:not(.icon-button--disabled) {
+      color: $color-secondary;
+    }
+  }
+
+  &--active {
+    color: $color-red;
+    border-color: $color-red;
+  }
+
+  &--disabled {
+    cursor: not-allowed;
+    opacity: 0.4;
+  }
+
+  &__glyph {
+    position: relative;
+    display: flex;
+    width: 16px;
+    height: 16px;
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__badge {
+    @include font-small;
+    @include flex-center;
+    
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    min-width: 16px;
+    height: 16px;
+    padding-inline: 3px;
+    border-radius: 50%;
+    background-color: $color-red;
+    color: $color-white;
+    font-size: 10px;
+  }
+}

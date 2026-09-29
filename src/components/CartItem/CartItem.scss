@@ -1,0 +1,50 @@
+@use '../../assets/scss/variables' as *;
+@use '../../assets/scss/mixins' as *;
+
+.cart-item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid $color-elements;
+  border-radius: $border-radius-sm;
+
+  &__image {
+    width: 66px;
+    height: 66px;
+    object-fit: contain;
+  }
+
+  &__name {
+    @include font-body;
+    
+    flex: 1 1 220px;
+    color: $color-primary;
+  }
+
+  &__quantity {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__quantity-value {
+    @include font-body;
+    
+    width: 16px;
+    text-align: center;
+  }
+
+  &__price {
+    @include font-h4;
+    
+    margin-left: auto;
+
+    @include mobile-only {
+      width: 100%;
+      margin-left: 0;
+      text-align: right;
+    }
+  }
+}

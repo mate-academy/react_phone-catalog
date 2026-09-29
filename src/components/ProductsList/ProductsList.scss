@@ -1,0 +1,30 @@
+@use '../../assets/scss/variables' as *;
+@use '../../assets/scss/mixins' as *;
+
+.products-list {
+  @include page-grid;
+
+  &__item {
+    grid-column: span $grid-columns-mobile;
+  }
+
+  &--catalog &__item {
+    @include on-tablet {
+      grid-column: span 4;
+    }
+
+    @include on-desktop {
+      grid-column: span 6;
+    }
+  }
+
+  &--compact &__item {
+    @include on-tablet {
+      grid-column: span 6;
+    }
+
+    @include on-desktop {
+      grid-column: span 6;
+    }
+  }
+}

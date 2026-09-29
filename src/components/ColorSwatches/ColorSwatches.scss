@@ -1,0 +1,38 @@
+@use '../../assets/scss/variables' as *;
+@use '../../assets/scss/mixins' as *;
+
+.color-swatches {
+  display: flex;
+  gap: 12px;
+
+  &__item {
+    @include flex-center;
+    
+    position: relative;
+    width: 32px;
+    height: 32px;
+    border: 1px solid transparent;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: border-color $transition-fast;
+
+    &:hover {
+      border-color: $color-icons;
+    }
+
+    &--active {
+      border-color: $color-primary;
+    }
+  }
+
+  &__input {
+    @include visually-hidden;
+  }
+
+  &__circle {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 1px solid $color-elements;
+  }
+}

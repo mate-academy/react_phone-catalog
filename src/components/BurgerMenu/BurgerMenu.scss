@@ -1,0 +1,46 @@
+@use '../../assets/scss/variables' as *;
+@use '../../assets/scss/mixins' as *;
+
+.burger-menu {
+  position: fixed;
+  inset: 0;
+  z-index: $z-burger;
+  display: flex;
+  flex-direction: column;
+  background-color: $color-white;
+
+  @include on-tablet {
+    display: none;
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: $header-height;
+    padding-inline: $page-padding-mobile;
+    border-bottom: 1px solid $color-elements;
+  }
+
+  &__nav {
+    flex-grow: 1;
+    padding-block: 40px;
+    overflow-y: auto;
+  }
+
+  &__bottom {
+    display: flex;
+    border-top: 1px solid $color-elements;
+  }
+
+  &__bottom-action {
+    @include flex-center;
+    
+    flex: 1 1 50%;
+    height: 64px;
+
+    &:first-child {
+      border-right: 1px solid $color-elements;
+    }
+  }
+}

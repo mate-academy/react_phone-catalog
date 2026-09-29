@@ -1,0 +1,17 @@
+@use '../../assets/scss/variables' as *;
+@use '../../assets/scss/mixins' as *;
+
+.placeholder-page {
+  @include container;
+  @include flex-center(column);
+  
+  min-height: 50vh;
+  text-align: center;
+
+  p {
+    @include font-body;
+    
+    color: $color-secondary;
+    margin-top: 8px;
+  }
+}

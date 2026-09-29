@@ -1,0 +1,38 @@
+@use '../../assets/scss/variables' as *;
+@use '../../assets/scss/mixins' as *;
+
+.catalog-page {
+  @include container;
+  
+  padding-top: 16px;
+  padding-bottom: 64px;
+
+  &__title {
+    margin-top: 16px;
+  }
+
+  &__count {
+    @include font-body;
+    
+    margin-top: 4px;
+    margin-bottom: 24px;
+    color: $color-secondary;
+  }
+
+  &__empty {
+    @include font-body;
+    
+    padding-block: 40px;
+    color: $color-secondary;
+  }
+
+  &__controls {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+}

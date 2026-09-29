@@ -1,0 +1,33 @@
+@use '../../assets/scss/variables' as *;
+@use '../../assets/scss/mixins' as *;
+
+.category-card {
+  display: block;
+
+  &__image-wrapper {
+    @include image-hover-scale;
+    
+    margin-bottom: 16px;
+    border-radius: $border-radius-sm;
+    background-color: $color-hover-bg;
+  }
+
+  &__image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+  }
+
+  &__title {
+    @include font-h4;
+    
+    margin-bottom: 4px;
+    color: $color-primary;
+  }
+
+  &__count {
+    @include font-body;
+    
+    color: $color-secondary;
+  }
+}

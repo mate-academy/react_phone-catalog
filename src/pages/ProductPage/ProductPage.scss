@@ -1,0 +1,202 @@
+@use '../../assets/scss/variables' as *;
+@use '../../assets/scss/mixins' as *;
+
+.product-page {
+  @include container;
+  
+  padding-top: 16px;
+  padding-bottom: 64px;
+
+  &__back {
+    @include button-reset;
+    @include font-small;
+    
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 16px;
+    color: $color-secondary;
+    font-weight: $fw-regular;
+    transition: color $transition-fast;
+
+    &:hover {
+      color: $color-primary;
+    }
+  }
+
+  &__title {
+    margin-top: 16px;
+    margin-bottom: 24px;
+  }
+
+  &__top {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding-bottom: 40px;
+    margin-bottom: 40px;
+    border-bottom: 1px solid $color-elements;
+
+    @include on-tablet {
+      flex-direction: row;
+      align-items: flex-start;
+    }
+  }
+
+  &__purchase {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+
+    @include on-tablet {
+      max-width: 320px;
+    }
+  }
+
+  &__option {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid $color-elements;
+  }
+
+  &__option-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__option-label {
+    @include font-small;
+    
+    font-weight: $fw-regular;
+    color: $color-secondary;
+  }
+
+  &__id {
+    @include font-small;
+    
+    font-weight: $fw-regular;
+    color: $color-secondary;
+  }
+
+  &__price {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+
+  &__price-current {
+    @include font-h2;
+  }
+
+  &__price-old {
+    @include font-h4;
+    
+    color: $color-secondary;
+    text-decoration: line-through;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__cart-btn-wrapper {
+    flex-grow: 1;
+
+    .add-to-cart-btn {
+      height: 48px;
+    }
+  }
+
+  &__mini-specs {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__mini-spec {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    dt {
+      @include font-small;
+      
+      font-weight: $fw-regular;
+      color: $color-secondary;
+    }
+
+    dd {
+      @include font-small;
+      
+      color: $color-primary;
+    }
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding-bottom: 40px;
+    margin-bottom: 40px;
+    border-bottom: 1px solid $color-elements;
+
+    @include on-desktop {
+      flex-direction: row;
+      gap: 80px;
+    }
+  }
+
+  &__about,
+  &__tech-specs {
+    flex: 1;
+  }
+
+  &__about-block {
+    margin-top: 24px;
+
+    h3 {
+      margin-bottom: 8px;
+    }
+
+    p {
+      @include font-body;
+      
+      color: $color-secondary;
+      margin-top: 12px;
+    }
+  }
+
+  &__specs-list {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__spec-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 16px;
+    border-bottom: 1px solid $color-elements;
+
+    dt {
+      @include font-body;
+      
+      color: $color-secondary;
+    }
+
+    dd {
+      @include font-body;
+      
+      color: $color-primary;
+      font-weight: $fw-semibold;
+      text-align: right;
+    }
+  }
+}

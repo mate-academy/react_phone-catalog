@@ -1,0 +1,102 @@
+@use '../../assets/scss/variables' as *;
+@use '../../assets/scss/mixins' as *;
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 24px;
+  border: 1px solid $color-elements;
+  border-radius: $border-radius-sm;
+  background-color: $color-white;
+  transition: box-shadow $transition-base;
+
+  &:hover {
+    box-shadow: 0 3px 15px rgba($color-black, 0.1);
+  }
+
+  &__image-wrapper {
+    @include flex-center;
+    @include image-hover-scale;
+    
+    margin-bottom: 24px;
+  }
+
+  &__image {
+    width: 100%;
+    max-width: 208px;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+  }
+
+  &__name {
+    @include font-body;
+    @include line-clamp(2);
+    
+    margin-bottom: 8px;
+    min-height: 42px;
+    color: $color-primary;
+    transition: color $transition-fast;
+
+    &:hover {
+      color: $color-secondary;
+    }
+  }
+
+  &__price {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  &__price-current {
+    @include font-h3;
+  }
+
+  &__price-old {
+    @include font-body;
+    
+    color: $color-secondary;
+    text-decoration: line-through;
+  }
+
+  &__specs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+    border-top: 1px solid $color-elements;
+  }
+
+  &__spec {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__spec-label,
+  &__spec-value {
+    @include font-small;
+    
+    font-weight: $fw-regular;
+    color: $color-secondary;
+  }
+
+  &__spec-value {
+    color: $color-primary;
+    font-weight: $fw-semibold;
+  }
+
+  &__footer {
+    display: flex;
+    gap: 8px;
+    margin-top: auto;
+  }
+
+  &__cart-btn-wrapper {
+    flex-grow: 1;
+  }
+}

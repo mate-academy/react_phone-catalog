@@ -1,0 +1,75 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+button,
+input,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+body {
+  @include font-body;
+
+  color: $color-primary;
+  background-color: $color-white;
+  min-width: $screen-mobile;
+}
+
+[id='root'] {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex-grow: 1;
+}
+
+h1 {
+  @include font-h1;
+}
+
+h2 {
+  @include font-h2;
+}
+
+h3 {
+  @include font-h3;
+}
+
+h4 {
+  @include font-h4;
+}

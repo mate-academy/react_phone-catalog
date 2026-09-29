@@ -1,0 +1,98 @@
+@use '../../assets/scss/variables' as *;
+@use '../../assets/scss/mixins' as *;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: $z-header;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: $header-height;
+  background-color: $color-white;
+  border-bottom: 1px solid $color-elements;
+
+  &__side {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding-inline: $page-padding-mobile;
+
+    @include on-tablet {
+      padding-inline: $page-padding-tablet;
+    }
+
+    @include on-desktop {
+      padding-inline: $page-padding-desktop;
+    }
+  }
+
+  &__nav {
+    display: none;
+    height: 100%;
+    border-left: 1px solid $color-elements;
+
+    @include on-tablet {
+      display: block;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: stretch;
+    height: 100%;
+  }
+
+  &__action {
+    @include flex-center;
+    
+    position: relative;
+    height: 100%;
+    padding-inline: 12px;
+    border-left: 1px solid $color-elements;
+
+    @include on-tablet {
+      padding-inline: 16px;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 1px;
+      background-color: $color-primary;
+      transform: scaleX(0);
+      transition: transform $transition-fast;
+    }
+
+    &--last {
+      @include on-tablet {
+        border-right: 1px solid $color-elements;
+      }
+    }
+
+    &--active::after {
+      transform: scaleX(1);
+    }
+  }
+
+  &__burger {
+    @include flex-center;
+    
+    height: 100%;
+    padding-inline: 12px;
+    border-left: 1px solid $color-elements;
+
+    @include on-tablet {
+      display: none;
+    }
+  }
+}

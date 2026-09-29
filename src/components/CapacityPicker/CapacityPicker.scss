@@ -1,0 +1,37 @@
+@use '../../assets/scss/variables' as *;
+@use '../../assets/scss/mixins' as *;
+
+.capacity-picker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  &__item {
+    @include font-button;
+    @include flex-center;
+    
+    position: relative;
+    height: 40px;
+    padding-inline: 16px;
+    border: 1px solid $color-elements;
+    border-radius: $border-radius-sm;
+    color: $color-primary;
+    cursor: pointer;
+    transition: border-color $transition-fast, background-color $transition-fast,
+      color $transition-fast;
+
+    &:hover {
+      border-color: $color-primary;
+    }
+
+    &--active {
+      border-color: $color-primary;
+      background-color: $color-primary;
+      color: $color-white;
+    }
+  }
+
+  &__input {
+    @include visually-hidden;
+  }
+}

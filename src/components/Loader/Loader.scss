@@ -1,0 +1,23 @@
+@use '../../assets/scss/variables' as *;
+@use '../../assets/scss/mixins' as *;
+
+.loader {
+  @include flex-center;
+  
+  padding-block: 80px;
+
+  &__spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid $color-elements;
+    border-top-color: $color-primary;
+    border-radius: 50%;
+    animation: loader-spin 0.8s linear infinite;
+  }
+}
+
+@keyframes loader-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

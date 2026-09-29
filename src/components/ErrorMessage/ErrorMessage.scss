@@ -1,0 +1,32 @@
+@use '../../assets/scss/variables' as *;
+@use '../../assets/scss/mixins' as *;
+
+.error-message {
+  @include flex-center(column);
+  
+  gap: 16px;
+  padding-block: 80px;
+  text-align: center;
+
+  &__text {
+    @include font-h4;
+    
+    color: $color-red;
+  }
+
+  &__reload {
+    @include button-reset;
+    @include font-button;
+    
+    padding: 12px 32px;
+    border: 1px solid $color-primary;
+    border-radius: $border-radius-sm;
+    color: $color-primary;
+    transition: background-color $transition-fast, color $transition-fast;
+
+    &:hover {
+      background-color: $color-primary;
+      color: $color-white;
+    }
+  }
+}

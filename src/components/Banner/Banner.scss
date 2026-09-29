@@ -1,0 +1,68 @@
+@use '../../assets/scss/variables' as *;
+@use '../../assets/scss/mixins' as *;
+
+.banner {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  gap: 8px;
+
+  @include on-tablet {
+    grid-template-columns: 32px 1fr 32px;
+  }
+
+  &__arrow {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+    }
+  }
+
+  &__slide {
+    grid-column: 1 / -1;
+    border-radius: $border-radius-lg;
+    overflow: hidden;
+
+    @include on-tablet {
+      grid-column: 2 / 3;
+    }
+  }
+
+  &__image {
+    display: block;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+
+    @include on-tablet {
+      height: 300px;
+    }
+
+    @include on-desktop {
+      height: 360px;
+    }
+  }
+
+  &__dots {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  &__dot {
+    @include button-reset;
+    
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: $color-elements;
+    transition: background-color $transition-fast;
+
+    &--active {
+      background-color: $color-primary;
+    }
+  }
+}

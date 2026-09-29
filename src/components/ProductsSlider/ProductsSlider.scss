@@ -1,0 +1,43 @@
+@use '../../assets/scss/variables' as *;
+@use '../../assets/scss/mixins' as *;
+
+.products-slider {
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    color: $color-primary;
+  }
+
+  &__controls {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__track {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 4px;
+
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__item {
+    flex: 0 0 212px;
+    scroll-snap-align: start;
+
+    @include on-tablet {
+      flex-basis: 236px;
+    }
+  }
+}

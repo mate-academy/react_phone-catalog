@@ -1,0 +1,48 @@
+@use '../../assets/scss/variables' as *;
+@use '../../assets/scss/mixins' as *;
+
+.home-page {
+  @include container;
+  
+  padding-top: 24px;
+  padding-bottom: 64px;
+
+  &__hidden-title {
+    @include visually-hidden;
+  }
+
+  &__title {
+    @include font-h1;
+    
+    margin-bottom: 24px;
+  }
+
+  &__section {
+    margin-top: 64px;
+  }
+
+  &__section-title {
+    margin-bottom: 24px;
+    color: $color-primary;
+  }
+
+  &__categories {
+    @include page-grid;
+
+    > * {
+      grid-column: span 4;
+    }
+
+    @include on-tablet {
+      > * {
+        grid-column: span 4;
+      }
+    }
+
+    @include on-desktop {
+      > * {
+        grid-column: span 8;
+      }
+    }
+  }
+}
