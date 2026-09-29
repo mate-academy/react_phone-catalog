@@ -1,0 +1,81 @@
+@use '../../../../../styles/utils/' as *;
+
+.burger {
+  @include base-button($has-border: false);
+
+  cursor: pointer;
+
+  position: relative;
+
+  border-bottom: none;
+  border-left: 1px solid $color-elements;
+
+  color: $color-primary;
+
+  &__line {
+    position: relative;
+
+    width: 14px;
+    height: 1.5px;
+    border-radius: 1rem;
+
+    background-color: $color-primary;
+
+    &::after,
+    &::before {
+      content: '';
+
+      position: absolute;
+      left: 0;
+
+      width: 14px;
+      height: 1.5px;
+      border-radius: 1rem;
+
+      background-color: currentColor;
+
+      transition:
+        transform 0.3s ease,
+        background-color 0.3s ease;
+    }
+    &::after {
+      transform: translateY(4px);
+    }
+
+    &::before {
+      transform: translateY(-4px);
+    }
+  }
+
+  &[aria-expanded='true'] {
+    .burger__line {
+      background-color: transparent;
+
+      &::before {
+        transform: translateY(0) rotate(45deg);
+      }
+
+      &::after {
+        transform: translateY(0) rotate(-45deg);
+      }
+    }
+  }
+
+  &__badge {
+    pointer-events: none;
+
+    position: absolute;
+    top: 10px;
+    right: 7px;
+
+    display: block;
+
+    width: 8px;
+    min-width: 8px;
+    height: 8px;
+    border: 1px solid $color-white;
+    border-radius: 50%;
+
+    background-color: $color-secondary-blue;
+  }
+}

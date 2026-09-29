@@ -1,0 +1,27 @@
+@use '../../../styles/utils/variables' as *;
+@use '../../../styles/utils' as *;
+
+.footer {
+  border-top: 1px solid $color-elements;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    height: 100%;
+    padding-block: 32px;
+
+    @include on-tablet {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      padding-inline: 32px;
+    }
+  }
+
+  &__logo {
+    justify-content: flex-start;
+    height: auto;
+  }
+}

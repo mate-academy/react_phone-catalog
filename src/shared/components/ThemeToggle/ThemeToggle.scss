@@ -1,0 +1,38 @@
+@use '@/styles/utils' as *;
+
+.theme-toggle {
+  @include base-button(50px, 32px, 28%);
+
+  &__icon {
+    width: 20px;
+    height: 20px;
+    transition: transform $transition-duration ease;
+    path {
+      transition: fill $transition-duration ease;
+    }
+  }
+
+  &__sun {
+    fill: $color-accent;
+  }
+
+  &__moon {
+    fill: $color-icons;
+  }
+
+  &--dark {
+    .theme-toggle__sun {
+      fill: $color-icons;
+    }
+
+    .theme-toggle__moon {
+      fill: $color-primary;
+    }
+  }
+
+  @media (hover: hover) {
+    &:hover .theme-toggle__icon {
+      transform: scale(1.1);
+    }
+  }
+}

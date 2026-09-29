@@ -1,0 +1,45 @@
+@use '../../../styles/utils/' as *;
+
+.back-header {
+  &__btn {
+    cursor: pointer;
+
+    display: inline-flex;
+    gap: 4px;
+    align-items: center;
+
+    padding-bottom: 16px;
+    border: none;
+
+    background: transparent;
+
+    @media (hover: hover) {
+      &:hover {
+        .back-header__btn-item,
+        .back-header__btn-arrow {
+          color: $color-primary;
+        }
+      }
+    }
+  }
+
+  &__btn-item {
+    @extend %button-text;
+
+    transform: translateY(1px);
+    font-size: 12px;
+    line-height: 100%;
+    color: $color-secondary-grau;
+  }
+
+  &__btn-arrow {
+    @extend %arrow-icon;
+
+    transform: rotate(180deg);
+    color: $color-primary;
+  }
+
+  &__title {
+    @extend %h1-title;
+  }
+}

@@ -1,0 +1,119 @@
+// Template for square interactive buttons (48x48, centered)
+@use './variables' as *;
+
+%flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  // @include on-tablet {
+  //   flex-direction: row;
+  //   gap: 24px;
+  // }
+}
+
+%content-width {
+  box-sizing: border-box;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 16px;
+}
+
+%arrow-icon {
+  width: 5.33px;
+  height: 9.33px;
+}
+
+/* #region Tiphografe */
+
+// H1
+%h1-title {
+  font-family: $font-family-base;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 41px;
+  color: $color-primary;
+  letter-spacing: -0.01em;
+
+  // @include on-tablet {
+  //   font-size: 48px;
+  //   line-height: 56px;
+  // }
+}
+
+// H2
+%h2-title {
+  font-family: $font-family-base;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 31px;
+  color: $color-primary;
+
+  // @include on-tablet {
+  //   font-size: 32px;
+  //   line-height: 41px;
+  //   letter-spacing: -0.01em;
+  // }
+}
+
+// H3 (Subtitle / Section Header)
+%h3-title {
+  font-family: $font-family-base;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 100%;
+  color: $color-primary;
+}
+
+// H4
+%h4-title {
+  font-family: $font-family-base;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+  color: $color-primary;
+
+  // @include on-tablet {
+  //   font-size: 20px;
+  //   line-height: 26px;
+  // }
+}
+
+// Uppercase (Links, Navigation)
+%uppercase-text {
+  font-family: $font-family-base;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 11px;
+  color: $color-secondary-grau;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+// Buttons
+%button-text {
+  font-family: $font-family-base;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+}
+
+// Body Text
+%body-text {
+  font-family: $font-family-base;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  color: $color-primary;
+}
+
+// Small Text
+%small-text {
+  font-family: $font-family-base;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 100%;
+  color: $color-secondary-grau;
+}
+
+/* #endregion */

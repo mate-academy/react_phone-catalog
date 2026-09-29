@@ -1,0 +1,140 @@
+@use '../../../../styles/utils/' as *;
+
+.cart-product {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  padding: 16px;
+  border: 1px solid $color-elements;
+  border-radius: 8px;
+
+  background-color: $color-surface-1;
+
+  @include on-tablet {
+    flex-direction: row;
+    gap: 24px;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 24px;
+  }
+
+  &__info-wrapper {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    width: 100%;
+
+    @include on-tablet {
+      flex-grow: 1;
+      gap: 24px;
+      width: auto;
+    }
+  }
+
+  &__remove-btn {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+
+    width: 16px;
+    height: 16px;
+
+    color: $color-icons;
+
+    transition: color $transition-duration ease;
+
+    &:hover {
+      color: $color-primary;
+    }
+  }
+
+  &__remove-icon {
+    width: 100%;
+    height: 100%;
+    color: currentColor;
+  }
+
+  &__image-link {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+
+    width: 80px;
+    height: 80px;
+
+    @include hover-scale;
+  }
+
+  &__image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  &__title {
+    @extend %body-text;
+
+    font-weight: 600;
+    color: $color-primary;
+    text-decoration: none;
+    transition: color $transition-duration ease;
+
+    &:hover {
+      color: $color-secondary-grau;
+    }
+  }
+
+  &__action-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    @include on-tablet {
+      flex-shrink: 0;
+      gap: 32px;
+      width: auto;
+    }
+  }
+
+  &__quantity-controls {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+
+  &__quantity-value {
+    @extend %body-text;
+
+    user-select: none;
+    min-width: 16px;
+    text-align: center;
+  }
+
+  &__price {
+    @extend %h2-title;
+
+    user-select: none;
+    color: $color-primary;
+  }
+
+  &__quantity-btn {
+    color: $color-primary;
+
+    &--disabled,
+    &:disabled {
+      pointer-events: none;
+      cursor: default;
+      border-color: $color-elements;
+      color: $color-icons;
+    }
+  }
+
+  &__btn-icon {
+    fill: currentColor;
+  }
+}

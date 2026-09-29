@@ -1,0 +1,70 @@
+@use 'sass:map';
+
+// 1. Light Theme
+:root {
+  --color-primary: #0f0f11;
+  --color-secondary-grau: #89939a;
+  --color-white: #ffff;
+  --color-accent: #f86800;
+  --color-secondary-blue: #476df4;
+  --color-green: #27ae60;
+  --color-red: #eb5757;
+  --color-icons: #b4bdc3;
+  --color-elements: #e2e6e9;
+  --color-hover-bg: #e2e6e9;
+  --color-surface-1: #ffff;
+  --color-surface-2: #fafbfc;
+  --color-surface-3: #0f2338;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --color-skeleton-highlight: #f0f3f5;
+}
+
+// 2. Dark Theme (Original Dark)
+[data-theme='dark'] {
+  --color-primary: #f1f2f9;
+  --color-secondary-grau: #75788e;
+  --color-white: #161827;
+  --color-accent: #f86800;
+  --color-secondary-blue: #476df4;
+  --color-icons: #4a4d64;
+  --color-elements: #323546;
+  --color-hover-bg: #212332;
+  --color-surface-1: #0f1121;
+  --color-surface-2: #161827;
+  --color-surface-3: #1a1d2d;
+  --shadow-color: rgba(0, 0, 0, 0.5);
+  --color-skeleton-highlight: #42465c;
+}
+
+// 3. Bridge variables
+$color-primary: var(--color-primary);
+$color-secondary-grau: var(--color-secondary-grau);
+$color-white: var(--color-white);
+$color-accent: var(--color-accent);
+$color-secondary-blue: var(--color-secondary-blue);
+$color-green: var(--color-green);
+$color-red: var(--color-red);
+$color-icons: var(--color-icons);
+$color-elements: var(--color-elements);
+$shadow-color: var(--shadow-color);
+$color-skeleton-highlight: var(--color-skeleton-highlight);
+$color-hover-bg: var(--color-hover-bg);
+$color-surface-1: var(--color-surface-1);
+$color-surface-2: var(--color-surface-2);
+$color-surface-3: var(--color-surface-3);
+
+// Global z-indexes
+$z-indexes: (
+  'dropdown': 100,
+  'modal': 500,
+  'overlay': 900,
+  'header': 1000,
+);
+
+@function z($layer) {
+  @return map.get($z-indexes, $layer);
+}
+
+$transition-duration: 0.3s;
+$transition-effect: ease-in-out;
+$font-family-base: 'Mont', sans-serif;

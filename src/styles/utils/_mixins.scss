@@ -1,0 +1,274 @@
+@use './variables' as *;
+@use './placeholder' as *;
+@use 'sass:color';
+
+@mixin on-tablet {
+  @media (min-width: 640px) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin hover($_property, $_toValue) {
+  transition: #{$_property} 0.3s;
+
+  @media (hover: hover) {
+    &:hover {
+      #{$_property}: $_toValue;
+    }
+  }
+}
+
+@mixin hover-scale {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  transition: transform $transition-duration $transition-effect;
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      transform: scale(1.02);
+    }
+  }
+}
+
+@mixin active-effect {
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+@mixin hover-shadow {
+  @media (hover: hover) {
+    &:hover {
+      box-shadow:
+        0 3px 13px rgba(0, 0, 0, 0.1),
+        0 2px 4px rgba(0, 0, 0, 0.1);
+      @content;
+    }
+  }
+}
+
+@mixin active-underline($color: $color-primary, $height: 2px) {
+  position: relative;
+
+  &::after {
+    content: '';
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    height: $height;
+
+    opacity: 0;
+    background-color: $color;
+
+    transition: opacity 0.3s ease;
+  }
+
+  &.is-active {
+    &::after {
+      opacity: 1;
+    }
+  }
+}
+
+@mixin base-button($width: 48px, $height: 48px, $radius: 0, $has-border: true) {
+  // --- Global style ---
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+
+  width: $width;
+  height: $height;
+  border-radius: $radius;
+
+  transition:
+    border-color $transition-duration ease,
+    transform $transition-duration ease;
+
+  @if $has-border {
+    border: 1px solid $color-icons;
+
+    @media (hover: hover) {
+      &:hover {
+        border: 1px solid $color-primary;
+      }
+    }
+  /* stylelint-disable-next-line at-rule-empty-line-before */
+  } @else {
+    border: none;
+  }
+
+  @content;
+}
+
+@mixin error-button {
+  @include base-button(100%, 40px, 8px) {
+    @extend %button-text;
+
+    color: $color-primary;
+    background-color: $color-hover-bg;
+  }
+}
+
+@mixin padding-block-content($top: 24px, $padding-bottom: true) {
+  padding-top: $top;
+
+  @if $padding-bottom {
+    padding-bottom: 56px;
+
+    @include on-tablet {
+      padding-bottom: 64px;
+    }
+
+    @include on-desktop {
+      padding-bottom: 80px;
+    }
+  /* stylelint-disable-next-line at-rule-empty-line-before */
+  } @else {
+    padding-bottom: 0;
+  }
+}
+
+@keyframes skeleton-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@mixin skeleton-bg($radius: 4px) {
+  border-radius: $radius;
+  background: linear-gradient(
+    90deg,
+    $color-elements 25%,
+    $color-skeleton-highlight 50%, 
+    $color-elements 75%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.5s infinite linear;
+}
+
+@mixin divider($side: top) {
+  margin: 0;
+  border: none;
+  border-#{$side}: 1px solid $color-elements;
+}
+
+@mixin product-specs-base {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    height: 16px;
+  }
+
+  &__name,
+  &__value {
+    margin: 0;
+    padding: 0;
+  }
+
+  &__name {
+    @extend %small-text;
+
+    margin-right: 20px;
+    color: $color-secondary-grau;
+  }
+
+  &__value {
+    @extend %small-text;
+
+    overflow: hidden;
+
+    min-width: 0;
+
+    font-weight: 700;
+    color: $color-primary;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+@mixin product-card-base {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  box-sizing: border-box;
+  height: 100%;
+  padding: 32px;
+  border: 1px solid $color-elements;
+  border-radius: 8px;
+
+  background-color: $color-surface-1;
+
+  &__image-container {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 196px;
+  }
+
+  &__specs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-block: 8px;
+
+    @include divider;
+  }
+
+  &__price-block {
+    display: flex;
+    align-items: center;
+    height: 31px;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    margin-top: auto;
+  }
+}
+
+@mixin theme-companent {
+  &__top-bar {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  &__theme-btn.theme-toggle {
+    display: none; //  (< 640px)
+
+    @include on-tablet {
+      display: flex; // (>= 640px)
+    }
+  }
+}

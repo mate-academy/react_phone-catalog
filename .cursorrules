@@ -1,0 +1,12 @@
+# Project Context & Stack
+- Tech Stack: React, TypeScript, SCSS (BEM methodology), Vite.
+- Primary Approach: Mobile-First responsive design (base width: 320px).
+
+# Code Style & Architecture Rules
+- Use React with functional components and TypeScript interfaces.
+- Import all mixins, variables, and media queries strictly from `@/styles/utils`.
+- Never write inline styles (except for dynamic background colors/images).
+- For outer layouts and centered containers, use `margin-inline: auto` and `padding-inline`.
+- Always ensure `min-width: 0` on flex/grid direct children to prevent content overflow on small screens (320px-350px).
+- Every UI component must have a corresponding Skeleton component with matching geometry to prevent CLS.
+- Store shared types and interfaces in `src/shared/types/`.

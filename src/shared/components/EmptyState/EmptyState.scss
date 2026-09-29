@@ -1,0 +1,38 @@
+@use '../../../styles/utils/' as *;
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  max-width: 300px;
+  margin-inline: auto;
+
+  text-align: center;
+
+  &__title {
+    @extend %h3-title;
+
+    padding-bottom: 16px;
+    color: $color-secondary-grau;
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    margin-bottom: 24px;
+
+    svg {
+      display: block;
+      max-width: 400px;
+      height: auto;
+    }
+  }
+
+  &__btn {
+    min-width: 150px;
+  }
+}

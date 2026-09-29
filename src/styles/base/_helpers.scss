@@ -1,0 +1,25 @@
+// Full opening from the DOM (display: none)
+.is-hidden {
+  display: none !important;
+}
+
+// Visually hidden only (for accessibility / screen readers)
+.visually-hidden {
+  position: absolute;
+
+  overflow: hidden;
+
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+
+  clip: rect(0, 0, 0, 0);
+}
+
+// only for body!!!
+.is-locked {
+  touch-action: none;
+  overflow: hidden;
+}

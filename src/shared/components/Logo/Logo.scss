@@ -1,0 +1,24 @@
+@use '../../../styles/utils/' as *;
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 96px;
+  height: 100%;
+
+  @include on-desktop {
+    width: 128px;
+  }
+  &__img {
+    transform-origin: center center;
+    image-rendering: -webkit-optimize-contrast;
+    
+    @include on-desktop {
+      width: 80px;
+    }
+  }
+
+  @include hover-scale;
+}

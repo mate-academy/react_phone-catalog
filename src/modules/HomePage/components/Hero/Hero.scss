@@ -1,0 +1,36 @@
+@use '../../../../styles/utils/' as *;
+
+.hero {
+  &__container {
+    @extend %content-width;
+
+    padding-inline: 0;
+
+    @include on-tablet {
+      padding-inline: 24px;
+    }
+
+    @include on-desktop {
+      padding-inline: 32px;
+    }
+  }
+
+  &__title {
+
+    @extend %h1-title;
+
+    margin-bottom: 24px;
+    padding-inline: 16px;
+
+    @include on-tablet {
+      margin-bottom: 32px;
+      padding-inline: 0;
+    }
+
+    @include on-desktop {
+      margin-bottom: 56px;
+    }
+  }
+
+  @include theme-companent;
+}

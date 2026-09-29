@@ -1,0 +1,42 @@
+@use '../../../styles/utils/' as *;
+
+.nav-site {
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+
+    height: 100%;
+    padding-top: 24px;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: clamp(19px, 3vw, 64px);
+      padding: 0;
+    }
+  }
+  &__item {
+    height: 27px;
+    transition:
+      border-color 0.3s ease,
+      transform 0.3s ease;
+
+    @include on-tablet {
+      height: 100%;
+    }
+  }
+
+  &__link {
+    @extend %uppercase-text;
+
+    @include active-underline;
+
+    transform: translateY(2px);
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+    @include hover(color, $color-primary);
+  }
+}

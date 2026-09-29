@@ -1,0 +1,66 @@
+@use '../../../styles/utils/' as *;
+
+.header {
+  position: sticky;
+  z-index: z('header');
+  top: 0;
+
+  width: 100%;
+  height: 48px;
+  border-bottom: 1px solid $color-elements;
+
+  background-color: $color-white;
+  box-shadow: 0 2px 8px $shadow-color;
+
+
+  transition:
+    background-color $transition-duration ease,
+    border-color $transition-duration ease,
+    box-shadow $transition-duration ease;
+
+  &__container {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+
+  &__desktop-nav {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+      height: 100%;
+      margin-inline: 16px;
+    }
+  }
+
+  &__search {
+    margin-right: 16px;
+  }
+
+  &__desktop-actions {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+      height: 100%;
+      margin-left: auto;
+    }
+  }
+
+  &__logo {
+    flex-shrink: 0;
+  }
+
+  &__burger {
+    margin-left: auto;
+
+    @include on-tablet {
+      display: none;
+    }
+  }
+
+  @include on-desktop {
+    height: 64px;
+  }
+}

@@ -1,0 +1,11 @@
+<svg id="Help--Streamline-Carbon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35" height="35" width="35">
+  <desc>
+    Help Streamline Icon: https://streamlinehq.com
+  </desc>
+  <defs></defs>
+  <title>help</title>
+  <path d="M17.5 2.1875a15.3125 15.3125 0 1 0 15.3125 15.3125A15.3125 15.3125 0 0 0 17.5 2.1875Zm0 28.4375a13.125 13.125 0 1 1 13.125 -13.125 13.125 13.125 0 0 1 -13.125 13.125Z" fill="#c1c8ae" stroke-width="1.0938"></path>
+  <path d="M15.859375 25.703125a1.640625 1.640625 0 1 0 3.28125 0 1.640625 1.640625 0 1 0 -3.28125 0" fill="#c1c8ae" stroke-width="1.0938"></path>
+  <path d="M18.59375 8.75h-1.640625a4.9109375 4.9109375 0 0 0 -4.921875 4.921875v0.546875h2.1875v-0.546875a2.734375 2.734375 0 0 1 2.734375 -2.734375H18.59375a2.734375 2.734375 0 0 1 0 5.46875h-2.1875v4.921875h2.1875V18.59375a4.921875 4.921875 0 0 0 0 -9.84375Z" fill="#c1c8ae" stroke-width="1.0938"></path>
+  <path d="M0 0h35v35H0Z" fill="none" stroke-width="1.0938"></path>
+</svg>

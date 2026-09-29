@@ -1,0 +1,49 @@
+@use '../../../../../styles/utils/' as *;
+
+.action-button {
+  @include base-button(
+    $width: 100%,
+    $height: 40px,
+    $radius: 8px,
+    $has-border: false
+  );
+
+  flex-shrink: 1;
+
+  font-family: $font-family-base;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  color: $color-white;
+
+  background-color: $color-accent;
+
+  transition:
+    background-color $transition-duration ease,
+    color $transition-duration ease,
+    box-shadow $transition-duration ease;
+
+  @include hover-shadow;
+  @include active-effect;
+
+  // ("Added")
+  &--active {
+    pointer-events: none;
+    cursor: default;
+
+    border: 1px solid $color-elements;
+
+    color: $color-primary;
+
+    background-color: $color-surface-2;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  &--secondary {
+    @include error-button;
+  }
+}

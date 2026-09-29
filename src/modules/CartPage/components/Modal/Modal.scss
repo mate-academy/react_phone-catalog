@@ -1,0 +1,92 @@
+@use '../../../../styles/utils/' as *;
+
+.modal-overlay {
+  position: fixed;
+  z-index: z('modal');
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 16px;
+
+  background-color: rgba($color-primary, 0.5);
+  backdrop-filter: blur(2px);
+
+  animation: modal-fade-in 0.2s ease-out;
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  max-width: 400px;
+  padding: 32px 24px;
+  border: 1px solid $color-elements;
+  border-radius: 12px;
+
+  background-color: $color-surface-1;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+
+  animation: modal-scale-up 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+
+  &__title {
+    @extend %h3-title;
+
+    margin-bottom: 12px;
+    text-align: center;
+  }
+
+  &__message {
+    @extend %body-text;
+
+    margin-bottom: 32px;
+    color: $color-secondary-grau;
+    text-align: center;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+  }
+
+  &__btn {
+    flex: 1;
+
+    &--cancel {
+      @include base-button(100%, 40px, 8px, true);
+
+      @extend %button-text;
+
+      color: $color-primary;
+      background-color: transparent;
+      transition: border-color $transition-duration ease, background-color $transition-duration ease;
+
+      &:hover {
+        border-color: $color-primary;
+        background-color: $color-hover-bg;
+      }
+
+      @include active-effect;
+    }
+  }
+}
+
+@keyframes modal-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modal-scale-up {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

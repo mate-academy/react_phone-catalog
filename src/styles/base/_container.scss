@@ -1,0 +1,15 @@
+@use '../utils/' as *;
+
+.container {
+  @extend %content-width;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    padding-inline: 32px;
+  }
+
+  
+}

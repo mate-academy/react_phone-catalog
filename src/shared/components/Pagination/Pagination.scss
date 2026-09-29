@@ -1,0 +1,81 @@
+@use '../../../styles/utils/' as *;
+
+.pagination {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 0;
+
+  &__list {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+  }
+
+  &__item {
+    min-width: 0;
+  }
+
+  &__button {
+    @extend %button-text;
+
+    cursor: pointer;
+
+    padding-top: 1px;
+
+    font-weight: 600;
+    color: $color-primary;
+
+    background-color: $color-white;
+
+    @include on-desktop {
+      line-height: 0;
+    }
+
+    &--active {
+      border-color: $color-primary;
+      color: $color-white;
+      background-color: $color-primary;
+    }
+
+    &--disabled {
+      pointer-events: none;
+      cursor: not-allowed;
+      border-color: $color-elements;
+      color: $color-icons;
+    }
+
+    &__dots {
+      @extend %button-text;
+
+      user-select: none;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 32px;
+      height: 32px;
+
+      color: $color-secondary-grau;
+    }
+  }
+
+  &__arrow {
+    @extend %arrow-icon;
+
+    fill: $color-primary;
+
+    &--prev {
+      transform: rotate(180deg);
+    }
+  }
+}

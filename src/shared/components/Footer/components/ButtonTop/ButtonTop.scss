@@ -1,0 +1,22 @@
+@use '../../../../../styles/utils/' as *;
+
+.back-to-top {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+
+  &__text {
+    @extend %small-text;
+  }
+
+  &__button {
+    @include active-effect;
+  }
+
+  &__icon {
+    transform: rotate(-90deg);
+    color: $color-primary;
+  }
+}

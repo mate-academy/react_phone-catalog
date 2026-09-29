@@ -1,0 +1,17 @@
+@use '../../styles/utils/' as *;
+
+.home-page {
+  @include padding-block-content;
+
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+
+  @include on-tablet {
+    gap: 64px;
+  }
+
+  @include on-desktop {
+    gap: 80px;
+  }
+}

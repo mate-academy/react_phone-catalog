@@ -1,0 +1,22 @@
+@use '../../../styles/utils/' as *;
+
+.catalog-header {
+  &__title {
+    @extend %h1-title;
+
+    margin-bottom: 8px;
+  }
+
+  &__count {
+    @extend %small-text;
+
+    user-select: none;
+  }
+
+  &__count-skeleton {
+    @include skeleton-bg;
+
+    width: 55px;
+    height: 13px;
+  }
+}

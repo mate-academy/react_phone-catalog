@@ -1,0 +1,19 @@
+@use '../../styles/utils/' as *;
+
+.not-found-page {
+  @extend %flex-center;
+  @extend %content-width;
+
+  flex-direction: column;
+  width: 100%;
+  max-width: 500px;
+  padding-block: 40px;
+
+  &__title {
+    @extend %h1-title;
+  }
+
+  &__button {
+    @include error-button;
+  }
+}

@@ -1,0 +1,25 @@
+@use '../../../styles/utils/' as *;
+
+.products-list {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 40px;
+  justify-content: start;
+
+  &__item {
+    min-width: 0;
+  }
+  
+  @include on-tablet {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 16px;
+  }
+
+  @media (min-width: 880px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

@@ -1,0 +1,53 @@
+@use '../../styles/utils/' as *;
+
+.rights-page {
+  @include padding-block-content;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    max-width: 800px;
+    margin-top: 24px;
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    padding: 24px 32px;
+    border: 1px solid $color-elements;
+    border-radius: 12px;
+
+    background-color: $color-surface-1;
+
+    transition: border-color $transition-duration ease;
+
+    @media (hover: hover) {
+      &:hover {
+        border-color: $color-icons;
+      }
+    }
+  }
+
+  &__section-title {
+    @extend %h3-title;
+
+    color: $color-primary;
+  }
+
+  &__text {
+    @extend %body-text;
+
+    margin: 0;
+    line-height: 1.5;
+    color: $color-secondary-grau;
+
+    strong {
+      font-weight: 600;
+      color: $color-primary;
+    }
+  }
+}

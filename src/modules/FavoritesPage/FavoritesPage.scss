@@ -1,0 +1,18 @@
+@use '../../styles/utils/' as *;
+
+.favorites-page {
+  @include padding-block-content;
+  @include theme-companent;
+
+  &__header {
+    padding-bottom: 32px;
+
+    @include on-tablet {
+      padding-bottom: 40px;
+    }
+  }
+
+  &__error {
+    margin-top: 40px;
+  }
+}

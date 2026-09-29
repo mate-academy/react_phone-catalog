@@ -1,0 +1,70 @@
+@use '../../../../../styles/utils' as *;
+
+.header-actions {
+  display: flex;
+  width: 100%;
+  height: 48px;
+
+  &__link {
+    @include base-button(48px, $has-border: false);
+    @include active-underline;
+
+    width: 50%;
+    height: 100%;
+    border-top: 1px solid $color-elements;
+    border-right: 1px solid $color-elements;
+
+    @include on-tablet {
+      width: 48px;
+    }
+
+    @include on-desktop {
+      width: 64px;
+    }
+
+    &--left {
+      @include on-tablet {
+        border-right: 1px solid $color-elements;
+        border-left: 1px solid $color-elements;
+      }
+    }
+  }
+
+  &__wrapper-icon {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: $color-primary;
+  }
+
+  &__badge-counter {
+    @extend %small-text;
+
+    position: absolute;
+    top: -6px;
+    right: -6px;
+
+    display: block;
+
+    width: 14px;
+    min-width: 14px;
+    height: 14px;
+    border: 1px solid $color-white;
+    border-radius: 50%;
+
+    font-size: 9px;
+    font-weight: 700;
+    line-height: 14px;
+    color: $color-white;
+    text-align: center;
+
+    background-color: $color-secondary-blue;
+  }
+
+  @include on-desktop {
+    height: 100%;
+  }
+}

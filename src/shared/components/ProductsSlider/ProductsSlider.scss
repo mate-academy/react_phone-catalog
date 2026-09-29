@@ -1,0 +1,84 @@
+@use '../../../styles/utils/' as *;
+
+.products-slider {
+  &__header {
+    @extend %content-width;
+
+    @include on-tablet {
+      padding: 0 24px;
+    }
+
+    @include on-desktop {
+      padding: 0 32px;
+    }
+
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    @extend %h2-title;
+  }
+  &__navigation-skeleton {
+    @include skeleton-bg;
+
+    flex-shrink: 0;
+    width: 72px;
+    height: 32px;
+    border-radius: 8px;
+  }
+
+  &__navigation {
+    display: flex;
+  }
+  &__btn {
+    color: $color-primary;
+
+    &:disabled {
+      color: $color-icons;
+    }
+    &--prev {
+      transform: rotate(180deg);
+      margin-right: 16px;
+    }
+  }
+
+  &__icon {
+    color: currentColor;
+    transition:
+      fill $transition-duration ease,
+      color $transition-duration ease;
+  }
+
+  &__swiper-wrapper {
+    @extend %content-width;
+
+    min-height: 506px;
+    padding-right: 0;
+
+    @include on-tablet {
+      padding-left: 24px;
+    }
+
+    @include on-desktop {
+      padding: 0 32px;
+    }
+  }
+  &__swiper {
+    width: 100%;
+  }
+
+  &__slide {
+    flex-shrink: 0;
+    width: 212px;
+    height: auto;
+
+    @include on-tablet {
+      width: 237px;
+    }
+  }
+}

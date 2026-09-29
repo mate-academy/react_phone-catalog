@@ -1,0 +1,126 @@
+@use '../../../../styles/utils/' as *;
+
+.cart-product-skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  box-sizing: border-box;
+  width: 100%;
+  padding: 16px;
+  border: 1px solid $color-elements;
+  border-radius: 8px;
+
+  background-color: $color-surface-1;
+
+  @include on-tablet {
+    flex-direction: row;
+    gap: 24px;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 24px;
+  }
+
+  &__info-wrapper {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    width: 100%;
+
+    @include on-tablet {
+      flex-grow: 1;
+      gap: 24px;
+      width: auto;
+    }
+  }
+
+  &__remove-btn {
+    @include skeleton-bg;
+
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+  }
+
+  &__image {
+    @include skeleton-bg;
+
+    flex-shrink: 0;
+    width: 80px;
+    height: 80px;
+  }
+
+  &__title-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    width: 100%;
+    max-width: 280px;
+
+    @include on-desktop {
+      max-width: 100%;
+    }
+  }
+
+  &__title {
+    @include skeleton-bg;
+
+    height: 14px;
+    margin-block: 3px;
+
+    &--text-1 {
+      width: 100%;
+    }
+
+    &--text-2 {
+      width: 40%;
+
+      @include on-tablet {
+        display: none;
+      }
+    }
+  }
+
+  &__action-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    @include on-tablet {
+      flex-shrink: 0;
+      gap: 32px;
+      width: auto;
+    }
+  }
+
+  &__quantity-controls {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+
+  &__btn {
+    @include skeleton-bg;
+
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+  }
+
+  &__value {
+    @include skeleton-bg;
+
+    width: 16px;
+    height: 22px;
+  }
+
+  &__price {
+    @include skeleton-bg;
+
+    min-width: 50px;
+    height: 22px;
+  }
+}

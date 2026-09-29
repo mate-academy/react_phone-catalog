@@ -1,0 +1,49 @@
+@use '../../../styles/utils/' as *;
+
+.fetch-error{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 287px;
+  margin: 0 auto;
+  padding: 32px;
+
+  &__title {
+    @extend %h3-title;
+
+    font-size: 16px;
+    color: $color-red;
+    text-align: center;
+  }
+
+  &__image {
+    width: auto;
+    max-width: 100%;
+    height: 196px;
+    margin-bottom: 16px;
+
+    object-fit: contain;
+  }
+
+  &__text {
+    @extend %small-text;
+
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+
+    margin: 0 0 24px;
+
+    color: $color-secondary-grau;
+    text-align: center;
+  }
+
+  &__button {
+    width: 100%;
+  }
+}

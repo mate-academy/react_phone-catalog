@@ -1,0 +1,30 @@
+@use '../../../../../styles/utils/' as *;
+
+.nav-footer {
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: clamp(16px, 3vw, 106px);
+    }
+
+    @include on-desktop {
+      gap: 106px;
+    }
+  }
+
+  &__link {
+    @extend %uppercase-text;
+
+    transition: color $transition-duration ease;
+
+    @media (hover: hover) {
+      &:hover {
+        color: $color-primary;
+      }
+    }
+  }
+}

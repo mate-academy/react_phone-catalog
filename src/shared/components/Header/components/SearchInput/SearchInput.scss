@@ -1,0 +1,95 @@
+@use '../../../../../styles/utils/' as *;
+
+.search-input {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+  max-width: 320px;
+  height: 27px;
+
+  &__search-icon {
+    pointer-events: none;
+
+    position: absolute;
+    left: 12px;
+
+    width: 26px;
+    height: 26px;
+
+    color: $color-icons;
+
+    transition: color $transition-duration $transition-effect;
+  }
+
+  &__control {
+    @extend%small-text;
+
+    width: 100%;
+    height: 100%;
+    padding-right: 32px;
+    padding-left: 42px;
+    border: 1px solid $color-elements;
+    border-radius: 8px;
+
+    background-color: $color-surface-2;
+
+    transition:
+      border-color $transition-duration $transition-effect,
+      background-color $transition-duration $transition-effect,
+      box-shadow $transition-duration $transition-effect;
+
+    &::placeholder {
+      color: $color-icons;
+    }
+
+    &:hover {
+      border-color: $color-icons;
+    }
+  }
+
+  &__clear-btn {
+    position: absolute;
+    right: 8px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 24px;
+    height: 24px;
+
+
+  }
+
+  &__clear-icon {
+    box-sizing: content-box;
+    padding: 5px;
+    color: $color-icons;
+    transition: color $transition-duration $transition-effect;
+
+    &:hover {
+      color: $color-primary;
+    }
+  }
+
+  ::placeholder {
+    font-weight: 400;
+    font-style: italic;
+  }
+
+  &:focus-within {
+    .search-input__control {
+      @include hover-shadow; // Используем наш готовый миксин тени
+
+      border-color: $color-primary;
+      background-color: $color-surface-1;
+    }
+
+    .search-input__search-icon {
+      color: $color-primary; // Меняем цвет лупы при активном вводе
+    }
+  }
+}

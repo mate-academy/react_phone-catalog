@@ -12,23 +12,26 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.25.1",
-    "react-transition-group": "^4.4.5"
+    "react-transition-group": "^4.4.5",
+    "swiper": "^14.1.0"
   },
   "devDependencies": {
     "@cypress/react18": "^2.0.1",
-    "@mate-academy/scripts": "^1.8.5",
+    "@mate-academy/scripts": "^2.1.3",
     "@mate-academy/students-ts-config": "*",
     "@mate-academy/stylelint-config": "*",
     "@types/node": "^20.14.10",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@types/react-transition-group": "^4.4.10",
-    "@typescript-eslint/parser": "^7.16.0",
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "@typescript-eslint/parser": "^7.18.0",
     "@vitejs/plugin-react": "^4.3.1",
     "cypress": "^13.13.0",
     "eslint": "^8.57.0",
     "eslint-config-airbnb-typescript": "^18.0.0",
     "eslint-config-prettier": "^9.1.0",
+    "eslint-import-resolver-typescript": "^4.4.5",
     "eslint-plugin-cypress": "^3.3.0",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-jsx-a11y": "^6.9.0",
@@ -43,11 +46,13 @@
     "sass": "^1.77.8",
     "stylelint": "^16.7.0",
     "typescript": "^5.2.2",
-    "vite": "^5.3.1"
+    "vite": "^5.3.1",
+    "vite-plugin-svgr": "^5.2.0",
+    "vite-tsconfig-paths": "^6.1.1"
   },
   "scripts": {
     "start": "mate-scripts start -l",
-    "build": "mate-scripts build",
+    "build-mate": "mate-scripts build",
     "test": "mate-scripts test -l",
     "style-format": "npx stylelint 'src/**/*.scss' --fix --allow-empty-input",
     "lint-js": "mate-scripts lint -j",
@@ -57,7 +62,13 @@
     "update": "mate-scripts update",
     "postinstall": "npm run update && cypress verify",
     "predeploy": "npm run build",
-    "deploy": "mate-scripts deploy"
+    "deploy": "mate-scripts deploy",
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "overrides": {
+    "stylelint-scss": "^6.0.0"
   },
   "browserslist": {
     "production": [

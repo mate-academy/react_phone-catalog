@@ -1,0 +1,68 @@
+
+body {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+a {
+  cursor: pointer;
+  display: inline-block;
+  color: inherit;
+  text-decoration: none;
+}
+
+ul, ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+span {
+  display: block;
+}
+
+input,
+textarea {
+  resize: none;
+
+  border: none;
+
+  font-family: inherit;
+
+  background: transparent;
+  outline: none;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+button {
+  cursor: pointer;
+
+  padding: 0;
+  border: none;
+
+  font-family: inherit;
+
+  background: transparent;
+}

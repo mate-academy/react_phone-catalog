@@ -1,1 +1,20 @@
-// not empty
+@use './styles/utils/' as *;
+
+.app {
+  display: flex;
+  flex-direction: column;
+
+  min-height: 100vh;
+
+  color: $color-primary;
+
+  background-color: $color-surface-2;
+
+  transition:
+    background-color $transition-duration ease,
+    color $transition-duration ease;
+}
+
+.main {
+  flex-grow: 1;
+}

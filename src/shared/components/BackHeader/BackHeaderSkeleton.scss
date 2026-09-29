@@ -1,0 +1,50 @@
+@use '../../../styles/utils/' as *;
+
+.back-header-skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+
+  @include on-tablet {
+    margin-bottom: 32px;
+  }
+
+  &__btn {
+    @include skeleton-bg;
+
+    width: 60px;
+    height: 14px;
+    border-radius: 4px;
+  }
+
+  &__title-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__title {
+    @include skeleton-bg;
+
+    height: 37px;
+    border-radius: 4px;
+
+    &--main {
+      width: 80%;
+
+      @include on-tablet {
+        width: 360px;
+        height: 41px;
+      }
+    }
+
+    &--sub {
+      width: 40%;
+
+      @include on-tablet {
+        display: none;
+      }
+    }
+  }
+}
