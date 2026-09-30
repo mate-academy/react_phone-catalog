@@ -1,0 +1,112 @@
+@use '../../styles/mixins' as *;
+@use '../../styles/variables' as *;
+
+.footer {
+  border-top: 1px solid $elements-color;
+  padding: 32px 16px;
+  margin-top: 80px;
+
+  @include on-tablet {
+    height: 82px;
+  }
+
+  @include on-desktop {
+    height: 82px;
+    padding-left: 152px;
+    padding-right: 152px;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    gap: 32px;
+
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: space-between;
+      height: 100%;
+      align-items: center;
+    }
+
+    @include on-desktop {
+      flex-direction: row;
+      justify-content: space-between;
+      height: 100%;
+      align-items: center;
+    }
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    &-icon {
+      object-fit: contain;
+      height: 32px;
+    }
+  }
+
+  &__list {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex-direction: column;
+    align-items: start;
+    gap: 16px;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 32px;
+    }
+
+    @include on-desktop {
+      gap: 106px;
+      flex-direction: row;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+
+    @include font-style(18px, 26px, 600);
+
+    color: $secondary-color;
+    text-transform: uppercase;
+    &:hover {
+      color: $main-text-color;
+    }
+  }
+
+  &__back-to-top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    border: 0;
+    background-color: transparent;
+  }
+  &__back-text {
+    @include font-style(16px, 21px, 600);
+
+    color: $secondary-color;
+    &:hover {
+      color: $main-text-color;
+    }
+  }
+
+  &__arrow-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    background: transparent;
+    border: 1px solid $elements-color;
+  }
+}
+
+.chevron-up {
+  transform: rotate(90deg);
+}

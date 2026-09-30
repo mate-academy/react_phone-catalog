@@ -1,0 +1,151 @@
+@use './variables.scss' as *;
+
+@mixin font-style(
+  $df-size,
+  $df-lh,
+  $weight: 400,
+  $ls: 0,
+  $mb-weight: 400,
+  $mb-size: null,
+  $mb-lh: null,
+  $mb-ls: null
+) {
+  font-family: Mont, sans-serif;
+  font-size: $df-size;
+  line-height: $df-lh;
+  font-weight: $weight;
+  letter-spacing: $ls;
+
+  @if $mb-size and $mb-lh {
+    @media (max-width: $mobile-max-width) {
+      font-weight: $mb-weight;
+      font-size: $mb-size;
+      line-height: $mb-lh;
+      letter-spacing: $mb-ls;
+    }
+  }
+}
+
+h1 {
+  @include font-style(
+    48px,
+    56px,
+    700,
+    -0.01em,
+    700,
+    32px,
+    41px,
+    -0.01em
+  );
+
+  color: $main-text-color;
+}
+
+h2 {
+  @include font-style(
+    32px,
+    41px,
+    700,
+    -0.01em,
+    700,
+    22px,
+    31px,
+    0
+  );
+}
+
+h3 {
+  @include font-style(
+    22px,
+    31px,
+    700,
+    0,
+    600,
+    20px,
+    26px,
+    0
+  );
+}
+
+h4 {
+  @include font-style(
+    20px,
+    26px,
+    600,
+    0,
+    600,
+    16px,
+    20px,
+    0
+  );
+}
+
+.buttons {
+  @include font-style(14px, 21px, 600, 0);
+}
+
+.body_text {
+  @include font-style(14px, 21px, 400, 0);
+}
+
+.small_text {
+  @include font-style(12px, 15px, 600, 0);
+}
+
+.text-uppercase {
+  @include font-style(
+    12px,
+    11px,
+    $weight: 700,
+    $ls: 0.04em
+  );
+
+  text-transform: uppercase;
+}
+
+.btn-primary {
+  @include font-style(14px, 21px, $weight: 600);
+
+  color: $main-color;
+}
+
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline {
+  padding-inline: 16px;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+}
+
+@mixin page-grid {
+  --columns: 4;
+  --column-size: 1fr;
+
+  display: grid;
+  column-gap: 16px;
+  grid-template-columns: repeat(
+    var(--columns),
+    var(--columns-size)
+  );
+
+  @include on-tablet {
+    --columns: 12;
+  }
+
+  @include on-desktop {
+    --colomns: 24;
+    --column-size: 32px;
+  }
+}

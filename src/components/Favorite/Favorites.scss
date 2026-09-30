@@ -1,0 +1,36 @@
+@use '../../styles/mixins.scss' as *;
+@use '../../styles/variables.scss' as *;
+
+.favorites {
+  margin: 0 auto;
+  max-width: 1136px;
+  padding: 24px 16px 80px;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @media (min-width: 1200px) {
+    padding-inline: 0;
+  }
+  &__title {
+    @include font-style(48px, 56px, 800);
+
+    color: $main-text-color;
+    margin-bottom: 0 0 8px 0;
+  }
+
+  &__count {
+    @include font-style(14px, 21px, 400);
+
+    color: $secondary-color;
+    margin-bottom: 32px;
+    display: block;
+  }
+
+  &__subTitle {
+    @include font-style(32px, 41px, 700);
+
+    color: $main-text-color;
+  }
+}

@@ -1,0 +1,58 @@
+@use '../../styles/mixins' as *;
+@use '../../styles/variables' as *;
+
+.pagination {
+  margin: 0;
+  padding: 0;
+  &__container {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    list-style: none;
+    margin-top: 24px;
+    gap: 8px;
+
+    @include on-tablet {
+      margin-top: 40px;
+    }
+
+    @include on-desktop {
+      margin-top: 40px;
+    }
+
+    li:first-child {
+      margin-right: 8px;
+    }
+    li:last-child {
+      margin-left: 8px;
+    }
+  }
+  &__button {
+    border-radius: 1px;
+    border: 1px solid $elements-color;
+    background: transparent;
+
+    @include font-style(14px, 21px, 400);
+
+    display: flex;
+    width: 32px;
+    height: 32px;
+
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid $main-text-color;
+    }
+
+    &--active {
+      background-color: $main-text-color;
+      color: $hover-background-color;
+      border: none;
+    }
+    &--disabled {
+      color: $secondary-color;
+    }
+  }
+}

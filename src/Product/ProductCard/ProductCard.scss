@@ -1,0 +1,158 @@
+@use '../../styles/mixins.scss' as *;
+@use '../../styles/variables.scss' as *;
+
+.productCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 288px;
+  height: 100%;
+  padding: 32px;
+  border: 1px solid $elements-color;
+  border-radius: 2%;
+  margin-bottom: 40px;
+
+  @include on-tablet {
+    width: 100%;
+
+    padding: 32px;
+  }
+
+  &__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &:hover {
+    box-shadow: $hover-shadow;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__img {
+    width: 100%;
+    max-width: 208px;
+    height: 196px;
+    object-fit: contain;
+  }
+
+  &__name {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 100%;
+    text-align: center;
+
+    @include font-style(14px, 21px 600);
+
+    color: $main-text-color;
+
+    height: 58px;
+    padding: 8px 0;
+  }
+
+  &__price {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    &--discount {
+      @include font-style(22px, 31px, 600);
+
+      color: $main-text-color;
+    }
+    &--full {
+      @include font-style(22px, 31px, 600);
+
+      color: $secondary-color;
+      text-decoration: line-through;
+
+      text-decoration-color: #000;
+      align-items: center;
+    }
+  }
+
+  &__divider {
+    width: 100%;
+    border: 1px solid #e2e6e9;
+    margin: 8px;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+    gap: 8px;
+
+    &--section {
+      display: flex;
+      justify-content: space-between;
+
+      &--title {
+        @include font-style(12px, 15px, 600);
+
+        color: $secondary-color;
+      }
+
+      &--value {
+        @include font-style(12px, 15px, 400);
+
+        color: $main-text-color;
+      }
+    }
+  }
+
+  &__button {
+    display: flex;
+    width: 100%;
+    gap: 10px;
+
+    &--add {
+      @include font-style(14px, 21px, 600);
+
+      flex-grow: 1;
+      height: 40px;
+      background-color: $main-text-color;
+      border: none;
+      border-radius: 4px;
+
+      color: $main-color;
+      &:hover {
+        background-color: #fff;
+        color: $main-text-color;
+        border: 1px solid $main-text-color;
+      }
+      &--added {
+        @include font-style(14px, 21px, 600);
+
+        flex-grow: 1;
+        background-color: #fff;
+        color: #27ae60;
+        border: 1px solid $elements-color;
+      }
+    }
+
+    &--heart {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+
+      background-color: $main-color;
+      border: 1px solid $elements-color;
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+  }
+}

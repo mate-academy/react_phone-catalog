@@ -1,0 +1,210 @@
+@use '../../styles/mixins' as *;
+@use '../../styles/variables' as *;
+
+.header {
+  border-bottom: 1px solid $elements-color;
+  margin: 0;
+  height: 64px;
+
+  @include on-desktop {
+    display: block;
+  }
+
+  &__icon {
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__badge {
+    @include font-style(14px, 21px, 700);
+
+    position: absolute;
+    top: 1px;
+    right: 14px;
+
+    background-color: #ff5252;
+    color: #fff;
+    font-family: sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+  }
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    @include on-desktop {
+      width: auto;
+      gap: 48px;
+    }
+  }
+
+  &__button {
+    margin: 0;
+
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 0;
+    width: 64px;
+    height: 64px;
+
+    @include on-desktop {
+      display: none;
+    }
+  }
+
+  &__logo {
+    padding-left: 24px;
+  }
+  a {
+    text-decoration: none;
+  }
+
+  &__list {
+    display: none;
+
+    align-items: center;
+    list-style: none;
+
+    margin: 0;
+    padding: 0;
+    gap: 32px;
+
+    @include on-desktop {
+      display: flex;
+      gap: 64px;
+    }
+  }
+
+  &__link {
+    @include font-style(14px, 21px, 700);
+
+    text-transform: uppercase;
+    color: $secondary-color;
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+    &:hover {
+      color: $main-text-color;
+    }
+    &.active {
+      color: $main-text-color;
+    }
+  }
+
+  &__actions {
+    justify-content: right;
+    display: none;
+    align-items: center;
+    margin: 0;
+    padding: 2px;
+    list-style: none;
+
+    @include on-desktop {
+      display: flex;
+    }
+  }
+
+  &__action {
+    @include font-style(14px, 21px, 600);
+
+    color: $secondary-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 64px;
+    height: 64px;
+    border-left: 1px solid $elements-color;
+    position: relative;
+    &.active {
+      color: $main-text-color;
+    }
+  }
+
+  &__mob {
+    flex-direction: column;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+
+    background-color: #fff;
+
+    z-index: 999;
+    display: none;
+
+    @include on-desktop {
+      display: none;
+    }
+
+    &-header {
+      display: flex;
+      justify-content: space-between;
+      height: 64px;
+      align-items: center;
+      border-bottom: 1px solid $elements-color;
+      width: 100%;
+    }
+
+    &--open {
+      display: flex;
+    }
+
+    .header__list {
+      display: flex;
+      flex-direction: column;
+      align-items: centers;
+      gap: 32px;
+    }
+
+    .header__actions {
+      position: relative;
+      display: flex;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      justify-content: center;
+      border-top: 1px solid $elements-color;
+      li {
+        display: flex;
+        flex: 1;
+      }
+    }
+
+    .header__action {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+    }
+
+    .header__badge {
+      right: 50%;
+      margin-right: -18px;
+    }
+  }
+}

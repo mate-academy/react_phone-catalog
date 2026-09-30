@@ -1,0 +1,46 @@
+@use '../../styles/mixins.scss' as *;
+@use '../../styles/variables.scss' as *;
+
+.productSlider {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    display: flex;
+    margin: 0;
+
+    @include font-style(32px, 41px, 700);
+  }
+
+  &__buttons {
+    display: flex;
+    object-fit: contain;
+
+    gap: 16px;
+  }
+
+  &__button {
+    background-color: transparent;
+    border-radius: 1px;
+    border: 1px solid $elements-color;
+    width: 32px;
+    height: 32px;
+    &:hover {
+      border: 1px solid $main-text-color;
+      box-shadow: $hover-shadow;
+    }
+  }
+
+  &__content {
+    width: 100%;
+    min-width: 0;
+  }
+}

@@ -1,0 +1,134 @@
+@use '../../styles/mixins' as *;
+@use '../../styles/variables' as *;
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.homePage {
+  margin: 0;
+  padding: 0;
+
+  &__container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px;
+    gap: 24px;
+
+    @include on-desktop {
+      padding: 0 32px;
+
+      gap: 56px;
+    }
+
+    @include on-tablet {
+      padding: 0 32px;
+
+      gap: 32px;
+    }
+  }
+
+  &__heading {
+    @include font-style(48px, 56px, 700);
+  }
+
+  &__subtitle {
+    display: flex;
+    margin: 0;
+    justify-content: center;
+
+    @include font-style(32px, 41px, 700);
+
+    @include on-tablet {
+      justify-content: left;
+    }
+
+    @include on-desktop {
+      justify-content: left;
+    }
+  }
+
+  &__categories {
+    display: flex;
+
+    &-list {
+      width: 100%;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      list-style: none;
+      justify-content: center;
+
+      @include on-desktop {
+        flex-direction: row;
+      }
+
+      @include on-tablet {
+        flex-direction: row;
+      }
+    }
+
+    a {
+      text-decoration: none;
+    }
+  }
+
+  &__category-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 32px;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 1px;
+
+    &-img {
+      display: block;
+      width: 200px;
+      height: 200px;
+      object-fit: contain;
+
+      @media (min-width: 1200px) {
+        width: 360px;
+        height: 360px;
+      }
+    }
+
+    &-title {
+      @include font-style(22px, 31px, 700);
+
+      color: $main-text-color;
+    }
+
+    &__count {
+      @include font-style(14px, 21px, 400);
+
+      color: $secondary-color;
+    }
+
+    &:hover {
+      box-shadow: $hover-shadow;
+      transform: scale(1.1);
+      transform-origin: center;
+      transition: transform 500ms ease-in-out;
+    }
+  }
+
+  &__productSlider {
+    display: flex;
+    flex-direction: column;
+  }
+}

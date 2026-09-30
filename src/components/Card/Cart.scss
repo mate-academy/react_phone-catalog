@@ -1,0 +1,133 @@
+@use '../../styles/mixins.scss' as *;
+@use '../../styles/variables.scss' as *;
+
+.cart {
+  margin: 0 auto;
+
+  cursor: default;
+
+  &__content {
+    @media (min-width: 1200px) {
+      width: 1136px;
+      margin: 32px auto;
+    }
+
+    margin: 32px;
+  }
+
+  &__back {
+    display: flex;
+
+    gap: 5px;
+
+    padding: 0;
+    border: none;
+    justify-content: space-between;
+
+    width: 40px;
+    height: 16px;
+
+    color: $secondary-color;
+
+    @include font-style(14px, 21px, 600);
+
+    cursor: pointer;
+    background-color: transparent;
+
+    align-items: center;
+  }
+
+  &__title {
+    display: inline-block;
+
+    @include font-style(48px, 56px, 800);
+
+    color: $main-text-color;
+    margin-top: 32px;
+  }
+
+  &__empty {
+    margin: 0;
+    justify-content: center;
+
+    @include font-style(32px, 41px, 700);
+
+    color: $main-text-color;
+    align-items: center;
+  }
+
+  &__main {
+    display: flex;
+    gap: 32px;
+    flex-direction: column;
+
+    @include on-desktop {
+      flex-direction: row;
+      gap: 16px;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__checkout {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    border: 1px solid $elements-color;
+    align-items: center;
+    padding: 24px;
+    border-radius: 4px;
+    height: 190px;
+    padding-bottom: 0;
+
+    @include on-desktop {
+      width: 368px;
+    }
+
+    &-total {
+      color: $main-text-color;
+
+      @include font-style(32px, 41px, 700);
+
+      margin: 0;
+    }
+
+    &-count {
+      margin: 0;
+      color: $secondary-color;
+
+      @include font-style(14px, 21px, 400);
+    }
+
+    &-divider {
+      width: 100%;
+      border: 1px solid $elements-color;
+      margin: 0;
+    }
+
+    &-btn {
+      display: flex;
+      width: 100%;
+      margin-bottom: 16px;
+
+      @include font-style(14px, 21px, 600);
+
+      height: 48px;
+      background-color: $main-text-color;
+      border: none;
+      border-radius: 4px;
+      color: $main-color;
+      justify-content: center;
+      align-items: center;
+      &:hover {
+        background-color: $main-color;
+        color: $main-text-color;
+        border: 1px solid $main-text-color;
+      }
+    }
+  }
+}

@@ -1,9 +1,11 @@
-const { defineConfig } = require('cypress');
+/* eslint-disable import/no-extraneous-dependencies */
+import { defineConfig } from 'cypress';
 
-module.exports = defineConfig({
+export default defineConfig({
   e2e: {
     baseUrl: 'http://localhost:3000',
-    specPattern: 'cypress/integration/**/*.spec.{js,ts,jsx,tsx}',
+    specPattern:
+      'cypress/integration/**/*.spec.{js,ts,jsx,tsx}',
   },
   video: true,
   viewportHeight: 1920,

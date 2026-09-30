@@ -1,0 +1,116 @@
+@use '../../../styles/mixins.scss' as *;
+@use '../../../styles/variables.scss' as *;
+
+.cartItem {
+  margin: 0;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+
+  border: 1px solid $elements-color;
+  box-sizing: border-box;
+  width: 100%;
+
+  &:hover {
+    box-shadow: $hover-shadow;
+  }
+
+  @include on-tablet {
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+
+    height: 128px;
+    gap: 24px;
+  }
+
+  @include on-desktop {
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 752px;
+    height: 128px;
+    gap: 24px;
+  }
+
+  &__info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+
+    &-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: inherit;
+      gap: 24px;
+    }
+
+    &-btn {
+      width: 16px;
+      height: 16px;
+      background-color: transparent;
+      justify-content: center;
+      color: $secondary-color;
+      border-color: transparent;
+      padding: 0;
+    }
+    &-img {
+      align-items: center;
+      object-fit: contain;
+      width: 100px;
+      height: 100px;
+    }
+    &-title {
+      @include font-style(14px, 21px, 500);
+
+      color: $secondary-color;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    gap: 24px;
+
+    align-items: center;
+    justify-content: space-between;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 40px;
+    }
+
+    @include on-desktop {
+      flex-direction: row;
+      gap: 40px;
+    }
+  }
+
+  &__quantity {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 14px;
+    &-btn {
+      width: 32px;
+      height: 32px;
+      background-color: transparent;
+      border: 1px solid $elements-color;
+      color: $secondary-color;
+      &:hover {
+        box-shadow: $hover-shadow;
+      }
+    }
+    &-value {
+      @include font-style(12px, 15px, 600);
+
+      color: $main-text-color;
+    }
+  }
+  &__price {
+    @include font-style(22px, 31px, 700);
+  }
+}

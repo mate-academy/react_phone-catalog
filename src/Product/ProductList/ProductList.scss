@@ -1,0 +1,31 @@
+@use '../../styles/mixins.scss' as *;
+@use '../../styles/variables.scss' as *;
+
+.productList {
+  display: grid;
+  gap: 16px;
+  justify-content: center;
+  row-gap: 40px;
+
+  grid-template-columns: repeat(1, 272px);
+
+  @media (min-width: 640px) and (max-width: 950px) {
+    grid-template-columns: repeat(2, 272px);
+    justify-content: center;
+  }
+
+  @media (min-width: 950px) and (max-width: 1200px) {
+    grid-template-columns: repeat(3, 272px);
+    justify-content: center;
+  }
+
+  @media (min-width: 1200px) {
+    grid-template-columns: repeat(4, 272px);
+    width: 1136px;
+    margin: 0 auto;
+  }
+}
+
+.swiper-slide {
+  flex-shrink: none;
+}
