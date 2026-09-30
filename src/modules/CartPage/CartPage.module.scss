@@ -1,0 +1,264 @@
+@use '/src/styles/utils' as *;
+
+.cartPage {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+    margin-bottom: 56px;
+
+
+  @include on-tablet {
+    gap: 16px;
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+}
+
+.backButton {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 4px;
+
+  align-self: flex-start;
+  padding: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  margin-top: 24px;
+
+  @include on-tablet {
+    margin-top: 40px;
+  }
+
+  img {
+    display: block;
+    width: 16px;
+    height: 16px;
+  }
+
+  span {
+    color: $c-secondary;
+    line-height: 15px;
+  }
+}
+
+.title {
+  margin-bottom: 8px;
+  line-height: 41px;
+
+  @include on-tablet {
+    margin-bottom: 16px;
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @include on-desktop {
+    flex-direction: row;
+
+    @include page-grid;
+  }
+}
+
+.itemList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include on-desktop {
+    grid-column: span 16;
+  }
+}
+
+.cartItem {
+  display: flex;
+  box-sizing: border-box;
+  height: 160px;
+  flex-direction: column;
+  padding: 16px;
+  gap: 16px;
+  border: 1px solid $c-elements;
+  border-radius: 16px;
+
+  @include on-tablet {
+    height: 128px;
+    padding: 24px;
+    flex-direction: row;
+    gap: 24px;
+  }
+
+  @include on-desktop {
+    justify-content: space-between;
+  }
+}
+
+.productInfo {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 16px;
+
+  @include on-tablet {
+    gap: 24px;
+  }
+}
+
+.removeBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border: 0;
+  background: transparent;
+}
+
+.itemImageWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  flex-shrink: 0;
+}
+
+.itemImage {
+  width: 66px;
+  height: 66px;
+  object-fit: contain;
+}
+
+.itemName {
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.quantityInfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+
+  @include on-tablet {
+    gap: 24px;
+  }
+
+  @include on-desktop {
+    gap: 53px;
+  }
+}
+
+.itemPrice {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 140%;
+  width: 80px;
+  flex-shrink: 0;
+  text-align: right;
+}
+
+.productQuantity {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.quantityBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  cursor: pointer;
+  border: 1px solid $c-icons;
+  border-radius: 50%;
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
+
+  &:disabled {
+    border: 1px solid $c-elements;
+    cursor: default;
+  }
+
+  &:hover:not(:disabled) {
+    border: 1px solid $c-primary;
+  }
+}
+
+.quantityValue {
+  font-size: 14px;
+  line-height: 21px;
+  min-width: 16px;
+  text-align: center;
+  user-select: none;
+}
+
+.checkoutBlock {
+  display: flex;
+  box-sizing: border-box;
+  height: 190px;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid $c-elements;
+  border-radius: 16px;
+  padding: 24px;
+
+  @include on-desktop {
+    grid-column: span 8;
+    margin-bottom: 0;
+    height: 207px;
+  }
+}
+
+.totalPrice {
+  font-size: 32px;
+  line-height: 41px;
+  font-weight: 700;
+  letter-spacing: -1%;
+}
+
+.totalCount {
+  font-size: 14px;
+  line-height: 21px;
+  color: $c-secondary;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: $c-elements;
+  margin-block: 16px;
+  flex-shrink: 0;
+
+  @include on-desktop {
+    margin-block: 24px;
+  }
+}
+
+.checkoutBtn {
+  width: 100%;
+  background-color: $c-accent;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 48px;
+  color: $c-white;
+  border: none;
+  cursor: pointer;
+}

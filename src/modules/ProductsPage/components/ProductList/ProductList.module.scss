@@ -1,0 +1,28 @@
+@use '/src/styles/utils' as *;
+
+.list {
+  row-gap: 40px;
+  margin-bottom: 24px;
+
+  @include page-grid;
+
+  & > * {
+    grid-column: span 4;
+
+    @include on-tablet {
+      grid-column: span 6;
+    }
+
+    @media (min-width: 768px) {
+      grid-column: span 4;
+    }
+
+    @include on-desktop {
+      grid-column: span 6;
+    }
+  }
+
+  @include on-tablet {
+    margin-bottom: 40px;
+  }
+}

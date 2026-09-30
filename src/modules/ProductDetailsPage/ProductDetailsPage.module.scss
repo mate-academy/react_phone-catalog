@@ -1,0 +1,427 @@
+@use '/src/styles/utils' as *;
+
+.gallery,
+.specsPreview,
+.about {
+  @include block-gap;
+}
+
+.productPage {
+  @include page-grid;
+}
+
+.breadcrumbs,
+.backButton,
+.productTitle {
+  grid-column: 1 / -1;
+}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  gap: 8px;
+  font-size: 12px;
+  max-width: 100%;
+  overflow: hidden;
+  margin: 24px 0;
+
+  &Link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    text-transform: capitalize;
+  }
+
+  &Current {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 0;
+    color: $c-secondary;
+  }
+
+  @include on-tablet {
+    margin: 24px 0 40px;
+  }
+}
+
+.backButton {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 4px;
+
+  align-self: flex-start;
+  padding: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 16px;
+
+  img {
+    display: block;
+    width: 16px;
+    height: 16px;
+  }
+
+  span {
+    color: $c-secondary;
+    line-height: 15px;
+  }
+}
+
+.productTitle {
+  margin-bottom: 32px;
+
+  @include on-tablet {
+    margin-bottom: 40px;
+  }
+}
+
+.gallery {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 16px;
+  margin-bottom: 40px;
+
+  @include on-tablet {
+    grid-column: 1 / 8;
+    flex-direction: row;
+  }
+
+  @include on-desktop {
+    grid-column: 1 / 13;
+    margin-bottom: 80px;
+  }
+}
+
+.thumbnails {
+  display: flex;
+
+  gap: 8px;
+
+  @include on-tablet {
+    flex-direction: column;
+  }
+}
+
+.thumbButton {
+  width: 50px;
+  height: 50px;
+  padding: 4px;
+  border: 1px solid $c-elements;
+  border-radius: 4px;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  @include on-tablet {
+    width: 35px;
+    height: 35px;
+  }
+
+  @include on-desktop {
+    width: 80px;
+    height: 80px;
+  }
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  &--active {
+    border-color: $c-primary;
+  }
+}
+
+.mainImageWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 288px;
+  height: 288px;
+
+  @include on-desktop {
+    width: 464px;
+    height: 464px;
+  }
+
+  .mainImage {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+}
+
+.productActions {
+  grid-column: 1 / -1;
+
+  @include on-tablet {
+    grid-column: 8 / -1;
+  }
+
+  @include on-desktop {
+    grid-column: 14 / -5;
+  }
+}
+
+.picker {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid $c-elements;
+  gap: 8px;
+
+  &--capacity {
+    margin-bottom: 32px;
+  }
+
+  &Title {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+    color: $c-secondary;
+  }
+
+  &List {
+    display: flex;
+    gap: 8px;
+  }
+}
+
+.color {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 0;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid $c-elements;
+  box-shadow: inset 0 0 0 2px $c-white;
+  transition: border-color 0.2s;
+
+  &:hover:not(.color--active) {
+    transform: scale(1.1);
+  }
+
+  &--active {
+    border-color: $c-primary;
+  }
+}
+
+.capacity {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: flex-start;
+
+  height: 32px;
+  padding-top: 7px;
+  padding-inline: 8px;
+
+  border: 1px solid $c-icons;
+  border-radius: 4px;
+
+  font-size: 14px;
+  line-height: 21px;
+
+  text-decoration: none;
+
+  &--active {
+    background-color: $c-primary;
+    color: $c-white;
+  }
+}
+
+.priceBlock {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.priceDiscount {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+}
+
+.priceRegular {
+  font-size: 22px;
+  text-decoration: line-through;
+  color: $c-secondary;
+  line-height: 28px;
+}
+
+.buttonsGroup {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+
+.addButton {
+  flex: 1;
+  height: 48px;
+  background-color: $c-accent;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  color: $c-white;
+  border: none;
+  cursor: pointer;
+
+  &--active {
+    background-color: $c-white;
+    color: $c-accent;
+    border: 1px solid $c-elements;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      box-shadow: 0 3px 13px rgba(0.23, 0.32, 0.49, 0.4);
+    }
+  }
+}
+
+.favouriteButton {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: transparent;
+  border: 1px solid $c-icons;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+
+  &:focus,
+  &:focus-visible {
+    outline: none;
+  }
+
+  &:hover {
+    border: 1px solid $c-primary;
+  }
+
+  &--active {
+    border-color: $c-elements;
+  }
+}
+
+.specsPreview {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.specRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.specLabel {
+  font-size: 12px;
+  color: $c-secondary;
+  font-weight: 600;
+  line-height: 15px;
+}
+
+.specValue {
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.about {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @include on-desktop {
+    grid-column: 1 / 13;
+  }
+}
+
+.sectionTitle {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 26px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid $c-elements;
+
+  @include on-tablet {
+    font-size: 22px;
+    font-weight: 800;
+  }
+}
+
+.title {
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 600;
+  margin-bottom: 16px;
+
+  @include on-tablet {
+    font-size: 20px;
+  }
+}
+
+.text {
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 400;
+  color: $c-secondary;
+}
+
+.techSpecs {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  @include on-tablet {
+    gap: 24px;
+  }
+
+  @include on-desktop {
+    grid-column: 14 / -1;
+  }
+}
+
+.techSpecLabel {
+  font-size: 14px;
+  color: $c-secondary;
+  line-height: 21px;
+}
+
+.techSpecValue {
+  font-size: 14px;
+  line-height: 15px;
+}
+
+.suggestedProducts {
+  grid-column: 1 / -1;
+  width: 100%;
+
+  @include block-gap;
+}

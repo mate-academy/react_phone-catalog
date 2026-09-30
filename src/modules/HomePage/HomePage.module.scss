@@ -1,0 +1,114 @@
+@use '/src/styles/utils' as *;
+
+.homePage {
+  max-width: 1200px;
+  margin-inline: auto;
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.section {
+  row-gap: 32px;
+
+  @include block-gap;
+
+  &:first-of-type {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 64px;
+
+    @include on-desktop {
+      margin-bottom: 80px;
+    }
+  }
+}
+
+.mainTitle {
+  margin: 24px 0;
+
+  @include on-tablet {
+    margin: 32px 0;
+  }
+
+  @include on-desktop {
+    margin: 56px 0;
+  }
+}
+
+.shopByCategoryTitle {
+  margin-bottom: 24px;
+}
+
+.cards {
+  row-gap: 32px;
+
+  @include page-grid;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  grid-column: span 4;
+
+  @include on-desktop {
+    grid-column: span 8;
+  }
+}
+
+.imgWrapper {
+  width: 100%;
+  border-radius: 8px;
+  aspect-ratio: 1 / 1;
+  margin-bottom: 24px;
+  overflow: hidden;
+
+  transition: transform 0.3s ease-in-out;
+  will-change: transform;
+
+  &:hover {
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.1);
+    transform: scale(1.03);
+  }
+}
+
+.imgWrapperPhones {
+  background-color: #6d6474;
+}
+
+.imgWrapperTablets {
+  background-color: #8d8d92;
+}
+
+.imgWrapperAccessories {
+  background-color: #973d5f;
+}
+
+.categoryImg {
+  width: 100%;
+  height: 100%;
+
+  object-position: bottom;
+}
+
+.categoryTitle {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.categoryCount {
+  font-size: 14px;
+  line-height: 21px;
+  color: $c-secondary;
+}

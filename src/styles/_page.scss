@@ -1,0 +1,36 @@
+@use './utils' as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-y: scroll;
+}
+
+body {
+  font-family: $main-font-family;
+  color: $c-primary;
+  background-color: $c-background;
+
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.mainContainer {
+  max-width: 1200px;
+  width: 100%;
+  margin-inline: auto;
+
+  @include content-padding-inline;
+}

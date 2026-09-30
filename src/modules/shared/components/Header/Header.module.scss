@@ -1,0 +1,212 @@
+@use '/src/styles/utils' as *;
+
+.header {
+  position: sticky;
+  height: 48px;
+  background-color: $c-white;
+  box-shadow: 0 1px 0 0 $c-elements;
+
+  @include on-desktop {
+    height: 64px;
+  }
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  gap: 16px;
+  padding-left: 16px;
+
+  @include on-desktop {
+    padding-left: 24px;
+    gap: 24px;
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  margin-right: 16px;
+
+  @include on-desktop {
+    margin-right: 24px;
+  }
+}
+
+.nav {
+  display: none;
+  height: 100%;
+
+  @include on-tablet {
+    align-items: center;
+    display: flex !important;
+    flex-grow: 1;
+  }
+}
+
+.navList {
+  display: flex;
+  gap: 32px;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  @include on-desktop {
+    gap: 64px;
+  }
+}
+
+.navLink {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 100%;
+
+  font-family: $main-font-family;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  color: $c-secondary;
+  text-transform: uppercase;
+
+  &.isActive {
+    color: $c-primary;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background-color: $c-primary;
+    }
+  }
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.desktopActions {
+  display: none;
+
+  @include on-tablet {
+    display: flex !important;
+    height: 100%;
+  }
+}
+
+.actionsBtn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 100%;
+  border-left: 1px solid $c-elements;
+  color: $c-primary;
+  text-decoration: none;
+
+  @include on-desktop {
+    width: 64px;
+  }
+
+  &::after{
+    content: '';
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background-color: transparent;
+    transition: background-color 0.2s ease;
+
+  }
+
+  &--active::after {
+    background-color: $c-primary;
+  }
+}
+
+.iconWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconHeart {
+  display: block;
+  width: 16px;
+  height: 16px;
+
+  background-image: url('/img/icons/heart.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.iconBag {
+  display: block;
+  width: 16px;
+  height: 16px;
+  background-image: url('/img/icons/cart.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 14px;
+  height: 14px;
+
+  font-size: 9px;
+  font-weight: 600;
+  color: $c-white;
+
+  background-color: $c-secondary-accent;
+  border: 1px solid $c-white;
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+.burgerBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 100%;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-left: 1px solid $c-elements;
+  cursor: pointer;
+
+  @include on-tablet {
+    display: none !important;
+  }
+}
+
+.burgerIcon {
+  display: block;
+  width: 16px;
+  height: 16px;
+
+  background-image: url('/img/icons/burger.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+}

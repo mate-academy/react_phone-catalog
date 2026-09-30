@@ -1,0 +1,88 @@
+@use '/src/styles/utils' as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  --card-width: 212px;
+  --gap: 16px;
+
+  @include on-tablet {
+    --card-width: 237px;
+  }
+
+  @include on-desktop {
+    --card-width: 272px;
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  width: 100%;
+}
+
+.title {
+  flex: 1;
+  min-width: 0;
+  margin-right: 16px;
+  max-width: 208px;
+
+  @include on-tablet {
+    max-width: none;
+  }
+}
+
+.buttons {
+  display: flex;
+  flex-shrink: 0;
+  gap: 16px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  cursor: pointer;
+  border: 1px solid $c-icons;
+  border-radius: 50%;
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
+
+  &:disabled {
+    border: 1px solid $c-elements;
+    cursor: default;
+  }
+
+  &:hover:not(:disabled) {
+    border: 1px solid $c-primary;
+  }
+}
+
+.viewport {
+  overflow: hidden;
+  width: 100%;
+}
+
+.track {
+  display: flex;
+  align-items: stretch;
+
+  gap: var(--gap);
+  transition: transform 0.4s ease;
+}
+
+.cardWrapper {
+  width: var(--card-width);
+
+  flex-shrink: 0;
+}

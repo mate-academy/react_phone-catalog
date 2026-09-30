@@ -1,0 +1,177 @@
+@use '/src/styles/utils' as *;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 439px;
+  padding: 32px;
+  border: 1px solid $c-elements;
+  border-radius: 8px;
+  gap: 8px;
+  background-color: $c-white;
+  transition: box-shadow 0.2s ease;
+
+  @include on-tablet {
+    height: 512px;
+  }
+
+  @include on-desktop {
+    height: 506px;
+  }
+
+  &:hover {
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.imageWrapper {
+  display: flex;
+  height: 129px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  @include on-tablet {
+    height: 202px;
+  }
+
+  @include on-desktop {
+    max-height: 196px;
+  }
+}
+
+.image {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.title {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  margin-top: 16px;
+
+  height: auto;
+  max-height: 58px;
+
+  overflow: hidden;
+}
+
+.priceBlock {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  padding-bottom: 8px;
+  border-bottom: 1px solid $c-elements;
+}
+
+.price {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 31px;
+}
+
+.fullPrice {
+  align-items: center;
+  font-size: 22px;
+  font-weight: 400;
+  color: $c-secondary;
+  text-decoration: line-through;
+}
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px 0;
+}
+
+.specRow {
+  display: flex;
+  justify-content: space-between;
+}
+
+.specLabel {
+  font-size: 12px;
+  color: $c-secondary;
+  font-weight: 600;
+  line-height: 15px;
+}
+
+.specValue {
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.addButton {
+  flex: 1;
+  flex-shrink: 0;
+  height: 40px;
+  background-color: $c-accent;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  color: $c-white;
+  border: none;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease;
+
+  @include on-tablet {
+    width: 125px;
+  }
+
+  @include on-desktop {
+    width: 160px;
+  }
+
+  &--active {
+    background-color: $c-white;
+    color: $c-accent;
+    border: 1px solid $c-elements;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      box-shadow: 0 3px 13px rgba(0.23, 0.32, 0.49, 0.4);
+    }
+  }
+}
+
+.favouriteButton {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: 1px solid $c-icons;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+
+  &:focus,
+  &:focus-visible {
+    outline: none;
+  }
+
+  &:hover {
+    border: 1px solid $c-primary;
+  }
+
+  &--active {
+    border-color: $c-elements;
+  }
+}
