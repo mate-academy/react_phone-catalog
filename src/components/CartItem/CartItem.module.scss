@@ -1,0 +1,133 @@
+.cartItem {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+
+  padding: 16px;
+  border: 1px solid #e2e8f0;
+  background-color: #fff;
+  width: 100%;
+  box-sizing: border-box;
+
+  @media (min-width: 640px) {
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    padding: 16px 24px;
+  }
+
+  .removeButton {
+    order: 1;
+    cursor: pointer;
+    border: none;
+    font-size: 16px;
+    color: #b4bdc3;
+    background: none;
+    transition: color 0.2s;
+
+    @media (min-width: 640px) {
+      order: 0;
+    }
+
+    &:hover {
+      color: #313237;
+    }
+  }
+
+  .imageLink {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+
+    width: 64px;
+    height: 64px;
+
+    .image {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  .titleLink {
+    flex: 1;
+    min-width: 120px;
+    text-decoration: none;
+
+    .title {
+      overflow: hidden;
+      display: -webkit-box;
+      font-size: 13px;
+      font-weight: 500;
+      color: #313237;
+
+      @media (min-width: 640px) {
+        font-size: 14px;
+      }
+
+      &:hover {
+        color: #757679;
+      }
+    }
+  }
+
+  .counterWrapper {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    order: 2;
+
+    @media (min-width: 640px) {
+      order: 0;
+    }
+
+    .counterButton {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 32px;
+      height: 32px;
+      border: 1px solid #b4bdc3;
+      font-size: 16px;
+      background: #fff;
+      transition: all 0.2s;
+
+      &:disabled {
+        cursor: not-allowed;
+        opacity: 0.4;
+      }
+
+      &:hover:not(:disabled) {
+        border-color: #313237;
+        color: #313237;
+      }
+    }
+
+    .counterValue {
+      min-width: 16px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #313237;
+      text-align: center;
+    }
+  }
+
+  .price {
+    order: 3;
+    font-size: 20px;
+    font-weight: 800;
+    color: #313237;
+    margin-left: auto;
+
+    @media (min-width: 640px) {
+      order: 0;
+      min-width: 80px;
+      font-size: 22px;
+      text-align: right;
+      margin-left: 0;
+    }
+  }
+}

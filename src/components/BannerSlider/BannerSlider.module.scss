@@ -1,0 +1,174 @@
+// обгортка для всього слайдера та індикаторів-рисочок знизу
+.sliderWrapper {
+  display: flex;
+  flex-direction: column;
+
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+
+  @media (min-width: 640px) {
+    padding: 0 24px;
+  }
+}
+
+// контейнер самого слайдера (картинки та кнопки)
+.bannerSlider {
+  position: relative;
+
+  overflow: hidden;
+
+  box-sizing: border-box;
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+
+  @media (min-width: 640px) {
+    aspect-ratio: unset;
+    height: 300px;
+    padding-right: 48px;
+    padding-left: 48px;
+  }
+
+  @media (min-width: 1024px) {
+    height: 400px;
+  }
+}
+
+// контейнер зі всіма слайдами в баннері
+.slides {
+  scrollbar-width: none;
+  scroll-snap-type: x mandatory;
+
+  overflow-x: auto;
+  display: flex;
+
+  width: 100%;
+  height: 100%;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @media (min-width: 640px) {
+    scroll-snap-type: none;
+    overflow-x: hidden;
+  }
+}
+
+.slide {
+  scroll-snap-align: start;
+  min-width: 100%;
+  height: 100%;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+// кнопки перемикання слайдів (вліво та вправо)
+.prevButton {
+  cursor: pointer;
+
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 0;
+
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 100%;
+  border: none;
+
+  color: #313237;
+
+  background-color: transparent;
+
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: rgba(49, 50, 55, 0.1);
+  }
+
+  &:active {
+    background-color: rgba(49, 50, 55, 0.2);
+  }
+
+  @media (min-width: 640px) {
+    display: flex;
+  }
+}
+
+.nextButton {
+  cursor: pointer;
+
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  right: 0;
+
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 100%;
+  border: none;
+
+  color: #313237;
+
+  background-color: transparent;
+
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: rgba(49, 50, 55, 0.1);
+  }
+
+  &:active {
+    background-color: rgba(49, 50, 55, 0.2);
+  }
+
+  @media (min-width: 640px) {
+    display: flex;
+  }
+}
+
+// контейнер для нижніх індикаторів-рисочок
+.dots {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+.dot {
+  cursor: pointer;
+
+  width: 14px;
+  height: 4px;
+  padding: 0;
+  border: none;
+  border-radius: 2px;
+
+  background-color: #e2e8f0;
+
+  transition: background-color 0.3s ease, width 0.3s ease;
+
+  &:hover {
+    background-color: #b4b5b7;
+  }
+
+  &.active {
+    width: 24px;
+    background-color: #313237;
+  }
+}

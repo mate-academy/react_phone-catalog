@@ -1,0 +1,91 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px 60px;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+
+  @media (min-width: 640px) {
+    padding: 0 24px 80px;
+  }
+}
+
+.cartContent {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @media (min-width: 1024px) {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+}
+
+.cartList {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  min-width: 0;
+}
+
+.checkoutBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  box-sizing: border-box;
+  width: 100%;
+  padding: 24px 16px;
+  border: 1px solid #e2e8f0;
+
+  @media (min-width: 640px) {
+    padding: 32px 24px;
+  }
+
+  .totalPrice {
+    margin-bottom: 8px;
+    font-size: 28px;
+    font-weight: 800;
+    color: #313237;
+
+    @media (min-width: 640px) {
+      font-size: 32px;
+    }
+  }
+
+  .totalItems {
+    margin-bottom: 24px;
+    font-size: 14px;
+    color: #89939a;
+  }
+
+  .checkoutButton {
+    cursor: pointer;
+
+    width: 100%;
+    height: 48px;
+    border: none;
+
+    font-weight: 700;
+    color: #fff;
+
+    background-color: #313237;
+
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: #4e5058;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    position: sticky;
+    top: 100px;
+    max-width: 368px;
+  }
+
+}

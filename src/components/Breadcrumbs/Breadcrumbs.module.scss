@@ -1,0 +1,61 @@
+.breadcrumbs {
+  margin-top: 24px;
+
+  // margin-bottom: 40px;
+  margin-left: 32px;
+
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 100%;
+
+  .list {
+    display: flex;
+    align-items: center;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+  }
+
+  .item {
+    display: flex;
+    align-items: center;
+  }
+
+  .link {
+    color: #060b12;
+    text-decoration: none;
+    transition: opacity 0.2s;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  .current {
+    color: #89939A;
+
+    /* захист від виходу за межі екрана */
+    word-break: break-word;
+  }
+
+  .separator {
+    margin: 0 8px;
+    font-size: 10px;
+    color: #B4BDC4;
+  }
+
+  .homeLink {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+
+    img {
+      display: block;
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
