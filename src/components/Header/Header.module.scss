@@ -1,0 +1,228 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  width: 100%;
+
+  background: #fff;
+  border-bottom: 1px solid #e2e6e9;
+}
+
+.inner {
+  width: 100%;
+  max-width: 1200px;
+  height: 64px;
+
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+}
+
+.nav {
+  height: 64px;
+
+  display: flex;
+  align-items: stretch;
+
+  flex: 1;
+}
+
+.nav button {
+  position: relative;
+
+  min-width: 100px;
+
+  padding: 8px 16px;
+
+  border: 0;
+  border-bottom: 3px solid transparent;
+
+  background: #fff;
+  color: #89939a;
+
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.nav button:hover {
+  color: #0f0f11;
+}
+
+.nav button.active {
+  color: #0f0f11;
+  border-bottom-color: #0f0f11;
+}
+
+.actions {
+  height: 64px;
+
+  margin-left: auto;
+
+  display: flex;
+  align-items: center;
+}
+
+.search {
+  width: 210px;
+  height: 40px;
+
+  margin-right: 8px;
+  padding: 0 12px;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  border: 1px solid #e2e6e9;
+  border-radius: 8px;
+
+  background: #fff;
+}
+
+.search input {
+  width: 100%;
+
+  border: 0;
+  outline: 0;
+
+  background: transparent;
+
+  font-size: 13px;
+}
+
+.action {
+  position: relative;
+
+  width: 64px;
+  height: 64px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 0;
+  border-left: 1px solid #e2e6e9;
+
+  background: #fff;
+
+  font-size: 20px;
+
+  transition: background-color 0.2s ease;
+}
+
+.action:hover {
+  background: #f5f6f7;
+}
+
+.favoriteIcon {
+  font-size: 28px;
+  line-height: 1;
+}
+
+.action b {
+  position: absolute;
+
+  top: 10px;
+  right: 10px;
+
+  min-width: 16px;
+  height: 16px;
+
+  padding: 0 4px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #8d4de8;
+  color: #fff;
+
+  font-size: 9px;
+}
+
+.menuButton {
+  display: none;
+
+  width: 44px;
+  height: 44px;
+
+  border: 0;
+
+  background: #fff;
+
+  font-size: 22px;
+}
+
+@media (max-width: 700px) {
+  .menuButton {
+    display: block;
+  }
+
+  .inner {
+    position: relative;
+  }
+
+  .nav {
+    position: absolute;
+
+    top: 64px;
+    left: 0;
+    right: 0;
+
+    height: auto;
+
+    padding: 8px 16px 16px;
+
+    display: none;
+    flex-direction: column;
+
+    background: #fff;
+
+    box-shadow: 0 10px 25px rgb(0 0 0 / 8%);
+  }
+
+  .open {
+    display: flex;
+  }
+
+  .nav button {
+    width: 100%;
+    min-height: 46px;
+
+    text-align: left;
+
+    border: 0;
+    border-radius: 8px;
+  }
+
+  .nav button.active {
+    border: 2px solid #0f0f11;
+    color: #0f0f11;
+  }
+
+  .actions {
+    margin-left: auto;
+  }
+
+  .search {
+    display: none;
+  }
+
+  .action {
+    width: 56px;
+  }
+
+  .favoriteIcon {
+    font-size: 26px;
+  }
+}

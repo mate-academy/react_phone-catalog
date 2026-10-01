@@ -1,0 +1,47 @@
+.empty {
+  min-height: 400px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
+
+.icon {
+  margin-bottom: 12px;
+
+  color: #ccc;
+
+  font-size: 64px;
+}
+
+.empty h2 {
+  margin: 0 0 24px;
+
+  font-size: 24px;
+}
+
+.button {
+  min-height: 48px;
+
+  padding: 0 24px;
+
+  border: 0;
+  border-radius: 8px;
+
+  background: #8d4de8;
+  color: #fff;
+
+  font-weight: 700;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.button:hover {
+  background: #7435ca;
+  transform: translateY(-2px);
+}

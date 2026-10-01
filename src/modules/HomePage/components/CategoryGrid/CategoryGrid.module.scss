@@ -1,0 +1,102 @@
+.section {
+  margin-bottom: 72px;
+}
+
+.heading {
+  margin-bottom: 24px;
+}
+
+.heading span {
+  color: #8d4de8;
+
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.heading h2 {
+  margin: 8px 0 0;
+
+  font-size: 32px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.card {
+  min-height: 320px;
+
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  border: 1px solid #e2e6e9;
+  border-radius: 12px;
+
+  background: #f7f7f7;
+
+  text-align: left;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgb(0 0 0 / 8%);
+}
+
+.image {
+  width: 100%;
+  height: 220px;
+
+  margin-bottom: 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  border-radius: 8px;
+
+  background: #fff;
+}
+
+.image img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+
+  transition: transform 0.3s ease;
+}
+
+.card:hover .image img {
+  transform: scale(1.1);
+}
+
+.card h3 {
+  margin: 0 0 8px;
+
+  font-size: 20px;
+}
+
+.card span {
+  color: #89939a;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+@media (max-width: 700px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

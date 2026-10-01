@@ -1,0 +1,37 @@
+.logo {
+  width: 128px;
+  height: 64px;
+
+  padding: 0 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  border: 0;
+
+  background: #fff;
+  color: #0f0f11;
+
+  flex-shrink: 0;
+}
+
+.text {
+  width: 80px;
+  height: 26px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 10px;
+  letter-spacing: -0.2px;
+
+  text-transform: uppercase;
+}
+
+.text span {
+  display: block;
+}

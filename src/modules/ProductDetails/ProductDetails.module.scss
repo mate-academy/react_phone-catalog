@@ -1,0 +1,329 @@
+.page {
+  width: 100%;
+}
+
+.back {
+  margin-bottom: 24px;
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+  color: #89939a;
+
+  transition: color 0.2s ease;
+}
+
+.back:hover {
+  color: #8d4de8;
+}
+
+.details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+}
+
+.mainImage {
+  height: 480px;
+
+  padding: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  border: 1px solid #e2e6e9;
+  border-radius: 12px;
+}
+
+.mainImage img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+
+  transition: transform 0.3s ease;
+}
+
+.thumb img,
+.thumbActive img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+
+  transition: transform 0.3s ease;
+}
+
+.mainImage:hover img {
+  transform: scale(1.1);
+}
+
+.thumb:hover img,
+.thumbActive:hover img {
+  transform: scale(1.1);
+}
+
+.thumbs {
+  margin-top: 12px;
+
+  display: flex;
+  gap: 10px;
+}
+
+.thumb,
+.thumbActive {
+  width: 80px;
+  height: 80px;
+
+  padding: 8px;
+
+  overflow: hidden;
+
+  border: 1px solid #e2e6e9;
+  border-radius: 8px;
+
+  background: #fff;
+}
+
+.thumbActive {
+  border-color: #8d4de8;
+}
+
+.info h1 {
+  min-height: 86px;
+
+  margin: 0 0 24px;
+
+  font-size: 36px;
+  line-height: 43px;
+}
+
+.price {
+  min-height: 56px;
+
+  padding-bottom: 24px;
+
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+
+  border-bottom: 1px solid #e2e6e9;
+}
+
+.price strong {
+  font-size: 32px;
+  line-height: 38px;
+}
+
+.price del {
+  padding-top: 4px;
+
+  color: #89939a;
+  font-size: 20px;
+}
+
+.option {
+  margin-top: 24px;
+}
+
+.option > strong {
+  display: block;
+
+  margin-bottom: 12px;
+}
+
+.radioRow {
+  min-height: 40px;
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.radioRow label {
+  position: relative;
+}
+
+.radioRow span {
+  display: block;
+
+  padding: 10px 14px;
+
+  border: 1px solid #e2e6e9;
+  border-radius: 8px;
+
+  font-size: 12px;
+  line-height: 16px;
+
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.radioRow input {
+  position: absolute;
+
+  opacity: 0;
+}
+
+.specs span {
+  color: #89939a;
+}
+
+.techRow span {
+  color: #8d4de8;
+}
+
+.radioRow input:checked + span {
+  border-color: #8d4de8;
+  box-shadow: inset 0 0 0 1px #8d4de8;
+
+  color: #8d4de8;
+}
+
+.buttons {
+  margin-top: 32px;
+
+  display: flex;
+  align-items: stretch;
+  gap: 10px;
+}
+
+.cartButton {
+  min-width: 0;
+  min-height: 48px;
+
+  flex: 1;
+
+  border: 0;
+  border-radius: 8px;
+
+  background: #4219d0;
+  color: #fff;
+
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.cartButtonAdded {
+  background: #e2e6e9;
+  color: #0f0f11;
+}
+
+.favorite,
+.favoriteActive {
+  width: 54px;
+  min-width: 54px;
+  height: 48px;
+
+  flex: 0 0 54px;
+
+  border: 1px solid #e2e6e9;
+  border-radius: 8px;
+
+  background: #fff;
+
+  font-size: 24px;
+}
+
+.favoriteActive {
+  border-color: #8d4de8;
+  color: #8d4de8;
+}
+
+.specs {
+  margin-top: 32px;
+
+  border-top: 1px solid #e2e6e9;
+}
+
+.specs div {
+  padding: 12px 0;
+
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+
+  border-bottom: 1px solid #e2e6e9;
+
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.specs b {
+  text-align: right;
+}
+
+.about {
+  margin-top: 80px;
+  padding-top: 48px;
+
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 64px;
+
+  border-top: 1px solid #e2e6e9;
+}
+
+.about h2 {
+  margin: 0 0 24px;
+
+  font-size: 28px;
+}
+
+.about h3 {
+  margin-bottom: 16px;
+}
+
+.about p {
+  color: #667;
+  line-height: 1.7;
+}
+
+.techRow {
+  padding: 12px 0;
+
+  display: flex;
+  gap: 12px;
+
+  border-bottom: 1px solid #e2e6e9;
+}
+
+@media (max-width: 700px) {
+  .details,
+  .about {
+    grid-template-columns: 1fr;
+  }
+
+  .mainImage {
+    height: 360px;
+  }
+
+  .info h1 {
+    min-height: 68px;
+
+    font-size: 28px;
+    line-height: 34px;
+  }
+
+  .about {
+    margin-top: 48px;
+    padding-top: 32px;
+  }
+
+  .buttons {
+    gap: 8px;
+  }
+
+  .favorite,
+  .favoriteActive {
+    width: 48px;
+    min-width: 48px;
+    flex-basis: 48px;
+  }
+}

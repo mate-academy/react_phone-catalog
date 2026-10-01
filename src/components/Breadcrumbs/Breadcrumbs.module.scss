@@ -1,0 +1,37 @@
+.breadcrumbs {
+  margin-bottom: 28px;
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+
+  color: #89939a;
+
+  font-size: 12px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.item button {
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+  color: #89939a;
+
+  transition: color 0.2s ease;
+}
+
+.item button:hover {
+  color: #8d4de8;
+}
+
+.separator {
+  color: #89939a;
+}
