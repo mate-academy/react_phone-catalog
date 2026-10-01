@@ -1,0 +1,260 @@
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 24px 0 40px;
+
+   @media (max-width: 639px){
+    margin: 24px 0
+  }
+
+}
+
+.breadcrumbHome {
+  display: flex;
+  color: var(--color-icons);
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.breadcrumbSeparator {
+  width: 12px;
+  height: 12px;
+  color: var(--color-icons);
+}
+
+.breadcrumbLink {
+  font-size: var(--fs-uppercase);
+  color: var(--color-primary);
+
+  &:hover {
+    color: var(--color-secondary);
+  }
+}
+
+.breadcrumbCurrent {
+  font-size: var(--fs-uppercase);
+  color: var(--color-secondary);
+
+  @media(max-width: 639px){
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  }
+}
+
+.backButton {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 600;
+  font-size: var(--fs-uppercase);
+  color: var(--color-secondary);
+  margin-bottom: 16px;
+  background-color: transparent;
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  &:hover {
+    color: var(--color-primary);
+  }
+}
+
+.title {
+  font-weight: 800;
+  font-size: var(--fs-h2);
+  color: var(--color-primary);
+  margin-bottom: 32px;
+}
+
+.topSection {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 80px;
+  margin-bottom: 80px;
+
+  @media (max-width: 1199px) {
+    // grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 40px;
+  }
+
+  @media (max-width: 639px) {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 40px;
+  }
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.priceRow {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.price {
+  font-weight: 700;
+  font-size: var(--fs-h2);
+  color: var(--color-primary);
+}
+
+.fullPrice {
+  font-size: var(--fs-h4);
+  color: var(--color-secondary);
+  text-decoration: line-through;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+
+.addToCartButton {
+  flex: 1;
+  height: 40px;
+  font-weight: 700;
+  font-size: var(--fs-buttons);
+  color: var(--color-white);
+  background-color: var(--color-primary);
+  transition: background-color var(--transition-duration) ease;
+
+  &:hover {
+    background-color: var(--color-secondary);
+  }
+}
+
+.favoriteButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--color-icons);
+  color: var(--color-primary);
+  transition: background-color var(--transition-duration) ease;
+
+  &:hover {
+    background-color: var(--color-hover-bg);
+  }
+}
+
+.shortSpecs {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.shortSpecsRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: var(--fs-body);
+
+  dt {
+    color: var(--color-secondary);
+    white-space: nowrap;
+  }
+
+  dd {
+    font-weight: 600;
+    color: var(--color-primary);
+    text-align: right;
+  }
+}
+
+.bottomSection {
+  display: flex;
+  gap: 80px;
+  margin-bottom: 80px;
+
+  @media (max-width: 1199px) {
+    gap: 40px;
+  }
+
+  @media (max-width: 639px) {
+    flex-direction: column;
+    gap: 40px;
+  }
+}
+
+.about,
+.techSpecs {
+  flex: 1;
+}
+
+.sectionTitle {
+  font-weight: 800;
+  font-size: var(--fs-h3);
+  color: var(--color-primary);
+  margin-bottom: 16px;
+}
+
+.divider {
+  height: 1px;
+  background-color: var(--color-elements);
+  margin-bottom: 32px;
+}
+
+.descriptionBlock {
+  margin-bottom: 32px;
+}
+
+.descriptionTitle {
+  font-weight: 700;
+  font-size: var(--fs-h4);
+  color: var(--color-primary);
+  margin-bottom: 16px;
+}
+
+.descriptionText {
+  font-weight: 500;
+  font-size: var(--fs-small);
+  color: var(--color-secondary);
+  margin-bottom: 8px;
+  line-height: 21px;
+}
+
+.specsList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.specsRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--fs-small);
+  padding-bottom: 8px;
+
+  dt {
+    color: var(--color-secondary);
+  }
+
+  dd {
+    font-weight: 500;
+    color: var(--color-primary);
+  }
+}
+
+.added {
+  color: var(--color-green);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-green);
+}
+
+.favoriteActive {
+  color: var(--color-red);
+  border-color: var(--color-red);
+}

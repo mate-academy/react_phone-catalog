@@ -1,0 +1,144 @@
+.item {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 24px;
+  margin-bottom: 16px;
+  border: 1px solid #E2E6E9;
+
+  @media (max-width: 639px) {
+    display: grid;
+    grid-template:
+      'remove image name  name' auto
+      'qty    qty   qty   price' auto
+      / 32px 80px 1fr 1fr;
+    gap: 16px;
+    padding: 16px;
+  }
+}
+
+.removeButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  color: var(--color-icons);
+  background-color: transparent;
+  transition: color var(--transition-duration) ease,
+    border-color var(--transition-duration) ease;
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  &:hover {
+    color: var(--color-praimary);
+    border-color: var(--color-primary);
+  }
+
+  @media (max-width: 639px) {
+    grid-area: remove;
+    place-self: center start;
+  }
+}
+
+.imageLink {
+  display: block;
+  flex-shrink: 0;
+
+  @media (max-width: 639px) {
+    grid-area: image;
+    align-self: start;
+  }
+}
+
+.image {
+  display: block;
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+
+}
+
+.name {
+  flex: 1;
+  font-size: var(--fs-body);
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition-duration) ease;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 639px) {
+    grid-area: name;
+    align-self: start;
+  }
+}
+
+.quantityControls {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  @media (max-width: 639px) {
+    grid-area: qty;
+    place-self: center start;
+  }
+}
+
+.quantityButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  color: var(--color-primary);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-icons);
+  border-radius: 0;
+  transition: background-color var(--transition-duration) ease,
+    border-color var(--transition-duration) ease;
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  &:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  &:hover:not(:disabled) {
+    background-color: var(--color-hover-bg);
+    border-color: var(--color-primary);
+  }
+
+
+}
+
+.quantityValue {
+  min-width: 16px;
+  text-align: center;
+  font-weight: 600;
+  font-size: var(--fs-body);
+  color: var(--color-primary);
+}
+
+.price {
+  min-width: 80px;
+  text-align: right;
+  font-weight: 700;
+  font-size: var(--fs-h4);
+  color: var(--color-primary);
+
+  @media (max-width: 639px) {
+    grid-area: price;
+    place-self: center end;
+    min-width: auto;
+  }
+}

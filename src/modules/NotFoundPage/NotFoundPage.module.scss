@@ -1,0 +1,33 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  min-height: 60vh;
+  text-align: center;
+}
+
+.title {
+  font-weight: 700;
+  font-size: var(--fs-h1);
+  color: var(--color-primary);
+}
+
+.text {
+  font-size: var(--fs-body);
+  color: var(--color-secondary);
+}
+
+.homeLink {
+  padding: 12px 24px;
+  font-weight: 600;
+  font-size: var(--fs-buttons);
+  color: var(--color-white);
+  background-color: var(--color-primary);
+  transition: background-color var(--transition-duration) ease;
+
+  &:hover {
+    background-color: var(--color-secondary);
+  }
+}

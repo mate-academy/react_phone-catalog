@@ -1,0 +1,26 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 80px 0;
+  text-align: center;
+}
+
+.message {
+  font-size: var(--fs-h4);
+  color: var(--color-secondary);
+}
+
+.reloadButton {
+  padding: 12px 24px;
+  font-weight: 600;
+  font-size: var(--fs-buttons);
+  color: var(--color-white);
+  background-color: var(--color-primary);
+  transition: background-color var(--transition-duration) ease;
+
+  &:hover {
+    background-color: var(--color-secondary);
+  }
+}

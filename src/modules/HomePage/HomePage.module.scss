@@ -1,0 +1,15 @@
+.page.page {
+  padding-top: 40px;
+
+  @media (max-width: 1199px) {
+    padding-top: 24px;
+  }
+}
+
+.heading{
+  font-weight: 800;
+  font-family: var(--font-family);
+  font-size: var(--fs-h1);
+  line-height:var(--lh-h1);
+  margin-bottom: 57px;
+}

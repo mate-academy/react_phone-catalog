@@ -1,0 +1,51 @@
+.wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 200px;
+}
+
+.icon {
+  position: absolute;
+  left: 12px;
+  width: 16px;
+  height: 16px;
+  color: var(--color-icons);
+  pointer-events: none;
+}
+
+.input {
+  width: 100%;
+  height: 40px;
+  padding: 0 32px;
+  font-family: var(--font-family);
+  font-size: var(--fs-body);
+  color: var(--color-primary);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-elements);
+
+  &::placeholder {
+    color: var(--color-secondary);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: var(--color-icons);
+  }
+}
+
+.clearButton {
+  position: absolute;
+  right: 12px;
+  display: flex;
+  color: var(--color-icons);
+
+  svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  &:hover {
+    color: var(--color-primary);
+  }
+}

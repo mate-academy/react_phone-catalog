@@ -1,0 +1,270 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--color-white);
+  border-bottom: 1px solid var(--color-elements);
+}
+
+.content {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  height: 64px;
+
+  // max-width: var(--container-width);
+
+  margin: 0 auto;
+
+  @media (max-width: 1199px) {
+    height: 48px;
+  }
+}
+
+.left {
+  display: flex;
+  align-items: stretch;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  color: var(--color-primary); // SVG успадкує цей колір, якщо в ньому прописано currentColor
+
+    @media (max-width: 1199px) {
+    padding: 0 16px;
+  }
+
+    svg {
+    width: 80px;
+    height: 28px;
+    transition: width var(--transition-duration) ease, height var(--transition-duration) ease;
+
+    @media (max-width: 1199px) {
+      width: 64px;
+      height: 22px;
+    }
+  }
+}
+
+.nav {
+  display: flex;
+  align-items: stretch;
+
+  @media (max-width: 639px) {
+    display: none;
+  }
+}
+
+.navLink {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-right: 64px;
+  font-weight: 800;
+  font-size: var(--fs-uppercase);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  transition: color var(--transition-duration) ease;
+
+  @media (max-width: 1199px) {
+    padding: 0 32px;
+  }
+
+  &:hover {
+    color: var(--color-primary);
+  }
+}
+
+.navLinkActive::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 64px;
+  bottom: 0;
+  height: 3px;
+  background-color: var(--color-primary);
+
+  @media (max-width: 1199px) {
+    left: 32px;
+    right: 32px;
+  }
+}
+
+.navLinkText {
+  position: relative;
+}
+
+.actions {
+  display: flex;
+  align-items: stretch;
+}
+
+.iconActions {
+  display: flex;
+  align-items: stretch;
+
+  @media (max-width: 639px) {
+    display: none;
+  }
+}
+
+.iconLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 100%;
+  position: relative;
+  border-left: 1px solid var(--color-elements);
+  color: var(--color-primary);
+  transition:
+    background-color var(--transition-duration) ease,
+    border-color var(--transition-duration) ease;
+
+  @media (max-width: 1199px) {
+    width: 48px;
+  }
+
+  &:hover {
+    background-color: var(--color-hover-bg);
+  }
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.icon {
+  font-size: 16px;
+}
+
+.burgerButton {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  border-left: 1px solid var(--color-elements);
+  color: var(--color-white);
+
+  @media (max-width: 639px) {
+    display: flex;
+  }
+}
+
+.mobileMenu {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-white);
+}
+
+.mobileMenuHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 48px;
+
+  // padding: 0 16px;
+  border-bottom: 1px solid var(--color-elements);
+
+  @media (max-width: 1199px) {
+    height: 48px;
+  }
+}
+
+.closeButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  width: 48px;
+  color: var(--color-primary);
+  border-left: 1px solid var(--color-elements);
+  background: none;
+  border-top: none;
+  border-right: none;
+  border-bottom: none;
+}
+
+.mobileNav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  padding-top: 32px;
+}
+
+.mobileNavLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  transition: color var(--transition-duration) ease;
+  position: relative;
+}
+
+.mobileNavLinkActive {
+  color: var(--color-primary);
+}
+
+.mobileNavLinkActive::after {
+  content: '';
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 8px;
+  height: 2px;
+  background-color: var(--color-primary);
+}
+
+.mobileMenuFooter {
+  display: flex;
+  height: 64px;
+  border-top: 1px solid var(--color-elements);
+}
+
+.mobileIconLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  height: 100%;
+  position: relative;
+  color: var(--color-primary);
+
+  &:not(:last-child) {
+    border-right: 1px solid var(--color-elements);
+  }
+}
+
+.mobileIconLinkActive::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  background-color: var(--color-primary);
+}
+
+.searchWrapper {
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+
+  @media (max-width: 639px) {
+    display: none;
+  }
+}
+

@@ -1,0 +1,19 @@
+.title {
+  font-weight: 700;
+  font-size: var(--fs-h1);
+  color: var(--color-primary);
+  margin: 24px 0 4px;
+}
+
+.count {
+  font-size: var(--fs-body);
+  color: var(--color-secondary);
+  margin-bottom: 24px;
+}
+
+.emptyMessage {
+  font-size: var(--fs-h3);
+  color: var(--color-secondary);
+  padding: 80px 0;
+  text-align: center;
+}

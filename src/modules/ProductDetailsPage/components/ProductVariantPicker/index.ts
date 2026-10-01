@@ -1,0 +1,1 @@
+export { ProductVariantPicker } from './ProductVariantPicker';

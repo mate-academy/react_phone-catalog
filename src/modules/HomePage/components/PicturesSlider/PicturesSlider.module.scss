@@ -1,0 +1,97 @@
+.slider {
+  display: grid;
+  grid-template-columns: 32px 1fr 32px;
+  gap: 16px;
+  align-items: stretch;
+  margin-bottom: 80px;
+
+  @media (max-width: 1199px) {
+    margin-bottom: 64px;
+  }
+
+  @media (max-width: 639px) {
+    margin-bottom: 56px;
+    grid-template-columns: 1fr;
+  }
+}
+
+.slidesWrapper {
+  grid-column: 2;
+  grid-row: 1;
+  overflow: hidden;
+
+  @media (max-width: 639px) {
+    grid-column: 1;
+  }
+}
+
+.slidesTrack {
+  display: flex;
+  transition: transform 0.5s ease;
+  height: 100%;
+}
+
+.slideImage {
+  width: 100%;
+  height: 100%;
+  flex-shrink: 0;
+  object-fit: cover;
+  aspect-ratio: 16 / 6;
+
+@media (max-width: 639px) {
+    aspect-ratio: 1 / 1;
+  }
+}
+
+.arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  width: 32px;
+  color: var(--color-primary);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-elements); /* Світло-сіра рамка, як на макеті */
+  transition: background-color var(--transition-duration) ease;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--color-hover-bg);
+  }
+
+  @media (max-width: 639px) {
+    display: none;
+  }
+}
+
+.arrowLeft {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.arrowRight {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.dashes {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+}
+
+.dash {
+  width: 14px;
+  height: 4px;
+  padding: 0;
+  background-color: var(--color-elements);
+  border: none;
+  cursor: pointer;
+  transition: background-color var(--transition-duration) ease;
+
+  &.dashActive {
+    background-color: var(--color-primary);
+  }
+}

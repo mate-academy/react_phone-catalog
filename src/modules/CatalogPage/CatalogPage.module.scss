@@ -1,0 +1,133 @@
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 24px 0 16px;
+}
+
+.breadcrumbHome {
+  display: flex;
+  color: var(--color-icons);
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.breadcrumbSeparator {
+  width: 12px;
+  height: 12px;
+  color: var(--color-icons);
+}
+
+.breadcrumbCurrent {
+  font-size: var(--fs-small);
+  color: var(--color-secondary);
+}
+
+.title {
+  font-weight: 700;
+  font-size: var(--fs-h1);
+  color: var(--color-primary);
+  margin-bottom: 4px;
+}
+
+.count {
+  font-size: var(--fs-body);
+  color: var(--color-secondary);
+  margin-bottom: 24px;
+}
+
+.controls {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+
+  @media (max-width: 639px) {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+.control {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 136px;
+}
+
+.controlLabel {
+  font-size: var(--fs-small);
+  color: var(--color-secondary);
+}
+
+.select {
+  height: 40px;
+  padding: 0 12px;
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: var(--fs-buttons);
+  color: var(--color-primary);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-icons);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: border-color var(--transition-duration) ease;
+
+  &:hover {
+    border-color: var(--color-primary);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: var(--color-primary);
+  }
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 40px 0;
+}
+
+.pageArrow,
+.pageButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  color: var(--color-primary);
+  border: 1px solid var(--color-icons);
+  border-radius: 50%;
+  transition: background-color var(--transition-duration) ease;
+
+    &:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  &:hover:not(:disabled) {
+    background-color: var(--color-hover-bg);
+  }
+
+
+}
+
+.pageButtonActive {
+  color: var(--color-white);
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.pageDots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  color: var(--color-secondary);
+}
