@@ -1,0 +1,157 @@
+.header {
+  height: 64px;
+  display: flex;
+  align-items: center;
+  padding-left: 24px;
+  border-bottom: 1px solid #3b3e4a;
+  background: #0f1121;
+}
+
+.logo {
+  flex: 0 0 auto;
+  color: #f1f2f9;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: -0.6px;
+  text-decoration: none;
+}
+
+.nav {
+  display: flex;
+  align-self: stretch;
+  gap: 32px;
+  margin-left: 48px;
+}
+
+.nav a {
+  position: relative;
+  display: flex;
+  align-items: center;
+  color: #75767f;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.nav a[aria-current='page'] {
+  color: #f1f2f9;
+}
+
+.nav a[aria-current='page']::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background: #f1f2f9;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 328px;
+  margin-left: auto;
+  padding: 0 24px;
+  border-left: 1px solid #3b3e4a;
+  color: #75767f;
+  gap: 9px;
+}
+
+.search span {
+  font-size: 23px;
+  line-height: 1;
+  transform: rotate(-20deg);
+}
+
+.search input {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #f1f2f9;
+  font:
+    600 14px Mont,
+    sans-serif;
+}
+
+.search input::placeholder {
+  color: #75767f;
+}
+
+.actions {
+  display: flex;
+  align-self: stretch;
+}
+
+.actions a {
+  position: relative;
+  display: grid;
+  width: 64px;
+  place-items: center;
+  border-left: 1px solid #3b3e4a;
+  color: #f1f2f9;
+  font-size: 28px;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.actions b {
+  position: absolute;
+  top: 12px;
+  right: 11px;
+  display: grid;
+  min-width: 16px;
+  height: 16px;
+  place-items: center;
+  border-radius: 50%;
+  background: #eb5757;
+  color: #fff;
+  font:
+    700 10px Mont,
+    sans-serif;
+}
+
+.bag {
+  position: relative;
+  font-size: 19px;
+  transform: rotate(0deg);
+}
+
+.bag::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: 4px;
+  width: 9px;
+  height: 6px;
+  border: 1.5px solid currentColor;
+  border-bottom: 0;
+  border-radius: 8px 8px 0 0;
+}
+
+@media (max-width: 700px) {
+  .header {
+    padding-left: 16px;
+  }
+  .nav {
+    display: none;
+  }
+  .search {
+    width: auto;
+    margin-left: auto;
+    padding: 0 14px;
+  }
+  .search input {
+    display: none;
+  }
+  .actions a {
+    width: 52px;
+  }
+  .logo {
+    font-size: 11px;
+  }
+}

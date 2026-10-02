@@ -1,0 +1,125 @@
+.card {
+  display: flex;
+  min-width: 0;
+  min-height: 506px;
+  flex-direction: column;
+  padding: 32px;
+  border: 1px solid #3b3e4a;
+  background: #161827;
+}
+
+.productLink {
+  color: #f1f2f9;
+  text-decoration: none;
+}
+
+.productLink img {
+  display: block;
+  width: 100%;
+  height: 196px;
+  object-fit: contain;
+  transition: transform 0.2s;
+}
+
+.productLink:hover img {
+  transform: scale(1.04);
+}
+
+.productLink h3 {
+  min-height: 42px;
+  margin: 24px 0 8px;
+  color: #f1f2f9;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+}
+
+.price {
+  color: #f1f2f9;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 31px;
+}
+
+.price del {
+  margin-left: 8px;
+  color: #75767f;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+dl {
+  margin: 8px 0 16px;
+  padding-top: 16px;
+  border-top: 1px solid #3b3e4a;
+}
+
+dl div {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+dt {
+  color: #75767f;
+}
+
+dd {
+  margin: 0;
+  color: #f1f2f9;
+  font-weight: 700;
+}
+
+.controls {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.controls button {
+  height: 40px;
+  border: 0;
+  font:
+    700 14px Mont,
+    sans-serif;
+  cursor: pointer;
+}
+
+.controls button:first-child {
+  flex: 1;
+  background: #905bff;
+  color: #fff;
+}
+
+.controls button:first-child:hover {
+  background: #a378ff;
+}
+
+.controls .added {
+  border: 1px solid #3b3e4a;
+  background: #161827;
+  color: #f1f2f9;
+}
+
+.heart {
+  width: 40px;
+  border: 1px solid #3b3e4a !important;
+  background: #161827;
+  color: #f1f2f9;
+  font-size: 22px !important;
+}
+
+@media (max-width: 700px) {
+  .card {
+    min-height: 440px;
+    padding: 20px;
+  }
+  .productLink img {
+    height: 156px;
+  }
+  .productLink h3 {
+    margin-top: 16px;
+  }
+}

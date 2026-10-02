@@ -1,5 +1,8 @@
 # React Product Catalog
 
+- [DEMO LINK](https://andrewprszn.github.io/react_phone-catalog/)
+- [DESIGN](https://www.figma.com/design/WMdJ24eHk4EkSr25mrt7Y2/Phone-catalog--V2--Original-Dark)
+
 Implement the catalog with a shopping cart and favorites page according to one of the next designs:
 
 - [Original](https://www.figma.com/file/T5ttF21UnT6RRmCQQaZc6L/Phone-catalog-(V2)-Original)
