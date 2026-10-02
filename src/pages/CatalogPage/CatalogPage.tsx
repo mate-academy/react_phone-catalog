@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { getProducts } from '../../api/api';
 import { Product } from '../../types/Product';
@@ -37,30 +37,48 @@ export const CatalogPage = () => {
   const pageParam = searchParams.get('page') || '1';
   const currentPage = parseInt(pageParam, 10) || 1;
 
-  const normalizedQuery = query.trim().toLowerCase();
+  // 1. Пошук
+  const searchedProducts = useMemo(() => {
+    const normalizedQuery = query.trim().toLowerCase();
 
-  const searchedProducts = normalizedQuery
-    ? products.filter(p => p.name.toLowerCase().includes(normalizedQuery))
-    : products;
+    if (!normalizedQuery) {
+      return products;
+    }
 
-  const sortedProducts = [...searchedProducts];
+    return products.filter(p => p.name.toLowerCase().includes(normalizedQuery));
+  }, [products, query]);
 
-  if (sort === 'age') {
-    sortedProducts.sort((a, b) => b.year - a.year);
-  } else if (sort === 'title') {
-    sortedProducts.sort((a, b) => a.name.localeCompare(b.name));
-  } else if (sort === 'price') {
-    sortedProducts.sort((a, b) => a.price - b.price);
-  }
+  // 2. Сортування
+  const sortedProducts = useMemo(() => {
+    const sorted = [...searchedProducts];
 
-  const perPage =
-    perPageParam === 'all' ? sortedProducts.length : parseInt(perPageParam, 10);
+    if (sort === 'age') {
+      sorted.sort((a, b) => b.year - a.year);
+    } else if (sort === 'title') {
+      sorted.sort((a, b) => a.name.localeCompare(b.name));
+    } else if (sort === 'price') {
+      sorted.sort((a, b) => a.price - b.price);
+    }
 
-  const start = (currentPage - 1) * perPage;
-  const visibleProducts =
-    perPageParam === 'all'
-      ? sortedProducts
-      : sortedProducts.slice(start, start + perPage);
+    return sorted;
+  }, [searchedProducts, sort]);
+
+  // 3. Обчислення пагінації
+  const perPage = useMemo(() => {
+    return perPageParam === 'all'
+      ? sortedProducts.length
+      : parseInt(perPageParam, 10);
+  }, [perPageParam, sortedProducts.length]);
+
+  const visibleProducts = useMemo(() => {
+    if (perPageParam === 'all') {
+      return sortedProducts;
+    }
+
+    const start = (currentPage - 1) * perPage;
+
+    return sortedProducts.slice(start, start + perPage);
+  }, [sortedProducts, perPageParam, currentPage, perPage]);
 
   const updateParams = (key: string, value: string, defaultValue: string) => {
     const params = new URLSearchParams(searchParams);

@@ -6,11 +6,11 @@ import { useDebounce } from '../../hooks/useDebounce';
 import styles from './Header.module.scss';
 
 export const Header = () => {
-  const { cart, favorites } = useStore();
+  const { favorites, totalCartQuantity } = useStore();
   const { pathname } = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const totalCartQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
+  // const totalCartQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
   const totalFavorites = favorites.length;
 
   const showSearch = [

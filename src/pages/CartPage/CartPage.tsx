@@ -5,13 +5,14 @@ import styles from './CartPage.module.scss';
 
 export const CartPage = () => {
   const navigate = useNavigate();
-  const { cart, removeFromCart } = useStore();
+  const { cart, removeFromCart, totalCartQuantity, totalCartPrice } =
+    useStore();
 
-  const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
-  const totalPrice = cart.reduce(
-    (sum, item) => sum + item.product.price * item.quantity,
-    0,
-  );
+  // const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
+  // const totalPrice = cart.reduce(
+  //   (sum, item) => sum + item.product.price * item.quantity,
+  //   0,
+  // );
 
   const handleCheckout = () => {
     const isConfirmed = window.confirm(
@@ -50,10 +51,11 @@ export const CartPage = () => {
           <div className="column is-4-desktop">
             <div className={styles.cart__checkout}>
               <span className={styles['cart__checkout-price']}>
-                ${totalPrice}
+                ${totalCartPrice}
               </span>
               <span className={styles['cart__checkout-count']}>
-                Total for {totalQuantity} item{totalQuantity > 1 ? 's' : ''}
+                Total for {totalCartQuantity} item
+                {totalCartQuantity > 1 ? 's' : ''}
               </span>
               <div className={styles['cart__checkout-divider']} />
               <button

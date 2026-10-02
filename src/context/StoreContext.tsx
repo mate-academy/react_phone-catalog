@@ -1,10 +1,18 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  useMemo,
+} from 'react';
 import { Product } from '../types/Product';
 import { CartItem } from '../types/CartItem';
 
 interface StoreContextType {
   cart: CartItem[];
   favorites: Product[];
+  totalCartQuantity: number;
+  totalCartPrice: number;
   addToCart: (product: Product) => void;
   removeFromCart: (productId: string) => void;
   updateQuantity: (productId: string, amount: number) => void;
@@ -16,7 +24,6 @@ const StoreContext = createContext<StoreContextType | undefined>(undefined);
 export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  // Ініціалізація з localStorage
   const [cart, setCart] = useState<CartItem[]>(() => {
     const saved = localStorage.getItem('cart');
 
@@ -29,7 +36,6 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({
     return saved ? JSON.parse(saved) : [];
   });
 
-  // Синхронізація з localStorage при кожній зміні
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart));
   }, [cart]);
@@ -38,7 +44,18 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({
     localStorage.setItem('favorites', JSON.stringify(favorites));
   }, [favorites]);
 
-  // Логіка кошика
+  // Обчислення підсумків кошика з мемоізацією
+  const totalCartQuantity = useMemo(
+    () => cart.reduce((sum, item) => sum + item.quantity, 0),
+    [cart],
+  );
+
+  const totalCartPrice = useMemo(
+    () =>
+      cart.reduce((sum, item) => sum + item.product.price * item.quantity, 0),
+    [cart],
+  );
+
   const addToCart = (product: Product) => {
     setCart(prev => {
       if (prev.some(item => item.id === product.id)) {
@@ -67,7 +84,6 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({
     );
   };
 
-  // Логіка обраного
   const toggleFavorite = (product: Product) => {
     setFavorites(prev => {
       const exists = prev.some(item => item.id === product.id);
@@ -85,6 +101,8 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({
       value={{
         cart,
         favorites,
+        totalCartQuantity,
+        totalCartPrice,
         addToCart,
         removeFromCart,
         updateQuantity,
