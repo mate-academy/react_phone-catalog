@@ -1,0 +1,374 @@
+@import '../../styles/variables.module';
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.container {
+  max-width: $screen-desktop;
+  margin: 0 auto;
+  padding: 24px 16px 64px;
+
+  @include tablet {
+    padding: 24px 24px 80px;
+  }
+
+  @include desktop {
+    padding: 24px 32px 80px;
+  }
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 800;
+  margin-top: 16px;
+  margin-bottom: 24px;
+  color: $color-main;
+
+  @include tablet {
+    font-size: 32px;
+    margin-bottom: 32px;
+  }
+}
+
+.notFound {
+  padding: 80px 0;
+  text-align: center;
+  color: $color-secondary;
+}
+
+.mainContent {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  margin-bottom: 56px;
+
+  @include tablet {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+
+  @include desktop {
+    grid-template-columns: 560px 1fr;
+    gap: 64px;
+    margin-bottom: 80px;
+  }
+}
+
+/* Галерея зображень */
+.gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include tablet {
+    flex-direction: row;
+  }
+}
+
+.thumbnails {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  order: 2;
+
+  @include tablet {
+    flex-direction: column;
+    order: 1;
+  }
+}
+
+.thumbBtn {
+  width: 50px;
+  height: 50px;
+  border: 1px solid $color-elements;
+  border-radius: 8px;
+  background: $color-white;
+  padding: 4px;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+
+  @include desktop {
+    width: 80px;
+    height: 80px;
+    padding: 8px;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  &:hover {
+    border-color: $color-icons;
+  }
+}
+
+.activeThumb {
+  border-color: $color-main;
+}
+
+.mainImageWrapper {
+  flex: 1;
+  height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $color-white;
+  order: 1;
+
+  @include tablet {
+    order: 2;
+    height: 350px;
+  }
+
+  @include desktop {
+    height: 464px;
+  }
+}
+
+.mainImage {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+}
+
+.section {
+  margin-bottom: 16px;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 600;
+  color: $color-secondary;
+}
+
+.idText {
+  font-size: 12px;
+  color: $color-secondary;
+}
+
+.colorPicker {
+  display: flex;
+  gap: 8px;
+}
+
+.colorCircle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  outline: 1px solid $color-elements;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.activeColor {
+  outline: 1px solid $color-main;
+}
+
+.capacityPicker {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.capacityBtn {
+  padding: 8px 12px;
+  border: 1px solid $color-icons;
+  border-radius: 8px;
+  background: $color-white;
+  font-size: 14px;
+  font-weight: 600;
+  color: $color-main;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    border-color: $color-main;
+  }
+}
+
+.activeCapacity {
+  background: $color-main;
+  color: $color-white;
+  border-color: $color-main;
+}
+
+.divider {
+  height: 1px;
+  background-color: $color-elements;
+  margin: 16px 0;
+}
+
+.priceRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.priceDiscount {
+  font-size: 32px;
+  font-weight: 800;
+  color: $color-main;
+}
+
+.priceRegular {
+  font-size: 22px;
+  font-weight: 500;
+  text-decoration: line-through;
+  color: $color-secondary;
+}
+
+.buttonRow {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+
+.addToCartBtn {
+  flex: 1;
+  height: 48px;
+  background: $color-accent;
+  color: $color-white;
+  font-size: 14px;
+  font-weight: 700;
+  border: 1px solid transparent;
+  border-radius: 48px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+  }
+
+  &.added {
+    background-color: $color-white;
+    color: $color-accent;
+    border-color: $color-elements;
+
+    &:hover {
+      border-color: $color-main;
+    }
+  }
+}
+
+.favoriteBtn {
+  width: 48px;
+  height: 48px;
+  border: 1px solid $color-icons;
+  border-radius: 50%;
+  background: $color-white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+
+  &:hover {
+    border-color: $color-main;
+  }
+
+  &.favoriteActive {
+    border-color: $color-elements;
+    background-color: #fff8e7;
+  }
+}
+
+.heartIcon {
+  width: 16px;
+  height: 16px;
+  display: block;
+  object-fit: contain;
+}
+
+.shortSpecs,
+.fullSpecs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.specRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+
+  span:first-child {
+    color: $color-secondary;
+  }
+
+  span:last-child {
+    color: $color-main;
+    font-weight: 600;
+  }
+}
+
+.detailsBlock {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 56px;
+  margin-bottom: 64px;
+
+  @include desktop {
+    grid-template-columns: 1fr 560px;
+    gap: 64px;
+    margin-bottom: 80px;
+  }
+}
+
+.blockTitle {
+  font-size: 20px;
+  font-weight: 800;
+  color: $color-main;
+
+  @include tablet {
+    font-size: 22px;
+  }
+}
+
+.descParagraph {
+  margin-bottom: 24px;
+
+  h3 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: $color-main;
+  }
+
+  p {
+    font-size: 14px;
+    line-height: 21px;
+    color: $color-secondary;
+  }
+}
+
+.suggestedSection {
+  margin-bottom: 64px;
+
+  @include desktop {
+    margin-bottom: 80px;
+  }
+}

@@ -1,0 +1,50 @@
+@use '../../../shared/styles/variables.module' as *;
+
+.breadcrumbs {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+
+  margin-bottom: 24px;
+
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15px;
+}
+
+.homeLink {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+
+  color: $color-main;
+  text-decoration: none;
+
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.icon,
+.arrow {
+  display: block;
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
+.current {
+  font-weight: 600;
+  color: $color-secondary;
+  overflow: hidden;
+  white-space: nowrap;
+
+  text-overflow: ellipsis;
+}

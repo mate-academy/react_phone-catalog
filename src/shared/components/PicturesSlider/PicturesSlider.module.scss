@@ -1,0 +1,92 @@
+@import '../../../shared/styles/variables.module';
+
+.picturesSlider {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.imageContainer {
+  flex-grow: 1;
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+
+  @include tablet {
+    aspect-ratio: 1040 / 400;
+  }
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.button {
+  display: none;
+
+  @include tablet {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    align-self: stretch;
+    flex-shrink: 0;
+    background-color: transparent;
+    border: 1px solid $color-elements;
+    border-radius: 16px;
+    cursor: pointer;
+    padding: 0;
+    transition: border-color 0.3s ease;
+    img {
+      filter: brightness(0);
+    }
+
+    &:hover {
+      border-color: $color-main;
+
+    }
+  }
+}
+
+.arrowLeft {
+  width: 16px;
+  height: 16px;
+  transform: rotate(180deg);
+}
+
+.arrowRight {
+  width: 16px;
+  height: 16px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 9px;
+}
+
+.dash {
+  width: 14px;
+  height: 4px;
+  background-color: $color-elements;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &Active {
+    background-color: $color-main;
+  }
+}

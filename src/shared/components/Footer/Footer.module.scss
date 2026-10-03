@@ -1,0 +1,161 @@
+@import '../../../shared/styles/variables.module';
+
+.footer {
+  width: 100%;
+  background-color: $color-white;
+  border-top: 1px solid $color-elements;
+  padding: 32px 0;
+  overflow: hidden;
+
+  flex-shrink: 0;
+  margin-top: auto;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px 16px;
+
+  @include tablet {
+    padding: 0 32px;
+    grid-template-columns: repeat(12, 1fr);
+    align-items: center;
+    row-gap: 0;
+  }
+
+  @include desktop {
+    grid-template-columns: repeat(24, 1fr);
+  }
+}
+
+.logoLink {
+  display: flex;
+  align-items: center;
+  grid-column: span 4;
+
+  @include tablet {
+    grid-column: span 4;
+  }
+
+  @include desktop {
+    grid-column: span 8;
+  }
+}
+
+.logo {
+  height: 24px;
+  width: auto;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  grid-column: span 4;
+
+  @include tablet {
+    grid-column: span 4;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+  }
+
+  @include desktop {
+    grid-column: span 8;
+  }
+}
+
+.link {
+  text-decoration: none;
+  color: $color-secondary;
+  font-weight: 800;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+
+  @include tablet {
+    &:nth-child(1) {
+      text-align: left;
+    }
+
+    &:nth-child(2) {
+      text-align: center;
+    }
+
+    &:nth-child(3) {
+      text-align: right;
+    }
+  }
+
+  &:hover {
+    color: $color-main;
+  }
+}
+
+.backToTop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  grid-column: span 4;
+
+  @include tablet {
+    grid-column: span 4;
+    justify-content: flex-end;
+  }
+
+  @include desktop {
+    grid-column: span 8;
+    justify-content: flex-end;
+  }
+}
+
+.backToTopText {
+  color: $color-secondary;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.arrowButton {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid $color-icons;
+  border-radius: 50%;
+  background-color: transparent;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+  box-sizing: border-box;
+  outline: none;
+
+  img {
+    filter: brightness(0);
+  }
+
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+
+  &:hover {
+    border-color: $color-main;
+  }
+}
+
+.arrowIcon {
+  width: 16px;
+  height: 16px;
+  display: block;
+}

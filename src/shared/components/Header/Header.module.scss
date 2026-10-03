@@ -1,0 +1,174 @@
+@import '../../../shared/styles/variables.module';
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: $header-height-mobile;
+  border-bottom: 1px solid $color-elements;
+  background-color: $color-white;
+  padding-left: 16px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  @include desktop {
+    height: $header-height-desktop;
+    padding-left: 24px;
+  }
+}
+
+.leftSide {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.logo {
+  height: auto;
+  width: $header-logo-width-mobile;
+  margin-right: 32px;
+  display: block;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  @include desktop {
+    width: $header-logo-width-desktop;
+    margin-right: 48px;
+  }
+}
+
+.nav {
+  display: none;
+
+  @include tablet {
+    display: flex;
+    gap: 32px;
+    height: 100%;
+    margin-left: 16px;
+  }
+
+  @include desktop {
+    gap: 64px;
+    margin-left: 24px;
+  }
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: $color-secondary;
+  font-weight: 800;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  height: 100%;
+  position: relative;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: $color-main;
+  }
+
+  &.isActive {
+    color: $color-main;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background-color: $color-main;
+    }
+  }
+}
+
+.rightSideDesktop {
+  display: none;
+
+  @include tablet {
+    display: flex;
+    height: 100%;
+  }
+}
+
+.iconLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: $header-height-mobile;
+  height: $header-height-mobile;
+  border-left: 1px solid $color-elements;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+
+  @include desktop {
+    height: $header-height-desktop;
+    width: $header-height-desktop;
+  }
+
+  &.iconActive {
+    box-shadow: inset 0 -3px 0 $color-main;
+  }
+}
+
+.iconWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  min-width: 14px;
+  height: 14px;
+  padding: 0 3px;
+  background-color: #eb5757;
+  color: $color-white;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 14px;
+  text-align: center;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.burgerButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: $header-height-mobile;
+  height: 100%;
+
+  border: none;
+  border-left: 1px solid $color-elements;
+  background: transparent;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  position: relative;
+  z-index: 100;
+
+  @include tablet {
+    display: none;
+  }
+}
+
+.icon {
+  display: block;
+  width: 16px;
+  height: 16px;
+}

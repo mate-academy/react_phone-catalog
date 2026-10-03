@@ -1,0 +1,32 @@
+@use '../../../shared/styles/variables.module' as *;
+
+.backButton {
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+  margin-bottom: 16px;
+  padding: 0;
+
+  border: none;
+  background: none;
+
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15px;
+
+  cursor: pointer;
+  color: $color-secondary;
+
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: $color-main
+  }
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  filter: brightness(0);
+}

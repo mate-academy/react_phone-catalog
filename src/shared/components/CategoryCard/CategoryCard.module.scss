@@ -1,0 +1,40 @@
+@import '../../../shared/styles/variables.module';
+
+.category {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.picture {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 8px; /* Твій зафіксований 8px радіус */
+  object-fit: cover;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.title {
+  margin: 0;
+  margin-top: 24px;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 100%;
+  color: $color-main;
+  text-decoration: none;
+  display: block;
+}
+
+.description {
+  margin: 0;
+  margin-top: 4px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: $color-secondary;
+}

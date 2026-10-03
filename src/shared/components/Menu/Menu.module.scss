@@ -1,0 +1,112 @@
+@import '../../../shared/styles/variables.module';
+
+.menuContainer {
+  position: fixed;
+  inset: $header-height-mobile 0 0 0;
+  background-color: $color-white;
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  overflow-y: auto;
+
+  @include tablet {
+    display: none;
+  }
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  margin-top: 48px;
+}
+
+.navLink {
+  text-decoration: none;
+  color: $color-secondary;
+  font-weight: 800;
+  font-size: 16px;
+  letter-spacing: 0.04em;
+  padding: 8px 0;
+  position: relative;
+  transition: color 0.3s ease;
+
+  &:hover { color: $color-main; }
+
+  &.isActive {
+    color: $color-main;
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background-color: $color-main;
+    }
+  }
+}
+
+.bottomButtons {
+  display: flex;
+  width: 100%;
+  border-top: 1px solid $color-elements;
+}
+
+.iconLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  height: 64px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+
+  &:first-child {
+    border-right: 1px solid $color-elements;
+  }
+
+  &:hover {
+    background-color: $color-hover-bg;
+  }
+
+  &.iconActive {
+    box-shadow: inset 0 -2px 0 $color-main;
+  }
+}
+
+.icon {
+  display: block;
+  width: 16px;
+  height: 16px;
+}
+
+.iconWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  min-width: 14px;
+  height: 14px;
+  padding: 0 3px;
+  background-color: #eb5757;
+  color: $color-white;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 14px;
+  text-align: center;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}

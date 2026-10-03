@@ -1,0 +1,30 @@
+$color-main: #0F0F11;       // майже чорний
+$color-secondary: #89939A;  // сірий текст
+$color-icons: #B4BDC3;      // іконки
+$color-elements: #E2E6E9;   // рамки та розділювачі
+$color-hover-bg: #FAFBFC;   // фон при наведенні
+$color-white: #FFF;
+$color-accent: #4219D0;
+$header-height-desktop: 64px;
+$header-height-tablet: 48px;
+$header-height-mobile: 48px;
+$header-logo-width-desktop: 80px;
+$header-logo-width-tablet: 64px;
+$header-logo-width-mobile: 64px;
+$screen-mobile: 320px;
+$screen-tablet: 640px;
+$screen-desktop: 1200px;
+$card-width: 272px;
+$card-height: 506px;
+
+@mixin tablet {
+  @media (min-width: #{$screen-tablet}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$screen-desktop}) {
+    @content;
+  }
+}

@@ -1,0 +1,81 @@
+@import '../../../shared/styles/variables.module';
+
+.productsSlider {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 800;
+  color: $color-main;
+  line-height: 41px;
+}
+
+.buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background-color: $color-white;
+  border: 1px solid $color-icons;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: border-color 0.2s ease, opacity 0.2s ease;
+
+  img {
+    filter: brightness(0);
+  }
+
+  &:disabled {
+    border-color: $color-elements;
+    opacity: 0.35;
+    cursor: default;
+  }
+
+  &:hover:not(:disabled) {
+    border-color: $color-main;
+  }
+}
+
+.sliderWrapper {
+  width: 100%;
+  overflow: hidden;
+}
+
+.cardsContainer {
+  display: flex;
+  gap: 16px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.cardWrapper {
+  flex: 0 0 $card-width;
+  width: $card-width;
+}
+
+.arrowLeft {
+  width: 16px;
+  height: 16px;
+  transform: rotate(180deg);
+}
+
+.arrowRight {
+  width: 16px;
+  height: 16px;
+}

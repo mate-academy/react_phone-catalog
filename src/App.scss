@@ -1,1 +1,46 @@
 // not empty
+@font-face {
+  font-family: Mont;
+  font-weight: 400;
+  src: url('/fonts/Mont-Regular.otf') format('opentype');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Mont;
+  font-weight: 600;
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Mont;
+  font-weight: 700;
+  src: url('/fonts/Mont-Bold.otf') format('opentype');
+  font-style: normal;
+}
+
+html {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  font-family: Mont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
