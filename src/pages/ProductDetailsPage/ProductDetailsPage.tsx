@@ -9,24 +9,7 @@ import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { ProductsSlider } from '../../components/ProductsSlider';
 import { useStore } from '../../context/StoreContext';
 import styles from './ProductDetailsPage.module.scss';
-
-const mapProductDetailsToProduct = (
-  details: ProductDetails,
-  category: string,
-): Product => ({
-  id: details.id,
-  category: category,
-  itemId: details.id,
-  name: details.name,
-  fullPrice: details.priceRegular,
-  price: details.priceDiscount, // Вирішує проблему NaN у кошику
-  screen: details.screen,
-  capacity: details.capacity,
-  color: details.color,
-  ram: details.ram,
-  year: 0,
-  image: details.images[0],
-});
+import { mapProductDetailsToProduct } from '../../utils/mappers';
 
 export const ProductDetailsPage = () => {
   const { productId, category } = useParams<{
