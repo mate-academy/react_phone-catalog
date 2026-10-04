@@ -1,0 +1,34 @@
+@use "@/shared/utils/vars" as *;
+@use "@/shared/utils/mixins" as *;
+
+.title {
+		color: var(--color-primary);
+
+}
+
+.favoritesItems {
+	margin: 0 auto 56px;
+	color: $main-color;
+
+	@include On640 {
+		margin-bottom: 64px;
+	}
+
+	@include On1200 {
+		margin-bottom: 80px;
+	}
+}
+
+.count {
+	margin-bottom: 32px;
+	font-size: 14px;
+	color: var(--color-primary);
+
+	@include On640 {
+		margin-bottom: 40px;
+	}
+}
+
+.emptyList {
+	color: var(--color-primary);
+}

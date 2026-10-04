@@ -1,0 +1,51 @@
+@use "@/shared/utils/mixins" as *;
+
+.container {
+	box-sizing: border-box;
+	width: 100%;
+	height: 100%;
+	margin: 0 auto;
+	padding: 0 16px;
+
+	@include On640 {
+		padding: 0 24px;
+	}
+
+	@include On1200 {
+		max-width: 1136px;
+		margin: 0 auto;
+		padding: 0;
+	}
+
+	&__newAvailable {
+		width: 100%;
+
+		@include On640 {
+			padding: 0 24px;
+		}
+
+		@include On1200 {
+			max-width: 1136px;
+			margin: 0 auto;
+			padding: 0;
+		}
+	}
+
+	&__ProductsSlider {
+		overflow: hidden;
+
+		width: 100%;
+		max-width: 1136px;
+		margin: 0 auto;
+		padding-right: 0;
+		padding-left: 16px;
+
+		@include On640 {
+			padding-left: 24px;
+		}
+
+		@include On1200 {
+			padding-left: 0;
+		}
+	}
+}

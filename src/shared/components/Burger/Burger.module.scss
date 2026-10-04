@@ -1,0 +1,40 @@
+@use "@/shared/utils/mixins" as *;
+@use "@/shared/utils/vars" as *;
+
+.burgerMenu {
+	position: fixed;
+	z-index: 99;
+	inset: 48px 0 0;
+
+	display: flex;
+	flex-direction: column;
+
+	background-color: var(--color-background);
+
+	@include On640 {
+		display: none;
+	}
+}
+
+.burgerNavigation {
+	flex-direction: column;
+	gap: 16px;
+	justify-content: start;
+
+	width: 100%;
+	padding-top: 30px;
+}
+
+.burgerNavigationItem {
+	height: 27px;
+}
+
+.onlyPhoneWrapper {
+	border-top: 1px solid $clear-gray-color;
+}
+
+.forMovile {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+}

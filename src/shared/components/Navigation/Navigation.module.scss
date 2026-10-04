@@ -1,0 +1,52 @@
+@use "@/shared/utils/mixins" as *;
+@use "@/shared/utils/vars" as *;
+
+
+.navList {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	width: 329px;
+	height: 100%;
+	margin-right: 20px;
+
+	font-family: Mont, sans-serif;
+	font-size: 12px;
+	font-weight: 600;
+	line-height: 11px;
+	text-transform: uppercase;
+	letter-spacing: 4%;
+}
+
+.navItem {
+	display: flex;
+	align-items: center;
+	height: 100%;
+	color: var(--color-primary);
+
+	@include On1200 {
+		padding-right: 80px;
+	}
+}
+
+.navLink {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	height: 100%;
+
+	color: var(--color-secondary);
+
+	@include transition(color);
+
+	@include hover {
+		color: var(--color-primary);
+	}
+
+	&--active {
+		border-bottom: 3px solid var(--color-primary);
+		color: var(--color-primary);
+	}
+}

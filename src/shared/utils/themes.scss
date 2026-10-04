@@ -1,0 +1,19 @@
+:root {
+	--color-primary: #0F0F11;
+	--color-secondary: #89939A;
+	--color-border: #B4BDC3;
+	--color-border-light: #E2E6E9;
+	--color-surface: #FAFBFC;
+	--color-background: #FFF;
+	--color-element: #FFF;
+}
+
+[data-theme='dark'] {
+	--color-primary: #F1F2F9;
+	--color-secondary: #89939A;
+	--color-border: #4A4D58;
+	--color-border-light: #3B3E4A;
+	--color-surface: #161827;
+	--color-background: #0F1121;
+	--color-element: #161827;
+}

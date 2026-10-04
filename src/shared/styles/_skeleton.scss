@@ -1,0 +1,22 @@
+:root {
+	--skele-color-light: hsl(228deg 15% 86% / 100%);
+	--skele-color-dark: hsl(228deg 15% 16% / 100%);
+	--skele-shine-light: hsl(228deg 25% 95% / 80%);
+	--skele-shine-dark: hsl(228deg 18% 22% / 80%);
+	--skele-radius: 0.5rem;
+	--skele-distance: 400;
+	--skele-time: 1;
+	--skele-scaler: 0.7;
+	--skele-size: clamp(100px, 50vw, 500px);
+	--skele-leading-edge-blur: clamp(10px, 5vw, 50px);
+	--skele-angle: 96deg;
+	--skele-ease: cubic-bezier(0.45, 0.3, 0.7, 0.55);
+	--skele-pos: 0;
+	--100vw: 100%;
+	--int-width: calc(10000 * tan(atan2(var(--100vw), 10000px)));
+	--scaled-time: calc(1 - (var(--int-width) / 400) * var(--skele-scaler) / 5);
+	--anim-time: calc(((var(--int-width) / var(--skele-distance)) * (var(--skele-time) * 1.33)) * var(--scaled-time));
+
+	animation:
+		skeleton calc(1000ms * var(--anim-time)) var(--skele-ease) infinite;
+}

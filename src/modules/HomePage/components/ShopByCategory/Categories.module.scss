@@ -1,0 +1,31 @@
+@use "@/shared/utils/vars" as *;
+@use "@/shared/utils/mixins" as *;
+
+.categories {
+	width: 100%;
+	margin-bottom: 50px;
+
+	&__content {
+		width: 100%;
+	}
+}
+
+.title {
+	margin-bottom: 20px;
+	font-size: 24px;
+	color: var(--color-primary);
+
+	@include On640 {
+		font-size: 32px;
+	}
+}
+
+.blocksWrapper {
+	display: flex;
+	flex-direction: column;
+
+	@include On640 {
+		flex-direction: row;
+		justify-content: space-between;
+	}
+}

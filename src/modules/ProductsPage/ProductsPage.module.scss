@@ -1,0 +1,14 @@
+@use "@/shared/utils/vars" as *;
+
+.emptyMessage {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	min-height: 300px;
+
+	font-size: 18px;
+	color: var(--color-primary);
+	color: $main-color;
+	text-align: center;
+}

@@ -1,0 +1,45 @@
+@use "@/shared/utils/mixins" as *;
+
+.grid {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 30px 16px;
+	justify-content: center;
+
+	@include On640 {
+		grid-template-columns: repeat(12, 1fr);
+	}
+
+	@include On768 {
+		grid-template-columns: repeat(12, 1fr);
+	}
+
+
+	@include On1200 {
+		grid-template-columns: repeat(24, 32px);
+		max-width: 1136px;
+		margin: 0 auto;
+	}
+
+	// &__item {
+	// 	@for $start from 1 through 24 {
+	// 		@for $end from $start through 24 {
+	// 			&--#{$start}-#{$end} {
+	// 				grid-column: #{$start} / #{$end + 1};
+	// 			}
+
+	// 			&--Tablet-#{$start}-#{$end} {
+	// 				@include On640() {
+	// 					grid-column: #{$start} / #{$end + 1};
+	// 				}
+	// 			}
+
+	// 			&--Notebook-#{$start}-#{$end} {
+	// 				@include On1200() {
+	// 					grid-column: #{$start} / #{$end + 1};
+	// 				}
+	// 			}
+	// 		}
+	// 	}
+	// }
+}

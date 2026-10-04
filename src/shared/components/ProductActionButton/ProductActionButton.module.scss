@@ -1,0 +1,26 @@
+@use "@/shared/utils/vars" as *;
+@use "@/shared/utils/mixins" as *;
+
+.button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	width: 100%;
+	min-width: 0;
+	max-width: 320px;
+	height: 40px;
+	border: none;
+	border-radius: 8px;
+
+	font-size: 14px;
+	color: white;
+
+	background-color: $orange-color;
+
+	@include transition(background-color, box-shadow);
+
+	@include hover {
+		box-shadow: 0 2px 8px rgb(23 32 49 / 30%);
+	}
+}

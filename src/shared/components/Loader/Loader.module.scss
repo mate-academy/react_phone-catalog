@@ -1,0 +1,18 @@
+@use "@/shared/utils/vars" as *;
+
+.loader {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	align-items: center;
+	justify-content: center;
+
+	padding: 40px 0;
+
+	color: $main-color;
+
+	&__text {
+		font-size: 16px;
+		color: $main-color;
+	}
+}

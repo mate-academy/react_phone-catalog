@@ -1,0 +1,58 @@
+@use "@/shared/utils/vars" as *;
+@use "@/shared/utils/mixins" as *;
+
+.cardBlock {
+	margin-bottom: 40px;
+}
+
+.card {
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+
+	width: 100%;
+	height: 288px;
+	margin-bottom: 20px;
+	border-radius: 8px;
+
+	@include On640 {
+		width: 187px;
+		height: 187px;
+		margin-bottom: 20px;
+	}
+
+	@include On1200 {
+		width: 368px;
+		height: 368px;
+		margin-bottom: 20px;
+	}
+
+	@include shadowHover($shadow: 0 2px 8px rgb(23 32 49 / 50%));
+}
+
+.photo {
+	transform: translate(40px, 40px);
+	width: 288px;
+	height: 100%;
+
+	@include zoomIn(0.98);
+
+	@include On640 {
+		width: 100%;
+		height: 100%;
+	}
+}
+
+.title {
+	margin-bottom: 10px;
+	font-size: 22px;
+	font-weight: 600;
+			color: var(--color-primary);
+}
+
+.info {
+	font-size: 20px;
+	font-weight: 500;
+	line-height: 21px;
+	color: $gray-color-2;
+}

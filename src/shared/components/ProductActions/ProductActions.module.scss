@@ -1,0 +1,17 @@
+@use "@/shared/utils/vars" as *;
+@use "@/shared/utils/mixins" as *;
+
+.productActions {
+	display: flex;
+	gap: 10px;
+	align-items: center;
+
+	width: 100%;
+	height: 40px;
+}
+
+.addedToCart {
+	border: 1px solid $clear-gray-color;
+	color: $orange-color;
+	background-color: transparent;
+}

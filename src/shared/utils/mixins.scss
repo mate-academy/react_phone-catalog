@@ -1,0 +1,54 @@
+@use "sass:list";
+
+@mixin On640 {
+	@media screen and (min-width: 640px) {
+		@content;
+	}
+}
+
+@mixin On768 {
+	@media (min-width: 760px) {
+		@content;
+	}
+}
+
+@mixin On1200 {
+	@media screen and (min-width: 1200px) {
+		@content;
+	}
+}
+
+@mixin transition($properties...) {
+	$transitions: (
+	);
+
+@each $property in $properties {
+	$transitions: list.append($transitions,
+			$property 0.3s ease,
+			$separator: comma);
+}
+
+transition: $transitions;
+}
+
+@mixin hover {
+	&:hover {
+		@content;
+	}
+}
+
+@mixin zoomIn($scale: 1.08) {
+		@include transition(transform);
+
+		@include hover {
+			transform: scale($scale);
+		}
+	}
+
+	@mixin shadowHover($shadow: 0 2px 8px rgb(23 32 49 / 20%)) {
+		@include transition(box-shadow);
+
+		@include hover {
+			box-shadow: $shadow;
+		}
+	}

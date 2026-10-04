@@ -1,0 +1,95 @@
+{
+  "header": {
+    "home": "Inicio",
+    "phones": "Teléfonos",
+    "tablets": "Tabletas",
+    "accessories": "Accesorios",
+    "search": "Buscar..."
+  },
+
+  "home": {
+    "welcome": "¡Bienvenido a la tienda Nice Gadgets!",
+    "newAvailable": {
+      "title": "¡Ahora en nuestra tienda!",
+      "beTheFirst": "Sé el primero",
+      "orderNow": "pide ahora"
+    },
+    "brandNew": {
+      "title": "Modelos completamente nuevos"
+    },
+    "hotPrices": {
+      "title": "Precios especiales"
+    },
+    "category": {
+      "title": "Compra por categoría",
+      "mobilePhones": "Teléfonos móviles",
+      "tablets": "Tablets",
+      "accessories": "Accesorios"
+    }
+  },
+
+  "product": {
+    "availableModels": "Modelos disponibles",
+    "availableColors": "Colores disponibles",
+    "selectCapacity": "Selecciona la capacidad",
+    "models": "modelos",
+    "model": "modelo",
+    "specs": {
+      "screen": "Pantalla",
+      "capacity": "Capacidad",
+      "ram": "RAM",
+      "resolution": "Resolución",
+      "processor": "Procesador",
+      "camera": "Cámara",
+      "zoom": "Zoom",
+      "cell": "Red móvil"
+    }
+  },
+
+  "products": {
+    "phones": "Teléfonos móviles",
+    "tablets": "Tabletas",
+    "accessories": "Accesorios",
+    "sortBy": "Ordenar por",
+    "itemsOnPage": "Productos en página",
+    "itemsOnPageAll": "Todos",
+    "sortedBy": {
+      "newest": "Newest",
+      "alphabetically": "Alphabetically",
+      "cheapest": "Más baratos"
+    },
+    "noMatchingQuery": "No hay {{title}} que coincidan con la búsqueda"
+  },
+
+  "footer": {
+    "nav": {
+      "contacts": "Contactos",
+      "rights": "derechos"
+    },
+    "toTop": "Volver al inicio"
+  },
+
+  "favorites": {
+    "title": "Favoritos"
+  },
+
+  "cart": {
+    "title": "Carrito",
+    "checkout": "Comprar",
+    "addedToCart": "Añadido al carrito",
+    "addToCart": "Añadir al carrito"
+  },
+
+  "breadcrumbs": {
+    "favorites": "Favoritos"
+  },
+
+  "goBack": "Volver",
+
+  "productInfo": {
+    "about": "Acerca de",
+    "techSpecs": "Especificaciones técnicas"
+  },
+  "youMayLike": "También te puede interesar",
+  "cookies": "Usamos cookies para mejorar tu experiencia"
+}

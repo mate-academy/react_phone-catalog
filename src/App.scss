@@ -1,1 +1,72 @@
-// not empty
+@use './shared/styles/skeleton';
+
+@import '@fortawesome/fontawesome-free/css/all.min.css';
+
+@font-face {
+	font-family: Mont;
+	font-weight: 400;
+	font-style: normal;
+	src: url("/fonts/mont-regular.otf");
+}
+
+@font-face {
+	font-family: Mont;
+	font-weight: 700;
+	font-style: normal;
+	src: url("/fonts/mont-bold.otf");
+}
+
+@font-face {
+	font-family: Mont;
+	font-weight: 800;
+	font-style: normal;
+	src: url("/fonts/mont-extrabold.otf");
+}
+
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html,
+body {
+	overflow-x: clip;
+	width: 100%;
+	max-width: 100%;
+}
+
+html,
+body,
+#root {
+	font-family: Mont, sans-serif;
+	background-color: var(--color-background);
+	transition:
+		background-color 0.3s ease,
+		color 0.3s ease;
+}
+
+ul,
+ol {
+	list-style: none;
+}
+
+li::marker {
+	content: "";
+}
+
+a {
+	text-decoration: none;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+	box-shadow: 0 0 0 1000px #e5e5e5 inset;
+
+	-webkit-text-fill-color: rgb(0, 0, 0);
+}

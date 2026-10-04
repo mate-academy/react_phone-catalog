@@ -1,0 +1,89 @@
+@use "@/shared/utils/vars" as *;
+@use "@/shared/utils/mixins" as *;
+
+.footer {
+	width: 100%;
+	border-top: 1px solid $gray-color-2;
+
+	&__content {
+		display: flex;
+		flex-direction: column;
+		padding: 40px 0 20px;
+
+		@include On640 {
+			flex-direction: row;
+			justify-content: space-between;
+		}
+	}
+
+	&__logoWrapper {
+		margin-bottom: 20px;
+
+		@include On640 {
+			margin-bottom: 0;
+		}
+	}
+}
+
+.FooterLinks {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 20px;
+
+	@include On640 {
+		flex-direction: row;
+		align-items: center;
+	}
+
+
+	@include On1200 {
+		gap: 50px;
+	}
+}
+
+.element {
+	font-size: 12px;
+	font-weight: 600;
+	text-transform: uppercase;
+
+	&:not(:last-child) {
+		margin-bottom: 16px;
+	}
+
+	@include On640 {
+		&:not(:last-child) {
+			margin-right: 16px;
+			margin-bottom: 0;
+		}
+	}
+
+	a {
+		color: $gray-color;
+
+		@include transition(color);
+
+		@include hover {
+			color: var(--color-primary);
+		}
+	}
+}
+
+.buttonWarapper {
+	display: flex;
+	align-items: center;
+
+	width: max-content;
+	height: max-content;
+	margin: 0 auto;
+
+	@include On640 {
+		margin: 0;
+	}
+
+	.buttonText {
+		margin-right: 20px;
+		font-size: 12px;
+		font-weight: 500;
+		color: $gray-color;
+	}
+}

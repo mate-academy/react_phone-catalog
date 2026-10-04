@@ -1,0 +1,85 @@
+@use "@/shared/utils/vars" as *;
+@use "@/shared/utils/mixins" as *;
+
+.ProductsSlider {
+	margin-bottom: 100px;
+
+	&__content {
+		width: 100%;
+
+		@include On1200 {
+			max-width: 100%;
+		}
+	}
+
+	.wrapper {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+		height: 62px;
+		margin-bottom: 15px;
+		padding-right: 16px;
+
+		@include On640 {
+			padding-right: 24px;
+		}
+
+		@include On1200 {
+			padding-right: 32px;
+		}
+	}
+
+	.titleBlock {
+		display: flex;
+		align-items: center;
+		height: 100%;
+
+		@include On640 {
+			height: max-content;
+		}
+	}
+
+	.title {
+		font-size: 22px;
+		font-weight: 600;
+		line-height: 22px;
+		color: var(--color-primary);
+
+		@include On640 {
+			font-size: 32px;
+			line-height: 41px;
+		}
+	}
+
+	.buttonsWrapper {
+		display: flex;
+		gap: 16px;
+		justify-content: space-between;
+
+		width: max-content;
+		height: 32px;
+	}
+}
+
+:global(.swiper) {
+	overflow: hidden;
+}
+
+:global(.swiper-wrapper) {
+	display: flex;
+}
+
+:global(.swiper-slide) {
+	width: 212px;
+	height: 440px;
+
+	@include On640 {
+		width: 237px;
+		height: 506px;
+	}
+
+	@include On1200 {
+		width: 272px;
+	}
+}

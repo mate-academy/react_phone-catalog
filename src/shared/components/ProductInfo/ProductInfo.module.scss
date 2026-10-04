@@ -1,0 +1,60 @@
+@use "@/shared/utils/vars" as *;
+@use "@/shared/utils/mixins" as *;
+
+.pricesBlock {
+	display: flex;
+	margin-bottom: 10px;
+	border-bottom: 1px solid $clear-gray-color;
+}
+
+.price {
+	margin-right: 12px;
+	padding-bottom: 10px;
+
+	font-size: 22px;
+	font-weight: 700;
+	line-height: 24px;
+		color: var(--color-primary);
+}
+
+.oldPrice {
+	font-size: 22px;
+	font-weight: 700;
+	line-height: 24px;
+	color: $gray-color-2;
+	text-decoration: line-through;
+}
+
+.specs {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+
+	margin-bottom: 16px;
+
+	color: var(--color-primary);
+}
+
+.spec {
+	display: flex;
+	justify-content: space-between;
+	font-size: 12px;
+
+	&__key {
+		display: inline-block;
+		margin-right: 15px;
+		font-weight: 400;
+		color: $gray-color
+	}
+
+	&__value {
+		display: inline-block;
+		font-weight: 400;
+		text-align: right
+	}
+}
+
+.actionsWrapper {
+	width: 100%;
+	margin-top: auto;
+}

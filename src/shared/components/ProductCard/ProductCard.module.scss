@@ -1,0 +1,94 @@
+@use "@/shared/utils/vars" as *;
+@use "@/shared/utils/mixins" as *;
+
+.card {
+	display: flex;
+	grid-column: span 4;
+	justify-content: center;
+	justify-self: center;
+
+	width: 100%;
+	max-width: 287px;
+	height: 440px;
+	border: 1px solid $gray-color-2;
+	border-radius: 8px;
+
+	@include shadowHover($shadow: 0 2px 8px rgb(23 32 49 / 20%));
+
+	@include On640 {
+		grid-column: span 6;
+		max-width: 100%;
+		height: 506px;
+	}
+
+	@include On768 {
+		grid-column: span 4;
+	}
+
+	@include On1200 {
+		grid-column: span 6;
+	}
+
+	&__content {
+		display: flex;
+		flex-direction: column;
+
+		width: 100%;
+		max-width: 240px;
+		padding: 24px;
+
+		@include On640 {
+			max-width: 280px;
+		}
+
+		@include On768 {
+			max-width: 300px;
+		}
+
+	}
+}
+
+.picture {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	width: 120px;
+	height: 148px;
+	margin: 0 auto 18px;
+	border-radius: 8px;
+
+	@include On640 {
+		width: 160px;
+		height: 196px;
+		margin-bottom: 24px;
+	}
+
+	a {
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+}
+
+.image {
+	width: 100%;
+	height: 100%;
+
+	@include zoomIn
+}
+
+.title {
+	margin-bottom: 8px;
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 21px;
+
+
+	a {
+	color: var(--color-primary);
+
+		@include shadowHover($shadow: 0 2px 8px rgb(23 32 49 / 20%));
+	}
+}

@@ -1,0 +1,37 @@
+@use "@/shared/utils/vars" as *;
+@use "@/shared/utils/mixins" as *;
+
+.filtered img {
+	filter: brightness(0) saturate(100%);
+}
+
+.button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	width: 32px;
+	height: 32px;
+	border: 1px solid $gray-color-2;
+	border-radius: 48px;
+
+	background-color: #fff;
+
+	@include transition(border-color);
+
+	img {
+		@include transition(filter);
+	}
+
+	&:disabled {
+		opacity: 0.8;
+	}
+
+	&:not(:disabled):hover {
+		border-color: $main-color;
+
+		img {
+			filter: brightness(0) saturate(100%);
+		}
+	}
+}

@@ -1,0 +1,129 @@
+@use "@/shared/utils/vars" as *;
+@use "@/shared/utils/mixins" as *;
+
+.catalog {
+	margin-bottom: 64px;
+
+		@include On640 {
+	margin-bottom: 80px;
+	}
+}
+
+.productsGrid {
+	animation: productsChange 0.25s ease;
+}
+
+@keyframes productsChange {
+	from {
+		transform: translateY(6px);
+		opacity: 0;
+	}
+
+	to {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
+.title {
+	margin-bottom: 15px;
+	font-size: 32px;
+	color: var(--color-primary);
+
+	@include On640 {
+		font-size: 48px;
+		line-height: 41px;
+	}
+}
+
+.availableModels {
+	margin-bottom: 50px;
+	font-size: 14px;
+	color: $gray-color;
+}
+
+.productsControls {
+	display: flex;
+	gap: 15px;
+	height: 60px;
+	margin-bottom: 24px;
+}
+
+.itemsControl {
+	display: flex;
+	flex-direction: column;
+	min-width: 0;
+}
+
+.label {
+	margin-bottom: 5px;
+	font-size: 14px;
+	color: $gray-color;
+}
+
+.onPage {
+	font-size: 13px;
+
+	@include On640 {
+		font-size: 14px;
+	}
+}
+
+.selectWrapper {
+	position: relative;
+	width: 176px;
+	max-width: 100%;
+
+	img {
+		pointer-events: none;
+
+		position: absolute;
+		top: 50%;
+		right: 10px;
+		transform: translateY(-50%);
+
+		width: 12px;
+		height: 12px;
+
+		@include transition(filter);
+	}
+
+	@include hover {
+		img {
+			filter: brightness(0);
+		}
+	}
+}
+
+.filterSelect,
+.pagesSelect {
+	cursor: pointer;
+
+	box-sizing: border-box;
+	width: 100%;
+	padding: 10px 35px 10px 10px;
+	border: 1px solid $gray-color;
+	border-radius: 8px;
+
+	font-size: 14px;
+	font-weight: 500;
+
+	appearance: none;
+	outline: none;
+
+	@include transition(border-color, box-shadow);
+
+	@include hover {
+		border-color: $main-color;
+		box-shadow: 0 2px 8px rgb(23 32 49 / 10%);
+	}
+
+	&:focus {
+		border-color: $main-color;
+	}
+}
+
+.emptyMessage {
+	margin-bottom: 50px;
+	color: $red-color;
+}

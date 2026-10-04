@@ -1,0 +1,147 @@
+@use "@/shared/utils/vars" as *;
+@use "@/shared/utils/mixins" as *;
+
+.item {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	align-items: center;
+
+	width: 100%;
+	padding: 16px;
+	border: 1px solid $clear-gray-color;
+	border-radius: 16px;
+
+	@include On640 {
+		flex-direction: row;
+	}
+
+	&__details {
+		display: flex;
+		gap: 20px;
+		align-items: center;
+		justify-content: space-between;
+
+		width: 100%;
+	}
+
+	&__actions {
+		display: flex;
+		justify-content: space-between;
+		width: 100%;
+
+		@include On640 {
+			gap: 24px;
+			justify-content: end;
+		}
+	}
+}
+
+.actionsWrapper {
+	width: 100%;
+
+	@include On640 {
+		width: 256px
+	}
+}
+
+.removeItem {
+	display: flex;
+
+	width: 16px;
+	height: 16px;
+	border: none;
+
+	background-color: transparent;
+	outline: none;
+}
+
+.cross {
+	filter: invert(60%);
+
+	@include transition(filter);
+	@include zoomIn;
+
+	@include hover {
+		filter: none;
+	}
+
+	:global([data-theme='dark']) & {
+		filter: brightness(0) invert(1);
+	}
+}
+
+.imgBlock {
+	flex-shrink: 0;
+	width: 80px;
+	height: 80px;
+}
+
+.image {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+
+	@include zoomIn
+}
+
+.infoBlock {
+	display: flex;
+	align-items: center;
+	width: 100%;
+}
+
+.info {
+	font-size: 14px;
+	line-height: 21px;
+	color: var(--color-primary);
+}
+
+.priceBlock {
+	display: flex;
+	align-items: center;
+}
+
+.price {
+	font-size: 22px;
+	font-weight: 700;
+	color: var(--color-primary);
+}
+
+.quantityBlock {
+	display: flex;
+	align-items: center;
+}
+
+.quantityNumberBlock,
+.actionButton {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	width: 32px;
+	height: 32px;
+}
+
+.actionButton {
+	border: 1px solid $gray-color-2;
+	border-radius: 50%;
+	background-color: white;
+
+	@include transition(border-color);
+
+	&:not(:disabled) {
+		@include hover {
+			border-color: $main-color;
+		}
+	}
+}
+
+.disabled {
+	border-color: $clear-gray-color;
+
+	img {
+		filter: invert(80%);
+	}
+}

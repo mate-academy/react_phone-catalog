@@ -1,0 +1,18 @@
+@use "@/shared/utils/vars" as *;
+@use "@/shared/utils/mixins" as *;
+
+.items {
+	display: flex;
+	flex-flow: column wrap;
+	gap: 16px;
+	align-items: center;
+
+	width: 100%;
+	margin-bottom: 32px;
+
+	@include On640 {
+		flex-direction: row;
+		justify-content: center;
+	}
+
+}

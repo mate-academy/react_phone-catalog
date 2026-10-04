@@ -1,0 +1,34 @@
+@use 'sass:color';
+@use "@/shared/utils/vars" as *;
+@use "@/shared/utils/mixins" as *;
+
+.errorMessage {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	align-items: center;
+
+	padding: 20px;
+
+	font-size: 16px;
+	color: $main-color;
+
+	&__reload {
+		cursor: pointer;
+
+		padding: 10px 20px;
+		border: none;
+		border-radius: 4px;
+
+		font-size: 16px;
+		color: $white-color;
+
+		background-color: $gray-color;
+
+		@include transition(background-color);
+
+		@include hover {
+			background-color: color.adjust($main-color, $lightness: -10%);
+		}
+	}
+}

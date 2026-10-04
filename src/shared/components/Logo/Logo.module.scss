@@ -1,0 +1,33 @@
+@use "@/shared/utils/vars" as *;
+@use "@/shared/utils/mixins" as *;
+
+
+.logo {
+	display: flex;
+	align-items: center;
+
+	width: 64px;
+	height: 20px;
+
+	outline: none;
+
+	@include On1200 {
+		width: 80px;
+		height: 28px;
+	}
+
+	a {
+		outline: none;
+	}
+
+	img {
+		width: 100%;
+		height: 100%;
+	}
+
+	&__logoWrapper {
+		display: flex;
+		align-items: center;
+		height: 100%;
+	}
+}

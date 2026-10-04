@@ -1,0 +1,278 @@
+@use '@/shared/utils/mixins' as *;
+
+.ProductCardDetails {
+  width: 100%;
+  margin-bottom: 56px;
+
+  @include On640 {
+    margin-bottom: 64px;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+
+  @include On640 {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  @include On1200 {
+    max-width: 100%;
+  }
+}
+
+.breadcrumb {
+  width: 120px;
+  height: 16px;
+  margin-bottom: 24px;
+}
+
+.title {
+  width: 60%;
+  height: 32px;
+  margin: 0 auto 32px;
+
+  @include On640 {
+    width: 50%;
+    height: 40px;
+  }
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0 auto 56px;
+
+  @include On640 {
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 64px;
+  }
+
+  @include On1200 {
+    gap: 64px;
+    margin-bottom: 80px;
+  }
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+
+  @include On640 {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  @include On1200 {
+    width: 560px;
+  }
+}
+
+.mainImage {
+  width: 288px;
+  height: 288px;
+  margin-bottom: 16px;
+  border-radius: 8px;
+
+  @include On640 {
+    order: 2;
+    margin: 0 auto;
+  }
+
+  @include On1200 {
+    width: 464px;
+    height: 464px;
+  }
+}
+
+.pictures {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 40px;
+
+  @include On640 {
+    flex-direction: column;
+    gap: 16px;
+    order: 1;
+    margin-bottom: 0;
+  }
+}
+
+.picture {
+  width: 50px;
+  height: 50px;
+  border-radius: 4px;
+
+  @include On640 {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+
+  @include On640 {
+    width: 237px;
+  }
+
+  @include On1200 {
+    width: 512px;
+  }
+}
+
+.options {
+  width: 100%;
+
+  @include On640 {
+    max-width: 237px;
+  }
+
+  @include On1200 {
+    max-width: 320px;
+  }
+}
+
+.colorsBlock,
+.capacityBlock {
+  width: 100%;
+}
+
+.label {
+  width: 120px;
+  height: 14px;
+  margin-bottom: 12px;
+}
+
+.colorsOptions {
+  display: flex;
+  gap: 8px;
+
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid transparent;
+}
+
+.color {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.capacityOptions {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+}
+
+.capacity {
+  width: 60px;
+  height: 32px;
+  border-radius: 4px;
+}
+
+.productInfo {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.price {
+  width: 130px;
+  height: 32px;
+  margin-bottom: 24px;
+}
+
+.infoSpecs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.infoLine {
+  width: 100%;
+  height: 16px;
+}
+
+.button {
+  width: 100%;
+  height: 48px;
+  border-radius: 8px;
+}
+
+.addInfo {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 56px;
+
+  @include On640 {
+    margin-bottom: 64px;
+  }
+
+  @include On1200 {
+    flex-direction: row;
+    gap: 64px;
+    margin-bottom: 80px;
+  }
+}
+
+.leftPart,
+.rightPart {
+  width: 100%;
+}
+
+.leftPart {
+  @include On1200 {
+    width: 560px;
+  }
+}
+
+.rightPart {
+  @include On1200 {
+    width: 512px;
+  }
+}
+
+.sectionTitle {
+  width: 220px;
+  height: 28px;
+  margin-bottom: 30px;
+}
+
+.textLine {
+  width: 100%;
+  height: 16px;
+  margin-bottom: 16px;
+}
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.spec {
+  display: flex;
+  justify-content: space-between;
+}
+
+.specKey {
+  width: 80px;
+  height: 16px;
+}
+
+.specValue {
+  width: 120px;
+  height: 16px;
+}

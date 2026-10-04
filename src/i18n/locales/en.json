@@ -1,0 +1,96 @@
+{
+  "header": {
+    "home": "Home",
+    "phones": "Phones",
+    "tablets": "Tablets",
+    "accessories": "Accessories",
+    "search": "Search..."
+  },
+
+  "home": {
+    "welcome": "Welcome to Nice Gadgets store!",
+    "newAvailable": {
+      "title": "Now available in our store!",
+      "beTheFirst": "Be the first",
+      "orderNow": "order now"
+    },
+    "brandNew": {
+      "title": "Brand new models"
+    },
+    "hotPrices": {
+      "title": "Hot prices"
+    },
+    "category": {
+      "title": "Shop by category",
+      "mobilePhones": "Mobile phones",
+      "tablets": "Tablets",
+      "accessories": "Accessories"
+    }
+  },
+
+  "product": {
+    "availableModels": "Available models",
+    "availableColors": "Available colors",
+    "selectCapacity": "Select capacity",
+    "models": "models",
+    "model": "model",
+    "specs": {
+      "screen": "Screen",
+      "capacity": "Capacity",
+      "ram": "RAM",
+      "resolution": "Resolution",
+      "processor": "Processor",
+      "camera": "Camera",
+      "zoom": "Zoom",
+      "cell": "Cell"
+    }
+  },
+
+  "products": {
+    "phones": "Mobile Phones",
+    "tablets": "Tablets",
+    "accessories": "Accessories",
+    "sortBy": "Sort by",
+    "itemsOnPage": "Items on page",
+    "itemsOnPageAll": "All",
+    "sortedBy": {
+      "newest": "Newest",
+      "alphabetically": "Alphabetically",
+      "cheapest": "Cheapest"
+    },
+    "noMatchingQuery": "There are no {{title}} matching the query"
+  },
+
+  "cart": {
+    "title": "Cart",
+    "checkout": "Checkout",
+    "addedToCart": "Added to cart",
+    "addToCart": "Add to cart"
+  },
+
+  "favorites": {
+    "title": "Favorites"
+  },
+
+  "footer": {
+    "nav": {
+      "contacts": "Contacts",
+      "rights": "rights"
+    },
+    "toTop": "Back to top"
+  },
+
+  "breadcrumbs": {
+    "favorites": "Favourites"
+  },
+
+  "goBack": "Back",
+
+  "productInfo": {
+    "about": "About",
+    "techSpecs": "Tech specs"
+  },
+
+  "youMayLike": "You may also like",
+  "cookies": "We use cookies to improve your experience"
+}

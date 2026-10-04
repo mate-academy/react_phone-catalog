@@ -1,0 +1,214 @@
+@use "@/shared/utils/mixins" as *;
+@use "@/shared/utils/themes" as *;
+
+.header {
+	position: sticky;
+	z-index: 999;
+	top: 0;
+
+	display: flex;
+	align-items: center;
+
+	width: 100%;
+	height: 47px;
+	margin: 0 auto;
+	margin-bottom: 20px;
+	border-bottom: 1px solid #E2E6E9;
+
+	background-color: var(--color-background);
+
+	@include On1200 {
+		height: 63px;
+	}
+
+	&__content {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+		width: 100%;
+		height: 100%;
+	}
+}
+
+.logoWrapper {
+	display: flex;
+	align-items: center;
+	height: 100%;
+	padding: 0 16px;
+
+	@include On1200 {
+		padding-right: 50px;
+		padding-left: 24px;
+	}
+}
+
+
+.desktopNavigation {
+	display: none;
+	height: 100%;
+
+	@include On640 {
+		display: block;
+	}
+}
+
+.leftPart {
+	display: flex;
+	gap: 10px;
+	align-items: center;
+	justify-content: center;
+
+	height: 100%;
+}
+
+.rightPart {
+	display: flex;
+	height: 100%;
+}
+
+.burgerBlock {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	width: 48px;
+	height: 100%;
+	border-left: 1px solid #E2E6E9;
+
+	@include shadowHover;
+
+	@include On640 {
+		display: none;
+	}
+}
+
+.onlyDesktop {
+	display: none;
+	width: 96px;
+	height: 100%;
+
+	@include On640 {
+		display: flex;
+	}
+
+	@include On1200 {
+		width: 126px;
+	}
+}
+
+.burgerMenu {
+	@include zoomIn;
+}
+
+// search
+
+.search {
+	display: flex;
+	align-items: center;
+	margin-right: 15px;
+}
+
+.inputWrapper {
+	display: none;
+
+	@media (min-width: 1000px) {
+		display: block;
+	}
+}
+
+.searchInput {
+	width: 300px;
+	height: 100%;
+	padding: 5px;
+	padding-left: 15px;
+	border: 1px solid var(--color-secondary);
+	border-radius: 5px;
+
+	font-size: 12px;
+
+	outline: none;
+}
+
+.lupa {
+	cursor: pointer;
+
+	padding: 0;
+	border: none;
+
+	color: var(--color-primary);
+
+	background: transparent;
+	outline: none;
+
+	@include zoomIn;
+
+	@media (min-width: 1000px) {
+		display: none;
+	}
+}
+
+.searchOpen {
+	.lupa {
+		display: none;
+	}
+
+	.inputWrapper {
+		display: block;
+	}
+}
+
+
+.closeButton {
+	cursor: pointer;
+
+	position: absolute;
+	top: 50%;
+	right: 10px;
+	transform: translateY(-50%);
+
+	display: block;
+
+	border: none;
+
+	font-size: 18px;
+
+	background: transparent;
+
+	@include transition(font-size);
+
+	&:hover {
+		font-size: 20px;
+	}
+
+	@media (min-width: 1000px) {
+		display: none;
+	}
+}
+
+@media (max-width: 999px) {
+	.searchOpen {
+		position: absolute;
+		z-index: 10;
+		top: 0;
+		left: 0;
+
+		width: 100%;
+		height: 100%;
+		margin: 0;
+
+		.inputWrapper {
+			position: relative;
+			display: block;
+			width: 100%;
+			height: 100%;
+		}
+
+		.searchInput {
+			width: 100%;
+			height: 100%;
+			border: none;
+			border-radius: 0;
+		}
+	}
+}

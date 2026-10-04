@@ -1,0 +1,7 @@
+@use "@/shared/utils/vars" as *;
+@use "@/shared/utils/mixins" as *;
+
+.active {
+	color: $white-color;
+	background-color: $main-color;
+}

@@ -1,0 +1,30 @@
+
+@use "@/shared/utils/vars" as *;
+@use "@/shared/utils/mixins" as *;
+
+.linkBack {
+	display: flex;
+	gap: 4px;
+	align-items: center;
+}
+
+.img {
+  filter: brightness(0) saturate(100%);
+}
+
+:global([data-theme='dark']) .img {
+  filter: brightness(0) saturate(100%) invert(1);
+}
+
+.linkBackText {
+	display: flex;
+	font-size: 12px;
+	line-height: 16px;
+	color: $gray-color;
+
+	@include transition(color);
+
+	@include hover {
+		color: var(--color-primary);
+	}
+}

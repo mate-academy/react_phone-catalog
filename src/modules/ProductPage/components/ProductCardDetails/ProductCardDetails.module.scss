@@ -1,0 +1,426 @@
+@use "@/shared/utils/mixins" as *;
+@use "@/shared/utils/vars" as *;
+
+.ProductCardDetails {
+	margin-bottom: 56px;
+
+	@include On640 {
+		margin-bottom: 64px;
+	}
+
+	&__content {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+
+		@include On640 {
+			justify-content: start;
+			max-width: 800px;
+			margin: 0 auto;
+		}
+
+		@include On1200 {
+			max-width: 100%;
+		}
+	}
+}
+
+.item {
+	display: flex;
+	flex-direction: column;
+	margin: 0 auto 56px;
+
+	@include On640 {
+		flex-direction: row;
+		justify-content: space-between;
+		max-width: 100%;
+		margin: 0 0 64px;
+	}
+
+	@include On1200 {
+		gap: 64px;
+		margin-bottom: 80px;
+	}
+}
+
+.left,
+.right {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+
+	@include On1200 {
+		gap: 64px;
+	}
+}
+
+.left {
+	flex-direction: column;
+	align-items: center;
+
+
+	@include On640 {
+		flex-direction: row;
+		align-items: start;
+	}
+
+	@include On1200 {
+		width: 560px;
+	}
+}
+
+.right {
+	@include On640 {
+		width: 237px;
+	}
+
+	@include On1200 {
+		flex-direction: row;
+		align-items: start;
+		justify-content: space-around;
+		width: 512px;
+	}
+}
+
+.title {
+	margin-bottom: 32px;
+	font-size: 22px;
+	color: var(--color-primary);
+	text-align: center;
+
+	@include On640 {
+		font-size: 32px;
+	}
+}
+
+.mainImage {
+	overflow: hidden;
+	width: 288px;
+	height: 288px;
+	margin: 0 0 16px;
+
+	@include zoomIn;
+
+	@include On640 {
+		order: 2;
+		margin: 0 auto;
+	}
+
+	@include On1200 {
+		width: 464px;
+		height: 464px;
+	}
+
+	:global(.swiper-slide) {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 100%;
+
+	}
+}
+
+.image {
+	display: block;
+
+	width: auto;
+	max-width: 100%;
+	height: auto;
+	max-height: 100%;
+
+	object-fit: contain;
+}
+
+.pictures {
+	display: flex;
+	gap: 8px;
+	margin-bottom: 40px;
+	outline: none;
+
+	@include On640 {
+		flex-direction: column;
+		gap: 16px;
+		order: 1;
+		margin-bottom: 0;
+	}
+}
+
+.picture {
+	cursor: pointer;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	width: 50px;
+	height: 50px;
+	border: 1px solid $clear-gray-color;
+	border-radius: 4px;
+
+	@include shadowHover;
+
+	@include On640 {
+		width: 80px;
+		height: 80px;
+	}
+}
+
+.activePicture {
+	border-color: var(--color-primary);
+}
+
+:global([data-theme='dark']) .picture:not(.activePicture) {
+	border-color: transparent;
+}
+
+.img {
+	width: 80%;
+	height: 80%;
+	object-fit: contain;
+}
+
+.options {
+	display: flex;
+	flex-direction: column;
+	width: max-content;
+	width: 100%;
+
+	@include On640 {
+		order: 3;
+		max-width: 237px;
+	}
+
+	@include On1200 {
+		order: 1;
+		max-width: 320px;
+	}
+}
+
+.radio {
+	pointer-events: none;
+	position: absolute;
+	opacity: 0;
+}
+
+.colorsBlock {
+	width: 100%;
+}
+
+.colors {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin-bottom: 8px;
+
+	@include On640 {
+		margin-bottom: 12px;
+	}
+
+}
+
+.colorsText {
+	font-size: 12px;
+	color: $gray-color;
+}
+
+.id {
+	display: block;
+	font-size: 12px;
+	color: $gray-color-2;
+
+	@include On1200 {
+		display: none;
+	}
+}
+
+.idOn1200 {
+	display: none;
+	order: 2;
+	font-size: 12px;
+	color: $gray-color-2;
+
+	@include On1200 {
+		display: block;
+	}
+}
+
+.idForLaptop {
+	display: none;
+	font-size: 12px;
+	color: $gray-color-2;
+
+	@include On1200 {
+		display: block;
+		order: 4;
+	}
+}
+
+.colorsOptions {
+	display: flex;
+	gap: 8px;
+
+	margin-bottom: 24px;
+	padding-bottom: 24px;
+	border-bottom: 1px solid $clear-gray-color;
+}
+
+.color {
+	display: flex;
+
+	width: 32px;
+	height: 32px;
+	border: 2px solid white;
+	border-radius: 50%;
+
+	box-shadow: 0 0 0 1px $clear-gray-color;
+
+	@include zoomIn;
+
+}
+
+.activeColor {
+	box-shadow: 0 0 0 1px $main-color;
+}
+
+.capacityBlock {
+	width: 100%;
+}
+
+.capacityText {
+	display: block;
+
+	width: 100%;
+	margin-bottom: 8px;
+
+	font-size: 12px;
+	color: $gray-color;
+}
+
+.capacityOptions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 16px;
+
+	margin-bottom: 32px;
+	padding-bottom: 24px;
+	border-bottom: 1px solid $clear-gray-color;
+}
+
+.capacity {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	width: 60px;
+	height: 32px;
+	border: 1px solid $gray-color-2;
+	border-radius: 4px;
+
+	font-size: 14px;
+	color: var(--color-primary);
+
+	@include shadowHover;
+	@include zoomIn;
+}
+
+.activeCapacity {
+	color: var(--color-element);
+	background-color: var(--color-primary);
+}
+
+/////
+
+.addInfo {
+	display: flex;
+	flex-direction: column;
+	margin: 0 auto 56px;
+
+	@include On640 {
+		margin-bottom: 64px;
+	}
+
+	@include On1200 {
+		flex-direction: row;
+		gap: 64px;
+		margin-bottom: 80px;
+	}
+}
+
+.rightPart,
+.leftPart {
+	width: 100%;
+}
+
+.leftPart {
+	@include On1200 {
+		width: 560px;
+	}
+}
+
+.rightPart {
+	@include On1200 {
+		width: 512px;
+	}
+}
+
+.specsTitle {
+	margin-bottom: 30px;
+	padding-bottom: 16px;
+	border-bottom: 1px solid $clear-gray-color;
+
+	font-size: 20px;
+	font-weight: 700;
+	color: var(--color-primary);
+
+	@include On1200 {
+		font-size: 22px;
+	}
+}
+
+.description {
+	margin-bottom: 32px;
+}
+
+.descriptionTitle {
+	margin-bottom: 16px;
+	font-size: 16px;
+}
+
+.descriptionTexts {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+
+	font-size: 14px;
+	color: $gray-color;
+}
+
+.specs {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	font-size: 14px;
+}
+
+.spec {
+	display: flex;
+	justify-content: space-between;
+}
+
+.spec__key {
+	color: $gray-color
+}
+
+.spec__value {
+	color: var(--color-primary);
+}
+
+.youMayLikeTitle {
+	font-size: 22px;
+	font-weight: 700;
+
+	@include On640 {
+		font-size: 32px;
+	}
+}
