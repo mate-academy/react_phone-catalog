@@ -1,0 +1,37 @@
+@use '../../styles/mixins' as *;
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-start;
+  padding-block: 48px;
+
+  @include on-tablet {
+    padding-block: 64px;
+  }
+}
+
+.text {
+  color: var(--c-secondary);
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  padding-inline: 24px;
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  color: var(--c-on-accent);
+  background: var(--c-accent);
+  border-radius: 48px;
+  transition: box-shadow var(--transition);
+
+  &:hover {
+    box-shadow: var(--shadow-accent);
+  }
+}

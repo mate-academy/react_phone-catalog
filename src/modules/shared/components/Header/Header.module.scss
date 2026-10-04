@@ -1,0 +1,240 @@
+@use '../../../../styles/mixins' as *;
+
+$header-height-mobile: 48px;
+$header-height-desktop: 64px;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  height: $header-height-mobile;
+  background: var(--c-surface);
+  border-bottom: 1px solid var(--c-elements);
+
+  @include on-desktop {
+    height: $header-height-desktop;
+  }
+}
+
+.left {
+  display: flex;
+  align-items: stretch;
+  min-width: 0;
+}
+
+.logo {
+  align-self: center;
+  margin-left: 16px;
+
+  @include on-tablet {
+    margin-left: 24px;
+  }
+}
+
+.nav {
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+    gap: 32px;
+    margin-left: 32px;
+  }
+
+  @include on-desktop {
+    gap: 48px;
+    margin-left: 48px;
+  }
+}
+
+.link {
+  @include uppercase-text;
+
+  position: relative;
+  display: flex;
+  align-items: center;
+  color: var(--c-secondary);
+  transition: color var(--transition);
+
+  &::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: -1px;
+    left: 0;
+    height: 4px;
+    background: var(--c-primary);
+    transform: scaleX(0);
+    transition: transform var(--transition);
+  }
+
+  &:hover {
+    color: var(--c-primary);
+  }
+}
+
+.active {
+  color: var(--c-primary);
+
+  &::after {
+    transform: scaleX(1);
+  }
+}
+
+.actions {
+  display: flex;
+}
+
+.iconLink {
+  position: relative;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: $header-height-mobile;
+  color: var(--c-primary);
+  border-left: 1px solid var(--c-elements);
+  transition: background-color var(--transition);
+
+  &::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: -1px;
+    left: 0;
+    height: 4px;
+    background: var(--c-primary);
+    transform: scaleX(0);
+    transition: transform var(--transition);
+  }
+
+  &:hover {
+    background: var(--c-bg);
+  }
+
+  &.active::after {
+    transform: scaleX(1);
+  }
+
+  @include on-tablet {
+    display: flex;
+  }
+
+  @include on-desktop {
+    width: $header-height-desktop;
+  }
+}
+
+.iconWrap {
+  position: relative;
+  display: flex;
+}
+
+.badge {
+  position: absolute;
+  top: -6px;
+  right: -7px;
+  min-width: 13px;
+  height: 13px;
+  padding: 0 3px;
+  font-size: 9px;
+  font-weight: 600;
+  line-height: 13px;
+  color: var(--c-on-accent);
+  text-align: center;
+  background: var(--c-accent);
+  border-radius: 7px;
+}
+
+.themeToggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: $header-height-mobile;
+
+  @include on-tablet {
+    display: flex;
+  }
+
+  @include on-desktop {
+    width: $header-height-desktop;
+  }
+}
+
+.burger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: $header-height-mobile;
+  padding: 0;
+  background: none;
+  border: 0;
+  border-left: 1px solid var(--c-elements);
+  transition: background-color var(--transition);
+
+  &:hover {
+    background: var(--c-bg);
+  }
+
+  @include on-tablet {
+    display: none;
+  }
+}
+
+// ----- mobile menu -----
+.menu {
+  position: fixed;
+  inset: $header-height-mobile 0 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--c-surface);
+  visibility: hidden;
+  transform: translateX(100%);
+  transition:
+    transform var(--transition),
+    visibility var(--transition);
+
+  @include on-tablet {
+    display: none;
+  }
+}
+
+.menuOpen {
+  visibility: visible;
+  transform: none;
+}
+
+.menuLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+  padding: 32px 16px;
+
+  .link::after {
+    bottom: -8px;
+    height: 3px;
+  }
+}
+
+.menuActions {
+  display: flex;
+  margin-top: auto;
+  border-top: 1px solid var(--c-elements);
+
+  .iconLink,
+  .themeToggle {
+    display: flex;
+    flex: 1;
+    width: auto;
+    height: 64px;
+
+    &:first-child {
+      border-left: 0;
+    }
+
+    &::after {
+      bottom: 0;
+    }
+  }
+}

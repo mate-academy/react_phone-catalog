@@ -1,0 +1,16 @@
+@use '../../styles/mixins' as *;
+
+.page {
+  padding-top: 24px;
+  padding-bottom: 56px;
+
+  @include on-tablet {
+    padding-bottom: 80px;
+  }
+}
+
+.empty {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+}

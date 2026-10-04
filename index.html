@@ -3,7 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React + TS</title>
+    <script>
+      // apply the saved (or system) color theme before the first paint
+      try {
+        var theme = JSON.parse(localStorage.getItem('theme'));
+
+        if (theme !== 'light' && theme !== 'dark') {
+          theme = matchMedia('(prefers-color-scheme: dark)').matches
+            ? 'dark'
+            : 'light';
+        }
+
+        document.documentElement.dataset.theme = theme;
+      } catch (e) {}
+    </script>
+    <title>catalog</title>
   </head>
   <body>
     <div id="root"></div>

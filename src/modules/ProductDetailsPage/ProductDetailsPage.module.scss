@@ -1,0 +1,202 @@
+@use '../../styles/mixins' as *;
+
+.page {
+  padding-top: 24px;
+  padding-bottom: 56px;
+
+  @include on-tablet {
+    padding-bottom: 80px;
+  }
+}
+
+.back {
+  margin-top: 24px;
+}
+
+.title {
+  margin-top: 16px;
+  font-size: 22px;
+  line-height: 31px;
+
+  @include on-tablet {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+}
+
+// ----- picture + options -----
+.top {
+  display: grid;
+  gap: 32px;
+  margin-top: 24px;
+
+  @include on-tablet {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    gap: 24px;
+    margin-top: 40px;
+  }
+
+  @include on-desktop {
+    grid-template-columns: 560px minmax(0, 1fr);
+    gap: 64px;
+  }
+}
+
+.header {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15px;
+  color: var(--c-secondary);
+}
+
+.id {
+  font-size: 12px;
+  line-height: 15px;
+  color: var(--c-secondary);
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  max-width: 320px;
+  margin-top: 8px;
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-bottom: 24px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--c-elements);
+
+  // the first group only holds the swatches, its label is in the header
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+.prices {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+}
+
+.price {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+}
+
+.fullPrice {
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 31px;
+  color: var(--c-secondary);
+  text-decoration: line-through;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+  margin-bottom: 32px;
+
+  .cart {
+    flex-grow: 1;
+    height: 48px;
+  }
+
+  .favorite {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+// ----- about + tech specs -----
+.details {
+  display: grid;
+  gap: 56px;
+  margin-top: 56px;
+
+  @include on-desktop {
+    grid-template-columns: 560px minmax(0, 1fr);
+    gap: 64px;
+    margin-top: 72px;
+  }
+}
+
+.sectionTitle {
+  padding-bottom: 16px;
+  margin-bottom: 32px;
+  border-bottom: 1px solid var(--c-elements);
+}
+
+.about {
+  margin-bottom: 32px;
+}
+
+.aboutTitle {
+  margin-bottom: 16px;
+}
+
+.paragraph {
+  color: var(--c-secondary);
+
+  & + & {
+    margin-top: 16px;
+  }
+}
+
+.suggested {
+  margin-top: 56px;
+
+  @include on-desktop {
+    margin-top: 72px;
+  }
+}
+
+// ----- states -----
+.message {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-start;
+  margin-top: 24px;
+}
+
+.messageText {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.notFoundTitle {
+  font-size: 22px;
+  line-height: 31px;
+
+  @include on-tablet {
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+.notFoundImage {
+  width: 100%;
+  max-width: 320px;
+}
+
+.button {
+  @include primary-button;
+
+  cursor: pointer;
+}

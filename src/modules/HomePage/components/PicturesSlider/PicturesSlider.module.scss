@@ -1,0 +1,118 @@
+@use '../../../../styles/mixins' as *;
+
+.slider {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas:
+    'viewport'
+    'dashes';
+
+  @include on-tablet {
+    grid-template-columns: 32px minmax(0, 1fr) 32px;
+    grid-template-areas:
+      'prev viewport next'
+      '. dashes .';
+    column-gap: 16px;
+  }
+}
+
+.viewport {
+  grid-area: viewport;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+
+  @include on-tablet {
+    aspect-ratio: 1040 / 400;
+  }
+}
+
+.track {
+  display: flex;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  transition: transform 0.5s ease;
+}
+
+.slide {
+  flex: 0 0 100%;
+  height: 100%;
+}
+
+.link {
+  display: block;
+  height: 100%;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.arrow {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  color: var(--c-primary);
+  background: var(--c-surface);
+  border: 1px solid var(--c-elements);
+  border-radius: 16px;
+  transition: border-color var(--transition);
+
+  &:hover {
+    border-color: var(--c-primary);
+  }
+
+  @include on-tablet {
+    display: flex;
+  }
+}
+
+.prev {
+  grid-area: prev;
+}
+
+.next {
+  grid-area: next;
+}
+
+.dashes {
+  grid-area: dashes;
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+// 24x24 hit area, the visible dash is 14x4
+.dash {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  background: none;
+  border: 0;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    right: 5px;
+    left: 5px;
+    height: 4px;
+    background: var(--c-elements);
+    transition: background-color var(--transition);
+  }
+
+  &:hover::before {
+    background: var(--c-icons);
+  }
+}
+
+.activeDash::before,
+.activeDash:hover::before {
+  background: var(--c-primary);
+}

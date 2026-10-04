@@ -1,0 +1,18 @@
+.button {
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+  padding: 0;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15px;
+  color: var(--c-secondary);
+  background: none;
+  border: 0;
+  transition: color var(--transition);
+
+  &:hover {
+    color: var(--c-primary);
+  }
+}
