@@ -1,0 +1,35 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+}
+
+.row {
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+}
+
+.label {
+  color: var(--c-secondary);
+}
+
+.value {
+  margin: 0;
+  text-align: right;
+}
+
+.compact {
+  font-size: 12px;
+  line-height: 15px;
+
+  .value {
+    font-weight: 600;
+  }
+}
+
+.regular {
+  font-size: 14px;
+  line-height: 21px;
+}

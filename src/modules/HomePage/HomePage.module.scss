@@ -1,0 +1,54 @@
+@use '../../styles/mixins' as *;
+
+.page {
+  padding-top: 24px;
+  padding-bottom: 56px;
+
+  @include on-tablet {
+    padding-top: 32px;
+    padding-bottom: 80px;
+  }
+}
+
+.title {
+  @include h1-text;
+}
+
+.slider {
+  margin-top: 24px;
+
+  @include on-tablet {
+    margin-top: 32px;
+  }
+}
+
+.sections {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  margin-top: 56px;
+
+  @include on-desktop {
+    gap: 72px;
+    margin-top: 72px;
+  }
+}
+
+.message {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.messageText {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.button {
+  @include primary-button;
+
+  cursor: pointer;
+}

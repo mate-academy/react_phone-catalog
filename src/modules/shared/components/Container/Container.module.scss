@@ -1,0 +1,17 @@
+@use '../../../../styles/mixins' as *;
+
+// content width: 16px / 24px / 32px side paddings, up to 1136px of content
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-inline: 16px;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    padding-inline: 32px;
+  }
+}

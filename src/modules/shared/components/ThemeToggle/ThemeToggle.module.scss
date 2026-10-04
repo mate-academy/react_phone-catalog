@@ -1,0 +1,13 @@
+.button {
+  padding: 0;
+  color: var(--c-primary);
+  background: none;
+  border: 0;
+  border-left: 1px solid var(--c-elements);
+  cursor: pointer;
+  transition: background-color var(--transition);
+
+  &:hover {
+    background: var(--c-bg);
+  }
+}

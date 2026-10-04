@@ -1,0 +1,55 @@
+@use '../../../../styles/mixins' as *;
+
+.dialog {
+  width: calc(100% - 32px);
+  max-width: 400px;
+  padding: 0;
+  color: var(--c-primary);
+  background: var(--c-surface);
+  border: 1px solid var(--c-elements);
+  border-radius: 16px;
+
+  &::backdrop {
+    background: rgb(15 15 17 / 40%);
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px;
+}
+
+.text {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+  text-align: center;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.confirm {
+  @include primary-button;
+
+  cursor: pointer;
+}
+
+.cancel {
+  @include primary-button;
+
+  color: var(--c-accent);
+  background: var(--c-surface);
+  border-color: var(--c-elements);
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: none;
+    border-color: var(--c-accent);
+  }
+}

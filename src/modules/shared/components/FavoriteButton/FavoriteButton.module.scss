@@ -1,0 +1,26 @@
+.button {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  color: var(--c-primary);
+  background: var(--c-surface);
+  border: 1px solid var(--c-icons);
+  border-radius: 50%;
+  transition: border-color var(--transition);
+
+  &:hover {
+    border-color: var(--c-primary);
+  }
+}
+
+.active {
+  border-color: var(--c-elements);
+
+  &:hover {
+    border-color: var(--c-icons);
+  }
+}

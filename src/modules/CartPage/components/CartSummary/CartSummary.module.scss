@@ -1,0 +1,36 @@
+@use '../../../../styles/mixins' as *;
+
+.summary {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px;
+  background: var(--c-surface);
+  border: 1px solid var(--c-elements);
+  border-radius: 16px;
+}
+
+.total {
+  padding-bottom: 24px;
+  text-align: center;
+  border-bottom: 1px solid var(--c-elements);
+}
+
+.price {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+}
+
+.caption {
+  color: var(--c-secondary);
+}
+
+.checkout {
+  @include primary-button;
+
+  width: 100%;
+  height: 48px;
+  cursor: pointer;
+}

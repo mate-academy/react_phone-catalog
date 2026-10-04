@@ -1,0 +1,150 @@
+@use './mixins' as *;
+
+:root {
+  color-scheme: light;
+
+  --c-accent: #4219d0;
+  --c-on-accent: #fff;
+  --c-accent-secondary: #f4ba47;
+  --c-primary: #0f0f11;
+  --c-secondary: #89939a;
+  --c-icons: #b4bdc3;
+  --c-elements: #e2e6e9;
+  --c-bg: #fafbfc;
+  --c-surface: #fff;
+  --c-green: #27ae60;
+  --c-red: #eb5757;
+  --shadow-card: 0 2px 16px rgb(0 0 0 / 10%);
+  --shadow-accent: 0 4px 16px rgb(66 25 208 / 40%);
+  --transition: 0.3s ease;
+}
+
+// dark theme: only the tokens change, components use the tokens
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --c-accent: #905bff;
+  --c-primary: #f1f2f9;
+  --c-secondary: #8e909b;
+  --c-icons: #4a4d58;
+  --c-elements: #3b3e4a;
+  --c-bg: #0f1121;
+  --c-surface: #161827;
+  --shadow-card: 0 2px 16px rgb(0 0 0 / 50%);
+  --shadow-accent: 0 4px 16px rgb(144 91 255 / 40%);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  color: var(--c-primary);
+  background: var(--c-bg);
+  transition:
+    background-color var(--transition),
+    color var(--transition);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+h1 {
+  @include h1-text;
+}
+
+h2 {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 31px;
+
+  @include on-tablet {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+}
+
+h3 {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 26px;
+
+  @include on-tablet {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 31px;
+  }
+}
+
+h4 {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+
+  @include on-tablet {
+    font-size: 20px;
+    line-height: 26px;
+  }
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+:focus-visible {
+  outline: 2px solid var(--c-accent);
+  outline-offset: 2px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,18 @@
+@use '../../../../styles/mixins' as *;
+
+.button {
+  @include primary-button;
+
+  cursor: pointer;
+}
+
+// product is already in the cart: button does nothing
+.added,
+.added:hover,
+.added:disabled {
+  color: var(--c-accent);
+  background: var(--c-surface);
+  border-color: var(--c-elements);
+  box-shadow: none;
+  cursor: default;
+}

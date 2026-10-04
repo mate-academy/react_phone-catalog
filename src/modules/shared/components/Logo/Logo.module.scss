@@ -1,0 +1,14 @@
+.logo {
+  display: inline-flex;
+  flex-direction: column;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 12px;
+  letter-spacing: 0.01em;
+  color: var(--c-primary);
+}
+
+.emoji {
+  margin-left: 1px;
+  font-size: 0.75em;
+}

@@ -1,0 +1,80 @@
+@use '../../../../styles/mixins' as *;
+
+.header {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+
+  @include on-tablet {
+    margin-bottom: 32px;
+  }
+}
+
+.arrows {
+  display: flex;
+  flex-shrink: 0;
+  gap: 16px;
+}
+
+.arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  color: var(--c-primary);
+  background: var(--c-surface);
+  border: 1px solid var(--c-icons);
+  border-radius: 50%;
+  transition:
+    border-color var(--transition),
+    color var(--transition);
+
+  &:disabled {
+    color: var(--c-icons);
+    border-color: var(--c-elements);
+    cursor: default;
+  }
+
+  &:hover:not(:disabled) {
+    border-color: var(--c-primary);
+  }
+}
+
+// vertical padding keeps the card hover shadow from being clipped
+.track {
+  display: flex;
+  gap: 16px;
+  margin: -8px 0;
+  padding: 8px 0;
+  overflow-x: auto;
+  list-style: none;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.item {
+  display: flex;
+  flex: 0 0 212px;
+  scroll-snap-align: start;
+
+  > * {
+    flex-grow: 1;
+    min-width: 0;
+  }
+
+  @include on-tablet {
+    flex-basis: 237px;
+  }
+
+  @include on-desktop {
+    flex-basis: calc((100% - 48px) / 4);
+  }
+}

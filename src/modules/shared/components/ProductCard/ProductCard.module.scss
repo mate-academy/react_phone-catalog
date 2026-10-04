@@ -1,0 +1,102 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 32px;
+  background: var(--c-surface);
+  border: 1px solid var(--c-elements);
+  border-radius: 8px;
+  transition: box-shadow var(--transition);
+
+  &:hover {
+    box-shadow: var(--shadow-card);
+  }
+}
+
+.imageLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 160px;
+  margin-bottom: 24px;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform var(--transition);
+}
+
+.imageLink:hover .image {
+  transform: scale(1.1);
+}
+
+.title {
+  flex-grow: 1;
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--c-primary);
+  transition: color var(--transition);
+
+  &:hover {
+    color: var(--c-accent);
+  }
+}
+
+.prices {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  margin-top: 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--c-elements);
+}
+
+.price {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 31px;
+}
+
+.fullPrice {
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 31px;
+  color: var(--c-secondary);
+  text-decoration: line-through;
+}
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 8px 0 0;
+}
+
+.spec {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.specLabel {
+  color: var(--c-secondary);
+}
+
+.specValue {
+  margin: 0;
+  font-weight: 600;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.actions .cartButton {
+  flex-grow: 1;
+  padding-inline: 8px;
+}

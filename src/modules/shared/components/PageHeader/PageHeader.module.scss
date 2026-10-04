@@ -1,0 +1,22 @@
+@use '../../../../styles/mixins' as *;
+
+.header {
+  margin-bottom: 24px;
+
+  @include on-tablet {
+    margin-bottom: 32px;
+  }
+}
+
+.title {
+  margin-top: 24px;
+
+  @include on-tablet {
+    margin-top: 40px;
+  }
+}
+
+.subtitle {
+  margin-top: 8px;
+  color: var(--c-secondary);
+}

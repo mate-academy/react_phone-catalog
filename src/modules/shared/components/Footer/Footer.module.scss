@@ -1,0 +1,92 @@
+@use '../../../../styles/mixins' as *;
+
+.footer {
+  background: var(--c-surface);
+  border-top: 1px solid var(--c-elements);
+}
+
+.inner {
+  display: grid;
+  gap: 24px;
+  justify-items: start;
+  padding-block: 32px;
+
+  @include on-tablet {
+    grid-template-columns: 1fr auto 1fr;
+    place-items: center stretch;
+    gap: 0;
+  }
+}
+
+.inner .logo {
+  font-size: 17px;
+  line-height: 15px;
+
+  @include on-tablet {
+    justify-self: start;
+  }
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include on-tablet {
+    flex-direction: row;
+  }
+
+  @include on-desktop {
+    gap: 104px;
+  }
+}
+
+.link {
+  @include uppercase-text;
+
+  color: var(--c-secondary);
+  transition: color var(--transition);
+
+  &:hover {
+    color: var(--c-primary);
+  }
+}
+
+.backIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  color: var(--c-primary);
+  border: 1px solid var(--c-icons);
+  border-radius: 50%;
+  transition: border-color var(--transition);
+}
+
+.backToTop {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-self: center;
+  padding: 0;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15px;
+  color: var(--c-secondary);
+  background: none;
+  border: 0;
+  transition: color var(--transition);
+
+  @include on-tablet {
+    justify-self: end;
+  }
+
+  &:hover {
+    color: var(--c-primary);
+
+    .backIcon {
+      border-color: var(--c-primary);
+    }
+  }
+}

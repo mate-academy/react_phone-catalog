@@ -1,0 +1,60 @@
+@use '../../styles/mixins' as *;
+
+.page {
+  padding-top: 24px;
+  padding-bottom: 56px;
+
+  @include on-tablet {
+    padding-bottom: 80px;
+  }
+}
+
+.controls {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.sort,
+.perPage {
+  flex: 1;
+
+  @include on-tablet {
+    flex: none;
+  }
+}
+
+.sort {
+  @include on-tablet {
+    width: 176px;
+  }
+}
+
+.perPage {
+  @include on-tablet {
+    width: 136px;
+  }
+}
+
+.pagination {
+  margin-top: 40px;
+}
+
+.message {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.messageText {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.button {
+  @include primary-button;
+
+  cursor: pointer;
+}
