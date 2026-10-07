@@ -1,0 +1,31 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+@import '../../styles/media';
+
+.empty-search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1136px;
+  min-height: 240px;
+  margin: 32px auto;
+  padding: 32px 16px;
+
+  text-align: center;
+}
+
+.empty-search__text {
+  margin: 0;
+
+  font-family: Mont, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--secondary-color);
+
+  @include tablet {
+    font-size: 22px;
+  }
+}

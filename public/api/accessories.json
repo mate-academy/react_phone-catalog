@@ -37,8 +37,7 @@
     ],
     "screen": "1.3' OLED",
     "resolution": "272x340",
-    "processor": "Apple S3",
-    "ram": "768MB",
+    "processor": "Apple S3",    "ram": "768MB",
     "cell": ["Wi-Fi", "Bluetooth", "LTE"]
   },
   {

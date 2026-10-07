@@ -1,0 +1,43 @@
+:root {
+  --primary-color: #313237;
+  --secondary-color: #89939a;
+  --icons: #b4bdc3;
+  --elements: #e2e6e9;
+  --hover: #fafbfc;
+  --bgc: #fafbfc;
+  --white: #fff;
+  --green: #27ae60;
+  --red: #eb5757;
+  --shadow-color: rgb(0 0 0 / 8%);
+  --logo-filter: none;
+  --icon-filter: none;
+  --input-bg: #fff;
+}
+
+[data-theme='dark'] {
+  --primary-color: #f1f2f6;
+  --secondary-color: #8c96a3;
+  --icons: #5c6674;
+  --elements: #272a3a;
+  --hover: #1f2334;
+  --bgc: #0f111a;
+  --white: #161824;
+  --green: #27ae60;
+  --red: #eb5757;
+  --shadow-color: rgb(0 0 0 / 35%);
+  --logo-filter: brightness(0) invert(1);
+  --icon-filter: brightness(0) invert(0.95);
+  --input-bg: #1a1d2c;
+}
+
+$primary-color: var(--primary-color);
+$secondary-color: var(--secondary-color);
+$icons: var(--icons);
+$elements: var(--elements);
+$hover: var(--hover);
+$bgc: var(--bgc);
+$white: var(--white);
+$green: var(--green);
+$red: var(--red);
+$small-font: 12px;
+

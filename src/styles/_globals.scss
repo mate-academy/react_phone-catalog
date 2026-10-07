@@ -1,0 +1,26 @@
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+html,
+body {
+  scrollbar-width: none !important;
+
+  -ms-overflow-style: none !important;
+}
+
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+
+  color: var(--primary-color);
+
+  background-color: var(--bgc);
+
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+

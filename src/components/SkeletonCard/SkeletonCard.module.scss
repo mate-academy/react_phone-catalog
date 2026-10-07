@@ -1,0 +1,140 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+@import '../../styles/media';
+
+.skeleton__list {
+    scroll-behavior: smooth;
+
+    overflow-x: hidden;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+
+    width: 100%;
+    max-width: 1136px;
+    padding: 12px 4px;
+
+    list-style: none;
+}
+
+.skeleton__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    place-items: center center;
+
+    max-width: 1136px;
+    margin: 0;
+    margin-top: 24px;
+    margin-inline: auto;
+    padding: 0 16px;
+
+    list-style: none;
+
+    @include tablet {
+        grid-template-columns: 1fr 1fr; 
+        padding: 0;
+    }
+
+    @include desktop {
+        grid-template-columns: repeat(4, 1fr);
+        padding: 0;
+    }
+}
+
+.card__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 212px;
+    max-width: 350px;
+    min-height: 442px;
+    max-height: 442px;
+    padding: 32px;
+    border: 1px solid $elements;
+
+    text-decoration: none;
+
+    background-color: $white;
+
+    @include tablet {
+        min-width: 237px;
+        min-height: 512px;
+    }
+
+    @include desktop {
+        min-width: 272px;
+        max-width: 272px;
+        min-height: 506px;
+    }
+
+    &__title {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        width: 100%;
+        margin-top: 12px;
+    }
+
+    &__price {
+        align-self: flex-start;
+        margin-top: 8px;
+    }
+}
+
+.img__placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    max-height: 196px;
+}
+
+.card__line {
+    width: 100%;
+    height: 1px;
+    background-color: $elements;
+}
+
+.characteristics__list-short {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    width: 100%;
+    margin: 0;
+    padding: 8px 0;
+
+    list-style: none;
+}
+
+.characteristics__item-short {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.card__link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+}
+
+.card__buttons {
+    display: flex;
+    gap: 8px;
+    justify-content: space-between;
+
+    width: 100%;
+    height: 40px;
+}

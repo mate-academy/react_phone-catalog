@@ -1,0 +1,35 @@
+@import '../../styles/media';
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+
+.models__list{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    place-items: center center;
+
+    max-width: 1136px;
+    margin: 0;
+    margin-top: 24px;
+    margin-inline: auto;
+    padding: 0;
+    padding: 0 16px;
+
+    list-style: none;
+
+    @include tablet{
+        grid-template-columns: 1fr 1fr; 
+        padding: 0;
+    }
+
+    @include desktop{
+        grid-template-columns: repeat(4,1fr);
+        padding: 0;
+    }
+}
+
+.model__item{
+    grid-column: span 1;
+    max-width: 350px;
+}

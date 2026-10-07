@@ -1,1 +1,26 @@
-// not empty
+@import '/src/styles/fonts';
+@import '/src/styles/globals';
+
+html {
+  scroll-behavior: smooth;
+  font-family: Mont, sans-serif;
+}
+
+* {
+  font-family: Mont, sans-serif;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  min-height: 100vh;
+
+  color: var(--primary-color);
+
+  background-color: var(--bgc);
+
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+

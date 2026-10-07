@@ -1,0 +1,48 @@
+@import '/src/styles/mixins';
+@import '/src/styles/media';
+@import '/src/styles/variables';
+
+.primary__button {
+    cursor: pointer;
+
+    width: 100%;
+    border: 0;
+
+    font-weight: 700;
+    color: $white;
+
+    background-color: $primary-color;
+
+    transition: background-color 0.25s ease,
+                box-shadow 0.25s ease,
+                transform 0.15s ease,
+                color 0.25s ease;
+
+    @include buttons-DT;
+
+    &:hover {
+        transform: translateY(-1px);
+        background-color: #232427;
+        box-shadow: 0 4px 14px rgb(49 50 55 / 35%);
+    }
+
+    &:active {
+        transform: scale(0.97);
+        box-shadow: none;
+    }
+
+    &:disabled {
+        pointer-events: none;
+        cursor: not-allowed;
+
+        transform: none;
+
+        border: 1px solid $elements;
+
+        color: $green;
+
+        background-color: $white;
+        box-shadow: none;
+    }
+}
+
