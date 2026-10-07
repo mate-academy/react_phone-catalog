@@ -1,0 +1,52 @@
+.slider {
+  width: 100%;
+  margin-bottom: 64px;
+}
+
+.imageWrapper {
+  width: 100%;
+  overflow: hidden;
+  background-color: #f4f5f7;
+}
+
+.imageWrapper a {
+  display: block;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.dot {
+  width: 24px;
+  height: 4px;
+  padding: 0;
+  border: 0;
+  background-color: #e2e6e9;
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s ease;
+
+  &:hover {
+    transform: scaleY(1.5);
+  }
+}
+
+.active {
+  background-color: #313237;
+}

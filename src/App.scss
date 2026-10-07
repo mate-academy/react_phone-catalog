@@ -1,1 +1,48 @@
-// not empty
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: #fff;
+  color: #313237;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+  color: inherit;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.App__content {
+  flex: 1;
+  width: 100%;
+}
+
+.placeholderPage {
+  width: 100%;
+  max-width: 1200px;
+  min-height: 500px;
+  margin: 0 auto;
+  padding: 40px 24px;
+
+  h1 {
+    font-size: 32px;
+    font-weight: 800;
+  }
+}
