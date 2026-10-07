@@ -1,0 +1,200 @@
+@use '../../utils/mixins.scss'as *;
+@use '../../utils/variables.scss'as *;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: var(--card-width, 212px);
+  flex-shrink: 0;
+  height: 440px;
+  border: 1px solid $main-background-color;
+  transition: box-shadow .2s;
+  border-radius: 8px;
+  box-sizing: border-box;
+  padding: 32px;
+  font-family: $main-text-font-family;
+  background-color: $background-color-prodact-card;
+
+  @include on-tablet {
+    height: 506px;
+    width: var(--card-width, 237px);
+    flex-shrink: 0;
+  }
+
+  @include on-desktop {
+    width: var(--card-width, 272px);
+    flex-shrink: 0;
+  }
+
+
+  &__imageContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    overflow: hidden;
+    margin-bottom: 24px;
+    width: 100%;
+    height: 200px;
+
+    cursor: pointer;
+    overscroll-behavior: none;
+
+    @include on-tablet {
+      margin-bottom: 32px;
+      height: 196px;
+    }
+
+    @include image-hover-scale
+  }
+
+  &__image {
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    object-fit: contain;
+    object-position: center;
+  }
+
+  &__title {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    color: $white-text-color;
+    text-decoration: none;
+    min-height: 42px;
+    margin-bottom: 8px;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    transition: color $effectDuration;
+
+    &:hover {
+      color: $main-color-violet;
+    }
+  }
+
+  &__priceBlock {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+  }
+
+  &__price {
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+    color: $white-text-color;
+  }
+
+  &__fullPrice {
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 100%;
+    color: $main-text-color;
+    text-decoration: line-through;
+
+  }
+
+  &__divider {
+    width: 100%;
+    height: 1px;
+    background-color: $gray-text-color;
+    margin-top: 8px;
+    margin-bottom: 16px;
+  }
+
+  &__specs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  &__specRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+  }
+
+  &__specLabel {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    color: $main-text-color;
+  }
+
+  &__specValue {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    text-align: right;
+
+  }
+
+  &__actions {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__btnCart {
+    border: none;
+    color: $white-text-color;
+    background-color: $main-color-violet;
+    height: 40px;
+    font-weight: 700;
+    font-size: 14px;
+    text-align: center;
+
+    flex: 1;
+    cursor: pointer;
+    transition: background-color $effectDuration;
+
+    &:hover {
+      background-color: $main-button-hover-color;
+    }
+
+    &--added {
+      background-color: $main-button-green-color;
+    }
+  }
+
+  &__btnFavorite {
+    border: none;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    background-color: $main-button-gray-color;
+    cursor: pointer;
+    transition: background-color $effectDuration;
+
+    &:hover {
+      background-color: $color-pictures-light-grey;
+    }
+
+    &--active {
+      background-color: transparent;
+      color: $main-text-color-red;
+    }
+  }
+}
+
+.card.cardFullWidth {
+  width: 100%;
+
+  @include on-tablet {
+    width: 100%;
+  }
+
+  @include on-desktop {
+    width: 100%;
+  }
+}

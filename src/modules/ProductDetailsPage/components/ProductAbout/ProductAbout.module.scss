@@ -1,0 +1,61 @@
+@use '../../../../utils/mixins.scss'as *;
+@use '../../../../utils/variables.scss'as *;
+
+.product_about {
+  display: flex;
+  flex-direction: column;
+  margin-top: 56px;
+
+  @include on-tablet {
+    margin-top: 64px;
+  }
+
+  @include on-desktop {
+    margin-top: 80px;
+    max-width: 560px;
+  }
+
+  &__title {
+    font-family: $main-text-font-family;
+    font-weight: 700;
+    font-size: 20px;
+    margin: 0;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #3b3e4a;
+
+    @include on-tablet {
+      font-weight: 800;
+      font-size: 22px;
+      line-height: 140%;
+    }
+  }
+
+  &__container {
+    margin-top: 32px;
+
+    &__title {
+      font-family: $main-text-font-family;
+      font-weight: 700;
+      font-size: 16px;
+      margin: 0;
+      padding-bottom: 16px;
+
+      @include on-tablet {
+        font-size: 20px;
+      }
+    }
+
+    &__text {
+      font-family: $main-text-font-family;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 21px;
+      margin: 0;
+      color: $main-grey-color-text;
+
+      &:not(:last-child) {
+        margin-bottom: 16px;
+      }
+    }
+  }
+}

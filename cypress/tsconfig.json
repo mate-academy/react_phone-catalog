@@ -1,6 +1,9 @@
 {
   "extends": "@mate-academy/students-ts-config",
   "compilerOptions": {
-    "sourceMap": false
+    "sourceMap": false,
+    "target": "ES2022",
+    "moduleResolution": "bundler",
+    "ignoreDeprecations": "5.0"
   }
 }

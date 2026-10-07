@@ -1,0 +1,162 @@
+@use '../../utils/mixins.scss'as *;
+@use '../../utils/variables.scss'as *;
+
+.footer {
+  padding: 32px 16px;
+  box-sizing: border-box;
+  margin: 0;
+  display: block;
+
+  box-shadow: 0 -1px 0 #3B3E4A;
+
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    padding: 0;
+    margin: 0 auto;
+    box-sizing: border-box;
+
+    @include page-grid;
+
+    @include on-tablet {
+      flex-direction: row;
+      padding: 0 16px 0 0;
+    }
+
+    @include on-desktop {
+      padding-right: 0;
+      padding-left: 8px;
+    }
+  }
+
+  &__logo {
+    grid-column: 1 / 2;
+    cursor: pointer;
+    width: 89px;
+    height: 32px;
+
+
+    @include image-hover-scale;
+
+    @include on-tablet {
+      grid-column: 1 / 3;
+    }
+
+    @include on-desktop {
+      grid-column: 1 / 3;
+    }
+  }
+
+  &__links {
+    font-family: $main-text-font-family;
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 11px;
+    text-transform: uppercase;
+    justify-content: center;
+
+    height: 65px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    grid-column: 1 / 2;
+    margin-top: 32px;
+
+
+    @include on-tablet {
+      grid-column: 5 / 9;
+      flex-direction: row;
+      height: 11px;
+      margin: 0;
+      gap: 13.5px;
+    }
+
+    @include on-desktop {
+      grid-column: 9 / 17;
+      gap: 106px;
+      flex-direction: row;
+      height: 11px;
+      margin: 0;
+    }
+  }
+
+  &__link {
+    color: $main-text-color;
+    text-decoration: none;
+    cursor: pointer;
+
+    transition: color 0.3s ease;
+
+    @include hover(color, $white-text-color);
+
+    &.is-active {
+      color: $white-text-color;
+    }
+  }
+
+  &__back_to_top_container {
+    grid-column: 1 / -1;
+    justify-self: center;
+    margin-top: 40.5px;
+
+    @include on-tablet {
+      grid-column: 11 / 13;
+      margin: 0;
+    }
+
+    @include on-desktop {
+      grid-column: 22 / 25;
+      margin: 0;
+    }
+  }
+
+  &__back_to_top {
+    height: 15px;
+    color: $main-text-color;
+    font-family: $main-text-font-family;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    white-space: nowrap;
+    align-self: center;
+
+
+    border: none;
+    background: none;
+    padding: 0;
+    gap: 16px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    @include hover(color, $white-text-color);
+
+  }
+
+  &__back_to_top_icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    width: 32px;
+    cursor: pointer;
+    background-color: $main-button-gray-color;
+
+    @include image-hover-scale;
+
+    &:hover {
+      background-color: $color-pictures-light-grey;
+    }
+
+    &__img {
+      height: 16px;
+      width: 16px;
+    }
+  }
+}

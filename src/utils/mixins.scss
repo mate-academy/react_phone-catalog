@@ -1,0 +1,57 @@
+@use './variables.scss'as *;
+
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin content-max-width() {
+  @include on-tablet {
+    max-width: $tablet-min-width;
+    margin: 0 auto;
+  }
+
+  @include on-desktop {
+    max-width: $desktop-min-width;
+    margin: 0 auto;
+  }
+}
+
+// Миксин для изменения цвета текста
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s ease;
+
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+// Mixin for 10% scaling with a smooth transition
+@mixin image-hover-scale {
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+@mixin page-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 16px;
+
+  @include on-tablet {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(24, 32px);
+  }
+}

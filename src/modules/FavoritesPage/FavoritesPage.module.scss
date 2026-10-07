@@ -1,0 +1,92 @@
+@use '../../utils/mixins.scss'as *;
+@use '../../utils/variables.scss'as *;
+
+.favorites_page {
+  display: flex;
+  flex-direction: column;
+  padding: 24px 16px 56px;
+  margin: 0;
+  min-width: 0;
+
+  @include on-tablet {
+    padding: 24px 24px 64px;
+
+  }
+
+  @include on-desktop {
+    @include content-max-width;
+  }
+
+  &__box {
+    display: flex;
+    max-width: 100px;
+    gap: 8px;
+    margin: 0;
+
+    &__home {
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+    }
+
+    &__arrow {
+      width: 16px;
+      height: 16px;
+    }
+
+    &__breadcrumb {
+      font-family: $main-text-font-family;
+      font-weight: 700;
+      font-size: 12px;
+      color: $main-text-color;
+      transform: translateY(1px);
+      margin: 0;
+    }
+  }
+
+  &__title {
+    padding-bottom: 32px;
+    padding-top: 24px;
+
+    @include on-tablet {
+      padding-top: 40px;
+      padding-bottom: 40px;
+    }
+  }
+
+  &__title_text {
+    margin: 0;
+    font-family: $main-text-font-family;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    padding-bottom: 8px;
+
+    @include on-tablet {
+      font-size: 48px;
+      line-height: 56px;
+    }
+  }
+
+  &__count {
+    margin: 0;
+    font-family: $main-text-font-family;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: $main-text-color;
+  }
+
+  &__empty {
+    text-align: center;
+    font-family: $main-text-font-family;
+    font-weight: 600;
+    font-size: 23px;
+    line-height: 41px;
+
+    @include on-tablet {
+      font-size: 34px;
+      line-height: 56px;
+    }
+  }
+}

@@ -1,0 +1,86 @@
+@use '../../../../utils/mixins.scss'as *;
+@use '../../../../utils/variables.scss'as *;
+
+.product_actions {
+  display: flex;
+  flex-direction: column;
+
+  &__price_container {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    margin-top: 38.5px;
+    margin-bottom: 22.5px;
+
+    &__price {
+      font-weight: 800;
+      font-size: 32px;
+      line-height: 41px;
+      color: $white-text-color;
+      margin: 0;
+    }
+
+    &__full_price {
+      display: flex;
+      font-weight: 600;
+      font-size: 22px;
+      line-height: 100%;
+      color: $main-text-color;
+      text-decoration: line-through;
+      margin: 0;
+      align-items: center;
+    }
+  }
+
+  &__actions {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__btnCart {
+    border: none;
+    color: $white-text-color;
+    background-color: $main-color-violet;
+    height: 48px;
+    font-weight: 700;
+    font-size: 14px;
+    text-align: center;
+
+    flex: 1;
+    cursor: pointer;
+    transition: background-color $effectDuration;
+
+    &:hover {
+      background-color: $main-button-hover-color;
+    }
+
+    &--added {
+      background-color: $main-button-green-color;
+    }
+
+    @include on-tablet {
+      max-width: 263px;
+    }
+  }
+
+  &__btnFavorite {
+    border: none;
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    background-color: $main-button-gray-color;
+    cursor: pointer;
+    transition: background-color $effectDuration;
+
+    &:hover {
+      background-color: $color-pictures-light-grey;
+    }
+
+    &--active {
+      background-color: transparent;
+      color: $main-text-color-red;
+    }
+  }
+}

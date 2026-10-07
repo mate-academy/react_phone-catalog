@@ -1,0 +1,103 @@
+@use '../../../../utils/mixins.scss'as *;
+@use '../../../../utils/variables.scss'as *;
+
+.product_slider {
+  --card-width: 212px;
+  --card-gap: 16px;
+
+  @include content-max-width;
+  @include page-grid;
+
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+  padding-left: 16px;
+
+  @include on-tablet {
+    --card-width: 237px;
+
+    padding-left: 24px;
+    padding-right: 0;
+    max-width: 100%;
+  }
+
+  @include on-desktop {
+    @include content-max-width;
+
+    --card-width: calc((100% - 48px) / 4);
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    grid-column: 1 / -1;
+  }
+
+  &__title {
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+    color: $white-text-color;
+    margin: 0;
+
+    @include on-tablet {
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -0.01em;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+    padding-right: 16px;
+
+    @include on-tablet {
+      padding-right: 24px;
+    }
+
+    @include on-desktop {
+      padding-right: 0;
+    }
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    border: none;
+    background-color: $main-button-gray-color;
+    cursor: pointer;
+    transition: opacity 0.2s;
+
+    &:hover {
+      background-color: $color-pictures-light-grey;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: default;
+      background-color: transparent;
+    }
+
+    img {
+      filter: brightness(0) invert(1);
+    }
+  }
+
+  &__content {
+    overflow: hidden;
+    width: 100%;
+    grid-column: 1 / -1;
+  }
+
+  &__track {
+    display: flex;
+    gap: var(--card-gap);
+    transition: transform 0.3s ease-in-out;
+  }
+}

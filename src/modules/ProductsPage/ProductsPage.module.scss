@@ -1,0 +1,379 @@
+@use '../../utils/mixins.scss'as *;
+@use '../../utils/variables.scss'as *;
+
+.products_page {
+  display: flex;
+  flex-direction: column;
+  padding: 24px 16px 64px;
+  margin: 0;
+  min-width: 0;
+
+  @include on-tablet {
+    padding: 24px 24px 64px;
+
+  }
+
+  @include on-desktop {
+    @include content-max-width;
+  }
+
+  &__breadcrumbs {
+    display: flex;
+    max-width: 100px;
+    gap: 8px;
+    margin: 0;
+
+    &__link {
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+    }
+
+    &__img_right {
+      width: 16px;
+      height: 16px;
+    }
+
+    &__category {
+      font-family: $main-text-font-family;
+      font-weight: 700;
+      font-size: 12px;
+      color: $main-text-color;
+      transform: translateY(1px);
+      margin: 0;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    padding-top: 24px;
+    padding-bottom: 8px;
+    font-family: $main-text-font-family;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+
+    @include on-tablet {
+      padding-top: 40px;
+      font-size: 48px;
+      line-height: 56px;
+      letter-spacing: -1%;
+    }
+  }
+
+  &__text {
+    font-family: $main-text-font-family;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+
+    color: $main-text-color;
+    margin: 0;
+  }
+
+  &__filters {
+    display: flex;
+    margin: 0;
+    padding-bottom: 24px;
+    padding-top: 32px;
+    gap: 16px;
+
+    @include on-tablet {
+      padding-top: 40px;
+    }
+
+    &__text {
+      display: flex;
+      flex-direction: column;
+      margin: 0;
+
+      &__label {
+        margin: 0;
+        padding-bottom: 4px;
+        padding-left: 2px;
+        font-family: $main-text-font-family;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 100%;
+        color: $main-text-color;
+      }
+
+      &__dropdown {
+        position: relative;
+
+        &__menu {
+          position: absolute;
+          top: 40px;
+          left: 0;
+          z-index: 10;
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          background: rgba(255, 255, 255, 0.08);
+          backdrop-filter: blur(16px);
+          -webkit-backdrop-filter: blur(16px);
+
+          border: 1px solid rgba(255, 255, 255, 0.18);
+          border-radius: 10px;
+
+          box-shadow:
+            0 8px 24px rgba(0, 0, 0, 0.25),
+            inset 0 1px 0 rgba(255, 255, 255, 0.12);
+
+          overflow: hidden;
+
+          &__option {
+            text-align: left;
+            width: 100%;
+            height: 40px;
+            padding: 0 12px;
+
+            background: none;
+            border: none;
+            cursor: pointer;
+
+            font-family: $main-text-font-family;
+            font-weight: 700;
+            font-size: 14px;
+            line-height: 21px;
+            color: $white-text-color;
+
+            &:hover {
+              background-color: $main-grey-light-id-text;
+            }
+
+            &.active {
+              background-color: $main-grey-light-id-text;
+            }
+          }
+        }
+
+        &__button {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 0 12px;
+          color: $white-text-color;
+          cursor: pointer;
+
+          background-color: $main-button-gray-color;
+          border: none;
+          border-radius: 10px;
+
+          width: 136px;
+          height: 40px;
+
+          &:hover {
+            background-color: $main-grey-light-id-text;
+          }
+
+          @include on-tablet {
+            width: 187px;
+          }
+
+          @include on-desktop {
+            width: 176px;
+          }
+
+          &__img {
+            width: 16px;
+            height: 16px;
+            filter: brightness(0) invert(1);
+          }
+        }
+      }
+    }
+
+    &__number {
+      display: flex;
+      flex-direction: column;
+      margin: 0;
+
+      &__label {
+        margin: 0;
+        padding-bottom: 4px;
+        padding-left: 2px;
+        font-family: $main-text-font-family;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 100%;
+        color: $main-text-color;
+      }
+
+      &__dropdown {
+        position: relative;
+
+        &__menu {
+          position: absolute;
+          top: 40px;
+          left: 0;
+          z-index: 10;
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          background: rgba(255, 255, 255, 0.08);
+          backdrop-filter: blur(16px);
+          -webkit-backdrop-filter: blur(16px);
+
+          border: 1px solid rgba(255, 255, 255, 0.18);
+          border-radius: 10px;
+
+          box-shadow:
+            0 8px 24px rgba(0, 0, 0, 0.25),
+            inset 0 1px 0 rgba(255, 255, 255, 0.12);
+
+          overflow: hidden;
+
+          &__option {
+            text-align: left;
+            width: 100%;
+            height: 40px;
+            padding: 0 12px;
+
+            background: none;
+            border: none;
+            cursor: pointer;
+
+            font-family: $main-text-font-family;
+            font-weight: 700;
+            font-size: 14px;
+            line-height: 21px;
+            color: $white-text-color;
+
+            &:hover {
+              background-color: $main-grey-light-id-text;
+            }
+
+            &.active {
+              background-color: $main-grey-light-id-text;
+            }
+          }
+        }
+
+        &__button {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 0 12px;
+          color: $white-text-color;
+          cursor: pointer;
+
+          background-color: $main-button-gray-color;
+          border: none;
+          border-radius: 10px;
+
+          width: 136px;
+          height: 40px;
+
+          &:hover {
+            background-color: $main-grey-light-id-text;
+          }
+
+          @include on-tablet {
+            width: 187px;
+          }
+
+          @include on-desktop {
+            width: 176px;
+          }
+
+          &__img {
+            width: 16px;
+            height: 16px;
+            filter: brightness(0) invert(1);
+          }
+        }
+      }
+    }
+  }
+
+  &__pagination {
+    display: flex;
+    align-items: center;
+    padding: 24px 20px 0;
+    gap: 16px;
+
+            @include on-desktop {
+          margin: 0 auto;
+        }
+
+    >button {
+      width: 32px;
+      height: 32px;
+      flex-shrink: 0;
+      padding: 0;
+      border: none;
+      background-color: $main-button-gray-color;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $main-grey-light-id-text;
+      }
+
+      &:disabled {
+        opacity: 0.5;
+        cursor: default;
+      }
+    }
+
+    &__pages {
+      display: flex;
+      overflow: hidden;
+      min-width: 0;
+      gap: 8px;
+
+      &__option {
+        flex-shrink: 0;
+        width: 32px;
+        height: 32px;
+
+        font-family: $main-text-font-family;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 21px;
+        text-align: center;
+        color: $white-text-color;
+
+        background-color: $grey-background-color;
+        border: none;
+        cursor: pointer;
+
+        &:hover {
+          background-color: $main-color-violet;
+        }
+
+        &.pagination_active {
+          background-color: $main-color-violet;
+        }
+      }
+    }
+
+    &__img_left,
+    &__img_right {
+      width: 16px;
+      height: 16px;
+      filter: brightness(0) invert(1);
+    }
+  }
+
+  &__error {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    font-family: $main-text-font-family;
+    font-weight: 800;
+    font-size: 24px;
+    padding-top: 30px;
+
+    @include on-tablet {
+      padding-top: 40px;
+      font-size: 34px;
+    }
+
+    @include on-desktop {
+      font-size: 44px;
+    }
+  }
+}

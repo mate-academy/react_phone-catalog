@@ -1,0 +1,64 @@
+@use '../../utils/mixins.scss'as *;
+@use '../../utils/variables.scss'as *;
+
+.not_faund_page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__title {
+    margin: 0;
+    font-family: $main-text-font-family;
+    font-weight: 800;
+    font-size: 30px;
+    padding-top: 30px;
+
+    @include on-tablet {
+      padding-top: 40px;
+      font-size: 40px;
+    }
+
+    @include on-desktop {
+      font-size: 50px;
+    }
+  }
+
+  &__link {
+    margin: 0;
+    font-family: $main-text-font-family;
+    font-weight: 600;
+    font-size: 10px;
+    padding-top: 10px;
+    text-decoration: none;
+    color: $main-button-green-color;
+
+    @include on-tablet {
+      font-size: 20px;
+    }
+
+    @include on-desktop {
+      font-size: 30px;
+    }
+  }
+
+  &__img {
+    width: 200px;
+    height: 200px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    filter: contrast(0.4);
+
+    @include on-tablet {
+      width: 400px;
+      height: 400px;
+      padding-top: 40px;
+      padding-bottom: 40px;
+    }
+
+    @include on-desktop {
+      width: 500px;
+      padding-top: 60px;
+      padding-bottom: 60px;
+    }
+  }
+}

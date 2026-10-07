@@ -1,0 +1,135 @@
+@use '../../../../utils/mixins.scss'as *;
+@use '../../../../utils/variables.scss'as *;
+
+.shop_by_category {
+  box-sizing: border-box;
+  margin: 0;
+  display: block;
+  padding-inline: 1rem;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    @include content-max-width;
+  }
+
+  &__title {
+    padding-bottom: 24px;
+    margin: 0;
+    font-family: $main-text-font-family;
+    font-weight: 800;
+    font-style: Bold;
+    font-size: 22px;
+    line-height: 140%;
+    letter-spacing: 0%;
+    color: $white-text-color;
+
+    @include on-tablet {
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -1%;
+    }
+  }
+
+  &__grid {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include on-tablet {
+      @include page-grid;
+
+      gap: 16px;
+    }
+  }
+
+  &__link {
+    color: inherit;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+  }
+
+  &__category {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+
+    @include on-tablet {
+      grid-column: span 4;
+    }
+
+    @include on-desktop {
+      grid-column: span 8;
+    }
+
+    &__pictures {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border-radius: 10px;
+      overflow: hidden;
+
+      &__phones {
+        background-color: $color-pictures-phones;
+      }
+
+      &__tablets {
+        background-color: $color-pictures-light-grey;
+      }
+
+      &__accessories {
+        background-color: $color-pictures-accessory;
+      }
+    }
+
+    &__img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+
+      @include image-hover-scale;
+
+      &__phones {
+        object-position: 100px 50px;
+      }
+
+      &__tablets {
+        object-position: 50px 50px;
+      }
+
+      &__accessories {
+        object-position: 50px bottom;
+      }
+    }
+
+    &__title {
+      font-family: $main-text-font-family;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 100%;
+      color: $white-text-color;
+      padding-top: 24px;
+      padding-bottom: 4px;
+      margin: 0;
+      transition: color $effectDuration;
+
+      &:hover {
+        color: $main-color-violet;
+      }
+    }
+
+    &__text {
+      margin: 0;
+      font-family: $main-text-font-family;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 21px;
+      color: $main-text-color;
+    }
+  }
+}

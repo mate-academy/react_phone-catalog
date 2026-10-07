@@ -1,0 +1,19 @@
+@use '../../utils/mixins.scss'as *;
+@use '../../utils/variables.scss'as *;
+
+.products_list {
+  display: grid;
+  justify-items: center;
+  justify-content: center;
+  grid-template-columns: 1fr;
+  gap: 40px 16px;
+
+
+  @include on-tablet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

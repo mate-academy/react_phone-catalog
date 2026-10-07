@@ -1,0 +1,126 @@
+@use '../../../../utils/mixins.scss'as *;
+@use '../../../../utils/variables.scss'as *;
+
+.product_options {
+  display: flex;
+  flex-direction: column;
+  margin: 40px 0 0;
+
+  @include on-tablet {
+    padding-top: 40px;
+  }
+
+  &__color_id {
+    display: flex;
+
+    &__color_text {
+      font-family: $main-text-font-family;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 100%;
+      margin: 0;
+      padding-bottom: 8px;
+      color: $main-grey-color-text;
+      width: 100%;
+    }
+
+    &__id_text {
+      font-family: $main-text-font-family;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 100%;
+      text-align: right;
+      margin: 0 auto;
+      width: 100%;
+      color: $main-grey-light-id-text;
+    }
+  }
+
+  &__colors {
+    display: flex;
+    gap: 8px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #3B3E4A;
+
+    @include on-tablet {
+      max-width: 320px;
+    }
+
+    &__link {
+      display: block;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid $main-text-color;
+      cursor: pointer;
+
+      transition: border-color $effectDuration;
+
+      &:hover {
+        border-color: $white-text-color;
+      }
+
+      &--active {
+        border: 1px solid $main-text-color;
+      }
+    }
+  }
+
+  &__capacity {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 24px 0;
+    border-bottom: 1px solid #3b3e4a;
+
+    @include on-tablet {
+      max-width: 320px;
+    }
+
+    &__title {
+      font-family: $main-text-font-family;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 100%;
+      color: $main-text-color;
+      margin: 0;
+    }
+
+    &__list {
+      display: flex;
+      gap: 8px;
+    }
+
+    &__link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 63px;
+      height: 32px;
+
+      font-family: $main-text-font-family;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 21px;
+      text-align: center;
+      color: $white-text-color;
+
+      margin: 0;
+      text-decoration: none;
+      border: 1px solid $color-pictures-light-grey;
+
+      transition: border-color $effectDuration;
+
+      &:hover {
+        border-color: $white-text-color;
+      }
+
+      &--active {
+        background-color: $white-text-color;
+        color: $main-grey-black-gb-text;
+        border-color: $main-grey-black-gb-text;
+      }
+    }
+  }
+}

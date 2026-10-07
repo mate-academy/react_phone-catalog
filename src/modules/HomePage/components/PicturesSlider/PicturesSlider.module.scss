@@ -1,0 +1,174 @@
+@use '../../../../utils/mixins.scss'as *;
+@use '../../../../utils/variables.scss'as *;
+
+.pictures_slider {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+
+  @include on-desktop {
+    @include content-max-width;
+  }
+
+  &__title {
+    font-family: $main-text-font-family;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    margin: 24px 16px;
+    color: $white-text-color;
+    text-align: center;
+
+    @include on-tablet {
+      font-size: 48px;
+      line-height: 56px;
+      text-align: left;
+      margin: 32px 0;
+      padding-inline: 24px;
+    }
+
+    @include on-desktop {
+      padding-inline: 32px;
+    }
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+
+
+    @include on-tablet {
+      flex-direction: row;
+      padding-inline: 24px;
+    }
+
+    @include on-desktop {
+      padding-inline: 32px;
+    }
+
+
+    &__button {
+      display: none;
+      transition: background-color $effectDuration;
+
+      &:hover {
+        background-color: $color-pictures-light-grey;
+      }
+
+      @include on-tablet {
+        flex-direction: column;
+        background-color: $main-button-gray-color;
+        border: none;
+        width: 32px;
+        height: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+      }
+
+      &__img {
+        display: none;
+
+
+        @include on-tablet {
+          display: flex;
+          filter: brightness(0) invert(1);
+        }
+      }
+    }
+
+    &__order {
+      position: absolute;
+      z-index: 2;
+      font-family: $main-text-font-family;
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none;
+      background: rgba(40, 42, 48, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      box-shadow:
+        0 4px 8px rgba(0, 0, 0, 0.35),
+        inset 0 1px 1px rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(6px);
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+      color: $white-text-color;
+
+      padding: 10px 20px;
+      border-radius: 1000px;
+      display: flex;
+      cursor: pointer;
+
+      bottom: 30px;
+      left: 20px;
+      transition: background-color $effectDuration;
+
+      &:hover {
+        background-color: $main-button-green-color;
+      }
+
+      @include on-tablet {
+        font-size: 24px;
+        bottom: 30px;
+        left: 60px;
+      }
+    }
+
+    &__slide {
+      position: relative;
+      width: 100%;
+      height: 320px;
+      overflow: hidden;
+
+      @include on-tablet {
+        height: 400px;
+        padding-inline: 20px;
+        flex: 1;
+      }
+
+      @include on-desktop {
+        padding-inline: 16px;
+      }
+
+      &__image {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        cursor: pointer;
+
+        &:hover {
+          @include image-hover-scale;
+        }
+      }
+    }
+  }
+
+  &__indicators {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+
+    button {
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      line-height: 0;
+    }
+
+    p {
+      margin: 0;
+      color: $gray-text-color;
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 0;
+
+      &.active {
+        color: $white-text-color;
+      }
+    }
+  }
+}

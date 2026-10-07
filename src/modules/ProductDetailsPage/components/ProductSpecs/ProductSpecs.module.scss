@@ -1,0 +1,36 @@
+@use '../../../../utils/mixins.scss'as *;
+@use '../../../../utils/variables.scss'as *;
+
+.product_specs {
+  display: flex;
+  flex-direction: column;
+  margin-top: 24px;
+
+  &__container {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    padding-top: 8px;
+
+    @include on-tablet {
+      max-width: 320px;
+    }
+
+    &__title {
+      font-family: $main-text-font-family;
+      font-weight: 700;
+      font-size: 12px;
+      color: $main-text-color;
+      margin: 0;
+    }
+
+    &__text {
+      font-family: $main-text-font-family;
+      font-weight: 700;
+      font-size: 12px;
+      text-align: right;
+      color: $white-text-color;
+      margin: 0 0 0 auto;
+    }
+  }
+}

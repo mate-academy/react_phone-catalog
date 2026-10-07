@@ -18,45 +18,45 @@ npm install eslint eslint-plugin-react eslint-plugin-react-hooks eslint-import-r
 ```
 After installing ESLint, you need to create a configuration file:
 ```
-npx eslint --init 
+npx eslint --init
 ```
 Then you should have an **eslintrc.json** file in the root. Configure it as follows:
 - Copy from one of your homework projects (don't forget to install required packages starting with `@mate-academy/...`)
 - Create your own configuration, for example:
 ```
 {
-    "env": {
-        "browser": true,
-        "es2021": true
+    'env': {
+        'browser': true,
+        'es2021': true
     },
-    "extends": [
-        "eslint:recommended",
-        "plugin:@typescript-eslint/recommended",
-        "plugin:react/recommended"
+    'extends': [
+        'eslint:recommended',
+        'plugin:@typescript-eslint/recommended',
+        'plugin:react/recommended'
     ],
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-        "ecmaVersion": 12,
-        "project": "./tsconfig.json",
-        "sourceType": "module",
-        "ecmaFeatures": {
-            "jsx": true
+    'parser': '@typescript-eslint/parser',
+    'parserOptions': {
+        'ecmaVersion': 12,
+        'project': './tsconfig.json',
+        'sourceType': 'module',
+        'ecmaFeatures': {
+            'jsx': true
         }
     },
-    "settings": {
-        "import/extensions": [".js", ".jsx", ".ts", ".tsx"],
-        "import/parsers": {
-          "@typescript-eslint/parser": [".ts", ".tsx"]
+    'settings': {
+        'import/extensions': ['.js', '.jsx', '.ts', '.tsx'],
+        'import/parsers': {
+          '@typescript-eslint/parser': ['.ts', '.tsx']
         },
-        "import/resolver": {
-          "typescript": {}
+        'import/resolver': {
+          'typescript': {}
         }
     },
-    "plugins": ["react", "react-hooks", "@typescript-eslint"],
-    "rules": {
+    'plugins': ['react', 'react-hooks', '@typescript-eslint'],
+    'rules': {
         // Customize rules here as per your project's needs
     }
-} 
+}
 ```
 
 ----
@@ -71,27 +71,27 @@ touch .prettierrc
 Add the required configuration (this is a small example; you must check all rules here: https://prettier.io/docs/en/options.html):
 ```
 {
-    "printWidth": 100,   
-    "tabWidth": 2,
-    "singleQuote": true,
-    "semi": true,
+    'printWidth': 100,
+    'tabWidth': 2,
+    'singleQuote': true,
+    'semi': true,
 }
 ```
 Add Prettier to the .eslintrc.json under the **plugins** and **extends** sections:
 ```
     ...
-    "extends": [
-        "eslint:recommended",
-        "plugin:@typescript-eslint/recommended",
-        "plugin:react/recommended",
-        "prettier" // ADDED HERE
+    'extends': [
+        'eslint:recommended',
+        'plugin:@typescript-eslint/recommended',
+        'plugin:react/recommended',
+        'prettier' // ADDED HERE
     ],
     ...
-    "plugins": [
-        "react",
-        "react-hooks",
-        "@typescript-eslint",
-        "prettier" // ADDED HERE
+    'plugins': [
+        'react',
+        'react-hooks',
+        '@typescript-eslint',
+        'prettier' // ADDED HERE
     ],
     ...
 ```
@@ -106,19 +106,19 @@ Then add following code to you package.json
 ```
 {
     ...
-    "husky": {
-        "hooks": {
-          "pre-commit": "lint-staged"
+    'husky': {
+        'hooks': {
+          'pre-commit': 'lint-staged'
         }
     },
-    "lint-staged": {
-        "*.ts": [
-          "eslint --fix",
-          "prettier --write"
+    'lint-staged': {
+        '*.ts': [
+          'eslint --fix',
+          'prettier --write'
         ],
-        "*.tsx": [
-          "eslint --fix",
-          "prettier --write"
+        '*.tsx': [
+          'eslint --fix',
+          'prettier --write'
         ]
     },
     ...
@@ -182,13 +182,13 @@ Push your change to main branch.
 
 ----
 
-OR you can use easier and most coomon approach to deploy youir applicaiton. 
+OR you can use easier and most coomon approach to deploy youir applicaiton.
 **There are a couple of similar services for faster auto deploy.**
 - [Vercel](https://vercel.com)
 - [Render](https://render.com/)
 - [Heroku](https://www.heroku.com/)
 
-Just register on one of them and follow the instruction. It's very clear and straight forward. 
+Just register on one of them and follow the instruction. It's very clear and straight forward.
 
 
 

@@ -1,0 +1,379 @@
+@use '../../utils/mixins.scss'as *;
+@use '../../utils/variables.scss'as *;
+
+.header {
+  height: 48px;
+  box-shadow: 0 1px #3b3e4a;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-sizing: border-box;
+  background-color: $main-background-color;
+
+  @include on-desktop {
+    height: 64px;
+  }
+
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+
+  }
+
+  &__left {
+    display: flex;
+    align-items: center;
+    padding-inline: 16px;
+    height: 100%;
+    margin: 0;
+
+    @include content-max-width;
+
+    @include on-tablet {
+      gap: 32px;
+      padding-right: 0;
+      margin: 0;
+
+    }
+
+    @include on-desktop {
+      margin: 0;
+      gap: 64px;
+    }
+  }
+
+  &__logo {
+    width: 64px;
+    height: 22px;
+    cursor: pointer;
+    display: block;
+
+    @include image-hover-scale;
+
+    @include on-desktop {
+      width: 80px;
+      height: 28px;
+    }
+  }
+
+  &__links {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+      gap: 32px;
+      font-family: $main-text-font-family;
+      font-weight: 800;
+      font-size: 12px;
+      line-height: 11px;
+      text-transform: uppercase;
+      justify-content: center;
+      height: 100%;
+    }
+
+    @include on-desktop {
+      gap: 48px;
+    }
+  }
+
+  &__link {
+    @include on-tablet {
+      text-decoration: none;
+      color: $main-text-color;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      height: 100%;
+      position: relative;
+      transition: color 0.3s ease;
+
+      @include hover(color, $white-text-color);
+
+      &::after {
+        content: '';
+
+        position: absolute;
+        bottom: 0;
+        left: 0;
+
+        width: 100%;
+        height: 3px;
+
+        background-color: $white-text-color;
+
+        transform-origin: left;
+        transform: scaleX(0);
+        transition: transform 0.3s;
+        z-index: 1;
+      }
+
+      &:hover::after,
+      &.is-active::after {
+        transform: scaleX(1);
+      }
+
+      &.is-active {
+        color: $white-text-color;
+      }
+    }
+  }
+
+  &__right {
+    display: flex;
+    height: 100%;
+    margin-left: auto;
+  }
+
+  &__favorite,
+  &__cart {
+    display: none;
+    position: relative;
+
+    @include on-tablet {
+      display: flex;
+      width: 48px;
+      height: 100%;
+      justify-content: center;
+      align-items: center;
+
+      box-shadow: -1px 0 0 #3b3e4a;
+
+      @include hover(background-color, rgba(#3b3e4a, 0.4));
+
+      img {
+        width: 16px;
+        height: 16px;
+        display: block;
+        object-fit: contain;
+      }
+    }
+
+    @include on-desktop {
+      width: 64px;
+    }
+  }
+
+  &__menu {
+    display: flex;
+    border: none;
+    background: none;
+    width: 48px;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    box-shadow: -1px 0 0 #3b3e4a;
+    cursor: pointer;
+
+    @include hover(background-color, rgba(#3b3e4a, 0.4));
+
+    img {
+      width: 16px;
+      height: 16px;
+      display: block;
+      object-fit: contain;
+    }
+
+    @include on-tablet {
+      display: none;
+    }
+  }
+}
+
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 200;
+
+  display: none;
+  flex-direction: column;
+  box-sizing: border-box;
+
+  font-family: $main-text-font-family;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 11px;
+  text-transform: uppercase;
+  color: $main-text-color;
+
+  background-color: $main-background-color;
+
+  &--open {
+    display: flex;
+  }
+
+  @include on-tablet {
+    display: none !important;
+  }
+
+
+  &__container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__top {
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 16px;
+    box-shadow: 0 1px #3b3e4a;
+  }
+
+
+  &__logo {
+    display: block;
+    width: 64px;
+    height: 22px;
+    object-fit: contain;
+
+    @include image-hover-scale
+  }
+
+  &__close {
+    display: flex;
+    border: none;
+    background: none;
+    width: 48px;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    box-shadow: -1px 0 0 #3b3e4a;
+    cursor: pointer;
+
+    @include hover(background-color, rgba(#3b3e4a, 0.4));
+
+    img {
+      width: 16px;
+      height: 16px;
+      display: block;
+      object-fit: contain;
+    }
+  }
+
+  &__bottom {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 24px;
+    overflow-y: auto;
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $main-text-color;
+    padding: 8px;
+    position: relative;
+    transition: color 0.3s ease;
+
+    @include hover(color, $white-text-color);
+
+    &::after {
+      content: '';
+
+      position: absolute;
+      bottom: 0;
+      left: 0;
+
+      width: 100%;
+      height: 3px;
+
+      background-color: $white-text-color;
+
+      transform-origin: left;
+      transform: scaleX(0);
+      transition: transform 0.3s;
+      z-index: 1;
+    }
+
+    &:hover::after,
+    &.is-active::after {
+      transform: scaleX(1);
+    }
+
+    &.is-active {
+      color: $white-text-color;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    height: 64px;
+    box-shadow: 0 -1px 0 #3b3e4a;
+  }
+
+  &__favorite,
+  &__cart {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    position: relative;
+
+    @include hover(background-color, rgba(#3b3e4a, 0.4));
+
+    img {
+      width: 16px;
+      height: 16px;
+    }
+
+    &.is-active {
+      box-shadow: inset 0 -3px 0 $white-text-color;
+    }
+  }
+
+  &__favorite {
+    box-shadow: 1px 0 0 #3b3e4a;
+  }
+}
+
+.header__badge,
+.menu__badge {
+  position: absolute;
+  top: 9px;
+  right: 9px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 14px;
+  height: 14px;
+  padding: 0 2px;
+  border-radius: 50%;
+  border: 1px solid $main-background-color;
+
+  background-color: $main-text-color-red;
+  color: #fff;
+
+  font-family: $main-text-font-family;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1;
+
+  pointer-events: none;
+}
+
+.menu__badge {
+  top: 16px;
+  right: calc(50% - 18px);
+}

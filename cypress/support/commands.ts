@@ -1,4 +1,4 @@
-/// <reference types="cypress" />
+/// <reference types='cypress' />
 // ***********************************************
 // This example commands.ts shows you how to
 // create various custom commands and overwrite
@@ -48,7 +48,7 @@ declare global {
 }
 
 Cypress.Commands.add('getByDataCy', selector => {
-  cy.get(`[data-cy="${selector}"]`);
+  cy.get(`[data-cy='${selector}']`);
 });
 
 Cypress.Commands.add(
@@ -56,7 +56,7 @@ Cypress.Commands.add(
   { prevSubject: 'optional' },
 
   (subject, name) => {
-    const selector = `[data-cy="${name}"]`;
+    const selector = `[data-cy='${name}']`;
 
     return subject ? cy.wrap(subject).find(selector) : cy.get(selector);
   },
