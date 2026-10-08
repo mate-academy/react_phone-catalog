@@ -62,11 +62,6 @@ export const router = createHashRouter([
   },
   {
     path: '*',
-    element: (
-      <ErrorFallback
-        title="Сторінку не знайдено"
-        description="Перевірте адресу або поверніться на головну."
-      />
-    ),
+    element: <ErrorFallback />,
   },
 ]);

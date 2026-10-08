@@ -67,7 +67,7 @@
 
 
 
-.summury{
+.summary{
   grid-column: 1 / -1;
 
   height: fit-content;
@@ -111,4 +111,8 @@
 
 .checkout{
   height: 48px;
+}
+
+.notFoundLabel{
+  grid-column: 1 / -1;
 }

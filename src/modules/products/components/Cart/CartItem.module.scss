@@ -29,6 +29,10 @@
 
 .cancel{
   color: var(--color-icons);
+
+  &__button {
+    height: 16px;
+  }
 }
 
 .mainImage {

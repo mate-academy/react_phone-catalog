@@ -61,6 +61,7 @@ export const Catalog = ({ categoryName, category }: Props) => {
       {data &&
         (data.total === 0 ? (
           <NotFoundLabel
+            title={t('nothingFoundForYourQuery')}
             handleClick={() => navigate(ROUTES.HOME)}
             className={styles.notFoundLabel}
           />

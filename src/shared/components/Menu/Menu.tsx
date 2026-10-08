@@ -5,9 +5,10 @@ import Cart from '@/assets/icons/cart.svg?react';
 import Heart from '@/assets/icons/heart.svg?react';
 import { useAppSelector } from '@/redux/hooks';
 import { ROUTES } from '@/shared/constants';
-import { useBodyScrollLock } from '@/shared/hooks';
+import { useBodyScrollLock, useMediaQuery } from '@/shared/hooks';
 import { cn } from '@/shared/utils';
 
+import { LanguageSwitcher } from './LanguageSwitcher';
 import styles from './Menu.module.scss';
 
 type MenuProps = {
@@ -16,8 +17,13 @@ type MenuProps = {
 
 export const Menu = ({ isVisible }: MenuProps) => {
   const { t } = useTranslation();
+  const { isMobile } = useMediaQuery();
+
   const countFavorites = useAppSelector(
     state => state.favorites.favorite_ids.length,
+  );
+  const countItemsInCart = useAppSelector(state =>
+    state.cart.items.reduce((prev, item) => prev + item.quantity, 0),
   );
 
   useBodyScrollLock(Boolean(isVisible));
@@ -40,14 +46,11 @@ export const Menu = ({ isVisible }: MenuProps) => {
         <NavLink className={styles.link} to={ROUTES.ACCESSORIES}>
           {t('accessories')}
         </NavLink>
+        {isMobile && <LanguageSwitcher />}
       </nav>
 
       <div className={styles.nav__block}>
-        {/* <Button
-          className={styles.menu__button}
-          aria-label="Wishlist"
-          //onClick={() => navigate(ROUTES.FAVORITES)}
-        > */}
+        {!isMobile && <LanguageSwitcher />}
         <NavLink to={ROUTES.FAVORITES} className={styles.button__link}>
           <div className={styles.icon}>
             <Heart className={styles.menu__img} />
@@ -56,16 +59,15 @@ export const Menu = ({ isVisible }: MenuProps) => {
             )}
           </div>
         </NavLink>
-        {/* </Button> */}
 
-        {/* <Button className={styles.menu__button} aria-label="Cart"> */}
         <NavLink to={ROUTES.CART} className={styles.button__link}>
           <div className={styles.icon}>
             <Cart className={styles.menu__img} />
-            {countFavorites > 0 && <div className={styles.badge}>{10}</div>}
+            {countItemsInCart > 0 && (
+              <div className={styles.badge}>{countItemsInCart}</div>
+            )}
           </div>
         </NavLink>
-        {/* </Button> */}
       </div>
     </aside>
   );

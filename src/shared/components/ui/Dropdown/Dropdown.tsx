@@ -7,7 +7,8 @@ import styles from './Dropdown.module.scss';
 
 interface Props<T> {
   className?: string;
-  description: string;
+  selectClassName?: string;
+  description?: string;
   value: T;
   values: readonly T[];
   onChange: (value: T) => void;
@@ -20,6 +21,7 @@ export const Dropdown = <T,>({
   description,
   values,
   className = '',
+  selectClassName = '',
   onChange,
   getLabel,
   getKey,
@@ -28,9 +30,13 @@ export const Dropdown = <T,>({
 
   return (
     <div className={cn(styles.dropdown, className)}>
-      <h6 className={styles.description}>{description}</h6>
+      {description && <h6 className={styles.description}>{description}</h6>}
       <div
-        className={cn(styles.select, { [styles.selectFocus]: isOpen })}
+        className={cn(
+          styles.select,
+          { [styles.selectFocus]: isOpen },
+          selectClassName,
+        )}
         onClick={() => setIsOpen(prev => !prev)}
       >
         <span className={styles.value}>{getLabel(value)}</span>

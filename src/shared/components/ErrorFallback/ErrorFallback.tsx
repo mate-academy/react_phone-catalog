@@ -14,9 +14,8 @@ interface ErrorFallbackProps {
 export const ErrorFallback = ({ title, description }: ErrorFallbackProps) => {
   const { t } = useTranslation();
 
-  const fallbackTitle = title ?? t('common.errorBoundary.title');
-  const fallbackDescription =
-    description ?? t('common.errorBoundary.description');
+  const fallbackTitle = title ?? t('notFoundPage');
+  const fallbackDescription = description ?? t('notFoundDescription');
 
   return (
     <div className={styles.wrapper}>
@@ -24,9 +23,7 @@ export const ErrorFallback = ({ title, description }: ErrorFallbackProps) => {
         <h1 className={styles.title}>{fallbackTitle}</h1>
         <p className={styles.description}>{fallbackDescription}</p>
         <Link to={ROUTES.HOME}>
-          <Button className={styles.button}>
-            {t('common.errorBoundary.goHome')}
-          </Button>
+          <Button className={styles.button}>{t('goToMainPage')}</Button>
         </Link>
       </div>
     </div>

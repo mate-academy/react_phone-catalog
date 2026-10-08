@@ -38,10 +38,6 @@ export const ProductDetails = () => {
   const { setBreadcrumbs } = useContext(BreadcrumbContext);
   const breadcrumbs = useBaseBreadcrumbs();
 
-  //const canGoBack = window.history;
-
-  //console.log(canGoBack);
-
   useEffect(() => {
     if (!product) {
       return;
@@ -77,6 +73,7 @@ export const ProductDetails = () => {
       )}
       {!isLoading && !isError && !product && (
         <NotFoundLabel
+          title={t('nothingFoundForYourQuery')}
           handleClick={() => navigate(ROUTES.HOME)}
           className={styles.notFoundLabel}
         />

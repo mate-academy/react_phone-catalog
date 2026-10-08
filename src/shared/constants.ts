@@ -28,3 +28,8 @@ export const baseBreadcrumbs: Breadcrumb[] = [
   { name: 'Favorites', to: ROUTES.FAVORITES },
   { name: 'Cart', to: ROUTES.CART },
 ];
+
+export const languages = [
+  { code: 'en', label: 'EN' },
+  { code: 'ua', label: 'UA' },
+] as const;

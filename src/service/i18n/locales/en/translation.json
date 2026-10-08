@@ -30,5 +30,15 @@
   "itemsOnPage": "Items on page",
   "backToTop": "Back to top",
   "items": "items",
-  "cart": "Cart"
+  "item": "item",
+  "cart": "Cart",
+
+  "totalFor": "Total for",
+  "checkout": "Checkout",
+  "nothingFoundForYourQuery": "Nothing found for your query",
+  "yourCartIsEmpty": "Your cart is empty",
+  "goToMainPage": "Go to main page",
+
+  "notFoundPage": "Page not found",
+  "notFoundDescription": "Check the address or back to the main page."
 }

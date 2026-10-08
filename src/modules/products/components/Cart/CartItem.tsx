@@ -1,7 +1,13 @@
 import Cross from '@/assets/icons/cross.svg?react';
 import Minus from '@/assets/icons/minus.svg?react';
 import Plus from '@/assets/icons/plus.svg?react';
-import { CircleButton } from '@/shared/components/ui';
+import {
+  decreaseQuantity,
+  increaseQuantity,
+  removeFromCart,
+} from '@/redux/cartSlice';
+import { useAppDispatch } from '@/redux/hooks';
+import { Button, CircleButton } from '@/shared/components/ui';
 import { getImageUrl } from '@/shared/utils';
 
 import styles from './CartItem.module.scss';
@@ -19,12 +25,18 @@ interface Props {
 }
 
 export const CartItem = ({ cartProduct }: Props) => {
-  const { image, name, quantity, totalPrice } = cartProduct;
+  const dispatch = useAppDispatch();
+  const { id, image, name, quantity, totalPrice } = cartProduct;
 
   return (
     <article className={styles.item}>
       <div className={styles.item__info}>
-        <Cross className={styles.cancel} />
+        <Button
+          className={styles.cancel__button}
+          onClick={() => dispatch(removeFromCart(id))}
+        >
+          <Cross className={styles.cancel} />
+        </Button>
         <div className={styles.mainImage}>
           <img src={getImageUrl(image)} alt={`Product img`} draggable={false} />
         </div>
@@ -35,12 +47,17 @@ export const CartItem = ({ cartProduct }: Props) => {
           <CircleButton
             className={styles.buttons__minus}
             aria-label="Minus count"
-            disabled={true}
+            onClick={() => dispatch(decreaseQuantity(id))}
+            disabled={quantity < 2}
           >
             <Minus />
           </CircleButton>
           <span className={styles.quantity}>{quantity}</span>
-          <CircleButton className={styles.buttons__add} aria-label="Add count">
+          <CircleButton
+            className={styles.buttons__add}
+            aria-label="Add count"
+            onClick={() => dispatch(increaseQuantity(id))}
+          >
             <Plus />
           </CircleButton>
         </div>
