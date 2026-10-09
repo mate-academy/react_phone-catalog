@@ -1,0 +1,76 @@
+@import '../../utils/Mixins';
+
+.catalog {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  &__pagination-container {
+    position: sticky;
+    bottom: 0;
+    z-index: 10;
+    background-color: $white;
+    padding: 16px 0;
+    display: flex;
+    justify-content: center;
+    border-top: 1px solid $elements;
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 88px;
+    margin-bottom: 40px;
+
+    & > a {
+      height: 16px;
+    }
+  }
+
+  &__visit {
+    font-family: Mont-Regular, sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: $secondary;
+
+    @include font-face-regular;
+  }
+
+  &__text {
+    font-family: Mont-Regular, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+    color: $secondary;
+    margin-top: 8px;
+
+    @include font-face-regular;
+  }
+
+  &__products-cards {
+    margin-top: 24px;
+    padding-bottom: 24px;
+    @include page-grid;
+  }
+
+  &__products-card {
+    flex-grow: 1;
+
+    @include on-desktop {
+      grid-column: span 6;
+    }
+
+    @include on-tablet {
+      grid-column: span 4;
+    }
+
+    @include on-mobile {
+      grid-column: span 4;
+    }
+  }
+}

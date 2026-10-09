@@ -1,0 +1,366 @@
+.item-card > h2 {
+  margin-top: 16px;
+  margin-bottom: 40px;
+}
+
+.item-card {
+  margin-top: 24px;
+
+  &__top {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 88px;
+    margin-bottom: 40px;
+    font-family: Mont-Regular, sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0%;
+
+    @include font-face-regular;
+  }
+  & > a {
+    height: 16px;
+  }
+  &__visit {
+    color: $secondary;
+  }
+
+  &__history-visit {
+    color: $primary;
+    text-decoration: none;
+  }
+
+  &__back {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    text-decoration: none;
+    height: 16px;
+  }
+
+  &__back-text {
+    font-family: Mont-Regular, sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: $secondary;
+
+    @include font-face-regular;
+  }
+
+  &__content {
+    @include page-grid;
+
+    grid-template-areas: 'left center right';
+
+    @include on-mobile {
+      grid-template-areas:
+        'center'
+        'left'
+        'right';
+    }
+  }
+}
+
+.item {
+  &__left {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    grid-area: left;
+
+    @include on-desktop {
+      grid-column: 1 / 3;
+    }
+
+    @include on-tablet {
+      grid-column: span 1;
+    }
+
+    @include on-mobile {
+      grid-column: span 4;
+      flex-direction: row;
+      justify-content: center;
+      padding-bottom: 24px;
+    }
+  }
+
+  &__thumb {
+    display: block;
+    width: 80px;
+    height: 80px;
+    aspect-ratio: 1 / 1;
+    background: $white;
+    border: 1px solid $elements;
+    padding: 2px;
+    transition: border-color 0.3s ease;
+
+    &:hover {
+      border: 1px solid $icons;
+    }
+
+    @include on-desktop {
+      padding: 4px;
+    }
+
+    @include on-tablet {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  .is-active {
+    border: 1px solid $primary;
+  }
+
+  &__photos {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+
+    @include on-tablet {
+      width: 35px;
+      height: 35px;
+    }
+  }
+
+  &__center {
+    width: 464px;
+    height: 464px;
+    display: flex;
+    justify-content: center;
+    grid-area: center;
+
+    @include on-desktop {
+      grid-column: 3 / 13;
+    }
+
+    @include on-tablet {
+      width: 274px;
+      grid-column: 3 / 7;
+    }
+
+    @include on-mobile {
+      grid-column: 2 / 4;
+    }
+  }
+
+  &__center > img {
+    height: 100%;
+  }
+
+  &__right {
+    grid-area: right;
+
+    @include on-desktop {
+      grid-column: 14 / 25;
+    }
+
+    @include on-tablet {
+      grid-column: 8 / 13;
+    }
+
+    @include on-mobile {
+      grid-column: span 4;
+    }
+  }
+}
+
+.info {
+  color: $secondary;
+
+  &__title {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 8px;
+    font-family: Mont-Regular, sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0%;
+
+    @include font-face-regular;
+  }
+
+  &__capacity {
+    padding: 24px 0;
+    border-bottom: 1px solid $elements;
+  }
+
+  &__price {
+    display: flex;
+    align-items: center;
+
+    font-size: 32px;
+    &--full {
+      font-family: Mont-Regular, sans-serif;
+      text-decoration: line-through;
+      font-size: 22px;
+      margin-left: 8px;
+      color: $secondary;
+    }
+
+    margin-top: 32px;
+    margin-bottom: 16px;
+  }
+}
+
+.colors {
+  display: flex;
+  gap: 8px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid $elements;
+
+  &__selector {
+    width: 32px;
+    height: 32px;
+    border-radius: 100%;
+
+    border: 1px solid $elements;
+
+    &:hover {
+      border: 1px solid $icons;
+    }
+    &--black {
+      background-color: #1f2020;
+    }
+    &--green {
+      background-color: #aee1cd;
+    }
+    &--yellow {
+      background-color: #ffe681;
+    }
+    &--white {
+      background-color: #f9f6ef;
+      border: 1px solid #e2e2e2;
+    }
+    &--purple {
+      background-color: #d1cdda;
+    }
+    &--red {
+      background-color: #ba0c2f;
+    }
+    &--spacegray {
+      background-color: #535154;
+    }
+    &--midnightgreen {
+      background-color: #4e5851;
+    }
+    &--gold {
+      background-color: #fcebd3;
+    }
+    &--blue {
+      background-color: #5689b9;
+    }
+    &--silver {
+      background-color: #e2e4e1;
+    }
+    &--rosegold {
+      background-color: #ead2c6;
+    }
+    &--skyblue {
+      background-color: #def0f7;
+    }
+    &--starlight {
+      background-color: #f0ece8;
+    }
+    &--midnight {
+      background-color: #1c232e;
+    }
+    &--sierrablue {
+      background-color: #a7c1d9;
+    }
+    &--graphite {
+      background-color: #5c5b57;
+    }
+  }
+}
+
+.color-active {
+  border: 1px solid $primary;
+}
+
+.button {
+  display: flex;
+  gap: 8px;
+
+  &__capacity {
+    background-color: $white;
+    color: $primary;
+    border: 1px solid $icons;
+    width: 63px;
+    padding: 8px;
+    text-align: center;
+    font-family: Mont-Regular, sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+
+    @include font-face-regular;
+  }
+}
+
+.button-active {
+  background-color: $primary;
+  color: $white;
+}
+
+.about {
+  &__content {
+    @include page-grid;
+  }
+
+  &__left {
+    @include on-desktop {
+      grid-column: span 12;
+    }
+
+    @include on-tablet {
+      grid-column: span 12;
+    }
+
+    @include on-mobile {
+      grid-column: span 4;
+    }
+  }
+
+  &__right {
+    @include on-desktop {
+      grid-column: 14 / 25;
+    }
+
+    @include on-tablet {
+      grid-column: span 12;
+    }
+
+    @include on-mobile {
+      grid-column: span 4;
+      margin-bottom: 56px;
+    }
+  }
+
+  &__text {
+    font-family: Mont-Regular, sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+    color: $secondary;
+
+    @include font-face-regular;
+  }
+
+  &__title {
+    margin-top: 80px;
+    border-bottom: 1px solid $elements;
+    padding-bottom: 16px;
+
+    @include on-mobile {
+      margin-top: 56px;
+    }
+  }
+}

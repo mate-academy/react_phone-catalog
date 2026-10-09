@@ -1,0 +1,142 @@
+@import './Variables';
+
+@mixin on-mobile {
+  @media (min-width: $mobile-min-width) and (max-width: $mobile-max-width) {
+    @content;
+  }
+}
+
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) and (max-width: $tablet-max-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin constent-padding-inline() {
+  width: 100%;
+  margin-inline: auto;
+
+  @include on-mobile {
+    padding-inline: 16px;
+  }
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    max-width: 1200px;
+    padding-inline: 32px;
+  }
+}
+
+.container {
+  @include constent-padding-inline;
+}
+
+.footer__content {
+  @include constent-padding-inline;
+}
+
+@mixin page-grid {
+  --columns: 4;
+
+  display: grid;
+  gap: 16px;
+  column-gap: 16px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 12;
+  }
+
+  @include on-desktop {
+    --columns: 24;
+  }
+}
+
+@mixin font-face-bold {
+  @font-face {
+    font-family: Mont-Bold;
+    src: url('/fonts/Mont-Bold.otf') format('opentype');
+    font-weight: 800;
+    font-style: normal;
+  }
+}
+
+@mixin font-face-semibold {
+  @font-face {
+    font-family: Mont-SemiBold;
+    src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+    font-weight: 600;
+    font-style: normal;
+  }
+}
+
+@mixin font-face-regular {
+  @font-face {
+    font-family: Mont-Regular;
+    src: url('/fonts/Mont-Regular.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+  }
+}
+
+h1 {
+  font-family: Mont-Bold, sans-serif;
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -1%;
+  margin: 0;
+  color: $primary;
+
+  @include font-face-bold;
+}
+
+h2 {
+  font-family: Mont-Bold, sans-serif;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -1%;
+  color: $primary;
+  margin: 0;
+
+  @include font-face-bold;
+}
+
+h3 {
+  font-family: Mont-Bold, sans-serif;
+  font-size: 22px;
+  line-height: 140%;
+  letter-spacing: 0%;
+  color: $primary;
+  margin: 0;
+
+  @include font-face-bold;
+}
+
+h4 {
+  font-family: Mont-SemiBold, sans-serif;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: $primary;
+
+  @include font-face-semibold;
+}
+
+.error {
+  color: $red;
+  font-family: Mont-Bold, sans-serif;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: 0%;
+
+  @include font-face-bold;
+}

@@ -1,0 +1,209 @@
+.menu {
+  position: fixed;
+  inset: 48px 0 0;
+  z-index: 99;
+  overflow: hidden auto;
+  background-color: $white;
+  box-sizing: border-box;
+
+  transform: translateX(100%);
+  visibility: hidden;
+
+  transition:
+    transform 0.3s ease-in-out,
+    visibility 0.3s ease-in-out;
+
+  &--open {
+    transform: translateX(0);
+    visibility: visible;
+  }
+}
+
+.menu__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.menu__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 48px;
+  border-bottom: 1px solid $elements;
+}
+
+.menu-center {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+  padding: 40px 0;
+
+  &__nav {
+    font-family: Mont-Bold, sans-serif;
+    color: $secondary;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 11px;
+    letter-spacing: 4%;
+    position: relative;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+
+    &:hover,
+    &.nav-active {
+      color: $primary;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: $primary;
+
+      opacity: 0;
+      transform: scaleX(0);
+      transition:
+        transform 0.4s ease,
+        opacity 0.4s ease;
+    }
+
+    &.nav-active::after,
+    &:hover::after {
+      opacity: 1;
+      transform: scaleX(1);
+    }
+  }
+}
+
+.menu-bottom {
+  width: 100%;
+  height: 64px;
+  display: flex;
+  border-top: 1px solid #e2e6e9;
+  margin-top: auto;
+
+  &__left,
+  &__right {
+    flex: 1;
+    display: flex;
+    border-right: 1px solid #e2e6e9;
+    justify-content: center;
+  }
+
+  &__fav {
+    height: 100%;
+    width: 64px;
+    background-image: url('/img/icons/Favourites.svg');
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: $primary;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    &.cart-active::after,
+    &:hover::after {
+      opacity: 1;
+    }
+  }
+
+  &__cart {
+    height: 100%;
+    width: 64px;
+    background-image: url('/img/icons/Cart.svg');
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: $primary;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    &.cart-active::after,
+    &:hover::after {
+      opacity: 1;
+    }
+  }
+
+  &__favs {
+    background-image: url('/img/icons/FavCounter.svg');
+    height: 100%;
+    width: 64px;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+
+    &--count {
+      position: absolute;
+      top: 17px;
+      left: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 16px;
+      height: 16px;
+      border: 1px solid $white;
+      border-radius: 50%;
+      background-color: $red;
+      color: $white;
+      font-size: 9px;
+    }
+  }
+
+  &__carts {
+    background-image: url('/img/icons/CartCounter.svg');
+    height: 100%;
+    width: 64px;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+
+    &--count {
+      position: absolute;
+      top: 17px;
+      left: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 16px;
+      height: 16px;
+      border: 1px solid $white;
+      border-radius: 50%;
+      background-color: $red;
+      color: $white;
+      font-size: 9px;
+    }
+  }
+}

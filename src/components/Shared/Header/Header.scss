@@ -1,0 +1,344 @@
+@import '../../../utils/Mixins';
+
+.header {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  z-index: 100;
+  background-color: $white;
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px $elements solid;
+    align-items: center;
+    height: 64px;
+
+    @include on-tablet {
+      height: 48px;
+    }
+
+    @include on-mobile {
+      height: 48px;
+    }
+  }
+
+  &-left {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 64px;
+
+    @include on-tablet {
+      gap: 24px;
+    }
+
+    &__logo {
+      width: 128px;
+      height: 64px;
+      align-content: center;
+      margin-left: 24px;
+    }
+
+    &__nav {
+      position: relative;
+      text-transform: uppercase;
+      color: $secondary;
+      margin: 0;
+      padding: 0;
+      text-decoration: none;
+
+      font-family: Mont-Bold, sans-serif;
+      font-size: 12px;
+      line-height: 11px;
+      letter-spacing: 4%;
+      &:hover,
+      &.nav-active {
+        color: $primary;
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -26px;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background-color: $primary;
+
+        @include on-tablet {
+          bottom: -18px;
+        }
+
+        opacity: 0;
+        transform: scaleX(0);
+        transition:
+          transform 0.4s ease,
+          opacity 0.4s ease;
+      }
+
+      &.nav-active::after,
+      &:hover::after {
+        opacity: 1;
+        transform: scaleX(1);
+      }
+
+      @include on-mobile {
+        display: none;
+      }
+    }
+  }
+
+  &-right {
+    &__icons {
+      display: flex;
+    }
+  }
+}
+
+.icon {
+  display: block;
+  width: 64px;
+  height: 64px;
+  background-size: cover;
+
+  @include on-tablet {
+    width: 48px;
+    height: 48px;
+  }
+  &--fav {
+    background-image: url(/img/icons/Favourites.svg);
+    position: relative;
+    background-size: 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-left: 1px solid $elements;
+
+    &:hover,
+    &.cart-active {
+      color: $primary;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: $primary;
+
+      opacity: 0;
+      transform: scaleX(0);
+      transition:
+        transform 0.4s ease,
+        opacity 0.4s ease;
+    }
+
+    &.cart-active::after,
+    &:hover::after {
+      opacity: 1;
+      transform: scaleX(1);
+    }
+
+    @include on-mobile {
+      display: none;
+    }
+  }
+
+  &--cart {
+    background-image: url(/img/icons/Cart.svg);
+    position: relative;
+    background-size: 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-left: 1px solid $elements;
+    &:hover,
+    &.cart-active {
+      color: $primary;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: $primary;
+
+      opacity: 0;
+      transform: scaleX(0);
+      transition:
+        transform 0.4s ease,
+        opacity 0.4s ease;
+    }
+
+    &.cart-active::after,
+    &:hover::after {
+      opacity: 1;
+      transform: scaleX(1);
+    }
+
+    @include on-mobile {
+      display: none;
+    }
+  }
+
+  &--cartCount {
+    background-image: url(/img/icons/CartCounter.svg);
+    background-size: 28px;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    &:hover,
+    &.cart-active {
+      color: $primary;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: $primary;
+
+      opacity: 0;
+      transform: scaleX(0);
+      transition:
+        transform 0.4s ease,
+        opacity 0.4s ease;
+    }
+
+    &.cart-active::after,
+    &:hover::after {
+      opacity: 1;
+      transform: scaleX(1);
+    }
+
+    border-left: 1px solid $elements;
+
+    &--count {
+      font-family: Mont-Regular, sans-serif;
+      position: absolute;
+      top: 18px;
+      left: 32px;
+      text-align: center;
+      color: $white;
+      width: 14px;
+      height: 14px;
+      border: 1px solid $white;
+      border-radius: 100%;
+      background-color: $red;
+      font-size: 9px;
+
+      @include on-tablet {
+        top: 10px;
+        left: 24px;
+      }
+    }
+
+    @include on-mobile {
+      display: none;
+    }
+  }
+
+  &--favCount {
+    background-image: url(/img/icons/FavCounter.svg);
+    background-size: 28px;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+
+    border-left: 1px solid $elements;
+    &:hover,
+    &.cart-active {
+      color: $primary;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: $primary;
+
+      opacity: 0;
+      transform: scaleX(0);
+      transition:
+        transform 0.4s ease,
+        opacity 0.4s ease;
+    }
+
+    &.cart-active::after,
+    &:hover::after {
+      opacity: 1;
+      transform: scaleX(1);
+    }
+
+    &--count {
+      font-family: Mont-Regular, sans-serif;
+      position: absolute;
+      top: 18px;
+      left: 32px;
+      text-align: center;
+      color: $white;
+      width: 14px;
+      height: 14px;
+      border: 1px solid $white;
+      border-radius: 100%;
+      background-color: $red;
+      font-size: 9px;
+
+      @include on-tablet {
+        top: 10px;
+        left: 24px;
+      }
+    }
+
+    @include on-mobile {
+      display: none;
+    }
+  }
+
+  &--menu {
+    appearance: none;
+    background-color: $white;
+    width: 48px;
+    height: 47px;
+    border: none;
+    background-image: url(/img/icons/Burger.svg);
+
+    display: none;
+
+    @include on-mobile {
+      display: block;
+    }
+  }
+
+  &--close {
+    appearance: none;
+    background-color: $white;
+    border-bottom: 1px solid $elements;
+    border-right: none;
+    border-top: none;
+    width: 48px;
+    height: 48px;
+    background-image: url(/img/icons/Close.svg);
+    background-position: center;
+    background-size: 16px;
+    background-repeat: no-repeat;
+    border-left: 1px solid $elements;
+
+    display: none;
+
+    @include on-mobile {
+      display: block;
+    }
+  }
+}

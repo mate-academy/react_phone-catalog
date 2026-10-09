@@ -1,0 +1,100 @@
+@import '../../../utils/Mixins';
+
+.footer {
+  margin-top: 80px;
+  border-top: 1px $elements solid;
+
+  @include on-mobile {
+    padding-top: 32px;
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 96px;
+
+    @include on-mobile {
+      display: grid;
+      justify-content: center;
+      grid-template-columns: 1fr;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 32px;
+    }
+  }
+
+  &__center {
+    display: flex;
+    justify-content: space-around;
+    width: 378px;
+
+    @include on-mobile {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include on-mobile {
+      padding-bottom: 32px;
+    }
+  }
+
+  &__text {
+    font-family: Mont-Bold, sans-serif;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 4%;
+    text-transform: uppercase;
+    color: $secondary;
+    text-decoration: none;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: $primary;
+    }
+
+    @include font-face-bold;
+
+    &--right {
+      font-family: Mont-Bold, sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      text-align: center;
+      margin-right: 16px;
+
+      color: $secondary;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: $primary;
+      }
+
+      @include font-face-bold;
+    }
+  }
+
+  &__button {
+    appearance: none;
+    background-image: url(/public/img/buttons/back-to-top.svg);
+    background-position: center;
+    background-color: $white;
+    border: 1px solid $icons;
+    transition: border-color 0.3s ease;
+
+    &:hover {
+      border: 1px solid $primary;
+    }
+
+    width: 32px;
+    height: 32px;
+  }
+}

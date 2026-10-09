@@ -1,1 +1,51 @@
-// not empty
+@import '../src/components/Shared/Header/Header';
+@import '../src/components/HomePage/HomePage';
+@import '../src/components/Shared/Footer/Footer';
+@import '../src/components/Shared/Aside/Aside';
+@import '../src/components/Shared/Product/Product';
+@import '../src/components/ItemCardPage/ItemCardPage';
+@import '../src/components/Favourites/Favourites';
+@import '../src/components/Cart/Cart';
+@import '../src/components/Shared/Sort/Sort';
+@import '../src/components/Shared/Modal/Modal';
+@import '../src/components/Shared/Pagination/Pagination';
+@import '../src/components/Banner/Banner';
+@import '../src/components/Shared/Slider/Slider';
+@import '../src/components/CatalogPages/CatalogPage';
+@import '/src/utils/Mixins';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+
+  @include font-face-bold;
+}
+
+.aside-active {
+  overflow: hidden;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+a {
+  text-decoration: none;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+}

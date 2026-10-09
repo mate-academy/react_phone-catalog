@@ -1,0 +1,56 @@
+.favourites {
+  &__top {
+    display: flex;
+    align-items: flex-end;
+
+    gap: 8px;
+    margin-top: 88px;
+    margin-bottom: 40px;
+
+    font-family: Mont-Regular, sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: $secondary;
+
+    @include font-face-regular;
+  }
+
+  &__text {
+    font-family: Mont-Regular, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0%;
+    margin-top: 8px;
+
+    color: $secondary;
+
+    @include font-face-regular;
+  }
+
+  &__products {
+    margin-top: 24px;
+
+    @include page-grid;
+  }
+
+  &__product {
+    @include on-desktop {
+      grid-column: span 6;
+    }
+
+    @include on-tablet {
+      grid-column: span 4;
+    }
+
+    @include on-mobile {
+      grid-column: span 2;
+    }
+  }
+
+  &__empty {
+    grid-column: span 7;
+  }
+}
