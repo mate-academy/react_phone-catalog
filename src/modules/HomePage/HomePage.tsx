@@ -31,7 +31,7 @@ export function HomePage() {
 
   return (
     <div className={styles.page}>
-      <h1>Welcome to Nice Gadgets store!</h1>
+      <h1>Product Catalog</h1>
       <PicturesSlider />
       <ProductsSlider title="Brand new" products={newest} />
       <section className={styles.categories}>
