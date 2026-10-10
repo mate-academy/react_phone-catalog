@@ -1,0 +1,137 @@
+.card {
+  min-width: 0;
+  border: 1px solid var(--color-border);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  transition:
+    box-shadow var(--transition),
+    transform var(--transition);
+  background: white;
+}
+
+.card:hover {
+  box-shadow: 0 4px 18px #0000000d;
+}
+
+.imageLink {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.imageLink img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 220ms ease;
+}
+
+.imageLink:hover img {
+  transform: scale(1.1);
+}
+
+.name {
+  min-height: 40px;
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 500;
+  transition: color var(--transition);
+}
+
+.name:hover {
+  color: var(--color-primary);
+}
+
+.price {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid var(--color-border);
+  padding: 8px 0;
+  margin-bottom: 12px;
+}
+
+.price strong {
+  font-size: 22px;
+}
+
+.price del {
+  color: var(--color-muted);
+  font-size: 14px;
+}
+
+.specs {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 16px;
+  font-size: 11px;
+}
+
+.specs div {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.specs span {
+  color: var(--color-muted);
+}
+
+.specs b {
+  font-weight: 600;
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.add,
+.added {
+  min-height: 40px;
+  flex: 1;
+  border: 1px solid #313237;
+  color: white;
+  background: #313237;
+  font-size: 12px;
+  transition: all var(--transition);
+}
+
+.add:hover {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.added {
+  background: white;
+  color: #27ae60;
+  border-color: var(--color-border);
+}
+
+.heart {
+  width: 40px;
+  border: 1px solid #b4bdc3;
+  background: white;
+  font-size: 20px;
+  transition: all var(--transition);
+}
+
+.heart:hover,
+.favorited {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+@media (max-width: 639px) {
+  .card {
+    padding: 16px;
+  }
+  .imageLink {
+    margin-bottom: 16px;
+  }
+}

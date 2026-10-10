@@ -1,0 +1,114 @@
+.page {
+  padding-top: 24px;
+  min-height: 50vh;
+}
+
+.breadcrumb {
+  color: var(--color-muted);
+  font-size: 12px;
+  margin-bottom: 24px;
+}
+
+.back {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: var(--color-muted);
+  margin-bottom: 24px;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 16px;
+}
+
+.summary {
+  border: 1px solid var(--color-border);
+  padding: 24px;
+  text-align: center;
+  align-self: start;
+}
+
+.summary strong {
+  font-size: 32px;
+}
+
+.summary p {
+  font-size: 12px;
+  color: var(--color-muted);
+}
+
+.summary div {
+  border-top: 1px solid var(--color-border);
+  margin: 24px 0;
+}
+
+.summary button,
+.empty a {
+  width: 100%;
+  padding: 14px;
+  color: white;
+  background: #313237;
+  border: 1px solid #313237;
+}
+
+.empty {
+  padding: 32px 0 48px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.empty img {
+  width: min(280px, 80%);
+  height: 180px;
+  object-fit: contain;
+}
+
+.empty p {
+  font-size: 20px;
+}
+
+.empty a {
+  display: inline-block;
+  width: auto;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: #0007;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.modal > div {
+  background: white;
+  max-width: 420px;
+  padding: 28px;
+}
+
+.modal button {
+  padding: 10px 16px;
+  margin-right: 8px;
+}
+
+.modal button:first-of-type {
+  background: #313237;
+  color: white;
+  border: 1px solid #313237;
+}
+
+@media (max-width: 639px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+  .summary {
+    order: -1;
+  }
+}

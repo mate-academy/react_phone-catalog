@@ -1,0 +1,18 @@
+.page {
+  padding-top: 24px;
+  min-height: 50vh;
+}
+
+.breadcrumb,
+.count {
+  color: var(--color-muted);
+  font-size: 12px;
+}
+
+.breadcrumb {
+  margin-bottom: 32px;
+}
+
+.count {
+  margin-bottom: 32px;
+}
