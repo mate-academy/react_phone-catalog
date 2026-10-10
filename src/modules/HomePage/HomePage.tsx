@@ -38,7 +38,7 @@ export function HomePage() {
         <h2>Shop by category</h2>
         <div className={styles.categoryGrid}>
           <Link to="/phones">
-            <img src="/img/category-phones.webp" alt="" />
+            <img src="img/category-phones.webp" alt="" />
             <b>Mobile phones</b>
             <small>{count('phones')} models</small>
           </Link>
