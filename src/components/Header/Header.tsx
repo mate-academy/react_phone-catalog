@@ -1,132 +1,144 @@
-import { useState, useEffect, useCallback } from 'react';
-import { NavLink, Link, useLocation, useSearchParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { NavLink, Link, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 import { useStore } from '../../context/StoreContext';
-import { useDebounce } from '../../hooks/useDebounce';
 import styles from './Header.module.scss';
 
 export const Header = () => {
-  const { favorites, totalCartQuantity } = useStore();
-  const { pathname } = useLocation();
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { cart, favorites } = useStore();
+  const location = useLocation();
 
-  // const totalCartQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
-  const totalFavorites = favorites.length;
-
-  const showSearch = [
-    '/phones',
-    '/tablets',
-    '/accessories',
-    '/favorites',
-  ].includes(pathname);
-
-  const queryParam = searchParams.get('query') || '';
-  const [appliedQuery, setAppliedQuery] = useState(queryParam);
-  const debouncedQuery = useDebounce(appliedQuery, 500);
-
-  const updateQueryInUrl = useCallback(
-    (newQuery: string) => {
-      const params = new URLSearchParams(searchParams);
-
-      if (newQuery.trim()) {
-        params.set('query', newQuery);
-      } else {
-        params.delete('query');
-      }
-
-      setSearchParams(params);
-    },
-    [searchParams, setSearchParams],
-  );
-
+  // Закриваємо меню при переході на іншу сторінку
   useEffect(() => {
-    setAppliedQuery(queryParam);
-  }, [queryParam]);
+    document.body.style.overflow = '';
+    setIsMenuOpen(false);
+  }, [location]);
 
-  useEffect(() => {
-    if (debouncedQuery !== queryParam) {
-      updateQueryInUrl(debouncedQuery);
-    }
-  }, [debouncedQuery, queryParam, updateQueryInUrl]);
+  const toggleMenu = () => {
+    setIsMenuOpen(prev => {
+      const newState = !prev;
 
-  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setAppliedQuery(e.target.value);
+      document.body.style.overflow = newState ? 'hidden' : '';
+
+      return newState;
+    });
   };
 
-  const handleClearSearch = () => {
-    setAppliedQuery('');
-    updateQueryInUrl('');
+  const closeMenu = () => {
+    document.body.style.overflow = '';
+    setIsMenuOpen(false);
   };
 
   const getLinkClass = ({ isActive }: { isActive: boolean }) =>
-    classNames(styles.header__link, {
-      [styles['header__link--active']]: isActive,
+    classNames(styles.nav__link, {
+      [styles['nav__link--active']]: isActive,
     });
 
   return (
     <header className={styles.header}>
-      <div className={styles.header__container}>
+      {/* Використовуємо Bulma container для обмеження ширини та центрування */}
+      <div className={classNames('container', styles.header__container)}>
         <div className={styles.header__left}>
-          <Link to="/" className={styles.header__logo}>
-            NICE GADGETS
+          <Link to="/" className={styles.logo} onClick={closeMenu}>
+            {/* Використовуємо SVG логотип проєкту */}
+            <img
+              src="/img/Logo.png"
+              alt="Nice Gadgets"
+              className={styles.logo__img}
+            />
           </Link>
 
-          <nav className={styles.header__nav}>
+          {/* Десктопна навігація */}
+          <nav className={styles.nav}>
             <NavLink to="/" className={getLinkClass}>
-              HOME
+              Home
             </NavLink>
             <NavLink to="/phones" className={getLinkClass}>
-              PHONES
+              Phones
             </NavLink>
             <NavLink to="/tablets" className={getLinkClass}>
-              TABLETS
+              Tablets
             </NavLink>
             <NavLink to="/accessories" className={getLinkClass}>
-              ACCESSORIES
+              Accessories
             </NavLink>
           </nav>
         </div>
 
-        <div className={styles.header__right}>
-          {showSearch && (
-            <div className={styles.header__search}>
-              <input
-                type="text"
-                className={styles['header__search-input']}
-                placeholder={`Search in ${pathname.slice(1)}...`}
-                value={appliedQuery}
-                onChange={handleSearchChange}
-              />
-              {appliedQuery && (
-                <button
-                  className={styles['header__search-clear']}
-                  onClick={handleClearSearch}
-                  aria-label="Clear search"
-                >
-                  <i className="fas fa-times"></i>
-                </button>
-              )}
-            </div>
-          )}
+        <div className={styles.actions}>
+          <Link
+            to="/favorites"
+            className={classNames(styles.actionBtn, styles.actionBtn__desktop)}
+          >
+            <i className="fa-regular fa-heart" />
+            {favorites.length > 0 && (
+              <span className={styles.badge}>{favorites.length}</span>
+            )}
+          </Link>
 
-          <div className={styles.header__actions}>
-            <NavLink to="/favorites" className={styles.header__icon}>
-              <i className="far fa-heart"></i>
-              {totalFavorites > 0 && (
-                <span className={styles.header__badge}>{totalFavorites}</span>
-              )}
-            </NavLink>
-            <NavLink to="/cart" className={styles.header__icon}>
-              <i className="fas fa-shopping-bag"></i>
-              {totalCartQuantity > 0 && (
-                <span className={styles.header__badge}>
-                  {totalCartQuantity}
-                </span>
-              )}
-            </NavLink>
-          </div>
+          <Link
+            to="/cart"
+            className={classNames(styles.actionBtn, styles.actionBtn__desktop)}
+          >
+            <i className="fa-solid fa-bag-shopping" />
+            {cart.length > 0 && (
+              <span className={styles.badge}>{cart.length}</span>
+            )}
+          </Link>
+
+          {/* Кнопка Гамбургер / Закрити */}
+          <button className={styles.burger} onClick={toggleMenu}>
+            {isMenuOpen ? (
+              <i className="fa-solid fa-xmark" />
+            ) : (
+              <i className="fa-solid fa-bars" />
+            )}
+          </button>
         </div>
       </div>
+
+      {/* Мобільне меню (виїжджає збоку/з'являється під хедером) */}
+      <aside
+        className={classNames(styles.menu, {
+          [styles['menu--open']]: isMenuOpen,
+        })}
+      >
+        <nav className={styles.menu__nav}>
+          <NavLink to="/" className={getLinkClass}>
+            Home
+          </NavLink>
+          <NavLink to="/phones" className={getLinkClass}>
+            Phones
+          </NavLink>
+          <NavLink to="/tablets" className={getLinkClass}>
+            Tablets
+          </NavLink>
+          <NavLink to="/accessories" className={getLinkClass}>
+            Accessories
+          </NavLink>
+        </nav>
+
+        {/* Іконки внизу мобільного меню */}
+        <div className={styles.menu__footer}>
+          <Link
+            to="/favorites"
+            className={styles.actionBtn}
+            onClick={closeMenu}
+          >
+            <i className="fa-regular fa-heart" />
+            {favorites.length > 0 && (
+              <span className={styles.badge}>{favorites.length}</span>
+            )}
+          </Link>
+          <Link to="/cart" className={styles.actionBtn} onClick={closeMenu}>
+            <i className="fa-solid fa-bag-shopping" />
+            {cart.length > 0 && (
+              <span className={styles.badge}>{cart.length}</span>
+            )}
+          </Link>
+        </div>
+      </aside>
     </header>
   );
 };

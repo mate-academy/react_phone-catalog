@@ -1,155 +1,186 @@
-@import '../../styles/variables';
-
 .header {
   position: sticky;
   top: 0;
-  left: 0;
-  right: 0;
-  height: $header-height;
-  background-color: $c-bg;
-  border-bottom: 1px solid $c-border;
   z-index: 100;
+  background-color: var(--bg-color, #0f0f11);
+  border-bottom: 1px solid var(--border-color, #323232);
 
   &__container {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 100%;
-    max-width: $width-container;
-    margin: 0 auto;
-    padding: 0 $spacing-medium;
-  }
-
-  &__logo {
-    font-weight: 900;
-    font-size: 18px;
-    color: $c-text-main;
-    text-decoration: none;
+    height: 64px;
   }
 
   &__left {
     display: flex;
     align-items: center;
-    gap: 48px;
     height: 100%;
   }
+}
 
-  &__nav {
-    display: flex;
-    gap: $spacing-large;
-    height: 100%;
+.logo {
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  height: 100%;
+
+  &__img {
+    display: block;
+    height: 28px;
+    object-fit: contain;
+  }
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  gap: 32px;
+  margin-left: 24px;
+
+  @media (max-width: 1023px) {
+    display: none; // Ховаємо десктопне меню на мобільних
   }
 
   &__link {
-    color: $c-text-secondary;
-    text-decoration: none;
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    color: #89939a;
     text-transform: uppercase;
     font-size: 12px;
     font-weight: 800;
-    display: flex;
-    align-items: center;
-    position: relative;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    border-bottom: 3px solid transparent;
     transition: color 0.3s;
 
     &:hover {
-      color: $c-text-main;
+      color: #fff;
     }
 
     &--active {
-      color: $c-text-main;
-
-      &::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: 3px;
-        background-color: $c-text-main;
-      }
+      color: #fff;
+      border-bottom-color: #fff;
     }
   }
+}
 
-  &__right {
-    display: flex;
-    align-items: center;
-    height: 100%;
+.actions {
+  display: flex;
+  height: 100%;
+}
+
+.actionBtn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 100%;
+  color: #fff;
+  border-left: 1px solid var(--border-color, #323232);
+  cursor: pointer;
+  transition: color 0.3s;
+  text-decoration: none;
+
+  &:hover {
+    color: #89939a;
   }
 
-  &__search {
-    position: relative;
-    display: flex;
-    align-items: center;
-    height: 100%;
-    padding: 0 16px;
-    border-left: 1px solid $c-border;
+  &__desktop {
+    @media (max-width: 1023px) {
+      display: none;
+    }
+  }
+}
 
-    &-input {
-      background: transparent;
-      border: none;
-      color: $c-text-main;
+.burger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 100%;
+  background: none;
+  border: none;
+  border-left: 1px solid var(--border-color, #323232);
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+
+  @media (min-width: 1024px) {
+    display: none;
+  }
+}
+
+.badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  background-color: #eb5757;
+  color: #fff;
+  font-size: 9px;
+  font-weight: bold;
+  border-radius: 50%;
+}
+
+// Стилі мобільного меню
+.menu {
+  position: fixed;
+  top: 64px;
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 64px);
+  background-color: var(--bg-color, #0f0f11);
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 99;
+
+  &--open {
+    transform: translateX(0);
+  }
+
+  &__nav {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+
+    .nav__link {
+      height: auto;
       font-size: 14px;
-      outline: none;
-      width: 180px;
+      border-bottom: none;
+      padding-bottom: 4px;
 
-      &::placeholder {
-        color: $c-text-secondary;
-      }
-    }
-
-    &-clear {
-      background: none;
-      border: none;
-      color: $c-text-secondary;
-      cursor: pointer;
-      font-size: 12px;
-      padding: 4px;
-
-      &:hover {
-        color: $c-text-main;
+      &--active {
+        border-bottom: 2px solid #fff;
       }
     }
   }
 
-  &__actions {
+  &__footer {
     display: flex;
-    height: 100%;
-  }
+    height: 64px;
+    border-top: 1px solid var(--border-color, #323232);
 
-  &__icon {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: $header-height;
-    height: 100%;
-    color: $c-text-main;
-    border-left: 1px solid $c-border;
-    text-decoration: none;
-    transition: background-color 0.3s;
+    .actionBtn {
+      flex: 1;
+      border-left: none;
 
-    &:hover {
-      background-color: $c-surface;
+      &:last-child {
+        border-left: 1px solid var(--border-color, #323232);
+      }
     }
-
-    &:last-child {
-      border-right: 1px solid $c-border;
-    }
-  }
-
-  &__badge {
-    position: absolute;
-    top: 14px;
-    right: 14px;
-    background-color: $c-danger;
-    color: $c-text-main;
-    font-size: 10px;
-    font-weight: bold;
-    border-radius: 50%;
-    width: 14px;
-    height: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
 }
