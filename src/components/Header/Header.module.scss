@@ -218,6 +218,11 @@
           color: var(--color-secondary);
           opacity: 1;
         }
+
+        &::-webkit-search-cancel-button {
+          -webkit-appearance: none;
+          appearance: none;
+        }
       }
 
       button {
