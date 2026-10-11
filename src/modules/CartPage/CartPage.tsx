@@ -33,7 +33,7 @@ export function CartPage() {
       {!cart.length ? (
         <div className={styles.empty}>
           <p>Your cart is empty</p>
-          <img src="/img/cart-is-empty.png" alt="Empty shopping cart" />
+          <img src="img/cart-is-empty.png" alt="Empty shopping cart" />
           <Link to="/phones">Go shopping</Link>
         </div>
       ) : (

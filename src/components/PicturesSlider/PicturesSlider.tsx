@@ -5,17 +5,17 @@ const slides = [
   {
     title: 'The newest devices are here',
     subtitle: 'Discover the latest gadgets',
-    image: '/img/banner-phones.png',
+    image: 'img/banner-phones.png',
   },
   {
     title: 'Find your next favorite',
     subtitle: 'Smart choices for everyday life',
-    image: '/img/banner-tablets.png',
+    image: 'img/banner-tablets.png',
   },
   {
     title: 'Accessories that fit your life',
     subtitle: 'Small details, big difference',
-    image: '/img/banner-accessories.png',
+    image: 'img/banner-accessories.png',
   },
 ];
 

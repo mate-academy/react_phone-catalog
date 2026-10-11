@@ -43,12 +43,12 @@ export function HomePage() {
             <small>{count('phones')} models</small>
           </Link>
           <Link to="/tablets">
-            <img src="/img/category-tablets.webp" alt="" />
+            <img src="img/category-tablets.webp" alt="" />
             <b>Tablets</b>
             <small>{count('tablets')} models</small>
           </Link>
           <Link to="/accessories">
-            <img src="/img/category-accessories.webp" alt="" />
+            <img src="img/category-accessories.webp" alt="" />
             <b>Accessories</b>
             <small>{count('accessories')} models</small>
           </Link>

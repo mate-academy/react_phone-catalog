@@ -39,11 +39,11 @@ export function Header() {
             className={styles.iconLink}
             aria-label="Favorites"
           >
-            <img src="/img/icon-favorites.svg" alt="Favorites" />
+            <img src="img/icon-favorites.svg" alt="Favorites" />
             {favorites.length > 0 && <i>{favorites.length}</i>}
           </Link>
           <Link to="/cart" className={styles.iconLink} aria-label="Cart">
-            <img src="/img/icon-cart.svg" alt="Cart" />
+            <img src="img/icon-cart.svg" alt="Cart" />
             {cartCount > 0 && <i>{cartCount}</i>}
           </Link>
         </div>

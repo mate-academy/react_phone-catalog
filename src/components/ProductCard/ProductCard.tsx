@@ -12,7 +12,7 @@ export function ProductCard({ product }: { product: Product }) {
     <article className={styles.card}>
       <Link to={`/product/${product.id}`} className={styles.imageLink}>
         <img
-          src={product.image || '/img/placeholder.png'}
+          src={product.image || 'img/placeholder.png'}
           alt={product.name}
           loading="lazy"
           onError={event => {
