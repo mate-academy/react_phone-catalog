@@ -6,7 +6,6 @@ import { CircleButton } from '@/shared/components/ui';
 import { Product } from '@/shared/types';
 
 import styles from './ScrollLineCards.module.scss';
-//import products from '../../../../../public/api/products.json';
 
 interface Props {
   title: string;
@@ -32,7 +31,7 @@ export const ScrollLineCards = ({
 
     setIsAtStart(container.scrollLeft <= 0);
     setIsAtEnd(
-      container.scrollLeft + container.clientWidth >= container.scrollWidth - 1,
+      container.scrollLeft + container.clientWidth >= container.scrollWidth - 2,
     );
   };
 
@@ -56,7 +55,7 @@ export const ScrollLineCards = ({
       return;
     }
 
-    const card = container.querySelector<HTMLElement>(`article`);
+    const card = container.querySelector<HTMLAnchorElement>(`a`);
 
     if (!card) {
       return;

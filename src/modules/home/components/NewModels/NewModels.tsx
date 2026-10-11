@@ -1,6 +1,5 @@
 import { ScrollLineCards } from '@/shared/components';
 
-//import styles from './NewModels.module.scss';
 import products from '../../../../../public/api/products.json';
 
 export const NewModels = () => {

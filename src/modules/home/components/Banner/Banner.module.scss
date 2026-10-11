@@ -7,13 +7,8 @@
     grid-column: 1 / -1;
     margin-left: 0;
 
-    // margin-top: 32px;
     display: grid;
     grid-template-columns: subgrid;
-  }
-
-  @include media-tablet {
-    // margin-top: 56px;
   }
 }
 
@@ -50,7 +45,7 @@
   @include media-tablet {
     display: block;
   }
-  
+
   grid-column: span 1;
   height: 100%;
   border-radius: 48px;
@@ -67,13 +62,14 @@
   overflow: hidden;
   width: 100vw;
   margin-left: calc(-1 * var(--layout-padding-inline));
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 1 / 1;
   grid-column: 2 / -2;
 
   @include media-tablet {
     border-radius: 8px;
     width: 100%;
     margin-left: 0;
+    aspect-ratio: 5 / 2;
   }
 }
 
