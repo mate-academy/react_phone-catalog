@@ -33,7 +33,7 @@ export const Banner = ({ slides, intervalMs = 5000 }: BannerProps) => {
 
   return (
     <section className={styles.banner}>
-      <h1 className={styles.title}>Welcome to Nice Gadgets store!</h1>
+      <h2 className={styles.title}>Welcome to Nice Gadgets store!</h2>
       <Button
         className={styles.button}
         onClick={() =>

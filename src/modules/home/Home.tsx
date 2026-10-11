@@ -17,6 +17,7 @@ const slides = [
 export const Home = () => {
   return (
     <div className={styles.home} aria-label="Home Page">
+      <h1 style={{ display: 'none' }}>Product Catalog</h1>
       <Banner slides={slides} />
       <NewModels />
       <Categories />
