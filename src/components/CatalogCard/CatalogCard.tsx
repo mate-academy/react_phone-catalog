@@ -92,8 +92,8 @@ export const CatalogCard = ({
           <img
             src={
               favorite
-                ? '/icons/Favourites_HeartLikeFilled.svg'
-                : '/icons/Favourites_HeartLike.svg'
+                ? './icons/Favourites_HeartLikeFilled.svg'
+                : './icons/Favourites_HeartLike.svg'
             }
             alt="Add to favorite"
           />

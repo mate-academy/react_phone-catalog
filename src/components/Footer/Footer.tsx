@@ -10,7 +10,7 @@ export const Footer = () => {
       {/* LOGO */}
       <div className={styles.footer__logo}>
         <Link to="/" className={styles['footer__logo-link']}>
-          <img src="/public/logo/Logo.svg" alt="Phone catalog Logo" />
+          <img src="./logo/Logo.svg" alt="Phone catalog Logo" />
         </Link>
       </div>
       {/* LINKS */}
@@ -43,7 +43,7 @@ export const Footer = () => {
             });
           }}
         >
-          <img src="/icons/ChevronArrowUp.svg" alt="Back to top" />
+          <img src="./icons/ChevronArrowUp.svg" alt="Back to top" />
         </button>
       </div>
     </footer>

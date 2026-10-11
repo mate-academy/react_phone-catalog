@@ -57,9 +57,14 @@ export const MobileMenu = ({ setIsMenuOpen }: MobileMenuProps) => {
         <FavoriteIcon
           className={styles.footerIcon}
           favorites={favoriteIds.length}
+          onClick={() => setIsMenuOpen(false)}
         />
 
-        <CartIcon className={styles.footerIcon} cartItens={cartIds.length} />
+        <CartIcon
+          className={styles.footerIcon}
+          cartItens={cartIds.length}
+          onClick={() => setIsMenuOpen(false)}
+        />
       </div>
     </aside>
   );

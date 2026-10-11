@@ -7,8 +7,6 @@ import { NewModels } from '../../components/NewModels';
 import { ShopByCategory } from '../../components/ShopByCategory';
 import { HotPrices } from '../../components/HotPrices';
 
-export * from './HomePage';
-
 export const HomePage = () => {
   const [hasError, setHasError] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);

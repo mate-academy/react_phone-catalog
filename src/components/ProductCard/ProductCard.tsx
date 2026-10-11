@@ -21,8 +21,8 @@ export const ProductCard = ({
   const { toggleFavorite, isFavorite } = useFavorites();
   const { addToCart, removeFromCart, isInCart } = useCart();
 
-  const favorite = isFavorite(product.id);
-  const inCart = isInCart(product.id);
+  const favorite = isFavorite(product.itemId);
+  const inCart = isInCart(product.itemId);
 
   const category = searchParams.get('category');
 
@@ -76,21 +76,21 @@ export const ProductCard = ({
           }`}
           onClick={() => {
             if (inCart) {
-              removeFromCart(product.id);
+              removeFromCart(product.itemId);
             } else {
-              addToCart(product.id);
+              addToCart(product.itemId);
             }
           }}
         >
           {inCart ? 'Added' : 'Add to cart'}
         </button>
 
-        <button onClick={() => toggleFavorite(product.id)}>
+        <button onClick={() => toggleFavorite(product.itemId)}>
           <img
             src={
               favorite
-                ? '/icons/Favourites_HeartLikeFilled.svg'
-                : '/icons/Favourites_HeartLike.svg'
+                ? './icons/Favourites_HeartLikeFilled.svg'
+                : './icons/Favourites_HeartLike.svg'
             }
             alt="Add to favorite"
           />

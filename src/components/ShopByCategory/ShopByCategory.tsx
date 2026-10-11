@@ -56,7 +56,7 @@ export const ShopByCategory = ({
               className={`${styles.category__link} ${styles['category__link--phones']}`}
               to="/phones"
             >
-              <img src="/img/category-phones.webp" />
+              <img src="./img/category-phones.webp" />
             </Link>
 
             <div className={styles.category__text}>
@@ -70,7 +70,7 @@ export const ShopByCategory = ({
               className={`${styles.category__link} ${styles['category__link--tablets']}`}
               to="/tablets"
             >
-              <img src="/img/category-tablets.webp" />
+              <img src="./img/category-tablets.webp" />
             </Link>
             <div className={styles.category__text}>
               <h4>Tablets</h4>
@@ -83,7 +83,7 @@ export const ShopByCategory = ({
               className={`${styles.category__link} ${styles['category__link--accessories']}`}
               to="/accessories"
             >
-              <img src="/img/category-accessories.webp" />
+              <img src="./img/category-accessories.webp" />
             </Link>
             <div className={styles.category__text}>
               <h4>Accessories</h4>

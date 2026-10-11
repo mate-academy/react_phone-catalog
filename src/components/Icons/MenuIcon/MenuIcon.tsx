@@ -12,7 +12,7 @@ export const MenuIcon = ({ isMenuOpen, setIsMenuOpen }: MenuIconProps) => {
       className={styles.iconButton}
     >
       <img
-        src={isMenuOpen ? '/icons/Close.svg' : '/icons/Menu.svg'}
+        src={isMenuOpen ? './icons/Close.svg' : './icons/Menu.svg'}
         alt="Menu"
       />
     </button>

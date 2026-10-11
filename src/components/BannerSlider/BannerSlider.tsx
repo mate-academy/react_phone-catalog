@@ -9,9 +9,9 @@ type BannerSlideProps = {
 
 export const BannerSlider = ({ isLoading }: BannerSlideProps) => {
   const banners: string[] = [
-    '/img/phones/apple-iphone-14-pro/spaceblack/04.webp',
-    '/img/tablets/apple-ipad-pro-11-2021/spacegray/01.webp',
-    '/img/accessories/apple-watch-series-6/silver/00.webp',
+    './img/phones/apple-iphone-14-pro/spaceblack/04.webp',
+    './img/tablets/apple-ipad-pro-11-2021/spacegray/01.webp',
+    './img/accessories/apple-watch-series-6/silver/00.webp',
   ];
 
   const [currentBanner, setCurrentBanner] = useState<number>(0);
@@ -43,7 +43,7 @@ export const BannerSlider = ({ isLoading }: BannerSlideProps) => {
           }
         }}
       >
-        <img alt="Previus" src="/icons/ChevronArrowLeft.svg" />
+        <img alt="Previus" src="./icons/ChevronArrowLeft.svg" />
       </a>
 
       <div className={styles.container__slider}>
@@ -124,7 +124,7 @@ export const BannerSlider = ({ isLoading }: BannerSlideProps) => {
           }
         }}
       >
-        <img alt="Next" src="/icons/ChevronArrowRight.svg" />
+        <img alt="Next" src="./icons/ChevronArrowRight.svg" />
       </a>
     </div>
   );

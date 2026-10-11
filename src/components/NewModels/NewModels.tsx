@@ -53,7 +53,7 @@ export const NewModels = ({
               });
             }}
           >
-            <img alt="Previus" src="/icons/ChevronArrowLeft.svg" />
+            <img alt="Previus" src="./icons/ChevronArrowLeft.svg" />
           </a>
           <a
             onClick={() => {
@@ -63,7 +63,7 @@ export const NewModels = ({
               });
             }}
           >
-            <img alt="Next" src="/icons/ChevronArrowRight.svg" />
+            <img alt="Next" src="./icons/ChevronArrowRight.svg" />
           </a>
         </div>
       </div>
