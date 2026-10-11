@@ -60,7 +60,7 @@ export async function getProductDetails(
     return null;
   }
 
-  const detailResponse = await fetch(`/api/${catalogItem.category}.json`);
+  const detailResponse = await fetch(`api/${catalogItem.category}.json`);
 
   if (!detailResponse.ok) {
     throw new Error('Unable to load product details');
