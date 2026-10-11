@@ -27,7 +27,7 @@ const imagePath = (path?: string) =>
   path ? `/${path.replace(/^\//, '')}` : '';
 
 export async function getProducts(category?: Category): Promise<Product[]> {
-  const response = await fetch('/api/products.json');
+  const response = await fetch('api/products.json');
 
   if (!response.ok) {
     throw new Error('Unable to load products');
@@ -47,7 +47,7 @@ export async function getProducts(category?: Category): Promise<Product[]> {
 export async function getProductDetails(
   productId: string,
 ): Promise<Product | null> {
-  const catalogResponse = await fetch('/api/products.json');
+  const catalogResponse = await fetch('api/products.json');
 
   if (!catalogResponse.ok) {
     throw new Error('Unable to load product catalog');
