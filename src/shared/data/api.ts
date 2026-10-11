@@ -23,8 +23,7 @@ type DetailRecord = Omit<Product, 'id' | 'price' | 'fullPrice' | 'image'> & {
   namespaceId: string;
 };
 
-const imagePath = (path?: string) =>
-  path ? `/${path.replace(/^\//, '')}` : '';
+const imagePath = (path?: string) => (path ? `${path.replace(/^\//, '')}` : '');
 
 export async function getProducts(category?: Category): Promise<Product[]> {
   const response = await fetch('api/products.json');
