@@ -47,7 +47,7 @@ export function PicturesSlider() {
           <p>WELCOME TO NICE GADGETS</p>
           <h2>{slide.title}</h2>
           <span>{slide.subtitle}</span>
-          <a href="/#/phones">
+          <a href="/react_phone-catalog/#/phones">
             Shop now <b>→</b>
           </a>
         </div>
