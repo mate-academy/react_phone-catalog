@@ -10,7 +10,7 @@ export function ProductCard({ product }: { product: Product }) {
 
   return (
     <article className={styles.card}>
-      <Link to={`/product/${product.id}`} className={styles.imageLink}>
+      <Link to={`product/${product.id}`} className={styles.imageLink}>
         <img
           src={product.image || 'img/placeholder.png'}
           alt={product.name}
@@ -22,7 +22,7 @@ export function ProductCard({ product }: { product: Product }) {
           }}
         />
       </Link>
-      <Link to={`/product/${product.id}`} className={styles.name}>
+      <Link to={`product/${product.id}`} className={styles.name}>
         {product.name}
       </Link>
       <div className={styles.price}>
