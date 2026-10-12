@@ -8,7 +8,7 @@ import { Device } from '@/modules/products/schema';
 import { getColorHex } from '@/modules/products/utils';
 import { Property } from '@/shared/components';
 import { AccentButton, Button, CircleButton } from '@/shared/components/ui';
-import { useFavoriteButton } from '@/shared/hooks';
+import { useCartButton, useFavoriteButton } from '@/shared/hooks';
 import { cn } from '@/shared/utils';
 
 import styles from './Actions.module.scss';
@@ -24,6 +24,7 @@ export const Actions = ({ device, discount = true, className }: Props) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { isFavorite, onFavoriteClick } = useFavoriteButton(device.id);
+  const { isSelected, onSelectClick } = useCartButton(device.id);
 
   const {
     namespaceId,
@@ -105,7 +106,11 @@ export const Actions = ({ device, discount = true, className }: Props) => {
       </div>
 
       <div className={styles.buttons}>
-        <AccentButton title={t('addToCart')} />
+        <AccentButton
+          title={t(isSelected ? 'addedToCart' : 'addToCart')}
+          onClick={onSelectClick}
+          disabled={isSelected}
+        />
         <CircleButton onClick={onFavoriteClick}>
           {isFavorite ? <HeartActive /> : <Heart />}
         </CircleButton>

@@ -24,7 +24,6 @@ export const ProductCard = ({
   const { t } = useTranslation();
   const { isFavorite, onFavoriteClick } = useFavoriteButton(product.itemId);
   const { isSelected, onSelectClick } = useCartButton(product.itemId);
-
   const {
     image,
     name,

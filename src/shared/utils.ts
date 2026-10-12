@@ -33,3 +33,10 @@ export const getImageUrl = (image: string) => {
 
   return `${base}/${path}`;
 };
+
+export const scrollTopSmoothly = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  });
+};

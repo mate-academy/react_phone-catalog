@@ -5,6 +5,7 @@ import ArrowUp from '@/assets/icons/arrow-up.svg?react';
 import Logo from '@/assets/images/logo.svg?react';
 import { CircleButton } from '@/shared/components/ui';
 import { ROUTES } from '@/shared/constants';
+import { scrollTopSmoothly } from '@/shared/utils';
 
 import styles from './Footer.module.scss';
 
@@ -29,20 +30,15 @@ export const Footer = () => {
         >
           Github
         </a>
-        <a href="#">Contacts</a>
-        <a href="#">rights</a>
+        <a href="mailto:kagamlykas@gmail.com">Contacts</a>
+        <a href="/">rights</a>
       </nav>
 
       <div className={styles.back}>
         <span className={styles.back__text}>{t('backToTop')}</span>
         <CircleButton
           className={styles.back__button}
-          onClick={() => {
-            window.scrollTo({
-              top: 0,
-              behavior: 'smooth',
-            });
-          }}
+          onClick={scrollTopSmoothly}
         >
           <ArrowUp />
         </CircleButton>

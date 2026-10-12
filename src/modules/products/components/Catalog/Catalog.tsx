@@ -16,6 +16,7 @@ import {
 import { ROUTES } from '@/shared/constants';
 import { BreadcrumbContext } from '@/shared/context/BreadcrumbContext';
 import { useBaseBreadcrumbs, usePagination } from '@/shared/hooks';
+import { scrollTopSmoothly } from '@/shared/utils';
 
 import styles from './Catalog.module.scss';
 
@@ -45,12 +46,7 @@ export const Catalog = ({ categoryName, category }: Props) => {
     setBreadcrumbs(breadcrumbs);
   }, [breadcrumbs, setBreadcrumbs]);
 
-  useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-  }, [page, perPage]);
+  useEffect(scrollTopSmoothly, [page, perPage]);
 
   return (
     <>
