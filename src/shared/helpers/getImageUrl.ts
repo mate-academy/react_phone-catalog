@@ -1,5 +1,5 @@
 export const getImageUrl = (image: string) => {
-  const baseUrl = import.meta.env.BASE_URL;
+  const cleanPath = image.replace(/^\/+/, '');
 
-  return `${baseUrl.replace(/\/+$/, '')}/${image.replace(/^\/+/, '')}`;
+  return `${import.meta.env.BASE_URL}${cleanPath}`;
 };
