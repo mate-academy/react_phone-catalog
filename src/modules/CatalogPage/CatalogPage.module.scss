@@ -1,0 +1,118 @@
+.page {
+  padding-top: 24px;
+}
+
+.breadcrumb {
+  color: var(--color-muted);
+  font-size: 12px;
+  margin-bottom: 32px;
+}
+
+.page h1 {
+  margin-bottom: 8px;
+}
+
+.count {
+  color: var(--color-muted);
+  font-size: 12px;
+  margin-bottom: 32px;
+}
+
+.filters {
+  display: flex;
+  align-items: end;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.filters label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: var(--color-muted);
+  font-size: 12px;
+}
+
+.filters select,
+.filters input {
+  min-width: 150px;
+  height: 40px;
+  border: 1px solid #b4bdc3;
+  background: white;
+  color: #313237;
+  padding: 0 12px;
+  outline-color: var(--color-primary);
+}
+
+.filters .search {
+  margin-left: auto;
+}
+
+.filters input {
+  min-width: 210px;
+}
+
+.empty {
+  padding: 32px 0;
+  color: var(--color-muted);
+}
+
+.empty button {
+  border: 0;
+  background: var(--color-primary);
+  color: white;
+  padding: 10px 16px;
+  margin-left: 12px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 32px;
+}
+
+.pagination button {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #b4bdc3;
+  background: white;
+}
+
+.pagination .current {
+  background: #313237;
+  border-color: #313237;
+  color: white;
+}
+
+.pagination button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+@media (max-width: 639px) {
+  .filters {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .filters .search {
+    margin: 0;
+    grid-column: 1/-1;
+  }
+  .filters input,
+  .filters select {
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+.pagination span.dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  color: var(--color-muted);
+  font-size: 14px;
+}

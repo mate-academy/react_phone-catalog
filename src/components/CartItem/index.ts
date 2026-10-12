@@ -1,0 +1,1 @@
+export { CartItemView } from './CartItem';

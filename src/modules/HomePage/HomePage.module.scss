@@ -1,0 +1,96 @@
+.page {
+  padding-top: 1px;
+}
+
+.page h1 {
+  margin-top: 32px;
+  margin-bottom: 24px;
+  font-weight: 700;
+  color: #313237;
+  line-height: 1.2;
+
+  font-size: 0;
+
+  &::after {
+    content: 'Welcome to Nice Gadgets store!';
+    font-size: 32px;
+    font-weight: 700;
+    color: #313237;
+  }
+}
+
+.categories {
+  margin: 64px 0;
+}
+
+.categories h2 {
+  margin-bottom: 24px;
+}
+
+.categoryGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.categoryGrid a {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.categoryGrid a > img {
+  width: 100%;
+  height: clamp(140px, 24vw, 280px);
+  object-fit: contain;
+  background: #f2f4f5;
+  padding: 16px;
+  transition: transform var(--transition);
+}
+
+.categoryGrid a:hover > img {
+  transform: scale(1.02);
+}
+
+.categoryGrid b {
+  font-size: 16px;
+}
+
+.categoryGrid small {
+  color: var(--color-muted);
+  font-size: 12px;
+}
+
+@media (max-width: 639px) {
+  .page h1 {
+    margin-top: 24px;
+    margin-bottom: 16px;
+
+    &::after {
+      font-size: 24px;
+    }
+  }
+
+  .categories {
+    margin: 40px 0;
+  }
+
+  .categoryGrid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .categoryGrid a {
+    display: grid;
+    grid-template-columns: 112px 1fr;
+    align-items: center;
+    column-gap: 16px;
+  }
+
+  .categoryGrid a > img {
+    grid-row: span 2;
+    height: 112px;
+    object-fit: cover;
+  }
+}

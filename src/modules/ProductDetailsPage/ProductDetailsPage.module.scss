@@ -1,0 +1,189 @@
+.page {
+  padding-top: 24px;
+}
+
+.breadcrumb {
+  color: var(--color-muted);
+  font-size: 12px;
+  margin-bottom: 24px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.breadcrumb a:hover {
+  color: var(--color-primary);
+}
+
+.back {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: var(--color-muted);
+  margin-bottom: 24px;
+}
+
+.details {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 48px;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  gap: 16px;
+  min-width: 0;
+}
+
+.thumbs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.thumbs button {
+  width: 64px;
+  height: 64px;
+  border: 1px solid var(--color-border);
+  background: white;
+  padding: 6px;
+}
+
+.thumbs .selected {
+  border-color: #313237;
+}
+
+.thumbs img,
+.mainImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.mainImage {
+  min-height: 300px;
+  display: grid;
+  place-items: center;
+}
+
+.mainImage img {
+  max-height: 420px;
+}
+
+.options fieldset {
+  padding: 0 0 20px;
+  margin: 0 0 20px;
+  border: 0;
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.options legend {
+  width: 100%;
+  margin-bottom: 12px;
+  color: var(--color-muted);
+  font-size: 12px;
+}
+
+.options fieldset label {
+  padding: 10px 12px;
+  border: 1px solid #b4bdc3;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.options fieldset label input {
+  margin-right: 6px;
+  accent-color: var(--color-primary);
+}
+
+.options fieldset .chosen {
+  border-color: #313237;
+}
+
+.price {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.price strong {
+  font-size: 32px;
+}
+
+.price del {
+  color: var(--color-muted);
+}
+
+.add {
+  width: 100%;
+  height: 48px;
+  background: #313237;
+  color: white;
+  border: 1px solid #313237;
+  transition: background var(--transition);
+}
+
+.add:hover {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.options h3 {
+  margin-top: 32px;
+}
+
+.spec {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.spec span {
+  color: var(--color-muted);
+}
+
+.about {
+  margin-top: 64px;
+  max-width: 760px;
+  line-height: 1.7;
+}
+
+.about h2 {
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 16px;
+}
+
+.about h3 {
+  margin-top: 24px;
+}
+
+.about p {
+  color: #61646b;
+  font-size: 14px;
+}
+
+@media (max-width: 639px) {
+  .details {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .gallery {
+    grid-template-columns: 48px minmax(0, 1fr);
+    gap: 12px;
+  }
+  .thumbs button {
+    width: 48px;
+    height: 48px;
+  }
+  .mainImage {
+    min-height: 240px;
+  }
+  .about {
+    margin-top: 40px;
+  }
+}
