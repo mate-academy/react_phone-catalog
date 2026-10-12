@@ -34,7 +34,7 @@ module.exports = {
     'import',
     'react-hooks',
     '@typescript-eslint',
-    'prettier'
+    'prettier',
   ],
   rules: {
     // JS
@@ -96,6 +96,37 @@ module.exports = {
         types: {
           '{}': false,
         },
+      },
+    ],
+    'import/extensions': 'off',
+    'import/order': [
+      'error',
+      {
+        groups: [
+          'builtin',
+          'external',
+          'internal',
+          'parent',
+          'sibling',
+          'index',
+        ],
+
+        pathGroups: [
+          {
+            pattern: '@/**',
+            group: 'internal',
+            position: 'before',
+          },
+        ],
+
+        pathGroupsExcludedImportTypes: ['builtin'],
+
+        alphabetize: {
+          order: 'asc',
+          caseInsensitive: true,
+        },
+
+        'newlines-between': 'always',
       },
     ],
   },

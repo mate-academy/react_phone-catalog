@@ -1,0 +1,25 @@
+.error{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  color: var(--color-red);
+  border: 2px solid var(--color-red);
+  border-radius: 8px;
+  padding: 24px;
+  background-color: color-mix(in srgb, var(--color-red) 10%, transparent);
+}
+
+.button{
+  color: var(--color-elements);
+  background-color: var(--color-accent);
+  border: 2px solid var(--color-icons);
+  border-radius: 8px;
+  padding: 8px 16px;
+
+  &:hover{
+    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+  }
+}

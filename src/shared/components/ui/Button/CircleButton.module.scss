@@ -1,0 +1,22 @@
+.button {
+  height: 100%;
+  aspect-ratio: 1/ 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid var(--color-elements);
+  border-radius: 100%;
+  box-sizing: border-box;
+  
+  @include hover-transition;
+
+  &:disabled{
+    color: var(--color-elements);
+    cursor: not-allowed;
+  }
+
+  &:hover:not(:disabled){
+    border-color: var(--color-primary);
+  }
+}

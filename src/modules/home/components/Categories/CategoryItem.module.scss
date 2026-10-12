@@ -1,0 +1,41 @@
+.category {
+  width: 100%;
+  &__link{
+    text-decoration: none;
+  }
+
+  &__img {
+    width: 100%;
+    object-fit: cover;
+    aspect-ratio: 1 / 1;
+    transition: transform ease-in-out 0.3s;
+
+    &:hover{
+      transform: scale(1.1);
+    }
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 100%;
+    color: var(--color-primary);
+
+    margin-top: 24px;
+  }
+
+  &__description {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: var(--color-secondary);
+
+    margin-top: 4px;
+  }
+
+  @include media-tablet {
+    grid-column: span calc(var(--layout-columns-count) / 3);
+  }
+}
+
+

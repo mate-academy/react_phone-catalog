@@ -1,0 +1,28 @@
+@use './fonts.scss';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --color-accent: #4219d0;
+  --color-secondary-accent: #f4ba47;
+  --color-primary: #0f0f11;
+  --color-secondary: #89939a;
+  --color-icons: #b4bdc3;
+  --color-elements: #e2e6e9;
+  --color-hover-bg: #fafbfc;
+  --color-white: #fff;
+  --color-green: #27ae60;
+  --color-red: #eb5757;
+  --header-height: 48px;
+  --layout-padding-inline: 16px;
+  --layout-grid-gap-x: 16px;
+  --layout-columns-count: 4;
+}
+
+html {
+  font-family: Mont, sans-serif;
+}

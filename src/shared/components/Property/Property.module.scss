@@ -1,0 +1,19 @@
+.info__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.item {
+  &__title {
+    line-height: 100%;
+    color: var(--color-secondary);
+  }
+
+  &__text {
+    line-height: 100%;
+    color: var(--color-primary);
+  }
+}

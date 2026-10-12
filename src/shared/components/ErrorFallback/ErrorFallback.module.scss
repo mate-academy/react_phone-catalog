@@ -1,0 +1,35 @@
+.wrapper {
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
+}
+
+.content {
+  width: 100%;
+  max-width: 28rem;
+  text-align: center;
+}
+
+.title {
+  color: var(--color-primary);
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.description {
+  color: var(--color-secondary);
+  margin-top: 12px;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.button {
+  background-color: var(--color-accent);
+  color: var(--color-white);
+  margin-top: 24px;
+  height: 40px;
+  border-radius: 4px;
+  padding: 0 16px;
+}

@@ -1,0 +1,43 @@
+@mixin media-tablet {
+  @media (min-width: 640px) {
+    @content;
+  }
+}
+
+@mixin media-desktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin media-large {
+  @media (min-width: 1440px) {
+    @content;
+  }
+}
+
+@mixin page-grid {
+  --count-columns: 4;
+
+  display: grid;
+  grid-template-columns: repeat(var(--count-columns), 1fr);
+  column-gap: 16px;
+
+  @include media-tablet {
+    --count-columns: 12;
+  }
+
+  @include media-desktop {
+    --count-columns: 24;
+  }
+}
+
+@mixin hover-transition($duration: 0.3s) {
+  transition:
+    color $duration ease,
+    background-color $duration ease,
+    border-color $duration ease,
+    opacity $duration ease,
+    transform $duration ease,
+    box-shadow $duration ease;
+}
