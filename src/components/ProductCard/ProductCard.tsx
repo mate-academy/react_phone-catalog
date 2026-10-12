@@ -4,7 +4,7 @@ import { useShop } from '../../shared/context/ShopContext';
 import styles from './ProductCard.module.scss';
 
 export function ProductCard({ product }: { product: Product }) {
-  const { addToCart, toggleFavorite, isFavorite, isInCart } = useShop();
+  const { toggleCart, toggleFavorite, isFavorite, isInCart } = useShop();
   const favorite = isFavorite(product.id);
   const inCart = isInCart(product.id);
 
@@ -48,7 +48,7 @@ export function ProductCard({ product }: { product: Product }) {
       <div className={styles.buttons}>
         <button
           className={inCart ? styles.added : styles.add}
-          onClick={() => addToCart(product)}
+          onClick={() => toggleCart(product)}
         >
           {inCart ? 'Added to cart' : 'Add to cart'}
         </button>

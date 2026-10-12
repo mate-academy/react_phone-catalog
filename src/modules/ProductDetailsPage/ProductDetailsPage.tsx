@@ -5,6 +5,13 @@ import { getProductDetails, getSuggestedProducts } from '../../shared/data/api';
 import type { Product } from '../../shared/types';
 import { useShop } from '../../shared/context/ShopContext';
 import styles from './ProductDetailsPage.module.scss';
+
+const categoryLabels: Record<string, string> = {
+  phones: 'Phones',
+  tablets: 'Tablets',
+  accessories: 'Accessories',
+};
+
 export function ProductDetailsPage() {
   const { productId = '' } = useParams();
   const navigate = useNavigate();
@@ -15,7 +22,7 @@ export function ProductDetailsPage() {
   const [imageIndex, setImageIndex] = useState(0);
   const [color, setColor] = useState('');
   const [capacity, setCapacity] = useState('');
-  const { addToCart, isInCart } = useShop();
+  const { toggleCart, isInCart } = useShop();
 
   useEffect(() => {
     let alive = true;
@@ -32,8 +39,8 @@ export function ProductDetailsPage() {
 
         setProduct(result);
         if (result) {
-          setColor(result.colorsAvailable?.[0] ?? '');
-          setCapacity(result.capacityAvailable?.[0] ?? '');
+          setColor(result.color ?? result.colorsAvailable?.[0] ?? '');
+          setCapacity(result.capacity ?? result.capacityAvailable?.[0] ?? '');
 
           return getSuggestedProducts(result.id, result.category);
         }
@@ -60,51 +67,95 @@ export function ProductDetailsPage() {
       alive = false;
     };
   }, [productId]);
+
   if (loading) {
-    {
-      return (
-        <section className={styles.page}>
-          <p>Loading product…</p>
-        </section>
-      );
-    }
+    return (
+      <section className={styles.page}>
+        <p>Loading product…</p>
+      </section>
+    );
   }
 
   if (error) {
-    {
-      return (
-        <section className={styles.page}>
-          <p>Something went wrong.</p>
-          <button onClick={() => window.location.reload()}>Reload</button>
-        </section>
-      );
-    }
+    return (
+      <section className={styles.page}>
+        <p>Something went wrong.</p>
+        <button onClick={() => window.location.reload()}>Reload</button>
+      </section>
+    );
   }
 
   if (!product) {
-    {
-      return (
-        <section className={styles.page}>
-          <p>Product was not found</p>
-          <Link to="/">Go to home</Link>
-        </section>
-      );
-    }
+    return (
+      <section className={styles.page}>
+        <p>Product was not found</p>
+        <Link to="/">Go to home</Link>
+      </section>
+    );
   }
 
-  const pictures = [
-    product.image,
-    ...(Array.isArray(product.images) ? (product.images as string[]) : []),
-  ].filter(
-    (value, index, arr) => Boolean(value) && arr.indexOf(value) === index,
-  ) as string[];
+  const handleParamChange = (newColor: string, newCapacity: string) => {
+    if (!product) {
+      return;
+    }
+
+    const targetColor = newColor.toLowerCase().replace(/\s+/g, '-');
+    const targetCapacity = newCapacity.toLowerCase();
+
+    const currentColor = (product.color || color)
+      .toLowerCase()
+      .replace(/\s+/g, '-');
+    const currentCapacity = (product.capacity || capacity).toLowerCase();
+
+    let newId = product.id;
+
+    if (newId.includes(currentCapacity) && newId.includes(currentColor)) {
+      newId = newId
+        .replace(currentCapacity, targetCapacity)
+        .replace(currentColor, targetColor);
+    } else {
+      newId = `${product.category}-${product.namespaceId || product.id.split('-')[1]}-${targetCapacity}-${targetColor}`;
+    }
+
+    navigate(`/product/${newId}`);
+  };
+
+  const getPicturesForColor = () => {
+    const sourceImages =
+      Array.isArray(product.images) && product.images.length > 0
+        ? product.images
+        : [product.image];
+
+    const rawColor = color || product.colorsAvailable?.[0] || '';
+    const currentColor = rawColor.toLowerCase().replace(/\s+/g, '-');
+
+    return sourceImages
+      .map(imgPath => {
+        if (!imgPath) {
+          return '';
+        }
+
+        const parts = imgPath.split('/');
+
+        if (parts.length >= 2 && currentColor) {
+          parts[parts.length - 2] = currentColor;
+        }
+
+        return parts.join('/');
+      })
+      .filter(Boolean);
+  };
+
+  const pictures = getPicturesForColor();
 
   return (
     <section className={styles.page}>
       <div className={styles.breadcrumb}>
         <Link to="/">Home</Link> ›{' '}
-        <Link to={`/${product.category}`}>{product.category}</Link> ›{' '}
-        {product.name}
+        <Link to={`/${product.category}`}>
+          {categoryLabels[product.category] || product.category}
+        </Link>{' '}
+        › {product.name}
       </div>
       <button className={styles.back} onClick={() => navigate(-1)}>
         ← Back
@@ -124,7 +175,7 @@ export function ProductDetailsPage() {
             ))}
           </div>
           <div className={styles.mainImage}>
-            <img src={pictures[imageIndex]} alt={product.name} />
+            <img src={pictures[imageIndex] || pictures[0]} alt={product.name} />
           </div>
         </div>
         <div className={styles.options}>
@@ -141,7 +192,11 @@ export function ProductDetailsPage() {
                     name="color"
                     value={item}
                     checked={color === item}
-                    onChange={() => setColor(item)}
+                    onChange={() => {
+                      setColor(item);
+                      setImageIndex(0);
+                      handleParamChange(item, capacity);
+                    }}
                   />
                   {item}
                 </label>
@@ -161,7 +216,10 @@ export function ProductDetailsPage() {
                     name="capacity"
                     value={item}
                     checked={capacity === item}
-                    onChange={() => setCapacity(item)}
+                    onChange={() => {
+                      setCapacity(item);
+                      handleParamChange(color, item);
+                    }}
                   />
                   {item}
                 </label>
@@ -172,7 +230,7 @@ export function ProductDetailsPage() {
             <strong>${product.price}</strong>
             {product.fullPrice && <del>${product.fullPrice}</del>}
           </div>
-          <button className={styles.add} onClick={() => addToCart(product)}>
+          <button className={styles.add} onClick={() => toggleCart(product)}>
             {isInCart(product.id) ? 'Added to cart' : 'Add to cart'}
           </button>
           <h3>Tech specs</h3>

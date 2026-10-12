@@ -16,10 +16,13 @@ interface ShopContextValue {
   changeQuantity: (id: string, delta: number) => void;
   clearCart: () => void;
   toggleFavorite: (product: Product) => void;
+  toggleCart: (product: Product) => void;
   isFavorite: (id: string) => boolean;
   isInCart: (id: string) => boolean;
 }
+
 const ShopContext = createContext<ShopContextValue | null>(null);
+
 const readStorage = <T,>(key: string, fallback: T): T => {
   try {
     const value = localStorage.getItem(key);
@@ -71,6 +74,12 @@ export function ShopProvider({ children }: { children: ReactNode }) {
           items.some(item => item.id === product.id)
             ? items.filter(item => item.id !== product.id)
             : [...items, product],
+        ),
+      toggleCart: product =>
+        setCart(items =>
+          items.some(item => item.id === product.id)
+            ? items.filter(item => item.id !== product.id)
+            : [...items, { id: product.id, quantity: 1, product }],
         ),
       isFavorite: id => favorites.some(item => item.id === id),
       isInCart: id => cart.some(item => item.id === id),

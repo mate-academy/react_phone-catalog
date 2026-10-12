@@ -15,11 +15,31 @@ export function Footer() {
         </a>
 
         <div className={styles.navLinks}>
-          <a href="https://github.com/" target="_blank" rel="noreferrer">
+          <a
+            href="https://github.com/mate-academy/react_phone-catalog"
+            target="_blank"
+            rel="noreferrer"
+          >
             GITHUB
           </a>
-          <a href="/contacts">CONTACTS</a>
-          <a href="/rights">RIGHTS</a>
+          <a
+            href="#top"
+            onClick={e => {
+              e.preventDefault();
+              scrollToTop();
+            }}
+          >
+            CONTACTS
+          </a>
+          <a
+            href="#top"
+            onClick={e => {
+              e.preventDefault();
+              scrollToTop();
+            }}
+          >
+            RIGHTS
+          </a>
         </div>
 
         <button onClick={scrollToTop} className={styles.backButton}>

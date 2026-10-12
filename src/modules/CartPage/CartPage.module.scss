@@ -1,6 +1,6 @@
 .page {
   padding-top: 24px;
-  min-height: 50vh;
+  min-height: 55vh;
 }
 
 .breadcrumb {
@@ -60,6 +60,8 @@
   flex-direction: column;
   align-items: center;
   gap: 16px;
+  flex: 1;
+  justify-content: center;
 }
 
 .empty img {

@@ -43,8 +43,9 @@
 .categoryGrid a > img {
   width: 100%;
   height: clamp(140px, 24vw, 280px);
-  object-fit: cover;
+  object-fit: contain;
   background: #f2f4f5;
+  padding: 16px;
   transition: transform var(--transition);
 }
 
