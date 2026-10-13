@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import styles from './ProductDetailsPage.module.scss';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { getProductById, getSuggestedProducts } from '../../api';
 import { ProductDetails } from '../../types/productDetails';
 import { Breadcrumbs } from '../shared/components/Breadcrumbs';
@@ -36,6 +36,10 @@ export const ProductDetailsPage = () => {
       return;
     }
 
+    if (product?.id === productId) {
+      return;
+    }
+
     setError(false);
     setIsLoading(true);
 
@@ -43,7 +47,7 @@ export const ProductDetailsPage = () => {
       .then(setProduct)
       .catch(() => setError(true))
       .finally(() => setIsLoading(false));
-  }, [productId]);
+  }, [productId, product?.id]);
 
   useEffect(() => {
     if (product) {
@@ -58,6 +62,17 @@ export const ProductDetailsPage = () => {
 
     getSuggestedProducts(product.id).then(setSuggestedProducts);
   }, [product?.id]);
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }, [productId]);
+
+  if (isLoading && !product) {
+    return <Loader />;
+  }
 
   const capitalize = (category: string | undefined) => {
     if (!category) {
@@ -96,13 +111,16 @@ export const ProductDetailsPage = () => {
     }
   };
 
+  const handleVariantChange = (targetProduct: ProductDetails) => {
+    setProduct(targetProduct);
+    navigate(`/product/${targetProduct.id}`);
+  };
+
   return (
     <div className={styles.details}>
-      {isLoading && <Loader />}
+      {error && <ErrorMessage />}
 
-      {error && !isLoading && <ErrorMessage />}
-
-      {!error && !isLoading && (
+      {!error && (
         <>
           {product && (
             <Breadcrumbs
@@ -118,7 +136,10 @@ export const ProductDetailsPage = () => {
             />
           )}
 
-          <button onClick={() => navigate(-1)} className={styles.details__back}>
+          <button
+            onClick={() => navigate(`/${capitalize(product?.category)}`)}
+            className={styles.details__back}
+          >
             <span className={styles.details__back_icon}></span>
             <span className={styles.details__back_text}>Back</span>
           </button>
@@ -129,11 +150,11 @@ export const ProductDetailsPage = () => {
         </>
       )}
 
-      {!error && !isLoading && !product && (
+      {!error && !product && (
         <h4 className={styles.details__notfound}>Product was not found</h4>
       )}
 
-      {!error && !isLoading && product && (
+      {!error && product && (
         <div className={styles.details__gridsection}>
           <div className={styles.details__gallery}>
             <img
@@ -197,9 +218,10 @@ export const ProductDetailsPage = () => {
                     }
 
                     return (
-                      <Link
+                      <button
                         key={color}
-                        to={`/product/${targetProduct.id}`}
+                        type="button"
+                        onClick={() => handleVariantChange(targetProduct)}
                         className={`${styles.details__colors_link} ${
                           isActive ? styles.details__colors_linkActive : ''
                         }`}
@@ -211,7 +233,7 @@ export const ProductDetailsPage = () => {
                             backgroundColor: productColors[color] || color,
                           }}
                         />
-                      </Link>
+                      </button>
                     );
                   })}
                 </div>
@@ -250,16 +272,17 @@ export const ProductDetailsPage = () => {
                     }
 
                     return (
-                      <Link
+                      <button
                         key={capacity}
-                        to={`/product/${targetProduct.id}`}
+                        type="button"
+                        onClick={() => handleVariantChange(targetProduct)}
                         className={`${styles.details__capacity_link} ${
                           isActive ? styles.details__capacity_linkActive : ''
                         }`}
                         aria-label={`Choose ${capacity} capacity`}
                       >
                         {capacity}
-                      </Link>
+                      </button>
                     );
                   })}
                 </div>
@@ -323,7 +346,7 @@ export const ProductDetailsPage = () => {
         </div>
       )}
 
-      {!error && !isLoading && product && (
+      {!error && product && (
         <div className={styles.details__bottom}>
           <div className={styles.details__about}>
             <h3 className={styles.details__about_title}>About</h3>
@@ -403,7 +426,7 @@ export const ProductDetailsPage = () => {
         </div>
       )}
 
-      {!error && !isLoading && product && (
+      {!error && product && (
         <div className={styles.details__slider}>
           <ProductsSlider
             products={suggestedProducts}

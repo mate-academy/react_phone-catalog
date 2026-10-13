@@ -32,12 +32,18 @@ export const Footer = () => {
                 </Link>
               </li>
               <li className={styles.nav__item}>
-                <Link to="" className={styles.nav__link}>
+                <Link
+                  to="https://github.com/vladyslav-kukhar"
+                  className={styles.nav__link}
+                >
                   Contacts
                 </Link>
               </li>
               <li className={styles.nav__item}>
-                <Link to="" className={styles.nav__link}>
+                <Link
+                  to="https://github.com/mate-academy/react_phone-catalog"
+                  className={styles.nav__link}
+                >
                   Rights
                 </Link>
               </li>

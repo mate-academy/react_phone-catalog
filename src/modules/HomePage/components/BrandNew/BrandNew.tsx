@@ -9,9 +9,16 @@ export const BrandNew = () => {
     product => product.year === newest,
   );
 
+  const preparedModels = brandNewModels.map(model => {
+    return {
+      ...model,
+      price: model.fullPrice,
+    };
+  });
+
   return (
     <section className={styles.brandnew}>
-      <ProductsSlider products={brandNewModels} title={'Brand new models'} />
+      <ProductsSlider products={preparedModels} title={'Brand new models'} />
     </section>
   );
 };

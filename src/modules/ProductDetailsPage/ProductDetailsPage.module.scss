@@ -25,6 +25,8 @@
     background-color: transparent;
     padding: 0;
 
+    cursor: pointer;
+
     &_icon {
       display: block;
       background-image: url(/img/PicturesSlider/arrow-right.svg);
@@ -39,6 +41,12 @@
 
       color: $secondary;
       line-height: 1;
+
+      transition: color $effect-duration ease;
+
+      &:hover {
+        color: $primary;
+      }
     }
   }
 
@@ -460,7 +468,7 @@
 
     &_value {
       @include body-text;
-      
+
       text-align: right;
     }
   }
