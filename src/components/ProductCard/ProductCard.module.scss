@@ -31,18 +31,17 @@
 }
 
 .title {
-  font-family: var(--font-main);
-  font-weight: 600;
   font-size: 14px;
   line-height: 21px;
-  color: #313237;
-  margin: 0 0 8px;
-  height: 42px;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
+  color: var(--c-primary);
   text-decoration: none;
+  margin-bottom: 8px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Ограничиваем название двумя строками, чтобы не ломало верстку */
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  height: 42px; /* Фиксированная высота под 2 строки */
 }
 
 .priceBlock {
@@ -79,14 +78,13 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin-bottom: 24px;
-  flex-grow: 1;
+  margin-bottom: 16px;
 }
 
 .specRow {
   display: flex;
   justify-content: space-between;
-  font-family: var(--font-main);
+  align-items: center;
   font-size: 12px;
   line-height: 15px;
 }
@@ -97,8 +95,9 @@
 }
 
 .specValue {
-  color: #313237;
-  font-weight: 700;
+  color: var(--c-primary);
+  font-weight: 600;
+  text-align: right;
 }
 
 .buttons {

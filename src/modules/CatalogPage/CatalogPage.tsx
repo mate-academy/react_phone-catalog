@@ -50,7 +50,6 @@ export const CatalogPage: FC<Props> = ({ category, title }) => {
       });
   }, [category]);
 
-  // ИСПРАВЛЕНИЕ: Клонируем searchParams перед изменением, чтобы React увидел разницу
   const handleSortChange = (e: ChangeEvent<HTMLSelectElement>) => {
     const newParams = new URLSearchParams(searchParams);
 
@@ -124,15 +123,9 @@ export const CatalogPage: FC<Props> = ({ category, title }) => {
       <h1 className={styles.title}>{title}</h1>
       <p className={styles.count}>{sortedProducts.length} models</p>
 
-      {/* ИСПРАВЛЕНИЕ ВЕРСТКИ: Блок поиска вынесен наверх и занимает всю ширину */}
-      <div style={{ marginBottom: '24px' }}>
-        <div
-          className={styles.selectGroup}
-          style={{ width: '100%', maxWidth: '100%' }}
-        >
-          <span className={styles.label}>Search</span>
-          <Search placeholder={`Search in ${title.toLowerCase()}...`} />
-        </div>
+      {/* Поисковая строка вынесена наверх отдельным блоком */}
+      <div className={styles.searchWrapper}>
+        <Search placeholder={`Search in ${title.toLowerCase()}...`} />
       </div>
 
       <div className={styles.controls}>

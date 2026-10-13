@@ -1,8 +1,13 @@
 .page {
-  padding-top: 24px;
-  padding-bottom: 80px;
   display: flex;
   flex-direction: column;
+  padding: 0 24px 80px;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  @media (max-width: 640px) {
+    padding: 0 16px 40px;
+  }
 }
 
 .breadcrumbs {
@@ -42,12 +47,18 @@
   display: flex;
   gap: 16px;
   margin-bottom: 24px;
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+    gap: 12px;
+  }
 }
 
 .selectGroup {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  flex: 1;
 }
 
 .label {
@@ -74,9 +85,16 @@
 }
 
 .grid {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
   gap: 16px;
+  justify-items: center; /* Центрирует карточки, если они не заполнили ряд */
+  margin-bottom: 40px;
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
 }
 
 .centerMessage {
@@ -97,4 +115,9 @@
   border: none;
   cursor: pointer;
   font-weight: 600;
+}
+
+.searchWrapper {
+  width: 100%;
+  margin-bottom: 16px;
 }
