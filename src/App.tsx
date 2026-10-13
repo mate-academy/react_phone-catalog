@@ -8,6 +8,7 @@ import { CatalogPage } from './modules/CatalogPage';
 import { ProductDetailsPage } from './modules/ProductDetailsPage';
 import { NotFoundPage } from './modules/NotFoundPage';
 import './App.scss';
+import React from 'react';
 
 export const App = () => {
   return (

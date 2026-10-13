@@ -87,7 +87,7 @@ export const HomePage = () => {
 
   return (
     <div className={styles.homePage}>
-      <h1 className={styles.mainTitle}>Welcome to Nice Gadgets store!</h1>
+      <h1 className={styles.mainTitle}>Product Catalog</h1>
 
       <section className={styles.section}>
         <PicturesSlider />
