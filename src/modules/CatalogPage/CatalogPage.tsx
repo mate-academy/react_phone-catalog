@@ -50,20 +50,27 @@ export const CatalogPage: FC<Props> = ({ category, title }) => {
       });
   }, [category]);
 
+  // ИСПРАВЛЕНИЕ: Клонируем searchParams перед изменением, чтобы React увидел разницу
   const handleSortChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    searchParams.set('sort', e.target.value);
-    setSearchParams(searchParams);
+    const newParams = new URLSearchParams(searchParams);
+
+    newParams.set('sort', e.target.value);
+    setSearchParams(newParams);
   };
 
   const handlePerPageChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    searchParams.set('perPage', e.target.value);
-    searchParams.set('page', '1');
-    setSearchParams(searchParams);
+    const newParams = new URLSearchParams(searchParams);
+
+    newParams.set('perPage', e.target.value);
+    newParams.set('page', '1');
+    setSearchParams(newParams);
   };
 
   const handlePageChange = (newPage: number) => {
-    searchParams.set('page', newPage.toString());
-    setSearchParams(searchParams);
+    const newParams = new URLSearchParams(searchParams);
+
+    newParams.set('page', newPage.toString());
+    setSearchParams(newParams);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -117,13 +124,18 @@ export const CatalogPage: FC<Props> = ({ category, title }) => {
       <h1 className={styles.title}>{title}</h1>
       <p className={styles.count}>{sortedProducts.length} models</p>
 
-      <div className={styles.controls}>
-        {/* Поиск перенесен на самый верх */}
-        <div className={styles.selectGroup}>
+      {/* ИСПРАВЛЕНИЕ ВЕРСТКИ: Блок поиска вынесен наверх и занимает всю ширину */}
+      <div style={{ marginBottom: '24px' }}>
+        <div
+          className={styles.selectGroup}
+          style={{ width: '100%', maxWidth: '100%' }}
+        >
           <span className={styles.label}>Search</span>
           <Search placeholder={`Search in ${title.toLowerCase()}...`} />
         </div>
+      </div>
 
+      <div className={styles.controls}>
         <div className={styles.selectGroup}>
           <label htmlFor="sort-select" className={styles.label}>
             Sort by
