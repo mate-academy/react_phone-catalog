@@ -138,7 +138,7 @@ export const ProductDetailsPage = () => {
           <div className={styles.details__gallery}>
             <img
               className={styles.details__mainimg}
-              src={`/${selectedImg}`}
+              src={`${selectedImg}`}
               alt={product?.name}
             />
 
@@ -154,7 +154,7 @@ export const ProductDetailsPage = () => {
                 >
                   <img
                     className={styles.details__smallimg}
-                    src={`/${img}`}
+                    src={`${img}`}
                     alt={`${product.name} ${index + 1}`}
                   />
                 </button>

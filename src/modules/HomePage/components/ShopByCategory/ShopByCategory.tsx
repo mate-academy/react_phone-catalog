@@ -18,7 +18,7 @@ export const ShopByCategory = () => {
           <Link to={'/phones'} className={styles.card__imgLink}>
             <img
               className={styles.card__img}
-              src="/img/ShopByCategory/Phones.webp"
+              src="img/ShopByCategory/Phones.webp"
               alt="Phones"
             ></img>
           </Link>
@@ -34,7 +34,7 @@ export const ShopByCategory = () => {
           <Link to={'/tablets'} className={styles.card__imgLink}>
             <img
               className={styles.card__img}
-              src="/img/ShopByCategory/Tablets.webp"
+              src="img/ShopByCategory/Tablets.webp"
               alt="Tablets"
             ></img>
           </Link>
@@ -50,7 +50,7 @@ export const ShopByCategory = () => {
           <Link to={'/accessories'} className={styles.card__imgLink}>
             <img
               className={styles.card__img}
-              src="/img/ShopByCategory/Accessories.webp"
+              src="img/ShopByCategory/Accessories.webp"
               alt="Accessories"
             ></img>
           </Link>

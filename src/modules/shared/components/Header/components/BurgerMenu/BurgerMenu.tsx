@@ -37,13 +37,13 @@ export const BurgerMenu: React.FC<Props> = ({ onClose, isOpen }) => {
         <a className={styles.menu__logo} href="/">
           <img
             className={styles.menu__logo_img}
-            src="/img/logo/Logo-dark.svg"
+            src="img/logo/Logo-dark.svg"
             alt="Nice Gadgets Logo"
           />
         </a>
 
         <div className={styles.menu__close} onClick={onClose}>
-          <img src="/img/icons/Close.svg" alt="Close" />
+          <img src="img/icons/Close.svg" alt="Close" />
         </div>
       </div>
 
@@ -84,7 +84,7 @@ export const BurgerMenu: React.FC<Props> = ({ onClose, isOpen }) => {
         >
           <img
             className={styles.menu__fav_icon}
-            src="/img/icons/Favourites.svg"
+            src="img/icons/Favourites.svg"
             alt="Favourites"
           />
           {favItems.length > 0 && (
@@ -95,7 +95,7 @@ export const BurgerMenu: React.FC<Props> = ({ onClose, isOpen }) => {
         <NavLink to={'/cart'} className={setCartLinkClass} onClick={onClose}>
           <img
             className={styles.menu__cart_icon}
-            src="/img/icons/Cart.svg"
+            src="img/icons/Cart.svg"
             alt="Cart"
           />
           {items.length > 0 && (

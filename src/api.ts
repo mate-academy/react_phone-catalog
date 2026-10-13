@@ -21,7 +21,7 @@ export const getSuggestedProducts = async (itemId: string | undefined) => {
     return [];
   }
 
-  const response = await fetch('/public/api/products.json');
+  const response = await fetch('api/products.json');
 
   if (!response.ok) {
     throw new Error('Failed to load products');
@@ -34,7 +34,7 @@ export const getSuggestedProducts = async (itemId: string | undefined) => {
 };
 
 export const getProductById = async (id: string) => {
-  const productsResponse = await fetch('/api/products.json');
+  const productsResponse = await fetch('api/products.json');
 
   if (!productsResponse.ok) {
     throw new Error('Failed to load products');
@@ -52,15 +52,15 @@ export const getProductById = async (id: string) => {
 
   switch (product.category) {
     case 'phones':
-      detailsResponse = await fetch('/api/phones.json');
+      detailsResponse = await fetch('api/phones.json');
       break;
 
     case 'tablets':
-      detailsResponse = await fetch('/api/tablets.json');
+      detailsResponse = await fetch('api/tablets.json');
       break;
 
     case 'accessories':
-      detailsResponse = await fetch('/api/accessories.json');
+      detailsResponse = await fetch('api/accessories.json');
       break;
 
     default:
@@ -79,7 +79,7 @@ export const getProductById = async (id: string) => {
 };
 
 export const getPhones = async (): Promise<Product[]> => {
-  const response = await fetch('/public/api/products.json');
+  const response = await fetch('api/products.json');
 
   if (!response.ok) {
     throw new Error('Failed to load products');
@@ -93,7 +93,7 @@ export const getPhones = async (): Promise<Product[]> => {
 };
 
 export const getTablets = async (): Promise<Product[]> => {
-  const response = await fetch('/public/api/products.json');
+  const response = await fetch('api/products.json');
 
   if (!response.ok) {
     throw new Error('Failed to load products');
@@ -107,7 +107,7 @@ export const getTablets = async (): Promise<Product[]> => {
 };
 
 export const getAccessories = async (): Promise<Product[]> => {
-  const response = await fetch('/public/api/products.json');
+  const response = await fetch('api/products.json');
 
   if (!response.ok) {
     throw new Error('Failed to load products');

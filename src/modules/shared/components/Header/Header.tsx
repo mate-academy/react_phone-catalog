@@ -93,7 +93,7 @@ export const Header = () => {
             <Link className={styles.header__logo} to="/">
               <img
                 className={styles.header__logo_img}
-                src="/img/logo/Logo.svg"
+                src="img/logo/Logo.svg"
                 alt="Nice Gadgets Logo"
               />
             </Link>
@@ -140,7 +140,7 @@ export const Header = () => {
                 className={styles.header__burgermenu}
                 onClick={() => setIsMenuOpen(true)}
               >
-                <img src="/img/icons/Menu.svg" alt="Burger Menu" />
+                <img src="img/icons/Menu.svg" alt="Burger Menu" />
               </div>
             )}
           </div>
@@ -166,7 +166,7 @@ export const Header = () => {
             <NavLink to={'/favourites'} className={setFavLinkClass}>
               <img
                 className={styles.header__fav_icon}
-                src="/img/icons/Favourites.svg"
+                src="img/icons/Favourites.svg"
                 alt="Favourites"
               />
               {favItems.length > 0 && (
@@ -178,7 +178,7 @@ export const Header = () => {
             <NavLink to={'/cart'} className={setCartLinkClass}>
               <img
                 className={styles.header__cart_icon}
-                src="/img/icons/Cart.svg"
+                src="img/icons/Cart.svg"
                 alt="Cart"
               />
               {items.length > 0 && (
