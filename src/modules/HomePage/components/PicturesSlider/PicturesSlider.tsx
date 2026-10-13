@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
+import { getPublicPath } from '../../../shared/utils/pathHelper';
 import styles from './PicturesSlider.module.scss';
 
 const banners = [
@@ -63,7 +64,7 @@ export const PicturesSlider: React.FC = () => {
             {banners.map(banner => (
               <Link key={banner.id} to={banner.link} className={styles.slide}>
                 <img
-                  src={banner.image}
+                  src={getPublicPath(banner.image)}
                   alt={banner.alt}
                   className={styles.bannerImage}
                 />

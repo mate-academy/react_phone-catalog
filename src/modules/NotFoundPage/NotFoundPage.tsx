@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../shared/context/LanguageContext';
+import { getPublicPath } from '../shared/utils/pathHelper';
 import styles from './NotFoundPage.module.scss';
 
 export const NotFoundPage: React.FC = () => {
@@ -9,7 +10,7 @@ export const NotFoundPage: React.FC = () => {
   return (
     <div className={styles.page}>
       <img
-        src="/img/page-not-found.png"
+        src={getPublicPath('img/page-not-found.png')}
         alt="Page not found"
         className={styles.image}
       />

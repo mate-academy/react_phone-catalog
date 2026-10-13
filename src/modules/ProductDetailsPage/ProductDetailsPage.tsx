@@ -15,6 +15,7 @@ import { ProductsSlider } from '../shared/components/ProductsSlider';
 import { useCart } from '../shared/context/CartContext';
 import { useFavorites } from '../shared/context/FavoritesContext';
 import { useLanguage } from '../shared/context/LanguageContext';
+import { getPublicPath } from '../shared/utils/pathHelper';
 import styles from './ProductDetailsPage.module.scss';
 
 const COLOR_MAP: Record<string, string> = {
@@ -228,7 +229,7 @@ export const ProductDetailsPage: React.FC = () => {
                   aria-label={`Select photo ${idx + 1}`}
                 >
                   <img
-                    src={`/${img}`}
+                    src={getPublicPath(img)}
                     alt={`${details.name} thumb ${idx + 1}`}
                     className={styles.thumbImage}
                   />
@@ -238,7 +239,7 @@ export const ProductDetailsPage: React.FC = () => {
 
             <div className={styles.mainImageWrapper}>
               <img
-                src={`/${selectedImage || details.images[0]}`}
+                src={getPublicPath(selectedImage || details.images[0])}
                 alt={details.name}
                 className={styles.mainImage}
               />

@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import { useLanguage } from '../../../shared/context/LanguageContext';
+import { getPublicPath } from '../../../shared/utils/pathHelper';
 import styles from './ShopByCategory.module.scss';
 
 interface Props {
@@ -52,7 +53,11 @@ export const ShopByCategory: React.FC<Props> = ({
               to={cat.path}
               className={classNames(styles.imageWrapper, styles[cat.type])}
             >
-              <img src={cat.image} alt={cat.title} className={styles.image} />
+              <img
+                src={getPublicPath(cat.image)}
+                alt={cat.title}
+                className={styles.image}
+              />
             </Link>
 
             <Link to={cat.path} className={styles.categoryTitle}>

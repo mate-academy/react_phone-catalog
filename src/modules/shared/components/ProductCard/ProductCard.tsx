@@ -5,6 +5,7 @@ import { Product } from '../../types/Product';
 import { useCart } from '../../context/CartContext';
 import { useFavorites } from '../../context/FavoritesContext';
 import { useLanguage } from '../../context/LanguageContext';
+import { getPublicPath } from '../../utils/pathHelper';
 import styles from './ProductCard.module.scss';
 
 interface Props {
@@ -24,7 +25,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     <div className={styles.card} data-cy="cardsContainer">
       <Link to={productUrl} className={styles.imageWrapper}>
         <img
-          src={`/${product.image}`}
+          src={getPublicPath(product.image)}
           alt={product.name}
           className={styles.image}
         />

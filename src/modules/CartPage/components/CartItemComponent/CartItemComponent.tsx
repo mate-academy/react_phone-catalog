@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { CartItem } from '../../../shared/types/Product';
 import { useCart } from '../../../shared/context/CartContext';
+import { getPublicPath } from '../../../shared/utils/pathHelper';
 import styles from './CartItemComponent.module.scss';
 
 interface Props {
@@ -27,7 +28,7 @@ export const CartItemComponent: React.FC<Props> = ({ item }) => {
 
         <Link to={`/product/${product.itemId}`} className={styles.imageWrapper}>
           <img
-            src={`/${product.image}`}
+            src={getPublicPath(product.image)}
             alt={product.name}
             className={styles.image}
           />

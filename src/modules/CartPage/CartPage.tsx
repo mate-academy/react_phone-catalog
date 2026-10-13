@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useCart } from '../shared/context/CartContext';
 import { useLanguage } from '../shared/context/LanguageContext';
 import { CartItemComponent } from './components/CartItemComponent';
+import { getPublicPath } from '../shared/utils/pathHelper';
 import styles from './CartPage.module.scss';
 
 export const CartPage: React.FC = () => {
@@ -43,7 +44,7 @@ export const CartPage: React.FC = () => {
         {cartItems.length === 0 ? (
           <div className={styles.emptyState}>
             <img
-              src="/img/cart-is-empty.png"
+              src={getPublicPath('img/cart-is-empty.png')}
               alt="Empty cart"
               className={styles.emptyImage}
             />

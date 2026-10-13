@@ -1,9 +1,9 @@
 import { Product, ProductDetails } from '../types/Product';
-
-const BASE_URL = '/api';
+import { getPublicPath } from '../utils/pathHelper';
 
 async function fetchData<T>(path: string): Promise<T> {
-  const response = await fetch(`${BASE_URL}/${path}`);
+  const url = getPublicPath(`api/${path}`);
+  const response = await fetch(url);
 
   if (!response.ok) {
     throw new Error(`Failed to fetch ${path}: ${response.statusText}`);
