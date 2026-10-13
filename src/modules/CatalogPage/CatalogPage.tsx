@@ -32,7 +32,6 @@ export const CatalogPage: FC<Props> = ({ category, title }) => {
     setLoading(true);
     setError(false);
 
-    // Убрали слеш в начале пути, теперь он относительный
     fetch(`api/${category}.json`)
       .then(res => {
         if (!res.ok) {
@@ -119,6 +118,12 @@ export const CatalogPage: FC<Props> = ({ category, title }) => {
       <p className={styles.count}>{sortedProducts.length} models</p>
 
       <div className={styles.controls}>
+        {/* Поиск перенесен на самый верх */}
+        <div className={styles.selectGroup}>
+          <span className={styles.label}>Search</span>
+          <Search placeholder={`Search in ${title.toLowerCase()}...`} />
+        </div>
+
         <div className={styles.selectGroup}>
           <label htmlFor="sort-select" className={styles.label}>
             Sort by
@@ -150,11 +155,6 @@ export const CatalogPage: FC<Props> = ({ category, title }) => {
             <option value="16">16</option>
             <option value="all">All</option>
           </select>
-        </div>
-
-        <div className={styles.selectGroup}>
-          <span className={styles.label}>Search</span>
-          <Search placeholder={`Search in ${title.toLowerCase()}...`} />
         </div>
       </div>
 

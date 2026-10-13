@@ -33,18 +33,24 @@ export const Search: React.FC<Props> = ({ placeholder = 'Search...' }) => {
     }
 
     const timer = setTimeout(() => {
-      const newParams = new URLSearchParams(searchParams);
+      // Смотрим, какой запрос сейчас реально в URL
+      const currentUrlQuery = searchParams.get('query') || '';
 
-      if (query.trim()) {
-        newParams.set('query', query.trim());
-      } else {
-        newParams.delete('query');
+      // Обновляем параметры ТОЛЬКО если текст в строке поиска реально изменился
+      if (query !== currentUrlQuery) {
+        const newParams = new URLSearchParams(searchParams);
+
+        if (query.trim()) {
+          newParams.set('query', query.trim());
+        } else {
+          newParams.delete('query');
+        }
+
+        // Вот теперь сброс на 1 страницу сработает только при вводе текста!
+        newParams.set('page', '1');
+        setSearchParams(newParams);
       }
-
-      // При новом поиске всегда скидываем на 1 страницу
-      newParams.set('page', '1');
-      setSearchParams(newParams);
-    }, 500); // Ждем 500мс после последнего нажатия клавиши
+    }, 500);
 
     return () => clearTimeout(timer);
   }, [query, searchParams, setSearchParams]);
