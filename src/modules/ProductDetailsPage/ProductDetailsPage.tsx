@@ -72,7 +72,7 @@ export const ProductDetailsPage = () => {
     setLoading(true);
     setError(false);
 
-    fetch(`/api/${category}.json`)
+    fetch(`api/${category}.json`)
       .then(res => {
         if (!res.ok) {
           throw new Error('Failed to fetch');
@@ -181,14 +181,16 @@ export const ProductDetailsPage = () => {
                 })}
                 onClick={() => setMainImage(img)}
               >
-                <img src={`/${img}`} alt={`${product.name} thumbnail ${idx}`} />
+                {/* Упростили src */}
+                <img src={img} alt={`${product.name} thumbnail ${idx}`} />
               </button>
             ))}
           </div>
           <div className={styles.mainImageContainer}>
+            {/* Упростили src */}
             <img
               key={mainImage}
-              src={`/${mainImage}`}
+              src={mainImage}
               alt={product.name}
               className={cn(styles.mainImage, styles.animatedImage)}
             />

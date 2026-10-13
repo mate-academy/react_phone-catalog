@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import styles from './CategoryCard.module.scss';
+import React from 'react';
 
 interface Props {
   title: string;
@@ -12,7 +13,8 @@ export const CategoryCard = ({ title, count, image, link }: Props) => {
   return (
     <Link to={link} className={styles.card}>
       <div className={styles.imageWrapper}>
-        <img src={`/${image}`} alt={title} className={styles.image} />
+        {/* Убран слеш, теперь путь относительный */}
+        <img src={image} alt={title} className={styles.image} />
       </div>
       <div className={styles.info}>
         <h3 className={styles.title}>{title}</h3>

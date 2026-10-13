@@ -2,8 +2,10 @@ import { Link } from 'react-router-dom';
 import cn from 'classnames';
 import { useShopContext } from '../../context/ShopContext';
 import styles from './ProductCard.module.scss';
+import React from 'react';
 
 export interface Product {
+  price: number;
   id: string;
   category: string;
   name: string;
@@ -63,7 +65,8 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   return (
     <article className={styles.card}>
       <Link to={productLink} className={styles.imageContainer}>
-        <img src={`/${image}`} alt={name} />
+        {/* Убрали жесткий слеш `/${image}`, теперь путь относительный */}
+        <img src={image} alt={name} />
       </Link>
 
       <Link to={productLink} className={styles.title}>

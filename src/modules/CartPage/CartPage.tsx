@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { useShopContext } from '../../context/ShopContext';
 import { CartItem } from '../../components/CartItem';
 import styles from './CartPage.module.scss';
+import React from 'react';
 
 export const CartPage = () => {
   const { cartItems, clearCart } = useShopContext();

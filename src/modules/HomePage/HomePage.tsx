@@ -17,6 +17,7 @@ const brandNewModels: Product[] = [
     capacity: '128 GB',
     ram: '6 GB',
     images: ['img/phones/apple-iphone-14/midnight/00.webp'],
+    price: 0,
   },
   {
     id: 'apple-iphone-14-128gb-purple',
@@ -28,6 +29,7 @@ const brandNewModels: Product[] = [
     capacity: '128 GB',
     ram: '6 GB',
     images: ['img/phones/apple-iphone-14/purple/00.webp'],
+    price: 0,
   },
   {
     id: 'apple-iphone-14-128gb-yellow',
@@ -39,6 +41,7 @@ const brandNewModels: Product[] = [
     capacity: '128 GB',
     ram: '6 GB',
     images: ['img/phones/apple-iphone-14/yellow/00.webp'],
+    price: 0,
   },
   {
     id: 'apple-iphone-14-pro-128gb-gold',
@@ -50,6 +53,7 @@ const brandNewModels: Product[] = [
     capacity: '128 GB',
     ram: '6 GB',
     images: ['img/phones/apple-iphone-14-pro/gold/00.webp'],
+    price: 0,
   },
   {
     id: 'apple-iphone-14-pro-128gb-spaceblack',
@@ -61,6 +65,7 @@ const brandNewModels: Product[] = [
     capacity: '128 GB',
     ram: '6 GB',
     images: ['img/phones/apple-iphone-14-pro/spaceblack/00.webp'],
+    price: 0,
   },
 ];
 
@@ -68,7 +73,8 @@ export const HomePage = () => {
   const [hotPrices, setHotPrices] = useState<Product[]>([]);
 
   useEffect(() => {
-    fetch('/api/phones.json')
+    // Removed leading slash from the fetch URL
+    fetch('api/phones.json')
       .then(res => res.json())
       .then((data: Product[]) => {
         const discounted = data.filter(

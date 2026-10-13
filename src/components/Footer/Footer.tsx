@@ -12,8 +12,8 @@ export const Footer = () => {
     <footer className={styles.footer}>
       <div className={styles.content}>
         <Link to="/" className={styles.logo}>
-          {/* Сюда тоже подтянется логотип из папки public/img */}
-          <img src="/img/logo.svg" alt="Nice Gadgets Logo" />
+          {/* Убран ведущий слеш для корректной работы путей на деплое */}
+          <img src="img/logo.svg" alt="Nice Gadgets Logo" />
         </Link>
 
         <nav className={styles.nav}>

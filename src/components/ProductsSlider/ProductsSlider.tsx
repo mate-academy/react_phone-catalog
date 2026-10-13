@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { ProductCard, Product } from '../ProductCard';
 import styles from './ProductsSlider.module.scss';
+import React from 'react';
 
 interface Props {
   title: string;

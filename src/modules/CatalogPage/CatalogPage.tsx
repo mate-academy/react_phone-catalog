@@ -32,7 +32,8 @@ export const CatalogPage: FC<Props> = ({ category, title }) => {
     setLoading(true);
     setError(false);
 
-    fetch(`/api/${category}.json`)
+    // Убрали слеш в начале пути, теперь он относительный
+    fetch(`api/${category}.json`)
       .then(res => {
         if (!res.ok) {
           throw new Error('Failed to fetch');

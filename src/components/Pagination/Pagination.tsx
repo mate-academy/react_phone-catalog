@@ -1,5 +1,6 @@
 import cn from 'classnames';
 import styles from './Pagination.module.scss';
+import React from 'react';
 
 interface Props {
   totalItems: number;

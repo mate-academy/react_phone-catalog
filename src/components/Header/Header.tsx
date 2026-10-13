@@ -72,8 +72,9 @@ export const Header = () => {
       <header className={styles.header}>
         <div className={styles.left}>
           <Link to="/" className={styles.logoLink}>
+            {/* Убрали начальный слеш в пути к логотипу */}
             <img
-              src="/img/logo.svg"
+              src="img/logo.svg"
               alt="Nice Gadgets Logo"
               className={styles.logo}
             />

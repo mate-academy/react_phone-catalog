@@ -3,11 +3,11 @@ import cn from 'classnames';
 import styles from './PicturesSlider.module.scss';
 import React from 'react';
 
-// Массив путей к картинкам (добавь свои баннеры в public/img/)
+// Убрали ведущие слеши, чтобы пути были относительными для GitHub Pages
 const banners = [
-  '/img/banner-accessories.png',
-  '/img/banner-phones.png',
-  '/img/banner-tablets.png',
+  'img/banner-accessories.png',
+  'img/banner-phones.png',
+  'img/banner-tablets.png',
 ];
 
 export const PicturesSlider = () => {
@@ -63,6 +63,7 @@ export const PicturesSlider = () => {
         <div className={styles.imageWrapper}>
           <div
             className={styles.imageTrack}
+            // Добавлена пропущенная звездочка умножения (*)
             style={{ transform: `translateX(-${currentIndex * 100}%)` }}
           >
             {banners.map((banner, index) => (

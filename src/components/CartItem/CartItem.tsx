@@ -57,12 +57,8 @@ export const CartItem: React.FC<Props> = ({ item }) => {
           to={`/${product.category}/${product.id}`}
           className={styles.imageLink}
         >
-          {/* Слеш в начале гарантирует, что путь будет читаться от корня сайта */}
-          <img
-            src={`/${imagePath}`}
-            alt={product.name}
-            className={styles.image}
-          />
+          {/* Убран ведущий слеш для корректной работы относительных путей на GitHub Pages */}
+          <img src={imagePath} alt={product.name} className={styles.image} />
         </Link>
 
         <Link
