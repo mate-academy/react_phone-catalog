@@ -1,0 +1,49 @@
+@import '../../../../styles/variables';
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  margin: 24px 0 32px;
+}
+
+.homeLink {
+  display: flex;
+  align-items: center;
+  color: $color-main-text;
+  font-size: 14px;
+  transition: $transition-default;
+
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+.separator {
+  color: $color-secondary;
+  font-size: 10px;
+}
+
+.link {
+  color: $color-main-text;
+  transition: $transition-default;
+
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+.current {
+  color: $color-secondary;
+  max-width: 300px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  @media (min-width: 640px) {
+    max-width: 600px;
+  }
+}

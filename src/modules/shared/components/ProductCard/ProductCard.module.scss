@@ -1,0 +1,158 @@
+@import '../../../../styles/variables';
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: $color-white;
+  border: 1px solid $color-elements;
+  border-radius: $border-radius-lg;
+  padding: 32px;
+  width: 272px;
+  flex-shrink: 0;
+  transition: $transition-default;
+
+  &:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  }
+}
+
+.imageWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  margin-bottom: 24px;
+  overflow: hidden;
+  border-radius: $border-radius-sm;
+}
+
+.image {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.title {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: $color-main-text;
+  margin-bottom: 8px;
+  min-height: 40px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  transition: $transition-default;
+
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+.priceContainer {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.price {
+  font-size: 22px;
+  font-weight: 800;
+  color: $color-main-text;
+}
+
+.fullPrice {
+  font-size: 14px;
+  font-weight: 600;
+  color: $color-secondary;
+  text-decoration: line-through;
+}
+
+.divider {
+  height: 1px;
+  background-color: $color-elements;
+  margin-bottom: 16px;
+}
+
+.specsList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+  font-size: 12px;
+}
+
+.specItem {
+  display: flex;
+  justify-content: space-between;
+}
+
+.specName {
+  color: $color-secondary;
+  font-weight: 600;
+}
+
+.specValue {
+  color: $color-main-text;
+  font-weight: 700;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.cartButton {
+  flex-grow: 1;
+  height: 40px;
+  background-color: $color-primary;
+  color: $color-white;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: $border-radius-pill;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: $transition-default;
+
+  &:hover {
+    background-color: $color-primary-hover;
+  }
+
+  &.added {
+    background-color: $color-white;
+    color: $color-green;
+    border: 1px solid $color-elements;
+    cursor: default;
+  }
+}
+
+.favoriteButton {
+  width: 40px;
+  height: 40px;
+  border: 1px solid $color-elements;
+  border-radius: $border-radius-pill;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-main-text;
+  transition: $transition-default;
+
+  &:hover {
+    border-color: $color-main-text;
+  }
+
+  &.active {
+    border-color: $color-danger;
+    color: $color-danger;
+    background-color: rgba($color-danger, 0.05);
+  }
+}

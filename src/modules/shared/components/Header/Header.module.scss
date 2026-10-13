@@ -1,0 +1,203 @@
+@import '../../../../styles/variables';
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: $color-white;
+  box-shadow: 0 1px 0 $color-elements;
+  height: 64px;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+
+  @media (min-width: 640px) {
+    padding: 0 24px;
+  }
+
+  @media (min-width: 1200px) {
+    padding: 0 32px;
+  }
+}
+
+.leftSection {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  height: 100%;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-weight: 800;
+  font-size: 18px;
+  color: $color-main-text;
+  letter-spacing: -0.5px;
+
+  span {
+    color: $color-primary;
+  }
+
+  &:hover {
+    opacity: 0.85;
+  }
+}
+
+.nav {
+  display: none;
+  height: 100%;
+
+  @media (min-width: 768px) {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: $color-secondary;
+  position: relative;
+  transition: $transition-default;
+
+  &:hover {
+    color: $color-main-text;
+  }
+}
+
+.activeNavLink {
+  color: $color-main-text;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: $color-primary;
+    border-radius: 3px 3px 0 0;
+  }
+}
+
+.rightSection {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  gap: 8px;
+}
+
+.searchBox {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-right: 8px;
+}
+
+.searchInput {
+  height: 40px;
+  padding: 0 12px 0 36px;
+  font-size: 14px;
+  border: 1px solid $color-elements;
+  border-radius: $border-radius-pill;
+  outline: none;
+  background-color: $color-surface;
+  color: $color-main-text;
+  width: 140px;
+  transition: $transition-default;
+
+  @media (min-width: 640px) {
+    width: 200px;
+  }
+
+  &:focus {
+    border-color: $color-primary;
+    background-color: $color-white;
+  }
+}
+
+.searchIcon {
+  position: absolute;
+  left: 12px;
+  color: $color-secondary;
+  pointer-events: none;
+}
+
+.actionButton {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: $border-radius-md;
+  color: $color-main-text;
+  transition: $transition-default;
+
+  &:hover {
+    background-color: $color-hover;
+    color: $color-primary;
+  }
+}
+
+.activeActionButton {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 10px;
+    right: 10px;
+    height: 3px;
+    background-color: $color-primary;
+    border-radius: 3px 3px 0 0;
+  }
+}
+
+.badge {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  background-color: $color-primary;
+  color: $color-white;
+  border-radius: $border-radius-pill;
+  font-size: 10px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.langBtn {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 10px;
+  border: 1px solid $color-elements;
+  border-radius: $border-radius-pill;
+  color: $color-secondary;
+  cursor: pointer;
+  margin-left: 8px;
+
+  &:hover {
+    border-color: $color-primary;
+    color: $color-primary;
+  }
+}

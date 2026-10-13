@@ -1,0 +1,93 @@
+@import '../../../../styles/variables';
+
+.footer {
+  margin-top: auto;
+  background-color: $color-white;
+  border-top: 1px solid $color-elements;
+  padding: 32px 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+
+  @media (min-width: 640px) {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 24px;
+  }
+
+  @media (min-width: 1200px) {
+    padding: 0 32px;
+  }
+}
+
+.logo {
+  font-weight: 800;
+  font-size: 16px;
+  color: $color-main-text;
+  letter-spacing: -0.5px;
+
+  span {
+    color: $color-primary;
+  }
+
+  &:hover {
+    opacity: 0.85;
+  }
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: $color-secondary;
+}
+
+.link {
+  transition: $transition-default;
+
+  &:hover {
+    color: $color-main-text;
+  }
+}
+
+.iconButton {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid $color-elements;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-main-text;
+  transition: $transition-default;
+}
+
+.backToTop {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 12px;
+  font-weight: 700;
+  color: $color-secondary;
+  cursor: pointer;
+  transition: $transition-default;
+
+  &:hover {
+    color: $color-main-text;
+
+    .iconButton {
+      border-color: $color-primary;
+      color: $color-primary;
+    }
+  }
+}

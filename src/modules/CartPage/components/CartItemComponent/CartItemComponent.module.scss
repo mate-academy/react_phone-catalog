@@ -1,0 +1,132 @@
+@import '../../../../styles/variables';
+
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  background-color: $color-white;
+  border: 1px solid $color-elements;
+  border-radius: $border-radius-lg;
+  padding: 16px;
+  margin-bottom: 16px;
+
+  @media (min-width: 640px) {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 24px;
+  }
+}
+
+.leftGroup {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+
+  @media (min-width: 640px) {
+    width: auto;
+  }
+}
+
+.deleteButton {
+  color: $color-secondary;
+  font-size: 16px;
+  cursor: pointer;
+  transition: $transition-default;
+  padding: 4px;
+
+  &:hover {
+    color: $color-danger;
+  }
+}
+
+.imageWrapper {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.title {
+  font-size: 14px;
+  font-weight: 600;
+  color: $color-main-text;
+  transition: $transition-default;
+  max-width: 240px;
+
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+.rightGroup {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+
+  @media (min-width: 640px) {
+    width: auto;
+    gap: 32px;
+  }
+}
+
+.counter {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.counterBtn {
+  width: 32px;
+  height: 32px;
+  border-radius: $border-radius-pill;
+  border: 1px solid $color-elements;
+  background-color: $color-white;
+  color: $color-main-text;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: $transition-default;
+
+  &:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    border-color: $color-elements;
+  }
+
+  &:hover:not(:disabled) {
+    border-color: $color-primary;
+    color: $color-primary;
+  }
+}
+
+.quantity {
+  font-size: 14px;
+  font-weight: 700;
+  min-width: 20px;
+  text-align: center;
+}
+
+.price {
+  font-size: 20px;
+  font-weight: 800;
+  color: $color-main-text;
+  min-width: 80px;
+  text-align: right;
+}
