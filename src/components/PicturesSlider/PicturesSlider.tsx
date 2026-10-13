@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 import cn from 'classnames';
 import styles from './PicturesSlider.module.scss';
+import React from 'react';
 
 // Массив путей к картинкам (добавь свои баннеры в public/img/)
 const banners = [
-  'public/img/banner-accessories.png',
-  'public/img/banner-phones.png',
-  'public/img/banner-tablets.png',
+  '/img/banner-accessories.png',
+  '/img/banner-phones.png',
+  '/img/banner-tablets.png',
 ];
 
 export const PicturesSlider = () => {

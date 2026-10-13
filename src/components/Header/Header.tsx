@@ -3,6 +3,7 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 import cn from 'classnames';
 import { useShopContext } from '../../context/ShopContext';
 import styles from './Header.module.scss';
+import React from 'react';
 
 const FAVORITES_PATH =
   'M14.6667 4.79336C14.6667 7.0267 11.96 9.87336 8 ' +
@@ -72,7 +73,7 @@ export const Header = () => {
         <div className={styles.left}>
           <Link to="/" className={styles.logoLink}>
             <img
-              src="/public/img/logo.svg"
+              src="/img/logo.svg"
               alt="Nice Gadgets Logo"
               className={styles.logo}
             />

@@ -5,6 +5,7 @@ import { Pagination } from '../../components/Pagination';
 import { Search } from '../../components/Search';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import styles from './CatalogPage.module.scss';
+import React from 'react';
 
 interface Props {
   category: 'phones' | 'tablets' | 'accessories';

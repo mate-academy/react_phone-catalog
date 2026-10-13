@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { useShopContext } from '../../context/ShopContext';
 import { ProductCard } from '../../components/ProductCard';
 import styles from './FavoritesPage.module.scss';
+import React from 'react';
 
 const HOME_PATH =
   'M2.52988 8.01633L7.54504 3.00117C7.79727 2.74894 8.20468 ' +

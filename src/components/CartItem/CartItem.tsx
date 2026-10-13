@@ -4,6 +4,7 @@ import {
   CartItem as CartItemType,
 } from '../../context/ShopContext';
 import styles from './CartItem.module.scss';
+import React from 'react';
 
 interface Props {
   item: CartItemType;

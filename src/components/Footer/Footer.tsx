@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import styles from './Footer.module.scss';
+import React from 'react';
 
 export const Footer = () => {
   // Функция для плавного скролла наверх
@@ -12,7 +13,7 @@ export const Footer = () => {
       <div className={styles.content}>
         <Link to="/" className={styles.logo}>
           {/* Сюда тоже подтянется логотип из папки public/img */}
-          <img src="public/img/logo.svg" alt="Nice Gadgets Logo" />
+          <img src="/img/logo.svg" alt="Nice Gadgets Logo" />
         </Link>
 
         <nav className={styles.nav}>

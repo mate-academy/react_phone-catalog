@@ -4,6 +4,7 @@ import { CategoryCard } from '../../components/CategoryCard';
 import { ProductsSlider } from '../../components/ProductsSlider';
 import { PicturesSlider } from '../../components/PicturesSlider';
 import styles from './HomePage.module.scss';
+import React from 'react';
 
 const brandNewModels: Product[] = [
   {
@@ -15,7 +16,7 @@ const brandNewModels: Product[] = [
     screen: '6.1" OLED',
     capacity: '128 GB',
     ram: '6 GB',
-    images: ['public/img/phones/apple-iphone-14/midnight/00.webp'],
+    images: ['img/phones/apple-iphone-14/midnight/00.webp'],
   },
   {
     id: 'apple-iphone-14-128gb-purple',
@@ -26,7 +27,7 @@ const brandNewModels: Product[] = [
     screen: '6.1" OLED',
     capacity: '128 GB',
     ram: '6 GB',
-    images: ['public/img/phones/apple-iphone-14/purple/00.webp'],
+    images: ['img/phones/apple-iphone-14/purple/00.webp'],
   },
   {
     id: 'apple-iphone-14-128gb-yellow',
@@ -37,7 +38,7 @@ const brandNewModels: Product[] = [
     screen: '6.1" OLED',
     capacity: '128 GB',
     ram: '6 GB',
-    images: ['public/img/phones/apple-iphone-14/yellow/00.webp'],
+    images: ['img/phones/apple-iphone-14/yellow/00.webp'],
   },
   {
     id: 'apple-iphone-14-pro-128gb-gold',
@@ -48,7 +49,7 @@ const brandNewModels: Product[] = [
     screen: '6.1" OLED',
     capacity: '128 GB',
     ram: '6 GB',
-    images: ['public/img/phones/apple-iphone-14-pro/gold/00.webp'],
+    images: ['img/phones/apple-iphone-14-pro/gold/00.webp'],
   },
   {
     id: 'apple-iphone-14-pro-128gb-spaceblack',
@@ -59,7 +60,7 @@ const brandNewModels: Product[] = [
     screen: '6.1" OLED',
     capacity: '128 GB',
     ram: '6 GB',
-    images: ['public/img/phones/apple-iphone-14-pro/spaceblack/00.webp'],
+    images: ['img/phones/apple-iphone-14-pro/spaceblack/00.webp'],
   },
 ];
 
@@ -102,19 +103,19 @@ export const HomePage = () => {
           <CategoryCard
             title="Mobile phones"
             count={95}
-            image="public/img/category-phones.png"
+            image="img/category-phones.png"
             link="/phones"
           />
           <CategoryCard
             title="Tablets"
             count={24}
-            image="public/img/category-tablets.png"
+            image="img/category-tablets.png"
             link="/tablets"
           />
           <CategoryCard
             title="Accessories"
             count={100}
-            image="public/img/category-accessories.png"
+            image="img/category-accessories.png"
             link="/accessories"
           />
         </div>

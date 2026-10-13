@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import styles from './Search.module.scss';
+import React from 'react';
 
 interface Props {
   placeholder?: string;

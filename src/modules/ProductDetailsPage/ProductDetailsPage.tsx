@@ -6,6 +6,7 @@ import { ProductsSlider } from '../../components/ProductsSlider';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { type Product } from '../../components/ProductCard';
 import styles from './ProductDetailsPage.module.scss';
+import React from 'react';
 
 interface DetailedProduct extends Product {
   namespaceId: string;
