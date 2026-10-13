@@ -1,1 +1,98 @@
-// not empty
+:root {
+  /* Colors */
+  --c-primary: #313237;
+  --c-secondary: #89939A;
+  --c-icons: #B4BDC3;
+  --c-elements: #E2E6E9;
+  --c-hover-bg: #FAFAFC;
+  --c-white: #FFF;
+  --c-green: #27AE60;
+  --c-red: #EB5757;
+
+  /* Typography */
+  --font-main: 'Mont', sans-serif;
+}
+
+/* Общий сброс */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--c-white);
+  color: var(--c-primary);
+  -webkit-font-smoothing: antialiased;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  width: 100%;
+  max-width: 1200px; /* Сетка Desktop (1200px+) */
+  margin: 0 auto;
+  padding: 0 24px; /* Отступы по бокам для планшетов и мобилок */
+}
+
+/* Утилита для визуального скрытия заголовков (требование H1 Product Catalog) */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+/* Глобальные стили для заголовков из Typography */
+h1, h2, h3, h4 {
+  color: var(--c-primary);
+  margin: 0;
+}
+
+h1 {
+  font-weight: 800; /* Mont Bold */
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -0.01em;
+}
+
+h2 {
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+}
+
+/* --- АДАПТИВ ТЕКСТА ДЛЯ МОБИЛОК (до 639px) --- */
+@media (max-width: 639px) {
+  h1 {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em; /* [cite: 44] */
+  }
+  h2 {
+    font-size: 22px;
+    line-height: 31px;
+    letter-spacing: 0; /* [cite: 44] */
+  }
+  h3 {
+    font-size: 20px;
+    line-height: 26px; /* [cite: 44] */
+  }
+  h4 {
+    font-size: 16px;
+    line-height: 20px; /* [cite: 44] */
+  }
+}

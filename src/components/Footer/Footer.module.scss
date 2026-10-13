@@ -1,0 +1,102 @@
+.footer {
+  background-color: #FFF;
+  border-top: 1px solid #E2E6E9;
+  display: flex;
+  justify-content: center; /* Центрируем контент */
+  width: 100%;
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px; /* Ограничиваем ширину контента */
+  padding: 32px 24px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.nav {
+  display: flex;
+  gap: 64px; /* Отступы между ссылками */
+}
+
+.link {
+  text-decoration: none;
+  font-family: Mont, sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #89939A; /* Gray / Secondary */
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #313237; /* Gray / Primary */
+  }
+}
+
+.iconContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  color: #313237;
+  border: 1px solid #E2E6E9;
+  border-radius: 50%;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.backToTop {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  
+  &:hover .iconContainer {
+    background-color: #313237;
+    color: #FFF;
+  }
+}
+
+.backToTopText {
+  font-family: Mont, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  color: #89939A;
+  transition: color 0.3s ease;
+}
+
+.backToTop:hover .backToTopText {
+  color: #313237;
+}
+
+/* --- АДАПТИВ ДЛЯ МОБИЛОК (до 639px) --- */
+@media (max-width: 639px) {
+  /* Используем правильный класс .content вместо .footerContent */
+  .content {
+    flex-direction: column; 
+    align-items: flex-start; /* Прижимаем логотип и меню к левому краю */
+    gap: 32px;
+    padding: 32px 16px;
+  }
+
+  /* Используем правильный класс .nav вместо .navLinks */
+  .nav {
+    flex-direction: column; /* Ссылки встают друг под другом */
+    gap: 16px;
+  }
+
+  .backToTop {
+    align-self: center; /* Кнопка "наверх" встанет ровно по центру внизу */
+    margin-top: 16px; /* Небольшой отступ сверху, чтобы не прилипало к меню */
+  }
+}

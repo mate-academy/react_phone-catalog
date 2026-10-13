@@ -1,0 +1,157 @@
+.card {
+  width: 272px;
+  height: 506px;
+  padding: 32px;
+  box-sizing: border-box;
+  background-color: var(--c-white);
+  border: 1px solid var(--c-elements);
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.3s ease;
+  text-decoration: none;
+
+  &:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.imageContainer {
+  width: 208px;
+  height: 196px;
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+}
+
+.title {
+  font-family: var(--font-main);
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: #313237;
+  margin: 0 0 8px;
+  height: 42px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  text-decoration: none;
+}
+
+.priceBlock {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.price {
+  font-family: var(--font-main);
+  font-weight: 800;
+  font-size: 22px;
+  color: #313237;
+  margin: 0;
+}
+
+.fullPrice {
+  font-family: var(--font-main);
+  font-weight: 500;
+  font-size: 22px;
+  color: var(--c-secondary);
+  text-decoration: line-through;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: var(--c-elements);
+  margin-bottom: 16px;
+}
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 24px;
+  flex-grow: 1;
+}
+
+.specRow {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-main);
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.specName {
+  color: var(--c-secondary);
+  font-weight: 600;
+}
+
+.specValue {
+  color: #313237;
+  font-weight: 700;
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+  height: 40px;
+  width: 100%;
+}
+
+.addToCart {
+  flex-grow: 1;
+  background-color: var(--c-primary);
+  color: var(--c-white);
+  border: 1px solid var(--c-primary);
+  font-family: var(--font-main);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    /* Состояние Hover из UI Kit */
+    background-color: var(--c-secondary); 
+    border-color: var(--c-secondary);
+  }
+
+  &.added {
+    /* Состояние Selected из UI Kit */
+    background-color: var(--c-white);
+    color: #27ae60; /* Тот самый зеленый цвет из макета */
+    border: 1px solid var(--c-elements);
+    
+    /* При наведении на уже добавленную кнопку она не должна становиться черной */
+    &:hover {
+      background-color: var(--c-white);
+      color: #27ae60;
+      border-color: var(--c-secondary);
+    }
+  }
+}
+
+.favoriteBtn {
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  border: 1px solid var(--c-elements);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover, &.isFavorite {
+    border-color: var(--c-elements);
+  }
+}

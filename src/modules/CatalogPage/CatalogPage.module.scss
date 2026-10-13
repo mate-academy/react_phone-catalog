@@ -1,0 +1,100 @@
+.page {
+  padding-top: 24px;
+  padding-bottom: 80px;
+  display: flex;
+  flex-direction: column;
+}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.homeLink {
+  display: flex;
+  align-items: center;
+}
+
+.separator {
+  color: var(--c-icons);
+}
+
+.currentPath {
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--c-secondary);
+}
+
+.title {
+  margin-bottom: 8px;
+}
+
+.count {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--c-secondary);
+  margin-bottom: 24px;
+}
+
+.controls {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.selectGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label {
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--c-secondary);
+}
+
+.select {
+  height: 40px;
+  padding: 0 16px;
+  background-color: var(--c-white);
+  border: 1px solid var(--c-icons);
+  font-family: var(--font-main);
+  font-size: 14px;
+  color: var(--c-primary);
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+
+  &:hover, &:focus {
+    border-color: var(--c-primary);
+  }
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.centerMessage {
+  padding: 64px 0;
+  text-align: center;
+  font-size: 18px;
+  color: var(--c-secondary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.reloadBtn {
+  padding: 8px 16px;
+  background-color: var(--c-primary);
+  color: var(--c-white);
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
