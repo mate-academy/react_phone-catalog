@@ -1,0 +1,63 @@
+@use '/src/mixins.scss' as *;
+@use '/src/variables.scss' as *;
+
+.category {
+  @include padding-inline;
+
+  &__title {
+    @include h2;
+
+    margin: 0;
+    margin-bottom: 24px;
+  }
+
+  &__cards {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 16px;
+    }
+  }
+}
+
+.card {
+  &__imgLink {
+    display: flex;
+  }
+
+  &__img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 8px;
+
+    transition: transform $effect-duration ease;
+
+    &:hover {
+      transform: scale($scale-size);
+    }
+  }
+
+  &__bottom {
+    margin-top: 24px;
+  }
+
+  &__category {
+    @include h3;
+
+    margin: 0;
+    margin-bottom: 4px;
+
+    @include on-tablet {
+      font-size: 20px;
+    }
+  }
+
+  &__count {
+    @include body-text;
+    
+    color: $secondary;
+  }
+}

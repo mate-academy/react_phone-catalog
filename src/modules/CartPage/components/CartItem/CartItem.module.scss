@@ -1,0 +1,142 @@
+@use '/src/mixins.scss' as *;
+@use '/src/variables.scss' as *;
+
+.cartitem {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid $elements;
+  border-radius: 16px;
+  padding: 16px;
+  gap: 16px;
+
+  @include on-tablet {
+    padding: 24px;
+  }
+
+  @include on-tablet {
+    flex-direction: row;
+    gap: 24px;
+  }
+
+  &__top {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    align-items: center;
+
+    @include on-tablet {
+      gap: 24px;
+    }
+  }
+
+  &__remove {
+    background: transparent;
+    border: none;
+    display: flex;
+    padding: 0;
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+
+    &_icon {
+      display: block;
+      background-image: url(/public/img/icons/Close-gray.svg);
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &__link {
+    display: flex;
+  }
+
+  &__img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+
+    transition: transform $effect-duration ease;
+
+    &:hover {
+      transform: scale($scale-size);
+    }
+  }
+
+  &__name {
+    margin: 0;
+
+    @include body-text;
+
+    text-decoration: none;
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include on-tablet {
+      justify-content: baseline;
+      gap: 24px;
+    }
+  }
+
+  &__quantity {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+  }
+
+  &__decrease {
+    background: transparent;
+    background-image: url(/img/icons/Minus.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $elements;
+    border-radius: 48px;
+
+    transition: border $effect-duration ease;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid $primary;
+    }
+
+    &:disabled {
+      background-image: url(/img/icons/Minus-disabled.svg);
+      border: 1px solid $elements;
+      cursor: default;
+    }
+  }
+
+  &__count {
+    @include body-text;
+  }
+
+  &__increase {
+    background: transparent;
+    background-image: url(/img/icons/Plus.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $elements;
+    border-radius: 48px;
+
+    transition: border $effect-duration ease;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid $primary;
+    }
+  }
+
+  &__price {
+    @include h2;
+    
+    margin: 0;
+  }
+}

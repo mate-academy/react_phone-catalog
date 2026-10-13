@@ -1,0 +1,32 @@
+@use '/src/mixins.scss' as *;
+@use '/src/variables.scss' as *;
+
+.phonespage {
+  @include padding-inline;
+
+  padding-block: 24px 64px;
+
+  &__title {
+    margin: 0;
+    margin-bottom: 8px;
+    margin-top: 24px;
+
+    @include h1;
+  }
+
+  &__counter {
+    @include body-text;
+    
+    color: $secondary;
+  }
+
+  &__empty {
+    @include h4;
+  }
+
+  &__settings {
+    margin-top: 32px;
+
+    @include grid-columns;
+  }
+}

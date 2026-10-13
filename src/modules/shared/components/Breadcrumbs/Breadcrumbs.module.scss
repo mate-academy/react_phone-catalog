@@ -1,0 +1,84 @@
+@use '/src/mixins.scss' as *;
+@use '/src/variables.scss' as *;
+
+.breadcrumbs {
+  width: 100%;
+
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    min-width: 0;
+  }
+
+  &__item:not(:last-child) {
+    flex-shrink: 0;
+  }
+
+  &__item:last-child {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__home {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 16px;
+    height: 16px;
+  }
+
+  &__homeIcon {
+    width: 16px;
+    height: 16px;
+
+    background-image: url('/img/icons/Home.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  &__separator {
+    width: 16px;
+    height: 16px;
+
+    background-image: url('/img/icons/Chevron-Arrow-Right.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+
+    flex-shrink: 0;
+  }
+
+  &__link {
+    @include small-text;
+
+    text-decoration: none;
+
+    line-height: 1;
+  }
+
+  &__current {
+    min-width: 0;
+    line-height: 1;
+
+    @include small-text;
+    
+    font-weight: 600;
+    color: $secondary;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

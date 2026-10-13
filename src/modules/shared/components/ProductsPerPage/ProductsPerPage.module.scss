@@ -1,0 +1,105 @@
+@use '/src/mixins.scss' as *;
+@use '/src/variables.scss' as *;
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  grid-column: span 2;
+
+  @include on-tablet {
+    grid-column: span 3;
+  }
+}
+
+.label {
+  @include small-text;
+
+  color: $secondary;
+}
+
+.perpage {
+  position: relative;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 10px 12px;
+
+    border: 1px solid $icons;
+    border-radius: 8px;
+
+    margin-bottom: 4px;
+
+    transition: border $effect-duration ease;
+
+    &:hover {
+      border: 1px solid $primary;
+    }
+  }
+
+  &__value {
+    @include button-text;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__icon {
+    background-image: url(/img/icons/Chevron-Arrow-Down.svg);
+    width: 16px;
+    height: 16px;
+
+    &_active {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+
+    background-color: $hover-background;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    border: 1px solid $elements;
+    border-radius: 8px;
+
+    transition:
+      opacity $effect-duration ease,
+      transform $effect-duration ease,
+      visibility $effect-duration ease;
+
+    &_active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+  }
+
+  &__option {
+    @include body-text;
+    
+    color: $secondary;
+    padding: 6px 12px;
+
+    transition: color $effect-duration ease;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+}

@@ -1,0 +1,21 @@
+@use '/src/mixins.scss' as *;
+@use '/src/variables.scss' as *;
+
+.homepage {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  padding: 24px 0 64px;
+
+  @include on-tablet {
+    padding: 32px 0 64px;
+  }
+
+  @include on-desktop {
+    padding: 56px 0 80px;
+  }
+}
+
+.websiteTitle {
+  display: none;
+}

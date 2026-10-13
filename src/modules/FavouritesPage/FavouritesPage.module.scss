@@ -1,0 +1,30 @@
+@use '/src/mixins.scss' as *;
+@use '/src/variables.scss' as *;
+
+.favourites {
+  @include padding-inline;
+
+  background: $hover-background;
+  padding-block: 24px 56px;
+
+  &__title {
+    margin: 0;
+    margin-top: 24px;
+
+    @include h1;
+  }
+
+  &__counter {
+    @include body-text;
+
+    display: block;
+    color: $secondary;
+    margin-top: 8px;
+  }
+
+  &__empty {
+    @include h4;
+
+    color: $icons;
+  }
+}

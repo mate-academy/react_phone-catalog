@@ -1,0 +1,104 @@
+@use '/src/mixins.scss' as *;
+@use '/src/variables.scss' as *;
+
+.pagination {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  width: 248px;
+  margin: 24px auto 0;
+  padding: 0;
+
+  &__listitem {
+    display: flex;
+  }
+
+  &__pages {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  &__pagebtn {
+    @include body-text;
+
+    text-align: center;
+    width: 32px;
+    height: 32px;
+    background-color: transparent;
+    border: 1px solid $elements;
+    border-radius: 48px;
+
+    transition: border $effect-duration ease;
+
+    &:hover {
+      border: 1px solid $primary
+    }
+  }
+
+  &__rightbtn {
+    border: none;
+    background: transparent;
+    padding: 0;
+
+    &_icon {
+      display: block;
+      background-image: url(/img/PicturesSlider/arrow-right.svg);
+      background-position: center;
+      background-repeat: no-repeat;
+      width: 16px;
+      height: 16px;
+      padding: 8px;
+      border: 1px solid $icons;
+      border-radius: 48px;
+
+      transition: border $effect-duration ease;
+    }
+
+    &:disabled &_icon {
+      background-image: url(/img/PicturesSlider/arrow-right-disabled.svg);
+      border-color: $icons;
+    }
+
+    &:hover:not(:disabled) &_icon {
+      border-color: $primary;
+    }
+  }
+
+  &__leftbtn {
+    border: none;
+    background: transparent;
+    padding: 0;
+
+    &_icon {
+      display: block;
+      background-image: url(/img/PicturesSlider/arrow-right.svg);
+      background-position: center;
+      background-repeat: no-repeat;
+      transform: rotate(180deg);
+      width: 16px;
+      height: 16px;
+      padding: 8px;
+      border: 1px solid $icons;
+      border-radius: 48px;
+
+      transition: border $effect-duration ease;
+    }
+
+    &:disabled &_icon {
+      background-image: url('/img/PicturesSlider/arrow-right-disabled.svg');
+      border-color: $icons;
+    }
+
+    &:hover:not(:disabled) &_icon {
+      border-color: $primary;
+    }
+  }
+}
+
+.selected {
+  background: $primary;
+  color: $white;
+}

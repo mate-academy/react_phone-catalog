@@ -1,0 +1,77 @@
+@use '/src/mixins.scss' as *;
+@use '/src/variables.scss' as *;
+
+.modal {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+
+  width: 280px;
+  aspect-ratio: 1 / 1;
+  padding: 16px;
+  background: $hover-background;
+  border-radius: 8px;
+
+  @include on-tablet {
+    width: 300px;
+  }
+
+  &__top {
+    text-align: center;
+  }
+
+  &__title {
+    margin: 0;
+
+    @include h3;
+  }
+
+  &__text {
+    @include body-text;
+
+    color: $secondary;
+  }
+
+  &__bottom {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+  }
+
+  &__close {
+    background: transparent;
+    border: 1px solid $elements;
+    border-radius: 4px;
+    padding: 13px;
+    width: 50%;
+
+    @include button-text;
+
+    transition: border $effect-duration ease;
+
+    &:hover {
+      border: 1px solid $primary
+    }
+  }
+
+  &__clear {
+    border: none;
+    border-radius: 4px;
+    padding: 13px;
+    width: 50%;
+
+    @include button-text;
+    
+    background: $accent;
+    color: $white;
+
+    transition: box-shadow $effect-duration ease;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+    }
+  }
+}

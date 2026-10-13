@@ -1,0 +1,32 @@
+@use '/src/mixins.scss' as *;
+@use '/src/variables.scss' as *;
+
+.accessoriespage {
+  padding-block: 24px 64px;
+
+  @include padding-inline;
+
+  &__title {
+    margin: 0;
+    margin-bottom: 8px;
+    margin-top: 24px;
+
+    @include h1;
+  }
+
+  &__counter {
+    color: $secondary;
+
+    @include body-text;
+  }
+
+  &__empty {
+    @include h4;
+  }
+
+  &__settings {
+    margin-top: 32px;
+
+    @include grid-columns;
+  }
+}

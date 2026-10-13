@@ -1,0 +1,89 @@
+@use '/src/mixins.scss' as *;
+@use '/src/variables.scss' as *;
+
+.section__wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.section__title {
+  @include h2;
+
+  margin: 0;
+}
+
+.section__buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.section__rightbtn {
+  border: none;
+  background: transparent;
+  padding: 0;
+
+  &_icon {
+    display: block;
+    background-image: url(/img/PicturesSlider/arrow-right.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 16px;
+    height: 16px;
+    padding: 8px;
+    border: 1px solid $icons;
+    border-radius: 48px;
+
+    transition: border $effect-duration ease;
+  }
+
+  &:disabled &_icon {
+    background-image: url('/img/PicturesSlider/arrow-right-disabled.svg');
+    border-color: $icons;
+  }
+
+  &:hover:not(:disabled) &_icon {
+    border-color: $primary;
+  }
+}
+
+.section__leftbtn {
+  border: none;
+  background: transparent;
+  padding: 0;
+
+  &_icon {
+    display: block;
+    background-image: url(/img/PicturesSlider/arrow-right.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: rotate(180deg);
+    width: 16px;
+    height: 16px;
+    padding: 8px;
+    border: 1px solid $icons;
+    border-radius: 48px;
+
+    transition: border $effect-duration ease;
+  }
+
+  &:disabled &_icon {
+    background-image: url('/img/PicturesSlider/arrow-right-disabled.svg');
+    border-color: $icons;
+  }
+
+  &:hover:not(:disabled) &_icon {
+    border-color: $primary;
+  }
+}
+
+.slider {
+  overflow: hidden;
+
+  &__track {
+    display: flex;
+    gap: 16px;
+
+    transition: transform $effect-duration ease;
+  }
+}

@@ -1,0 +1,121 @@
+@use '/src/mixins.scss' as *;
+@use '/src/variables.scss' as *;
+
+.container {
+  @include footer-padding-inline;
+}
+
+.footer {
+  position: static;
+  bottom: 0;
+  width: 100%;
+  padding: 32px 0;
+  border-top: 1px solid $elements;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 0;
+      justify-content: space-between;
+    }
+  }
+
+  &__logo {
+    width: 89px;
+    height: 32px;
+
+    &_img {
+      width: 89px;
+      height: 32px;
+    }
+  }
+
+  &__btn {
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    gap: 16px;
+    width: fit-content;
+    padding: 0;
+    border: none;
+    background-color: $hover-background;
+
+    @include small-text;
+
+    color: $secondary;
+    font-weight: 600;
+
+    transition: color $effect-duration ease;
+
+    &_icon {
+      background-image: url('/img/PicturesSlider/arrow-right.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+      transform: rotate(-90deg);
+      width: 16px;
+      height: 16px;
+      padding: 8px;
+      border: 1px solid $icons;
+      border-radius: 48px;
+      transition: border $effect-duration ease;
+
+      &:disabled {
+        background-image: url('/img/PicturesSlider/arrow-right-disabled.svg');
+      }
+    }
+
+    &:hover {
+      color: $primary;
+      cursor: pointer;
+
+      .footer__btn_icon {
+        border: 1px solid $primary;
+      }
+    }
+
+    @include on-tablet {
+      margin: 0;
+    }
+  }
+}
+
+.nav {
+  display: flex;
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 13.5px;
+      align-items: center;
+    }
+
+    @include on-desktop {
+      gap: 107px;
+    }
+  }
+
+  &__link {
+    @include uppercase-label;
+    
+    color: $secondary;
+    font-weight: 800;
+    text-decoration: none;
+
+    transition: color $effect-duration ease;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+}

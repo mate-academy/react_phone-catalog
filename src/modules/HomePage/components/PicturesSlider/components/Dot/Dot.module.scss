@@ -1,0 +1,11 @@
+@use '/src/variables' as *;
+
+.dot {
+  width: 14px;
+  height: 4px;
+  background-color: $elements;
+
+  &--selected {
+    background-color: $primary;
+  }
+}

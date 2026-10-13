@@ -1,0 +1,141 @@
+@use './variables' as *;
+
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin padding-inline {
+  padding-inline: 16px;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    max-width: 1136px;
+    margin: 0;
+    margin-inline: auto;
+    padding-inline: 32px;
+  }
+}
+
+@mixin footer-padding-inline {
+  padding-inline: 16px;
+
+  @include on-tablet {
+    padding-inline: 32px;
+  }
+
+  @include on-desktop {
+    max-width: 1136px;
+    margin: 0;
+    margin-inline: auto;
+    padding-inline: 32px;
+  }
+}
+
+@mixin grid-columns {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 16px;
+
+  @include on-tablet {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(24, 1fr);
+  }
+}
+
+@mixin h1 {
+  font-family: Mont, sans-serif;
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 128%;
+  letter-spacing: -0.01em;
+  color: $primary;
+
+  @include on-tablet {
+    font-size: 48px;
+    line-height: 117%;
+  }
+}
+
+@mixin h2 {
+  font-family: Mont, sans-serif;
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 140%;
+  color: $primary;
+
+  @include on-tablet {
+    font-size: 32px;
+    line-height: 128%;
+    letter-spacing: -0.01em;
+  }
+}
+
+@mixin h3 {
+  font-family: Mont, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: $primary;
+
+  @include on-tablet {
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+  }
+}
+
+@mixin h4 {
+  font-family: Mont, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: $primary;
+
+  @include on-tablet {
+    font-size: 20px;
+  }
+}
+
+@mixin uppercase-label {
+  font-family: Mont, sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 92%;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+@mixin button-text {
+  font-family: Mont, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 150%;
+  color: $primary;
+}
+
+@mixin body-text {
+  font-family: Mont, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 150%;
+  color: $primary;
+}
+
+@mixin small-text {
+  font-family: Mont, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  color: $primary;
+}

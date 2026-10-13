@@ -1,0 +1,10 @@
+@use '/src/mixins.scss' as *;
+@use '/src/variables.scss' as *;
+
+.list {
+  margin-top: 24px;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(229px, 1fr));
+  gap: 40px 16px;
+}
