@@ -271,6 +271,69 @@ describe('Product catalog', () => {
     });
   });
 
+  it('migrates saved cart and favorites to canonical product identifiers', () => {
+    cy.get('@products').then(products => {
+      const legacyProduct = products.find(
+        product => product.itemId === 'apple-iphone-11-128gb-black',
+      );
+
+      cy.visit('/#/cart', {
+        onBeforeLoad(win) {
+          win.localStorage.setItem(
+            'nice-gadgets-cart',
+            JSON.stringify([
+              { id: legacyProduct.itemId, quantity: 2, product: legacyProduct },
+            ]),
+          );
+          win.localStorage.setItem(
+            'nice-gadgets-favorites',
+            JSON.stringify([legacyProduct]),
+          );
+        },
+      });
+
+      cy.get('#main-content h1').should('have.text', 'Cart');
+      cy.get('#main-content article').should(
+        'contain.text',
+        legacyProduct.name,
+      );
+      cy.get('#main-content article span[aria-live="polite"]').should(
+        'have.text',
+        '2',
+      );
+      cy.window().should(win => {
+        const cart = JSON.parse(win.localStorage.getItem('nice-gadgets-cart'));
+        const favorites = JSON.parse(
+          win.localStorage.getItem('nice-gadgets-favorites'),
+        );
+
+        expect(cart).to.have.length(1);
+        expect(cart[0].id).to.equal(legacyProduct.itemId);
+        expect(cart[0].product.itemId).to.equal(legacyProduct.itemId);
+        expect(cart[0].product.sortOrder).to.equal(legacyProduct.id);
+        expect(cart[0].product).not.to.have.property('id');
+        expect(favorites).to.have.length(1);
+        expect(favorites[0].itemId).to.equal(legacyProduct.itemId);
+        expect(favorites[0].sortOrder).to.equal(legacyProduct.id);
+        expect(favorites[0]).not.to.have.property('id');
+      });
+
+      cy.reload();
+      cy.get('#main-content article').should(
+        'contain.text',
+        legacyProduct.name,
+      );
+      cy.get('#main-content article span[aria-live="polite"]').should(
+        'have.text',
+        '2',
+      );
+      cy.visit('/#/favorites');
+      expectVisibleProducts([legacyProduct]);
+      cy.reload();
+      expectVisibleProducts([legacyProduct]);
+    });
+  });
+
   it('persists favorites, filters them and removes them with the heart', () => {
     cy.get('@products').then(products => {
       const first = products

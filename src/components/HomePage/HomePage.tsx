@@ -19,7 +19,8 @@ export const HomePage = () => {
     () =>
       [...products]
         .sort(
-          (first, second) => second.year - first.year || second.id - first.id,
+          (first, second) =>
+            second.year - first.year || second.sortOrder - first.sortOrder,
         )
         .slice(0, 12),
     [products],
@@ -31,7 +32,7 @@ export const HomePage = () => {
         .sort(
           (first, second) =>
             second.fullPrice - second.price - (first.fullPrice - first.price) ||
-            first.id - second.id,
+            first.sortOrder - second.sortOrder,
         )
         .slice(0, 12),
     [products],

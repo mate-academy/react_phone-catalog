@@ -1,6 +1,7 @@
 import { Category, Product, ProductDetails } from '../types/Product';
 import { assetUrl } from '../utils/assets';
 
+type RawProduct = Omit<Product, 'sortOrder'> & { id: number };
 type RawProductDetails = Omit<ProductDetails, 'itemId'> & { id: string };
 
 const requests = new Map<string, Promise<unknown>>();
@@ -26,7 +27,10 @@ function getData<T>(file: string): Promise<T> {
   return requests.get(file) as Promise<T>;
 }
 
-export const getProducts = () => getData<Product[]>('products');
+export const getProducts = () =>
+  getData<RawProduct[]>('products').then(products =>
+    products.map(({ id, ...product }) => ({ ...product, sortOrder: id })),
+  );
 
 export async function getCategoryDetails(category: Category) {
   const [details, products] = await Promise.all([

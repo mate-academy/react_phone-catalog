@@ -27,7 +27,7 @@ export function selectCatalogProducts(
         return first.price - second.price;
 
       default:
-        return second.year - first.year || second.id - first.id;
+        return second.year - first.year || second.sortOrder - first.sortOrder;
     }
   });
 

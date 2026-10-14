@@ -1,7 +1,7 @@
 export type Category = 'phones' | 'tablets' | 'accessories';
 
 export interface Product {
-  id: number;
+  sortOrder: number;
   category: Category;
   itemId: string;
   name: string;

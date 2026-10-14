@@ -22,20 +22,34 @@ interface ShopState {
 
 const ShopContext = createContext<ShopState | null>(null);
 
-function isProduct(value: unknown): value is Product {
+function normalizeStoredProduct(value: unknown): Product | null {
   if (!value || typeof value !== 'object') {
-    return false;
+    return null;
   }
 
-  const product = value as Product;
+  const { id: legacyOrder, ...product } = value as Partial<Product> & {
+    id?: unknown;
+  };
 
-  return (
-    typeof product.itemId === 'string' &&
-    typeof product.name === 'string' &&
-    typeof product.image === 'string' &&
-    Number.isFinite(product.price) &&
-    product.price >= 0
-  );
+  if (
+    typeof product.itemId !== 'string' ||
+    typeof product.name !== 'string' ||
+    typeof product.image !== 'string' ||
+    typeof product.price !== 'number' ||
+    !Number.isFinite(product.price) ||
+    product.price < 0
+  ) {
+    return null;
+  }
+
+  const sortOrder =
+    typeof product.sortOrder === 'number' && Number.isFinite(product.sortOrder)
+      ? product.sortOrder
+      : typeof legacyOrder === 'number' && Number.isFinite(legacyOrder)
+        ? legacyOrder
+        : 0;
+
+  return { ...product, sortOrder } as Product;
 }
 
 function readStorage(key: string): unknown[] {
@@ -58,20 +72,31 @@ function saveStorage(key: string, value: unknown) {
 
 export const ShopProvider = ({ children }: { children: ReactNode }) => {
   const [cart, setCart] = useState<CartItem[]>(() =>
-    readStorage('nice-gadgets-cart').filter((value): value is CartItem => {
-      const item = value as CartItem | null;
+    readStorage('nice-gadgets-cart').flatMap(value => {
+      if (!value || typeof value !== 'object') {
+        return [];
+      }
 
-      return Boolean(
-        item &&
-          isProduct(item.product) &&
-          item.id === item.product.itemId &&
-          Number.isInteger(item.quantity) &&
-          item.quantity > 0,
-      );
+      const item = value as Partial<CartItem>;
+      const product = normalizeStoredProduct(item.product);
+
+      if (
+        !product ||
+        item.id !== product.itemId ||
+        !Number.isInteger(item.quantity) ||
+        typeof item.quantity !== 'number' ||
+        item.quantity <= 0
+      ) {
+        return [];
+      }
+
+      return [{ id: product.itemId, quantity: item.quantity, product }];
     }),
   );
   const [favorites, setFavorites] = useState<Product[]>(() =>
-    readStorage('nice-gadgets-favorites').filter(isProduct),
+    readStorage('nice-gadgets-favorites')
+      .map(normalizeStoredProduct)
+      .filter((product): product is Product => product !== null),
   );
 
   useEffect(() => saveStorage('nice-gadgets-cart', cart), [cart]);
@@ -82,20 +107,20 @@ export const ShopProvider = ({ children }: { children: ReactNode }) => {
 
   const addToCart = useCallback((product: Product) => {
     setCart(items =>
-      items.some(item => item.id === product.itemId)
+      items.some(item => item.product.itemId === product.itemId)
         ? items
         : [...items, { id: product.itemId, quantity: 1, product }],
     );
   }, []);
 
   const removeFromCart = useCallback((itemId: string) => {
-    setCart(items => items.filter(item => item.id !== itemId));
+    setCart(items => items.filter(item => item.product.itemId !== itemId));
   }, []);
 
   const changeQuantity = useCallback((itemId: string, change: number) => {
     setCart(items =>
       items.map(item =>
-        item.id === itemId
+        item.product.itemId === itemId
           ? { ...item, quantity: Math.max(1, item.quantity + change) }
           : item,
       ),

@@ -66,7 +66,7 @@ export const ProductDetailsPage = () => {
     );
   }
 
-  const isInCart = cart.some(item => item.id === product.itemId);
+  const isInCart = cart.some(item => item.product.itemId === product.itemId);
   const isFavorite = favorites.some(item => item.itemId === product.itemId);
 
   return (
