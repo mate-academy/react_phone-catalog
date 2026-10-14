@@ -1,3 +1,5 @@
+@use '../../styles/mixins';
+
 .item {
   display: grid;
   grid-template-columns: 16px 80px minmax(0, 1fr) 96px 80px;
@@ -18,7 +20,8 @@
   background: transparent;
   color: var(--placeholder);
   cursor: pointer;
-  transition: color 0.2s;
+
+  @include mixins.transition(color);
 
   &:hover {
     color: var(--text);
@@ -38,11 +41,12 @@
     width: 100%;
     height: 100%;
     object-fit: contain;
-    transition: transform 0.25s;
+
+    @include mixins.image-transition;
   }
 
   &:hover img {
-    transform: scale(1.1);
+    @include mixins.hover-scale;
   }
 }
 
@@ -52,7 +56,8 @@
   font-weight: 600;
   line-height: 21px;
   text-decoration: none;
-  transition: color 0.2s;
+
+  @include mixins.transition(color);
 
   &:hover {
     color: var(--muted);
@@ -82,7 +87,7 @@
   text-align: right;
 }
 
-@media (max-width: 639px) {
+@include mixins.mobile {
   .item {
     grid-template-columns: 16px 80px minmax(0, 1fr);
     gap: 16px;

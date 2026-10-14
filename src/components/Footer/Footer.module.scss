@@ -1,3 +1,5 @@
+@use '../../styles/mixins';
+
 .footer {
   background: var(--surface);
   box-shadow: 0 -1px 0 var(--border);
@@ -59,7 +61,7 @@ html[data-theme='dark'] {
   line-height: 15px;
 }
 
-@media (max-width: 639px) {
+@include mixins.mobile {
   .content {
     grid-template-columns: minmax(0, 1fr);
     gap: 32px;

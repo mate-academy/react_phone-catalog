@@ -1,3 +1,5 @@
+@use '../../styles/mixins';
+
 .slider {
   min-width: 0;
 }
@@ -59,7 +61,8 @@
     width: 14px;
     height: 4px;
     background: var(--border);
-    transition: background 0.2s;
+
+    @include mixins.transition(background);
   }
 
   &:hover span,
@@ -84,13 +87,13 @@
   }
 }
 
-@media (min-width: 640px) and (max-width: 1199px) {
+@include mixins.tablet-only {
   .row {
     gap: 19px;
   }
 }
 
-@media (max-width: 639px) {
+@include mixins.mobile {
   .slider {
     margin-inline: -16px;
   }

@@ -1,3 +1,5 @@
+@use './styles/mixins';
+
 @font-face {
   font-family: Mont;
   src: url('/fonts/Mont-Regular.otf') format('opentype');
@@ -75,11 +77,8 @@ a,
 input,
 select {
   -webkit-tap-highlight-color: transparent;
-  transition:
-    color 200ms,
-    background-color 200ms,
-    border-color 200ms,
-    box-shadow 200ms;
+
+  @include mixins.interactive-transition;
 }
 
 button,
@@ -234,7 +233,7 @@ h2.page-subtitle {
   }
 }
 
-@media (max-width: 1199px) {
+@include mixins.below-desktop {
   .container {
     width: calc(100% - 48px);
   }
@@ -243,7 +242,7 @@ h2.page-subtitle {
   }
 }
 
-@media (max-width: 639px) {
+@include mixins.mobile {
   .container {
     width: calc(100% - 32px);
   }

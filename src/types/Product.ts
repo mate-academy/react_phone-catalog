@@ -16,7 +16,7 @@ export interface Product {
 }
 
 export interface ProductDetails {
-  id: string;
+  itemId: string;
   category: Category;
   namespaceId: string;
   name: string;

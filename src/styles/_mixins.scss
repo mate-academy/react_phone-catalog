@@ -1,0 +1,45 @@
+@use 'sass:list';
+@use './tokens';
+
+@mixin below-desktop {
+  @media (max-width: tokens.$tablet-max) {
+    @content;
+  }
+}
+
+@mixin tablet-only {
+  @media (min-width: tokens.$tablet-min) and (max-width: tokens.$tablet-max) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: tokens.$mobile-max) {
+    @content;
+  }
+}
+
+@mixin transition($properties, $duration: tokens.$transition-fast) {
+  $transitions: ();
+
+  @each $property in $properties {
+    $transitions: list.append($transitions, ($property $duration), comma);
+  }
+
+  transition: $transitions;
+}
+
+@mixin image-transition {
+  @include transition(transform, tokens.$transition-image);
+}
+
+@mixin interactive-transition {
+  @include transition(
+    (color, background-color, border-color, box-shadow),
+    tokens.$transition-global
+  );
+}
+
+@mixin hover-scale {
+  transform: scale(tokens.$hover-scale);
+}

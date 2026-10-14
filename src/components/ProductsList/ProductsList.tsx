@@ -9,7 +9,7 @@ type Props = {
 export const ProductsList = ({ products }: Props) => (
   <div className={styles.list}>
     {products.map(product => (
-      <ProductCard key={product.id} product={product} />
+      <ProductCard key={product.itemId} product={product} />
     ))}
   </div>
 );

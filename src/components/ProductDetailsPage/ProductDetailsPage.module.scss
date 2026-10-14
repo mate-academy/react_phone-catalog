@@ -1,3 +1,5 @@
+@use '../../styles/mixins';
+
 .page {
   padding-top: 24px;
 
@@ -66,22 +68,22 @@
   background: #fff;
   border: 1px solid var(--border);
   cursor: pointer;
-  transition:
-    border-color 0.2s,
-    box-shadow 0.2s;
+
+  @include mixins.transition((border-color, box-shadow));
 
   img {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    transition: transform 0.2s;
+
+    @include mixins.transition(transform);
   }
 
   &:hover {
     border-color: var(--muted);
 
     img {
-      transform: scale(1.1);
+      @include mixins.hover-scale;
     }
   }
 }
@@ -132,7 +134,8 @@
   border: 1px solid var(--border);
   border-radius: 50%;
   cursor: pointer;
-  transition: border-color 0.2s;
+
+  @include mixins.transition(border-color);
 
   &:hover {
     border-color: var(--muted);
@@ -170,10 +173,8 @@
     padding: 0 8px;
     border: 1px solid var(--border);
     font-size: 14px;
-    transition:
-      background-color 0.2s,
-      border-color 0.2s,
-      color 0.2s;
+
+    @include mixins.transition((background-color, border-color, color));
   }
 
   &:hover span {
@@ -322,7 +323,7 @@
   line-height: 21px;
 }
 
-@media (max-width: 1199px) {
+@include mixins.below-desktop {
   .product {
     grid-template-columns: repeat(12, minmax(0, 1fr));
     gap: 16px;
@@ -366,7 +367,7 @@
   }
 }
 
-@media (max-width: 639px) {
+@include mixins.mobile {
   .page {
     > button {
       margin-top: 24px;

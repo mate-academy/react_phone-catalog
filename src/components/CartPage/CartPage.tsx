@@ -44,7 +44,7 @@ export const CartPage = () => {
         <div className={styles.layout}>
           <div className={styles.items}>
             {cart.map(item => (
-              <CartItem key={item.id} item={item} />
+              <CartItem key={item.product.itemId} item={item} />
             ))}
           </div>
           <aside className={styles.summary} aria-label="Order summary">

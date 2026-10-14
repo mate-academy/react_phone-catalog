@@ -1,3 +1,5 @@
+@use '../../styles/mixins';
+
 .pagination {
   display: flex;
   align-items: center;
@@ -19,10 +21,8 @@
   font: inherit;
   font-size: 14px;
   cursor: pointer;
-  transition:
-    border-color 0.2s,
-    background-color 0.2s,
-    color 0.2s;
+
+  @include mixins.transition((border-color, background-color, color));
 
   &:hover {
     border-color: var(--text);

@@ -1,3 +1,5 @@
+@use '../../styles/mixins';
+
 .page {
   padding-top: 24px;
 }
@@ -22,7 +24,7 @@
   }
 }
 
-@media (max-width: 639px) {
+@include mixins.mobile {
   .page {
     margin-bottom: -8px;
   }

@@ -7,7 +7,8 @@ import styles from './CartItem.module.scss';
 
 export const CartItem = ({ item }: { item: CartItemType }) => {
   const { removeFromCart, changeQuantity } = useShop();
-  const { id, product, quantity } = item;
+  const { product, quantity } = item;
+  const itemId = product.itemId;
   const productUrl = `/product/${encodeURIComponent(product.itemId)}`;
 
   return (
@@ -16,7 +17,7 @@ export const CartItem = ({ item }: { item: CartItemType }) => {
         className={styles.remove}
         type="button"
         aria-label={`Remove ${product.name} from cart`}
-        onClick={() => removeFromCart(id)}
+        onClick={() => removeFromCart(itemId)}
       >
         <Icon name="close" />
       </button>
@@ -32,7 +33,7 @@ export const CartItem = ({ item }: { item: CartItemType }) => {
           type="button"
           aria-label={`Decrease quantity of ${product.name}`}
           disabled={quantity === 1}
-          onClick={() => changeQuantity(id, -1)}
+          onClick={() => changeQuantity(itemId, -1)}
         >
           <Icon name="minus" />
         </button>
@@ -43,7 +44,7 @@ export const CartItem = ({ item }: { item: CartItemType }) => {
           className="icon-button"
           type="button"
           aria-label={`Increase quantity of ${product.name}`}
-          onClick={() => changeQuantity(id, 1)}
+          onClick={() => changeQuantity(itemId, 1)}
         >
           <Icon name="plus" />
         </button>

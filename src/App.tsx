@@ -1,15 +1,41 @@
 import './App.scss';
-import { useEffect } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { HashRouter, Route, Routes, useLocation } from 'react-router-dom';
 import { ShopProvider } from './context/ShopContext';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
-import { HomePage } from './components/HomePage';
-import { CatalogPage } from './components/CatalogPage';
-import { ProductDetailsPage } from './components/ProductDetailsPage';
-import { CartPage } from './components/CartPage';
-import { FavoritesPage } from './components/FavoritesPage';
-import { NotFoundPage } from './components/NotFoundPage';
+import { Loader } from './components/Loader';
+
+const HomePage = lazy(() =>
+  import('./components/HomePage').then(module => ({
+    default: module.HomePage,
+  })),
+);
+const CatalogPage = lazy(() =>
+  import('./components/CatalogPage').then(module => ({
+    default: module.CatalogPage,
+  })),
+);
+const ProductDetailsPage = lazy(() =>
+  import('./components/ProductDetailsPage').then(module => ({
+    default: module.ProductDetailsPage,
+  })),
+);
+const CartPage = lazy(() =>
+  import('./components/CartPage').then(module => ({
+    default: module.CartPage,
+  })),
+);
+const FavoritesPage = lazy(() =>
+  import('./components/FavoritesPage').then(module => ({
+    default: module.FavoritesPage,
+  })),
+);
+const NotFoundPage = lazy(() =>
+  import('./components/NotFoundPage').then(module => ({
+    default: module.NotFoundPage,
+  })),
+);
 
 const PageContent = () => {
   const { pathname } = useLocation();
@@ -32,19 +58,24 @@ const PageContent = () => {
       </a>
       <Header />
       <main id="main-content" className="main-content" tabIndex={-1}>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/phones" element={<CatalogPage category="phones" />} />
-          <Route path="/tablets" element={<CatalogPage category="tablets" />} />
-          <Route
-            path="/accessories"
-            element={<CatalogPage category="accessories" />}
-          />
-          <Route path="/product/:productId" element={<ProductDetailsPage />} />
-          <Route path="/cart" element={<CartPage />} />
-          <Route path="/favorites" element={<FavoritesPage />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
+        <Suspense fallback={<Loader />}>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/phones" element={<CatalogPage category="phones" />} />
+            <Route
+              path="/tablets"
+              element={<CatalogPage category="tablets" />}
+            />
+            <Route
+              path="/accessories"
+              element={<CatalogPage category="accessories" />}
+            />
+            <Route path="/product/:itemId" element={<ProductDetailsPage />} />
+            <Route path="/cart" element={<CartPage />} />
+            <Route path="/favorites" element={<FavoritesPage />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </Suspense>
       </main>
       <Footer />
     </>

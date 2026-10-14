@@ -12,8 +12,8 @@ type Props = {
 
 export const ProductCard = ({ product, showDiscount = true }: Props) => {
   const { cart, favorites, addToCart, toggleFavorite } = useShop();
-  const isInCart = cart.some(item => item.product.id === product.id);
-  const isFavorite = favorites.some(item => item.id === product.id);
+  const isInCart = cart.some(item => item.id === product.itemId);
+  const isFavorite = favorites.some(item => item.itemId === product.itemId);
   const productLink = `/product/${product.itemId}`;
 
   return (

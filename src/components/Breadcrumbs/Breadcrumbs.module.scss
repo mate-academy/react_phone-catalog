@@ -1,3 +1,5 @@
+@use '../../styles/mixins';
+
 .breadcrumbs {
   display: flex;
   align-items: center;
@@ -36,7 +38,7 @@
   }
 }
 
-@media (max-width: 639px) {
+@include mixins.mobile {
   .breadcrumbs {
     margin-bottom: 24px;
   }

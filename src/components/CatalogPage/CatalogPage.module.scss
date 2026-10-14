@@ -1,3 +1,5 @@
+@use '../../styles/mixins';
+
 .page {
   padding-top: 24px;
 }
@@ -43,7 +45,8 @@
     line-height: 21px;
     appearance: none;
     cursor: pointer;
-    transition: border-color 0.2s;
+
+    @include mixins.transition(border-color);
 
     &:hover,
     &:focus {
@@ -56,7 +59,7 @@
   }
 }
 
-@media (max-width: 639px) {
+@include mixins.mobile {
   .filters {
     margin-top: 32px;
   }

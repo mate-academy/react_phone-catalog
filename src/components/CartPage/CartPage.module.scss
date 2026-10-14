@@ -1,3 +1,5 @@
+@use '../../styles/mixins';
+
 .page {
   padding-top: 41px;
 
@@ -67,7 +69,7 @@
   object-fit: contain;
 }
 
-@media (max-width: 1199px) {
+@include mixins.below-desktop {
   .page {
     padding-top: 40px;
   }
@@ -86,7 +88,7 @@
   }
 }
 
-@media (max-width: 639px) {
+@include mixins.mobile {
   .page {
     padding-top: 24px;
 

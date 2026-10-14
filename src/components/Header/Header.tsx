@@ -45,14 +45,14 @@ export const Header = () => {
     setDetailsCategory(null);
 
     if (pathname.startsWith('/product/')) {
-      const productId = pathname.slice('/product/'.length);
+      const itemId = pathname.slice('/product/'.length);
 
       getProducts()
         .then(products => {
           if (active) {
             setDetailsCategory(
-              products.find(product => product.itemId === productId)
-                ?.category || null,
+              products.find(product => product.itemId === itemId)?.category ||
+                null,
             );
           }
         })

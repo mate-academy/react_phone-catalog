@@ -1,19 +1,14 @@
-﻿import { useEffect } from 'react';
+﻿import { useEffect, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useProducts } from '../../hooks/useProducts';
 import { Category } from '../../types/Product';
 import { categoryNames } from '../../utils/assets';
+import { selectCatalogProducts, SortType } from '../../utils/catalog';
 import { Breadcrumbs } from '../Breadcrumbs';
 import { Loader } from '../Loader';
 import { Pagination } from '../Pagination';
 import { ProductsList } from '../ProductsList';
 import styles from './CatalogPage.module.scss';
-
-enum SortType {
-  Newest = 'age',
-  Alphabetically = 'title',
-  Cheapest = 'price',
-}
 
 const pageSizes = ['4', '8', '16', 'all'];
 
@@ -32,24 +27,10 @@ export const CatalogPage = ({ category }: { category: Category }) => {
   const pageParam = searchParams.get('page') || '1';
   const requestedPage =
     /^\d+$/.test(pageParam) && +pageParam > 0 ? Number(pageParam) : 1;
-  const categoryProducts = products.filter(
-    product => product.category === category,
+  const { categoryProducts, filteredProducts, sortedProducts } = useMemo(
+    () => selectCatalogProducts(products, category, query, sort),
+    [products, category, query, sort],
   );
-  const filteredProducts = categoryProducts.filter(product =>
-    product.name.toLowerCase().includes(query),
-  );
-  const sortedProducts = [...filteredProducts].sort((first, second) => {
-    switch (sort) {
-      case SortType.Alphabetically:
-        return first.name.localeCompare(second.name);
-
-      case SortType.Cheapest:
-        return first.price - second.price;
-
-      default:
-        return second.year - first.year || second.id - first.id;
-    }
-  });
   const pageSize =
     perPage === 'all' ? Math.max(sortedProducts.length, 1) : Number(perPage);
   const totalPages = Math.max(1, Math.ceil(sortedProducts.length / pageSize));

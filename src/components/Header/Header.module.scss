@@ -1,3 +1,5 @@
+@use '../../styles/mixins';
+
 .header {
   position: sticky;
   z-index: 20;
@@ -106,7 +108,7 @@
   min-width: 160px;
 }
 
-@media (max-width: 1199px) {
+@include mixins.below-desktop {
   .header {
     flex-wrap: wrap;
     gap: 0 16px;
@@ -138,7 +140,7 @@
   }
 }
 
-@media (max-width: 639px) {
+@include mixins.mobile {
   .header {
     gap: 0;
   }

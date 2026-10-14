@@ -114,7 +114,7 @@ export const ProductsSlider = ({
       >
         {products.map(product => (
           <ProductCard
-            key={product.id}
+            key={product.itemId}
             product={product}
             showDiscount={showDiscount}
           />

@@ -1,3 +1,5 @@
+@use '../../styles/mixins';
+
 .home {
   display: flex;
   flex-direction: column;
@@ -54,7 +56,8 @@
     position: absolute;
     max-width: none;
     object-fit: cover;
-    transition: transform 0.25s;
+
+    @include mixins.image-transition;
   }
 }
 
@@ -92,10 +95,10 @@
 }
 
 .category:hover img {
-  transform: scale(1.1);
+  @include mixins.hover-scale;
 }
 
-@media (max-width: 1199px) {
+@include mixins.below-desktop {
   .home {
     gap: 64px;
     padding-top: 32px;
@@ -110,7 +113,7 @@
   }
 }
 
-@media (max-width: 639px) {
+@include mixins.mobile {
   .home {
     gap: 56px;
     padding-top: 24px;

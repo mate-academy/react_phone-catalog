@@ -1,3 +1,5 @@
+@use '../../styles/mixins';
+
 .slider {
   min-width: 0;
 }
@@ -43,7 +45,7 @@
   }
 }
 
-@media (max-width: 639px) {
+@include mixins.mobile {
   .hot .track > article {
     height: 439px;
   }

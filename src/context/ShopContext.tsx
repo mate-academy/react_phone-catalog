@@ -1,8 +1,10 @@
 import {
   createContext,
   ReactNode,
+  useCallback,
   useContext,
   useEffect,
+  useMemo,
   useState,
 } from 'react';
 import { CartItem, Product } from '../types/Product';
@@ -12,8 +14,8 @@ interface ShopState {
   favorites: Product[];
   cartQuantity: number;
   addToCart: (product: Product) => void;
-  removeFromCart: (id: string) => void;
-  changeQuantity: (id: string, change: number) => void;
+  removeFromCart: (itemId: string) => void;
+  changeQuantity: (itemId: string, change: number) => void;
   clearCart: () => void;
   toggleFavorite: (product: Product) => void;
 }
@@ -78,46 +80,66 @@ export const ShopProvider = ({ children }: { children: ReactNode }) => {
     [favorites],
   );
 
-  const addToCart = (product: Product) => {
+  const addToCart = useCallback((product: Product) => {
     setCart(items =>
       items.some(item => item.id === product.itemId)
         ? items
         : [...items, { id: product.itemId, quantity: 1, product }],
     );
-  };
+  }, []);
 
-  const toggleFavorite = (product: Product) => {
+  const removeFromCart = useCallback((itemId: string) => {
+    setCart(items => items.filter(item => item.id !== itemId));
+  }, []);
+
+  const changeQuantity = useCallback((itemId: string, change: number) => {
+    setCart(items =>
+      items.map(item =>
+        item.id === itemId
+          ? { ...item, quantity: Math.max(1, item.quantity + change) }
+          : item,
+      ),
+    );
+  }, []);
+
+  const clearCart = useCallback(() => setCart([]), []);
+
+  const toggleFavorite = useCallback((product: Product) => {
     setFavorites(items =>
       items.some(item => item.itemId === product.itemId)
         ? items.filter(item => item.itemId !== product.itemId)
         : [...items, product],
     );
-  };
+  }, []);
 
-  return (
-    <ShopContext.Provider
-      value={{
-        cart,
-        favorites,
-        cartQuantity: cart.reduce((sum, item) => sum + item.quantity, 0),
-        addToCart,
-        removeFromCart: id =>
-          setCart(items => items.filter(item => item.id !== id)),
-        changeQuantity: (id, change) =>
-          setCart(items =>
-            items.map(item =>
-              item.id === id
-                ? { ...item, quantity: Math.max(1, item.quantity + change) }
-                : item,
-            ),
-          ),
-        clearCart: () => setCart([]),
-        toggleFavorite,
-      }}
-    >
-      {children}
-    </ShopContext.Provider>
+  const cartQuantity = useMemo(
+    () => cart.reduce((sum, item) => sum + item.quantity, 0),
+    [cart],
   );
+  const value = useMemo(
+    () => ({
+      cart,
+      favorites,
+      cartQuantity,
+      addToCart,
+      removeFromCart,
+      changeQuantity,
+      clearCart,
+      toggleFavorite,
+    }),
+    [
+      cart,
+      favorites,
+      cartQuantity,
+      addToCart,
+      removeFromCart,
+      changeQuantity,
+      clearCart,
+      toggleFavorite,
+    ],
+  );
+
+  return <ShopContext.Provider value={value}>{children}</ShopContext.Provider>;
 };
 
 export const useShop = () => {
