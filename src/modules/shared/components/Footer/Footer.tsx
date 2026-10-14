@@ -3,6 +3,11 @@ import { NavLink } from 'react-router-dom';
 import { useLanguage } from '../../context/LanguageContext';
 import styles from './Footer.module.scss';
 
+const GITHUB_REPO_URL = 'https://github.com/flyman13/react_phone-catalog';
+const CONTACTS_URL = 'https://github.com/flyman13';
+const RIGHTS_URL =
+  'https://github.com/flyman13/react_phone-catalog/blob/develop/LICENSE';
+
 export const Footer: React.FC = () => {
   const { t } = useLanguage();
 
@@ -22,15 +27,29 @@ export const Footer: React.FC = () => {
 
         <div className={styles.links}>
           <a
-            href="https://github.com/mate-academy"
+            href={GITHUB_REPO_URL}
             target="_blank"
             rel="noopener noreferrer"
             className={styles.link}
           >
             {t('githubRepo')}
           </a>
-          <span className={styles.link}>Contacts</span>
-          <span className={styles.link}>{t('rights')}</span>
+          <a
+            href={CONTACTS_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.link}
+          >
+            {t('contacts')}
+          </a>
+          <a
+            href={RIGHTS_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.link}
+          >
+            {t('rights')}
+          </a>
         </div>
 
         <button

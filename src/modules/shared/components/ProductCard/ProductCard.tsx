@@ -10,9 +10,13 @@ import styles from './ProductCard.module.scss';
 
 interface Props {
   product: Product;
+  hasDiscount?: boolean;
 }
 
-export const ProductCard: React.FC<Props> = ({ product }) => {
+export const ProductCard: React.FC<Props> = ({
+  product,
+  hasDiscount = true,
+}) => {
   const { addToCart, isInCart } = useCart();
   const { toggleFavorite, isFavorite } = useFavorites();
   const { t } = useLanguage();
@@ -36,8 +40,10 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       </Link>
 
       <div className={styles.priceContainer}>
-        <span className={styles.price}>${product.price}</span>
-        {product.fullPrice > product.price && (
+        <span className={styles.price}>
+          ${hasDiscount ? product.price : product.fullPrice}
+        </span>
+        {hasDiscount && product.fullPrice > product.price && (
           <span className={styles.fullPrice}>${product.fullPrice}</span>
         )}
       </div>

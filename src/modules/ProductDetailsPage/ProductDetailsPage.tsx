@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState, useMemo, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import classNames from 'classnames';
 import { Product, ProductDetails } from '../shared/types/Product';
@@ -51,6 +51,7 @@ export const ProductDetailsPage: React.FC = () => {
   const [allCategoryItems, setAllCategoryItems] = useState<ProductDetails[]>(
     [],
   );
+  const allCategoryItemsRef = useRef<ProductDetails[]>([]);
   const [suggested, setSuggested] = useState<Product[]>([]);
   const [selectedImage, setSelectedImage] = useState<string>('');
   const [loading, setLoading] = useState(true);
@@ -61,9 +62,23 @@ export const ProductDetailsPage: React.FC = () => {
   const { t } = useLanguage();
 
   useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [productId]);
+
+  useEffect(() => {
     if (!productId) {
       setNotFound(true);
       setLoading(false);
+
+      return;
+    }
+
+    const existing = allCategoryItemsRef.current.find(p => p.id === productId);
+
+    if (existing) {
+      setDetails(existing);
+      setSelectedImage(existing.images[0] || '');
+      setNotFound(false);
 
       return;
     }
@@ -87,6 +102,7 @@ export const ProductDetailsPage: React.FC = () => {
         }
 
         if (found) {
+          allCategoryItemsRef.current = categoryItems;
           setDetails(found);
           setAllCategoryItems(categoryItems);
           setSelectedImage(found.images[0] || '');
@@ -204,7 +220,7 @@ export const ProductDetailsPage: React.FC = () => {
 
         <button
           type="button"
-          onClick={() => navigate(-1)}
+          onClick={() => navigate(`/${details.category}`)}
           className={styles.backButton}
           data-cy="backButton"
         >

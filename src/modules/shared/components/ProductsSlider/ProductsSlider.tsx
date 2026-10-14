@@ -6,9 +6,14 @@ import styles from './ProductsSlider.module.scss';
 interface Props {
   title: string;
   products: Product[];
+  hasDiscount?: boolean;
 }
 
-export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
+export const ProductsSlider: React.FC<Props> = ({
+  title,
+  products,
+  hasDiscount = true,
+}) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   // Each card is 272px wide + 16px gap = 288px
@@ -63,7 +68,11 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
           }}
         >
           {products.map(product => (
-            <ProductCard key={product.id} product={product} />
+            <ProductCard
+              key={product.id}
+              product={product}
+              hasDiscount={hasDiscount}
+            />
           ))}
         </div>
       </div>

@@ -65,7 +65,11 @@ export const HomePage: React.FC = () => {
               accessoriesCount={counts.accessories}
             />
 
-            <ProductsSlider title={t('brandNew')} products={brandNew} />
+            <ProductsSlider
+              title={t('brandNew')}
+              products={brandNew}
+              hasDiscount={false}
+            />
           </>
         )}
       </div>
