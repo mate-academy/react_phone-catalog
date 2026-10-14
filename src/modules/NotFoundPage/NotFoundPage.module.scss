@@ -1,0 +1,36 @@
+@import '../../styles/variables';
+
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 16px;
+  text-align: center;
+}
+
+.image {
+  max-width: 320px;
+  margin-bottom: 32px;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 800;
+  color: $color-main-text;
+  margin-bottom: 24px;
+}
+
+.button {
+  padding: 12px 32px;
+  background-color: $color-primary;
+  color: $color-white;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: $border-radius-pill;
+  transition: $transition-default;
+
+  &:hover {
+    background-color: $color-primary-hover;
+  }
+}

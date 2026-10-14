@@ -1,0 +1,99 @@
+@import '../../styles/variables';
+
+.page {
+  padding-bottom: 64px;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 800;
+  color: $color-main-text;
+  margin-bottom: 8px;
+
+  @media (min-width: 640px) {
+    font-size: 48px;
+  }
+}
+
+.modelsCount {
+  font-size: 14px;
+  font-weight: 600;
+  color: $color-secondary;
+  margin-bottom: 32px;
+}
+
+.filtersBar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.filterGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.filterLabel {
+  font-size: 12px;
+  font-weight: 700;
+  color: $color-secondary;
+}
+
+.select {
+  height: 40px;
+  padding: 0 16px;
+  border: 1px solid $color-elements;
+  border-radius: $border-radius-sm;
+  background-color: $color-white;
+  color: $color-main-text;
+  font-size: 14px;
+  font-weight: 700;
+  outline: none;
+  cursor: pointer;
+  min-width: 136px;
+  transition: $transition-default;
+
+  &:hover {
+    border-color: $color-icon-hover;
+  }
+
+  &:focus {
+    border-color: $color-primary;
+  }
+}
+
+.emptyMessage {
+  padding: 60px 0;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+  color: $color-secondary;
+}
+
+.errorContainer {
+  padding: 60px 0;
+  text-align: center;
+}
+
+.errorMessage {
+  font-size: 18px;
+  color: $color-danger;
+  margin-bottom: 16px;
+}
+
+.reloadButton {
+  padding: 10px 24px;
+  background-color: $color-primary;
+  color: $color-white;
+  border-radius: $border-radius-pill;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: $transition-default;
+
+  &:hover {
+    background-color: $color-primary-hover;
+  }
+}

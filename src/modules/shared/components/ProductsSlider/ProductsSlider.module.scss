@@ -1,0 +1,64 @@
+@import '../../../../styles/variables';
+
+.sliderContainer {
+  margin-bottom: 56px;
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 800;
+  color: $color-main-text;
+
+  @media (min-width: 640px) {
+    font-size: 32px;
+  }
+}
+
+.controls {
+  display: flex;
+  gap: 16px;
+}
+
+.navButton {
+  width: 36px;
+  height: 36px;
+  border-radius: $border-radius-pill;
+  border: 1px solid $color-elements;
+  background-color: $color-white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-main-text;
+  font-size: 14px;
+  transition: $transition-default;
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    border-color: $color-elements;
+  }
+
+  &:hover:not(:disabled) {
+    border-color: $color-primary;
+    color: $color-primary;
+  }
+}
+
+.trackWrapper {
+  overflow: hidden;
+  width: 100%;
+}
+
+.track {
+  display: flex;
+  gap: 16px;
+  transition: transform 0.4s ease;
+}
