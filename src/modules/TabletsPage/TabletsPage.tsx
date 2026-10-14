@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Breadcrumbs } from '../shared/components/Breadcrumbs';
 import styles from './TabletsPage.module.scss';
 import { Product } from '../../types/product';
@@ -32,9 +32,21 @@ export const TabletsPage = () => {
       .finally(() => setIsLoading(false));
   }, []);
 
-  const filteredTablets = tablets.filter(item =>
-    item.name.toLowerCase().includes(query.toLowerCase()),
-  );
+  const normalize = (value: string) => value.toLowerCase().trim();
+
+  const filteredTablets = useMemo(() => {
+    const words = normalize(query).split(/\s+/).filter(Boolean);
+
+    if (words.length === 0) {
+      return tablets;
+    }
+
+    return tablets.filter(({ name }) => {
+      const target = normalize(name);
+
+      return words.every(word => target.includes(word));
+    });
+  }, [tablets, query]);
 
   const sortedTablets = [...filteredTablets];
 
@@ -98,13 +110,15 @@ export const TabletsPage = () => {
 
   return (
     <div className={styles.tabletspage}>
-      <Breadcrumbs
-        items={[
-          {
-            label: 'Tablets',
-          },
-        ]}
-      />
+      {!error && (
+        <Breadcrumbs
+          items={[
+            {
+              label: 'Tablets',
+            },
+          ]}
+        />
+      )}
 
       <h1 className={styles.tabletspage__title}>Tablets</h1>
       <span
@@ -115,8 +129,8 @@ export const TabletsPage = () => {
 
       {error && <ErrorMessage />}
 
-      {tablets.length === 0 && !isLoading && (
-        <h4 className={styles.tabletspage__empty}>There are no phones yet</h4>
+      {tablets.length === 0 && !isLoading && !error && (
+        <h4 className={styles.tabletspage__empty}>There are no tablets yet</h4>
       )}
 
       {!isLoading && (
@@ -133,7 +147,9 @@ export const TabletsPage = () => {
       )}
 
       {tablets.length > 0 && !isLoading && (
-        <ProductsList products={itemsOnPage} />
+        <div className={styles.tabletspage__list}>
+          <ProductsList products={itemsOnPage} />
+        </div>
       )}
 
       {!isLoading && perPage !== 'all' && (

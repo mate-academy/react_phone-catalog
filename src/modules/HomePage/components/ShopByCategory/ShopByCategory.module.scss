@@ -36,7 +36,7 @@
     transition: transform $effect-duration ease;
 
     &:hover {
-      transform: scale($scale-size);
+      transform: scale($category-scale-size);
     }
   }
 
@@ -57,7 +57,7 @@
 
   &__count {
     @include body-text;
-    
+
     color: $secondary;
   }
 }

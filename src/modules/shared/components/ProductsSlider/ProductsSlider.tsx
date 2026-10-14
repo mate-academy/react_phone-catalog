@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Product } from '../../../../types/product';
 import { ProductCard } from '../ProductCard';
 import styles from './ProductsSlider.module.scss';
@@ -8,14 +8,52 @@ type Props = {
   title: string;
 };
 
+const getVisibleCards = () => {
+  if (window.innerWidth >= 1200) {
+    return 4;
+  }
+
+  if (window.innerWidth >= 640) {
+    return 3;
+  }
+
+  return 1;
+};
+
+const getCardWidth = () => {
+  if (window.innerWidth >= 1200) {
+    return 272;
+  }
+
+  if (window.innerWidth >= 640) {
+    return 247;
+  }
+
+  return 288;
+};
+
 export const ProductsSlider: React.FC<Props> = ({ products, title }) => {
   const [slideIndex, setSlideIndex] = useState(0);
   const trackRef = useRef<HTMLDivElement | null>(null);
+  const [visibleCards, setVisibleCards] = useState(getVisibleCards());
 
-  const CARD_WIDTH = 212;
+  useEffect(() => {
+    const handleResize = () => {
+      setVisibleCards(getVisibleCards());
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  const CARD_WIDTH = getCardWidth();
   const GAP = 16;
 
   const step = CARD_WIDTH + GAP;
+  const maxIndex = Math.max(0, products.length - visibleCards);
 
   const changeSlide = (direction: number) => {
     setSlideIndex(prevIndex => {
@@ -25,8 +63,8 @@ export const ProductsSlider: React.FC<Props> = ({ products, title }) => {
         return 0;
       }
 
-      if (nextIndex > products.length - 1) {
-        return products.length - 1;
+      if (nextIndex > maxIndex) {
+        return maxIndex;
       }
 
       return nextIndex;
@@ -52,7 +90,7 @@ export const ProductsSlider: React.FC<Props> = ({ products, title }) => {
             type="button"
             className={styles.section__rightbtn}
             onClick={() => changeSlide(1)}
-            disabled={slideIndex === products.length - 1}
+            disabled={slideIndex === maxIndex}
             aria-label="Next slide"
           >
             <span className={styles.section__rightbtn_icon}></span>

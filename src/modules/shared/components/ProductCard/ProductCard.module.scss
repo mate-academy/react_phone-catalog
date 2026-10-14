@@ -3,14 +3,12 @@
 
 .card {
   box-sizing: border-box;
-
   padding: 32px;
   display: flex;
   flex-direction: column;
   gap: 8px;
   border: 1px solid $elements;
   border-radius: 8px;
-  flex: 0 0 212px;
   height: 440px;
 
   @include on-tablet {
@@ -140,7 +138,7 @@
     height: 40px;
 
     @include button-text;
-    
+
     color: $white;
     background: $accent;
     transition: box-shadow $effect-duration ease;

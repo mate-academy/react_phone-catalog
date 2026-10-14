@@ -7,7 +7,7 @@ export const ErrorMessage = () => (
       className={styles.error__btn}
       onClick={() => window.location.reload()}
     >
-      <span className={styles.error__btn_icon}></span>
+      Reload
     </button>
   </div>
 );

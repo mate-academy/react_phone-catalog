@@ -10,7 +10,7 @@
   &__text {
     display: inline-block;
     margin: 0;
-    
+
     @include h4;
 
     padding: 12px;
@@ -20,25 +20,18 @@
   }
 
   &__btn {
-    border: none;
     background-color: transparent;
-    padding: 0;
+    padding: 14px;
     height: fit-content;
-    &_icon {
-      display: block;
-      background-image: url(/img/icons/refresh.svg);
-      background-repeat: no-repeat;
-      background-position: center;
-      width: 16px;
-      height: 16px;
-      padding: 14px;
-      border: 1px solid $icons;
-      border-radius: 8px;
-      transition: border $effect-duration ease;
 
-      &:hover {
-        border: 1px solid $primary;
-      }
+    @include button-text;
+
+    border: 1px solid $icons;
+    border-radius: 8px;
+    transition: border $effect-duration ease;
+
+    &:hover {
+      border: 1px solid $primary;
     }
   }
 }

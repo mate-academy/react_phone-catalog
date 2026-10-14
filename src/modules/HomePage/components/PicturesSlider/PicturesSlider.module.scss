@@ -9,7 +9,7 @@
 
 .title {
   @include h1;
-  
+
   margin: 0;
   margin-bottom: 24px;
   padding-inline: 16px;
@@ -51,20 +51,104 @@
 
   &__slide {
     display: flex;
+    flex-direction: column;
     flex: 0 0 100%;
     user-select: none;
+
+    position: relative;
+    background: $primary;
+
+    @include on-tablet {
+      flex-direction: row;
+      border-radius: 8px;
+    }
+  }
+
+  &__order {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    bottom: 5px;
+    width: 40%;
+    border-radius: 8px;
+    padding: 20px 25px;
+
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+
+    background-color: #222;
+
+    @include on-tablet {
+      display: flex;
+    }
+
+    @include on-desktop {
+      padding: 50px 45px;
+      top: 10px;
+      left: 10px;
+      bottom: 10px;
+    }
+
+    &_title {
+      @include h4;
+
+      margin: 0;
+      display: inline-block;
+      background: linear-gradient(95deg, #7f3ff0 0%, #7659f8 30%, #d662fe 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+
+      @include on-desktop {
+        @include h1;
+      }
+    }
+
+    &_text {
+      @include small-text;
+
+      color: $secondary;
+    }
+
+    &_button {
+      @include small-text;
+
+      font-size: 10px;
+      color: $white;
+      text-transform: uppercase;
+      background: transparent;
+      border: 1px solid $secondary;
+      border-radius: 48px;
+      padding: 10px 25px;
+
+      transition: all $effect-duration ease;
+
+      &:hover {
+        background: $white;
+        color: #222;
+      }
+
+      @include on-desktop {
+        @include button-text;
+        
+        color: $white;
+        padding: 15px 35px;
+      }
+    }
   }
 
   &__img {
     width: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    object-position: 90%;
     aspect-ratio: 1 / 1;
     user-select: none;
     pointer-events: none;
 
     @include on-tablet {
       aspect-ratio: 16 / 6;
-      border-radius: 8px;
     }
   }
 }

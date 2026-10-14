@@ -4,6 +4,10 @@
 .phonespage {
   @include padding-inline;
 
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
   padding-block: 24px 64px;
 
   &__title {
@@ -16,7 +20,7 @@
 
   &__counter {
     @include body-text;
-    
+
     color: $secondary;
   }
 
@@ -28,5 +32,13 @@
     margin-top: 32px;
 
     @include grid-columns;
+  }
+
+  &__list {
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
   }
 }

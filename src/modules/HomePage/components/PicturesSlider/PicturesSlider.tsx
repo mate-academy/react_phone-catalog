@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import styles from './PicturesSlider.module.scss';
 import { data } from './constants';
 import { Dots } from './components/Dots';
+import { Link } from 'react-router-dom';
 
 export const PicturesSlider = () => {
   const slides = data;
@@ -91,6 +92,21 @@ export const PicturesSlider = () => {
             >
               {slides.map(slide => (
                 <div key={slide.id} className={styles.slider__slide}>
+                  <div className={styles.slider__order}>
+                    <div className={styles.slider__order_wrapper}>
+                      <h2 className={styles.slider__order_title}>
+                        {slide.title}
+                      </h2>
+                      <span className={styles.slider__order_text}>
+                        {slide.text}
+                      </span>
+                    </div>
+                    <Link to="/phones">
+                      <button className={styles.slider__order_button}>
+                        Order now
+                      </button>
+                    </Link>
+                  </div>
                   <img
                     className={styles.slider__img}
                     src={slide.image}

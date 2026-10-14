@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import styles from './AccessoriesPage.module.scss';
 import { Product } from '../../types/product';
 import { useSearchParams } from 'react-router-dom';
@@ -32,9 +32,21 @@ export const AccessoriesPage = () => {
       .finally(() => setIsLoading(false));
   }, []);
 
-  const filteredAccessories = accessories.filter(item =>
-    item.name.toLowerCase().includes(query.toLowerCase()),
-  );
+  const normalize = (value: string) => value.toLowerCase().trim();
+
+  const filteredAccessories = useMemo(() => {
+    const words = normalize(query).split(/\s+/).filter(Boolean);
+
+    if (words.length === 0) {
+      return accessories;
+    }
+
+    return accessories.filter(({ name }) => {
+      const target = normalize(name);
+
+      return words.every(word => target.includes(word));
+    });
+  }, [accessories, query]);
 
   const sortedAccessories = [...filteredAccessories];
 
@@ -98,15 +110,17 @@ export const AccessoriesPage = () => {
 
   return (
     <div className={styles.accessoriespage}>
-      <Breadcrumbs
-        items={[
-          {
-            label: 'Accessories',
-          },
-        ]}
-      />
+      {!error && (
+        <Breadcrumbs
+          items={[
+            {
+              label: 'Accessories',
+            },
+          ]}
+        />
+      )}
 
-      <h1 className={styles.accessoriespage__title}>Mobile phones</h1>
+      <h1 className={styles.accessoriespage__title}>Accessories</h1>
       <span
         className={styles.accessoriespage__counter}
       >{`${accessories.length} models`}</span>
@@ -115,9 +129,9 @@ export const AccessoriesPage = () => {
 
       {error && <ErrorMessage />}
 
-      {accessories.length === 0 && !isLoading && (
+      {accessories.length === 0 && !isLoading && !error && (
         <h4 className={styles.accessoriespage__empty}>
-          There are no phones yet
+          There are no accessories yet
         </h4>
       )}
 
@@ -135,7 +149,9 @@ export const AccessoriesPage = () => {
       )}
 
       {accessories.length > 0 && !isLoading && (
-        <ProductsList products={itemsOnPage} />
+        <div className={styles.accessoriespage__list}>
+          <ProductsList products={itemsOnPage} />
+        </div>
       )}
 
       {!isLoading && perPage !== 'all' && (

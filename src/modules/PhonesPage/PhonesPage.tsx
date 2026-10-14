@@ -1,6 +1,6 @@
 import styles from './PhonesPage.module.scss';
 import { ProductsList } from '../shared/components/ProductsList';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Product } from '../../types/product';
 import { getPhones } from '../../api';
 import { Loader } from '../shared/components/Loader';
@@ -32,9 +32,21 @@ export const PhonesPage = () => {
       .finally(() => setIsLoading(false));
   }, []);
 
-  const filteredPhones = phones.filter(item =>
-    item.name.toLowerCase().includes(query.toLowerCase()),
-  );
+  const normalize = (value: string) => value.toLowerCase().trim();
+
+  const filteredPhones = useMemo(() => {
+    const words = normalize(query).split(/\s+/).filter(Boolean);
+
+    if (words.length === 0) {
+      return phones;
+    }
+
+    return phones.filter(({ name }) => {
+      const target = normalize(name);
+
+      return words.every(word => target.includes(word));
+    });
+  }, [phones, query]);
 
   const sortedPhones = [...filteredPhones];
 
@@ -95,13 +107,15 @@ export const PhonesPage = () => {
 
   return (
     <div className={styles.phonespage}>
-      <Breadcrumbs
-        items={[
-          {
-            label: 'Phones',
-          },
-        ]}
-      />
+      {!error && (
+        <Breadcrumbs
+          items={[
+            {
+              label: 'Phones',
+            },
+          ]}
+        />
+      )}
 
       <h1 className={styles.phonespage__title}>Mobile phones</h1>
       <span
@@ -112,7 +126,7 @@ export const PhonesPage = () => {
 
       {error && <ErrorMessage />}
 
-      {phones.length === 0 && !isLoading && (
+      {phones.length === 0 && !isLoading && !error && (
         <h4 className={styles.phonespage__empty}>There are no phones yet</h4>
       )}
 
@@ -130,10 +144,12 @@ export const PhonesPage = () => {
       )}
 
       {phones.length > 0 && !isLoading && (
-        <ProductsList products={itemsOnPage} />
+        <div className={styles.phonespage__list}>
+          <ProductsList products={itemsOnPage} />
+        </div>
       )}
 
-      {!isLoading && perPage !== 'all' && (
+      {!isLoading && perPage !== 'all' && itemsOnPage.length > 0 && (
         <Pagination
           total={sortedPhones.length}
           perPage={perPage}

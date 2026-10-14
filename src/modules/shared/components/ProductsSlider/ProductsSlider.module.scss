@@ -79,11 +79,29 @@
 
 .slider {
   overflow: hidden;
+  width: 100%;
 
   &__track {
     display: flex;
     gap: 16px;
+    width: 100%;
 
     transition: transform $effect-duration ease;
+
+    > * {
+      flex: 0 0 100%;
+    }
+
+    @include on-tablet {
+      > * {
+        flex-basis: 237px;
+      }
+    }
+
+    @include on-desktop {
+      > * {
+        flex-basis: calc((100% - 48px) / 4);
+      }
+    }
   }
 }

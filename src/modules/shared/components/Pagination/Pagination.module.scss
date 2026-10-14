@@ -2,13 +2,18 @@
 @use '/src/variables.scss' as *;
 
 .pagination {
+  position: sticky;
+  bottom: 24px;
+  background: $hover-background;
+  border-radius: 48px;
+
   list-style: none;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 16px;
   width: 248px;
-  margin: 24px auto 0;
+  margin: auto auto 0;
   padding: 0;
 
   &__listitem {
