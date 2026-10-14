@@ -22,7 +22,7 @@ const getVisibleCards = () => {
 
 const getCardWidth = () => {
   if (window.innerWidth >= 1200) {
-    return 272;
+    return 275;
   }
 
   if (window.innerWidth >= 640) {
