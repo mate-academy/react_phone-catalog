@@ -1,0 +1,56 @@
+@use '../../styles/mixins';
+
+.slider {
+  min-width: 0;
+}
+
+.heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+
+  h2 {
+    margin: 0;
+  }
+}
+
+.controls {
+  display: flex;
+  flex-shrink: 0;
+  gap: 16px;
+}
+
+.arrow {
+  width: 32px;
+  height: 32px;
+}
+
+.track {
+  display: grid;
+  grid-auto-columns: 272px;
+  grid-auto-flow: column;
+  gap: 16px;
+  overflow: auto hidden;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  > * {
+    scroll-snap-align: start;
+  }
+}
+
+@include mixins.mobile {
+  .hot .track > article {
+    height: 439px;
+  }
+
+  .track {
+    grid-auto-columns: 212px;
+  }
+}

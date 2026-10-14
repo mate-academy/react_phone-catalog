@@ -1,0 +1,45 @@
+@use '../../styles/mixins';
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 16px;
+  min-width: 0;
+  margin-bottom: 40px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15px;
+  color: var(--muted);
+
+  > a {
+    display: flex;
+    flex: 0 0 16px;
+    color: var(--text);
+  }
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  color: var(--icons, #b4bdc3);
+
+  > a {
+    color: var(--text);
+  }
+
+  > span {
+    color: var(--muted);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+@include mixins.mobile {
+  .breadcrumbs {
+    margin-bottom: 24px;
+  }
+}

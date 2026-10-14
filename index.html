@@ -3,7 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React + TS</title>
+    <script>
+      try {
+        document.documentElement.dataset.theme =
+          localStorage.getItem('nice-gadgets-theme') === 'dark'
+            ? 'dark'
+            : 'light';
+      } catch {
+        document.documentElement.dataset.theme = 'light';
+      }
+    </script>
+    <meta
+      name="description"
+      content="Browse phones, tablets and accessories at Nice Gadgets. Compare models, save your favorites and build your shopping cart."
+    />
+    <title>Nice Gadgets — Product Catalog</title>
   </head>
   <body>
     <div id="root"></div>

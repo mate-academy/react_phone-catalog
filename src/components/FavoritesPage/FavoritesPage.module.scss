@@ -1,0 +1,35 @@
+@use '../../styles/mixins';
+
+.page {
+  padding-top: 24px;
+}
+
+.products {
+  margin-top: 40px;
+}
+
+.heart {
+  display: grid;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 24px;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  color: var(--muted);
+
+  svg {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@include mixins.mobile {
+  .page {
+    margin-bottom: -8px;
+  }
+
+  .products {
+    margin-top: 32px;
+  }
+}

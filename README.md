@@ -1,5 +1,21 @@
 # React Product Catalog
 
+[DEMO LINK](https://AndrzejFront.github.io/react_phone-catalog/)
+
+## Local development
+
+Run `npm ci`, then `npm start`. Run `npm run check` for TypeScript, ESLint,
+SCSS and formatting checks, `npm test` for the Cypress suite and `npm run build`
+for the production bundle.
+
+The app uses hash routing so product links work on GitHub Pages, for example
+`/#/phones?sort=price&perPage=8` and `/#/product/apple-iphone-11-128gb-black`.
+Cart, favorites and theme preferences are saved in browser localStorage.
+Search and appearance tools open when hovering a desktop navigation item or
+focusing their keyboard button. On mobile they are available in the menu.
+Checkout is a demonstration: confirming the checkout clears the cart.
+The demo link identifies the intended account; it does not confirm a deployment.
+
 Implement the catalog with a shopping cart and favorites page according to one of the next designs:
 
 - [Original](https://www.figma.com/file/T5ttF21UnT6RRmCQQaZc6L/Phone-catalog-(V2)-Original)

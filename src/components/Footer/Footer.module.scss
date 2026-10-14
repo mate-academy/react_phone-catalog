@@ -1,0 +1,77 @@
+@use '../../styles/mixins';
+
+.footer {
+  background: var(--surface);
+  box-shadow: 0 -1px 0 var(--border);
+}
+
+.content {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: center;
+  padding-block: 32px;
+}
+
+.logo {
+  justify-self: start;
+}
+
+.lightLogo {
+  display: block;
+}
+
+.darkLogo {
+  display: none;
+}
+
+html[data-theme='dark'] {
+  .lightLogo {
+    display: none;
+  }
+  .darkLogo {
+    display: block;
+  }
+}
+
+.links {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  a {
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+}
+
+.back {
+  display: flex;
+  align-items: center;
+  justify-self: end;
+  gap: 16px;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15px;
+}
+
+@include mixins.mobile {
+  .content {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+  }
+  .links {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .back {
+    justify-self: center;
+  }
+}

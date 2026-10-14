@@ -1,1 +1,273 @@
-// not empty
+@use './styles/mixins';
+
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-Regular.otf') format('opentype');
+  font-weight: 400 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-Bold.otf') format('opentype');
+  font-weight: 800 900;
+  font-display: swap;
+}
+
+:root {
+  --text: #313237;
+  --muted: #89939a;
+  --placeholder: #b4bdc3;
+  --surface: #fff;
+  --bg: #fff;
+  --border: #e2e6e9;
+  --primary: #313237;
+  --on-primary: #fff;
+  --success: #27ae60;
+  --danger: #eb5757;
+
+  color-scheme: light;
+  font-family: Mont, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+}
+
+:root[data-theme='dark'] {
+  --text: #f1f2f9;
+  --muted: #a4a8ba;
+  --placeholder: #757b93;
+  --surface: #161827;
+  --bg: #0f1121;
+  --border: #35394e;
+  --primary: #a698ff;
+  --on-primary: #141125;
+  --success: #67d78b;
+  --danger: #ff8194;
+
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button,
+a,
+input,
+select {
+  -webkit-tap-highlight-color: transparent;
+
+  @include mixins.interactive-transition;
+}
+
+button,
+select {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: default;
+  color: var(--placeholder);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--primary);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 4px;
+}
+
+[id='root'] {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.container {
+  width: min(100% - 64px, 1136px);
+  margin-inline: auto;
+}
+
+.main-content {
+  flex: 1;
+  padding-block: 0 80px;
+  outline: 0;
+}
+
+.page-title {
+  margin-bottom: 8px;
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 56px;
+  letter-spacing: -0.01em;
+}
+
+.page-subtitle {
+  margin-bottom: 40px;
+  color: var(--muted);
+}
+
+h2.page-subtitle {
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+
+.primary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  min-height: 40px;
+  border: 1px solid var(--primary);
+  padding: 0 16px;
+  background: var(--primary);
+  color: var(--on-primary);
+  font-weight: 700;
+  &:hover {
+    box-shadow: 0 3px 13px rgb(49 50 55 / 20%);
+  }
+}
+
+.icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--border);
+  padding: 0;
+  background: var(--surface);
+  color: var(--text);
+  &:hover:not(:disabled) {
+    border-color: var(--text);
+  }
+}
+
+.empty-state {
+  padding: 48px 16px;
+  text-align: center;
+  img {
+    width: 240px;
+    max-height: 220px;
+    margin: 0 auto 24px;
+    object-fit: contain;
+  }
+  p {
+    color: var(--muted);
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.skip-link {
+  position: fixed;
+  z-index: 100;
+  top: 8px;
+  left: 8px;
+  padding: 12px 20px;
+  transform: translateY(-150%);
+  background: var(--primary);
+  color: var(--on-primary);
+  &:focus {
+    transform: translateY(0);
+  }
+}
+
+@include mixins.below-desktop {
+  .container {
+    width: calc(100% - 48px);
+  }
+  .main-content {
+    padding-bottom: 64px;
+  }
+}
+
+@include mixins.mobile {
+  .container {
+    width: calc(100% - 32px);
+  }
+  .main-content {
+    padding-block: 0 64px;
+  }
+  .page-title {
+    font-size: 32px;
+    line-height: 41px;
+  }
+  .page-subtitle {
+    margin-bottom: 32px;
+  }
+  h2.page-subtitle {
+    font-size: 24px;
+    line-height: 31px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

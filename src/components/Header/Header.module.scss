@@ -1,0 +1,202 @@
+@use '../../styles/mixins';
+
+.header {
+  position: sticky;
+  z-index: 20;
+  top: 0;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  height: 64px;
+  background: var(--surface);
+  box-shadow: 0 1px 0 var(--border);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+  flex-shrink: 0;
+  padding-inline: 24px;
+  img {
+    max-width: none;
+  }
+}
+
+.navigation {
+  display: flex;
+  align-self: stretch;
+  flex-shrink: 0;
+  gap: 64px;
+  margin-right: auto;
+  a {
+    position: relative;
+    display: flex;
+    align-items: center;
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    &:hover {
+      color: var(--text);
+    }
+  }
+}
+
+.active {
+  color: var(--text) !important;
+  &::after {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background: var(--text);
+    content: '';
+  }
+}
+
+.actions {
+  display: flex;
+  align-self: stretch;
+  margin-left: auto;
+}
+
+.action {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border: 0;
+  border-left: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+  &:hover {
+    background: var(--bg);
+  }
+}
+
+.badge {
+  position: absolute;
+  top: 18px;
+  left: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 14px;
+  height: 14px;
+  border: 1px solid var(--surface);
+  border-radius: 50%;
+  padding-inline: 2px;
+  background: var(--danger);
+  color: #fff;
+  font-size: 9px;
+  font-weight: 600;
+  line-height: 12px;
+}
+
+.menuButton {
+  display: none;
+}
+
+.searchContainer {
+  flex: 0 1 240px;
+  min-width: 160px;
+}
+
+@include mixins.below-desktop {
+  .header {
+    flex-wrap: wrap;
+    gap: 0 16px;
+    height: auto;
+    min-height: 48px;
+  }
+  .logo {
+    height: 48px;
+    padding-inline: 16px;
+  }
+  .navigation {
+    height: 48px;
+    gap: 32px;
+  }
+  .action {
+    width: 48px;
+    height: 48px;
+  }
+  .badge {
+    top: 10px;
+    left: 24px;
+  }
+  .searchContainer {
+    order: 1;
+    flex: 0 0 100%;
+    min-width: 0;
+    border-top: 1px solid var(--border);
+    padding: 7px 24px 8px;
+  }
+}
+
+@include mixins.mobile {
+  .header {
+    gap: 0;
+  }
+  .logo {
+    margin-right: auto;
+  }
+  .navigation {
+    display: none;
+  }
+  .shopAction {
+    display: none;
+  }
+  .menuButton {
+    display: flex;
+  }
+  .searchContainer {
+    padding-inline: 16px;
+  }
+  .open {
+    position: fixed;
+    inset: 48px 0 64px;
+    display: flex;
+    height: auto;
+    overflow-y: auto;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding-top: 24px;
+    background: var(--surface);
+    a {
+      min-height: 27px;
+      padding-block: 8px;
+    }
+  }
+  .menuOpen {
+    .shopAction {
+      position: fixed;
+      bottom: 0;
+      display: flex;
+      width: 50%;
+      height: 64px;
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+      &:first-of-type {
+        left: 0;
+      }
+      &:last-of-type {
+        right: 0;
+      }
+    }
+    .badge {
+      top: 18px;
+      left: calc(50% + 1px);
+    }
+  }
+  .searchHeader .open {
+    top: 104px;
+  }
+}

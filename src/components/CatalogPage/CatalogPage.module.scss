@@ -1,0 +1,77 @@
+@use '../../styles/mixins';
+
+.page {
+  padding-top: 24px;
+}
+
+.filters {
+  display: flex;
+  gap: 16px;
+  margin: 40px 0 24px;
+}
+
+.filter {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15px;
+
+  &::after {
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    width: 16px;
+    height: 16px;
+    background: var(--placeholder);
+    mask: url('/img/figma-assets/icon-down.svg') center / contain no-repeat;
+    pointer-events: none;
+    content: '';
+  }
+
+  select {
+    min-width: 128px;
+    height: 40px;
+    padding: 0 36px 0 12px;
+    border: 1px solid var(--icons, #b4bdc3);
+    border-radius: 0;
+    background-color: var(--surface);
+    color: var(--text);
+    font: inherit;
+    font-size: 14px;
+    line-height: 21px;
+    appearance: none;
+    cursor: pointer;
+
+    @include mixins.transition(border-color);
+
+    &:hover,
+    &:focus {
+      border-color: var(--text);
+    }
+  }
+
+  &:first-child select {
+    min-width: 176px;
+  }
+}
+
+@include mixins.mobile {
+  .filters {
+    margin-top: 32px;
+  }
+
+  .filter {
+    flex: 1;
+    min-width: 0;
+
+    select,
+    &:first-child select {
+      min-width: 0;
+      width: 100%;
+    }
+  }
+}

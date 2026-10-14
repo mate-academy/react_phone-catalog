@@ -1,0 +1,99 @@
+@use '../../styles/mixins';
+
+.page {
+  padding-top: 41px;
+
+  > button {
+    display: flex;
+    margin-bottom: 0;
+  }
+
+  h1 {
+    margin: 16px 0 0;
+  }
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 368px;
+  gap: 16px;
+  align-items: start;
+  margin-top: 32px;
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.summary {
+  padding: 24px;
+  box-shadow: inset 0 0 0 1px var(--border);
+  background: var(--surface);
+  text-align: center;
+}
+
+.total {
+  margin: 0;
+  color: var(--text);
+  font-size: 32px;
+  line-height: 41px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.quantity {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.checkout {
+  width: 100%;
+  height: 48px;
+  min-height: 48px;
+  margin-top: 24px;
+}
+
+.summary > div {
+  padding-bottom: 24px;
+  box-shadow: inset 0 -1px var(--border);
+}
+
+.emptyImage {
+  width: min(100%, 280px);
+  height: 220px;
+  margin-bottom: 24px;
+  object-fit: contain;
+}
+
+@include mixins.below-desktop {
+  .page {
+    padding-top: 40px;
+  }
+
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+  }
+
+  .checkout {
+    margin-top: 16px;
+  }
+
+  .summary > div {
+    padding-bottom: 16px;
+  }
+}
+
+@include mixins.mobile {
+  .page {
+    padding-top: 24px;
+
+    h1 {
+      margin-top: 24px;
+    }
+  }
+}

@@ -1,0 +1,18 @@
+.icon {
+  display: block;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  background-color: currentColor;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: 16px 16px;
+}
+
+.filled {
+  background-color: var(--danger);
+}
+
+.glyph {
+  background: none;
+}
