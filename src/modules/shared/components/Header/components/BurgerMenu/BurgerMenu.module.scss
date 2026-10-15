@@ -1,0 +1,179 @@
+@use '/src/mixins.scss' as *;
+@use '/src/variables.scss' as *;
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  overflow: auto;
+  height: 100vh;
+  z-index: 100;
+  background-color: $hover-background;
+
+  transform: translate(-100%);
+  opacity: 0;
+  visibility: hidden;
+
+  transition: all $effect-duration ease;
+
+  &__open {
+    transform: translate(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &__top {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 48px;
+    padding-left: 16px;
+    border-bottom: 1px solid $elements;
+  }
+
+  &__logo {
+    width: 64px;
+    height: 22px;
+
+    &_img {
+      width: 64px;
+      height: 22px;
+    }
+  }
+
+  &__close {
+    width: 16px;
+    height: 16px;
+    padding: 16px;
+    border-left: 1px solid $elements;
+  }
+
+  &__bottom {
+    position: relative;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 64px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    border-top: 1px solid $elements;
+  }
+
+  &__fav {
+    box-sizing: border-box;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &_icon {
+      margin: 0 auto;
+      width: 16px;
+      height: 16px;
+    }
+
+    &_counter {
+      position: absolute;
+      top: 14px;
+      left: 79px;
+
+      border: 2px solid $white;
+      border-radius: 50%;
+      color: $white;
+      font-weight: 600;
+      font-family: Mont, sans-serif;
+      background: $secondary-accent;
+      font-size: 9px;
+      text-align: center;
+      line-height: 14px;
+      width: 14px;
+      height: 14px;
+    }
+
+    &--active {
+      border-bottom: 2px solid $primary;
+    }
+  }
+
+  &__cart {
+    width: 50%;
+    height: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &_icon {
+      width: 16px;
+      height: 16px;
+    }
+
+    &_counter {
+      position: absolute;
+      top: 15px;
+      right: 64px;
+
+      border: 2px solid $white;
+      border-radius: 50%;
+      color: $white;
+      font-weight: 600;
+      font-family: Mont, sans-serif;
+      background: $secondary-accent;
+      font-size: 9px;
+      text-align: center;
+      line-height: 14px;
+      width: 14px;
+      height: 14px;
+    }
+
+    &--active {
+      border-bottom: 2px solid $primary;
+    }
+  }
+
+  &__divider {
+    position: absolute;
+    left: 50%;
+    width: 1px;
+    height: 100%;
+    background: $elements;
+  }
+}
+
+.nav {
+  margin-top: 24px;
+  padding-inline: 16px;
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__item {
+    padding: 8px 0;
+  }
+
+  &__link {
+    @include uppercase-label;
+    
+    color: $secondary;
+    text-decoration: none;
+
+    &--active {
+      color: $primary;
+      border-bottom: 2px solid $primary;
+    }
+  }
+}

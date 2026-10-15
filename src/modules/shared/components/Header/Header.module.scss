@@ -1,0 +1,271 @@
+@use '/src/mixins.scss' as *;
+@use '/src/variables.scss' as *;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: $hover-background;
+
+  overflow: hidden;
+
+  &__content {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid $elements;
+
+    &_left {
+      display: flex;
+      flex-direction: row;
+      gap: 16px;
+      align-items: center;
+
+      @include on-desktop {
+        gap: 24px;
+      }
+    }
+
+    &_right {
+      display: none;
+      flex-direction: row;
+      align-items: center;
+
+      @include on-tablet {
+        display: flex;
+      }
+    }
+  }
+
+  &__logo {
+    width: 64px;
+    height: 22px;
+    padding: 13px 16px;
+
+    &_img {
+      width: 64px;
+      height: 22px;
+
+      @include on-desktop {
+        width: 80px;
+        height: 28px;
+      }
+    }
+
+    @include on-desktop {
+      width: 80px;
+      height: 28px;
+      padding: 18px 24px;
+    }
+  }
+
+  &__mobile {
+    display: flex;
+    align-items: center;
+
+    @include on-tablet {
+      display: none;
+    }
+  }
+
+  &__search {
+    background-image: url(/img/icons/Search.svg);
+    width: 16px;
+    height: 16px;
+    padding: 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-left: 1px solid $elements;
+    cursor: pointer;
+
+    visibility: visible;
+
+    @include on-desktop {
+      padding: 24px;
+    }
+
+    &_disabled {
+      visibility: hidden;
+    }
+  }
+
+  &__burgermenu {
+    width: 16px;
+    height: 16px;
+    padding: 16px;
+    border-left: 1px solid $elements;
+
+    @include on-tablet {
+      display: none;
+    }
+  }
+
+  &__fav {
+    position: relative;
+    padding: 16px;
+    border-left: 1px solid $elements;
+    width: 16px;
+    height: 16px;
+
+    @include on-desktop {
+      padding: 24px;
+    }
+
+    &_icon {
+      width: 16px;
+      height: 16px;
+    }
+
+    &_counter {
+      position: absolute;
+      top: 6px;
+      right: 8px;
+
+      border: 2px solid $white;
+      border-radius: 50%;
+      color: $white;
+      font-weight: 600;
+      font-family: Mont, sans-serif;
+      background: $secondary-accent;
+      font-size: 9px;
+      text-align: center;
+      line-height: 14px;
+      width: 14px;
+      height: 14px;
+
+      @include on-desktop {
+        top: 14px;
+        right: 16px;
+      }
+    }
+
+    &--active {
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+
+        display: block;
+        width: 100%;
+        border-bottom: 3px solid $primary;
+      }
+    }
+  }
+
+  &__cart {
+    position: relative;
+    display: flex;
+    padding: 16px;
+    border-left: 1px solid $elements;
+    width: 16px;
+    height: 16px;
+
+    @include on-desktop {
+      padding: 24px;
+    }
+
+    &_icon {
+      width: 16px;
+      height: 16px;
+    }
+
+    &_counter {
+      position: absolute;
+      top: 6px;
+      right: 8px;
+
+      border: 2px solid $white;
+      border-radius: 50%;
+      color: $white;
+      font-weight: 600;
+      font-family: Mont, sans-serif;
+      background: $secondary-accent;
+      font-size: 9px;
+      text-align: center;
+      line-height: 14px;
+      width: 14px;
+      height: 14px;
+
+      @include on-desktop {
+        top: 14px;
+        right: 16px;
+      }
+    }
+
+    &--active {
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+
+        display: block;
+        width: 100%;
+        border-bottom: 3px solid $primary;
+      }
+    }
+  }
+}
+
+.nav {
+  display: none;
+
+  @include on-tablet {
+    display: block;
+  }
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 32px;
+
+    @include on-desktop {
+      gap: 64px;
+    }
+  }
+
+  &__link {
+    @include uppercase-label;
+    
+    color: $secondary;
+    text-decoration: none;
+    padding: 11px 0;
+
+    transition: color $effect-duration ease;
+
+    @include on-desktop {
+      padding: 19px 0;
+    }
+
+    &:hover {
+      color: $primary;
+    }
+
+    &--active {
+      position: relative;
+      color: $primary;
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -3px;
+
+        display: block;
+        width: 100%;
+        border-bottom: 3px solid $primary;
+      }
+    }
+  }
+}

@@ -1,0 +1,37 @@
+@use '/src/mixins.scss' as *;
+@use '/src/variables.scss' as *;
+
+.error {
+  margin-top: 24px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+
+  &__text {
+    display: inline-block;
+    margin: 0;
+
+    @include h4;
+
+    padding: 12px;
+    color: $white;
+    background-color: $red;
+    border-radius: 8px;
+  }
+
+  &__btn {
+    background-color: transparent;
+    padding: 14px;
+    height: fit-content;
+
+    @include button-text;
+
+    border: 1px solid $icons;
+    border-radius: 8px;
+    transition: border $effect-duration ease;
+
+    &:hover {
+      border: 1px solid $primary;
+    }
+  }
+}

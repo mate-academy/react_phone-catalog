@@ -1,0 +1,196 @@
+@use '/src/mixins.scss' as *;
+@use '/src/variables.scss' as *;
+
+.card {
+  box-sizing: border-box;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border: 1px solid $elements;
+  border-radius: 8px;
+  height: 440px;
+
+  @include on-tablet {
+    height: 512px;
+  }
+
+  @include on-desktop {
+    height: 506px;
+  }
+
+  &__imageWrapper {
+    flex: 1;
+
+    min-height: 108px;
+  }
+
+  &__link {
+    width: fit-content;
+    height: fit-content;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform $effect-duration ease;
+
+    &:hover {
+      transform: scale($scale-size);
+    }
+  }
+
+  &__name {
+    @include body-text;
+
+    text-decoration: none;
+    padding: 16px 0 0;
+
+    flex-shrink: 0;
+  }
+
+  &__cost {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+
+    flex-shrink: 0;
+  }
+
+  &__price {
+    @include h2;
+
+    flex-shrink: 0;
+
+    @include on-tablet {
+      font-size: 22px;
+    }
+  }
+
+  &__fullprice {
+    @include h2;
+
+    font-weight: 600;
+    color: $secondary;
+    text-decoration: line-through;
+
+    flex-shrink: 0;
+
+    @include on-tablet {
+      font-size: 22px;
+    }
+  }
+
+  &__divider {
+    width: 100%;
+    height: 0;
+    border: 1px solid $elements;
+
+    flex-shrink: 0;
+  }
+
+  &__specs {
+    padding: 8px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    flex-shrink: 0;
+  }
+
+  &__spec {
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+
+    flex-shrink: 0;
+  }
+
+  &__label {
+    @include small-text;
+
+    color: $secondary;
+
+    flex-shrink: 0;
+  }
+
+  &__value {
+    @include small-text;
+
+    text-align: right;
+
+    flex-shrink: 0;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+
+    flex-shrink: 0;
+  }
+
+  &__cart {
+    padding: 0;
+    border-radius: 8px;
+    border: none;
+    width: 100px;
+    height: 40px;
+
+    @include button-text;
+
+    color: $white;
+    background: $accent;
+    transition: box-shadow $effect-duration ease;
+
+    flex-shrink: 1;
+    flex-grow: 1;
+
+    @include on-tablet {
+      width: 125px;
+    }
+
+    @include on-desktop {
+      width: 160px;
+    }
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+    }
+
+    &_added {
+      background: transparent;
+      border: 1px solid $elements;
+      color: $accent;
+    }
+  }
+
+  &__fav {
+    border: none;
+    padding: 0;
+    background: transparent;
+
+    flex-shrink: 0;
+
+    &_icon {
+      display: block;
+      padding: 12px;
+      width: 16px;
+      height: 16px;
+      background-image: url(/img/icons/Favourites.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+      border: 1px solid $icons;
+      border-radius: 48px;
+      transition: border $effect-duration ease;
+
+      &--active {
+        background-image: url(/img/icons/Favourites-Filled.svg);
+      }
+
+      &:hover {
+        border: 1px solid $primary;
+      }
+    }
+  }
+}

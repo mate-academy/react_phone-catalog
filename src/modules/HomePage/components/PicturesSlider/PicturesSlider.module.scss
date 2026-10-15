@@ -1,0 +1,227 @@
+@use '/src/mixins.scss' as *;
+@use '/src/variables.scss' as *;
+
+.section {
+  @include on-tablet {
+    @include padding-inline;
+  }
+}
+
+.title {
+  @include h1;
+
+  margin: 0;
+  margin-bottom: 24px;
+  padding-inline: 16px;
+
+  @include on-tablet {
+    margin-bottom: 32px;
+    padding-inline: 0;
+  }
+
+  @include on-desktop {
+    margin-bottom: 56px;
+  }
+}
+
+.slider {
+  @include grid-columns;
+
+  &__content {
+    grid-column: 1 / 5;
+
+    @include on-tablet {
+      grid-column: 2 / 12;
+    }
+
+    @include on-desktop {
+      grid-column: 2 / 24;
+    }
+  }
+
+  &__viewport {
+    overflow: hidden;
+    touch-action: pan-y;
+  }
+
+  &__track {
+    display: flex;
+    transition: all $effect-duration ease;
+  }
+
+  &__slide {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 100%;
+    user-select: none;
+
+    position: relative;
+    background: $primary;
+
+    @include on-tablet {
+      flex-direction: row;
+      border-radius: 8px;
+    }
+  }
+
+  &__order {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    bottom: 5px;
+    width: 40%;
+    border-radius: 8px;
+    padding: 20px 25px;
+
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+
+    background-color: #222;
+
+    @include on-tablet {
+      display: flex;
+    }
+
+    @include on-desktop {
+      padding: 50px 45px;
+      top: 10px;
+      left: 10px;
+      bottom: 10px;
+    }
+
+    &_title {
+      @include h4;
+
+      margin: 0;
+      display: inline-block;
+      background: linear-gradient(95deg, #7f3ff0 0%, #7659f8 30%, #d662fe 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+
+      @include on-desktop {
+        @include h1;
+      }
+    }
+
+    &_text {
+      @include small-text;
+
+      color: $secondary;
+    }
+
+    &_button {
+      @include small-text;
+
+      font-size: 10px;
+      color: $white;
+      text-transform: uppercase;
+      background: transparent;
+      border: 1px solid $secondary;
+      border-radius: 48px;
+      padding: 10px 25px;
+
+      transition: all $effect-duration ease;
+
+      &:hover {
+        background: $white;
+        color: #222;
+      }
+
+      @include on-desktop {
+        @include button-text;
+        
+        color: $white;
+        padding: 15px 35px;
+      }
+    }
+  }
+
+  &__img {
+    width: 100%;
+    object-fit: contain;
+    object-position: 90%;
+    aspect-ratio: 1 / 1;
+    user-select: none;
+    pointer-events: none;
+
+    @include on-tablet {
+      aspect-ratio: 16 / 6;
+    }
+  }
+}
+
+.arrow__left {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  border-radius: 48px;
+  border: 1px solid $icons;
+  padding: 0;
+
+  transition: border $effect-duration ease;
+
+  @include on-tablet {
+    display: flex;
+  }
+
+  &:hover {
+    border: 1px solid $primary;
+  }
+
+  &_icon {
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-image: url(/img/PicturesSlider/arrow-right.svg);
+    transform: rotate(-180deg);
+  }
+
+  &:disabled {
+    border: 1px solid $elements;
+
+    .arrow__left_icon {
+      background-image: url(/img/PicturesSlider/arrow-right-disabled.svg);
+    }
+  }
+}
+
+.arrow__right {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  border-radius: 48px;
+  border: 1px solid $icons;
+  padding: 0;
+
+  transition: border $effect-duration ease;
+
+  @include on-tablet {
+    display: flex;
+  }
+
+  &:hover {
+    border: 1px solid $primary;
+  }
+
+  &_icon {
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-image: url(/img/PicturesSlider/arrow-right.svg);
+  }
+
+  &:disabled {
+    border: 1px solid $elements;
+
+    .arrow__right_icon {
+      background-image: url(/img/PicturesSlider/arrow-right-disabled.svg);
+    }
+  }
+}

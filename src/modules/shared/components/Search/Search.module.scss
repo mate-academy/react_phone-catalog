@@ -1,0 +1,51 @@
+@use '/src/mixins.scss' as *;
+@use '/src/variables.scss' as *;
+
+.search {
+  position: absolute;
+
+  inset: 0 0 0 96px;
+
+  border-bottom: 1px solid $elements;
+  border-left: 1px solid $elements;
+
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(24px);
+
+  transition:
+    opacity $effect-duration ease,
+    transform $effect-duration ease;
+
+
+  @include on-tablet {
+    inset: 0 96px;
+  }
+
+  @include on-desktop {
+    inset: 0 128px;
+  }
+
+  &__active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(0);
+  }
+
+  &__input {
+    width: 100%;
+    height: 100%;
+    background: $hover-background;
+
+    padding: 10px 12px;
+
+    box-sizing: border-box;
+
+    border: none;
+    border-radius: 0;
+
+    &:focus-visible {
+      outline: none;
+    }
+  }
+}
