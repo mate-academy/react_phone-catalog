@@ -32,16 +32,22 @@
 
 .title {
   font-size: 14px;
-  line-height: 21px;
+  line-height: 22px; /* Чуть увеличили межстрочный интервал для читаемости */
   color: var(--c-primary);
   text-decoration: none;
-  margin-bottom: 8px;
+  margin-bottom: 16px;
+  
+  /* Гибкая высота вместо жесткой */
+  min-height: 44px; 
+  height: auto; 
+  
+  /* Логика обрезки ровно по 2 строкам */
   display: -webkit-box;
-  -webkit-line-clamp: 2; /* Ограничиваем название двумя строками, чтобы не ломало верстку */
-  line-clamp: 2;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  height: 42px; /* Фиксированная высота под 2 строки */
+  text-overflow: ellipsis;
+  word-break: break-word;
 }
 
 .priceBlock {

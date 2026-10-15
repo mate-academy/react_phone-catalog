@@ -17,13 +17,44 @@ export const Pagination: React.FC<Props> = ({
 }) => {
   const totalPages = Math.ceil(totalItems / perPage);
 
-  // Если товаров мало и все влезают на одну страницу, прячем пагинацию
   if (totalPages <= 1) {
     return null;
   }
 
-  // Создаем массив чисел [1, 2, 3, 4...]
-  const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
+  // Логика генерации страниц с троеточием
+  const getVisiblePages = () => {
+    if (totalPages <= 7) {
+      return Array.from({ length: totalPages }, (_, i) => i + 1);
+    }
+
+    if (currentPage <= 4) {
+      return [1, 2, 3, 4, 5, '...', totalPages];
+    }
+
+    if (currentPage >= totalPages - 3) {
+      return [
+        1,
+        '...',
+        totalPages - 4,
+        totalPages - 3,
+        totalPages - 2,
+        totalPages - 1,
+        totalPages,
+      ];
+    }
+
+    return [
+      1,
+      '...',
+      currentPage - 1,
+      currentPage,
+      currentPage + 1,
+      '...',
+      totalPages,
+    ];
+  };
+
+  const pages = getVisiblePages();
 
   return (
     <div className={styles.pagination}>
@@ -31,7 +62,6 @@ export const Pagination: React.FC<Props> = ({
         className={styles.navBtn}
         disabled={currentPage === 1}
         onClick={() => onPageChange(currentPage - 1)}
-        aria-label="Previous page"
       >
         <svg
           width="16"
@@ -51,24 +81,29 @@ export const Pagination: React.FC<Props> = ({
       </button>
 
       <div className={styles.pages}>
-        {pages.map(page => (
-          <button
-            key={page}
-            className={cn(styles.pageBtn, {
-              [styles.active]: page === currentPage,
-            })}
-            onClick={() => onPageChange(page)}
-          >
-            {page}
-          </button>
-        ))}
+        {pages.map((page, index) =>
+          typeof page === 'number' ? (
+            <button
+              key={index}
+              className={cn(styles.pageBtn, {
+                [styles.active]: page === currentPage,
+              })}
+              onClick={() => onPageChange(page)}
+            >
+              {page}
+            </button>
+          ) : (
+            <span key={index} className={styles.dots}>
+              ...
+            </span>
+          ),
+        )}
       </div>
 
       <button
         className={styles.navBtn}
         disabled={currentPage === totalPages}
         onClick={() => onPageChange(currentPage + 1)}
-        aria-label="Next page"
       >
         <svg
           width="16"

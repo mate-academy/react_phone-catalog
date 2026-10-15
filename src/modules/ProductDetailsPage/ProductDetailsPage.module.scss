@@ -222,7 +222,10 @@
 .specRow {
   display: flex;
   justify-content: space-between;
-  font-size: 14px;
+  align-items: center;
+  padding: 8px 0; /* Вертикальные отступы по макету */
+  font-size: 14px; /* Проверь соответствие размера шрифта */
+  line-height: 21px; /* Высота строки по макету */
 }
 
 .specName {

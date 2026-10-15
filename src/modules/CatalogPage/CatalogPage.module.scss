@@ -86,13 +86,20 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-  gap: 16px;
-  justify-items: center; /* Центрирует карточки, если они не заполнили ряд */
+  grid-template-columns: repeat(4, 1fr); /* Строго 4 колонки на десктопе */
+  gap: 16px; /* Уменьшенный отступ между карточками */
   margin-bottom: 40px;
 
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr); /* 3 колонки для планшетов */
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr); /* 2 колонки для узких планшетов */
+  }
+
   @media (max-width: 640px) {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* 1 колонка по центру для телефонов */
     justify-items: center;
   }
 }
