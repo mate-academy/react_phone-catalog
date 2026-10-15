@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { Modal } from './components/Modal';
 
 export const CartPage = () => {
-  const { items } = useCart();
+  const { items, getTotalItems } = useCart();
   const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -54,7 +54,7 @@ export const CartPage = () => {
             >{`$${calculateTotalAmount(items)}`}</span>
             <span
               className={styles.cart__total_text}
-            >{`Total for ${items.length} items`}</span>
+            >{`Total for ${getTotalItems()} items`}</span>
           </div>
 
           <div className={styles.cart__divider}></div>

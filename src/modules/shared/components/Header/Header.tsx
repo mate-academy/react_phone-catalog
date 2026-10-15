@@ -15,7 +15,7 @@ export const Header = () => {
 
   const query = searchParams.get('query') || '';
 
-  const { items } = useCart();
+  const { items, getTotalItems } = useCart();
   const { favItems } = useFav();
 
   const handleCloseMenu = () => {
@@ -183,7 +183,7 @@ export const Header = () => {
               />
               {items.length > 0 && (
                 <div className={styles.header__cart_counter}>
-                  {items.length}
+                  {getTotalItems()}
                 </div>
               )}
             </NavLink>
