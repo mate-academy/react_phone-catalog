@@ -64,7 +64,7 @@ export const useItemDetails = (itemId: string, category: string) => {
         setError(null);
 
         const response = await fetch(
-          `${import.meta.env.BASE_URL}api/${category}.json`,
+          `${import.meta.env.BASE_URL}/api/${category}.json`,
         );
 
         if (!response.ok) {
