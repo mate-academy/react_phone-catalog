@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { useParams, Link, useNavigate, useLocation } from 'react-router-dom';
+import { useParams, Link, useLocation } from 'react-router-dom';
 import cn from 'classnames';
 import { useShopContext } from '../../context/ShopContext';
 import { ProductsSlider } from '../../components/ProductsSlider';
@@ -46,7 +46,6 @@ const FAVORITE_PATH =
 
 export const ProductDetailsPage = () => {
   const { productId } = useParams<{ productId: string }>();
-  const navigate = useNavigate();
   const { pathname } = useLocation();
   const category = pathname.split('/')[1];
 
@@ -67,6 +66,11 @@ export const ProductDetailsPage = () => {
     width: 0,
     opacity: 0,
   });
+
+  // Добавь этот useEffect сразу после объявления useParams
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [productId]);
 
   useEffect(() => {
     setLoading(true);
@@ -145,28 +149,27 @@ export const ProductDetailsPage = () => {
 
   return (
     <div className={styles.page}>
-      <div className={styles.navigation}>
-        <Breadcrumbs productName={product.name} />
+      <Breadcrumbs productName={product.name} />
 
-        <button className={styles.backBtn} onClick={() => navigate(-1)}>
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 16 16"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M10 12L6 8L10 4"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-          <span>Back</span>
-        </button>
-      </div>
+      {/* Заменяем <button onClick={() => navigate(-1)}> на пуленепробиваемый <Link> */}
+      <Link to={`/${category}`} className={styles.backBtn}>
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 16 16"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M10.5 3L5.5 8L10.5 13"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+        Back
+      </Link>
 
       <h1 className={styles.title}>{product.name}</h1>
 

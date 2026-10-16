@@ -55,17 +55,21 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  margin-bottom: 24px;
   background: none;
   border: none;
   cursor: pointer;
   font-family: var(--font-main);
   font-weight: 600;
   font-size: 12px;
-  color: var(--c-secondary);
+  color: var(--c-secondary); /* Делает текст нужного серого цвета */
+  text-decoration: none; /* УБИРАЕТ СИНЕЕ ПОДЧЕРКИВАНИЕ ССЫЛКИ */
   transition: color 0.3s;
   width: fit-content;
 
-  &:hover { color: var(--c-primary); }
+  &:hover { 
+    color: var(--c-primary); 
+  }
 }
 
 .title {

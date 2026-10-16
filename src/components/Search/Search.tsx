@@ -19,12 +19,10 @@ export const Search: React.FC<Props> = ({ placeholder = 'Search...' }) => {
   const [query, setQuery] = useState(initialQuery);
   const isFirstRender = useRef(true);
 
-  // Синхронизация с URL при нажатии кнопок браузера Назад/Вперед
   useEffect(() => {
     setQuery(searchParams.get('query') || '');
   }, [searchParams]);
 
-  // Тот самый Дебаунс (задержка)
   useEffect(() => {
     if (isFirstRender.current) {
       isFirstRender.current = false;
@@ -33,20 +31,19 @@ export const Search: React.FC<Props> = ({ placeholder = 'Search...' }) => {
     }
 
     const timer = setTimeout(() => {
-      // Смотрим, какой запрос сейчас реально в URL
       const currentUrlQuery = searchParams.get('query') || '';
 
-      // Обновляем параметры ТОЛЬКО если текст в строке поиска реально изменился
       if (query !== currentUrlQuery) {
         const newParams = new URLSearchParams(searchParams);
 
-        if (query.trim()) {
-          newParams.set('query', query.trim());
+        // Проверяем, не состоит ли строка только из пробелов
+        if (query.trim() !== '') {
+          // ПЕРЕДАЕМ ЗНАЧЕНИЕ БЕЗ .trim(), ЧТОБЫ НЕ УДАЛЯТЬ ПРОБЕЛ ВО ВРЕМЯ ПЕЧАТИ
+          newParams.set('query', query);
         } else {
           newParams.delete('query');
         }
 
-        // Вот теперь сброс на 1 страницу сработает только при вводе текста!
         newParams.set('page', '1');
         setSearchParams(newParams);
       }
@@ -69,7 +66,6 @@ export const Search: React.FC<Props> = ({ placeholder = 'Search...' }) => {
 
       {query ? (
         <button className={styles.iconBtn} onClick={clearSearch}>
-          {/* Иконка крестика */}
           <svg
             width="16"
             height="16"
@@ -95,7 +91,6 @@ export const Search: React.FC<Props> = ({ placeholder = 'Search...' }) => {
         </button>
       ) : (
         <div className={styles.iconBtn}>
-          {/* Иконка лупы */}
           <svg
             width="16"
             height="16"

@@ -25,10 +25,16 @@ export const Footer = () => {
           >
             Github
           </a>
-          <a href="#" className={styles.link}>
+          <a href="mailto:ibabencuk942@gmail.com" className={styles.link}>
             Contacts
           </a>
-          <a href="#" className={styles.link}>
+
+          <a
+            href="https://github.com/mate-academy/react_phone-catalog"
+            target="_blank"
+            rel="noreferrer"
+            className={styles.link}
+          >
             Rights
           </a>
         </nav>

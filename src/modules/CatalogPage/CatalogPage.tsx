@@ -73,9 +73,17 @@ export const CatalogPage: FC<Props> = ({ category, title }) => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const filteredProducts = products.filter(product =>
-    product.name.toLowerCase().includes(query.toLowerCase()),
-  );
+  const filteredProducts = products.filter(product => {
+    const productName = product.name.toLowerCase();
+    // Разбиваем запрос на слова, убирая лишние пробелы
+    const queryWords = query
+      .toLowerCase()
+      .split(' ')
+      .filter(word => word.length > 0);
+
+    // Проверяем, что КАЖДОЕ слово из поиска есть в названии товара
+    return queryWords.every(word => productName.includes(word));
+  });
 
   const sortedProducts = [...filteredProducts].sort((a, b) => {
     if (sort === 'age') {

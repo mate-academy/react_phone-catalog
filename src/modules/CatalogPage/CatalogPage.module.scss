@@ -46,19 +46,20 @@
 /* На 100% растягиваем блок поиска */
 .searchWrapper {
   width: 100%;
-  margin-bottom: 16px;
+  max-width: 376px; /* 176px (селект 1) + 24px (gap) + 176px (селект 2) */
+  margin-bottom: 24px;
 }
 
 /* На 100% растягиваем блок с селектами */
 .controls {
   display: flex;
   width: 100%;
-  gap: 16px;
+  gap: 24px; /* Расстояние между селектами 24px */
   margin-bottom: 24px;
 
   @media (max-width: 640px) {
     flex-flow: row nowrap;
-    margin-bottom: 32px;
+    gap: 16px; /* На мобилках оставляем 16px, чтобы влезло */
   }
 }
 
@@ -66,8 +67,12 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-  flex: 1; /* Разделит пространство поровну (50% на 50%) */
-  min-width: 0; 
+  flex: 1;
+  max-width: 176px; /* Ограничиваем ширину селектов на десктопе */
+
+  @media (max-width: 640px) {
+    max-width: none; /* На мобилках разрешаем тянуться */
+  }
 }
 
 .label {
@@ -77,9 +82,10 @@
 }
 
 .select {
-  width: 100%; /* Растягивает сами элементы выбора на всю ширину родителя */
+  width: 100%;
+  max-width: 250px; /* Растягивает сами элементы выбора на всю ширину родителя */
   height: 40px;
-  padding: 0 16px;
+  padding: 0 32px 0 16px;
   background-color: var(--c-white);
   border: 1px solid var(--c-icons);
   font-family: var(--font-main);
@@ -91,6 +97,12 @@
 
   &:hover, &:focus {
     border-color: var(--c-primary);
+  }
+
+  @media (max-width: 640px) {
+    .select {
+      max-width: none; /* На мобилках разрешаем тянуться на 100% */
+    }
   }
 }
 
