@@ -1,32 +1,47 @@
 .card {
-  width: 272px;
-  height: 506px;
-  padding: 32px;
-  box-sizing: border-box;
-  background-color: var(--c-white);
-  border: 1px solid var(--c-elements);
   display: flex;
   flex-direction: column;
-  transition: box-shadow 0.3s ease;
-  text-decoration: none;
+  background-color: var(--c-surface);
+  border: 1px solid var(--c-elements);
+  padding: 32px 24px 24px;
+  width: 100%;
+  max-width: 272px;
+  
+  /* Твоя текущая фиксированная высота, скорее всего тут написано height: 506px; */
+
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+
+  @media (max-width: 640px) {
+    max-width: none; 
+    width: 100%;
+    
+    /* ВОТ ФИКС: Разрешаем карточке расти в высоту вслед за контентом */
+    height: auto; 
+    min-height: 100%; /* Страховка, чтобы она не схлопывалась */
+  }
 
   &:hover {
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    border-color: var(--c-primary);
   }
 }
 
 .imageContainer {
-  width: 208px;
-  height: 196px;
-  margin-bottom: 24px;
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 196px; /* Оставляем стандартную высоту для десктопа */
+  margin-bottom: 24px;
+
+  /* Увеличиваем контейнер картинки на мобильных устройствах */
+  @media (max-width: 640px) {
+    height: 280px; /* Картинка станет значительно больше */
+  }
 
   img {
-    max-width: 100%;
     max-height: 100%;
-    object-fit: contain;
+    max-width: 100%;
+    object-fit: contain; /* Сохраняет пропорции самого телефона, не искажая его */
   }
 }
 

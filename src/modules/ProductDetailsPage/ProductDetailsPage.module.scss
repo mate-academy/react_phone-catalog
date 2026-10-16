@@ -70,6 +70,7 @@
 
 .title {
   margin-bottom: 40px;
+  word-wrap: break-word; /* Разрешает тексту нормально переноситься на новые строки */
 }
 
 .mainContent {

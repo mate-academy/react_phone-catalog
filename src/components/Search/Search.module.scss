@@ -2,11 +2,12 @@
   position: relative;
   display: flex;
   align-items: center;
-  width: 250px;
+  width: 100%;
 }
 
 .input {
   width: 100%;
+  flex: 1;
   height: 40px;
   padding: 0 40px 0 16px; /* Отступ справа под иконку */
   background-color: var(--c-white);

@@ -37,4 +37,11 @@
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 200px;
+
+  @media (max-width: 640px) {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block; /* или inline-block, чтобы обрезка сработала */
+  }
 }

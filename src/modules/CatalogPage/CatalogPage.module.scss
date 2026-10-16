@@ -1,12 +1,12 @@
 .page {
   display: flex;
   flex-direction: column;
-  padding: 0 24px 80px;
+  padding: 24px 24px 80px; /* Отступ сверху опустит хлебные крошки */
   max-width: 1200px;
   margin: 0 auto;
 
   @media (max-width: 640px) {
-    padding: 0 16px 40px;
+    padding: 24px 16px 40px; /* Отступ сверху для мобилок */
   }
 }
 
@@ -43,14 +43,22 @@
   margin-bottom: 24px;
 }
 
+/* На 100% растягиваем блок поиска */
+.searchWrapper {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+/* На 100% растягиваем блок с селектами */
 .controls {
   display: flex;
+  width: 100%;
   gap: 16px;
   margin-bottom: 24px;
 
   @media (max-width: 640px) {
-    flex-direction: column;
-    gap: 12px;
+    flex-flow: row nowrap;
+    margin-bottom: 32px;
   }
 }
 
@@ -58,7 +66,8 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-  flex: 1;
+  flex: 1; /* Разделит пространство поровну (50% на 50%) */
+  min-width: 0; 
 }
 
 .label {
@@ -68,6 +77,7 @@
 }
 
 .select {
+  width: 100%; /* Растягивает сами элементы выбора на всю ширину родителя */
   height: 40px;
   padding: 0 16px;
   background-color: var(--c-white);
@@ -86,21 +96,21 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* Строго 4 колонки на десктопе */
-  gap: 16px; /* Уменьшенный отступ между карточками */
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
   margin-bottom: 40px;
 
   @media (max-width: 1024px) {
-    grid-template-columns: repeat(3, 1fr); /* 3 колонки для планшетов */
+    grid-template-columns: repeat(3, 1fr);
   }
 
   @media (max-width: 768px) {
-    grid-template-columns: repeat(2, 1fr); /* 2 колонки для узких планшетов */
+    grid-template-columns: repeat(2, 1fr);
   }
 
   @media (max-width: 640px) {
-    grid-template-columns: 1fr; /* 1 колонка по центру для телефонов */
-    justify-items: center;
+    grid-template-columns: 1fr;
+    justify-items: stretch; /* Заставит карточки тянуться по ширине 100% */
   }
 }
 
@@ -122,9 +132,4 @@
   border: none;
   cursor: pointer;
   font-weight: 600;
-}
-
-.searchWrapper {
-  width: 100%;
-  margin-bottom: 16px;
 }
