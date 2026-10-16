@@ -1,0 +1,32 @@
+$bp-tablet: 640px;
+$bp-desktop: 1200px;
+
+@mixin tablet-up {
+  @media (min-width: $bp-tablet) {
+    @content;
+  }
+}
+
+@mixin desktop-up {
+  @media (min-width: $bp-desktop) {
+    @content;
+  }
+}
+
+@mixin mobile-only {
+  @media (max-width: #{$bp-tablet - 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet-only {
+  @media (min-width: $bp-tablet) and (max-width: #{$bp-desktop - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop-only {
+  @media (min-width: $bp-desktop) {
+    @content;
+  }
+}

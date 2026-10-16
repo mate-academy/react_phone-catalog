@@ -1,0 +1,12 @@
+@use '../../../styles/mixins/breakpoints' as *;
+
+.logo {
+  width: 64px;
+  height: 22px;
+  object-fit: cover;
+
+  @include desktop-up {
+    width: 80px;
+    height: 28px;
+  }
+}

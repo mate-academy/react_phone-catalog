@@ -1,0 +1,79 @@
+@use 'sass:list';
+@use 'sass:meta';
+@use 'sass:string';
+@use 'breakpoints' as bp;
+
+$grid-gap: 16px;
+$grid-columns-mobile: 4;
+$grid-columns-tablet: 12;
+$grid-columns-desktop: 24;
+$grid-padding-mobile: 16px;
+$grid-padding-tablet: 24px;
+$grid-column-width-desktop: 32px;
+$grid-width-desktop: $grid-columns-desktop * $grid-column-width-desktop + ($grid-columns-desktop - 1) * $grid-gap;
+
+@mixin grid-container {
+  display: grid;
+  gap: $grid-gap;
+  grid-template-columns: repeat($grid-columns-mobile, minmax(0, 1fr));
+  padding-inline: $grid-padding-mobile;
+
+  @include bp.tablet-up {
+    grid-template-columns: repeat($grid-columns-tablet, minmax(0, 1fr));
+    padding-inline: $grid-padding-tablet;
+  }
+
+  @include bp.desktop-up {
+    grid-template-columns: repeat($grid-columns-desktop, $grid-column-width-desktop);
+    justify-content: center; // сітка по центру екрана
+    padding-inline: 0;
+  }
+}
+
+@function -grid-column($value) {
+  @if $value == full {
+    @return string.unquote('1 / -1');
+  }
+
+  @if meta.type-of($value) == 'list' {
+    @return string.unquote('#{list.nth($value, 1)} / span #{list.nth($value, 2)}');
+  }
+
+  @return string.unquote('span #{$value}');
+}
+
+@mixin col($mobile: null, $tablet: null, $desktop: null) {
+  @if $mobile {
+    grid-column: -grid-column($mobile);
+  }
+
+  @if $tablet {
+    @include bp.tablet-up {
+      grid-column: -grid-column($tablet);
+    }
+  }
+
+  @if $desktop {
+    @include bp.desktop-up {
+      grid-column: -grid-column($desktop);
+    }
+  }
+}
+
+@mixin col-mobile($value) {
+  @include bp.mobile-only {
+    grid-column: -grid-column($value);
+  }
+}
+
+@mixin col-tablet($value) {
+  @include bp.tablet-only {
+    grid-column: -grid-column($value);
+  }
+}
+
+@mixin col-desktop($value) {
+  @include bp.desktop-only {
+    grid-column: -grid-column($value);
+  }
+}

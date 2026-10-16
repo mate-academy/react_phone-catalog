@@ -1,0 +1,55 @@
+@use '../../styles/mixins/breakpoints' as *;
+@use '../../styles/mixins/global-variables' as *;
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  height: 48px;
+  width: auto;
+  border-bottom: 1px solid $elements-color;
+  box-sizing: border-box;
+
+
+  @include desktop-up {
+    height: 64px;
+  }
+
+  &__logo {
+    padding: 13px 16px;
+  }
+
+  &__icons-wrapper {
+    display: flex;
+  }
+
+  &__icon {
+    padding: 16px;
+    width: 48px;
+    height: 48px;
+    box-sizing: border-box;
+
+    border-left: 1px solid $elements-color;
+  }
+
+  &__icon--menu {
+    @include tablet-up {
+      display: none;
+    }
+  }
+
+  &__icon--favourites {
+    display: none;
+
+    @include tablet-up {
+      display: inline;
+    }
+  }
+
+  &__icon--shopping-bag {
+    display: none;
+
+    @include tablet-up {
+      display: inline;
+    }
+  }
+}
