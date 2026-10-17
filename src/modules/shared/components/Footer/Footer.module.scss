@@ -1,0 +1,136 @@
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 80px;
+  height: 96px;
+  box-shadow: 0 -1px 0 0 #E2E6E9;
+
+  &__logo {
+    display: flex;
+    align-items: center;
+
+    &-img {
+      width: 89px;
+      height: 32px;
+      cursor: pointer;
+      transition: 0.3s;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  &__nav {
+
+
+    &-list {
+      list-style: none;
+      display: flex;
+      gap: 107px;
+    }
+
+    &-item {
+      font-weight: 800;
+      font-size: 12px;
+      line-height: 11px;
+      letter-spacing: 4%;
+      text-transform: uppercase;
+    }
+
+    &-link {
+      text-decoration: none;
+      color: #89939A;
+      transition: all 0.6s;
+
+      &:hover {
+        color: #313237;
+      }
+    }
+  }
+
+  &__back-to-top {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    &-text {
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 12px;
+      color: #89939A;
+    }
+
+    &-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border: 1px solid #B4BDC3;
+      transition: all 0.4s;
+      box-sizing: border-box;
+    }
+
+    &-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #fff;
+      border: none;
+      gap: 16px;
+      cursor: pointer;
+
+      &:hover .footer__back-to-top-container {
+        border: 1px solid #313237;
+      }
+    }
+
+    &-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 16px;
+      height: 16px;
+      object-fit: scale-down;
+    }
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1200px) {
+  .footer {
+    margin-top: 64px;
+
+    &__nav-list {
+      gap: 32px;
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .footer {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    height: auto;
+    margin-top: 64px;
+    padding-block: 32px;
+    gap: 32px;
+
+    &__nav {
+      width: 100%;
+
+      &-list {
+        flex-direction: column;
+        gap: 16px;
+      }
+    }
+
+    &__back-to-top {
+      justify-content: center;
+      width: 100%;
+    }
+  }
+}
