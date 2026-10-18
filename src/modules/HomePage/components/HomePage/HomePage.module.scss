@@ -121,6 +121,16 @@
       text-decoration: none;
     }
 
+    &-img {
+      position: absolute;
+      object-fit: cover;
+      transition: transform 0.3s;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+
     &-image {
       position: relative;
 
@@ -142,33 +152,23 @@
       &-tablets {
         background-color: #8d8d92;
 
-        &-img {
-          position: absolute;
-          object-fit: cover;
-          transition: transform 0.3s;
-
-          .categories__card-img {
-            top: 3%;
-            left: 11%;
-            width: auto;
-            height: 163%;
-          }
-        }
-
-        &-accessories {
-          background-color: #973456;
-
-          .categories__card-img {
-            top: 11%;
-            left: 11%;
-            width: auto;
-            height: 90%;
-          }
+        .categories__card-img {
+          top: 3%;
+          left: 11%;
+          width: auto;
+          height: 163%;
         }
       }
 
-      &:hover {
-        transform: scale(1.1);
+      &-accessories {
+        background-color: #973456;
+
+        .categories__card-img {
+          top: 11%;
+          left: 11%;
+          width: auto;
+          height: 90%;
+        }
       }
     }
   }
