@@ -1,0 +1,13 @@
+.error-message {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  padding: 64px 0;
+
+  &__text {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--color-red);
+  }
+}

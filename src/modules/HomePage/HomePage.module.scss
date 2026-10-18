@@ -1,0 +1,23 @@
+.home-page {
+  &__title {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    white-space: nowrap;
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+  }
+
+  &__welcome {
+    margin-bottom: 24px;
+    font-size: 32px;
+    font-weight: 800;
+  }
+
+  &__section {
+    margin-bottom: 64px;
+  }
+}

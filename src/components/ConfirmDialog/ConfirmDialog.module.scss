@@ -1,0 +1,31 @@
+.confirm-dialog {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgb(0 0 0 / 60%);
+
+  &__window {
+    width: 100%;
+    max-width: 400px;
+    padding: 24px;
+    background: var(--color-surface);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px var(--color-shadow);
+  }
+
+  &__message {
+    margin-bottom: 24px;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 16px;
+    justify-content: flex-end;
+  }
+}

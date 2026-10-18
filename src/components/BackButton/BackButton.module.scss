@@ -1,0 +1,16 @@
+.back-button {
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+  padding: 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-secondary);
+  background: none;
+  border: none;
+  transition: color var(--transition);
+
+  &:hover {
+    color: var(--color-text);
+  }
+}

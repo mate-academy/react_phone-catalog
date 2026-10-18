@@ -1,0 +1,27 @@
+.breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-secondary);
+
+  &__item {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  &__link {
+    transition: color var(--transition);
+
+    &:hover {
+      color: var(--color-text);
+    }
+  }
+
+  &__current {
+    color: var(--color-text);
+  }
+}
