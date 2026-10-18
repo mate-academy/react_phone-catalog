@@ -54,4 +54,9 @@
   &::-webkit-scrollbar {
     display: none; /* Chrome, Safari and Opera */
   }
+
+  > * {
+    flex-shrink: 0; /* Запрещает карточкам сжиматься */
+    width: 272px;   /* Жесткая ширина карточки для слайдера */
+  }
 }

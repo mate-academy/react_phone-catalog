@@ -41,6 +41,29 @@ export const Header = () => {
     setIsMenuOpen(false);
   }, [pathname]);
 
+  // НОВЫЙ ХУК ДЛЯ БЛОКИРОВКИ СКРОЛЛА
+  useEffect(() => {
+    if (isMenuOpen) {
+      // Блокируем прокрутку и на body, и на html (важно для iOS)
+      document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
+      // Полностью отключаем свайпы (touch) на странице
+      document.body.style.touchAction = 'none';
+    } else {
+      // Возвращаем всё как было при закрытии
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
+      document.body.style.touchAction = '';
+    }
+
+    // Очистка
+    return () => {
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
+      document.body.style.touchAction = '';
+    };
+  }, [isMenuOpen]);
+
   useEffect(() => {
     setTimeout(() => {
       if (navRef.current) {
@@ -72,7 +95,6 @@ export const Header = () => {
       <header className={styles.header}>
         <div className={styles.left}>
           <Link to="/" className={styles.logoLink}>
-            {/* Убрали начальный слеш в пути к логотипу */}
             <img
               src="img/logo.svg"
               alt="Nice Gadgets Logo"
