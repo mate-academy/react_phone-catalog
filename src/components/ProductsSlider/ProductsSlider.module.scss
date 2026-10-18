@@ -1,0 +1,62 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  margin: 0;
+}
+
+.buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.navButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  background-color: var(--c-white);
+  border: 1px solid var(--c-icons);
+  color: var(--c-primary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-color: var(--c-primary);
+  }
+
+  &:active {
+    background-color: var(--c-hover-bg);
+  }
+}
+
+.slider {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 16px; /* Место под тень карточки при hover */
+  
+  /* Прячем скроллбар, но оставляем свайп */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
+  }
+
+  > * {
+    flex-shrink: 0; /* Запрещает карточкам сжиматься */
+    width: 272px;   /* Жесткая ширина карточки для слайдера */
+  }
+}

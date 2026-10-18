@@ -1,0 +1,48 @@
+.breadcrumbs {
+  display: flex;
+  margin-top: 24px;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.crumbWrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.homeLink, .categoryLink {
+  color: var(--c-secondary);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  transition: color 0.3s;
+  
+  &:hover {
+    color: var(--c-primary);
+  }
+}
+
+.separator {
+  color: var(--c-icons);
+}
+
+.currentPath {
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--c-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+
+  @media (max-width: 640px) {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block; /* или inline-block, чтобы обрезка сработала */
+  }
+}

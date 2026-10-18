@@ -1,0 +1,44 @@
+.searchContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.input {
+  width: 100%;
+  flex: 1;
+  height: 40px;
+  padding: 0 40px 0 16px; /* Отступ справа под иконку */
+  background-color: var(--c-white);
+  border: 1px solid var(--c-icons);
+  font-family: var(--font-main);
+  font-size: 14px;
+  color: var(--c-primary);
+  outline: none;
+  transition: border-color 0.3s ease;
+
+  &:hover, &:focus {
+    border-color: var(--c-primary);
+  }
+
+  &::placeholder {
+    color: var(--c-secondary);
+  }
+}
+
+.iconBtn {
+  position: absolute;
+  right: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+
+  &:hover svg path {
+    stroke: var(--c-primary);
+  }
+}

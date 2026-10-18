@@ -1,0 +1,489 @@
+.page {
+  padding-top: 24px;
+  padding-bottom: 80px;
+}
+
+.centerMessage {
+  padding: 64px 0;
+  text-align: center;
+  font-size: 18px;
+  color: var(--c-secondary);
+}
+
+.navigation {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.homeLink, .categoryLink {
+  color: var(--c-secondary);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  transition: color 0.3s;
+  
+  &:hover {
+    color: var(--c-primary);
+  }
+}
+
+.separator {
+  color: var(--c-icons);
+}
+
+.currentPath {
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--c-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+}
+
+.backBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-main);
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--c-secondary); /* Делает текст нужного серого цвета */
+  text-decoration: none; /* УБИРАЕТ СИНЕЕ ПОДЧЕРКИВАНИЕ ССЫЛКИ */
+  transition: color 0.3s;
+  width: fit-content;
+
+  &:hover { 
+    color: var(--c-primary); 
+  }
+}
+
+.title {
+  margin-bottom: 40px;
+  word-wrap: break-word; /* Разрешает тексту нормально переноситься на новые строки */
+}
+
+.mainContent {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 80px;
+}
+
+.gallery {
+  display: flex;
+  gap: 16px;
+  flex: 1;
+}
+
+.thumbnails {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.thumbnailBtn {
+  width: 80px;
+  height: 80px;
+  border: 1px solid var(--c-elements);
+  background: var(--c-white);
+  cursor: pointer;
+  padding: 8px;
+  transition: border-color 0.3s;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  &:hover { border-color: var(--c-icons); }
+  &.activeThumbnail { border-color: var(--c-primary); }
+}
+
+.mainImageContainer {
+  flex: 1;
+  background-color: var(--c-white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 32px;
+  height: 500px;
+}
+
+.mainImage {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.actionsPanel {
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+.optionLabel {
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--c-secondary);
+  margin-bottom: 8px;
+  display: block;
+}
+
+.colorCircle {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: var(--c-elements);
+  margin-bottom: 24px;
+}
+
+.priceContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.price {
+  font-weight: 800;
+  font-size: 32px;
+  color: var(--c-primary);
+}
+
+.fullPrice {
+  font-weight: 600;
+  font-size: 22px;
+  color: var(--c-secondary);
+  text-decoration: line-through;
+}
+
+.buyButtons {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+
+.addToCartBtn {
+  flex: 1;
+  height: 48px;
+  background-color: var(--c-primary);
+  color: var(--c-white);
+  font-weight: 600;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.3s;
+
+  &:hover { opacity: 0.9; }
+  &.added {
+    background-color: var(--c-white);
+    color: var(--c-green);
+    border: 1px solid var(--c-elements);
+  }
+}
+
+.favoriteBtn {
+  width: 48px;
+  height: 48px;
+  background-color: var(--c-white);
+  border: 1px solid var(--c-icons);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: border-color 0.3s;
+
+  &:hover { border-color: var(--c-primary); }
+  &.isFavorite { border-color: var(--c-elements); }
+}
+
+.shortSpecs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.specRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0; /* Вертикальные отступы по макету */
+  font-size: 14px; /* Проверь соответствие размера шрифта */
+  line-height: 21px; /* Высота строки по макету */
+}
+
+.specName {
+  color: var(--c-secondary);
+  font-weight: 600;
+}
+
+.specValue {
+  color: var(--c-primary);
+  font-weight: 600;
+  text-align: right;
+  max-width: 60%;
+}
+
+.infoSection {
+  display: flex;
+  gap: 64px;
+  margin-bottom: 80px;
+}
+
+.aboutBlock, .techSpecsBlock {
+  flex: 1;
+  
+  h3 {
+    margin-bottom: 16px;
+    font-weight: 800;
+    font-size: 22px;
+  }
+}
+
+.descItem {
+  margin-bottom: 32px;
+  
+  h4 {
+    font-weight: 600;
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+  
+  p {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: var(--c-secondary);
+    margin-bottom: 16px;
+  }
+}
+
+/* Анимация плавного появления при переключении цвета/памяти */
+
+/* --- Анимация для картинок галереи --- */
+.animatedImage {
+  animation: fade-in-image 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes fade-in-image {
+  from {
+    opacity: 0.3;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* --- Списки кнопок (должны быть relative для расчета координат) --- */
+.optionsList {
+  position: relative;
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+/* --- Плавающее черное кольцо (Цвет) --- */
+.colorHighlight {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--c-primary); /* Черная обводка */
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 0;
+  pointer-events: none; /* Чтобы не мешал кликать по ссылке под ним */
+}
+
+.colorCircleWrapper {
+  position: relative;
+  z-index: 1;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--c-elements); /* Серая обводка по умолчанию */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  text-decoration: none;
+  
+  &.activeColorText {
+    border-color: transparent; /* Прячем серую обводку, так как под ней черное кольцо */
+  }
+}
+
+/* --- Плавающий черный фон (Память) --- */
+.capacityHighlight {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 32px;
+  background-color: var(--c-primary);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.capacityBox {
+  position: relative;
+  z-index: 1;
+  height: 32px;
+  padding: 0 8px;
+  border: 1px solid var(--c-icons);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--c-primary);
+  transition: color 0.3s ease; /* Плавно меняем только цвет текста */
+  
+  &.activeCapacityText {
+    color: var(--c-white);
+    border-color: transparent; /* Прячем серую рамку, так как сзади приехал черный фон */
+  }
+}
+
+/* --- АДАПТИВ ДЛЯ ПЛАНШЕТОВ (от 1199px и ниже) --- */
+@media (max-width: 1199px) {
+  /* Заголовок товара */
+  .title {
+    width: 100%;
+    max-width: 592px; /* [cite: 42] */
+  }
+
+  /* Обертка для верхней части (Галерея + Правая панель) */
+  .mainContent {
+    gap: 16px; /* Уменьшаем отступы между галереей и панелью */
+  }
+
+  /* Галерея картинок */
+  .gallery {
+    gap: 16px;
+  }
+
+  .thumbnails {
+    width: 35px; /* Ужимаем колонку до 35px */
+    gap: 8px; /* Уменьшаем расстояние между миниатюрами */
+  }
+
+  /* Сама кнопка-миниатюра */
+  .thumbnailBtn {
+    width: 35px; /* Делаем квадрат 35x35 под ширину колонки */
+    height: 35px;
+    padding: 2px; /* Уменьшаем внутренний отступ, чтобы телефон влез */
+  }
+
+  /* Контейнер главной картинки */
+  .mainImageContainer {
+    height: 287px; /* Высота из макета */
+    padding: 16px;
+
+    /* aspect-ratio: 1 / 1; можно добавить, чтобы он всегда был квадратом */
+  }
+
+  /* Правый блок (цвета, память, цена, кнопки) */
+  .actionsPanel {
+    width: 237px; /* Строгая ширина из макета[cite: 44] */
+    flex-shrink: 0; /* Чтобы блок не сжимался браузером */
+  }
+
+  /* Обертка для нижней части (About + Tech Specs) */
+  .infoSection {
+    flex-direction: column; /* Магия: ставим их друг под друга */
+    gap: 56px; /* Отступ между блоками About и Tech specs */
+  }
+
+  /* Блоки с текстом и характеристиками */
+  .aboutBlock, 
+  .techSpecsBlock {
+    width: 100%;
+    max-width: 592px; /* Растягиваем на всю ширину контента[cite: 45] */
+  }
+}
+
+/* --- АДАПТИВ ДЛЯ МОБИЛЬНЫХ ТЕЛЕФОНОВ (до 639px) --- */
+@media (max-width: 639px) {
+  /* Уменьшаем заголовок под мобильный формат */
+  .title {
+    font-size: 22px; 
+    line-height: 31px;
+    margin-bottom: 24px;
+  }
+
+  /* Ставим галерею и правую панель покупок друг под друга */
+  .mainContent {
+    flex-direction: column; 
+    gap: 32px;
+  }
+
+  /* Переворачиваем галерею: главное фото сверху, миниатюры снизу */
+  .gallery {
+    flex-direction: column-reverse; 
+    gap: 16px;
+    width: 100%;
+  }
+
+  /* Выстраиваем миниатюры горизонтально с возможностью свайпа */
+  .thumbnails {
+    flex-direction: row; 
+    width: 100%;
+    gap: 8px;
+    overflow-x: auto; /* Позволяет скроллить миниатюры вбок[cite: 45] */
+    padding-bottom: 4px; /* Место под ползунок скролла */
+  }
+
+  /* Делаем миниатюры квадратными и компактными */
+  .thumbnailBtn {
+    width: 50px; 
+    height: 50px;
+    flex-shrink: 0; /* Чтобы они не сплющивались */
+  }
+
+  /* Главное фото растягивается на всю ширину и становится квадратом */
+  .mainImageContainer {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1; 
+    padding: 16px;
+  }
+
+  /* Блок покупки (цвета, память, цена) занимает всю ширину[cite: 45] */
+  .actionsPanel {
+    width: 100%; 
+  }
+
+  /* Секции About и Tech Specs выстраиваются друг под другом */
+  .infoSection {
+    flex-direction: column;
+    gap: 40px;
+    margin-bottom: 56px;
+  }
+}

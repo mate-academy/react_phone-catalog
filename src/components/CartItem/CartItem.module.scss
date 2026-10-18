@@ -1,0 +1,157 @@
+.cartItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+  background-color: var(--c-white);
+  border: 1px solid var(--c-elements);
+  width: 100%;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex: 1;
+}
+
+.removeBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s ease;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.imageLink {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--c-primary);
+  text-decoration: none;
+  max-width: 300px;
+  
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.quantityControls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.qtyBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  background-color: var(--c-white);
+  border: 1px solid var(--c-icons);
+  cursor: pointer;
+  font-size: 16px;
+  color: var(--c-primary);
+  transition: all 0.3s ease;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: var(--c-hover-bg);
+  }
+
+  &:hover:not(:disabled) {
+    border-color: var(--c-primary);
+  }
+}
+
+.qtyValue {
+  font-weight: 600;
+  font-size: 14px;
+  width: 16px;
+  text-align: center;
+}
+
+.price {
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 31px;
+  color: var(--c-primary);
+  width: 80px;
+  text-align: right;
+}
+
+@media (max-width: 639px) {
+  .cartItem {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 16px;
+    gap: 16px;
+  }
+
+  /* Верхняя часть: крестик удаления, картинка и название товара */
+  .left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+  }
+
+  .title {
+    font-size: 14px;
+    line-height: 21px;
+
+    /* Ограничиваем название, чтобы не ломало верстку */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Нижняя часть: счетчик количества слева, а цена справа на одной линии */
+  .right {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    border-top: 1px solid var(--c-elements);
+    padding-top: 12px;
+  }
+
+  .quantityControls {
+    display: flex;
+    align-items: center;
+  }
+
+  .price {
+    font-size: 16px;
+    font-weight: 800;
+  }
+}

@@ -1,0 +1,94 @@
+.homePage {
+  display: flex;
+  flex-direction: column;
+  gap: 80px; /* Отступы между секциями на десктопе */
+  padding-top: 56px;
+  padding-bottom: 80px;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Временные стили для заглушек, чтобы видеть структуру */
+.sliderPlaceholder {
+  height: 400px;
+  background-color: var(--c-hover-bg);
+  border: 1px dashed var(--c-icons);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--c-secondary);
+}
+
+.productsPlaceholder {
+  height: 506px; /* Примерная высота карточки товара */
+  background-color: var(--c-hover-bg);
+  border: 1px dashed var(--c-icons);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--c-secondary);
+}
+
+.categoriesPlaceholder {
+  height: 350px;
+  background-color: var(--c-hover-bg);
+  border: 1px dashed var(--c-icons);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--c-secondary);
+}
+
+@media (max-width: 639px) {
+  /* Контейнер категорий */
+  .categoriesWrapper {
+    flex-direction: column; /* Карточки выстраиваются вертикально[cite: 50] */
+    align-items: center;
+    gap: 16px;
+  }
+}
+
+.mainTitle {
+  font-family: var(--font-main);
+  font-weight: 800;
+  font-size: 48px; /* Размер для десктопа (можешь подправить под макет) */
+  line-height: 56px;
+  letter-spacing: -0.01em;
+  color: var(--c-primary);
+  margin-bottom: 32px;
+}
+
+/* На мобилке делаем его по спецификации, которую ты скидывал */
+@media (max-width: 639px) {
+  .mainTitle {
+    font-size: 32px;
+    line-height: 41px;
+    margin-bottom: 24px;
+  }
+}
+
+/* По умолчанию (для десктопа и планшета) */
+.categoriesGrid {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+}
+
+/* --- АДАПТИВ ДЛЯ ТЕЛЕФОНОВ (до 639px) --- */
+@media (max-width: 639px) {
+  .categoriesGrid {
+    flex-direction: column; /* Выстраиваем в колонку[cite: 46] */
+    align-items: center; /* Центрируем карточки */
+    gap: 32px; /* Можно сделать отступ побольше между категориями */
+  }
+}

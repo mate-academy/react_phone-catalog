@@ -1,0 +1,255 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 64px;
+  background-color: var(--c-white);
+  border-bottom: 1px solid var(--c-elements);
+}
+
+.left {
+  display: flex;
+  height: 100%;
+}
+
+.logoLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 24px;
+  height: 100%;
+}
+
+.logo {
+  display: block;
+}
+
+.nav {
+  position: relative; /* ВАЖНО: чтобы слайдер позиционировался относительно навигации */
+  display: flex;
+  gap: 64px;
+  height: 100%;
+}
+
+/* Стили магического ползунка */
+.navSlider {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background-color: var(--c-primary);
+
+  /* Плавный отскок при движении (cubic-bezier) */
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), width 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+  pointer-events: none; /* Чтобы не мешал кликать по ссылкам */
+}
+
+.navLink {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  box-sizing: border-box;
+  
+  font-family: var(--font-main);
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--c-secondary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: var(--c-primary);
+  }
+
+  &.active {
+    color: var(--c-primary);
+  }
+}
+
+.right {
+  display: flex;
+  height: 100%;
+}
+
+.iconBlock {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-left: 1px solid var(--c-elements);
+  color: var(--c-icons);
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: var(--c-primary);
+  }
+
+  &.activeIcon {
+    color: var(--c-primary);
+  }
+}
+
+.badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  border-radius: 50%;
+  background-color: var(--c-red);
+  color: var(--c-white);
+  font-size: 9px;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--c-white);
+  box-sizing: border-box;
+}
+
+/* --- АДАПТИВ ДЛЯ ПЛАНШЕТОВ (от 1199px и ниже) --- */
+@media (max-width: 1199px) {
+  .header {
+    height: 48px; /* Высота шапки на планшете[cite: 35] */
+  }
+
+  .logoLink {
+    padding: 0 16px; /* Уменьшаем отступы вокруг логотипа */
+  }
+
+  .nav {
+    gap: 32px; /* Уменьшаем расстояние между ссылками, чтобы они поместились на iPad */
+  }
+
+  .iconBlock {
+    width: 48px; /* Квадрат 48х48[cite: 39] */
+    height: 48px; /* [cite: 39] */
+  }
+
+  .badge {
+    /* Корректируем позицию красного кружка с цифрой под новый размер кнопки */
+    top: 8px;
+    right: 8px;
+  }
+}
+
+@media (max-width: 639px) {
+  .header {
+    height: 48px; /* [cite: 45] */
+    justify-content: space-between;
+  }
+
+  /* Скрываем десктопные ссылки и иконки корзины/сердечка */
+  .nav, 
+  .iconsContainer {
+    display: none; 
+  }
+
+  /* Показываем кнопку бургера (которую нужно добавить в TSX) */
+  .burgerBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 48px; /* [cite: 46] */
+    height: 48px;
+    border-left: 1px solid var(--c-elements);
+    background: none;
+    cursor: pointer;
+  }
+}
+
+/* --- МОБИЛЬНОЕ МЕНЮ (до 639px) --- */
+.burgerBtn {
+  display: none; /* Скрыто на десктопе/планшете */
+  color: var(--c-primary);
+}
+
+.mobileMenu {
+  display: none; /* Скрыто на десктопе/планшете */
+}
+
+@media (max-width: 639px) {
+  .header {
+    height: 48px;
+    justify-content: space-between;
+    position: relative;
+    z-index: 100; /* Чтобы шапка была поверх меню */
+    background-color: var(--c-white);
+  }
+
+  .nav, 
+  .right > .iconBlock {
+    display: none; /* Скрываем десктопную навигацию */
+  }
+
+  .burgerBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 48px;
+    height: 48px;
+    border: none;
+    border-left: 1px solid var(--c-elements);
+    background: none;
+    cursor: pointer;
+  }
+
+  /* Само выезжающее меню */
+  .mobileMenu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: fixed;
+    top: 48px; /* Сразу под шапкой */
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 48px); /* На весь экран минус шапка */
+    background-color: var(--c-white);
+    transform: translateY(-100%); /* Прячем наверх */
+    transition: transform 0.3s ease-in-out;
+    z-index: 99;
+    padding-bottom: 24px;
+    
+    &.open {
+      transform: translateY(0); /* Выдвигаем вниз */
+    }
+  }
+
+  .mobileNav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    margin-top: 64px;
+
+    .navLink {
+      font-size: 14px; /* [cite: 44] - можно подправить под макет */
+    }
+  }
+
+  .mobileIcons {
+    display: flex;
+    justify-content: center;
+    border-top: 1px solid var(--c-elements);
+    
+    .iconBlock {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 64px;
+      border-right: 1px solid var(--c-elements);
+
+      &:last-child {
+        border-right: none;
+      }
+    }
+  }
+}

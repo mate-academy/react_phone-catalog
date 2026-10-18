@@ -1,0 +1,95 @@
+.page {
+  padding-top: 24px;
+  padding-bottom: 80px;
+  display: flex;
+  flex-direction: column;
+}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 40px;
+}
+
+.homeLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.separator {
+  color: var(--c-icons);
+}
+
+.currentPath {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  color: var(--c-secondary);
+}
+
+.title {
+  margin-bottom: 8px;
+}
+
+.count {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--c-secondary);
+  margin: 0 0 32px;
+}
+
+/* ФИКС СЕТКИ: Заменили flex на grid */
+.grid {
+  display: grid;
+  gap: 16px;
+
+  /* Ставим всю сетку ровно по центру страницы */
+  justify-content: center; 
+
+  /* На десктопе у нас 4 карточки в ряд, ширина каждой строго 272px */
+  grid-template-columns: repeat(4, 272px);
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 64px 0;
+  text-align: center;
+  background-color: var(--c-hover-bg);
+  border: 1px dashed var(--c-icons);
+  color: var(--c-secondary);
+  
+  h2 {
+    margin-bottom: 16px;
+    color: var(--c-primary);
+  }
+}
+
+/* --- АДАПТИВ ДЛЯ ПЛАНШЕТОВ (от 640px до 1199px) --- */
+@media (max-width: 1199px) {
+  .grid {
+    /* На планшете перестраиваем в 2 колонки */
+    grid-template-columns: repeat(2, 272px); 
+  }
+}
+
+/* --- АДАПТИВ ДЛЯ МОБИЛЬНЫХ (до 639px) --- */
+@media (max-width: 639px) {
+  .grid {
+    /* На телефоне будет 1 колонка */
+    grid-template-columns: 272px; 
+  }
+}
