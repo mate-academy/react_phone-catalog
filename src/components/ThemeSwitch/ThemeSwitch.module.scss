@@ -1,0 +1,16 @@
+.theme-switch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--header-height);
+  height: var(--header-height);
+  padding: 0;
+  background: none;
+  border: none;
+  border-left: 1px solid var(--color-elements);
+  transition: background var(--transition);
+
+  &:hover {
+    background: var(--color-hover);
+  }
+}

@@ -1,0 +1,13 @@
+.favorites-page {
+  &__title {
+    margin: 24px 0 8px;
+    font-size: 32px;
+    font-weight: 800;
+  }
+
+  &__count {
+    margin-bottom: 32px;
+    font-weight: 600;
+    color: var(--color-secondary);
+  }
+}

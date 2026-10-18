@@ -1,0 +1,124 @@
+.product-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 32px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-elements);
+  border-radius: 8px;
+  transition:
+    box-shadow var(--transition),
+    border-color var(--transition);
+
+  &:hover {
+    box-shadow: 0 4px 16px var(--color-shadow);
+  }
+
+  &__image-link {
+    display: flex;
+    justify-content: center;
+    height: 196px;
+    margin-bottom: 24px;
+    overflow: hidden;
+  }
+
+  &__image {
+    height: 100%;
+    object-fit: contain;
+    transition: transform var(--transition);
+  }
+
+  &__image-link:hover &__image {
+    transform: scale(1.1);
+  }
+
+  &__title {
+    min-height: 42px;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    transition: color var(--transition);
+
+    &:hover {
+      color: var(--color-accent);
+    }
+  }
+
+  &__prices {
+    display: flex;
+    gap: 8px;
+    align-items: baseline;
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--color-elements);
+  }
+
+  &__price {
+    font-size: 22px;
+    font-weight: 700;
+  }
+
+  &__full-price {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-secondary);
+    text-decoration: line-through;
+  }
+
+  &__specs {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin: 0 0 16px;
+  }
+
+  &__spec {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  &__spec-name {
+    color: var(--color-secondary);
+  }
+
+  &__spec-value {
+    margin: 0;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 8px;
+    margin-top: auto;
+  }
+
+  &__cart-button {
+    flex: 1;
+  }
+
+  &__favorite {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    background: transparent;
+    border: 1px solid var(--color-elements);
+    border-radius: 8px;
+    transition:
+      border-color var(--transition),
+      color var(--transition);
+
+    &:hover {
+      border-color: var(--color-secondary);
+    }
+
+    &--active {
+      color: var(--color-red);
+    }
+  }
+}

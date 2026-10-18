@@ -1,0 +1,18 @@
+.status-message {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+  padding: 48px 0;
+  text-align: center;
+
+  &__text {
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  &__image {
+    width: 100%;
+    max-width: 400px;
+  }
+}

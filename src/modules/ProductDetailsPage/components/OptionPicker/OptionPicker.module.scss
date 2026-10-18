@@ -1,0 +1,68 @@
+.option-picker {
+  padding: 0;
+  margin: 0;
+  border: none;
+
+  &__title {
+    padding: 0;
+    margin-bottom: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-secondary);
+  }
+
+  &__options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  &__option {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    height: 32px;
+    padding: 0 12px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid var(--color-elements);
+    border-radius: 4px;
+    transition:
+      border-color var(--transition),
+      background var(--transition),
+      color var(--transition);
+
+    &:hover {
+      border-color: var(--color-secondary);
+    }
+
+    &--swatch {
+      width: 32px;
+      min-width: 32px;
+      padding: 0;
+      border-radius: 50%;
+      outline: 2px solid var(--color-bg);
+      outline-offset: -4px;
+    }
+
+    &--selected {
+      border-color: var(--color-text);
+    }
+
+    &:not(&--swatch)#{&}--selected {
+      color: var(--color-bg);
+      background: var(--color-text);
+    }
+  }
+
+  &__input {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    cursor: pointer;
+    opacity: 0;
+  }
+}

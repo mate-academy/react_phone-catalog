@@ -1,0 +1,44 @@
+.product-details-page {
+  &__back {
+    margin-top: 24px;
+  }
+
+  &__title {
+    margin: 16px 0 32px;
+    font-size: 28px;
+    font-weight: 800;
+  }
+
+  &__main {
+    display: grid;
+    gap: 32px;
+  }
+
+  &__options {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__info {
+    display: grid;
+    gap: 48px;
+    margin-top: 64px;
+  }
+
+  &__suggested {
+    margin-top: 64px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .product-details-page {
+    &__main {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    &__info {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+}

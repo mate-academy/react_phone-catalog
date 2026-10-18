@@ -1,0 +1,22 @@
+.logo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 0.95;
+  color: var(--color-text);
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  transition: opacity var(--transition);
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &__emoji {
+    margin-left: 2px;
+    font-size: 0.8em;
+  }
+}

@@ -1,0 +1,26 @@
+.select {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  &__label {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--color-secondary);
+  }
+
+  &__field {
+    height: 40px;
+    padding: 0 12px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-elements);
+    border-radius: 8px;
+    transition: border-color var(--transition);
+
+    &:hover,
+    &:focus {
+      border-color: var(--color-text);
+      outline: none;
+    }
+  }
+}

@@ -1,0 +1,29 @@
+.cart-page {
+  &__title {
+    margin: 24px 0 32px;
+    font-size: 32px;
+    font-weight: 800;
+  }
+
+  &__content {
+    display: grid;
+    gap: 16px;
+    align-items: start;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  .cart-page__content {
+    grid-template-columns: 1fr 368px;
+    gap: 16px;
+  }
+}
