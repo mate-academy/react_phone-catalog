@@ -1,0 +1,57 @@
+
+.footer {
+  margin-top: auto;
+  background-color: #fff;
+  border-top: 1px solid #e2e6e9;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  max-width: 1200px;
+  min-height: 96px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.logo {
+  color: #313237;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.github {
+  color: #89939a;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 0.3s;
+
+  &:hover {
+    color: #313237;
+  }
+}
+
+.backToTop {
+  padding: 12px;
+  color: #89939a;
+  font-size: 12px;
+  font-weight: 700;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s;
+
+  &:hover {
+    color: #313237;
+  }
+}
+
+@media (max-width: 639px) {
+  .container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

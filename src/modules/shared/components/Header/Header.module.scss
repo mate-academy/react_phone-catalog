@@ -1,0 +1,148 @@
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: #fff;
+  border-bottom: 1px solid #e2e6e9;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  max-width: 1200px;
+  min-height: 64px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.logo {
+  margin-right: 48px;
+  color: #313237;
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.actions {
+  display: flex;
+  gap: 24px;
+  margin-left: auto;
+}
+
+.nav a {
+  color: #89939a;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+
+.actions a {
+  color: #313237;
+  font-size: 22px;
+  text-decoration: none;
+  transition: transform 0.3s;
+}
+
+.nav a:hover {
+  color: #313237;
+}
+
+.actions a:hover {
+  transform: scale(1.1);
+}
+
+
+.actionLink {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 40px;
+}
+
+.counter {
+  position: absolute;
+  top: 0;
+  right: -8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 3px;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  background-color: #313237;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+
+@media (max-width: 767px) {
+  .container {
+    flex-wrap: wrap;
+    gap: 0;
+    padding: 0 16px;
+  }
+
+  .logo {
+    margin-right: auto;
+    font-size: 16px;
+    white-space: nowrap;
+  }
+
+  .actions {
+    gap: 16px;
+    margin-left: 0;
+  }
+
+  .nav {
+    order: 3;
+    justify-content: space-between;
+    width: 100%;
+    gap: 12px;
+    padding: 12px 0;
+    border-top: 1px solid #e2e6e9;
+  }
+
+  .nav a {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 479px) {
+  .container {
+    padding: 0 12px;
+  }
+
+  .logo {
+    font-size: 14px;
+  }
+
+  .actions {
+    gap: 12px;
+  }
+
+  .nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px 16px;
+  }
+
+  .nav a {
+    font-size: 10px;
+  }
+}
+
