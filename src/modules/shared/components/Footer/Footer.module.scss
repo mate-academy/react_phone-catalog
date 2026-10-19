@@ -1,8 +1,8 @@
 
 .footer {
   margin-top: auto;
-  background-color: #fff;
   border-top: 1px solid #e2e6e9;
+  background-color: #fff;
 }
 
 .container {
@@ -10,6 +10,8 @@
   align-items: center;
   justify-content: space-between;
   gap: 24px;
+  box-sizing: border-box;
+  width: 100%;
   max-width: 1200px;
   min-height: 96px;
   margin: 0 auto;
@@ -17,41 +19,96 @@
 }
 
 .logo {
-  color: #313237;
-  font-size: 18px;
-  font-weight: 700;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  color: #f447af;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 0.95;
+  text-decoration: none;
 }
 
-.github {
-  color: #89939a;
-  font-size: 12px;
-  font-weight: 700;
-  text-decoration: none;
-  transition: color 0.3s;
+.links {
+  display: flex;
+  align-items: center;
+  gap: 64px;
 
-  &:hover {
-    color: #313237;
+  a {
+    color: #89939a;
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: #313237;
+    }
   }
+}
+
+
+.topIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid #b4bdc3;
+  border-radius: 50%;
+  color: #313237;
+  font-size: 18px;
+  transition: border-color 0.3s ease;
 }
 
 .backToTop {
-  padding: 12px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
   color: #89939a;
   font-size: 12px;
-  font-weight: 700;
-  background-color: transparent;
-  border: none;
+  font-weight: 600;
   cursor: pointer;
-  transition: color 0.3s;
 
   &:hover {
     color: #313237;
+
+    .topIcon {
+      border-color: #313237;
+    }
   }
 }
 
-@media (max-width: 639px) {
+
+@media (max-width: 767px) {
+  .container {
+    flex-wrap: wrap;
+    gap: 32px;
+  }
+
+  .links {
+    gap: 24px;
+  }
+}
+
+@media (max-width: 479px) {
   .container {
     flex-direction: column;
     align-items: flex-start;
+    padding: 32px 16px;
+  }
+
+  .links {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .backToTop {
+    align-self: flex-end;
   }
 }

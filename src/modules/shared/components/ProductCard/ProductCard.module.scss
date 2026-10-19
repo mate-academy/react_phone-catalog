@@ -1,22 +1,26 @@
-
 .card {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
   width: 100%;
   height: 100%;
-  gap: 16px;
-  padding: 24px;
+  gap: 12px;
+  padding: 16px;
   border: 1px solid #e2e6e9;
-  border-radius: 16px;
+  border-radius: 8px;
   background-color: #fff;
 }
 
 .image {
   display: block;
   width: 100%;
-  height: 196px;
+  height: 160px;
   object-fit: contain;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 }
 
 .name {
@@ -32,7 +36,7 @@
     text-decoration: none;
 
     &:hover {
-      color: #4219d0;
+      color: #216cff;
     }
   }
 }
@@ -60,7 +64,7 @@
   border-top: 1px solid #e2e6e9;
 
   p {
-    margin: 8px 0;
+    margin: 6px 0;
     color: #89939a;
     font-size: 12px;
   }
@@ -76,31 +80,31 @@
   flex: 1;
   min-width: 0;
   min-height: 40px;
-  padding: 0 12px;
+  padding: 0 8px;
   border: 0;
   border-radius: 8px;
-  background-color: #4219d0;
+  background-color: #216cff;
   color: #fff;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 600;
   cursor: pointer;
 
   &:hover {
-    background-color: #5b35e0;
+    background-color: #0056e0;
   }
 
   &:active {
-    background-color: #3414a8;
+    background-color: #0045b8;
   }
 }
 
 .cartButton[aria-pressed='true'] {
   border: 1px solid #e2e6e9;
   background-color: #fff;
-  color: #4219d0;
+  color: #216cff;
 
   &:hover {
-    background-color: #f5f2ff;
+    background-color: #eef4ff;
   }
 }
 
@@ -115,17 +119,17 @@
   cursor: pointer;
 
   &:hover {
-    border-color: #4219d0;
+    border-color: #216cff;
   }
 }
 
 @media (max-width: 479px) {
   .card {
-    padding: 16px;
+    padding: 12px;
   }
 
   .image {
-    height: 180px;
+    height: 140px;
   }
 
   .cartButton {

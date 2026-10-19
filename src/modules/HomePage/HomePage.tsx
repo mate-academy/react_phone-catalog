@@ -1,4 +1,7 @@
+import { BrandNewModels } from './components/BrandNewModels/BrandNewModels';
+import { HotPrices } from './components/HotPrices/HotPrices';
 import { PicturesSlider } from './components/PicturesSlider/PicturesSlider';
+import { ShopByCategory } from './components/ShopByCategory/ShopByCategory';
 
 import styles from './HomePage.module.scss';
 
@@ -14,15 +17,17 @@ export const HomePage = () => {
       </section>
 
       <section className={styles.section}>
-        <h2 className={styles.title}>Brand new models</h2>
+        <BrandNewModels />
       </section>
 
       <section className={styles.section}>
         <h2 className={styles.title}>Shop by category</h2>
+
+        <ShopByCategory />
       </section>
 
       <section className={styles.section}>
-        <h2 className={styles.title}>Hot prices</h2>
+        <HotPrices />
       </section>
     </main>
   );
