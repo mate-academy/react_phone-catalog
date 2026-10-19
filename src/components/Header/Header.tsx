@@ -38,7 +38,7 @@ export const Header = () => {
   return (
     <header className={styles.header}>
       {/* Використовуємо Bulma container для обмеження ширини та центрування */}
-      <div className={classNames('container', styles.header__container)}>
+      <div className={classNames(styles.header__container)}>
         <div className={styles.header__left}>
           <Link to="/" className={styles.logo} onClick={closeMenu}>
             {/* Використовуємо SVG логотип проєкту */}
