@@ -1,0 +1,260 @@
+.main {
+  width: 100%;
+  margin-top: 56px;
+
+  &__title {
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 56px;
+    color: #313237;
+  }
+
+  &__slider {
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+    margin-top: 56px;
+    gap: 16px;
+
+    &-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      flex-shrink: 0;
+
+      background-color: #fff;
+      border: 1px solid #b4bdc3;
+      cursor: pointer;
+      transition: border-color 0.4s;
+
+      &:hover {
+        border-color: #313237;
+      }
+
+      &-icon {
+        width: 16px;
+        height: 16px;
+      }
+    }
+
+    &-container {
+      flex: 1;
+      min-width: 0;
+      aspect-ratio: 1040 / 400;
+      overflow: hidden;
+    }
+
+    &-track {
+      display: flex;
+      height: 100%;
+      transition: transform 0.3s;
+    }
+
+    &-img {
+      width: 100%;
+      min-width: 100%;
+      height: 100%;
+      flex-shrink: 0;
+      object-fit: cover;
+    }
+  }
+
+  &__dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 8px;
+    gap: 4px;
+  }
+
+  &__dot {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    &::after {
+      content: '';
+      width: 14px;
+      height: 4px;
+
+      background-color: #e2e6e9;
+      transition: background-color 0.3s;
+    }
+
+    &--active::after {
+      background-color: #313237;
+    }
+  }
+
+  &__categories {
+    width: 100%;
+    margin-top: 80px;
+
+    &-title {
+      font-weight: 800;
+      font-size: 32px;
+      line-height: 41px;
+      color: #313237;
+    }
+  }
+}
+
+.categories {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  width: 100%;
+  margin-top: 24px;
+  gap: 16px;
+
+  &__card {
+    min-width: 0;
+
+    &-link {
+      display: block;
+      text-decoration: none;
+    }
+
+    &-img {
+      position: absolute;
+      object-fit: cover;
+      transition: transform 0.3s;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+
+    &-image {
+      position: relative;
+
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+
+      &-phones {
+        background-color: #6d6474;
+
+        .categories__card-img {
+          top: 0;
+          left: 11%;
+          width: auto;
+          height: 136%;
+        }
+      }
+
+      &-tablets {
+        background-color: #8d8d92;
+
+        .categories__card-img {
+          top: 3%;
+          left: 11%;
+          width: auto;
+          height: 163%;
+        }
+      }
+
+      &-accessories {
+        background-color: #973456;
+
+        .categories__card-img {
+          top: 11%;
+          left: 11%;
+          width: auto;
+          height: 90%;
+        }
+      }
+    }
+  }
+
+  &__info {
+    margin-top: 24px;
+  }
+
+  &__subtitle {
+    margin-bottom: 4px;
+
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 100%;
+    color: #313237;
+  }
+
+  &__count {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #89939a;
+  }
+}
+
+.hidden {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (min-width: 641px) and (max-width: 1200px) {
+  .main {
+    margin-top: 32px;
+
+    &__slider {
+      margin-top: 32px;
+    }
+
+    &__categories {
+      margin-top: 64px;
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .main {
+    margin-top: 24px;
+
+    &__title {
+      font-size: 32px;
+      line-height: 41px;
+    }
+
+    &__slider {
+      width: calc(100% + 32px);
+      margin-top: 24px;
+      margin-inline: -16px;
+      gap: 0;
+
+      &-btn {
+        display: none;
+      }
+
+      &-container {
+        aspect-ratio: 1 / 1;
+      }
+    }
+
+    &__categories {
+      margin-top: 56px;
+
+      &-title {
+        font-size: 22px;
+        line-height: 31px;
+      }
+    }
+  }
+
+  .categories {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}

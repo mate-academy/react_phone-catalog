@@ -1,0 +1,294 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+
+  display: flex;
+  align-items: center;
+  height: 64px;
+  gap: 24px;
+
+  background-color: #fff;
+  box-shadow: 0 1px 0 0 #E2E6E9;
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 128px;
+    height: 64px;
+    flex-shrink: 0;
+
+    &-img {
+      width: 80px;
+      height: 28px;
+      transition: transform 0.3s;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  &__nav {
+    display: flex;
+  }
+
+  &__actions {
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  &__action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    box-sizing: border-box;
+
+    position: relative;
+    box-shadow: -1px 0 0 0 #E2E6E9;
+
+    &--active::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+
+      height: 3px;
+      background-color: #313237;
+    }
+
+    &-container {
+      position: relative;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+    }
+
+    &-img {
+      width: 16px;
+      height: 16px;
+      transition: transform 0.3s;
+    }
+
+    &:hover .header__action-img {
+      transform: scale(1.1);
+    }
+  }
+
+  &__badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 14px;
+    height: 14px;
+    box-sizing: border-box;
+
+    border: 1px solid #FFF;
+    border-radius: 50%;
+    background-color: #EB5757;
+    color: #fff;
+
+    font-size: 9px;
+    line-height: 100%;
+  }
+
+  &__search {
+    display: flex;
+    width: 327px;
+    height: 64px;
+    margin-right: 16px;
+
+    box-shadow:
+      -1px 0 0 #E2E6E9,
+      1px 0 0 #E2E6E9;
+
+    &-input {
+      width: 100%;
+      height: 100%;
+      padding: 0 24px;
+      box-sizing: border-box;
+
+      border: none;
+      outline: none;
+      background-color: #fff;
+      color: #313237;
+
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 21px;
+
+      &::placeholder {
+        color: #B4BDC3;
+      }
+
+      &:focus {
+        box-shadow: inset 0 0 0 1px #313237;
+      }
+    }
+  }
+
+  &__burger-button {
+    display: none;
+  }
+
+  &__burger-icon {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.burger {
+  &__container {
+    display: none;
+    box-shadow: inset 0 1px 0 0 #e2e6e9;
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: center;
+    flex: 1;
+    padding-top: 24px;
+  }
+
+  &__actions {
+    display: flex;
+    height: 64px;
+    width: 100%;
+  }
+
+  &__action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    min-width: 0;
+    box-sizing: border-box;
+    border-top: 1px solid #E2E6E9;
+    background-color: #fff;
+    position: relative;
+
+    &--active::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+
+      height: 3px;
+      background-color: #313237;
+    }
+
+    &:first-child {
+      border-right: 1px solid #E2E6E9;
+    }
+
+    &-container {
+      position: relative;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+    }
+
+    &-img {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1200px) {
+  .header {
+    height: 48px;
+    gap: 16px;
+
+    &__logo {
+      width: 96px;
+      height: 48px;
+
+      &-img {
+        width: 64px;
+        height: 22px;
+      }
+    }
+
+    &__action {
+      width: 48px;
+      height: 48px;
+    }
+
+    &__search {
+      width: 100px;
+      height: 48px;
+      margin-right: 8px;
+
+      &-input {
+        padding-inline: 8px;
+      }
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .header {
+    height: 48px;
+    gap: 0;
+
+    &__logo {
+      width: 96px;
+      height: 48px;
+
+      &-img {
+        width: 64px;
+        height: 22px;
+      }
+    }
+
+    &__nav,
+    &__actions {
+      display: none;
+    }
+
+    &__burger-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      margin-left: auto;
+
+      border: none;
+      background-color: #fff;
+      box-shadow: -1px 0 0 0 #E2E6E9;
+      cursor: pointer;
+    }
+  }
+
+  .burger {
+    &__container {
+      position: fixed;
+      inset: 48px 0 0;
+      z-index: 10;
+
+      display: flex;
+      flex-direction: column;
+
+      background-color: #fff;
+    }
+  }
+}
