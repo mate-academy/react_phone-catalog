@@ -19,7 +19,7 @@ export const Footer = () => {
         <ul className={styles['footer__nav-list']}>
           <li className={styles['footer__nav-item']}>
             <a
-              href="https://github.com/Vadym-fe/react_phone-catalog"
+              href="https://github.com/allgrain464/react_phone-catalog"
               className={styles['footer__nav-link']}
               target="_blank"
               rel="noreferrer"
@@ -29,7 +29,7 @@ export const Footer = () => {
           </li>
           <li className={styles['footer__nav-item']}>
             <a
-              href="/mailto:allgrain464@gmail.com"
+              href="mailto:allgrain464@gmail.com"
               className={styles['footer__nav-link']}
             >
               contacts

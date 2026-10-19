@@ -1,10 +1,22 @@
+
 .footer {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-top: 80px;
   height: 96px;
-  box-shadow: 0 -1px 0 0 #E2E6E9;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 100vw;
+    height: 1px;
+    background-color: #E2E6E9;
+    transform: translateX(-50%);
+  }
 
   &__logo {
     display: flex;
@@ -14,7 +26,7 @@
       width: 89px;
       height: 32px;
       cursor: pointer;
-      transition: 0.3s;
+      transition: transform 0.3s;
 
       &:hover {
         transform: scale(1.1);
@@ -23,26 +35,26 @@
   }
 
   &__nav {
-
-
     &-list {
-      list-style: none;
       display: flex;
       gap: 107px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
     }
 
     &-item {
       font-weight: 800;
       font-size: 12px;
       line-height: 11px;
-      letter-spacing: 4%;
+      letter-spacing: 0.04em;
       text-transform: uppercase;
     }
 
     &-link {
-      text-decoration: none;
       color: #89939A;
-      transition: all 0.6s;
+      text-decoration: none;
+      transition: color 0.3s;
 
       &:hover {
         color: #313237;
@@ -56,41 +68,39 @@
     gap: 16px;
 
     &-text {
-      text-transform: uppercase;
+      color: #89939A;
       font-weight: 700;
       font-size: 12px;
-      color: #89939A;
+      text-transform: uppercase;
     }
 
     &-container {
       display: flex;
       align-items: center;
       justify-content: center;
+      box-sizing: border-box;
       width: 32px;
       height: 32px;
       border: 1px solid #B4BDC3;
-      transition: all 0.4s;
-      box-sizing: border-box;
+      transition: border-color 0.3s;
     }
 
     &-button {
       display: flex;
       align-items: center;
       justify-content: center;
-      background-color: #fff;
-      border: none;
       gap: 16px;
+      padding: 0;
+      border: none;
+      background-color: #fff;
       cursor: pointer;
 
       &:hover .footer__back-to-top-container {
-        border: 1px solid #313237;
+        border-color: #313237;
       }
     }
 
     &-icon {
-      display: flex;
-      align-items: center;
-      justify-content: center;
       width: 16px;
       height: 16px;
       object-fit: scale-down;
@@ -113,7 +123,6 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-
     height: auto;
     margin-top: 64px;
     padding-block: 32px;

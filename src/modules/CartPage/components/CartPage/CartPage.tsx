@@ -1,6 +1,7 @@
-import styles from './CartPage.module.scss';
 import { useNavigate } from 'react-router-dom';
+
 import { useProductsContext } from '../../../../hook/useProductsContext';
+import styles from './CartPage.module.scss';
 
 export const CartPage = () => {
   const navigate = useNavigate();
@@ -16,6 +17,10 @@ export const CartPage = () => {
     return total + cartItem.product.price * cartItem.quantity;
   }, 0);
 
+  function handleProductClick(productId: string) {
+    navigate(`/product/${productId}`);
+  }
+
   function handleCheckout() {
     const isConfirmed = window.confirm(
       'Checkout is not implemented yet. Do you want to clear the Cart?',
@@ -30,6 +35,7 @@ export const CartPage = () => {
     <div className={`${styles.cart} container`}>
       <div className={styles['back-to__prev-page']}>
         <button
+          type="button"
           className={styles['back-to__prev-button']}
           onClick={() => navigate(-1)}
         >
@@ -53,8 +59,9 @@ export const CartPage = () => {
               <div key={cartItem.product.id} className={styles.cart__item}>
                 <button
                   type="button"
-                  className={`${styles['cart__item-button--delete']}`}
+                  className={styles['cart__item-button--delete']}
                   onClick={() => removeFromCart(cartItem.product.id)}
+                  aria-label={`Remove ${cartItem.product.name} from cart`}
                 >
                   <img
                     src="./img/Close.png"
@@ -63,17 +70,26 @@ export const CartPage = () => {
                   />
                 </button>
 
-                <div className={styles['cart__item-image']}>
+                <button
+                  type="button"
+                  className={styles['cart__item-image']}
+                  onClick={() => handleProductClick(cartItem.product.itemId)}
+                  aria-label={`View ${cartItem.product.name}`}
+                >
                   <img
                     src={cartItem.product.image}
-                    alt=""
+                    alt={cartItem.product.name}
                     className={styles['cart__item-img']}
                   />
-                </div>
+                </button>
 
-                <p className={styles['cart__item-name']}>
+                <button
+                  type="button"
+                  className={styles['cart__item-name']}
+                  onClick={() => handleProductClick(cartItem.product.itemId)}
+                >
                   {cartItem.product.name}
-                </p>
+                </button>
 
                 <div className={styles['cart__item-counter']}>
                   <button
@@ -81,6 +97,7 @@ export const CartPage = () => {
                     className={styles['cart__item-button']}
                     onClick={() => changeQuantity(cartItem.product.id, -1)}
                     disabled={cartItem.quantity === 1}
+                    aria-label="Decrease quantity"
                   >
                     <img
                       src="./img/Minus.png"
@@ -97,6 +114,7 @@ export const CartPage = () => {
                     type="button"
                     className={styles['cart__item-button']}
                     onClick={() => changeQuantity(cartItem.product.id, 1)}
+                    aria-label="Increase quantity"
                   >
                     <img
                       src="./img/Plus.png"
@@ -117,9 +135,9 @@ export const CartPage = () => {
             <div>
               <h2 className={styles.cart__totalPrice}>{`$${totalPrice}`}</h2>
 
-              <p
-                className={styles.cart__totalItems}
-              >{`Total for ${totalItems} items`}</p>
+              <p className={styles.cart__totalItems}>
+                {`Total for ${totalItems} items`}
+              </p>
             </div>
 
             <hr className={styles.cart__line} />
@@ -127,7 +145,7 @@ export const CartPage = () => {
             <button
               type="button"
               className={styles['cart__button--order']}
-              onClick={() => handleCheckout()}
+              onClick={handleCheckout}
             >
               Checkout
             </button>
