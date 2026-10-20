@@ -3,9 +3,11 @@
 .breadcrumbs {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: $spacing-large;
-  margin-top: $spacing-medium;
+  gap: 8px;
+  margin-bottom: 40px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
 
   &__home,
   &__link {
@@ -13,7 +15,6 @@
     text-decoration: none;
     transition: color 0.3s;
     text-transform: capitalize;
-    font-size: 14px;
 
     &:hover {
       color: $c-text-main;
@@ -23,18 +24,19 @@
   &__item {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 8px;
   }
 
   &__separator {
     color: $c-text-secondary;
     font-size: 10px;
+    width: 16px;
+    text-align: center;
   }
 
   &__current {
     color: $c-text-secondary;
     text-transform: capitalize;
-    font-size: 14px;
     pointer-events: none;
   }
 }

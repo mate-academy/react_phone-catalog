@@ -1,6 +1,8 @@
 import classNames from 'classnames';
 import styles from './Pagination.module.scss';
 
+const VISIBLE_PAGES = 4;
+
 type Props = {
   total: number;
   perPage: number;
@@ -20,7 +22,14 @@ export const Pagination = ({
     return null;
   }
 
-  const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
+  const firstPage = Math.max(
+    1,
+    Math.min(currentPage - 1, totalPages - VISIBLE_PAGES + 1),
+  );
+  const pages = Array.from(
+    { length: Math.min(VISIBLE_PAGES, totalPages) },
+    (_, i) => firstPage + i,
+  );
 
   return (
     <div className={styles.pagination} data-cy="pagination">

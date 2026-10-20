@@ -95,8 +95,10 @@ export const ProductDetailsPage = () => {
 
   return (
     <div className={styles.details} data-cy="ProductDetailsPage">
-      <BackButton />
       <Breadcrumbs />
+      <div className={'mb-4'}>
+        <BackButton />
+      </div>
 
       <h1 className={styles.details__title}>{product.name}</h1>
       <div className="columns is-desktop is-variable is-8">

@@ -5,28 +5,31 @@
   align-items: center;
   justify-content: center;
   gap: $spacing-small;
-  margin-top: $spacing-large;
+  margin-top: 40px;
 
   &__pages {
     display: flex;
     gap: 8px;
   }
 
+  &__btn {
+    background-color: $c-border;
+  }
+
   &__btn,
   &__page {
     width: 32px;
     height: 32px;
-    border: 1px solid $c-border;
+    padding: 0;
+    border: none;
     background-color: $c-surface;
     color: $c-text-main;
-    font-weight: 600;
+    font-weight: 500;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition:
-      border-color 0.3s,
-      color 0.3s;
+    transition: background-color $transition;
 
     &:disabled {
       opacity: 0.3;
@@ -34,17 +37,12 @@
     }
 
     &:hover:not(:disabled) {
-      border-color: $c-text-main;
+      background-color: $c-elements;
     }
 
-    &--active {
+    &--active,
+    &--active:hover:not(:disabled) {
       background-color: $c-primary;
-      border-color: $c-primary;
-      color: $c-text-main;
-
-      &:hover:not(:disabled) {
-        border-color: $c-primary;
-      }
     }
   }
 }

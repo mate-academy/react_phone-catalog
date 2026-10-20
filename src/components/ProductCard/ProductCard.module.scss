@@ -55,10 +55,13 @@
 
   &__full-price {
     font-size: 22px;
-    font-weight: 600;
+    font-weight: 500;
     line-height: 1.4;
     color: $c-text-secondary;
     text-decoration: line-through;
+    text-decoration-skip-ink: none;
+    text-decoration-thickness: from-font;
+    text-underline-position: from-font;
   }
 
   &__divider {

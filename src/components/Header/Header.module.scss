@@ -37,15 +37,25 @@ $header-size: $header-height-small;
 
 .logo {
   display: flex;
+  flex-shrink: 0;
   align-items: center;
   height: 100%;
-  padding: 0 $spacing-medium;
+  padding: 0 $spacing-small;
+
+  @media (min-width: $breakpoint-desktop) {
+    padding: 0 $spacing-medium;
+  }
 
   &__img {
     display: block;
-    width: 80px;
-    height: 28px;
+    width: 64px;
+    height: 22px;
     object-fit: contain;
+
+    @media (min-width: $breakpoint-desktop) {
+      width: 80px;
+      height: 28px;
+    }
   }
 }
 
@@ -147,8 +157,8 @@ $header-size: $header-height-small;
 
 .badge {
   position: absolute;
-  top: 14px;
-  right: 14px;
+  top: calc(50% - 14px);
+  left: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -157,7 +167,7 @@ $header-size: $header-height-small;
   background-color: $c-badge;
   color: $c-text-main;
   font-size: 9px;
-  font-weight: bold;
+  font-weight: 600;
   border-radius: 50%;
 }
 

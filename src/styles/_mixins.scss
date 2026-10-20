@@ -22,7 +22,7 @@
   font-size: 32px;
   font-weight: 800;
   line-height: 41px;
-  letter-spacing: -1px;
+  letter-spacing: -0.01em;
   color: $c-text-main;
 
   @media (min-width: $bp-sm) {
@@ -35,12 +35,13 @@
   font-size: 22px;
   font-weight: 800;
   line-height: 31px;
-  letter-spacing: -1px;
+  letter-spacing: 0;
   color: $c-text-main;
 
   @media (min-width: $bp-sm) {
     font-size: 32px;
     line-height: 41px;
+    letter-spacing: -0.01em;
   }
 }
 

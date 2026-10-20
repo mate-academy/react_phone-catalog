@@ -7,6 +7,7 @@ import { Loader } from '../../components/Loader';
 import { ProductsList } from '../../components/ProductsList';
 import { Pagination } from '../../components/Pagination';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
+import { Dropdown } from '../../components/Dropdown';
 import styles from './CatalogPage.module.scss';
 
 const SORTERS: Record<string, (a: Product, b: Product) => number> = {
@@ -14,6 +15,15 @@ const SORTERS: Record<string, (a: Product, b: Product) => number> = {
   title: (a, b) => a.name.localeCompare(b.name),
   price: (a, b) => a.price - b.price,
 };
+
+const SORT_OPTIONS = [
+  { value: 'age', label: 'Newest' },
+  { value: 'title', label: 'Alphabetically' },
+  { value: 'price', label: 'Cheapest' },
+];
+
+const PER_PAGE_STEPS = [4, 8, 16, 32];
+const DEFAULT_PER_PAGE = 16;
 
 export const CatalogPage = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -33,19 +43,18 @@ export const CatalogPage = () => {
 
   const query = (searchParams.get('query') || '').trim().toLowerCase();
   const sort = searchParams.get('sort') || 'age';
-  const perPageParam = searchParams.get('perPage') || 'all';
+  const perPage = Number(searchParams.get('perPage')) || DEFAULT_PER_PAGE;
   const currentPage = parseInt(searchParams.get('page') || '1', 10) || 1;
 
   const sortedProducts = products
     .filter(p => p.name.toLowerCase().includes(query))
     .sort(SORTERS[sort] || SORTERS.age);
 
-  const isAll = perPageParam === 'all';
-  const perPage = isAll ? sortedProducts.length : parseInt(perPageParam, 10);
   const start = (currentPage - 1) * perPage;
-  const visibleProducts = isAll
-    ? sortedProducts
-    : sortedProducts.slice(start, start + perPage);
+  const visibleProducts = sortedProducts.slice(start, start + perPage);
+  const perPageOptions = PER_PAGE_STEPS.filter(
+    step => step < sortedProducts.length,
+  ).map(step => ({ value: String(step), label: String(step) }));
 
   const updateParams = (key: string, value: string, defaultValue: string) => {
     const params = new URLSearchParams(searchParams);
@@ -76,43 +85,27 @@ export const CatalogPage = () => {
       {isReady && sortedProducts.length > 0 && (
         <div className={styles.catalog__filters}>
           <div className={styles.catalog__filter}>
-            <label htmlFor="sort" className={styles['catalog__filter-label']}>
-              Sort by
-            </label>
-            <div className="select">
-              <select
-                className={styles.select__control}
-                id="sort"
-                value={sort}
-                onChange={e => updateParams('sort', e.target.value, 'age')}
-              >
-                <option value="age">Newest</option>
-                <option value="title">Alphabetically</option>
-                <option value="price">Cheapest</option>
-              </select>
-            </div>
+            <Dropdown
+              id="sort"
+              label="Sort by"
+              value={sort}
+              options={SORT_OPTIONS}
+              onChange={value => updateParams('sort', value, 'age')}
+            />
           </div>
-          <div className={styles.catalog__filter}>
-            <label
-              htmlFor="perPage"
-              className={styles['catalog__filter-label']}
-            >
-              Items on page
-            </label>
-            <div className="select">
-              <select
-                className={styles.select__control}
+          {perPageOptions.length > 0 && (
+            <div className={styles.catalog__filter}>
+              <Dropdown
                 id="perPage"
-                value={perPageParam}
-                onChange={e => updateParams('perPage', e.target.value, 'all')}
-              >
-                <option value="all">All</option>
-                <option value="4">4</option>
-                <option value="8">8</option>
-                <option value="16">16</option>
-              </select>
+                label="Items on page"
+                value={String(perPage)}
+                options={perPageOptions}
+                onChange={value =>
+                  updateParams('perPage', value, String(DEFAULT_PER_PAGE))
+                }
+              />
             </div>
-          </div>
+          )}
         </div>
       )}
 
@@ -139,14 +132,12 @@ export const CatalogPage = () => {
       {isReady && sortedProducts.length > 0 && (
         <>
           <ProductsList products={visibleProducts} />
-          {!isAll && (
-            <Pagination
-              total={sortedProducts.length}
-              perPage={perPage}
-              currentPage={currentPage}
-              onPageChange={page => updateParams('page', page.toString(), '1')}
-            />
-          )}
+          <Pagination
+            total={sortedProducts.length}
+            perPage={perPage}
+            currentPage={currentPage}
+            onPageChange={page => updateParams('page', page.toString(), '1')}
+          />
         </>
       )}
     </div>
