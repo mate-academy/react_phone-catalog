@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import { useShop } from '../../context/ShopContext';
-import { getPhoneDetails } from '../../services/products';
+import { getProductDetails } from '../../services/products';
 import type { ProductDetails } from '../../types';
 
 import styles from './ProductDetailsPage.module.scss';
@@ -11,6 +11,16 @@ const colorHex: Record<string, string> = {
   midnight: '#252b36',
   yellow: '#f9e45b',
   purple: '#b9a5d3',
+  spacegray: '#535150',
+  'space gray': '#535150',
+  silver: '#e3e4e5',
+  gold: '#e8d6b6',
+  black: '#202020',
+  white: '#f5f5f5',
+  blue: '#a7c1d9',
+  red: '#d34b52',
+  green: '#a8b9a5',
+  pink: '#f4c9d5',
 };
 
 export const ProductDetailsPage = () => {
@@ -19,23 +29,26 @@ export const ProductDetailsPage = () => {
 
   const { cartItems, favoriteItems, toggleCart, toggleFavorite } = useShop();
 
-  const [phone, setPhone] = useState<ProductDetails | null>(null);
+  const [product, setProduct] = useState<ProductDetails | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [selectedImage, setSelectedImage] = useState(0);
 
   const handleOptionChange = (capacity: string, color: string) => {
-    if (!phone) {
+    if (!product) {
       return;
     }
 
-    const newProductId = `${phone.namespaceId}-${capacity.toLowerCase()}-${color}`;
+    const normalizedColor = color.toLowerCase().replace(/\s+/g, '-');
+
+    const newProductId = `${product.namespaceId}-${capacity.toLowerCase()}-${normalizedColor}`;
 
     navigate(`/product/${newProductId}`);
   };
 
   useEffect(() => {
     if (!productId) {
+      setError('Product not found');
       setLoading(false);
 
       return;
@@ -43,19 +56,19 @@ export const ProductDetailsPage = () => {
 
     setLoading(true);
     setError('');
-    setPhone(null);
+    setProduct(null);
     setSelectedImage(0);
 
-    getPhoneDetails(productId)
+    getProductDetails(productId)
       .then(data => {
         if (data) {
-          setPhone(data);
+          setProduct(data);
         } else {
-          setError('Phone not found');
+          setError('Product not found');
         }
       })
       .catch(() => {
-        setError('Unable to load phone details');
+        setError('Unable to load product details');
       })
       .finally(() => {
         setLoading(false);
@@ -63,29 +76,29 @@ export const ProductDetailsPage = () => {
   }, [productId]);
 
   if (loading) {
-    return <p>Loading phone details...</p>;
+    return <p>Loading product details...</p>;
   }
 
   if (error) {
     return <p>{error}</p>;
   }
 
-  if (!phone) {
-    return <p>Phone not found</p>;
+  if (!product) {
+    return <p>Product not found</p>;
   }
 
-  const isInCart = cartItems.includes(phone.id);
-  const isFavorite = favoriteItems.includes(phone.id);
+  const isInCart = cartItems.includes(product.id);
+  const isFavorite = favoriteItems.includes(product.id);
 
   return (
     <main className={styles.page}>
-      <h1>{phone.name}</h1>
+      <h1>{product.name}</h1>
 
       <div className={styles.productLayout}>
-        {phone.images.length > 0 && (
+        {product.images.length > 0 && (
           <div className={styles.gallery}>
             <div className={styles.thumbnails}>
-              {phone.images.map((image, index) => (
+              {product.images.map((image, index) => (
                 <button
                   key={image}
                   type="button"
@@ -101,24 +114,30 @@ export const ProductDetailsPage = () => {
 
             <img
               className={styles.productImage}
-              src={`/${phone.images[selectedImage]}`}
-              alt={phone.name}
+              src={`/${product.images[selectedImage]}`}
+              alt={product.name}
             />
           </div>
         )}
 
         <div className={styles.productInfo}>
           <div className={styles.prices}>
-            <span className={styles.priceDiscount}>${phone.priceDiscount}</span>
+            <span className={styles.priceDiscount}>
+              ${product.priceDiscount}
+            </span>
 
-            <span className={styles.priceRegular}>${phone.priceRegular}</span>
+            <span className={styles.priceRegular}>${product.priceRegular}</span>
           </div>
 
           <div className={styles.actions}>
             <button
               type="button"
               className={styles.cartButton}
-              onClick={() => toggleCart(phone.id)}
+              onClick={() => {
+                if (!isInCart) {
+                  toggleCart(product.id);
+                }
+              }}
               aria-pressed={isInCart}
             >
               {isInCart ? 'Added to cart' : 'Add to cart'}
@@ -127,7 +146,7 @@ export const ProductDetailsPage = () => {
             <button
               type="button"
               className={styles.favoriteButton}
-              onClick={() => toggleFavorite(phone.id)}
+              onClick={() => toggleFavorite(product.id)}
               aria-label={
                 isFavorite ? 'Remove from favorites' : 'Add to favorites'
               }
@@ -141,15 +160,17 @@ export const ProductDetailsPage = () => {
             <p>Available colors</p>
 
             <div className={styles.colorOptions}>
-              {phone.colorsAvailable.map(color => (
+              {product.colorsAvailable.map(color => (
                 <button
                   key={color}
                   type="button"
                   className={styles.colorButton}
                   aria-label={`Select ${color} color`}
                   title={color}
-                  aria-pressed={phone.color === color}
-                  onClick={() => handleOptionChange(phone.capacity, color)}
+                  aria-pressed={product.color === color}
+                  onClick={() => {
+                    handleOptionChange(product.capacity, color);
+                  }}
                 >
                   <span
                     className={styles.colorCircle}
@@ -164,13 +185,15 @@ export const ProductDetailsPage = () => {
             <p>Select capacity</p>
 
             <div className={styles.capacityOptions}>
-              {phone.capacityAvailable.map(capacity => (
+              {product.capacityAvailable.map(capacity => (
                 <button
                   key={capacity}
                   type="button"
                   className={styles.capacityButton}
-                  aria-pressed={phone.capacity === capacity}
-                  onClick={() => handleOptionChange(capacity, phone.color)}
+                  aria-pressed={product.capacity === capacity}
+                  onClick={() => {
+                    handleOptionChange(capacity, product.color);
+                  }}
                 >
                   {capacity}
                 </button>
@@ -181,22 +204,22 @@ export const ProductDetailsPage = () => {
           <div className={styles.specifications}>
             <div className={styles.specRow}>
               <span>Screen</span>
-              <span>{phone.screen}</span>
+              <span>{product.screen}</span>
             </div>
 
             <div className={styles.specRow}>
               <span>Resolution</span>
-              <span>{phone.resolution}</span>
+              <span>{product.resolution}</span>
             </div>
 
             <div className={styles.specRow}>
               <span>Processor</span>
-              <span>{phone.processor}</span>
+              <span>{product.processor}</span>
             </div>
 
             <div className={styles.specRow}>
               <span>RAM</span>
-              <span>{phone.ram}</span>
+              <span>{product.ram}</span>
             </div>
           </div>
         </div>
@@ -205,7 +228,7 @@ export const ProductDetailsPage = () => {
       <section className={styles.about}>
         <h2>About</h2>
 
-        {phone.description.map(section => (
+        {product.description.map(section => (
           <div key={section.title} className={styles.aboutSection}>
             <h3>{section.title}</h3>
 
@@ -222,37 +245,37 @@ export const ProductDetailsPage = () => {
         <div className={styles.techSpecsList}>
           <div className={styles.techSpecRow}>
             <span>Screen</span>
-            <span>{phone.screen}</span>
+            <span>{product.screen}</span>
           </div>
 
           <div className={styles.techSpecRow}>
             <span>Resolution</span>
-            <span>{phone.resolution}</span>
+            <span>{product.resolution}</span>
           </div>
 
           <div className={styles.techSpecRow}>
             <span>Processor</span>
-            <span>{phone.processor}</span>
+            <span>{product.processor}</span>
           </div>
 
           <div className={styles.techSpecRow}>
             <span>RAM</span>
-            <span>{phone.ram}</span>
+            <span>{product.ram}</span>
           </div>
 
           <div className={styles.techSpecRow}>
             <span>Camera</span>
-            <span>{phone.camera}</span>
+            <span>{product.camera}</span>
           </div>
 
           <div className={styles.techSpecRow}>
             <span>Zoom</span>
-            <span>{phone.zoom}</span>
+            <span>{product.zoom}</span>
           </div>
 
           <div className={styles.techSpecRow}>
             <span>Cell</span>
-            <span>{phone.cell.join(', ')}</span>
+            <span>{product.cell.join(', ')}</span>
           </div>
         </div>
       </section>

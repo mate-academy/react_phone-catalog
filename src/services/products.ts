@@ -12,16 +12,26 @@ export const getProducts = async (): Promise<Product[]> => {
   return products;
 };
 
-export const getPhoneDetails = async (
+export const getProductDetails = async (
   productId: string,
 ): Promise<ProductDetails | undefined> => {
-  const response = await fetch('/api/phones.json');
+  const categories = ['phones', 'tablets', 'accessories'];
 
-  if (!response.ok) {
-    throw new Error('Unable to load phone details');
+  for (const category of categories) {
+    const response = await fetch(`/api/${category}.json`);
+
+    if (!response.ok) {
+      throw new Error('Unable to load product details');
+    }
+
+    const products: ProductDetails[] = await response.json();
+
+    const product = products.find(item => item.id === productId);
+
+    if (product) {
+      return product;
+    }
   }
 
-  const phones: ProductDetails[] = await response.json();
-
-  return phones.find(phone => phone.id === productId);
+  return undefined;
 };
