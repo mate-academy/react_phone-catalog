@@ -4,7 +4,9 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useShop } from '../../context/ShopContext';
 import { getProductDetails } from '../../services/products';
 import type { ProductDetails } from '../../types';
+import { Breadcrumbs } from '../shared/components/Breadcrumbs';
 
+import { YouMayAlsoLike } from './components';
 import styles from './ProductDetailsPage.module.scss';
 
 const colorHex: Record<string, string> = {
@@ -92,6 +94,16 @@ export const ProductDetailsPage = () => {
 
   return (
     <main className={styles.page}>
+      <Breadcrumbs category={product.category} productName={product.name} />
+
+      <button
+        type="button"
+        className={styles.backButton}
+        onClick={() => navigate(`/${product.category}`)}
+      >
+        ← Back
+      </button>
+
       <h1>{product.name}</h1>
 
       <div className={styles.productLayout}>
@@ -279,6 +291,8 @@ export const ProductDetailsPage = () => {
           </div>
         </div>
       </section>
+
+      <YouMayAlsoLike productId={product.id} category={product.category} />
     </main>
   );
 };
