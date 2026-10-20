@@ -30,6 +30,18 @@
     scroll-behavior: smooth;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
+    margin-right: -$spacing-small;
+    padding-right: $spacing-small;
+
+    @media (min-width: $bp-sm) {
+      margin-right: -$spacing-medium;
+      padding-right: $spacing-medium;
+    }
+
+    @media (min-width: $bp-lg) {
+      margin-right: 0;
+      padding-right: 0;
+    }
 
     &::-webkit-scrollbar {
       display: none;
