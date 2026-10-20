@@ -3,6 +3,8 @@ import { Product } from '../../types/Product';
 import { ProductCard } from '../ProductCard';
 import styles from './ProductsSlider.module.scss';
 
+const GAP = 16;
+
 type Props = {
   title: string;
   products: Product[];
@@ -11,22 +13,13 @@ type Props = {
 export const ProductsSlider = ({ title, products }: Props) => {
   const sliderRef = useRef<HTMLDivElement>(null);
 
-  const scrollLeft = () => {
-    if (sliderRef.current) {
-      const itemWidth = sliderRef.current.children[0]?.clientWidth || 0;
+  const scroll = (direction: 1 | -1) => {
+    const track = sliderRef.current;
 
-      sliderRef.current.scrollBy({
-        left: -(itemWidth + 16),
-        behavior: 'smooth',
-      }); // 16px - gap
-    }
-  };
+    if (track) {
+      const itemWidth = track.children[0]?.clientWidth || 0;
 
-  const scrollRight = () => {
-    if (sliderRef.current) {
-      const itemWidth = sliderRef.current.children[0]?.clientWidth || 0;
-
-      sliderRef.current.scrollBy({ left: itemWidth + 16, behavior: 'smooth' });
+      track.scrollBy({ left: direction * (itemWidth + GAP) });
     }
   };
 
@@ -39,10 +32,18 @@ export const ProductsSlider = ({ title, products }: Props) => {
       <div className={styles.slider__header}>
         <h2 className={styles.slider__title}>{title}</h2>
         <div className={styles.slider__actions}>
-          <button className={styles.slider__btn} onClick={scrollLeft}>
+          <button
+            className={styles.slider__btn}
+            onClick={() => scroll(-1)}
+            aria-label="Previous"
+          >
             <i className="fas fa-chevron-left"></i>
           </button>
-          <button className={styles.slider__btn} onClick={scrollRight}>
+          <button
+            className={styles.slider__btn}
+            onClick={() => scroll(1)}
+            aria-label="Next"
+          >
             <i className="fas fa-chevron-right"></i>
           </button>
         </div>

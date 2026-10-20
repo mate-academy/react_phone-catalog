@@ -2,46 +2,70 @@ import { useState, useEffect } from 'react';
 import { NavLink, Link, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 import { useStore } from '../../context/StoreContext';
+import { SearchBar } from '../SearchBar';
 import styles from './Header.module.scss';
+
+const NAV_LINKS = [
+  { to: '/', label: 'Home' },
+  { to: '/phones', label: 'Phones' },
+  { to: '/tablets', label: 'Tablets' },
+  { to: '/accessories', label: 'Accessories' },
+];
+
+const SEARCH_PATHS = ['/phones', '/tablets', '/accessories', '/favorites'];
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { cart, favorites } = useStore();
-  const location = useLocation();
+  const { pathname } = useLocation();
 
-  // Закриваємо меню при переході на іншу сторінку
   useEffect(() => {
-    document.body.style.overflow = '';
     setIsMenuOpen(false);
-  }, [location]);
+  }, [pathname]);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(prev => {
-      const newState = !prev;
+  useEffect(() => {
+    document.body.style.overflow = isMenuOpen ? 'hidden' : '';
 
-      document.body.style.overflow = newState ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMenuOpen]);
 
-      return newState;
-    });
-  };
+  const closeMenu = () => setIsMenuOpen(false);
 
-  const closeMenu = () => {
-    document.body.style.overflow = '';
-    setIsMenuOpen(false);
-  };
+  const actionLinks = [
+    { to: '/favorites', icon: 'fa-regular fa-heart', count: favorites.length },
+    { to: '/cart', icon: 'fa-solid fa-bag-shopping', count: cart.length },
+  ];
 
-  const getLinkClass = ({ isActive }: { isActive: boolean }) =>
-    classNames(styles.nav__link, {
-      [styles['nav__link--active']]: isActive,
-    });
+  const renderNavLinks = (block: 'nav' | 'menu') =>
+    NAV_LINKS.map(({ to, label }) => (
+      <NavLink
+        key={to}
+        to={to}
+        className={({ isActive }) =>
+          classNames(styles[`${block}__link`], {
+            [styles[`${block}__link--active`]]: isActive,
+          })
+        }
+      >
+        {label}
+      </NavLink>
+    ));
+
+  const renderActionLinks = (className: string, onClick?: () => void) =>
+    actionLinks.map(({ to, icon, count }) => (
+      <Link key={to} to={to} className={className} onClick={onClick}>
+        <i className={icon} />
+        {count > 0 && <span className={styles.badge}>{count}</span>}
+      </Link>
+    ));
 
   return (
     <header className={styles.header}>
-      {/* Використовуємо Bulma container для обмеження ширини та центрування */}
-      <div className={classNames(styles.header__container)}>
+      <div className={styles.header__container}>
         <div className={styles.header__left}>
           <Link to="/" className={styles.logo} onClick={closeMenu}>
-            {/* Використовуємо SVG логотип проєкту */}
             <img
               src="/img/Logo.png"
               alt="Nice Gadgets"
@@ -49,94 +73,37 @@ export const Header = () => {
             />
           </Link>
 
-          {/* Десктопна навігація */}
-          <nav className={styles.nav}>
-            <NavLink to="/" className={getLinkClass}>
-              Home
-            </NavLink>
-            <NavLink to="/phones" className={getLinkClass}>
-              Phones
-            </NavLink>
-            <NavLink to="/tablets" className={getLinkClass}>
-              Tablets
-            </NavLink>
-            <NavLink to="/accessories" className={getLinkClass}>
-              Accessories
-            </NavLink>
-          </nav>
+          <nav className={styles.nav}>{renderNavLinks('nav')}</nav>
         </div>
 
+        {SEARCH_PATHS.includes(pathname) && <SearchBar key={pathname} />}
+
         <div className={styles.actions}>
-          <Link
-            to="/favorites"
-            className={classNames(styles.actionBtn, styles.actionBtn__desktop)}
-          >
-            <i className="fa-regular fa-heart" />
-            {favorites.length > 0 && (
-              <span className={styles.badge}>{favorites.length}</span>
-            )}
-          </Link>
+          {renderActionLinks(
+            classNames(styles.actions__btn, styles['actions__btn--desktop']),
+          )}
 
-          <Link
-            to="/cart"
-            className={classNames(styles.actionBtn, styles.actionBtn__desktop)}
+          <button
+            className={styles.burger}
+            onClick={() => setIsMenuOpen(prev => !prev)}
+            aria-label="Toggle menu"
           >
-            <i className="fa-solid fa-bag-shopping" />
-            {cart.length > 0 && (
-              <span className={styles.badge}>{cart.length}</span>
-            )}
-          </Link>
-
-          {/* Кнопка Гамбургер / Закрити */}
-          <button className={styles.burger} onClick={toggleMenu}>
-            {isMenuOpen ? (
-              <i className="fa-solid fa-xmark" />
-            ) : (
-              <i className="fa-solid fa-bars" />
-            )}
+            <i
+              className={isMenuOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars'}
+            />
           </button>
         </div>
       </div>
 
-      {/* Мобільне меню (виїжджає збоку/з'являється під хедером) */}
       <aside
         className={classNames(styles.menu, {
           [styles['menu--open']]: isMenuOpen,
         })}
       >
-        <nav className={styles.menu__nav}>
-          <NavLink to="/" className={getLinkClass}>
-            Home
-          </NavLink>
-          <NavLink to="/phones" className={getLinkClass}>
-            Phones
-          </NavLink>
-          <NavLink to="/tablets" className={getLinkClass}>
-            Tablets
-          </NavLink>
-          <NavLink to="/accessories" className={getLinkClass}>
-            Accessories
-          </NavLink>
-        </nav>
+        <nav className={styles.menu__nav}>{renderNavLinks('menu')}</nav>
 
-        {/* Іконки внизу мобільного меню */}
         <div className={styles.menu__footer}>
-          <Link
-            to="/favorites"
-            className={styles.actionBtn}
-            onClick={closeMenu}
-          >
-            <i className="fa-regular fa-heart" />
-            {favorites.length > 0 && (
-              <span className={styles.badge}>{favorites.length}</span>
-            )}
-          </Link>
-          <Link to="/cart" className={styles.actionBtn} onClick={closeMenu}>
-            <i className="fa-solid fa-bag-shopping" />
-            {cart.length > 0 && (
-              <span className={styles.badge}>{cart.length}</span>
-            )}
-          </Link>
+          {renderActionLinks(styles.actions__btn, closeMenu)}
         </div>
       </aside>
     </header>

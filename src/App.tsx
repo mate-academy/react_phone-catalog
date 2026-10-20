@@ -17,6 +17,7 @@ export const App = () => (
       <div className="container">
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/home" element={<Navigate to="/" replace />} />
           <Route path="/phones" element={<CatalogPage />} />
           <Route path="/tablets" element={<CatalogPage />} />
           <Route path="/accessories" element={<CatalogPage />} />
@@ -27,7 +28,6 @@ export const App = () => (
           <Route path="/cart" element={<CartPage />} />
           <Route path="/favorites" element={<FavoritesPage />} />
           <Route path="*" element={<NotFoundPage />} />
-          <Route path="/home" element={<Navigate to="/" replace />} />
         </Routes>
       </div>
     </main>

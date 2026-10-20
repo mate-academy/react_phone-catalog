@@ -1,4 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
+import classNames from 'classnames';
 import styles from './Breadcrumbs.module.scss';
 
 export const Breadcrumbs = () => {
@@ -19,12 +20,13 @@ export const Breadcrumbs = () => {
         return (
           <div key={path} className={styles.breadcrumbs__item}>
             <i
-              className={`fas fa-chevron-right ${styles.breadcrumbs__separator}`}
+              className={classNames(
+                'fas fa-chevron-right',
+                styles.breadcrumbs__separator,
+              )}
             ></i>
             {isLast ? (
-              <span className={styles['breadcrumbs__text--active']}>
-                {title}
-              </span>
+              <span className={styles.breadcrumbs__current}>{title}</span>
             ) : (
               <Link to={to} className={styles.breadcrumbs__link}>
                 {title}

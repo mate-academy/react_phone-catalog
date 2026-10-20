@@ -10,23 +10,21 @@ type Props = {
 export const CartItem = ({ item }: Props) => {
   const { removeFromCart, updateQuantity } = useStore();
   const { product, quantity } = item;
+  const productUrl = `/${product.category}/${product.itemId}`;
 
   return (
     <div className={styles['cart-item']} data-cy="cartItem">
       <div className={styles['cart-item__main']}>
         <button
           className={styles['cart-item__remove']}
-          onClick={() => removeFromCart(product.id)}
+          onClick={() => removeFromCart(product.itemId)}
           aria-label="Remove item"
           data-cy="cartDelete"
         >
           <i className="fas fa-times"></i>
         </button>
 
-        <Link
-          to={`/${product.category}/${product.itemId}`}
-          className={styles['cart-item__image-link']}
-        >
+        <Link to={productUrl} className={styles['cart-item__image-link']}>
           <img
             src={product.image}
             alt={product.name}
@@ -34,10 +32,7 @@ export const CartItem = ({ item }: Props) => {
           />
         </Link>
 
-        <Link
-          to={`/${product.category}/${product.itemId}`}
-          className={styles['cart-item__title']}
-        >
+        <Link to={productUrl} className={styles['cart-item__title']}>
           {product.name}
         </Link>
       </div>
@@ -46,8 +41,9 @@ export const CartItem = ({ item }: Props) => {
         <div className={styles['cart-item__quantity']}>
           <button
             className={styles['cart-item__btn']}
-            onClick={() => updateQuantity(product.id, -1)}
+            onClick={() => updateQuantity(product.itemId, -1)}
             disabled={quantity <= 1}
+            aria-label="Decrease quantity"
           >
             <i className="fas fa-minus"></i>
           </button>
@@ -61,7 +57,8 @@ export const CartItem = ({ item }: Props) => {
 
           <button
             className={styles['cart-item__btn']}
-            onClick={() => updateQuantity(product.id, 1)}
+            onClick={() => updateQuantity(product.itemId, 1)}
+            aria-label="Increase quantity"
           >
             <i className="fas fa-plus"></i>
           </button>

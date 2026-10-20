@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import classNames from 'classnames';
 import styles from './PicturesSlider.module.scss';
 
-// Шляхи до банерів згідно зі структурою public/img
 const BANNERS = [
   'img/banner-phones.png',
   'img/banner-tablets.png',
@@ -20,10 +19,6 @@ export const PicturesSlider = () => {
     setCurrentIndex(prev => (prev - 1 + BANNERS.length) % BANNERS.length);
   };
 
-  const goToSlide = (index: number) => {
-    setCurrentIndex(index);
-  };
-
   useEffect(() => {
     const timer = setInterval(nextSlide, 5000);
 
@@ -33,7 +28,11 @@ export const PicturesSlider = () => {
   return (
     <div className={styles.slider} data-cy="PicturesSlider">
       <div className={styles.slider__container}>
-        <button className={styles.slider__btn} onClick={prevSlide}>
+        <button
+          className={styles.slider__btn}
+          onClick={prevSlide}
+          aria-label="Previous slide"
+        >
           <i className="fas fa-chevron-left"></i>
         </button>
         <div className={styles.slider__content}>
@@ -43,7 +42,7 @@ export const PicturesSlider = () => {
           >
             {BANNERS.map((banner, index) => (
               <img
-                key={index}
+                key={banner}
                 src={banner}
                 alt={`Banner ${index + 1}`}
                 className={styles.slider__image}
@@ -52,18 +51,23 @@ export const PicturesSlider = () => {
           </div>
         </div>
 
-        <button className={styles.slider__btn} onClick={nextSlide}>
+        <button
+          className={styles.slider__btn}
+          onClick={nextSlide}
+          aria-label="Next slide"
+        >
           <i className="fas fa-chevron-right"></i>
         </button>
       </div>
       <div className={styles.slider__dots}>
-        {BANNERS.map((_, index) => (
+        {BANNERS.map((banner, index) => (
           <button
-            key={index}
+            key={banner}
             className={classNames(styles.slider__dot, {
               [styles['slider__dot--active']]: index === currentIndex,
             })}
-            onClick={() => goToSlide(index)}
+            onClick={() => setCurrentIndex(index)}
+            aria-label={`Show banner ${index + 1}`}
           />
         ))}
       </div>

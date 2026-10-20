@@ -1,7 +1,7 @@
 @import '../../styles/variables';
 
 .slider {
-  margin-bottom: 56px;
+  margin-bottom: $spacing-xlarge;
 
   &__header {
     display: flex;
@@ -46,17 +46,14 @@
     overflow-x: auto;
     scroll-behavior: smooth;
     padding-bottom: $spacing-small;
-
-    // Приховуємо скроллбар для естетики
-    // -ms-overflow-style: none;
     scrollbar-width: none;
+
     &::-webkit-scrollbar {
       display: none;
     }
   }
 
   &__item {
-    flex: 0 0 calc(25% - 12px); // Показуємо 4 картки на десктопі
-    // min-width: 260px; // Мінімальна ширина для мобільних/планшетів
+    flex: 0 0 calc(25% - 12px);
   }
 }

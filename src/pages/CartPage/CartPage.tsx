@@ -1,18 +1,10 @@
-import { useNavigate } from 'react-router-dom';
 import { useStore } from '../../context/StoreContext';
+import { BackButton } from '../../components/BackButton';
 import { CartItem } from '../../components/CartItem';
 import styles from './CartPage.module.scss';
 
 export const CartPage = () => {
-  const navigate = useNavigate();
-  const { cart, removeFromCart, totalCartQuantity, totalCartPrice } =
-    useStore();
-
-  // const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
-  // const totalPrice = cart.reduce(
-  //   (sum, item) => sum + item.product.price * item.quantity,
-  //   0,
-  // );
+  const { cart, clearCart, totalCartQuantity, totalCartPrice } = useStore();
 
   const handleCheckout = () => {
     const isConfirmed = window.confirm(
@@ -20,20 +12,13 @@ export const CartPage = () => {
     );
 
     if (isConfirmed) {
-      cart.forEach(item => removeFromCart(item.id));
+      clearCart();
     }
   };
 
   return (
     <div className={styles.cart} data-cy="CartPage">
-      <button
-        className={styles.cart__back}
-        onClick={() => navigate(-1)}
-        data-cy="backButton"
-      >
-        <i className="fas fa-chevron-left"></i>
-        <span>Back</span>
-      </button>
+      <BackButton />
 
       <h1 className={styles.cart__title}>Cart</h1>
 
@@ -44,7 +29,7 @@ export const CartPage = () => {
           <div className="column is-8-desktop">
             <div className={styles.cart__list}>
               {cart.map(item => (
-                <CartItem key={item.id} item={item} />
+                <CartItem key={item.product.itemId} item={item} />
               ))}
             </div>
           </div>

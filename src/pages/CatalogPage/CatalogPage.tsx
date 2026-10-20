@@ -1,17 +1,18 @@
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { getProducts } from '../../api/api';
 import { Product } from '../../types/Product';
+import { CATEGORIES } from '../../utils/categories';
 import { Loader } from '../../components/Loader';
 import { ProductsList } from '../../components/ProductsList';
 import { Pagination } from '../../components/Pagination';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import styles from './CatalogPage.module.scss';
 
-const CATEGORY_TITLES: Record<string, string> = {
-  phones: 'Mobile phones',
-  tablets: 'Tablets',
-  accessories: 'Accessories',
+const SORTERS: Record<string, (a: Product, b: Product) => number> = {
+  age: (a, b) => b.year - a.year,
+  title: (a, b) => a.name.localeCompare(b.name),
+  price: (a, b) => a.price - b.price,
 };
 
 export const CatalogPage = () => {
@@ -19,8 +20,7 @@ export const CatalogPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
-  const location = useLocation();
-  const category = location.pathname.slice(1);
+  const category = useLocation().pathname.slice(1);
 
   useEffect(() => {
     setIsLoading(true);
@@ -31,54 +31,21 @@ export const CatalogPage = () => {
       .finally(() => setIsLoading(false));
   }, [category]);
 
-  const query = searchParams.get('query') || '';
+  const query = (searchParams.get('query') || '').trim().toLowerCase();
   const sort = searchParams.get('sort') || 'age';
   const perPageParam = searchParams.get('perPage') || 'all';
-  const pageParam = searchParams.get('page') || '1';
-  const currentPage = parseInt(pageParam, 10) || 1;
+  const currentPage = parseInt(searchParams.get('page') || '1', 10) || 1;
 
-  // 1. Пошук
-  const searchedProducts = useMemo(() => {
-    const normalizedQuery = query.trim().toLowerCase();
+  const sortedProducts = products
+    .filter(p => p.name.toLowerCase().includes(query))
+    .sort(SORTERS[sort] || SORTERS.age);
 
-    if (!normalizedQuery) {
-      return products;
-    }
-
-    return products.filter(p => p.name.toLowerCase().includes(normalizedQuery));
-  }, [products, query]);
-
-  // 2. Сортування
-  const sortedProducts = useMemo(() => {
-    const sorted = [...searchedProducts];
-
-    if (sort === 'age') {
-      sorted.sort((a, b) => b.year - a.year);
-    } else if (sort === 'title') {
-      sorted.sort((a, b) => a.name.localeCompare(b.name));
-    } else if (sort === 'price') {
-      sorted.sort((a, b) => a.price - b.price);
-    }
-
-    return sorted;
-  }, [searchedProducts, sort]);
-
-  // 3. Обчислення пагінації
-  const perPage = useMemo(() => {
-    return perPageParam === 'all'
-      ? sortedProducts.length
-      : parseInt(perPageParam, 10);
-  }, [perPageParam, sortedProducts.length]);
-
-  const visibleProducts = useMemo(() => {
-    if (perPageParam === 'all') {
-      return sortedProducts;
-    }
-
-    const start = (currentPage - 1) * perPage;
-
-    return sortedProducts.slice(start, start + perPage);
-  }, [sortedProducts, perPageParam, currentPage, perPage]);
+  const isAll = perPageParam === 'all';
+  const perPage = isAll ? sortedProducts.length : parseInt(perPageParam, 10);
+  const start = (currentPage - 1) * perPage;
+  const visibleProducts = isAll
+    ? sortedProducts
+    : sortedProducts.slice(start, start + perPage);
 
   const updateParams = (key: string, value: string, defaultValue: string) => {
     const params = new URLSearchParams(searchParams);
@@ -89,30 +56,24 @@ export const CatalogPage = () => {
       params.set(key, value);
     }
 
-    if (['perPage', 'sort', 'query'].includes(key)) {
+    if (key !== 'page') {
       params.delete('page');
     }
 
     setSearchParams(params);
   };
 
-  const showPagination =
-    perPageParam !== 'all' && sortedProducts.length > perPage;
-  const hasNoSearchResults =
-    !isLoading &&
-    !isError &&
-    products.length > 0 &&
-    searchedProducts.length === 0;
+  const isReady = !isLoading && !isError;
 
   return (
     <div className={styles.catalog} data-cy="CatalogPage">
       <Breadcrumbs />
       <h1 className={styles.catalog__title}>
-        {CATEGORY_TITLES[category] || category}
+        {CATEGORIES.find(c => c.name === category)?.title || category}
       </h1>
-      <p className={styles.catalog__count}>{searchedProducts.length} models</p>
+      <p className={styles.catalog__count}>{sortedProducts.length} models</p>
 
-      {!isLoading && !isError && searchedProducts.length > 0 && (
+      {isReady && sortedProducts.length > 0 && (
         <div className={styles.catalog__filters}>
           <div className={styles.catalog__filter}>
             <label htmlFor="sort" className={styles['catalog__filter-label']}>
@@ -169,16 +130,16 @@ export const CatalogPage = () => {
         </div>
       )}
 
-      {!isLoading && !isError && products.length === 0 && (
-        <p>There are no {category} yet</p>
+      {isReady && products.length === 0 && <p>There are no {category} yet</p>}
+
+      {isReady && products.length > 0 && sortedProducts.length === 0 && (
+        <p>There are no {category} matching the query</p>
       )}
 
-      {hasNoSearchResults && <p>There are no {category} matching the query</p>}
-
-      {!isLoading && !isError && searchedProducts.length > 0 && (
+      {isReady && sortedProducts.length > 0 && (
         <>
           <ProductsList products={visibleProducts} />
-          {showPagination && (
+          {!isAll && (
             <Pagination
               total={sortedProducts.length}
               perPage={perPage}

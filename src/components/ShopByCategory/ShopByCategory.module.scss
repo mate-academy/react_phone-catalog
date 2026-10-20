@@ -1,7 +1,7 @@
 @import '../../styles/variables';
 
 .category {
-  margin-bottom: 56px;
+  margin-bottom: $spacing-xlarge;
 
   &__title {
     font-size: 32px;
@@ -11,28 +11,28 @@
     margin-bottom: $spacing-medium;
   }
 
-  &__image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-  }
-
   &__card {
     display: block;
     text-decoration: none;
-
-    &:hover .category__image {
-      transform: scale(1.1);
-    }
   }
 
-  &__imageContainer {
+  &__image-container {
     overflow: hidden;
     background-color: $c-surface;
     margin-bottom: $spacing-medium;
     aspect-ratio: 1;
     border-radius: 8px;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+
+    .category__card:hover & {
+      transform: scale(1.1);
+    }
   }
 
   &__name {

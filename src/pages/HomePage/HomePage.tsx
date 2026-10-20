@@ -6,6 +6,7 @@ import { getProducts } from '../../api/api';
 import { Product } from '../../types/Product';
 import { Loader } from '../../components/Loader';
 import styles from './HomePage.module.scss';
+
 export const HomePage = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -16,8 +17,7 @@ export const HomePage = () => {
       .finally(() => setIsLoading(false));
   }, []);
 
-  // Прибрано useMemo
-  const hotPriceProducts = [...products]
+  const hotPriceProducts = products
     .filter(p => p.fullPrice > p.price)
     .sort((a, b) => b.fullPrice - b.price - (a.fullPrice - a.price));
 

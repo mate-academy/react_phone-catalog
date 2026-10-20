@@ -1,0 +1,62 @@
+@import '../../styles/variables';
+
+.actions {
+  --size: 40px;
+
+  display: flex;
+  gap: 8px;
+
+  &--large {
+    --size: 48px;
+  }
+
+  &__cart {
+    flex-grow: 1;
+    height: var(--size);
+    background-color: $c-primary;
+    color: $c-text-main;
+    border: none;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: $c-primary-hover;
+    }
+
+    &--added {
+      background-color: transparent;
+      border: 1px solid $c-border;
+      color: $c-text-secondary;
+
+      &:hover {
+        background-color: transparent;
+        border-color: $c-primary;
+        color: $c-primary;
+      }
+    }
+  }
+
+  &__favorite {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--size);
+    height: var(--size);
+    background-color: transparent;
+    border: 1px solid $c-border;
+    color: $c-text-main;
+    cursor: pointer;
+    transition:
+      border-color 0.3s,
+      color 0.3s;
+
+    &:hover {
+      border-color: $c-text-main;
+    }
+
+    &--active {
+      color: $c-danger;
+    }
+  }
+}

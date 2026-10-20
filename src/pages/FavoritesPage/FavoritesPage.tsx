@@ -1,4 +1,3 @@
-import { useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useStore } from '../../context/StoreContext';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
@@ -8,23 +7,15 @@ import styles from './FavoritesPage.module.scss';
 export const FavoritesPage = () => {
   const { favorites } = useStore();
   const [searchParams] = useSearchParams();
-  const query = searchParams.get('query') || '';
+  const query = (searchParams.get('query') || '').trim().toLowerCase();
 
-  const visibleFavorites = useMemo(() => {
-    if (!query.trim()) {
-      return favorites;
-    }
-
-    return favorites.filter(p =>
-      p.name.toLowerCase().includes(query.toLowerCase().trim()),
-    );
-  }, [favorites, query]);
+  const visibleFavorites = favorites.filter(p =>
+    p.name.toLowerCase().includes(query),
+  );
 
   return (
     <div className={styles.favorites} data-cy="FavoritesPage">
-      <div className={styles.favorites__breadcrumbs}>
-        <Breadcrumbs />
-      </div>
+      <Breadcrumbs />
 
       <h1 className={styles.favorites__title}>Favorites</h1>
 
@@ -33,13 +24,17 @@ export const FavoritesPage = () => {
         {visibleFavorites.length === 1 ? 'item' : 'items'}
       </p>
 
-      {favorites.length === 0 ? (
+      {favorites.length === 0 && (
         <p className={styles.favorites__empty}>Your favorites list is empty</p>
-      ) : visibleFavorites.length === 0 ? (
+      )}
+
+      {favorites.length > 0 && visibleFavorites.length === 0 && (
         <p className={styles.favorites__empty}>
-          There are no favorites matching the query
+          There are no products matching the query
         </p>
-      ) : (
+      )}
+
+      {visibleFavorites.length > 0 && (
         <ProductsList products={visibleFavorites} />
       )}
     </div>

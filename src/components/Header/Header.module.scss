@@ -1,29 +1,32 @@
+@import '../../styles/variables';
+
+$breakpoint-desktop: 1024px;
+
 .header {
   position: sticky;
   top: 0;
   z-index: 100;
-  background-color: var(--bg-color, #0f0f11);
-  border-bottom: 1px solid var(--border-color, #323232);
+  background-color: $c-bg;
+  border-bottom: 1px solid $c-border;
 
   &__container {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 64px;
+    height: $header-height;
   }
 
   &__left {
     display: flex;
     align-items: center;
-    max-height: 100%;
   }
 }
 
 .logo {
   display: flex;
   align-items: center;
-  padding: 0 24px;
   height: 100%;
+  padding: 0 $spacing-medium;
 
   &__img {
     display: block;
@@ -37,62 +40,64 @@
   align-items: center;
   height: 100%;
   gap: 64px;
-  margin-left: 24px;
+  margin-left: $spacing-medium;
 
-  @media (max-width: 1023px) {
-    display: none; // Ховаємо десктопне меню на мобільних
+  @media (max-width: #{$breakpoint-desktop - 1px}) {
+    display: none;
+  }
+}
+
+@mixin link {
+  display: flex;
+  align-items: center;
+  color: $c-nav-link;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.nav__link {
+  @include link;
+
+  height: 100%;
+  border-bottom: 3px solid transparent;
+
+  &:hover,
+  &--active {
+    color: $c-text-main;
   }
 
-  &__link {
-    position: relative;
-    display: flex;
-    align-items: center;
-    height: 100%;
-    color: #89939a;
-    text-transform: uppercase;
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 0.04em;
-    text-decoration: none;
-    border-bottom: 3px solid transparent;
-    transition: color 0.3s;
-
-    &:hover {
-      color: #fff;
-    }
-
-    &--active {
-      color: #fff;
-      border-bottom-color: #fff;
-    }
+  &--active {
+    border-bottom-color: $c-text-main;
   }
 }
 
 .actions {
   display: flex;
   height: 100%;
-}
 
-.actionBtn {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 64px;
-  height: 100%;
-  color: #fff;
-  border-left: 1px solid var(--border-color, #323232);
-  cursor: pointer;
-  transition: color 0.3s;
-  text-decoration: none;
+  &__btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: $header-height;
+    height: 100%;
+    color: $c-text-main;
+    border-left: 1px solid $c-border;
+    transition: color 0.3s;
 
-  &:hover {
-    color: #89939a;
-  }
+    &:hover {
+      color: $c-nav-link;
+    }
 
-  &__desktop {
-    @media (max-width: 1023px) {
-      display: none;
+    &--desktop {
+      @media (max-width: #{$breakpoint-desktop - 1px}) {
+        display: none;
+      }
     }
   }
 }
@@ -101,16 +106,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 64px;
+  width: $header-height;
   height: 100%;
   background: none;
   border: none;
-  border-left: 1px solid var(--border-color, #323232);
-  color: #fff;
+  border-left: 1px solid $c-border;
+  color: $c-text-main;
   font-size: 20px;
   cursor: pointer;
 
-  @media (min-width: 1024px) {
+  @media (min-width: $breakpoint-desktop) {
     display: none;
   }
 }
@@ -124,63 +129,68 @@
   justify-content: center;
   width: 14px;
   height: 14px;
-  background-color: #eb5757;
-  color: #fff;
+  background-color: $c-badge;
+  color: $c-text-main;
   font-size: 9px;
   font-weight: bold;
   border-radius: 50%;
 }
 
-// Стилі мобільного меню
 .menu {
   position: fixed;
-  top: 64px;
-  left: 0;
-  width: 100%;
-  height: calc(100vh - 64px);
-  background-color: var(--bg-color, #0f0f11);
+  inset: $header-height 0 0;
   display: flex;
   flex-direction: column;
+  background-color: $c-bg;
+  visibility: hidden;
   transform: translateX(100%);
-  transition: transform 0.3s ease-in-out;
-  z-index: 99;
+  transition:
+    transform 0.3s ease-in-out,
+    visibility 0.3s;
 
   &--open {
+    visibility: visible;
     transform: translateX(0);
   }
 
   &__nav {
-    flex-grow: 1;
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
     align-items: center;
     justify-content: center;
-    gap: 24px;
+    gap: $spacing-medium;
+  }
 
-    .nav__link {
-      height: auto;
-      font-size: 14px;
-      border-bottom: none;
-      padding-bottom: 4px;
+  &__link {
+    @include link;
 
-      &--active {
-        border-bottom: 2px solid #fff;
-      }
+    padding-bottom: 4px;
+    font-size: 14px;
+    border-bottom: 2px solid transparent;
+
+    &:hover,
+    &--active {
+      color: $c-text-main;
+    }
+
+    &--active {
+      border-bottom-color: $c-text-main;
     }
   }
 
   &__footer {
     display: flex;
-    height: 64px;
-    border-top: 1px solid var(--border-color, #323232);
+    height: $header-height;
+    border-top: 1px solid $c-border;
 
-    .actionBtn {
+    .actions__btn {
       flex: 1;
-      border-left: none;
+      width: auto;
+    }
 
-      &:last-child {
-        border-left: 1px solid var(--border-color, #323232);
-      }
+    .actions__btn:first-child {
+      border-left: none;
     }
   }
 }

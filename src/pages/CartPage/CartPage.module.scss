@@ -3,31 +3,11 @@
 .cart {
   padding-bottom: $spacing-large;
 
-  &__back {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: none;
-    border: none;
-    color: $c-text-main;
-    font-size: 12px;
-    font-weight: 600;
-    cursor: pointer;
-    padding: 0;
-    margin-top: $spacing-small;
-    margin-bottom: $spacing-medium;
-    transition: color 0.3s;
-
-    &:hover {
-      color: $c-primary;
-    }
-  }
-
   &__title {
     font-size: 32px;
     font-weight: 800;
     color: $c-text-main;
-    margin-bottom: $spacing-large;
+    margin: $spacing-medium 0 $spacing-large;
     letter-spacing: -0.01em;
   }
 

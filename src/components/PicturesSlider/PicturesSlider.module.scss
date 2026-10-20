@@ -3,8 +3,8 @@
 .slider {
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  margin-bottom: 56px;
+  gap: $spacing-medium;
+  margin-bottom: $spacing-xlarge;
 
   &__container {
     display: flex;
@@ -16,8 +16,7 @@
   &__content {
     overflow: hidden;
     flex-grow: 1;
-    position: relative;
-    border-radius: 8px; // Для заокруглених стилів макета
+    border-radius: 8px;
   }
 
   &__track {
@@ -27,14 +26,14 @@
 
   &__image {
     width: 100%;
-    max-height: 400px; // Адаптувати під реальну висоту банерів
+    max-height: 400px;
     flex-shrink: 0;
     object-fit: cover;
   }
 
   &__btn {
     width: 32px;
-    height: 400px; // Адаптувати під реальну висоту банерів
+    height: 400px;
     background-color: transparent;
     border: 1px solid $c-border;
     color: $c-text-main;

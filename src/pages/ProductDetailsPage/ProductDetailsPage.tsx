@@ -1,28 +1,40 @@
 import { useEffect, useState } from 'react';
-import { useParams, useNavigate, Link } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import classNames from 'classnames';
 import { getProductById, getProducts } from '../../api/api';
 import { ProductDetails } from '../../types/ProductDetails';
 import { Product } from '../../types/Product';
 import { Loader } from '../../components/Loader';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
+import { BackButton } from '../../components/BackButton';
+import { ProductActions } from '../../components/ProductActions';
 import { ProductsSlider } from '../../components/ProductsSlider';
-import { useStore } from '../../context/StoreContext';
 import styles from './ProductDetailsPage.module.scss';
-import { mapProductDetailsToProduct } from '../../utils/mappers';
+
+type SpecItem = { label: string; value: string };
+
+const Specs = ({ items }: { items: SpecItem[] }) => (
+  <div className={styles.specs}>
+    {items.map(({ label, value }) => (
+      <div key={label} className={styles.spec}>
+        <span className={styles.spec__name}>{label}</span>
+        <span className={styles.spec__value}>{value}</span>
+      </div>
+    ))}
+  </div>
+);
 
 export const ProductDetailsPage = () => {
   const { productId, category } = useParams<{
     productId: string;
     category: string;
   }>();
-  const navigate = useNavigate();
-  const { cart, favorites, addToCart, toggleFavorite } = useStore();
   const [product, setProduct] = useState<ProductDetails | null>(null);
+  const [catalogProduct, setCatalogProduct] = useState<Product | null>(null);
   const [suggested, setSuggested] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
-  const [mainImage, setMainImage] = useState<string>('');
+  const [mainImage, setMainImage] = useState('');
 
   useEffect(() => {
     if (!productId || !category) {
@@ -32,16 +44,17 @@ export const ProductDetailsPage = () => {
     setIsLoading(true);
     setIsError(false);
     Promise.all([getProductById(category, productId), getProducts()])
-      .then(([detailsData, allProducts]) => {
-        setProduct(detailsData);
-        setMainImage(detailsData.images[0]);
-
-        const filteredSuggested = allProducts.filter(
-          p => p.itemId !== productId,
+      .then(([details, allProducts]) => {
+        setProduct(details);
+        setMainImage(details.images[0]);
+        setCatalogProduct(
+          allProducts.find(p => p.itemId === productId) || null,
         );
-
         setSuggested(
-          filteredSuggested.sort(() => 0.5 - Math.random()).slice(0, 8),
+          allProducts
+            .filter(p => p.itemId !== productId)
+            .sort(() => 0.5 - Math.random())
+            .slice(0, 8),
         );
       })
       .catch(() => setIsError(true))
@@ -52,21 +65,15 @@ export const ProductDetailsPage = () => {
     return <Loader />;
   }
 
-  if (isError || !product) {
+  if (isError || !product || !catalogProduct) {
     return (
       <div className={styles.details}>
+        <BackButton />
         <Breadcrumbs />
-        <button className={styles.details__back} onClick={() => navigate(-1)}>
-          <i className="fas fa-chevron-left"></i>
-          <span>Back</span>
-        </button>
         <h2 className={styles.details__title}>Product was not found</h2>
       </div>
     );
   }
-
-  const inCart = cart.some(item => item.id === product.id);
-  const isFavorite = favorites.some(item => item.id === product.id);
 
   const getProductUrl = (newColor: string, newCapacity: string) => {
     const capacityFormatted = newCapacity.toLowerCase().replace(' ', '');
@@ -75,18 +82,20 @@ export const ProductDetailsPage = () => {
     return `/${category}/${product.namespaceId}-${capacityFormatted}-${colorFormatted}`;
   };
 
+  const techSpecs: SpecItem[] = [
+    { label: 'Screen', value: product.screen },
+    { label: 'Resolution', value: product.resolution },
+    { label: 'Processor', value: product.processor },
+    { label: 'RAM', value: product.ram },
+    { label: 'Built in memory', value: product.capacity },
+    { label: 'Camera', value: product.camera },
+    { label: 'Zoom', value: product.zoom },
+    { label: 'Cell', value: product.cell.join(', ') },
+  ];
+
   return (
     <div className={styles.details} data-cy="ProductDetailsPage">
-      {/* Кнопка перенесена НАД Breadcrumbs і додано Bulma-клас відступу mb-4 */}
-      <button
-        className={`${styles.details__back} mb-4`}
-        onClick={() => navigate(-1)}
-        data-cy="backButton"
-      >
-        <i className="fas fa-chevron-left"></i>
-        <span>Back</span>
-      </button>
-
+      <BackButton />
       <Breadcrumbs />
 
       <h1 className={styles.details__title}>{product.name}</h1>
@@ -94,7 +103,7 @@ export const ProductDetailsPage = () => {
         <div className="column is-half-desktop">
           <div className={styles.gallery}>
             <div className={styles.gallery__thumbnails}>
-              {product.images.map(img => (
+              {product.images.map((img, index) => (
                 <button
                   key={img}
                   className={classNames(styles.gallery__thumb, {
@@ -104,7 +113,7 @@ export const ProductDetailsPage = () => {
                 >
                   <img
                     src={img}
-                    alt="Thumbnail"
+                    alt={`${product.name} ${index + 1}`}
                     className={styles['gallery__thumb-img']}
                   />
                 </button>
@@ -123,14 +132,10 @@ export const ProductDetailsPage = () => {
           <div className={styles.options}>
             <div className={styles.options__block}>
               <div className={styles.options__header}>
-                <span className={styles['options__header-title']}>
-                  Available colors
-                </span>
-                <span className={styles['options__header-id']}>
-                  ID: {product.id}
-                </span>
+                <span className={styles.options__label}>Available colors</span>
+                <span className={styles.options__label}>ID: {product.id}</span>
               </div>
-              <div className={styles.options__colors}>
+              <div className={styles.options__list}>
                 {product.colorsAvailable.map(color => (
                   <Link
                     key={color}
@@ -146,10 +151,8 @@ export const ProductDetailsPage = () => {
               </div>
             </div>
             <div className={styles.options__block}>
-              <span className={styles['options__header-title']}>
-                Select capacity
-              </span>
-              <div className={styles.options__capacities}>
+              <span className={styles.options__label}>Select capacity</span>
+              <div className={styles.options__list}>
                 {product.capacityAvailable.map(cap => (
                   <Link
                     key={cap}
@@ -172,99 +175,33 @@ export const ProductDetailsPage = () => {
                 ${product.priceRegular}
               </span>
             </div>
-            <div className={styles.details__actions}>
-              <button
-                className={classNames(styles['details__add-to-cart'], {
-                  [styles['details__add-to-cart--added']]: inCart,
-                })}
-                onClick={() => {
-                  if (!inCart && product && category) {
-                    addToCart(mapProductDetailsToProduct(product, category));
-                  }
-                }}
-              >
-                {inCart ? 'Added to cart' : 'Add to cart'}
-              </button>
-
-              <button
-                className={classNames(styles.details__favorite, {
-                  [styles['details__favorite--active']]: isFavorite,
-                })}
-                onClick={() => {
-                  if (product && category) {
-                    toggleFavorite(
-                      mapProductDetailsToProduct(product, category),
-                    );
-                  }
-                }}
-              >
-                <i className={isFavorite ? 'fas fa-heart' : 'far fa-heart'}></i>
-              </button>
-            </div>
-            <div className={styles.details__specs_short}>
-              <div className={styles.spec}>
-                <span className={styles['spec-name']}>Screen</span>
-                <span className={styles['spec-value']}>{product.screen}</span>
-              </div>
-              <div className={styles.spec}>
-                <span className={styles['spec-name']}>Resolution</span>
-                <span className={styles['spec-value']}>
-                  {product.resolution}
-                </span>
-              </div>
-              <div className={styles.spec}>
-                <span className={styles['spec-name']}>Processor</span>
-                <span className={styles['spec-value']}>
-                  {product.processor}
-                </span>
-              </div>
-              <div className={styles.spec}>
-                <span className={styles['spec-name']}>RAM</span>
-                <span className={styles['spec-value']}>{product.ram}</span>
-              </div>
-            </div>
+            <ProductActions product={catalogProduct} isLarge />
+            <Specs items={techSpecs.slice(0, 4)} />
           </div>
         </div>
       </div>
-      <div
-        className="columns is-desktop is-variable is-8"
-        style={{ marginTop: '56px', marginBottom: '56px' }}
-      >
-        <div className="column is-half-desktop">
-          <h2 className={styles.details__subtitle}>About</h2>
-          <div className={styles.details__divider} />
-          <div className={styles.about}>
-            {product.description.map((desc, idx) => (
-              <div key={idx} className={styles.about__section}>
-                <h3 className={styles.about__title}>{desc.title}</h3>
-                {desc.text.map((p, i) => (
-                  <p key={i} className={styles.about__text}>
-                    {p}
-                  </p>
-                ))}
-              </div>
-            ))}
+      <div className={styles.details__info}>
+        <div className="columns is-desktop is-variable is-8">
+          <div className="column is-half-desktop">
+            <h2 className={styles.details__subtitle}>About</h2>
+            <div className={styles.details__divider} />
+            <div className={styles.about}>
+              {product.description.map(desc => (
+                <div key={desc.title} className={styles.about__section}>
+                  <h3 className={styles.about__title}>{desc.title}</h3>
+                  {desc.text.map((paragraph, i) => (
+                    <p key={i} className={styles.about__text}>
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-        <div className="column is-half-desktop">
-          <h2 className={styles.details__subtitle}>Tech specs</h2>
-          <div className={styles.details__divider} />
-          <div className={styles.details__specs_full}>
-            {[
-              { label: 'Screen', value: product.screen },
-              { label: 'Resolution', value: product.resolution },
-              { label: 'Processor', value: product.processor },
-              { label: 'RAM', value: product.ram },
-              { label: 'Built in memory', value: product.capacity },
-              { label: 'Camera', value: product.camera },
-              { label: 'Zoom', value: product.zoom },
-              { label: 'Cell', value: product.cell.join(', ') },
-            ].map((item, idx) => (
-              <div key={idx} className={styles.spec}>
-                <span className={styles['spec-name']}>{item.label}</span>
-                <span className={styles['spec-value']}>{item.value}</span>
-              </div>
-            ))}
+          <div className="column is-half-desktop">
+            <h2 className={styles.details__subtitle}>Tech specs</h2>
+            <div className={styles.details__divider} />
+            <Specs items={techSpecs} />
           </div>
         </div>
       </div>

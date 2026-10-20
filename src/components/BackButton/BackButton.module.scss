@@ -1,0 +1,19 @@
+@import '../../styles/variables';
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+  background: none;
+  border: none;
+  color: $c-text-main;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.3s;
+
+  &:hover {
+    color: $c-primary;
+  }
+}

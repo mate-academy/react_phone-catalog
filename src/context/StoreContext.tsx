@@ -1,10 +1,4 @@
-import React, {
-  createContext,
-  useContext,
-  useState,
-  useEffect,
-  useMemo,
-} from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 import { Product } from '../types/Product';
 import { CartItem } from '../types/CartItem';
 
@@ -14,27 +8,27 @@ interface StoreContextType {
   totalCartQuantity: number;
   totalCartPrice: number;
   addToCart: (product: Product) => void;
-  removeFromCart: (productId: string) => void;
-  updateQuantity: (productId: string, amount: number) => void;
+  removeFromCart: (itemId: string) => void;
+  updateQuantity: (itemId: string, amount: number) => void;
+  clearCart: () => void;
   toggleFavorite: (product: Product) => void;
 }
 
 const StoreContext = createContext<StoreContextType | undefined>(undefined);
 
+function readStorage<T>(key: string): T[] {
+  const saved = localStorage.getItem(key);
+
+  return saved ? JSON.parse(saved) : [];
+}
+
 export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [cart, setCart] = useState<CartItem[]>(() => {
-    const saved = localStorage.getItem('cart');
-
-    return saved ? JSON.parse(saved) : [];
-  });
-
-  const [favorites, setFavorites] = useState<Product[]>(() => {
-    const saved = localStorage.getItem('favorites');
-
-    return saved ? JSON.parse(saved) : [];
-  });
+  const [cart, setCart] = useState<CartItem[]>(() => readStorage('cart'));
+  const [favorites, setFavorites] = useState<Product[]>(() =>
+    readStorage('favorites'),
+  );
 
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart));
@@ -44,56 +38,42 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({
     localStorage.setItem('favorites', JSON.stringify(favorites));
   }, [favorites]);
 
-  // Обчислення підсумків кошика з мемоізацією
-  const totalCartQuantity = useMemo(
-    () => cart.reduce((sum, item) => sum + item.quantity, 0),
-    [cart],
-  );
-
-  const totalCartPrice = useMemo(
-    () =>
-      cart.reduce((sum, item) => sum + item.product.price * item.quantity, 0),
-    [cart],
+  const totalCartQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
+  const totalCartPrice = cart.reduce(
+    (sum, item) => sum + item.product.price * item.quantity,
+    0,
   );
 
   const addToCart = (product: Product) => {
-    setCart(prev => {
-      if (prev.some(item => item.id === product.id)) {
-        return prev;
-      }
-
-      return [...prev, { id: product.id, quantity: 1, product }];
-    });
-  };
-
-  const removeFromCart = (productId: string) => {
-    setCart(prev => prev.filter(item => item.id !== productId));
-  };
-
-  const updateQuantity = (productId: string, amount: number) => {
     setCart(prev =>
-      prev.map(item => {
-        if (item.id === productId) {
-          const newQuantity = item.quantity + amount;
-
-          return { ...item, quantity: newQuantity > 0 ? newQuantity : 1 };
-        }
-
-        return item;
-      }),
+      prev.some(item => item.product.itemId === product.itemId)
+        ? prev
+        : [...prev, { quantity: 1, product }],
     );
   };
 
+  const removeFromCart = (itemId: string) => {
+    setCart(prev => prev.filter(item => item.product.itemId !== itemId));
+  };
+
+  const updateQuantity = (itemId: string, amount: number) => {
+    setCart(prev =>
+      prev.map(item =>
+        item.product.itemId === itemId
+          ? { ...item, quantity: Math.max(1, item.quantity + amount) }
+          : item,
+      ),
+    );
+  };
+
+  const clearCart = () => setCart([]);
+
   const toggleFavorite = (product: Product) => {
-    setFavorites(prev => {
-      const exists = prev.some(item => item.id === product.id);
-
-      if (exists) {
-        return prev.filter(item => item.id !== product.id);
-      }
-
-      return [...prev, product];
-    });
+    setFavorites(prev =>
+      prev.some(item => item.itemId === product.itemId)
+        ? prev.filter(item => item.itemId !== product.itemId)
+        : [...prev, product],
+    );
   };
 
   return (
@@ -106,6 +86,7 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({
         addToCart,
         removeFromCart,
         updateQuantity,
+        clearCart,
         toggleFavorite,
       }}
     >
