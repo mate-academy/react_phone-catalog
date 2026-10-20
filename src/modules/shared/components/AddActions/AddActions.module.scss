@@ -1,0 +1,42 @@
+@import '../../../../variables';
+@import '../../../../mixins';
+
+.actions {
+  margin-top: auto;
+  display: flex;
+  gap: 8px;
+  height: 40px;
+}
+
+.add-button {
+  @include button-base;
+
+  flex: 1;
+
+  &.added {
+    background-color: $color-white;
+    color: #27ae60;
+    border: 1px solid $color-border;
+    cursor: default;
+
+    &:hover {
+      background-color: $color-white;
+    }
+  }
+}
+
+.favorite-button {
+  width: 40px;
+  height: 100%;
+  background-color: transparent;
+  border: 1px solid $color-border;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+
+  &:hover {
+    border-color: $color-primary;
+  }
+}

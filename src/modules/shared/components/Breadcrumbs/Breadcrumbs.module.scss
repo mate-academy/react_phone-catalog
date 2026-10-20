@@ -1,0 +1,38 @@
+@import '../../../../variables';
+@import '../../../../mixins';
+
+.breadcrumbs {
+  margin: 24px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  line-height: 15px;
+
+  @include respond-to('tablet-sm') {
+    margin: 24px 0 40px;
+  }
+
+  .link {
+    color: $color-primary;
+    text-decoration: none;
+    text-transform: capitalize;
+
+    &.current {
+      color: $color-secondary;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  .home-icon {
+    width: 16px;
+    height: 16px;
+    display: block;
+  }
+
+  .arrow {
+    transform: rotate(-90deg);
+  }
+}

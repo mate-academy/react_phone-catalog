@@ -1,0 +1,38 @@
+@import '../../../../variables';
+
+.specifications-panel {
+  .divider {
+    height: 1px;
+    margin: 16px 0 30px;
+    background-color: $color-border;
+  }
+  .specifications {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 12px;
+    line-height: 15px;
+    font-weight: 600;
+
+    .specification-row {
+      display: flex;
+      justify-content: space-between;
+
+    }
+
+    .specification-label {
+      color: $color-secondary;
+      text-transform: capitalize;
+    }
+
+    .specification-row:last-child .specification-label {
+      text-transform: uppercase;
+    }
+
+    .specification-value {
+      max-width: 60%;
+      text-align: right;
+      color: $color-primary;
+    }
+  }
+}

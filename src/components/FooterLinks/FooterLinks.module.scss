@@ -1,0 +1,31 @@
+@import '../../variables';
+@import '../../mixins';
+
+.footer-links {
+  max-width: 370px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  list-style: none;
+  margin-top: 32px;
+  padding: 0;
+
+  @include respond-to('tablet-sm') {
+    flex-direction: row;
+    gap: 46px;
+    margin-top: 0;
+  }
+
+  @include respond-to('desktop') {
+    gap: 90px;
+  }
+
+  .footer-link {
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: $color-secondary;
+    text-decoration: none;
+  }
+}

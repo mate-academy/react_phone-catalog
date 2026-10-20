@@ -1,0 +1,57 @@
+@import '../../../../variables';
+@import '../../../../mixins';
+
+.category {
+  display: block;
+  color: $color-primary;
+  text-decoration: none;
+}
+
+.image-wrapper {
+  position: relative;
+  margin-bottom: 24px;
+  aspect-ratio: 16 / 15;
+  overflow: hidden;
+
+  @include respond-to('tablet-sm') {
+    margin-bottom: 16px;
+    aspect-ratio: 1 / 1;
+  }
+
+  @include respond-to('desktop') {
+    margin-bottom: 24px;
+  }
+}
+
+.image {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 95%;
+  max-width: none;
+  height: auto;
+  max-height: none;
+  transform-origin: left top;
+  transition: transform 0.3s ease;
+}
+
+.category:hover .image {
+  transform: scale(1.04);
+}
+
+.name {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.3;
+
+  @include respond-to('desktop') {
+    font-size: 18px;
+  }
+}
+
+.quantity {
+  margin-top: 4px;
+  color: $color-secondary;
+  font-size: 12px;
+  line-height: 1.3;
+}

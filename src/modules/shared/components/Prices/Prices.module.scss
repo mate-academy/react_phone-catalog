@@ -1,0 +1,18 @@
+@import '../../../../variables';
+
+.prices {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 22px;
+
+  .price-discount {
+    font-weight: 700;
+  }
+
+  .price-regular {
+    font-size: 0.7em;
+    color: $color-secondary;
+    text-decoration: line-through;
+  }
+}

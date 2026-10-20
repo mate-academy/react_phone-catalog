@@ -1,0 +1,33 @@
+@import '../../../../variables';
+@import '../../../../mixins';
+
+.categories {
+  margin-bottom: 56px;
+
+  @include respond-to('tablet-sm') {
+    margin-bottom: 64px;
+  }
+}
+
+.title {
+  margin-bottom: 24px;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.25;
+
+  @include respond-to('tablet-sm') {
+    margin-bottom: 32px;
+    font-size: 32px;
+  }
+}
+
+.list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+
+  @include respond-to('tablet-sm') {
+    grid-template-columns: repeat(3, 1fr);
+    gap: $card-gap;
+  }
+}

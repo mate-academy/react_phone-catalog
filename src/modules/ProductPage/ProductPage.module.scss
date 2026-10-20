@@ -1,0 +1,25 @@
+@import '../../mixins';
+
+.title {
+  margin: 24px 0 12px;
+
+  @include respond-to('tablet-sm') {
+    margin: 40px 0 8px;
+  }
+}
+
+.filters {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  .search-container {
+    width: 100%;
+  }
+
+  .dropdowns-container {
+    display: flex;
+    gap: 16px;
+  }
+}

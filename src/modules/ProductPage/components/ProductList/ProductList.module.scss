@@ -1,0 +1,24 @@
+@import '../../../../variables';
+@import '../../../../mixins';
+
+.product-list {
+  margin: 24px 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 40px 16px;
+
+  .product-card {
+    @include respond-to('tablet-sm') {
+      width: calc((100% - $card-gap) / 2);
+    }
+
+    @include respond-to('tablet-md') {
+      width: calc((100% - (2 * $card-gap)) / 3);
+    }
+
+    @include respond-to('desktop') {
+      width: calc((100% - (3 * $card-gap)) / 4);
+    }
+  }
+}
