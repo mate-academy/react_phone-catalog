@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 import { getProducts } from '../../services/products';
 import type { Product } from '../../types';
@@ -12,9 +13,19 @@ export const PhonesPage = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-  const [sortBy, setSortBy] = useState<SortBy>('age');
-  const [currentPage, setCurrentPage] = useState(1);
-  const [perPage, setPerPage] = useState(16);
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const sortParam = searchParams.get('sort');
+  const sortBy: SortBy =
+    sortParam === 'title' || sortParam === 'price' ? sortParam : 'age';
+
+  const pageParam = Number(searchParams.get('page'));
+  const currentPage =
+    Number.isInteger(pageParam) && pageParam > 0 ? pageParam : 1;
+
+  const perPageParam = searchParams.get('perPage');
+  const parsedPerPage = perPageParam === null ? 16 : Number(perPageParam);
+  const perPage = [0, 4, 8, 16].includes(parsedPerPage) ? parsedPerPage : 16;
 
   useEffect(() => {
     getProducts()
@@ -43,16 +54,29 @@ export const PhonesPage = () => {
       }
     });
 
-  const totalPages = Math.ceil(phones.length / perPage);
+  const totalPages =
+    perPage === 0 ? 1 : Math.max(1, Math.ceil(phones.length / perPage));
 
-  const pageNumbers = Array.from(
-    { length: totalPages },
-    (_, index) => index + 1,
+  const safeCurrentPage = Math.min(currentPage, totalPages);
+
+  const maxVisiblePages = 5;
+
+  const startPage = Math.max(
+    1,
+    Math.min(safeCurrentPage - 2, totalPages - maxVisiblePages + 1),
   );
 
-  const startIndex = (currentPage - 1) * perPage;
+  const endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
 
-  const visiblePhones = phones.slice(startIndex, startIndex + perPage);
+  const pageNumbers = Array.from(
+    { length: endPage - startPage + 1 },
+    (_, index) => startPage + index,
+  );
+
+  const startIndex = (safeCurrentPage - 1) * perPage;
+
+  const visiblePhones =
+    perPage === 0 ? phones : phones.slice(startIndex, startIndex + perPage);
 
   if (loading) {
     return <p>Loading products...</p>;
@@ -76,8 +100,12 @@ export const PhonesPage = () => {
             id="sortBy"
             value={sortBy}
             onChange={event => {
-              setSortBy(event.target.value as SortBy);
-              setCurrentPage(1);
+              const params = new URLSearchParams(searchParams);
+
+              params.set('sort', event.target.value);
+              params.set('page', '1');
+
+              setSearchParams(params);
             }}
           >
             <option value="age">Newest</option>
@@ -93,14 +121,18 @@ export const PhonesPage = () => {
             id="perPage"
             value={perPage}
             onChange={event => {
-              setPerPage(Number(event.target.value));
-              setCurrentPage(1);
+              const params = new URLSearchParams(searchParams);
+
+              params.set('perPage', event.target.value);
+              params.set('page', '1');
+
+              setSearchParams(params);
             }}
           >
             <option value={4}>4</option>
             <option value={8}>8</option>
             <option value={16}>16</option>
-            <option value={phones.length}>All</option>
+            <option value={0}>All</option>
           </select>
         </div>
       </div>
@@ -114,9 +146,12 @@ export const PhonesPage = () => {
       <div className={styles.pagination}>
         <button
           type="button"
-          disabled={currentPage === 1}
+          disabled={safeCurrentPage <= 1}
           onClick={() => {
-            setCurrentPage(currentPage - 1);
+            const params = new URLSearchParams(searchParams);
+
+            params.set('page', String(safeCurrentPage - 1));
+            setSearchParams(params);
           }}
         >
           Previous
@@ -126,9 +161,12 @@ export const PhonesPage = () => {
           <button
             key={page}
             type="button"
-            className={currentPage === page ? styles.activePage : ''}
+            className={safeCurrentPage === page ? styles.activePage : ''}
             onClick={() => {
-              setCurrentPage(page);
+              const params = new URLSearchParams(searchParams);
+
+              params.set('page', String(page));
+              setSearchParams(params);
             }}
           >
             {page}
@@ -137,9 +175,12 @@ export const PhonesPage = () => {
 
         <button
           type="button"
-          disabled={currentPage === totalPages}
+          disabled={safeCurrentPage >= totalPages}
           onClick={() => {
-            setCurrentPage(currentPage + 1);
+            const params = new URLSearchParams(searchParams);
+
+            params.set('page', String(safeCurrentPage + 1));
+            setSearchParams(params);
           }}
         >
           Next
