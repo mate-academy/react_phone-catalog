@@ -1,4 +1,4 @@
-@import '../../styles/variables';
+@import '../../styles/mixins';
 
 .product-card {
   display: flex;
@@ -58,8 +58,8 @@
     font-weight: 500;
     line-height: 1.4;
     color: $c-text-secondary;
-    background: linear-gradient($c-text-secondary, $c-text-secondary) center /
-      100% 1px no-repeat;
+
+    @include strike-through($c-surface);
   }
 
   &__divider {

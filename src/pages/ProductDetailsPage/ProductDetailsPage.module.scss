@@ -1,4 +1,4 @@
-@import '../../styles/variables';
+@import '../../styles/mixins';
 
 .details {
   padding-bottom: $spacing-large;
@@ -37,6 +37,8 @@
   &__price-discount {
     font-size: 32px;
     font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.01em;
     color: $c-text-main;
   }
 
@@ -44,7 +46,8 @@
     font-size: 22px;
     font-weight: 500;
     color: $c-text-secondary;
-    text-decoration: line-through;
+
+    @include strike-through($c-bg);
   }
 }
 
