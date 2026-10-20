@@ -78,7 +78,7 @@ $header-size: $header-height-small;
 @mixin link {
   display: flex;
   align-items: center;
-  color: $c-nav-link;
+  color: $c-text-secondary;
   text-transform: uppercase;
   font-size: 12px;
   font-weight: 700;
@@ -120,7 +120,7 @@ $header-size: $header-height-small;
     color: $c-text-main;
 
     border-left: 1px solid $c-border;
-    transition: opacity 0.3s;
+    transition: opacity $transition;
 
     @media (min-width: $breakpoint-desktop) {
       width: $header-height;
@@ -181,8 +181,8 @@ $header-size: $header-height-small;
   visibility: hidden;
   transform: translateX(100%);
   transition:
-    transform 0.3s ease-in-out,
-    visibility 0.3s;
+    transform $transition ease-in-out,
+    visibility $transition;
 
   &--open {
     visibility: visible;

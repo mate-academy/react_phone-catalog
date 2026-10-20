@@ -8,7 +8,7 @@
   }
 
   &__title {
-    margin-bottom: 8px;
+    margin-bottom: $spacing-xsmall;
 
     @include h1;
   }

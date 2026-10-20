@@ -6,8 +6,8 @@
   justify-content: space-between;
   background-color: $c-surface;
   border: 1px solid $c-border;
-  padding: 16px 24px;
-  gap: 16px;
+  padding: $spacing-small $spacing-medium;
+  gap: $spacing-small;
 
   @media (max-width: 640px) {
     flex-direction: column;
@@ -17,7 +17,7 @@
   &__main {
     display: flex;
     align-items: center;
-    gap: 24px;
+    gap: $spacing-medium;
     flex: 1;
   }
 
@@ -28,7 +28,7 @@
     cursor: pointer;
     font-size: 16px;
     padding: 0;
-    transition: color 0.3s;
+    transition: color $transition;
 
     &:hover {
       color: $c-text-main;
@@ -56,7 +56,7 @@
     font-weight: 600;
     line-height: 21px;
     text-decoration: none;
-    transition: color 0.3s;
+    transition: color $transition;
 
     &:hover {
       color: $c-primary;
@@ -67,7 +67,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 32px;
+    gap: $spacing-large;
 
     @media (max-width: 640px) {
       width: 100%;
@@ -90,7 +90,7 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: border-color 0.3s;
+    transition: border-color $transition;
 
     &:disabled {
       opacity: 0.4;

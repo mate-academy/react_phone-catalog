@@ -10,7 +10,7 @@
     @include h1;
 
     @media (min-width: $bp-sm) {
-      margin-top: 8px;
+      margin-top: $spacing-xsmall;
       margin-bottom: $spacing-large;
     }
 

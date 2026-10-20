@@ -3,7 +3,7 @@
 .product-card {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: $spacing-xsmall;
   height: 100%;
   padding: $spacing-large;
   background-color: $c-surface;
@@ -43,7 +43,7 @@
   &__prices {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: $spacing-xsmall;
   }
 
   &__price {
@@ -70,8 +70,8 @@
   &__specs {
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    padding: 8px 0;
+    gap: $spacing-xsmall;
+    padding: $spacing-xsmall 0;
   }
 
   &__spec {

@@ -31,7 +31,7 @@
   &__prices {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: $spacing-xsmall;
   }
 
   &__price-discount {
@@ -69,7 +69,7 @@
     background-color: $c-surface;
     cursor: pointer;
     padding: 4px;
-    transition: border-color 0.3s;
+    transition: border-color $transition;
 
     &:hover,
     &--active {
@@ -108,7 +108,7 @@
   &__block {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: $spacing-xsmall;
   }
 
   &__header {
@@ -124,7 +124,7 @@
 
   &__list {
     display: flex;
-    gap: 8px;
+    gap: $spacing-xsmall;
   }
 
   &__color {
@@ -133,7 +133,7 @@
     border-radius: 50%;
     cursor: pointer;
     box-shadow: 0 0 0 1px $c-border;
-    transition: box-shadow 0.3s;
+    transition: box-shadow $transition;
 
     &:hover,
     &--active {
@@ -146,15 +146,15 @@
     align-items: center;
     justify-content: center;
     height: 32px;
-    padding: 0 8px;
+    padding: 0 $spacing-xsmall;
     border: 1px solid $c-border;
     color: $c-text-main;
     font-size: 14px;
     font-weight: 600;
     text-decoration: none;
     transition:
-      border-color 0.3s,
-      background-color 0.3s;
+      border-color $transition,
+      background-color $transition;
 
     &:hover,
     &--active {
@@ -168,7 +168,7 @@
 .specs {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: $spacing-xsmall;
 }
 
 .spec {

@@ -3,7 +3,7 @@
 .slider {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: $spacing-xsmall;
   margin: 0 (-$spacing-small) 56px;
 
   @media (min-width: $bp-sm) {
