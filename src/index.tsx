@@ -1,14 +1,11 @@
 import { createRoot } from 'react-dom/client';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { HashRouter as Router } from 'react-router-dom'; // <-- Змінили BrowserRouter на HashRouter
 import { CartProvider } from './context/CartContext/CartContext';
 import { FavoritesProvider } from './context/FavoritesContext/FavoritesContext';
 import { App } from './App';
 
-const basename =
-  import.meta.env.MODE === 'production' ? '/react_phone_catalog' : '';
-
 createRoot(document.getElementById('root') as HTMLElement).render(
-  <Router basename={basename}>
+  <Router>
     <CartProvider>
       <FavoritesProvider>
         <App />
