@@ -9,6 +9,10 @@
   font-weight: 600;
   line-height: 16px;
 
+  &__home {
+    display: flex;
+  }
+
   &__home,
   &__link {
     color: $c-text-secondary;
@@ -25,13 +29,6 @@
     display: flex;
     align-items: center;
     gap: 8px;
-  }
-
-  &__separator {
-    color: $c-text-secondary;
-    font-size: 10px;
-    width: 16px;
-    text-align: center;
   }
 
   &__current {

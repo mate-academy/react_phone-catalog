@@ -24,10 +24,10 @@ export const Header = () => {
   }, [pathname]);
 
   useEffect(() => {
-    document.body.style.overflow = isMenuOpen ? 'hidden' : '';
+    document.documentElement.style.overflow = isMenuOpen ? 'hidden' : '';
 
     return () => {
-      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
     };
   }, [isMenuOpen]);
 

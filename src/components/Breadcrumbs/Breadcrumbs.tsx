@@ -1,5 +1,4 @@
 import { Link, useLocation } from 'react-router-dom';
-import classNames from 'classnames';
 import styles from './Breadcrumbs.module.scss';
 
 export const Breadcrumbs = () => {
@@ -9,7 +8,7 @@ export const Breadcrumbs = () => {
   return (
     <nav className={styles.breadcrumbs} data-cy="Breadcrumbs">
       <Link to="/" className={styles.breadcrumbs__home}>
-        <i className="fas fa-home"></i>
+        <img src={`${import.meta.env.BASE_URL}img/icons/home.svg`} alt="Home" />
       </Link>
 
       {paths.map((path, index) => {
@@ -19,12 +18,10 @@ export const Breadcrumbs = () => {
 
         return (
           <div key={path} className={styles.breadcrumbs__item}>
-            <i
-              className={classNames(
-                'fas fa-chevron-right',
-                styles.breadcrumbs__separator,
-              )}
-            ></i>
+            <img
+              src={`${import.meta.env.BASE_URL}img/icons/chevron-right.svg`}
+              alt=""
+            />
             {isLast ? (
               <span className={styles.breadcrumbs__current}>{title}</span>
             ) : (

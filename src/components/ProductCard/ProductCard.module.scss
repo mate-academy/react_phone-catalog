@@ -58,10 +58,8 @@
     font-weight: 500;
     line-height: 1.4;
     color: $c-text-secondary;
-    text-decoration: line-through;
-    text-decoration-skip-ink: none;
-    text-decoration-thickness: from-font;
-    text-underline-position: from-font;
+    background: linear-gradient($c-text-secondary, $c-text-secondary) center /
+      100% 1px no-repeat;
   }
 
   &__divider {

@@ -32,6 +32,7 @@ $header-size: $header-height-small;
     align-items: center;
     justify-content: space-between;
     align-self: stretch;
+    min-width: 0;
   }
 }
 
