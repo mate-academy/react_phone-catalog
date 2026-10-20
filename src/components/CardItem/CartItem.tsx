@@ -1,35 +1,46 @@
 import styles from './CartItem.module.scss';
 import type { ProductDetails } from '../../types';
-// import { useCart } from '../../hooks';
+import { useCart } from '../../hooks';
+import { Link } from 'react-router-dom';
 
 type CartItemProps = {
   product: ProductDetails;
 };
 
 export const CartItem = ({ product }: CartItemProps) => {
-  // const { removeFromCart } = useCart();
+  const { removeFromCart, cartQuantities, increaseQuantity, decreaseQuantity } =
+    useCart();
 
   return (
     <article className={styles.cartItem}>
       <div className={styles.cartItem__product}>
-        <button>
+        <button onClick={() => removeFromCart(product.id)}>
           <img src="./icons/Close.svg" alt="Remove product" />
         </button>
 
-        <img src={product.images[0]} alt={product.name} />
+        <Link to={`/product/${product.id}`}>
+          <img src={product.images[0]} alt={product.name} />
+        </Link>
 
-        <p>{product.name}</p>
+        <Link to={`/product/${product.id}`}>{product.name}</Link>
       </div>
 
       <div className={styles.cartItem__purchase}>
         <div className={styles.cartItem__quantity}>
-          <button>
+          <button
+            onClick={() => {
+              decreaseQuantity(product.id);
+            }}
+            disabled={(cartQuantities[product.id] || 1) === 1}
+          >
             <img src="./icons/Minus.svg" alt="Decrease quantity" />
           </button>
 
-          <span>1</span>
+          <div className={styles['cartItem__quantity--value']}>
+            <span>{cartQuantities[product.id] || 1}</span>
+          </div>
 
-          <button>
+          <button onClick={() => increaseQuantity(product.id)}>
             <img src="./icons/Plus.svg" alt="Increase quantity" />
           </button>
         </div>
