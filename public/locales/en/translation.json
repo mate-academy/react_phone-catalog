@@ -49,5 +49,8 @@
   "phone": "PHONES",
   "tablet": "TABLETS",
   "accesuar": "ACCESSORIES",
-  "all": "All"
+  "all": "All",
+  "emptyCategory": "There are no products in this category yet.",
+  "previousPage": "Previous page",
+  "nextPage": "Next page"
 }

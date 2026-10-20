@@ -1,37 +1,45 @@
 import React from 'react';
 import styles from './ProductPage.module.scss';
-import { useParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
 import { NavigateBar } from '../NavigateBar';
 import { NotFound } from '../NotFound';
 import { ProductCard } from '../ProductCard';
-import { useSearchParams } from 'react-router-dom';
+import { Category } from '../../types';
 import { useProducts } from '../../hooks/useProducts';
 import ContentLoader from 'react-content-loader';
 import { useTranslation } from 'react-i18next';
 
-type Category = 'phones' | 'tablets' | 'accessories';
+type SortOrder = 'newest' | 'alphabetically' | 'cheapest';
+type PageSize = 'all' | '4' | '8' | '16';
+
+const VISIBLE_PAGE_COUNT = 4;
+
+const isCategory = (value: string | undefined): value is Category =>
+  value === 'phones' || value === 'tablets' || value === 'accessories';
+
+const parseSort = (value: string | null): SortOrder => {
+  return value === 'alphabetically' || value === 'cheapest' ? value : 'newest';
+};
+
+const parsePageSize = (value: string | null): PageSize => {
+  return value === '4' || value === '8' || value === '16' ? value : 'all';
+};
 
 export const ProductPage: React.FC = () => {
   const { products, isLoading } = useProducts();
-  const { category } = useParams<{ category: Category }>();
+  const { category } = useParams<{ category: string }>();
   const [searchParams, setSearchParams] = useSearchParams();
   const { t, i18n } = useTranslation();
 
-  const sort = searchParams.get('sort') || 'newest';
-  const page = Number(searchParams.get('page')) || 1;
-  const perPage = searchParams.get('perPage') || 'all';
+  const sort = parseSort(searchParams.get('sort'));
+  const requestedPage = Number(searchParams.get('page'));
+  const perPage = parsePageSize(searchParams.get('perPage'));
 
-  if (!category) {
+  if (!isCategory(category)) {
     return <NotFound />;
   }
 
-  const mainContent = products.filter(p => p.category === category);
-
-  if (!isLoading && mainContent.length === 0) {
-    return <NotFound />;
-  }
-
-  const sortedProducts = [...mainContent];
+  const sortedProducts = products.filter(p => p.category === category);
   let hTitle = '';
 
   switch (category) {
@@ -63,7 +71,18 @@ export const ProductPage: React.FC = () => {
   }
 
   const perPageNumber =
-    perPage === 'all' ? sortedProducts.length : Number(perPage);
+    perPage === 'all' ? Math.max(sortedProducts.length, 1) : Number(perPage);
+
+  const totalPages = Math.max(
+    1,
+    Math.ceil(sortedProducts.length / perPageNumber),
+  );
+  const page =
+    perPage !== 'all' &&
+    Number.isSafeInteger(requestedPage) &&
+    requestedPage > 0
+      ? Math.min(requestedPage, totalPages)
+      : 1;
 
   const start = (page - 1) * perPageNumber;
   const end = start + perPageNumber;
@@ -72,11 +91,12 @@ export const ProductPage: React.FC = () => {
 
   const handleSortChange = (value: string) => {
     const params = new URLSearchParams(searchParams);
+    const nextSort = parseSort(value);
 
-    if (value === 'newest') {
+    if (nextSort === 'newest') {
       params.delete('sort');
     } else {
-      params.set('sort', value);
+      params.set('sort', nextSort);
     }
 
     params.delete('page');
@@ -86,11 +106,12 @@ export const ProductPage: React.FC = () => {
 
   const handlePerPageChange = (value: string) => {
     const params = new URLSearchParams(searchParams);
+    const nextPageSize = parsePageSize(value);
 
-    if (value === 'all') {
+    if (nextPageSize === 'all') {
       params.delete('perPage');
     } else {
-      params.set('perPage', value);
+      params.set('perPage', nextPageSize);
     }
 
     params.delete('page');
@@ -99,6 +120,10 @@ export const ProductPage: React.FC = () => {
   };
 
   const handlePageChange = (newPage: number) => {
+    if (!Number.isSafeInteger(newPage) || newPage < 1 || newPage > totalPages) {
+      return;
+    }
+
     const params = new URLSearchParams(searchParams);
 
     if (newPage === 1) {
@@ -110,15 +135,13 @@ export const ProductPage: React.FC = () => {
     setSearchParams(params);
   };
 
-  const totalPages = Math.ceil(sortedProducts.length / perPageNumber);
+  const shouldShowPagination =
+    !isLoading && perPage !== 'all' && totalPages > 1;
 
-  const shouldShowPagination = perPage !== 'all' && totalPages > 1;
+  const startPage =
+    Math.floor((page - 1) / VISIBLE_PAGE_COUNT) * VISIBLE_PAGE_COUNT + 1;
 
-  const VISIBLE_COUNT = 4;
-
-  const startPage = Math.floor((page - 1) / VISIBLE_COUNT) * VISIBLE_COUNT + 1;
-
-  const endPage = Math.min(startPage + VISIBLE_COUNT - 1, totalPages);
+  const endPage = Math.min(startPage + VISIBLE_PAGE_COUNT - 1, totalPages);
 
   const visiblePages = Array.from(
     { length: endPage - startPage + 1 },
@@ -130,7 +153,7 @@ export const ProductPage: React.FC = () => {
       <section className={styles.content}>
         <NavigateBar />
         <div className={styles.aboutpage}>
-          <h1 className={styles.title}>{`${hTitle}`}</h1>
+          <h1 className={styles.title}>{hTitle}</h1>
           <p className={styles.text}>
             {isLoading ? (
               <ContentLoader
@@ -150,14 +173,16 @@ export const ProductPage: React.FC = () => {
         </div>
         <div className={styles.sortcategory}>
           <div className={styles.selectbox}>
-            <p
+            <label
+              htmlFor="product-sort"
               className={`${styles.text} ${
                 i18n.language === 'ua' ? styles.smallText : ''
               }`}
             >
               {t('sort')}
-            </p>
+            </label>
             <select
+              id="product-sort"
               className={styles.selectcategory}
               value={sort}
               onChange={e => handleSortChange(e.target.value)}
@@ -168,26 +193,33 @@ export const ProductPage: React.FC = () => {
             </select>
           </div>
           <div className={styles.selectbox}>
-            <p
+            <label
+              htmlFor="products-per-page"
               className={`${styles.text} ${
                 i18n.language === 'ua' ? styles.smallText : ''
               }`}
             >
-              {t('items')}
-            </p>
+              {t('item')}
+            </label>
             <select
+              id="products-per-page"
               className={styles.selectscore}
               value={perPage}
               onChange={e => handlePerPageChange(e.target.value)}
             >
-              <option value="">{t('all')}</option>
+              <option value="all">{t('all')}</option>
               <option value="4">4</option>
               <option value="8">8</option>
               <option value="16">16</option>
             </select>
           </div>
         </div>
-        <div className={styles.productlist}>
+        {!isLoading && sortedProducts.length === 0 && (
+          <p className={styles.text} role="status">
+            {t('emptyCategory')}
+          </p>
+        )}
+        <div className={styles.productlist} aria-busy={isLoading}>
           {!isLoading &&
             visibleProducts.map(card => (
               <div key={card.id} className={styles.productItem}>
@@ -221,30 +253,32 @@ export const ProductPage: React.FC = () => {
           {shouldShowPagination && (
             <div className={styles.pagebar}>
               <button
+                type="button"
+                disabled={page === 1}
+                aria-label={t('previousPage')}
                 className={`${styles.button} ${page === 1 ? styles.hidden : ''}`}
                 onClick={() => handlePageChange(page - 1)}
               >
                 <img src="./img/icons/arrowLeft.svg" alt="ArrowLeft" />
               </button>
-              {page > 4 && (
+              {startPage > 1 && (
                 <>
                   <button
+                    type="button"
                     onClick={() => handlePageChange(1)}
                     className={styles.button}
                   >
                     1
                   </button>
 
-                  <button
-                    className={`${styles.button} ${page > 0 ? styles.hidden : ''}`}
-                  >
-                    ...
-                  </button>
+                  {startPage > 2 && <span aria-hidden="true">...</span>}
                 </>
               )}
               {visiblePages.map(pageNumber => (
                 <button
+                  type="button"
                   key={pageNumber}
+                  aria-current={page === pageNumber ? 'page' : undefined}
                   onClick={() => handlePageChange(pageNumber)}
                   className={`${styles.button} ${
                     page === pageNumber ? styles.active : ''
@@ -254,6 +288,9 @@ export const ProductPage: React.FC = () => {
                 </button>
               ))}
               <button
+                type="button"
+                disabled={page === totalPages}
+                aria-label={t('nextPage')}
                 className={`${styles.button} ${
                   page === totalPages ? styles.hidden : ''
                 }`}
