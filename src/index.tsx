@@ -1,5 +1,5 @@
 import { createRoot } from 'react-dom/client';
-import { HashRouter as Router } from 'react-router-dom'; // <-- Змінили BrowserRouter на HashRouter
+import { BrowserRouter as Router } from 'react-router-dom';
 import { CartProvider } from './context/CartContext/CartContext';
 import { FavoritesProvider } from './context/FavoritesContext/FavoritesContext';
 import { App } from './App';
