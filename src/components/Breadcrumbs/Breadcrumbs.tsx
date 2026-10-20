@@ -1,7 +1,11 @@
 import { Link, useLocation } from 'react-router-dom';
 import styles from './Breadcrumbs.module.scss';
 
-export const Breadcrumbs = () => {
+type Props = {
+  productName?: string;
+};
+
+export const Breadcrumbs = ({ productName }: Props) => {
   const { pathname } = useLocation();
   const paths = pathname.split('/').filter(p => p);
 
@@ -14,7 +18,8 @@ export const Breadcrumbs = () => {
       {paths.map((path, index) => {
         const isLast = index === paths.length - 1;
         const to = `/${paths.slice(0, index + 1).join('/')}`;
-        const title = path.replace(/-/g, ' ');
+        const title =
+          isLast && productName ? productName : path.replace(/-/g, ' ');
 
         return (
           <div key={path} className={styles.breadcrumbs__item}>

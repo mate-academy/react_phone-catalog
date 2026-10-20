@@ -1,6 +1,8 @@
 import { Product } from '../types/Product';
 import { ProductDetails } from '../types/ProductDetails';
 
+export const NOT_FOUND = 'Product not found';
+
 const BASE_URL = `${import.meta.env.BASE_URL}api`;
 
 export function getProducts(): Promise<Product[]> {
@@ -20,7 +22,7 @@ export function getProductById(
   return fetch(`${BASE_URL}/${category}.json`)
     .then(response => {
       if (!response.ok) {
-        throw new Error('Category not found');
+        throw new Error(NOT_FOUND);
       }
 
       return response.json();
@@ -29,9 +31,21 @@ export function getProductById(
       const product = products.find(p => p.id === productId);
 
       if (!product) {
-        throw new Error('Product not found');
+        throw new Error(NOT_FOUND);
       }
 
       return product;
     });
+}
+
+export function getSuggestedProducts(
+  excludedItemId: string,
+  count = 8,
+): Promise<Product[]> {
+  return getProducts().then(products =>
+    products
+      .filter(p => p.itemId !== excludedItemId)
+      .sort(() => 0.5 - Math.random())
+      .slice(0, count),
+  );
 }

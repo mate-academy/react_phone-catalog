@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { getProducts } from '../../api/api';
 import { Product } from '../../types/Product';
-import { CATEGORIES } from '../../utils/categories';
 import { Loader } from '../../components/Loader';
 import { ProductsList } from '../../components/ProductsList';
 import { Pagination } from '../../components/Pagination';
@@ -22,8 +21,8 @@ const SORT_OPTIONS = [
   { value: 'price', label: 'Cheapest' },
 ];
 
-const PER_PAGE_STEPS = [4, 8, 16, 32];
-const DEFAULT_PER_PAGE = 16;
+const ALL = 'all';
+const PER_PAGE_STEPS = ['4', '8', '16', ALL];
 
 export const CatalogPage = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -43,18 +42,19 @@ export const CatalogPage = () => {
 
   const query = (searchParams.get('query') || '').trim().toLowerCase();
   const sort = searchParams.get('sort') || 'age';
-  const perPage = Number(searchParams.get('perPage')) || DEFAULT_PER_PAGE;
+  const perPageParam = searchParams.get('perPage') || ALL;
   const currentPage = parseInt(searchParams.get('page') || '1', 10) || 1;
 
   const sortedProducts = products
     .filter(p => p.name.toLowerCase().includes(query))
     .sort(SORTERS[sort] || SORTERS.age);
 
+  const perPage = Number(perPageParam) || sortedProducts.length;
   const start = (currentPage - 1) * perPage;
   const visibleProducts = sortedProducts.slice(start, start + perPage);
   const perPageOptions = PER_PAGE_STEPS.filter(
-    step => step < sortedProducts.length,
-  ).map(step => ({ value: String(step), label: String(step) }));
+    step => step === ALL || Number(step) < sortedProducts.length,
+  ).map(step => ({ value: step, label: step }));
 
   const updateParams = (key: string, value: string, defaultValue: string) => {
     const params = new URLSearchParams(searchParams);
@@ -78,7 +78,7 @@ export const CatalogPage = () => {
     <div className={styles.catalog} data-cy="CatalogPage">
       <Breadcrumbs />
       <h1 className={styles.catalog__title}>
-        {CATEGORIES.find(c => c.name === category)?.title || category}
+        {category.charAt(0).toUpperCase() + category.slice(1)} page
       </h1>
       <p className={styles.catalog__count}>{sortedProducts.length} models</p>
 
@@ -93,16 +93,14 @@ export const CatalogPage = () => {
               onChange={value => updateParams('sort', value, 'age')}
             />
           </div>
-          {perPageOptions.length > 0 && (
+          {perPageOptions.length > 1 && (
             <div className={styles.catalog__filter}>
               <Dropdown
                 id="perPage"
                 label="Items on page"
-                value={String(perPage)}
+                value={perPageParam}
                 options={perPageOptions}
-                onChange={value =>
-                  updateParams('perPage', value, String(DEFAULT_PER_PAGE))
-                }
+                onChange={value => updateParams('perPage', value, ALL)}
               />
             </div>
           )}

@@ -1,7 +1,12 @@
 import { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import classNames from 'classnames';
-import { getProductById, getProducts } from '../../api/api';
+import {
+  NOT_FOUND,
+  getProductById,
+  getProducts,
+  getSuggestedProducts,
+} from '../../api/api';
 import { ProductDetails } from '../../types/ProductDetails';
 import { Product } from '../../types/Product';
 import { Loader } from '../../components/Loader';
@@ -35,6 +40,7 @@ export const ProductDetailsPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const [mainImage, setMainImage] = useState('');
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!productId || !category) {
@@ -43,21 +49,23 @@ export const ProductDetailsPage = () => {
 
     setIsLoading(true);
     setIsError(false);
-    Promise.all([getProductById(category, productId), getProducts()])
-      .then(([details, allProducts]) => {
+    Promise.all([
+      getProductById(category, productId),
+      getProducts(),
+      getSuggestedProducts(productId),
+    ])
+      .then(([details, allProducts, suggestedProducts]) => {
         setProduct(details);
         setMainImage(details.images[0]);
         setCatalogProduct(
           allProducts.find(p => p.itemId === productId) || null,
         );
-        setSuggested(
-          allProducts
-            .filter(p => p.itemId !== productId)
-            .sort(() => 0.5 - Math.random())
-            .slice(0, 8),
-        );
+        setSuggested(suggestedProducts);
       })
-      .catch(() => setIsError(true))
+      .catch(error => {
+        setProduct(null);
+        setIsError(error.message !== NOT_FOUND);
+      })
       .finally(() => setIsLoading(false));
   }, [productId, category]);
 
@@ -65,7 +73,24 @@ export const ProductDetailsPage = () => {
     return <Loader />;
   }
 
-  if (isError || !product || !catalogProduct) {
+  if (isError) {
+    return (
+      <div className={styles.details}>
+        <BackButton />
+        <p className="has-text-danger">
+          Something went wrong.
+          <button
+            onClick={() => window.location.reload()}
+            className="button is-small ml-2"
+          >
+            Reload
+          </button>
+        </p>
+      </div>
+    );
+  }
+
+  if (!product || !catalogProduct) {
     return (
       <div className={styles.details}>
         <BackButton />
@@ -95,8 +120,8 @@ export const ProductDetailsPage = () => {
 
   return (
     <div className={styles.details} data-cy="ProductDetailsPage">
-      <Breadcrumbs />
-      <div className={'mb-4'}>
+      <Breadcrumbs productName={product.name} />
+      <div className="mb-4">
         <BackButton />
       </div>
 
@@ -139,16 +164,26 @@ export const ProductDetailsPage = () => {
               </div>
               <div className={styles.options__list}>
                 {product.colorsAvailable.map(color => (
-                  <Link
+                  <label
                     key={color}
-                    to={getProductUrl(color, product.capacity)}
                     className={classNames(styles.options__color, {
                       [styles['options__color--active']]:
                         color === product.color,
                     })}
                     style={{ backgroundColor: color }}
                     title={color}
-                  />
+                  >
+                    <input
+                      type="radio"
+                      name="color"
+                      className={styles.options__input}
+                      checked={color === product.color}
+                      onChange={() =>
+                        navigate(getProductUrl(color, product.capacity))
+                      }
+                      aria-label={color}
+                    />
+                  </label>
                 ))}
               </div>
             </div>
@@ -156,16 +191,24 @@ export const ProductDetailsPage = () => {
               <span className={styles.options__label}>Select capacity</span>
               <div className={styles.options__list}>
                 {product.capacityAvailable.map(cap => (
-                  <Link
+                  <label
                     key={cap}
-                    to={getProductUrl(product.color, cap)}
                     className={classNames(styles.options__capacity, {
                       [styles['options__capacity--active']]:
                         cap === product.capacity,
                     })}
                   >
+                    <input
+                      type="radio"
+                      name="capacity"
+                      className={styles.options__input}
+                      checked={cap === product.capacity}
+                      onChange={() =>
+                        navigate(getProductUrl(product.color, cap))
+                      }
+                    />
                     {cap}
-                  </Link>
+                  </label>
                 ))}
               </div>
             </div>
