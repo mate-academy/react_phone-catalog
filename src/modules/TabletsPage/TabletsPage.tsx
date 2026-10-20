@@ -1,8 +1,5 @@
+import { ProductsCatalog } from '../shared/components/ProductsCatalog';
+
 export const TabletsPage = () => {
-  return (
-    <main>
-      <h1>Tablets</h1>
-      <p>There are no tablets yet</p>
-    </main>
-  );
+  return <ProductsCatalog title="Tablets" category="tablets" />;
 };

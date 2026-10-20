@@ -1,10 +1,5 @@
-export * from './AccessoriesPage';
+import { ProductsCatalog } from '../shared/components/ProductsCatalog';
 
 export const AccessoriesPage = () => {
-  return (
-    <main>
-      <h1>Accessories</h1>
-      <p>There are no accessories yet</p>
-    </main>
-  );
+  return <ProductsCatalog title="Accessories" category="accessories" />;
 };
