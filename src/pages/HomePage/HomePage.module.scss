@@ -1,27 +1,26 @@
-@import '../../styles/variables';
+@import '../../styles/mixins';
 
 .home {
-  padding-bottom: $spacing-large;
+  margin-bottom: -$spacing-large;
 
   &__title {
-    font-size: 32px;
-    font-weight: 800;
-    color: $c-text-main;
-    margin-top: $spacing-medium;
-    margin-bottom: $spacing-large;
-    letter-spacing: -0.01em;
+    margin-top: 0;
+    margin-bottom: $spacing-medium;
+
+    @include h1;
+
+    @media (min-width: $bp-sm) {
+      margin-top: 8px;
+      margin-bottom: $spacing-large;
+    }
+
+    @media (min-width: $bp-lg) {
+      margin-top: $spacing-large;
+      margin-bottom: $spacing-xlarge;
+    }
   }
 }
 
 .visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  border: 0;
-  padding: 0;
-  white-space: nowrap;
-  clip-path: inset(100%);
-  clip: rect(0 0 0 0);
-  overflow: hidden;
+  @include visually-hidden;
 }

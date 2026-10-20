@@ -1,46 +1,74 @@
-@import '../../styles/variables';
+@import '../../styles/mixins';
 
 .footer {
   background-color: $c-bg;
-  border-top: 1px solid $c-border;
-  padding: $spacing-large 0;
+  border-top: 1px solid $c-elements;
   margin-top: auto;
 
   &__container {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $spacing-large;
+    padding-top: $spacing-large;
+    padding-bottom: $spacing-large;
+
+    @include container;
+
+    @media (min-width: $bp-sm) {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      align-items: center;
+      min-height: $footer-height;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
   }
 
   &__logo {
-    font-weight: 900;
-    font-size: 18px;
-    color: $c-text-main;
-    text-decoration: none;
+    display: block;
+  }
+
+  &__logo-img {
+    display: block;
+    height: $spacing-large;
   }
 
   &__nav {
     display: flex;
-    gap: $spacing-medium;
+    flex-direction: column;
+    gap: $spacing-small;
+
+    @media (min-width: $bp-sm) {
+      flex-direction: row;
+      justify-content: space-between;
+    }
   }
 
   &__link {
-    color: $c-text-secondary;
+    color: $c-text-main;
     text-decoration: none;
     font-size: 12px;
-    font-weight: 800;
+    font-weight: 700;
+    line-height: 11px;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
-    transition: color 0.3s;
+    transition: color $transition;
 
     &:hover {
-      color: $c-text-main;
+      color: $c-text-secondary;
     }
   }
 
   &__back {
     display: flex;
     align-items: center;
+    align-self: center;
     gap: $spacing-small;
+
+    @media (min-width: $bp-sm) {
+      justify-self: end;
+    }
   }
 
   &__back-text {
@@ -50,20 +78,6 @@
   }
 
   &__button {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background-color: $c-surface;
-    border: 1px solid $c-border;
-    color: $c-text-main;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.3s;
-
-    &:hover {
-      background-color: $c-border;
-    }
+    @include slider-button;
   }
 }

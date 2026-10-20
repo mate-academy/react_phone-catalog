@@ -1,9 +1,29 @@
-@import './styles/variables';
+@import './styles/mixins';
+
+@font-face {
+  font-family: Mont;
+  font-weight: 400 500;
+  src: url('/fonts/Mont-Regular.otf');
+}
+
+@font-face {
+  font-family: Mont;
+  font-weight: 600;
+  src: url('/fonts/Mont-SemiBold.otf');
+}
+
+@font-face {
+  font-family: Mont;
+  font-weight: 700 900;
+  src: url('/fonts/Mont-Bold.otf');
+}
 
 body {
   background-color: $c-bg;
   color: $c-text-main;
   font-family: Mont, 'Helvetica Neue', sans-serif;
+  font-size: 14px;
+  line-height: 21px;
   margin: 0;
 }
 
@@ -14,5 +34,9 @@ body {
 
   &__main {
     flex: 1;
+    padding-top: $spacing-medium;
+    padding-bottom: $spacing-large;
+
+    @include container;
   }
 }

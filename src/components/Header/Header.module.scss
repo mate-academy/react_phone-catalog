@@ -1,6 +1,7 @@
 @import '../../styles/variables';
 
-$breakpoint-desktop: 1024px;
+$breakpoint-desktop: $bp-lg;
+$header-size: $header-height-small;
 
 .header {
   position: sticky;
@@ -13,12 +14,24 @@ $breakpoint-desktop: 1024px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: $header-height;
+    height: $header-size;
+
+    @media (min-width: $breakpoint-desktop) {
+      display: grid;
+      grid-template-columns:
+        minmax(128px + $spacing-medium, 1fr)
+        minmax(0, $content-width)
+        minmax(2 * $header-height, 1fr);
+      height: $header-height;
+    }
   }
 
-  &__left {
+  &__center {
     display: flex;
+    flex: 1;
     align-items: center;
+    justify-content: space-between;
+    align-self: stretch;
   }
 }
 
@@ -30,6 +43,7 @@ $breakpoint-desktop: 1024px;
 
   &__img {
     display: block;
+    width: 80px;
     height: 28px;
     object-fit: contain;
   }
@@ -39,11 +53,14 @@ $breakpoint-desktop: 1024px;
   display: flex;
   align-items: center;
   height: 100%;
-  gap: 64px;
-  margin-left: $spacing-medium;
+  gap: $spacing-large;
 
-  @media (max-width: #{$breakpoint-desktop - 1px}) {
+  @media (max-width: #{$bp-sm - 1px}) {
     display: none;
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    gap: 64px;
   }
 }
 
@@ -53,16 +70,18 @@ $breakpoint-desktop: 1024px;
   color: $c-nav-link;
   text-transform: uppercase;
   font-size: 12px;
-  font-weight: 800;
+  font-weight: 700;
+  line-height: 11px;
   letter-spacing: 0.04em;
   text-decoration: none;
-  transition: color 0.3s;
+  transition: color $transition;
 }
 
 .nav__link {
   @include link;
 
   height: 100%;
+  padding-top: 3px;
   border-bottom: 3px solid transparent;
 
   &:hover,
@@ -77,6 +96,7 @@ $breakpoint-desktop: 1024px;
 
 .actions {
   display: flex;
+  justify-self: end;
   height: 100%;
 
   &__btn {
@@ -84,18 +104,23 @@ $breakpoint-desktop: 1024px;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: $header-height;
+    width: $header-size;
     height: 100%;
     color: $c-text-main;
+
     border-left: 1px solid $c-border;
-    transition: color 0.3s;
+    transition: opacity 0.3s;
+
+    @media (min-width: $breakpoint-desktop) {
+      width: $header-height;
+    }
 
     &:hover {
-      color: $c-nav-link;
+      opacity: 0.6;
     }
 
     &--desktop {
-      @media (max-width: #{$breakpoint-desktop - 1px}) {
+      @media (max-width: #{$bp-sm - 1px}) {
         display: none;
       }
     }
@@ -106,7 +131,7 @@ $breakpoint-desktop: 1024px;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: $header-height;
+  width: $header-size;
   height: 100%;
   background: none;
   border: none;
@@ -115,7 +140,7 @@ $breakpoint-desktop: 1024px;
   font-size: 20px;
   cursor: pointer;
 
-  @media (min-width: $breakpoint-desktop) {
+  @media (min-width: $bp-sm) {
     display: none;
   }
 }
@@ -138,7 +163,7 @@ $breakpoint-desktop: 1024px;
 
 .menu {
   position: fixed;
-  inset: $header-height 0 0;
+  inset: $header-size 0 0;
   display: flex;
   flex-direction: column;
   background-color: $c-bg;
@@ -181,7 +206,7 @@ $breakpoint-desktop: 1024px;
 
   &__footer {
     display: flex;
-    height: $header-height;
+    height: $header-size;
     border-top: 1px solid $c-border;
 
     .actions__btn {

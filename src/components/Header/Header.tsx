@@ -16,7 +16,7 @@ const SEARCH_PATHS = ['/phones', '/tablets', '/accessories', '/favorites'];
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { cart, favorites } = useStore();
+  const { favorites, totalCartQuantity } = useStore();
   const { pathname } = useLocation();
 
   useEffect(() => {
@@ -34,8 +34,8 @@ export const Header = () => {
   const closeMenu = () => setIsMenuOpen(false);
 
   const actionLinks = [
-    { to: '/favorites', icon: 'fa-regular fa-heart', count: favorites.length },
-    { to: '/cart', icon: 'fa-solid fa-bag-shopping', count: cart.length },
+    { to: '/favorites', icon: 'heart', count: favorites.length },
+    { to: '/cart', icon: 'cart', count: totalCartQuantity },
   ];
 
   const renderNavLinks = (block: 'nav' | 'menu') =>
@@ -56,7 +56,10 @@ export const Header = () => {
   const renderActionLinks = (className: string, onClick?: () => void) =>
     actionLinks.map(({ to, icon, count }) => (
       <Link key={to} to={to} className={className} onClick={onClick}>
-        <i className={icon} />
+        <img
+          src={`${import.meta.env.BASE_URL}img/icons/${icon}.svg`}
+          alt={icon}
+        />
         {count > 0 && <span className={styles.badge}>{count}</span>}
       </Link>
     ));
@@ -64,19 +67,19 @@ export const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.header__container}>
-        <div className={styles.header__left}>
-          <Link to="/" className={styles.logo} onClick={closeMenu}>
-            <img
-              src="/img/Logo.png"
-              alt="Nice Gadgets"
-              className={styles.logo__img}
-            />
-          </Link>
+        <Link to="/" className={styles.logo} onClick={closeMenu}>
+          <img
+            src={`${import.meta.env.BASE_URL}img/Logo.png`}
+            alt="Nice Gadgets"
+            className={styles.logo__img}
+          />
+        </Link>
 
+        <div className={styles.header__center}>
           <nav className={styles.nav}>{renderNavLinks('nav')}</nav>
-        </div>
 
-        {SEARCH_PATHS.includes(pathname) && <SearchBar key={pathname} />}
+          {SEARCH_PATHS.includes(pathname) && <SearchBar key={pathname} />}
+        </div>
 
         <div className={styles.actions}>
           {renderActionLinks(

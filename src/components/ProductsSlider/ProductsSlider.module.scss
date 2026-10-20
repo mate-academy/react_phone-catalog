@@ -1,7 +1,7 @@
-@import '../../styles/variables';
+@import '../../styles/mixins';
 
 .slider {
-  margin-bottom: $spacing-xlarge;
+  @include section-gap;
 
   &__header {
     display: flex;
@@ -11,10 +11,7 @@
   }
 
   &__title {
-    font-size: 32px;
-    font-weight: 800;
-    color: $c-text-main;
-    letter-spacing: -0.01em;
+    @include h2;
   }
 
   &__actions {
@@ -23,29 +20,15 @@
   }
 
   &__btn {
-    width: 32px;
-    height: 32px;
-    background-color: $c-surface;
-    border: 1px solid $c-border;
-    color: $c-text-main;
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: border-color 0.3s;
-
-    &:hover {
-      border-color: $c-text-main;
-    }
+    @include slider-button;
   }
 
   &__track {
     display: flex;
-    gap: 16px;
+    gap: $spacing-small;
     overflow-x: auto;
     scroll-behavior: smooth;
-    padding-bottom: $spacing-small;
+    scroll-snap-type: x mandatory;
     scrollbar-width: none;
 
     &::-webkit-scrollbar {
@@ -54,6 +37,15 @@
   }
 
   &__item {
-    flex: 0 0 calc(25% - 12px);
+    flex: 0 0 $card-width-sm;
+    scroll-snap-align: start;
+
+    @media (min-width: $bp-sm) {
+      flex-basis: $card-width-md;
+    }
+
+    @media (min-width: $bp-lg) {
+      flex-basis: $card-width;
+    }
   }
 }

@@ -8,31 +8,49 @@ export const Footer = () => {
 
   return (
     <footer className={styles.footer}>
-      <div className={`container ${styles.footer__container}`}>
+      <div className={styles.footer__container}>
         <Link to="/" className={styles.footer__logo}>
-          NICE GADGETS
+          <img
+            src={`${import.meta.env.BASE_URL}img/Logo.png`}
+            alt="Nice Gadgets"
+            className={styles['footer__logo-img']}
+          />
         </Link>
 
         <nav className={styles.footer__nav}>
           <a
-            href="https://github.com"
+            href="https://github.com/masteryada378/react_phone-catalog"
             target="_blank"
             rel="noreferrer"
             className={styles.footer__link}
           >
-            GITHUB
+            Github
           </a>
-          <Link to="#" className={styles.footer__link}>
-            CONTACTS
-          </Link>
-          <Link to="#" className={styles.footer__link}>
-            RIGHTS
-          </Link>
+          <a
+            href="https://github.com/masteryada378"
+            target="_blank"
+            rel="noreferrer"
+            className={styles.footer__link}
+          >
+            Contacts
+          </a>
+          <a
+            href="https://github.com/masteryada378/react_phone-catalog"
+            target="_blank"
+            rel="noreferrer"
+            className={styles.footer__link}
+          >
+            Rights
+          </a>
         </nav>
 
         <div className={styles.footer__back}>
           <span className={styles['footer__back-text']}>Back to top</span>
-          <button onClick={scrollToTop} className={styles.footer__button}>
+          <button
+            onClick={scrollToTop}
+            className={styles.footer__button}
+            aria-label="Back to top"
+          >
             <i className="fas fa-chevron-up"></i>
           </button>
         </div>

@@ -3,27 +3,27 @@
 .product-card {
   display: flex;
   flex-direction: column;
+  gap: 8px;
   height: 100%;
   padding: $spacing-large;
   background-color: $c-surface;
-  border: 1px solid $c-border;
-  transition: border-color 0.3s;
+  transition: box-shadow $transition;
 
   &:hover {
-    border-color: $c-text-secondary;
+    box-shadow: inset 0 0 0 1px $c-elements;
   }
 
   &__image-link {
     display: block;
-    margin-bottom: $spacing-medium;
+    height: 196px;
     overflow: hidden;
   }
 
   &__image {
     width: 100%;
-    height: 200px;
+    height: 100%;
     object-fit: contain;
-    transition: transform 0.3s ease;
+    transition: transform $transition ease;
 
     .product-card__image-link:hover & {
       transform: scale(1.1);
@@ -31,11 +31,11 @@
   }
 
   &__title {
-    display: block;
-    margin-bottom: $spacing-small;
+    flex-grow: 1;
+    padding-top: $spacing-small;
     color: $c-text-main;
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 500;
     line-height: 21px;
     text-decoration: none;
   }
@@ -49,43 +49,43 @@
   &__price {
     font-size: 22px;
     font-weight: 800;
+    line-height: 1.4;
     color: $c-text-main;
   }
 
   &__full-price {
-    font-size: 14px;
-    font-weight: 500;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.4;
     color: $c-text-secondary;
     text-decoration: line-through;
   }
 
   &__divider {
     height: 1px;
-    margin: $spacing-small 0;
-    background-color: $c-border;
+    background-color: $c-elements;
   }
 
   &__specs {
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
     gap: 8px;
-    margin-bottom: $spacing-medium;
+    padding: 8px 0;
   }
 
   &__spec {
     display: flex;
     justify-content: space-between;
     font-size: 12px;
+    font-weight: 600;
+    line-height: normal;
   }
 
   &__spec-name {
     color: $c-text-secondary;
-    font-weight: 600;
   }
 
   &__spec-value {
     color: $c-text-main;
-    font-weight: 700;
   }
 }

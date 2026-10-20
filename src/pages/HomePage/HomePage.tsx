@@ -14,6 +14,7 @@ export const HomePage = () => {
   useEffect(() => {
     getProducts()
       .then(setProducts)
+      .catch(() => setProducts([]))
       .finally(() => setIsLoading(false));
   }, []);
 

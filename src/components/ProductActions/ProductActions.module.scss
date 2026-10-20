@@ -16,9 +16,12 @@
     background-color: $c-primary;
     color: $c-text-main;
     border: none;
-    font-weight: 700;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color $transition;
 
     &:hover {
       background-color: $c-primary-hover;
@@ -27,12 +30,11 @@
     &--added {
       background-color: transparent;
       border: 1px solid $c-border;
-      color: $c-text-secondary;
+      color: $c-primary;
 
       &:hover {
         background-color: transparent;
         border-color: $c-primary;
-        color: $c-primary;
       }
     }
   }
@@ -43,20 +45,20 @@
     justify-content: center;
     width: var(--size);
     height: var(--size);
-    background-color: transparent;
-    border: 1px solid $c-border;
+    background-color: $c-border;
+    border: none;
     color: $c-text-main;
     cursor: pointer;
     transition:
-      border-color 0.3s,
-      color 0.3s;
+      background-color $transition,
+      color $transition;
 
     &:hover {
-      border-color: $c-text-main;
+      background-color: $c-elements;
     }
 
     &--active {
-      color: $c-danger;
+      color: $c-badge;
     }
   }
 }

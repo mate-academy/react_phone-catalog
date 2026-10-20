@@ -23,7 +23,7 @@ export const PicturesSlider = () => {
     const timer = setInterval(nextSlide, 5000);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [currentIndex]);
 
   return (
     <div className={styles.slider} data-cy="PicturesSlider">

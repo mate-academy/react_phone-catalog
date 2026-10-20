@@ -13,23 +13,18 @@ export const App = () => (
   <div className="app">
     <Header />
 
-    <main className="app__main section">
-      <div className="container">
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/home" element={<Navigate to="/" replace />} />
-          <Route path="/phones" element={<CatalogPage />} />
-          <Route path="/tablets" element={<CatalogPage />} />
-          <Route path="/accessories" element={<CatalogPage />} />
-          <Route
-            path="/:category/:productId"
-            element={<ProductDetailsPage />}
-          />
-          <Route path="/cart" element={<CartPage />} />
-          <Route path="/favorites" element={<FavoritesPage />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-      </div>
+    <main className="app__main">
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/home" element={<Navigate to="/" replace />} />
+        <Route path="/phones" element={<CatalogPage />} />
+        <Route path="/tablets" element={<CatalogPage />} />
+        <Route path="/accessories" element={<CatalogPage />} />
+        <Route path="/:category/:productId" element={<ProductDetailsPage />} />
+        <Route path="/cart" element={<CartPage />} />
+        <Route path="/favorites" element={<FavoritesPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
     </main>
 
     <Footer />
