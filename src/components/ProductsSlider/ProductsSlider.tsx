@@ -6,9 +6,10 @@ import styles from './ProductsSlider.module.scss';
 type Props = {
   title: string;
   products: Product[];
+  isNew?: boolean;
 };
 
-export const ProductsSlider = ({ title, products }: Props) => {
+export const ProductsSlider = ({ title, products, isNew }: Props) => {
   const sliderRef = useRef<HTMLDivElement>(null);
   const [canScroll, setCanScroll] = useState({ prev: false, next: true });
 
@@ -71,7 +72,7 @@ export const ProductsSlider = ({ title, products }: Props) => {
       >
         {products.map(product => (
           <div key={product.id} className={styles.slider__item}>
-            <ProductCard product={product} />
+            <ProductCard product={product} isNew={isNew} />
           </div>
         ))}
       </div>

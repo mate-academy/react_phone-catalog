@@ -5,9 +5,10 @@ import styles from './ProductCard.module.scss';
 
 type Props = {
   product: Product;
+  isNew?: boolean;
 };
 
-export const ProductCard = ({ product }: Props) => {
+export const ProductCard = ({ product, isNew }: Props) => {
   const productUrl = `/product/${product.itemId}`;
   const specs = [
     { label: 'Screen', value: product.screen },
@@ -31,7 +32,7 @@ export const ProductCard = ({ product }: Props) => {
 
       <div className={styles['product-card__prices']}>
         <span className={styles['product-card__price']}>${product.price}</span>
-        {product.fullPrice > product.price && (
+        {!isNew && product.fullPrice > product.price && (
           <span className={styles['product-card__full-price']}>
             ${product.fullPrice}
           </span>

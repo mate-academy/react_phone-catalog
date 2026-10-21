@@ -27,7 +27,7 @@ export const Footer = () => {
             Github
           </a>
           <a
-            href="https://github.com/masteryada378"
+            href="https://www.linkedin.com/in/юра-д-79a6b117a/"
             target="_blank"
             rel="noreferrer"
             className={styles.footer__link}
@@ -35,7 +35,7 @@ export const Footer = () => {
             Contacts
           </a>
           <a
-            href="https://github.com/masteryada378/react_phone-catalog"
+            href="https://gdpr-info.eu/chapter-3/"
             target="_blank"
             rel="noreferrer"
             className={styles.footer__link}
