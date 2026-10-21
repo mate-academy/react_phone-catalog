@@ -31,8 +31,6 @@ export const Header = () => {
     };
   }, [isMenuOpen]);
 
-  const closeMenu = () => setIsMenuOpen(false);
-
   const actionLinks = [
     { to: '/favorites', icon: 'heart', count: favorites.length },
     { to: '/cart', icon: 'cart', count: totalCartQuantity },
@@ -53,9 +51,9 @@ export const Header = () => {
       </NavLink>
     ));
 
-  const renderActionLinks = (className: string, onClick?: () => void) =>
+  const renderActionLinks = (className: string) =>
     actionLinks.map(({ to, icon, count }) => (
-      <Link key={to} to={to} className={className} onClick={onClick}>
+      <Link key={to} to={to} className={className}>
         <img
           src={`${import.meta.env.BASE_URL}img/icons/${icon}.svg`}
           alt={icon}
@@ -68,7 +66,7 @@ export const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.header__container}>
-        <Link to="/" className={styles.logo} onClick={closeMenu}>
+        <Link to="/" className={styles.logo}>
           <img
             src={`${import.meta.env.BASE_URL}img/Logo.png`}
             alt="Nice Gadgets"
@@ -107,7 +105,7 @@ export const Header = () => {
         <nav className={styles.menu__nav}>{renderNavLinks('menu')}</nav>
 
         <div className={styles.menu__footer}>
-          {renderActionLinks(styles.actions__btn, closeMenu)}
+          {renderActionLinks(styles.actions__btn)}
         </div>
       </aside>
     </header>

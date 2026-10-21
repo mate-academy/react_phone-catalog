@@ -31,14 +31,9 @@ export const ProductsSlider = ({ title, products }: Props) => {
   }, [products]);
 
   const scroll = (direction: 1 | -1) => {
-    const track = sliderRef.current;
-    const item = track?.children[0] as HTMLElement | undefined;
-
-    if (track && item) {
-      const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
-
-      track.scrollBy({ left: direction * (item.offsetWidth + gap) });
-    }
+    sliderRef.current?.scrollBy({
+      left: direction * sliderRef.current.clientWidth,
+    });
   };
 
   if (!products.length) {
