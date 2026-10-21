@@ -196,22 +196,17 @@
 .badge {
   position: absolute;
   top: 14px;
-  right: 10px;
+  right: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
   min-width: 14px;
   height: 14px;
-  padding: 0 3px;
+  padding: 0;
   background-color: #eb5757;
   color: #fff;
   font-size: 9px;
   font-weight: 700;
   border-radius: 50%;
   border: 1px solid #fff;
-
-  @media (min-width: 640px) {
-    top: 18px;
-    right: 18px;
-  }
 }
