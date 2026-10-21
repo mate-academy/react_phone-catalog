@@ -86,3 +86,24 @@
     width: 20px;
   }
 }
+
+
+@media (max-width: 479px) {
+  .content {
+    gap: 8px;
+  }
+
+  .arrow {
+    width: 28px;
+    border-radius: 8px;
+    font-size: 18px;
+  }
+
+  .imageWrapper {
+    aspect-ratio: 4 / 3;
+  }
+
+  .dots {
+    margin-top: 12px;
+  }
+}

@@ -74,8 +74,21 @@
   }
 }
 
+
 @media (max-width: 479px) {
+  .header {
+    gap: 8px;
+  }
+
+  .title {
+    font-size: 22px;
+  }
+
+  .controls {
+    gap: 8px;
+  }
+
   .product {
-    flex-basis: 100%;
+    flex-basis: 85%;
   }
 }
