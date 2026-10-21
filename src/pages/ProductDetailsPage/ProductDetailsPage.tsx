@@ -18,17 +18,23 @@ import styles from './ProductDetailsPage.module.scss';
 
 const COLOR_MAP: Record<string, string> = {
   black: '#1f2022',
+  blue: '#276787',
+  coral: '#ff6f61',
+  gold: '#f3e5d8',
+  graphite: '#54524f',
   green: '#aee1cd',
-  yellow: '#ffe8a3',
-  white: '#f9f6f0',
+  midnight: '#2c3850',
+  midnightgreen: '#4e5851',
+  pink: '#f4d2cf',
   purple: '#d1cdda',
   red: '#ba0c2f',
-  spacegray: '#535150',
-  midnightgreen: '#4e5851',
-  gold: '#f3e5d8',
-  silver: '#e2e4e1',
   rosegold: '#e8c5c8',
-  coral: '#ff6f61',
+  sierrablue: '#9bb5ce',
+  silver: '#e2e4e1',
+  spaceblack: '#383838',
+  spacegray: '#535150',
+  white: '#f9f6f0',
+  yellow: '#ffe8a3',
 };
 
 const getCleanTitle = (name: string, capacity?: string, color?: string) => {
