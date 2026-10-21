@@ -32,6 +32,11 @@
   &__logo-img {
     display: block;
     height: $spacing-large;
+    transition: transform $transition ease;
+
+    .footer__logo:hover & {
+      transform: scale(1.1);
+    }
   }
 
   &__nav {

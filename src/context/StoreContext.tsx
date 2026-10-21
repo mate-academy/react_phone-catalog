@@ -52,7 +52,7 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({
     setCart(prev =>
       prev.some(item => item.product.itemId === product.itemId)
         ? prev
-        : [...prev, { quantity: 1, product }],
+        : [...prev, { id: product.id, quantity: 1, product }],
     );
   };
 

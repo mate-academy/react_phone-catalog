@@ -11,10 +11,13 @@
 
   &__home {
     display: flex;
-    transition: opacity $transition;
+  }
 
-    &:hover {
-      opacity: 0.7;
+  &__home-icon {
+    transition: transform $transition ease;
+
+    .breadcrumbs__home:hover & {
+      transform: scale(1.1);
     }
   }
 

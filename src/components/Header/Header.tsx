@@ -59,6 +59,7 @@ export const Header = () => {
         <img
           src={`${import.meta.env.BASE_URL}img/icons/${icon}.svg`}
           alt={icon}
+          className={styles.actions__icon}
         />
         {count > 0 && <span className={styles.badge}>{count}</span>}
       </Link>

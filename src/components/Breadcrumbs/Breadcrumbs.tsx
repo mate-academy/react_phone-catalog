@@ -16,7 +16,11 @@ export const Breadcrumbs = ({ category, productName }: Props) => {
   return (
     <nav className={styles.breadcrumbs} data-cy="Breadcrumbs">
       <Link to="/" className={styles.breadcrumbs__home}>
-        <img src={`${import.meta.env.BASE_URL}img/icons/home.svg`} alt="Home" />
+        <img
+          src={`${import.meta.env.BASE_URL}img/icons/home.svg`}
+          alt="Home"
+          className={styles['breadcrumbs__home-icon']}
+        />
       </Link>
 
       {paths.map((path, index) => {
