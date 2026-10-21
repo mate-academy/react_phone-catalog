@@ -5,14 +5,26 @@ export const NOT_FOUND = 'Product not found';
 
 const BASE_URL = `${import.meta.env.BASE_URL}api`;
 
-export function getProducts(): Promise<Product[]> {
-  return fetch(`${BASE_URL}/products.json`).then(response => {
-    if (!response.ok) {
-      throw new Error('Failed to fetch products');
-    }
+let productsRequest: Promise<Product[]> | null = null;
 
-    return response.json();
-  });
+export function getProducts(): Promise<Product[]> {
+  if (!productsRequest) {
+    productsRequest = fetch(`${BASE_URL}/products.json`)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Failed to fetch products');
+        }
+
+        return response.json();
+      })
+      .catch(error => {
+        productsRequest = null;
+
+        throw error;
+      });
+  }
+
+  return productsRequest;
 }
 
 export function getProductById(
@@ -45,7 +57,9 @@ export function getSuggestedProducts(
   return getProducts().then(products =>
     products
       .filter(p => p.itemId !== excludedItemId)
-      .sort(() => 0.5 - Math.random())
-      .slice(0, count),
+      .map(product => ({ product, order: Math.random() }))
+      .sort((a, b) => a.order - b.order)
+      .slice(0, count)
+      .map(({ product }) => product),
   );
 }

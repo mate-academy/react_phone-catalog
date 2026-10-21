@@ -10,7 +10,7 @@ type Props = {
 export const CartItem = ({ item }: Props) => {
   const { removeFromCart, updateQuantity } = useStore();
   const { product, quantity } = item;
-  const productUrl = `/${product.category}/${product.itemId}`;
+  const productUrl = `/product/${product.itemId}`;
 
   return (
     <div className={styles['cart-item']} data-cy="cartItem">

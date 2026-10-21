@@ -43,13 +43,15 @@ export const CatalogPage = () => {
   const query = (searchParams.get('query') || '').trim().toLowerCase();
   const sort = searchParams.get('sort') || 'age';
   const perPageParam = searchParams.get('perPage') || ALL;
-  const currentPage = parseInt(searchParams.get('page') || '1', 10) || 1;
+  const pageParam = parseInt(searchParams.get('page') || '1', 10) || 1;
 
   const sortedProducts = products
     .filter(p => p.name.toLowerCase().includes(query))
     .sort(SORTERS[sort] || SORTERS.age);
 
   const perPage = Number(perPageParam) || sortedProducts.length;
+  const totalPages = Math.ceil(sortedProducts.length / perPage) || 1;
+  const currentPage = Math.min(Math.max(pageParam, 1), totalPages);
   const start = (currentPage - 1) * perPage;
   const visibleProducts = sortedProducts.slice(start, start + perPage);
   const perPageOptions = PER_PAGE_STEPS.filter(

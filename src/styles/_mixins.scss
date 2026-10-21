@@ -106,6 +106,7 @@
   &::after {
     content: '';
     position: absolute;
+    transform: translateY(-50%);
     top: 50%;
     right: 0;
     left: 0;

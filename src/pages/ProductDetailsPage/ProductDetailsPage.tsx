@@ -30,10 +30,7 @@ const Specs = ({ items }: { items: SpecItem[] }) => (
 );
 
 export const ProductDetailsPage = () => {
-  const { productId, category } = useParams<{
-    productId: string;
-    category: string;
-  }>();
+  const { productId } = useParams<{ productId: string }>();
   const [product, setProduct] = useState<ProductDetails | null>(null);
   const [catalogProduct, setCatalogProduct] = useState<Product | null>(null);
   const [suggested, setSuggested] = useState<Product[]>([]);
@@ -43,31 +40,36 @@ export const ProductDetailsPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!productId || !category) {
+    if (!productId) {
       return;
     }
 
     setIsLoading(true);
     setIsError(false);
-    Promise.all([
-      getProductById(category, productId),
-      getProducts(),
-      getSuggestedProducts(productId),
-    ])
-      .then(([details, allProducts, suggestedProducts]) => {
-        setProduct(details);
-        setMainImage(details.images[0]);
-        setCatalogProduct(
-          allProducts.find(p => p.itemId === productId) || null,
-        );
-        setSuggested(suggestedProducts);
+    getProducts()
+      .then(allProducts => {
+        const found = allProducts.find(p => p.itemId === productId);
+
+        if (!found) {
+          throw new Error(NOT_FOUND);
+        }
+
+        return Promise.all([
+          getProductById(found.category, productId),
+          getSuggestedProducts(productId),
+        ]).then(([details, suggestedProducts]) => {
+          setCatalogProduct(found);
+          setProduct(details);
+          setMainImage(details.images[0]);
+          setSuggested(suggestedProducts);
+        });
       })
       .catch(error => {
         setProduct(null);
         setIsError(error.message !== NOT_FOUND);
       })
       .finally(() => setIsLoading(false));
-  }, [productId, category]);
+  }, [productId]);
 
   if (isLoading) {
     return <Loader />;
@@ -94,7 +96,6 @@ export const ProductDetailsPage = () => {
     return (
       <div className={styles.details}>
         <BackButton />
-        <Breadcrumbs />
         <h2 className={styles.details__title}>Product was not found</h2>
       </div>
     );
@@ -104,7 +105,7 @@ export const ProductDetailsPage = () => {
     const capacityFormatted = newCapacity.toLowerCase().replace(' ', '');
     const colorFormatted = newColor.toLowerCase().replace(/ /g, '-');
 
-    return `/${category}/${product.namespaceId}-${capacityFormatted}-${colorFormatted}`;
+    return `/product/${product.namespaceId}-${capacityFormatted}-${colorFormatted}`;
   };
 
   const techSpecs: SpecItem[] = [
@@ -120,7 +121,10 @@ export const ProductDetailsPage = () => {
 
   return (
     <div className={styles.details} data-cy="ProductDetailsPage">
-      <Breadcrumbs productName={product.name} />
+      <Breadcrumbs
+        category={catalogProduct.category}
+        productName={product.name}
+      />
       <div className="mb-4">
         <BackButton />
       </div>

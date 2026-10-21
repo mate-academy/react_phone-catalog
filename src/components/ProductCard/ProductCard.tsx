@@ -8,7 +8,7 @@ type Props = {
 };
 
 export const ProductCard = ({ product }: Props) => {
-  const productUrl = `/${product.category}/${product.itemId}`;
+  const productUrl = `/product/${product.itemId}`;
   const specs = [
     { label: 'Screen', value: product.screen },
     { label: 'Capacity', value: product.capacity },

@@ -17,9 +17,13 @@ interface StoreContextType {
 const StoreContext = createContext<StoreContextType | undefined>(undefined);
 
 function readStorage<T>(key: string): T[] {
-  const saved = localStorage.getItem(key);
+  try {
+    const saved = JSON.parse(localStorage.getItem(key) || '[]');
 
-  return saved ? JSON.parse(saved) : [];
+    return Array.isArray(saved) ? saved : [];
+  } catch {
+    return [];
+  }
 }
 
 export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({

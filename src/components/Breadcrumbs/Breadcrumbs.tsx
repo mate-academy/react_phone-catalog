@@ -2,12 +2,16 @@ import { Link, useLocation } from 'react-router-dom';
 import styles from './Breadcrumbs.module.scss';
 
 type Props = {
+  category?: string;
   productName?: string;
 };
 
-export const Breadcrumbs = ({ productName }: Props) => {
+export const Breadcrumbs = ({ category, productName }: Props) => {
   const { pathname } = useLocation();
-  const paths = pathname.split('/').filter(p => p);
+  const paths =
+    category && productName
+      ? [category, productName]
+      : pathname.split('/').filter(p => p);
 
   return (
     <nav className={styles.breadcrumbs} data-cy="Breadcrumbs">
@@ -19,7 +23,9 @@ export const Breadcrumbs = ({ productName }: Props) => {
         const isLast = index === paths.length - 1;
         const to = `/${paths.slice(0, index + 1).join('/')}`;
         const title =
-          isLast && productName ? productName : path.replace(/-/g, ' ');
+          isLast && productName
+            ? productName
+            : path.charAt(0).toUpperCase() + path.slice(1).replace(/-/g, ' ');
 
         return (
           <div key={path} className={styles.breadcrumbs__item}>
