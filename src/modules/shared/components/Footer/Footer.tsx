@@ -27,28 +27,30 @@ export const Footer = () => {
             GitHub
           </a>
 
-          <a href="mailto:contact@example.com">Contacts</a>
-
           <a
-            href="https://github.com/232567/react_phone-catalog"
+            href="https://www.linkedin.com/in/jeverson-borges-7a1b6a174/"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Rights
+            LinkedIn
           </a>
         </nav>
 
-        <button
-          type="button"
-          className={styles.backToTop}
-          onClick={handleBackToTop}
-        >
-          <span>Back to top</span>
+        <div className={styles.footerActions}>
+          <span className={styles.copyright}>© 2026 NICE GADGETS</span>
 
-          <span className={styles.topIcon} aria-hidden="true">
-            ↑
-          </span>
-        </button>
+          <button
+            type="button"
+            className={styles.backToTop}
+            onClick={handleBackToTop}
+          >
+            <span>Back to top</span>
+
+            <span className={styles.topIcon} aria-hidden="true">
+              ↑
+            </span>
+          </button>
+        </div>
       </div>
     </footer>
   );

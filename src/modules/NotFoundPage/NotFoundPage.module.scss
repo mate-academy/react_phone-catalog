@@ -1,0 +1,63 @@
+.page {
+  display: flex;
+  min-height: 60vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 48px 16px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.errorCode {
+  margin: 0;
+  color: #4219d0;
+  font-size: 96px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.title {
+  margin: 0;
+  color: #313237;
+  font-size: 32px;
+}
+
+.description {
+  margin: 0;
+  color: #89939a;
+  font-size: 16px;
+}
+
+.homeLink {
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 24px;
+  border-radius: 8px;
+  background-color: #4219d0;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+
+  &:hover {
+    background-color: #5b35e0;
+  }
+}
+
+@media (max-width: 479px) {
+  .errorCode {
+    font-size: 72px;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+
+  .description {
+    font-size: 14px;
+  }
+}
