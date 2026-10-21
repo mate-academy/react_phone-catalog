@@ -1,0 +1,15 @@
+@import '../../styles/variables';
+
+.products-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px $spacing-small;
+
+  @media (min-width: $bp-sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: $bp-lg) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

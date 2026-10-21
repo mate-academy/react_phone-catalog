@@ -1,0 +1,48 @@
+@import '../../styles/mixins';
+
+.catalog {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding-bottom: $spacing-large;
+
+  @media (min-width: $bp-lg) {
+    padding-bottom: 48px;
+  }
+
+  &__title {
+    margin-bottom: $spacing-xsmall;
+
+    @include h1;
+  }
+
+  &__count {
+    font-size: 14px;
+    font-weight: 500;
+    color: $c-text-secondary;
+    margin-bottom: 40px;
+  }
+
+  &__filters {
+    display: flex;
+    gap: $spacing-small;
+    margin-bottom: $spacing-medium;
+  }
+
+  &__filter {
+    width: 187px;
+
+    &:last-child {
+      width: 136px;
+
+      @media (min-width: $bp-lg) {
+        width: 128px;
+      }
+    }
+
+    @media (min-width: $bp-lg) {
+      width: 176px;
+    }
+  }
+
+}

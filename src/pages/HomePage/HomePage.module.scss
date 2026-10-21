@@ -1,0 +1,26 @@
+@import '../../styles/mixins';
+
+.home {
+  margin-bottom: -$spacing-large;
+
+  &__title {
+    margin-top: 0;
+    margin-bottom: $spacing-medium;
+
+    @include h1;
+
+    @media (min-width: $bp-sm) {
+      margin-top: $spacing-xsmall;
+      margin-bottom: $spacing-large;
+    }
+
+    @media (min-width: $bp-lg) {
+      margin-top: $spacing-large;
+      margin-bottom: $spacing-xlarge;
+    }
+  }
+}
+
+.visually-hidden {
+  @include visually-hidden;
+}

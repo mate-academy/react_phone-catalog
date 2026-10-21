@@ -1,0 +1,22 @@
+@import '../../styles/variables';
+
+.search {
+  flex: 0 1 320px;
+  min-width: 0;
+  height: 40px;
+  margin: 0 $spacing-small;
+  padding: 0 12px;
+  background-color: $c-surface;
+  border: 1px solid $c-border;
+  color: $c-text-main;
+  font-size: 14px;
+
+  &::placeholder {
+    color: $c-text-secondary;
+  }
+
+  &:focus {
+    border-color: $c-primary;
+    outline: none;
+  }
+}

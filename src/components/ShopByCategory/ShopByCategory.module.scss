@@ -1,0 +1,58 @@
+@import '../../styles/mixins';
+
+.category {
+  @include section-gap;
+
+  &__title {
+    margin-bottom: $spacing-medium;
+
+    @include h2;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $spacing-large $spacing-small;
+
+    @media (min-width: $bp-sm) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &__card {
+    display: block;
+    text-decoration: none;
+  }
+
+  &__image-container {
+    overflow: hidden;
+    background-color: $c-border;
+    margin-bottom: $spacing-medium;
+    aspect-ratio: 1;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform $transition ease;
+
+    .category__card:hover & {
+      transform: scale(1.1);
+    }
+  }
+
+  &__name {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 26px;
+    color: $c-text-main;
+  }
+
+  &__count {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    color: $c-text-secondary;
+  }
+}

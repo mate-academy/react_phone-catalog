@@ -1,0 +1,126 @@
+@import '../../styles/variables';
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: $c-surface;
+  border: 1px solid $c-border;
+  padding: $spacing-small $spacing-medium;
+  gap: $spacing-small;
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  &__main {
+    display: flex;
+    align-items: center;
+    gap: $spacing-medium;
+    flex: 1;
+  }
+
+  &__remove {
+    background: none;
+    border: none;
+    color: $c-text-secondary;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 0;
+    transition: color $transition;
+
+    &:hover {
+      color: $c-text-main;
+    }
+  }
+
+  &__image-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 66px;
+    height: 66px;
+    flex-shrink: 0;
+  }
+
+  &__image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    transition: transform $transition ease;
+
+    .cart-item__image-link:hover & {
+      transform: scale(1.1);
+    }
+  }
+
+  &__title {
+    color: $c-text-main;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    text-decoration: none;
+    transition: color $transition;
+
+    &:hover {
+      color: $c-primary;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $spacing-large;
+
+    @media (max-width: 640px) {
+      width: 100%;
+    }
+  }
+
+  &__quantity {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  &__btn {
+    width: 32px;
+    height: 32px;
+    background-color: $c-surface;
+    border: 1px solid $c-border;
+    color: $c-text-main;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: border-color $transition;
+
+    &:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      border-color: $c-border;
+    }
+
+    &:hover:not(:disabled) {
+      border-color: $c-text-main;
+    }
+  }
+
+  &__count {
+    font-size: 14px;
+    font-weight: 600;
+    color: $c-text-main;
+    min-width: 16px;
+    text-align: center;
+  }
+
+  &__price {
+    font-size: 22px;
+    font-weight: 800;
+    color: $c-text-main;
+    min-width: 80px;
+    text-align: right;
+  }
+}

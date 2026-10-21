@@ -1,0 +1,91 @@
+@import '../../styles/mixins';
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xsmall;
+  height: 100%;
+  padding: $spacing-large;
+  background-color: $c-surface;
+  transition: box-shadow $transition;
+
+  &:hover {
+    box-shadow: inset 0 0 0 1px $c-elements;
+  }
+
+  &__image-link {
+    display: block;
+    height: 196px;
+    overflow: hidden;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform $transition ease;
+
+    .product-card__image-link:hover & {
+      transform: scale(1.1);
+    }
+  }
+
+  &__title {
+    flex-grow: 1;
+    padding-top: $spacing-small;
+    color: $c-text-main;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    text-decoration: none;
+  }
+
+  &__prices {
+    display: flex;
+    align-items: center;
+    gap: $spacing-xsmall;
+  }
+
+  &__price {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 1.4;
+    color: $c-text-main;
+  }
+
+  &__full-price {
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 1.4;
+    color: $c-text-secondary;
+    text-decoration: line-through;
+  }
+
+  &__divider {
+    height: 1px;
+    background-color: $c-elements;
+  }
+
+  &__specs {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xsmall;
+    padding: $spacing-xsmall 0;
+  }
+
+  &__spec {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: normal;
+  }
+
+  &__spec-name {
+    color: $c-text-secondary;
+  }
+
+  &__spec-value {
+    color: $c-text-main;
+  }
+}

@@ -1,0 +1,63 @@
+@import '../../styles/mixins';
+
+.slider {
+  @include section-gap;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: $spacing-medium;
+  }
+
+  &__title {
+    @include h2;
+  }
+
+  &__actions {
+    display: flex;
+    gap: $spacing-small;
+  }
+
+  &__btn {
+    @include slider-button;
+  }
+
+  &__track {
+    display: flex;
+    gap: $spacing-small;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    margin-right: -$spacing-small;
+    padding-right: $spacing-small;
+
+    @media (min-width: $bp-sm) {
+      margin-right: -$spacing-medium;
+      padding-right: $spacing-medium;
+    }
+
+    @media (min-width: $bp-lg) {
+      margin-right: 0;
+      padding-right: 0;
+    }
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__item {
+    flex: 0 0 $card-width-sm;
+    scroll-snap-align: start;
+
+    @media (min-width: $bp-sm) {
+      flex-basis: $card-width-md;
+    }
+
+    @media (min-width: $bp-lg) {
+      flex-basis: $card-width;
+    }
+  }
+}

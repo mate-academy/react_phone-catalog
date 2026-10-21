@@ -1,0 +1,49 @@
+@import '../../styles/variables';
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xsmall;
+  margin-bottom: 40px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+
+  &__home {
+    display: flex;
+  }
+
+  &__home-icon {
+    transition: transform $transition ease;
+
+    .breadcrumbs__home:hover & {
+      transform: scale(1.1);
+    }
+  }
+
+  &__link,
+  &__current {
+    padding-top: 2px;
+  }
+
+  &__link {
+    color: $c-text-main;
+    text-decoration: none;
+    transition: color $transition;
+
+    &:hover {
+      color: $c-text-secondary;
+    }
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: $spacing-xsmall;
+  }
+
+  &__current {
+    color: $c-text-secondary;
+    pointer-events: none;
+  }
+}

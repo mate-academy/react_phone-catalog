@@ -1,0 +1,100 @@
+@import './variables';
+
+@mixin container {
+  width: 100%;
+  max-width: $content-width + 2 * $spacing-large;
+  margin: 0 auto;
+  padding-right: $spacing-small;
+  padding-left: $spacing-small;
+
+  @media (min-width: $bp-sm) {
+    padding-right: $spacing-medium;
+    padding-left: $spacing-medium;
+  }
+
+  @media (min-width: $bp-lg) {
+    padding-right: $spacing-large;
+    padding-left: $spacing-large;
+  }
+}
+
+@mixin h1 {
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  color: $c-text-main;
+
+  @media (min-width: $bp-sm) {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+@mixin h2 {
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 31px;
+  letter-spacing: 0;
+  color: $c-text-main;
+
+  @media (min-width: $bp-sm) {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+}
+
+@mixin section-gap {
+  margin-bottom: 56px;
+
+  @media (min-width: $bp-sm) {
+    margin-bottom: 64px;
+  }
+
+  @media (min-width: $bp-lg) {
+    margin-bottom: 80px;
+  }
+}
+
+@mixin slider-button($height: $slider-btn-size) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: $slider-btn-size;
+  height: $height;
+  padding: 0;
+  background-color: $c-border;
+  border: 1px solid $c-border;
+  color: $c-text-main;
+  font-size: 10px;
+  cursor: pointer;
+  transition:
+    background-color $transition,
+    border-color $transition;
+
+  &:disabled {
+    background-color: transparent;
+    color: $c-elements;
+    cursor: default;
+  }
+
+  &:hover:not(:disabled) {
+    background-color: $c-elements;
+    border-color: $c-elements;
+  }
+}
+
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}

@@ -1,0 +1,88 @@
+@import '../../styles/mixins';
+
+.footer {
+  background-color: $c-bg;
+  border-top: 1px solid $c-elements;
+  margin-top: auto;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $spacing-large;
+    padding-top: $spacing-large;
+    padding-bottom: $spacing-large;
+
+    @include container;
+
+    @media (min-width: $bp-sm) {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      align-items: center;
+      min-height: $footer-height;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+  }
+
+  &__logo {
+    display: block;
+  }
+
+  &__logo-img {
+    display: block;
+    height: $spacing-large;
+    transition: transform $transition ease;
+
+    .footer__logo:hover & {
+      transform: scale(1.1);
+    }
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-small;
+
+    @media (min-width: $bp-sm) {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  &__link {
+    color: $c-text-main;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: color $transition;
+
+    &:hover {
+      color: $c-text-secondary;
+    }
+  }
+
+  &__back {
+    display: flex;
+    align-items: center;
+    align-self: center;
+    gap: $spacing-small;
+
+    @media (min-width: $bp-sm) {
+      justify-self: end;
+    }
+  }
+
+  &__back-text {
+    font-size: 12px;
+    font-weight: 600;
+    color: $c-text-secondary;
+  }
+
+  &__button {
+    @include slider-button;
+  }
+}

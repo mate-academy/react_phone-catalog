@@ -1,0 +1,64 @@
+@import '../../styles/variables';
+
+.actions {
+  --size: 40px;
+
+  display: flex;
+  gap: $spacing-xsmall;
+
+  &--large {
+    --size: 48px;
+  }
+
+  &__cart {
+    flex-grow: 1;
+    height: var(--size);
+    background-color: $c-primary;
+    color: $c-text-main;
+    border: none;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    cursor: pointer;
+    transition: background-color $transition;
+
+    &:hover {
+      background-color: $c-primary-hover;
+    }
+
+    &--added {
+      background-color: $c-border;
+      color: $c-text-main;
+
+      &:hover {
+        background-color: $c-elements;
+      }
+    }
+  }
+
+  &__favorite {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--size);
+    height: var(--size);
+    background-color: $c-border;
+    border: none;
+    color: $c-text-main;
+    cursor: pointer;
+    transition:
+      background-color $transition,
+      color $transition;
+
+    &:hover {
+      background-color: $c-elements;
+    }
+
+    &--active {
+      background-color: transparent;
+      box-shadow: inset 0 0 0 1px $c-elements;
+      color: $c-badge;
+    }
+  }
+}
