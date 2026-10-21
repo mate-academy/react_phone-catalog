@@ -3,7 +3,7 @@ import { ProductDetails } from '../types/ProductDetails';
 
 export const NOT_FOUND = 'Product not found';
 
-const BASE_URL = `${import.meta.env.BASE_URL}api`;
+const BASE_URL = 'api';
 
 let productsRequest: Promise<Product[]> | null = null;
 

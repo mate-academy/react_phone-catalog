@@ -17,7 +17,7 @@ export const Breadcrumbs = ({ category, productName }: Props) => {
     <nav className={styles.breadcrumbs} data-cy="Breadcrumbs">
       <Link to="/" className={styles.breadcrumbs__home}>
         <img
-          src={`${import.meta.env.BASE_URL}img/icons/home.svg`}
+          src="img/icons/home.svg"
           alt="Home"
           className={styles['breadcrumbs__home-icon']}
         />
@@ -33,10 +33,7 @@ export const Breadcrumbs = ({ category, productName }: Props) => {
 
         return (
           <div key={path} className={styles.breadcrumbs__item}>
-            <img
-              src={`${import.meta.env.BASE_URL}img/icons/chevron-right.svg`}
-              alt=""
-            />
+            <img src="img/icons/chevron-right.svg" alt="" />
             {isLast ? (
               <span className={styles.breadcrumbs__current}>{title}</span>
             ) : (

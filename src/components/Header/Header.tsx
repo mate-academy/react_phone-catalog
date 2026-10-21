@@ -55,7 +55,7 @@ export const Header = () => {
     actionLinks.map(({ to, icon, count }) => (
       <Link key={to} to={to} className={className}>
         <img
-          src={`${import.meta.env.BASE_URL}img/icons/${icon}.svg`}
+          src={`img/icons/${icon}.svg`}
           alt={icon}
           className={styles.actions__icon}
         />
@@ -68,7 +68,7 @@ export const Header = () => {
       <div className={styles.header__container}>
         <Link to="/" className={styles.logo}>
           <img
-            src={`${import.meta.env.BASE_URL}img/Logo.png`}
+            src="img/Logo.png"
             alt="Nice Gadgets"
             className={styles.logo__img}
           />
