@@ -104,5 +104,12 @@ module.exports = {
     react: {
       version: 'detect',
     },
+    'import/extensions': ['.js', '.jsx', '.ts', '.tsx'],
+    'import/parsers': {
+      '@typescript-eslint/parser': ['.ts', '.tsx'],
+    },
+    'import/resolver': {
+      typescript: {},
+    },
   },
 };

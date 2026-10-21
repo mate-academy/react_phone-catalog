@@ -1,0 +1,27 @@
+$tablet-min: 640px;
+$tablet-max: 1199px;
+$desktop-exact: 1200px;
+
+@mixin tablet {
+  @media (min-width: #{$tablet-min}) and (max-width: #{$tablet-max}) {
+    @content;
+  }
+}
+
+@mixin tablet-up {
+  @media (min-width: #{$tablet-min}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$desktop-exact}) and (max-width: 1279px) {
+    @content;
+  }
+}
+
+@mixin desktop-xl {
+  @media (min-width: 1280px) {
+    @content;
+  }
+}

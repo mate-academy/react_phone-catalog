@@ -1,0 +1,97 @@
+@use '../../styles/mixins' as *;
+
+.section {
+  width: 100%;
+  margin-bottom: 56px;
+
+  @include tablet-up {
+    margin-bottom: 80px;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 31px;
+  color: #313237;
+
+  @include tablet-up {
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+.buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  color: #313237;
+  background-color: #fff;
+  border: 1px solid #b4bdc3;
+  border-radius: 0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:disabled {
+    color: #b4bdc3;
+    border-color: #e2e6e9;
+    cursor: default;
+  }
+
+  &:hover:not(:disabled) {
+    border-color: #313237;
+  }
+}
+
+.list {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 16px;
+  width: 100%;
+  padding-bottom: 0;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.card {
+  flex-shrink: 0;
+  width: 212px;
+
+  @include tablet {
+    width: 237px;
+  }
+
+  @include desktop {
+    width: 272px;
+  }
+
+  @include desktop-xl {
+    width: 272px;
+  }
+}

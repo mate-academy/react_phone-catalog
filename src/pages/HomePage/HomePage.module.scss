@@ -1,0 +1,33 @@
+@use '../../styles/mixins' as *;
+
+.container {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 16px 0;
+
+  @include tablet {
+    padding: 32px 24px 0;
+  }
+
+  @include desktop {
+    padding: 32px 32px 0;
+  }
+
+  @include desktop-xl {
+    padding: 48px 32px 0;
+  }
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

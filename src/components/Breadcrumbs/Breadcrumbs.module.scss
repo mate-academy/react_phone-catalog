@@ -1,0 +1,36 @@
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  font-size: 12px;
+  line-height: 15px;
+  color: #89939a;
+}
+
+.home img {
+  display: block;
+  width: 16px;
+  height: 16px;
+}
+
+.separator {
+  color: #b4bdc3;
+  font-size: 14px;
+  line-height: 1;
+}
+
+.link {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s;
+
+  &:hover {
+    color: #0f0f11;
+  }
+}
+
+.current {
+  font-weight: 600;
+  color: #0f0f11;
+}
