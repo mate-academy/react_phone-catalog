@@ -5,7 +5,11 @@
   align-items: center;
   justify-content: center;
   gap: $spacing-small;
+  position: sticky;
+  bottom: 0;
   margin-top: 40px;
+  padding: $spacing-small 0;
+  background-color: $c-bg;
 
   &__pages {
     display: flex;

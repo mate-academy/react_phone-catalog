@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Product } from '../../types/Product';
 import { ProductActions } from '../ProductActions';
 import styles from './ProductCard.module.scss';
@@ -9,6 +9,8 @@ type Props = {
 };
 
 export const ProductCard = ({ product, isNew }: Props) => {
+  const { pathname } = useLocation();
+  const isOnDetails = pathname.startsWith('/product/');
   const productUrl = `/product/${product.itemId}`;
   const specs = [
     { label: 'Screen', value: product.screen },
@@ -18,7 +20,11 @@ export const ProductCard = ({ product, isNew }: Props) => {
 
   return (
     <div className={styles['product-card']} data-cy="ProductCard">
-      <Link to={productUrl} className={styles['product-card__image-link']}>
+      <Link
+        to={productUrl}
+        replace={isOnDetails}
+        className={styles['product-card__image-link']}
+      >
         <img
           src={product.image}
           alt={product.name}
@@ -26,7 +32,11 @@ export const ProductCard = ({ product, isNew }: Props) => {
         />
       </Link>
 
-      <Link to={productUrl} className={styles['product-card__title']}>
+      <Link
+        to={productUrl}
+        replace={isOnDetails}
+        className={styles['product-card__title']}
+      >
         {product.name}
       </Link>
 

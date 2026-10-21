@@ -40,6 +40,10 @@ export const ProductDetailsPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [productId]);
+
+  useEffect(() => {
     if (!productId) {
       return;
     }
@@ -183,7 +187,9 @@ export const ProductDetailsPage = () => {
                       className={styles.options__input}
                       checked={color === product.color}
                       onChange={() =>
-                        navigate(getProductUrl(color, product.capacity))
+                        navigate(getProductUrl(color, product.capacity), {
+                          replace: true,
+                        })
                       }
                       aria-label={color}
                     />
@@ -208,7 +214,9 @@ export const ProductDetailsPage = () => {
                       className={styles.options__input}
                       checked={cap === product.capacity}
                       onChange={() =>
-                        navigate(getProductUrl(product.color, cap))
+                        navigate(getProductUrl(product.color, cap), {
+                          replace: true,
+                        })
                       }
                     />
                     {cap}

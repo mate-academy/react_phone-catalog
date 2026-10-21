@@ -1,5 +1,6 @@
 import { useSearchParams } from 'react-router-dom';
 import { useStore } from '../../context/StoreContext';
+import { matchesQuery } from '../../utils/matchesQuery';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { ProductsList } from '../../components/ProductsList';
 import styles from './FavoritesPage.module.scss';
@@ -9,9 +10,7 @@ export const FavoritesPage = () => {
   const [searchParams] = useSearchParams();
   const query = (searchParams.get('query') || '').trim().toLowerCase();
 
-  const visibleFavorites = favorites.filter(p =>
-    p.name.toLowerCase().includes(query),
-  );
+  const visibleFavorites = favorites.filter(p => matchesQuery(p.name, query));
 
   return (
     <div className={styles.favorites} data-cy="FavoritesPage">

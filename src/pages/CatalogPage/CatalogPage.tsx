@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { getProducts } from '../../api/api';
 import { Product } from '../../types/Product';
+import { matchesQuery } from '../../utils/matchesQuery';
 import { Loader } from '../../components/Loader';
 import { ProductsList } from '../../components/ProductsList';
 import { Pagination } from '../../components/Pagination';
@@ -46,7 +47,7 @@ export const CatalogPage = () => {
   const pageParam = parseInt(searchParams.get('page') || '1', 10) || 1;
 
   const sortedProducts = products
-    .filter(p => p.name.toLowerCase().includes(query))
+    .filter(p => matchesQuery(p.name, query))
     .sort(SORTERS[sort] || SORTERS.age);
 
   const perPage = Number(perPageParam) || sortedProducts.length;
