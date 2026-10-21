@@ -46,8 +46,7 @@
 
     @media (min-width: $bp-sm) {
       flex-direction: row;
-      justify-content: center;
-      gap: $spacing-large;
+      justify-content: space-between;
     }
   }
 
