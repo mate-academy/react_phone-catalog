@@ -191,7 +191,7 @@ export const ProductDetailsPage = () => {
 
       <button
         type="button"
-        onClick={() => navigate(-1)}
+        onClick={() => navigate(`/${product.category}`)}
         className={styles.backBtn}
       >
         ‹ Back

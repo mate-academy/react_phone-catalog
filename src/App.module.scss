@@ -13,8 +13,12 @@
   flex-direction: column;
 }
 
+body {
+  margin: 0;
+}
+
 body,
 .app {
-  overflow-x: hidden;
+  overflow-x: clip;
   max-width: 100vw;
 }

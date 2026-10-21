@@ -2,6 +2,21 @@ import { NavLink } from 'react-router-dom';
 import styles from './Footer.module.scss';
 import { getAssetUrl } from '../../utils/assets';
 
+const footerLinks = [
+  {
+    label: 'Github',
+    href: 'https://github.com/nkgrand/react_phone-catalog',
+  },
+  {
+    label: 'Contacts',
+    href: 'https://github.com/nkgrand',
+  },
+  {
+    label: 'Rights',
+    href: 'https://github.com/nkgrand/react_phone-catalog/blob/develop/LICENSE',
+  },
+];
+
 export const Footer = () => {
   const scrollToTop = () => {
     window.scrollTo({
@@ -22,30 +37,17 @@ export const Footer = () => {
         </NavLink>
 
         <div className={styles.nav}>
-          <a
-            href="https://github.com/nkgrand/react_phone-catalog"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.link}
-          >
-            Github
-          </a>
-          <a
-            href="#"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.link}
-          >
-            Contacts
-          </a>
-          <a
-            href="#"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.link}
-          >
-            Rights
-          </a>
+          {footerLinks.map(link => (
+            <a
+              key={link.label}
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.link}
+            >
+              {link.label}
+            </a>
+          ))}
         </div>
 
         <div className={styles.backToTop}>

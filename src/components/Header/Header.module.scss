@@ -11,12 +11,12 @@
   padding: 0 16px;
 
   @media (min-width: 640px) {
-    padding: 0 24px;
+    padding: 0 0 0 24px;
   }
 
   @media (min-width: 1200px) {
     height: 64px;
-    padding: 0 32px;
+    padding-left: 32px;
   }
 }
 

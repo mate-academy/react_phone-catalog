@@ -4,7 +4,7 @@
   margin: 0 auto;
   padding: 24px 16px 80px;
   box-sizing: border-box;
-  overflow-x: hidden;
+  overflow-x: clip;
 
   @media (min-width: 640px) {
     padding: 24px 24px 64px;

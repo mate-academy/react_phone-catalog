@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="6" fill="#313237"/>
+  <text
+    x="16"
+    y="21"
+    text-anchor="middle"
+    fill="#fff"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="16"
+    font-weight="500"
+  >NG</text>
+</svg>
