@@ -18,34 +18,6 @@
   }
 }
 
-.breadcrumbs {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 24px;
-  font-size: 12px;
-  line-height: 15px;
-  color: #89939a;
-
-  a {
-    color: inherit;
-    text-decoration: none;
-
-    &:hover {
-      color: #0f0f11;
-    }
-  }
-
-  span {
-    color: #b4bdc3;
-  }
-
-  .active {
-    color: #0f0f11;
-    font-weight: 600;
-  }
-}
-
 .backBtn {
   display: inline-flex;
   align-items: center;

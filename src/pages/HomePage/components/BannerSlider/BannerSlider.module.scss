@@ -1,0 +1,109 @@
+@use '../../../../styles/mixins' as *;
+
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  width: 100%;
+  margin-bottom: 56px;
+
+  @include tablet-up {
+    margin-bottom: 80px;
+  }
+}
+
+.container {
+  display: flex;
+  align-items: stretch;
+  gap: 16px;
+  width: 100%;
+}
+
+.navButton {
+  display: none;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  padding: 0;
+  color: #313237;
+  background-color: #fff;
+  border: 1px solid #b4bdc3;
+  border-radius: 0;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+
+  &:hover {
+    border-color: #313237;
+  }
+
+  @include tablet-up {
+    display: flex;
+  }
+}
+
+.window {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+
+  @include tablet {
+    height: 320px;
+    aspect-ratio: auto;
+  }
+
+  @include desktop {
+    height: 400px;
+    aspect-ratio: auto;
+  }
+
+  @include desktop-xl {
+    height: 400px;
+    aspect-ratio: auto;
+  }
+}
+
+.track {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.slide {
+  flex-shrink: 0;
+  min-width: 100%;
+  height: 100%;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.dots {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.dot {
+  width: 14px;
+  height: 4px;
+  padding: 0;
+  background-color: #e2e6e9;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &.dotActive {
+    background-color: #313237;
+  }
+}

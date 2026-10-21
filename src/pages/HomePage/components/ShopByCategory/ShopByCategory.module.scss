@@ -1,0 +1,84 @@
+@use '../../../../styles/mixins' as *;
+
+.section {
+  width: 100%;
+  margin-bottom: 56px;
+
+  @include tablet-up {
+    margin-bottom: 80px;
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 31px;
+  color: #313237;
+
+  @include tablet-up {
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  width: 100%;
+
+  @include tablet-up {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  text-decoration: none;
+}
+
+.image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 24px;
+  overflow: hidden;
+  background-color: #89939a1a;
+  aspect-ratio: 1 / 1;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  &:hover img {
+    transform: scale(1.1);
+  }
+}
+
+.name {
+  margin: 0 0 4px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #313237;
+}
+
+.count {
+  font-size: 14px;
+  font-weight: 600;
+  color: #89939a;
+}

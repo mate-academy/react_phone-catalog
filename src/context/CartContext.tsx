@@ -60,11 +60,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
       );
 
       if (existingItem) {
-        return prevCart.map(item =>
-          getProductId(item.product) === productId
-            ? { ...item, quantity: item.quantity + 1 }
-            : item,
-        );
+        return prevCart;
       }
 
       return [...prevCart, { product: normalized, quantity: 1 }];

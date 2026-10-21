@@ -18,30 +18,6 @@
   }
 }
 
-.breadcrumbs {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 24px;
-  font-size: 12px;
-  line-height: 15px;
-  color: #89939a;
-
-  a {
-    color: inherit;
-    text-decoration: none;
-    transition: color 0.3s;
-
-    &:hover {
-      color: #0f0f11;
-    }
-  }
-
-  span {
-    color: #b4bdc3;
-  }
-}
-
 .title {
   font-size: 32px;
   font-weight: 800;
@@ -62,22 +38,6 @@
   color: #89939a;
   margin-bottom: 32px;
   font-weight: 600;
-}
-
-.productsGrid {
-  display: grid;
-  gap: 16px;
-
-  grid-template-columns: 1fr;
-
-  @media (min-width: 640px) and (max-width: 1199px) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  @media (min-width: 1200px) {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-  }
 }
 
 .emptyMessage {

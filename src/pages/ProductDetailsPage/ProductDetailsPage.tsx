@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { getProductDetails, getSuggestedProducts } from '../../api/products';
+import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { Loader } from '../../components/Loader';
 import { ProductCard } from '../../components/ProductCard';
 import { useCart } from '../../context/CartContext';
@@ -175,15 +176,12 @@ export const ProductDetailsPage = () => {
 
   return (
     <div className={styles.page}>
-      <div className={styles.breadcrumbs}>
-        <Link to="/">
-          <img src={getAssetUrl('img/icons/home.svg')} alt="Home" />
-        </Link>
-        <span>›</span>
-        <Link to={`/${product.category}`}>{categoryLabel}</Link>
-        <span>›</span>
-        <span className={styles.active}>{product.name}</span>
-      </div>
+      <Breadcrumbs
+        items={[
+          { label: categoryLabel, to: `/${product.category}` },
+          { label: product.name },
+        ]}
+      />
 
       <button
         type="button"

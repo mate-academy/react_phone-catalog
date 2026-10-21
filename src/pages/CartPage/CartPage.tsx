@@ -71,7 +71,7 @@ export const CartPage = () => {
           </div>
         </div>
       ) : (
-        <div className={styles.emptyMessage}>Your cart is empty.</div>
+        <div className={styles.emptyMessage}>Your cart is empty</div>
       )}
     </div>
   );

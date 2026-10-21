@@ -1,11 +1,11 @@
 import React, { useMemo } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
+import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { Loader } from '../../components/Loader';
-import { ProductCard } from '../../components/ProductCard';
 import { Pagination } from '../../components/Pagination';
+import { ProductsList } from '../../components/ProductsList';
 import { useProducts } from '../../context/ProductsContext';
 import { Product } from '../../types/Product';
-import { getAssetUrl } from '../../utils/assets';
 import styles from './CatalogPage.module.scss';
 
 type Category = 'phones' | 'tablets' | 'accessories';
@@ -19,7 +19,7 @@ interface Props {
 const sortProducts = (items: Product[], sortBy: string) => {
   return [...items].sort((a, b) => {
     switch (sortBy) {
-      case 'name':
+      case 'title':
         return a.name.localeCompare(b.name);
       case 'price':
         return a.price - b.price;
@@ -38,7 +38,8 @@ export const CatalogPage: React.FC<Props> = ({
   const { products, isLoading, error, reload } = useProducts();
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const sortBy = searchParams.get('sort') || 'age';
+  const sortParam = searchParams.get('sort') || 'age';
+  const sortBy = sortParam === 'name' ? 'title' : sortParam;
   const perPage = searchParams.get('perPage') || 'all';
   const currentPage = Number(searchParams.get('page')) || 1;
 
@@ -88,17 +89,7 @@ export const CatalogPage: React.FC<Props> = ({
 
   return (
     <div className={styles.container}>
-      <div className={styles.breadcrumbs}>
-        <Link to="/">
-          <img
-            src={getAssetUrl('img/icons/home.svg')}
-            alt="Home"
-            className={styles.homeIcon}
-          />
-        </Link>
-        <span className={styles.arrow}>›</span>
-        <span className={styles.activeBreadcrumb}>{breadcrumb}</span>
-      </div>
+      <Breadcrumbs items={[{ label: breadcrumb }]} />
 
       <h1 className={styles.title}>{title}</h1>
       {!isLoading && <p className={styles.count}>{total} models</p>}
@@ -115,7 +106,7 @@ export const CatalogPage: React.FC<Props> = ({
             onChange={event => updateParams('sort', event.target.value, true)}
           >
             <option value="age">Newest</option>
-            <option value="name">Alphabetically</option>
+            <option value="title">Alphabetically</option>
             <option value="price">Cheapest</option>
           </select>
         </div>
@@ -156,11 +147,7 @@ export const CatalogPage: React.FC<Props> = ({
       )}
 
       {!isLoading && !error && visibleProducts.length > 0 && (
-        <div className={styles.productsGrid}>
-          {visibleProducts.map(product => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
+        <ProductsList products={visibleProducts} />
       )}
 
       {!isLoading && !error && perPage !== 'all' && total > itemsPerPage && (
