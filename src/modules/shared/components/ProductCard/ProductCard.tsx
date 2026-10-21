@@ -20,7 +20,7 @@ export const ProductCard = ({ product }: Props) => {
       <Link to={`/product/${product.itemId}`}>
         <img
           className={styles.image}
-          src={`/${product.image}`}
+          src={`${import.meta.env.BASE_URL}${product.image}`}
           alt={product.name}
         />
       </Link>

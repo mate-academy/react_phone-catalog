@@ -119,14 +119,14 @@ export const ProductDetailsPage = () => {
                   aria-label={`View image ${index + 1}`}
                   aria-pressed={selectedImage === index}
                 >
-                  <img src={`/${image}`} alt="" />
+                  <img src={`${import.meta.env.BASE_URL}${image}`} alt="" />
                 </button>
               ))}
             </div>
 
             <img
               className={styles.productImage}
-              src={`/${product.images[selectedImage]}`}
+              src={`${import.meta.env.BASE_URL}${product.images[selectedImage]}`}
               alt={product.name}
             />
           </div>

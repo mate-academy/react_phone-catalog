@@ -5,17 +5,17 @@ import styles from './PicturesSlider.module.scss';
 const slides = [
   {
     id: 1,
-    image: '/img/banner-phones.png',
+    image: `${import.meta.env.BASE_URL}img/banner-phones.png`,
     alt: 'Discover our mobile phones',
   },
   {
     id: 2,
-    image: '/img/banner-tablets.png',
+    image: `${import.meta.env.BASE_URL}img/banner-tablets.png`,
     alt: 'Discover our tablets',
   },
   {
     id: 3,
-    image: '/img/banner-accessories.png',
+    image: `${import.meta.env.BASE_URL}img/banner-accessories.png`,
     alt: 'Discover our accessories',
   },
 ];

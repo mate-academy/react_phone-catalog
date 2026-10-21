@@ -5,19 +5,19 @@ import styles from './ShopByCategory.module.scss';
 const categories = [
   {
     name: 'Mobile phones',
-    image: '/img/category-phones.png',
+    image: `${import.meta.env.BASE_URL}img/category-phones.png`,
     path: '/phones',
     models: '95 models',
   },
   {
     name: 'Tablets',
-    image: '/img/category-tablets.png',
+    image: `${import.meta.env.BASE_URL}img/category-tablets.png`,
     path: '/tablets',
     models: '24 models',
   },
   {
     name: 'Accessories',
-    image: '/img/category-accessories.png',
+    image: `${import.meta.env.BASE_URL}img/category-accessories.png`,
     path: '/accessories',
     models: '100 models',
   },

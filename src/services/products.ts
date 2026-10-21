@@ -1,7 +1,7 @@
 import type { Product, ProductDetails } from '../types';
 
 export const getProducts = async (): Promise<Product[]> => {
-  const response = await fetch('/api/products.json');
+  const response = await fetch(`${import.meta.env.BASE_URL}api/products.json`);
 
   if (!response.ok) {
     throw new Error('Unable to load products');
@@ -18,7 +18,9 @@ export const getProductDetails = async (
   const categories = ['phones', 'tablets', 'accessories'];
 
   for (const category of categories) {
-    const response = await fetch(`/api/${category}.json`);
+    const response = await fetch(
+      `${import.meta.env.BASE_URL}api/${category}.json`,
+    );
 
     if (!response.ok) {
       throw new Error('Unable to load product details');
