@@ -1,4 +1,3 @@
-@use 'sass:color';
 @import './variables';
 
 @mixin container {
@@ -98,25 +97,4 @@
   clip-path: inset(100%);
   clip: rect(0 0 0 0);
   overflow: hidden;
-}
-
-@mixin strike-through($bg) {
-  position: relative;
-
-  &::after {
-    content: '';
-    position: absolute;
-    transform: translateY(-50%);
-    top: 50%;
-    right: 0;
-    left: 0;
-    height: 0.07em;
-    background-color: rgb(
-      color.red($bg) + color.red($c-text-secondary),
-      color.green($bg) + color.green($c-text-secondary),
-      color.blue($bg) + color.blue($c-text-secondary)
-    );
-    mix-blend-mode: difference;
-    pointer-events: none;
-  }
 }

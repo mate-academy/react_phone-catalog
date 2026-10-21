@@ -58,8 +58,7 @@
     font-weight: 500;
     line-height: 1.4;
     color: $c-text-secondary;
-
-    @include strike-through($c-surface);
+    text-decoration: line-through;
   }
 
   &__divider {

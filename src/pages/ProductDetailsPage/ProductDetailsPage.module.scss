@@ -46,8 +46,7 @@
     font-size: 22px;
     font-weight: 500;
     color: $c-text-secondary;
-
-    @include strike-through($c-bg);
+    text-decoration: line-through;
   }
 }
 
