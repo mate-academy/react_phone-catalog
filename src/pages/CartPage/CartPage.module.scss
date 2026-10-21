@@ -1,0 +1,148 @@
+.page {
+  width: 100%;
+  margin: 0 auto;
+  padding: 24px 16px 80px;
+  box-sizing: border-box;
+
+  @media (max-width: 639px) {
+    padding: 16px 16px 64px;
+  }
+
+  @media (min-width: 640px) and (max-width: 1199px) {
+    padding: 24px 24px 64px;
+  }
+
+  @media (min-width: 1200px) {
+    max-width: 1200px;
+    padding: 32px 32px 80px;
+  }
+}
+
+.backBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 16px;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+  color: #89939a;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s;
+
+  &:hover {
+    color: #0f0f11;
+  }
+}
+
+.titleRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  color: #0f0f11;
+  margin-bottom: 0;
+
+  @media (max-width: 639px) {
+    font-size: 22px;
+    line-height: 31px;
+  }
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+
+  @media (min-width: 1200px) {
+    grid-template-columns: 1fr 368px;
+    gap: 16px;
+  }
+}
+
+.itemsList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.totalBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px;
+  background-color: #fff;
+  border: 1px solid #e2e6e9;
+  height: fit-content;
+}
+
+.totalPrice {
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  color: #0f0f11;
+  margin-bottom: 4px;
+}
+
+.totalItems {
+  font-size: 14px;
+  line-height: 21px;
+  color: #89939a;
+  margin-bottom: 24px;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: #e2e6e9;
+  margin-bottom: 24px;
+}
+
+.checkoutBtn {
+  width: 100%;
+  height: 48px;
+  background-color: #0f0f11;
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #313237;
+  }
+}
+
+.clearBtn {
+  height: 40px;
+  padding: 0 16px;
+  border: 1px solid #b4bdc3;
+  background: #fff;
+  color: #0f0f11;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+
+  &:hover {
+    border-color: #0f0f11;
+  }
+}
+
+.emptyMessage {
+  font-size: 18px;
+  color: #89939a;
+  margin-top: 48px;
+  text-align: center;
+}
+
