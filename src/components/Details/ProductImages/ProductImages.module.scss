@@ -77,7 +77,8 @@
     }
 
     img {
-      flex: 1;
+      flex: none;
+      width: calc((100% - 32px) / 5);
 
       min-width: 0;
       aspect-ratio: 1 / 1;
@@ -85,6 +86,12 @@
 
       cursor: pointer;
       border: 1px solid var(--color-secondary);
+
+      transition: 0.5s ease;
+
+      &:hover {
+        transform: scale(1.1);
+      }
 
       @include on-tablet-and-desktop {
         flex: none;

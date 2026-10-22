@@ -3,14 +3,17 @@ import styles from './ProductDetailsPage.module.scss';
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import { getProductById, type DetailedProduct } from '../../api/productDetails';
+import {
+  getProductById,
+  type DetailedProductWithNumericId,
+} from '../../api/productDetails';
 import { IconTrail } from '../../components/IconTrail/IconTrail';
 
-import { ProductImages } from '../../components/Details';
+import { ProductImages, ProductOpitions } from '../../components/Details';
 
 export const ProductDetailsPage = () => {
   const { productId } = useParams();
-  const [product, setProduct] = useState<DetailedProduct>();
+  const [product, setProduct] = useState<DetailedProductWithNumericId>();
   const [isLoading, setIsLoading] = useState(true);
 
   const navigate = useNavigate();
@@ -59,7 +62,9 @@ export const ProductDetailsPage = () => {
         <p>{product.name}</p>
       </div>
 
-      <ProductImages product={product} />
+      <ProductImages key={product.id} product={product} />
+
+      <ProductOpitions product={product} />
     </section>
   );
 };

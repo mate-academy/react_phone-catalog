@@ -2,8 +2,6 @@
 @use '../../styles/fonts.scss' as *;
 
 .details {
-  // flex: 1;
-
   @include page-grid;
 
   grid-template-columns: repeat(4, minmax(0, 1fr));
