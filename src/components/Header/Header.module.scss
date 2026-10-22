@@ -37,6 +37,8 @@
   }
 
   &__logo {
+    flex-shrink: 0;
+
     display: flex;
 
     justify-content: center;
@@ -71,26 +73,21 @@
   }
 
   &__pages {
-    display: flex;
+    display: none;
     height: 100%;
     text-decoration: none;
-
-    opacity: 0;
-    pointer-events: none;
 
     color: var(--color-secondary);
 
     @include on-tablet {
-      pointer-events: all;
-      opacity: 1;
+      display: flex;
       align-items: center;
       gap: 64px;
       padding-left: 16px;
     }
 
     @include on-desktop {
-      pointer-events: all;
-      opacity: 1;
+      display: flex;
       align-items: center;
       gap: 32px;
       padding-left: 24px;
@@ -238,7 +235,7 @@
 
     &--open {
       .header__searchBox {
-        width: 300px;
+        width: min(300px, calc(100vw - 96px));
         opacity: 1;
         pointer-events: auto;
       }
