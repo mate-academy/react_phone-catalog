@@ -1,0 +1,78 @@
+
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  position: relative;
+  overflow: hidden;
+  
+  @include container;
+
+  flex: 1;
+  padding: $space-4;
+
+  @include mobile {
+    padding: $space-3;
+  }
+
+  @include tablet {
+    padding: $space-4;
+  }
+
+  @include desktop {
+    padding: $space-5;
+  }
+}
+
+/* PRODUCT GRID */
+.layout--grid {
+  display: grid;
+  grid-template-columns: 1fr;
+
+  gap: 40px $space-3;
+
+
+  width: 100%;
+
+  @include tablet {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @include desktop {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  justify-items: start;
+}
+
+/* HORIZONTAL PRODUCT SLIDER */
+.layout--slider {
+  display: flex;
+  gap: $space-3;
+
+  width: 100%;
+
+  overflow: auto hidden;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  > * {
+    flex: 0 0 auto;
+  }
+}
+
+.footerSpacer {
+  margin-top: $space-6;
+
+  @include mobile {
+    margin-top: $space-4;
+  }
+}
+

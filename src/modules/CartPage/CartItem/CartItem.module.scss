@@ -1,0 +1,211 @@
+.item {
+  display: flex;
+  align-items: center;
+  gap: $space-4;
+
+  width: 100%;
+  min-width: 0;
+  height: 128px;
+
+  padding: $space-4;
+  box-sizing: border-box;
+
+  background-color: var(--surface-1);
+
+  @include tablet {
+    height: auto;
+    gap: $space-3;
+    padding: $space-3;
+  }
+
+  @include mobile {
+    flex-direction: column;
+    align-items: stretch;
+
+    height: auto;
+    gap: $space-3;
+    padding: $space-3;
+  }
+}
+
+/* PRODUCT INFO */
+.topRow {
+  display: flex;
+  align-items: center;
+  gap: $space-4;
+  background: transparent;
+
+  flex: 1;
+  min-width: 0;
+
+  @include tablet {
+    gap: $space-3;
+  }
+
+  @include mobile {
+    width: 100%;
+    gap: $space-2;
+  }
+}
+
+/* REMOVE BUTTON */
+.iconBtn {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+
+  background: transparent;
+  border: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  transition: background var(--hover-transition);
+
+  img {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+    background: transparent;
+  }
+
+  &:hover {
+    background: var(--surface-3);
+  }
+
+  @include mobile {
+    width: 28px;
+    height: 28px;
+
+    img {
+      width: 14px;
+      height: 14px;
+    }
+  }
+}
+
+/* PRODUCT IMAGE */
+.itemImage {
+  flex-shrink: 0;
+
+  width: $thumbnail-size;
+  aspect-ratio: 1 / 1;
+
+  object-fit: contain;
+  background: transparent;
+}
+
+/* PRODUCT NAME */
+.itemName {
+  flex: 1;
+  min-width: 0;
+
+  font-size: 14px;
+  font-weight: $h3-weight;
+  color: var(--text-primary);
+
+  background: transparent;
+
+  white-space: normal;
+}
+
+/* QUANTITY + PRICE */
+.bottomRow {
+  display: flex;
+  align-items: center;
+  gap: $space-4;
+  background: transparent;
+
+  flex-shrink: 0;
+
+
+  @include tablet {
+    gap: $space-3;
+  }
+
+  @include mobile {
+    width: 100%;
+    justify-content: space-between;
+    gap: $space-2;
+  }
+}
+
+/* QUANTITY */
+.quantity {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+
+  background: transparent;
+
+  @include tablet {
+    gap: $space-2;
+  }
+
+  @include mobile {
+    gap: $space-2;
+  }
+}
+
+/* QUANTITY BUTTON */
+.qtyBtn {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+
+  background: transparent;
+  border: 1px solid #3B3E4A;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  transition: background var(--hover-transition);
+
+  img {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+    background: transparent;
+  }
+
+  &:hover {
+    background: var(--surface-3);
+  }
+
+  @include mobile {
+    width: 28px;
+    height: 28px;
+
+    img {
+      width: 14px;
+      height: 14px;
+    }
+  }
+}
+
+/* QUANTITY VALUE */
+.qtyValue {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+
+  background: transparent;
+}
+
+/* PRICE */
+.price {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+
+  background: transparent;
+
+  @include mobile {
+    font-size: 18px;
+  }
+}

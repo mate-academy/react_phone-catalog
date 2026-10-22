@@ -1,0 +1,26 @@
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: $space-6;
+  color: var(--text-primary);
+}
+
+
+.infoBlock {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+
+  padding: 0;
+
+.cardInfo {
+  background: transparent !important;
+  border: none !important;
+
+  gap: $space-2 !important;
+
+    transform: none !important;
+    box-shadow: none !important;
+  }
+}
+

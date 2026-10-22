@@ -1,0 +1,54 @@
+@use './breakpoints' as *;
+@use '../variables' as *;
+
+
+@mixin container {
+  margin-inline: auto;
+
+  @include mobile {
+    padding-inline: $container-padding-mobile;
+  }
+
+  @include tablet {
+    padding-inline: $container-padding-tablet;
+  }
+
+  @include desktop {
+    max-width: $container-width-desktop;
+    padding-inline: $container-padding-desktop;
+  }
+}
+
+// Flex helpers
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+/* Entering */
+.fade-enter {
+  opacity: 0;
+}
+
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+/* Exiting */
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit-active {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}

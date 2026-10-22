@@ -1,0 +1,190 @@
+.footer {
+  background-color: var(--bg-primary);
+  border-top: 1px solid var(--color-elements);
+
+  padding: $space-5 $space-4;
+
+  @include tablet {
+    padding: $space-5 $space-6;
+  }
+
+  @include desktop {
+    padding: $space-6;
+  }
+}
+
+/* CONTAINER */
+
+.footerContainer {
+  @include container;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  gap: $space-4;
+
+  @include mobile {
+    flex-direction: column;
+    align-items: flex-start;
+
+    gap: $space-5;
+  }
+}
+
+/* LOGO */
+
+.logo {
+  display: flex;
+  align-items: center;
+
+  padding: 0 16px;
+
+  transition: transform $transition;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.logoImage {
+  width: 64px;
+  height: 24px;
+
+  @include desktop {
+    width: 80px;
+    height: 28px;
+  }
+}
+
+/* NAVIGATION */
+
+.nav {
+  display: flex;
+  align-items: center;
+
+  gap: $space-5;
+
+  @include tablet {
+    gap: $space-4;
+  }
+
+  @include mobile {
+    flex-direction: column;
+    align-items: flex-start;
+
+    width: 100%;
+    gap: $space-3;
+  }
+}
+
+.github,
+.contacts,
+.rights {
+  @include body-text;
+
+  color: var(--text-primary);
+
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: $menu-letter-spacing;
+
+  transition: color $transition;
+
+  &:hover {
+    color: var(--accent-primary);
+  }
+}
+
+/* BACK TO TOP */
+
+.backToTop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: $space-3;
+
+  padding: 0;
+
+  background: transparent;
+  border: none;
+
+  cursor: pointer;
+  flex-shrink: 0;
+
+  @include mobile {
+    align-self: center;
+  }
+}
+
+.backToTopText {
+  @include body-text;
+
+  color: var(--text-secondary);
+
+  font-weight: 600;
+  letter-spacing: 0.5px;
+
+  white-space: nowrap;
+
+  transition: color $transition;
+}
+
+.backToTop:hover .backToTopText {
+  color: var(--text-primary);
+}
+
+/* BACK TO TOP BUTTON */
+
+.backToTopIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+
+  background-color: var(--color-secondary);
+
+  transition:
+    background-color $transition,
+    transform $transition;
+}
+
+.backToTop:hover .backToTopIcon {
+  background-color: var(--color-elements);
+  transform: translateY(-2px);
+}
+
+/* BACK TO TOP ICON */
+
+.backToTopIconImage {
+  display: block;
+
+  width: 16px;
+  height: 16px;
+
+  background-color: var(--color-icons);
+
+  mask-image: url('/img/icons/Back-to-top.svg');
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+
+  -webkit-mask-image: url('/img/icons/Back-to-top.svg');
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+
+  transition: background-color $transition;
+}
+
+.backToTop:hover .backToTopIconImage {
+  background-color: var(--text-primary);
+}

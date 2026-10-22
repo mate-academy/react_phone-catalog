@@ -1,0 +1,41 @@
+.itemDetails {
+  .details {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 1fr);
+    gap: 48px;
+    align-items: start;
+  }
+
+.description {
+  grid-area: description;
+  margin-top: $space-6;
+
+  @include tablet {
+    margin-top: $space-5;
+  }
+
+  display: flex;
+  flex-direction: column;
+  gap: $space-5;
+
+  h2 {
+    font-size: $h2-size;
+    font-weight: $h2-weight;
+    line-height: $h2-line-height;
+    margin-bottom: $space-4;
+  }
+}
+
+.spec {
+  grid-area: spec;
+  margin-top: $space-6;
+
+  @include tablet {
+    margin-top: $space-5;
+  }
+
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+}
+}

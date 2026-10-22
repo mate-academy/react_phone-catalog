@@ -1,0 +1,82 @@
+@use './breakpoints' as *;
+@use '../variables' as *;
+
+@mixin typography(
+  $size,
+  $line-height,
+  $weight,
+  $spacing: 0,
+  $transform: none,
+  $mobile-size: null,
+  $mobile-line-height: null
+) {
+  font-family: $font-family-primary;
+  font-weight: $weight;
+  font-size: $size;
+  line-height: $line-height;
+  letter-spacing: $spacing;
+  text-transform: $transform;
+
+  @if $mobile-size != null and $mobile-line-height != null {
+    @include mobile {
+      font-size: $mobile-size;
+      line-height: $mobile-line-height;
+    }
+  }
+}
+
+@mixin h2 {
+  @include typography(
+    32px, 40px, 700, -0.04em, none,
+    25px, 32px
+  );
+}
+
+@mixin h3 {
+  @include typography(
+    25px, 32px, 600, -0.04em, none,
+    20px, 28px
+  );
+}
+
+@mixin h4 {
+  @include typography(
+    20px, 28px, 600, -0.04em, none,
+    16px, 24px
+  );
+}
+
+@mixin body-text {
+  @include typography(16px, 24px, 400, 0);
+}
+
+@mixin small-text {
+  @include typography(14px, 20px, 600, 0);
+}
+
+@mixin menu-typography(
+  $desktop-size: $menu-font-size,
+  $desktop-line-height: $menu-line-height,
+  $mobile-size: null,
+  $mobile-line-height: null
+) {
+  @include typography(
+    $desktop-size,
+    $desktop-line-height,
+    $menu-font-weight,
+    $menu-letter-spacing,
+    $menu-text-transform,
+    $mobile-size,
+    $mobile-line-height
+  );
+}
+
+@mixin counter-text {
+  @include typography(
+    14px,
+    21px,
+    600,
+    0,        // letter-spacing
+    none      // text-transform
+  );
+}

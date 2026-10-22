@@ -1,0 +1,7 @@
+.suggested {
+  margin-top: $space-6;
+
+  @include tablet {
+    margin-top: $space-5;
+  }
+}

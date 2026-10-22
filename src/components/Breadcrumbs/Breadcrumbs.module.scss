@@ -1,0 +1,88 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  margin-top: $space-3;
+  margin-bottom: $space-2;
+
+  @include tablet {
+    margin-top: 24px;
+    margin-bottom: 12px;
+  }
+}
+
+/* HOME ICON BUTTON */
+.maskIcon {
+  display: block;
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+
+  background-color: var(--color-icons);
+
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+
+  @include desktop {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.homeIcon {
+  mask-image: url('./img/icons/Home.svg');
+  -webkit-mask-image: url('./img/icons/Home.svg');
+}
+
+.arrow {
+  width: 16px;
+  height: 16px;
+  opacity: 0.6;
+  transition: opacity $transition;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+}
+
+.link {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 12px;
+  transition: color $transition;
+
+  &:hover {
+    color: var(--text-secondary);
+  }
+
+  @include tablet {
+    font-size: 14px;
+  }
+}
+
+/* CURRENT PAGE */
+.current {
+  color: var(--text-primary);
+  font-size: 12px;
+
+  @include tablet {
+    font-size: 14px;
+  }
+}

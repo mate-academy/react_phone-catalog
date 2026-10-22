@@ -1,0 +1,123 @@
+.hero {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 400px;
+  margin-bottom: 8px;
+
+  background: var(--surface-1);
+  overflow: hidden;
+}
+
+.bannerImage {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+}
+
+/* ARROWS */
+
+.arrow {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+
+  width: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: transparent;
+  border: none;
+
+  cursor: pointer;
+  z-index: 20;
+}
+
+.arrowLeft {
+  left: 0;
+}
+
+.arrowRight {
+  right: 0;
+}
+
+.arrowIcon {
+  @include flex-center;
+
+  width: 32px;
+  height: 32px;
+
+  background: var(--slider-btn-bg);
+  border: 1px solid var(--color-elements);
+  border-radius: $radius-s;
+
+  transition:
+    background-color $transition,
+    border-color $transition,
+    transform $transition;
+
+  img {
+    width: 16px;
+    height: 16px;
+
+    object-fit: contain;
+
+    transition: filter $transition;
+  }
+
+  &:hover {
+    background: var(--slider-btn-hover);
+    transform: translateY(-2px);
+
+    img {
+      filter: brightness(0) invert(1);
+    }
+  }
+}
+
+/* DOTS */
+
+.dotsWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.dots {
+  display: flex;
+  gap: $space-2;
+
+  button {
+    width: 28px;
+    height: 4px;
+    margin-top: 10px;
+
+    border: none;
+    border-radius: $radius-s;
+
+    background: var(--color-elements);
+    opacity: 0.4;
+
+    cursor: pointer;
+
+    transition:
+      opacity $transition,
+      background-color $transition;
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    &.active {
+      opacity: 1;
+      background: var(--accent-primary);
+    }
+  }
+}
