@@ -33,7 +33,7 @@ export const AccessoriesPage = () => {
         <p>Error ao carregar a página</p>
       ) : (
         <div className={styles.accessories}>
-          <IconTrail name="Tablets" choseProduct={null} />
+          <IconTrail name="Accessories" choseProduct={null} />
           <section className={styles.accessories__title}>
             <h1>Accessories</h1>
           </section>

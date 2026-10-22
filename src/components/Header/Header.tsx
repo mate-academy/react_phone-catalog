@@ -55,7 +55,7 @@ export const Header = () => {
           {/* PAGES */}
           <div className={styles.header__pages}>
             <NavLink to="/">home</NavLink>
-            <NavLink to="/phones">phone</NavLink>
+            <NavLink to="/phones">phones</NavLink>
             <NavLink to="/tablets">tablets</NavLink>
             <NavLink to="/accessories">accessories</NavLink>
           </div>

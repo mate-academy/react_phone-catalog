@@ -2,7 +2,7 @@
 @use '../../styles/fonts.scss' as *;
 
 .trail {
-  grid-column: 1 /-1;
+  grid-column: 1 / -1;
 
   display: flex;
 
@@ -16,7 +16,16 @@
   height: 16px;
 
   a {
+    display: flex;
+    align-items: center;
+
+    @include small-text;
+
+    color: var(--color-secondary);
+    text-decoration: none;
+
     transition: 0.5s ease;
+
     &:hover {
       transform: scale(1.1);
     }

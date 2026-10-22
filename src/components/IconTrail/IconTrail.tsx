@@ -5,6 +5,7 @@ type IconTrailProps = {
   name: string;
   choseProduct: string | null;
 };
+
 export const IconTrail = ({ name, choseProduct }: IconTrailProps) => {
   return (
     <section className={styles.trail}>
@@ -12,13 +13,13 @@ export const IconTrail = ({ name, choseProduct }: IconTrailProps) => {
         <img src="./icons/Home.svg" alt="home" />
       </NavLink>
 
-      <img src="./icons/ChevronArrowRight.svg" alt="home" />
+      <img src="./icons/ChevronArrowRight.svg" alt="" />
 
-      <p>{name}</p>
+      <NavLink to={`/${name.toLowerCase()}`}>{name.toUpperCase()}</NavLink>
 
       {choseProduct !== null && (
         <>
-          <img src="./icons/ChevronArrowRight.svg" alt="home" />
+          <img src="./icons/ChevronArrowRight.svg" alt="" />
           <p>{choseProduct}</p>
         </>
       )}
