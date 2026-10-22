@@ -62,7 +62,27 @@ export const ProductCard = ({ product }: Props) => {
           }
           aria-pressed={isFavorite}
         >
-          {isFavorite ? '♥' : '♡'}
+          <svg
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill={isFavorite ? 'currentColor' : 'none'}
+            stroke="currentColor"
+            strokeWidth="1.8"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+          >
+            <path
+              d={[
+                'M20.8 4.6a5.5 5.5 0 0 0-7.8 0',
+                'L12 5.7l-1.1-1.1',
+                'a5.5 5.5 0 0 0-7.8 7.8',
+                'L12 21l8.8-8.6',
+                'a5.5 5.5 0 0 0 0-7.8Z',
+              ].join('')}
+            />
+          </svg>
         </button>
       </div>
     </article>

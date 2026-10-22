@@ -6,6 +6,7 @@ import type { Product } from '../../../../types';
 import { ProductCard } from '../ProductCard';
 
 import styles from './ProductsCatalog.module.scss';
+import { Breadcrumbs } from '../Breadcrumbs';
 
 type SortBy = 'age' | 'title' | 'price';
 type Category = 'phones' | 'tablets' | 'accessories';
@@ -106,6 +107,8 @@ export const ProductsCatalog = ({ title, category }: Props) => {
 
   return (
     <main className={styles.page}>
+      <Breadcrumbs category={category} />
+
       <h1 className={styles.title}>{title}</h1>
 
       <p className={styles.count}>{filteredProducts.length} models</p>

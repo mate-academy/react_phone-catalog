@@ -17,23 +17,46 @@
 }
 
 .logo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
   margin-right: 48px;
-  color: #313237;
-  font-size: 18px;
-  font-weight: 700;
+  color: #f43fa5;
+  font-size: 26px;
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -1px;
   text-decoration: none;
+  white-space: nowrap;
+
+  &:visited,
+  &:hover,
+  &:active {
+    color: #f43fa5;
+    text-decoration: none;
+  }
+}
+
+.logoTop {
+  display: flex;
+  align-items: center;
+}
+
+.logoBottom {
+  display: block;
+}
+
+.logoEmoji {
+  margin-left: 2px;
+  font-size: 22px;
+  line-height: 1;
 }
 
 .nav {
   display: flex;
   align-items: center;
   gap: 32px;
-}
-
-.actions {
-  display: flex;
-  gap: 24px;
-  margin-left: auto;
 }
 
 .nav a {
@@ -43,23 +66,31 @@
   text-decoration: none;
   text-transform: uppercase;
   transition: color 0.3s;
+
+  &[aria-current='page'] {
+    color: #313237;
+  }
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-left: auto;
 }
 
 .actions a {
   color: #313237;
-  font-size: 22px;
   text-decoration: none;
-  transition: transform 0.3s;
-}
+  transition:
+    color 0.3s,
+    transform 0.3s;
 
-.nav a:hover {
-  color: #313237;
+  &:hover {
+    color: #e84393;
+    transform: scale(1.1);
+  }
 }
-
-.actions a:hover {
-  transform: scale(1.1);
-}
-
 
 .actionLink {
   position: relative;
@@ -68,6 +99,10 @@
   justify-content: center;
   min-width: 32px;
   height: 40px;
+
+  svg {
+    display: block;
+  }
 }
 
 .counter {
@@ -82,7 +117,7 @@
   padding: 0 3px;
   border: 1px solid #fff;
   border-radius: 50%;
-  background-color: #313237;
+  background-color: #e84393;
   color: #fff;
   font-size: 10px;
   font-weight: 700;
@@ -101,12 +136,14 @@
 
   .logo {
     margin-right: auto;
-    font-size: 16px;
-    white-space: nowrap;
+    font-size: 22px;
+  }
+  
+  .logoEmoji {
+    font-size: 19px;
   }
 
   .actions {
-    align-items: center;
     gap: 16px;
     margin-left: 0;
   }
@@ -155,10 +192,18 @@
   }
 
   .logo {
-    font-size: 14px;
+    font-size: 19px;
+  }
+  
+  .logoEmoji {
+    font-size: 17px;
   }
 
   .actions {
     gap: 8px;
   }
+}
+
+.nav a:hover {
+  color: #313237;
 }

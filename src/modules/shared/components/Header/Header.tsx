@@ -25,7 +25,11 @@ export const Header = () => {
     <header className={styles.header}>
       <div className={styles.container}>
         <NavLink to="/" className={styles.logo} onClick={closeMenu}>
-          NICE GADGETS
+          <span className={styles.logoTop}>
+            NICE<span className={styles.logoEmoji}>👌</span>
+          </span>
+
+          <span className={styles.logoBottom}>GADGETS</span>
         </NavLink>
 
         <nav
@@ -57,7 +61,28 @@ export const Header = () => {
             aria-label={`Favorites (${favoritesCount})`}
             onClick={closeMenu}
           >
-            ♡
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              <path
+                d={[
+                  'M20.8 4.6a5.5 5.5 0 0 0-7.8 0',
+                  'L12 5.7l-1.1-1.1',
+                  'a5.5 5.5 0 0 0-7.8 7.8',
+                  'L12 21l8.8-8.6',
+                  'a5.5 5.5 0 0 0 0-7.8Z',
+                ].join('')}
+              />
+            </svg>
+
             {favoritesCount > 0 && (
               <span className={styles.counter}>{favoritesCount}</span>
             )}
@@ -69,7 +94,21 @@ export const Header = () => {
             aria-label={`Cart (${cartCount})`}
             onClick={closeMenu}
           >
-            🛒
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              <rect x="4" y="8" width="16" height="12" rx="2" />
+              <path d="M9 10V6a3 3 0 0 1 6 0v4" />
+            </svg>
+
             {cartCount > 0 && (
               <span className={styles.counter}>{cartCount}</span>
             )}
