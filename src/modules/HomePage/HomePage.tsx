@@ -5,11 +5,12 @@ import { ProductsSlider } from '../components/ProductsSlider';
 import { NavLink } from 'react-router-dom';
 import arrowLeft from '../../img/icons/Slider_ArrowLeft.svg';
 import arrowRight from '../../img/icons/Slider_ArrowRight.svg';
+import { withBase } from '../../utils/withBase';
 
 const banners = [
-  '/img/banner-phones.png',
-  '/img/banner-tablets.png',
-  '/img/banner-accessories.png',
+  withBase('/img/banner-phones.png'),
+  withBase('/img/banner-tablets.png'),
+  withBase('/img/banner-accessories.png'),
 ];
 
 export const HomePage = () => {
