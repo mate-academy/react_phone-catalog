@@ -29,7 +29,7 @@ export const CartProvider: React.FC<React.PropsWithChildren> = ({
   const value = useMemo<CartContextType>(
     () => ({
       items,
-      totalCount: items.length,
+      totalCount: items.reduce((sum, item) => sum + item.quantity, 0),
       totalPrice: items.reduce(
         (sum, item) => sum + item.product.priceDiscount * item.quantity,
         0,

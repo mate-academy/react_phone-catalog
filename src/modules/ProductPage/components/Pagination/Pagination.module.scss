@@ -52,3 +52,13 @@
     background-color: $color-primary;
   }
 }
+
+.ellipsis {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  color: $color-secondary;
+  user-select: none;
+}

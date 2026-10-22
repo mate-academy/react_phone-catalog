@@ -1,10 +1,33 @@
 import React from 'react';
 import styles from './Pagination.module.scss';
+import {
+  ELLIPSIS,
+  MAX_WITHOUT_ELLIPSIS,
+} from '../../../../constants/pagination-ellipsis';
 
 type Props = {
   currentPage: number;
   totalPages: number;
   onPageChange: (page: number) => void;
+};
+
+const range = (from: number, to: number): number[] =>
+  Array.from({ length: to - from + 1 }, (_, i) => from + i);
+
+const getPages = (current: number, total: number): (number | string)[] => {
+  if (total <= MAX_WITHOUT_ELLIPSIS) {
+    return range(1, total);
+  }
+
+  if (current <= 3) {
+    return [...range(1, Math.max(3, current + 1)), ELLIPSIS, total];
+  }
+
+  if (current >= total - 2) {
+    return [1, ELLIPSIS, ...range(Math.min(total - 2, current - 1), total)];
+  }
+
+  return [1, ELLIPSIS, current - 1, current, current + 1, ELLIPSIS, total];
 };
 
 export const Pagination: React.FC<Props> = ({
@@ -16,16 +39,7 @@ export const Pagination: React.FC<Props> = ({
     return null;
   }
 
-  const VISIBLE_PAGES = 4;
-  const currentBlock = Math.ceil(currentPage / VISIBLE_PAGES);
-  const startPage = (currentBlock - 1) * VISIBLE_PAGES + 1;
-  const endPage = Math.min(startPage + VISIBLE_PAGES - 1, totalPages);
-
-  const pages = [];
-
-  for (let i = startPage; i <= endPage; i++) {
-    pages.push(i);
-  }
+  const pages = getPages(currentPage, totalPages);
 
   return (
     <div className={styles.pagination}>
@@ -38,16 +52,22 @@ export const Pagination: React.FC<Props> = ({
         &lt;
       </button>
 
-      {pages.map(page => (
-        <button
-          key={page}
-          type="button"
-          onClick={() => onPageChange(page)}
-          className={`${styles['page-button']} ${page === currentPage ? styles.active : ''}`}
-        >
-          {page}
-        </button>
-      ))}
+      {pages.map((page, index) =>
+        typeof page === 'string' ? (
+          <span key={`ellipsis-${index}`} className={styles.ellipsis}>
+            {page}
+          </span>
+        ) : (
+          <button
+            key={page}
+            type="button"
+            onClick={() => onPageChange(page)}
+            className={`${styles['page-button']} ${page === currentPage ? styles.active : ''}`}
+          >
+            {page}
+          </button>
+        ),
+      )}
 
       <button
         type="button"
