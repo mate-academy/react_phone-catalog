@@ -1,0 +1,81 @@
+@use '../../styles/mixins/breakpoints' as *;
+@use '../../styles/global-variables' as *;
+
+.overlay {
+  position: fixed;
+  inset: $header-height-mobile 0 0 0; // top, right, bottom, left
+  background: var(--surface-hover);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+  z-index: 9;
+
+  &--open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  @include tablet-up {
+    position: static;
+    inset: auto;
+    opacity: 1;
+    visibility: visible;
+    background: transparent;
+    display: flex;
+    align-items: stretch;
+    height: 100%;
+  }
+}
+
+.nav {
+  @include mobile-only {
+    margin-top: 24px;
+  }
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  height: 100%;
+
+  @include tablet-up {
+    flex-direction: row;
+    align-items: stretch;
+    gap: 32px;
+  }
+
+  @include desktop-up {
+    gap: 64px;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    border-bottom: 2px solid transparent;
+    color: $secondary-color;
+    font-size: 12px;
+    font-weight: 800;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    @include mobile-only {
+      padding: 8px 0;
+    }
+
+    @include tablet-up {
+      border-bottom: 3px solid transparent
+    }
+
+    &:hover,
+    &:focus-visible {
+      border-color: $primary-color;
+      color: $primary-color;
+    }
+
+    &--active {
+      border-color: $primary-color;
+      color: $primary-color;
+    }
+  }
+}

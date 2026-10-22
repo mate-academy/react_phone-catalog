@@ -1,21 +1,55 @@
 @use '../../styles/mixins/breakpoints' as *;
-@use '../../styles/mixins/global-variables' as *;
+@use '../../styles/global-variables' as *;
+
+@mixin tablet-up-only-visible {
+  display: none;
+
+  @include tablet-up {
+    display: block;
+  }
+}
 
 .header {
   display: flex;
   justify-content: space-between;
-  height: 48px;
-  width: auto;
-  border-bottom: 1px solid $elements-color;
+  align-items: stretch;
+
+  height: $header-height-mobile;
   box-sizing: border-box;
 
+  // border-bottom: 1px solid $elements-color;
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background: $elements-color;
+    pointer-events: none;
+  }
 
   @include desktop-up {
-    height: 64px;
+    height: $header-height-desktop;
   }
 
   &__logo {
-    padding: 13px 16px;
+    padding: 0 16px;
+
+    @include desktop-up {
+      padding: 0 24px;
+    }
+  }
+
+  &__nav-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    @include desktop-up {
+      gap: 24px;
+    }
   }
 
   &__icons-wrapper {
@@ -23,33 +57,28 @@
   }
 
   &__icon {
-    padding: 16px;
+    display: block;
     width: 48px;
     height: 48px;
+    padding: 16px;
+    border-left: 1px solid $elements-color;
     box-sizing: border-box;
 
-    border-left: 1px solid $elements-color;
-  }
-
-  &__icon--menu {
-    @include tablet-up {
-      display: none;
+    @include desktop-up {
+      width: 64px;
+      height: 64px;
+      padding: 24px;
     }
-  }
 
-  &__icon--favourites {
-    display: none;
-
-    @include tablet-up {
-      display: inline;
+    &--menu {
+      @include tablet-up {
+        display: none;
+      }
     }
-  }
 
-  &__icon--shopping-bag {
-    display: none;
-
-    @include tablet-up {
-      display: inline;
+    &--favourites,
+    &--shopping-bag {
+      @include tablet-up-only-visible;
     }
   }
 }

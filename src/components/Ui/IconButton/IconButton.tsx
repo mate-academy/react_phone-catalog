@@ -6,6 +6,7 @@ import classNames from 'classnames/bind';
 interface Props {
   src: string;
   onClick: () => void;
+  toggled?: boolean;
   toggledSrc?: string;
   label?: string;
 }
@@ -13,27 +14,18 @@ interface Props {
 export const IconButton: React.FC<Props> = ({
   src,
   onClick,
+  toggled = false,
   toggledSrc,
   label,
 }) => {
   const cx = classNames.bind(styles);
-
-  const [toggled, setToggled] = React.useState(false);
-
-  const handleClick = () => {
-    onClick?.();
-
-    if (toggledSrc) {
-      setToggled(prev => !prev);
-    }
-  };
 
   return (
     <button
       type="button"
       aria-label={label}
       title={label}
-      onClick={handleClick}
+      onClick={onClick}
       className={cx('icon-button')}
     >
       <img

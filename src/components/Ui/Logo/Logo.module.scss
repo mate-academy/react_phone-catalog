@@ -5,6 +5,8 @@
   height: 22px;
   object-fit: cover;
 
+  display: block;
+
   @include desktop-up {
     width: 80px;
     height: 28px;

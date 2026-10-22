@@ -4,8 +4,10 @@
   padding: 0;
   margin: 0;
   cursor: pointer;
-  display: inline;
-
+  display: inline-block;
+  pointer-events: auto;
+  position: relative;
+  z-index: 10;
   &__icon {
     width: 16px;
     height: 16px;
