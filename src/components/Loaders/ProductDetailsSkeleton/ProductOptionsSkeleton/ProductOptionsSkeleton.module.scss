@@ -1,0 +1,179 @@
+@use '../../../../styles/mixins' as *;
+
+.pulsate {
+  background: linear-gradient(-45deg, #e5e5ea, #f5f5f7, #e5e5ea, #f5f5f7);
+  background-size: 400% 400%;
+  animation: gradient 2.25s ease infinite;
+}
+
+.skeletonBlock {
+  border-radius: 4px;
+
+  &__label {
+    width: 110px;
+    height: 14px;
+  }
+
+  &__id {
+    width: 70px;
+    height: 14px;
+  }
+
+  &__color {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+  }
+
+  &__capacity {
+    width: 64px;
+    height: 36px;
+  }
+
+  &__price {
+    width: 90px;
+    height: 32px;
+  }
+
+  &__fullPrice {
+    width: 60px;
+    height: 24px;
+  }
+
+  &__buttonMain {
+    flex: 1;
+    height: 48px;
+  }
+
+  &__buttonFav {
+    flex: 0 0 48px;
+    height: 48px;
+  }
+
+  &__specLabel {
+    width: 70px;
+    height: 14px;
+  }
+
+  &__specValue {
+    width: 90px;
+    height: 14px;
+  }
+}
+
+.options {
+  grid-column: 1 / -1;
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+
+  @include on-tablet {
+    grid-column: 8 / -1;
+  }
+
+  @include on-desktop {
+    grid-column: 13 / 20;
+  }
+
+  &__colorsBox {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+
+    gap: 8px;
+
+    &--text {
+      display: flex;
+      flex-direction: row;
+
+      width: 100%;
+
+      justify-content: space-between;
+    }
+
+    &--colors {
+      display: flex;
+      flex-direction: row;
+
+      width: 100%;
+      gap: 8px;
+    }
+  }
+
+  &__bar {
+    width: 100%;
+    border-top: 1px solid var(--color-elements);
+
+    margin-top: 24px;
+  }
+
+  &__capacityBox {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    margin-top: 24px;
+
+    gap: 8px;
+
+    &--capacities {
+      display: flex;
+      flex-flow: row wrap;
+
+      gap: 8px;
+    }
+  }
+
+  &__price {
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    margin-top: 24px;
+
+    gap: 8px;
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: row;
+
+    width: 100%;
+    margin-top: 16px;
+
+    gap: 8px;
+  }
+
+  &__specs {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    margin-top: 24px;
+
+    gap: 8px;
+
+    &--box {
+      display: flex;
+      flex-direction: row;
+
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

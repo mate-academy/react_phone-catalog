@@ -17,6 +17,14 @@ import {
 import { ProductTechSpecs } from '../../components/Details/ProductTechSpecs';
 import { ProductsSlider } from '../../components/ProductsSlider';
 
+import {
+  ProductAboutSkeleton,
+  ProductImagesSkeleton,
+  ProductOptionsSkeleton,
+  ProductTechSpecsSkeleton,
+  // ProductImages,
+} from '../../components/Loaders/ProductDetailsSkeleton';
+
 export const ProductDetailsPage = () => {
   const { productId } = useParams();
   const [product, setProduct] = useState<DetailedProductWithNumericId>();
@@ -33,12 +41,12 @@ export const ProductDetailsPage = () => {
 
     getProductById(productId)
       .then(setProduct)
-      .finally(() => setIsLoading(false));
+      .finally(() =>
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 500),
+      );
   }, [productId]);
-
-  if (isLoading) {
-    return <p>Loading...</p>;
-  }
 
   if (!product) {
     return <p>Product was not found.</p>;
@@ -66,10 +74,31 @@ export const ProductDetailsPage = () => {
       <div className={styles.details__name}>
         <p>{product.name}</p>
       </div>
-      <ProductImages key={product.id} product={product} />
-      <ProductOpitions product={product} />
-      <ProductAbout product={product} />
-      <ProductTechSpecs product={product} />
+
+      {isLoading ? (
+        <ProductImagesSkeleton />
+      ) : (
+        product && <ProductImages key={product.id} product={product} />
+      )}
+
+      {isLoading ? (
+        <ProductOptionsSkeleton />
+      ) : (
+        product && <ProductOpitions product={product} />
+      )}
+
+      {isLoading ? (
+        <ProductAboutSkeleton />
+      ) : (
+        product && <ProductAbout product={product} />
+      )}
+
+      {isLoading ? (
+        <ProductTechSpecsSkeleton />
+      ) : (
+        product && <ProductTechSpecs product={product} />
+      )}
+
       <ProductsSlider
         title="You may also like"
         category={product.category}
