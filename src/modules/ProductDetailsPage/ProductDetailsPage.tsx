@@ -15,6 +15,7 @@ import {
   ProductOpitions,
 } from '../../components/Details';
 import { ProductTechSpecs } from '../../components/Details/ProductTechSpecs';
+import { ProductsSlider } from '../../components/ProductsSlider';
 
 export const ProductDetailsPage = () => {
   const { productId } = useParams();
@@ -69,6 +70,12 @@ export const ProductDetailsPage = () => {
       <ProductOpitions product={product} />
       <ProductAbout product={product} />
       <ProductTechSpecs product={product} />
+      <ProductsSlider
+        title="You may also like"
+        category={product.category}
+        excludeId={product.id}
+        sortBy="random"
+      />
     </section>
   );
 };

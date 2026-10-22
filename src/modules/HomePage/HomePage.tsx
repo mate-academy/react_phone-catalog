@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { BannerSlider } from '../../components/BannerSlider';
 import { NewModels } from '../../components/NewModels';
 import { ShopByCategory } from '../../components/ShopByCategory';
-import { HotPrices } from '../../components/HotPrices';
+import { ProductsSlider } from '../../components/ProductsSlider';
 
 export const HomePage = () => {
   const [hasError, setHasError] = useState<boolean>(false);
@@ -37,11 +37,7 @@ export const HomePage = () => {
             setHasError={setHasError}
           />
 
-          <HotPrices
-            isLoading={isLoading}
-            setIsLoading={setIsLoading}
-            setHasError={setHasError}
-          />
+          <ProductsSlider title="Hot prices" />
         </div>
       )}
     </>
