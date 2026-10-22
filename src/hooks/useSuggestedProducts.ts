@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
-import type { Product, ProductDetails } from '../types';
+import type { ProductDetails } from '../types/ProductDetails';
+import type { Product } from '../types/Product';
 
 export const useSuggestedProducts = (
   product: ProductDetails | null,
