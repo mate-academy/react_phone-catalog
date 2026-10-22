@@ -36,11 +36,17 @@ export const ProductCard = ({
 
   return (
     <div className={styles.productCard}>
-      <Link to={`/product/${product.id}`} className={styles.productCard__image}>
+      <Link
+        to={`/product/${product.itemId}`}
+        className={styles.productCard__image}
+      >
         <img src={product.image} alt={product.name} />
       </Link>
 
-      <Link to={`/product/${product.id}`} className={styles.productCard__name}>
+      <Link
+        to={`/product/${product.itemId}`}
+        className={styles.productCard__name}
+      >
         {' '}
         {product.name}{' '}
       </Link>
