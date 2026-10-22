@@ -7,6 +7,7 @@ import { getAllProducts } from '../../services/services';
 import { Categories } from './components/Categories';
 import { Loader } from '../shared/components/Loader';
 import { ErrorLoading } from '../ProductPage/components/ErrorLoading';
+import styles from './HomePage.module.scss';
 
 export const HomePage: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -47,6 +48,7 @@ export const HomePage: React.FC = () => {
   return (
     <>
       <BannerSlider />
+      <h1 className={styles.title}>Product Catalog</h1>
       <CardSlider
         title="Brand new models"
         products={sortedByYearProducts.slice(0, 10)}
