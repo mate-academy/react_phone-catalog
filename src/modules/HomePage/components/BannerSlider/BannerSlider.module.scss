@@ -1,0 +1,215 @@
+@import '../../../../variables';
+@import '../../../../mixins';
+
+$slide-teal: #a3e2d8;
+
+.slider {
+  margin: 0 (-$padding-mobile) 56px;
+
+  @include respond-to('tablet-sm') {
+    margin: 0 (-$padding-tablet) 64px;
+  }
+
+  @include respond-to('desktop') {
+    width: 100vw;
+    margin: 0 0 64px calc(50% - 50vw);
+  }
+}
+
+.wrapper {
+  position: relative;
+}
+
+.slide {
+  height: 240px;
+  padding: 24px 16px 24px max(53%, 192px);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 10px;
+  overflow: hidden;
+  background-color: $slide-teal;
+  background-image: var(--slide-image);
+  background-repeat: no-repeat;
+  background-position: var(--slide-mobile-position, -429px 0);
+  background-size: auto 240px;
+  color: $color-primary;
+  text-align: left;
+
+  @include respond-to('tablet-sm') {
+    height: auto;
+    min-height: 400px;
+    padding: 25px 30%;
+    align-items: center;
+    gap: 20px;
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+  }
+
+  @include respond-to('desktop') {
+    max-height: 400px;
+    padding: 25px 35%;
+    gap: 24px;
+  }
+}
+
+.label {
+  padding: 6px 14px;
+  border-radius: 24px;
+  background-color: rgba($color-white, 0.7);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+
+  @include respond-to('tablet-sm') {
+    padding: 8px 20px;
+    font-size: 18px;
+  }
+
+  @include respond-to('desktop') {
+    padding: 10px 30px;
+    font-size: 20px;
+  }
+}
+
+.title {
+  max-width: 640px;
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1.15;
+
+  @include respond-to('tablet-sm') {
+    font-size: 44px;
+  }
+
+  @include respond-to('desktop') {
+    max-width: 780px;
+  }
+}
+
+.button {
+  padding: 4px 4px 4px 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: 2px solid $color-primary;
+  border-radius: 40px;
+  background-color: rgba($color-white, 0.25);
+  color: $color-primary;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background-color 0.2s ease;
+
+  @include respond-to('tablet-sm') {
+    padding: 6px 6px 6px 24px;
+    gap: 16px;
+    font-size: 14px;
+  }
+
+  &:hover {
+    background-color: rgba($color-white, 0.6);
+  }
+
+  @include respond-to('desktop') {
+    padding-left: 32px;
+    font-size: 20px;
+  }
+}
+
+.button-icon {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: $color-primary;
+
+  img {
+    width: 16px;
+    height: 16px;
+    transform: rotate(-90deg);
+    filter: brightness(0) invert(1);
+  }
+
+  @include respond-to('tablet-sm') {
+    width: 36px;
+    height: 36px;
+  }
+
+  @include respond-to('desktop') {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+  width: 32px;
+  height: 32px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transform: translateY(-50%);
+
+  @include respond-to('tablet-sm') {
+    display: flex;
+  }
+
+  img {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+.arrow-prev {
+  left: 8px;
+
+  img {
+    transform: rotate(90deg);
+  }
+}
+
+.arrow-next {
+  right: 8px;
+
+  img {
+    transform: rotate(-90deg);
+  }
+}
+
+.dots {
+  margin-top: 16px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.dot {
+  width: 24px;
+  height: 4px;
+  padding: 0;
+  border: none;
+  background-color: $color-border;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: $color-border-hover;
+  }
+}
+
+.dot-active,
+.dot-active:hover {
+  background-color: $color-primary;
+}

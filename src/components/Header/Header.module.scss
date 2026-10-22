@@ -1,0 +1,26 @@
+@import '../../variables';
+@import '../../mixins';
+
+.header {
+  height: $header-height;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+  padding-left: $padding-mobile;
+  border-bottom: 1px solid #e2e6e9;
+  background-color: $color-white;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 100;
+
+  @include respond-to('tablet-sm') {
+    padding-left: $padding-tablet;
+  }
+
+  @include respond-to('desktop') {
+    height: $header-height-desktop;
+    gap: 48px;
+  }
+}

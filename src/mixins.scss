@@ -1,0 +1,31 @@
+@use 'sass:map';
+@use 'variables.scss';
+
+@mixin respond-to($breakpoint) {
+  $width: map.get(variables.$breakpoints, $breakpoint);
+
+  @media (min-width: $width) {
+    @content;
+  }
+}
+
+@mixin button-base(
+  $bg-color: $color-primary,
+  $text-color: $color-white,
+  $hover-bg: $color-button-bg-hover
+) {
+  background-color: $bg-color;
+  color: $text-color;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.1s ease;
+
+  &:hover {
+    background-color: $hover-bg;
+  }
+}

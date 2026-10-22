@@ -1,0 +1,13 @@
+@import '../../../../variables';
+@import '../../../../animations';
+
+.empty-list {
+  margin: 50px auto 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  img {
+    max-width: 225px;
+  }
+}

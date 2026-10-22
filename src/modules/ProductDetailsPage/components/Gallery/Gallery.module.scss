@@ -1,0 +1,87 @@
+@import '../../../../variables';
+@import '../../../../mixins';
+
+.gallery {
+  @include respond-to('tablet-sm') {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
+
+  @include respond-to('tablet-md') {
+    width: 420px;
+  }
+
+  @include respond-to('desktop') {
+    width: 560px;
+  }
+
+  .main-image-container {
+    width: 288px;
+    height: 288px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include respond-to('tablet-md') {
+      width: 364px;
+      height: 364px;
+    }
+
+    @include respond-to('desktop') {
+      width: 464px;
+      height: 464px;
+    }
+  }
+
+  .thumb-list {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+
+    @include respond-to('tablet-sm') {
+      margin: 0;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+  }
+
+  .thumb-item {
+    width: 52px;
+    height: 52px;
+    padding: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid $color-border;
+    background: $color-white;
+    cursor: pointer;
+    transition: border-color 0.2s ease-in;
+
+    &:hover {
+      border-color: $color-border-hover;
+    }
+
+    &--active {
+      border-color: $color-primary;
+    }
+
+    @include respond-to('tablet-sm') {
+      width: 35px;
+      height: 35px;
+    }
+
+    @include respond-to('tablet-md') {
+      width: 55px;
+      height: 55px;
+    }
+
+    @include respond-to('desktop') {
+      width: 80px;
+      height: 80px;
+    }
+  }
+}

@@ -1,0 +1,55 @@
+@import '../../variables';
+@import '../../mixins';
+
+.title {
+  margin: 24px 0 12px;
+
+  @include respond-to('tablet-sm') {
+    margin: 40px 0 8px;
+  }
+}
+
+.total {
+  color: $color-secondary;
+}
+
+.list {
+  margin: 32px 0 80px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px $card-gap;
+  list-style: none;
+}
+
+.item {
+  width: 100%;
+
+  @include respond-to('tablet-sm') {
+    width: calc((100% - $card-gap) / 2);
+  }
+
+  @include respond-to('tablet-md') {
+    width: calc((100% - (2 * $card-gap)) / 3);
+  }
+
+  @include respond-to('desktop') {
+    width: calc((100% - (3 * $card-gap)) / 4);
+  }
+}
+
+.empty {
+  margin: 50px auto 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+
+  img {
+    max-width: 225px;
+  }
+}
+
+.empty-title {
+  font-size: 22px;
+  font-weight: 800;
+}

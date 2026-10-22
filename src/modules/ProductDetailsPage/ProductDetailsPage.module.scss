@@ -1,0 +1,105 @@
+@import '../../variables';
+@import '../../mixins';
+
+.product-details {
+  margin: 24px auto 60px;
+
+  .title {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 1.3;
+    margin: 16px 0 32px;
+    color: $color-primary;
+
+    @include respond-to('tablet-sm') {
+      font-size: 32px;
+    }
+  }
+
+  .details-top {
+    @include respond-to('tablet-sm') {
+      display: flex;
+      gap: 20px;
+    }
+
+    @include respond-to('tablet-md') {
+      gap: 40px;
+    }
+
+    @include respond-to('desktop') {
+      gap: 64px;
+    }
+
+    .details-top-right {
+      @include respond-to('tablet-sm') {
+        max-width: 320px;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+      }
+    }
+
+    .divider {
+      height: 1px;
+      margin: 24px 0;
+      background-color: $color-border;
+    }
+
+    .prices {
+      margin-top: 32px;
+      font-size: 32px;
+    }
+
+    .actions {
+      margin: 16px 0 32px;
+    }
+  }
+
+  .details-bottom {
+    padding-top: 56px;
+
+    @include respond-to('tablet-md') {
+      display: flex;
+      gap: 40px;
+    }
+
+    @include respond-to('desktop') {
+      gap: 64px;
+    }
+
+    .details-bottom-left {
+      @include respond-to('tablet-md') {
+        flex: 0 0 420px;
+      }
+
+      @include respond-to('desktop') {
+        flex: 0 0 560px;
+      }
+    }
+
+    .details-bottom-right {
+      padding-top: 30px;
+
+      @include respond-to('tablet-md') {
+        flex: 1 1 auto;
+        padding-top: 0;
+      }
+    }
+  }
+
+  .specifications-panel {
+    .specifications {
+      font-size: 14px;
+      line-height: 22px;
+      font-weight: 400;
+    }
+  }
+
+  .suggested-products {
+    margin-top: 45px;
+
+    @include respond-to('desktop') {
+      margin-top: 60px;
+    }
+  }
+}

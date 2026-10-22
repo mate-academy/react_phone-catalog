@@ -1,0 +1,41 @@
+@import '../../../../variables';
+@import '../../../../mixins';
+
+.capacity-panel {
+  .label-text {
+    font-size: 12px;
+    color: $color-secondary;
+  }
+
+  .capacity-row {
+    margin-top: 8px;
+    display: flex;
+    gap: 8px;
+
+    .capacity-button {
+      height: 32px;
+      padding: 0 8px;
+      border: 1px solid $color-border;
+      background: transparent;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.2s;
+
+      &:hover {
+        border-color: $color-border-hover;
+      }
+    }
+
+    input {
+      display: none;
+
+      &:checked ~ .capacity-button {
+        border-color: $color-primary;
+        color: $color-white;
+        background-color: $color-primary;
+      }
+    }
+  }
+}

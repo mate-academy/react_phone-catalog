@@ -1,0 +1,20 @@
+@import '../../../../variables';
+@import '../../../../mixins';
+
+.about-product {
+  .divider {
+    height: 1px;
+    background-color: $color-border;
+    margin: 16px 0 32px;
+  }
+
+  .sub-title {
+    margin: 32px 0 12px;
+  }
+
+  p {
+    margin-bottom: 20px;
+    font-weight: 400;
+    color: $color-secondary;
+  }
+}

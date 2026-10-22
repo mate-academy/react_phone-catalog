@@ -1,0 +1,64 @@
+@import '../../../../variables';
+@import '../../../../mixins';
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 24px auto 64px;
+
+  @include respond-to('tablet-sm') {
+    margin: 40px auto 32px;
+  }
+
+  @include respond-to('tablet-md') {
+    margin: 40px auto 80px;
+  }
+}
+
+.page-button,
+.arrow-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid $color-border;
+  background-color: $color-white;
+  color: #313237;
+  font-family: inherit;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  padding: 0;
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  &:hover:not(:disabled) {
+    border-color: $color-border-hover;
+  }
+}
+
+.active {
+  background-color: $color-primary;
+  color: $color-white;
+  border-color: $color-primary;
+
+  &:hover:not(:disabled) {
+    background-color: $color-primary;
+  }
+}
+
+.ellipsis {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  color: $color-secondary;
+  user-select: none;
+}

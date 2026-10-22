@@ -1,0 +1,27 @@
+// sizes
+$header-height: 48px;
+$header-height-desktop: 64px;
+$header-icon-size: $header-height;
+$header-icon-size-desktop: $header-height-desktop;
+$padding-mobile: 16px;
+$padding-tablet: 24px;
+$card-gap: 16px;
+$desktop-container: 1136px;
+
+// colors
+$color-primary: #313237;
+$color-secondary: #89939a;
+$color-icons: #b4bdc3;
+$color-white: #fff;
+$color-border: #e2e6e9;
+$color-border-hover: #9ca3af;
+$color-border-focus: #1f2937;
+$color-button-bg: $color-primary;
+$color-button-bg-hover: #212225;
+
+// breakpoints
+$breakpoints: (
+  'tablet-sm': 600px,
+  'tablet-md': 768px,
+  'desktop': 1200px,
+);

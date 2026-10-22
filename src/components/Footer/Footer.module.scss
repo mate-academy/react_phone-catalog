@@ -1,0 +1,20 @@
+@import '../../variables';
+@import '../../mixins';
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  padding: 32px $padding-mobile;
+  border-top: 1px solid #e2e6e9;
+
+  @include respond-to('tablet-sm') {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 32px $padding-tablet;
+  }
+
+  @include respond-to('desktop') {
+    padding: 32px 152px;
+  }
+}

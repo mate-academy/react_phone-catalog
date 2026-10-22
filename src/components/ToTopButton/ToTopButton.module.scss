@@ -1,0 +1,25 @@
+@import '../../variables';
+@import '../../mixins';
+
+.top-button {
+  margin-top: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+
+  @include respond-to('tablet-sm') {
+    margin-top: 0;
+  }
+
+  .text {
+    font-size: 12px;
+    color: $color-secondary;
+  }
+
+  button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+  }
+}

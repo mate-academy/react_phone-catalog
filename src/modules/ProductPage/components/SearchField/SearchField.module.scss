@@ -1,0 +1,55 @@
+@import '../../../../variables';
+@import '../../../../mixins';
+
+.search-field-wrapper {
+  width: 100%;
+  height: 40px;
+  padding: 0 8px;
+  display: flex;
+  align-items: center;
+  border: 1px solid $color-border;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+
+  &:hover {
+    border-color: #9ca3af;
+  }
+
+  @include respond-to('tablet-sm') {
+    width: 400px;
+  }
+
+  .icon {
+    width: 20px;
+  }
+
+  .search-field {
+    flex-grow: 1;
+    padding: 0 12px;
+    display: flex;
+    align-items: center;
+    background: $color-white;
+    border: none;
+    outline: none;
+    font-family: Mont, sans-serif;
+    font-size: 14px;
+    color: $color-primary;
+    cursor: pointer;
+
+    &::placeholder {
+      font-size: 12px;
+      color: $color-secondary;
+    }
+  }
+
+  .cancel-button {
+    width: 20px;
+    cursor: pointer;
+    background: $color-white;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
