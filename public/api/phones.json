@@ -3,6 +3,7 @@
     "id": "apple-iphone-11-128gb-black",
     "category": "phones",
     "namespaceId": "apple-iphone-11",
+    "year": 2019,
     "name": "Apple iPhone 11 128GB Black",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
     "capacity": "128GB",
@@ -44,14 +45,14 @@
     "ram": "4GB",
     "camera": "12 Mp + 12 Mp + 12MP",
     "zoom": "Digital, 5x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"],
-    "year": 2019
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"]
   },
 
   {
     "id": "apple-iphone-11-128gb-green",
     "category": "phones",
     "namespaceId": "apple-iphone-11",
+    "year": 2019,
     "name": "Apple iPhone 11 128GB Green",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
     "capacity": "128GB",
@@ -93,14 +94,14 @@
     "ram": "4GB",
     "camera": "12 Mp + 12 Mp + 12MP",
     "zoom": "Digital, 5x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"],
-    "year": 2019
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"]
   },
 
   {
     "id": "apple-iphone-11-128gb-purple",
     "category": "phones",
     "namespaceId": "apple-iphone-11",
+    "year": 2019,
     "name": "Apple iPhone 11 128GB Purple",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
     "capacity": "128GB",
@@ -142,14 +143,14 @@
     "ram": "4GB",
     "camera": "12 Mp + 12 Mp + 12MP",
     "zoom": "Digital, 5x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"],
-    "year": 2019
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"]
   },
 
   {
     "id": "apple-iphone-11-128gb-red",
     "category": "phones",
     "namespaceId": "apple-iphone-11",
+    "year": 2019,
     "name": "Apple iPhone 11 128GB Red",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
     "capacity": "128GB",
@@ -191,14 +192,14 @@
     "ram": "4GB",
     "camera": "12 Mp + 12 Mp + 12MP",
     "zoom": "Digital, 5x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"],
-    "year": 2019
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"]
   },
 
   {
     "id": "apple-iphone-11-128gb-white",
     "category": "phones",
     "namespaceId": "apple-iphone-11",
+    "year": 2019,
     "name": "Apple iPhone 11 128GB White",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
     "capacity": "128GB",
@@ -240,14 +241,14 @@
     "ram": "4GB",
     "camera": "12 Mp + 12 Mp + 12MP",
     "zoom": "Digital, 5x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"],
-    "year": 2019
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"]
   },
 
   {
     "id": "apple-iphone-11-128gb-yellow",
     "category": "phones",
     "namespaceId": "apple-iphone-11",
+    "year": 2019,
     "name": "Apple iPhone 11 128GB Yellow",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
     "capacity": "128GB",
@@ -289,14 +290,14 @@
     "ram": "4GB",
     "camera": "12 Mp + 12 Mp + 12MP",
     "zoom": "Digital, 5x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"],
-    "year": 2019
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"]
   },
 
   {
     "id": "apple-iphone-11-256gb-black",
     "category": "phones",
     "namespaceId": "apple-iphone-11",
+    "year": 2019,
     "name": "Apple iPhone 11 256GB Black",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
     "capacity": "256GB",
@@ -345,6 +346,7 @@
     "id": "apple-iphone-11-256gb-green",
     "category": "phones",
     "namespaceId": "apple-iphone-11",
+    "year": 2019,
     "name": "Apple iPhone 11 256GB Green",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
     "capacity": "256GB",
@@ -386,14 +388,14 @@
     "ram": "4GB",
     "camera": "12 Mp + 12 Mp + 12MP",
     "zoom": "Digital, 5x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"],
-    "year": 2019
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"]
   },
 
   {
     "id": "apple-iphone-11-256gb-purple",
     "category": "phones",
     "namespaceId": "apple-iphone-11",
+    "year": 2019,
     "name": "Apple iPhone 11 256GB Purple",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
     "capacity": "256GB",
@@ -435,14 +437,14 @@
     "ram": "4GB",
     "camera": "12 Mp + 12 Mp + 12MP",
     "zoom": "Digital, 5x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"],
-    "year": 2019
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"]
   },
 
   {
     "id": "apple-iphone-11-256gb-red",
     "category": "phones",
     "namespaceId": "apple-iphone-11",
+    "year": 2019,
     "name": "Apple iPhone 11 256GB Red",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
     "capacity": "256GB",
@@ -484,14 +486,14 @@
     "ram": "4GB",
     "camera": "12 Mp + 12 Mp + 12MP",
     "zoom": "Digital, 5x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"],
-    "year": 2019
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"]
   },
 
   {
     "id": "apple-iphone-11-256gb-white",
     "category": "phones",
     "namespaceId": "apple-iphone-11",
+    "year": 2019,
     "name": "Apple iPhone 11 256GB White",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
     "capacity": "256GB",
@@ -540,6 +542,7 @@
     "id": "apple-iphone-11-256gb-yellow",
     "category": "phones",
     "namespaceId": "apple-iphone-11",
+    "year": 2019,
     "name": "Apple iPhone 11 256GB Yellow",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
     "capacity": "256GB",
@@ -581,14 +584,14 @@
     "ram": "4GB",
     "camera": "12 Mp + 12 Mp + 12MP",
     "zoom": "Digital, 5x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"],
-    "year": 2019
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"]
   },
 
   {
     "id": "apple-iphone-11-64gb-black",
     "category": "phones",
     "namespaceId": "apple-iphone-11",
+    "year": 2019,
     "name": "Apple iPhone 11 64GB Black",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
     "capacity": "64GB",
@@ -630,14 +633,14 @@
     "ram": "4GB",
     "camera": "12 Mp + 12 Mp + 12MP",
     "zoom": "Digital, 5x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"],
-    "year": 2019
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"]
   },
 
   {
     "id": "apple-iphone-11-64gb-green",
     "category": "phones",
     "namespaceId": "apple-iphone-11",
+    "year": 2019,
     "name": "Apple iPhone 11 64GB Green",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
     "capacity": "64GB",
@@ -686,6 +689,7 @@
     "id": "apple-iphone-11-64gb-purple",
     "category": "phones",
     "namespaceId": "apple-iphone-11",
+    "year": 2019,
     "name": "Apple iPhone 11 64GB Purple",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
     "capacity": "64GB",
@@ -727,14 +731,14 @@
     "ram": "4GB",
     "camera": "12 Mp + 12 Mp + 12MP",
     "zoom": "Digital, 5x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"],
-    "year": 2019
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"]
   },
 
   {
     "id": "apple-iphone-11-64gb-red",
     "category": "phones",
     "namespaceId": "apple-iphone-11",
+    "year": 2019,
     "name": "Apple iPhone 11 64GB Red",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
     "capacity": "64GB",
@@ -783,6 +787,7 @@
     "id": "apple-iphone-11-64gb-white",
     "category": "phones",
     "namespaceId": "apple-iphone-11",
+    "year": 2019,
     "name": "Apple iPhone 11 64GB White",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
     "capacity": "64GB",
@@ -824,14 +829,14 @@
     "ram": "4GB",
     "camera": "12 Mp + 12 Mp + 12MP",
     "zoom": "Digital, 5x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"],
-    "year": 2019
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"]
   },
 
   {
     "id": "apple-iphone-11-64gb-yellow",
     "category": "phones",
     "namespaceId": "apple-iphone-11",
+    "year": 2019,
     "name": "Apple iPhone 11 64GB Yellow",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
     "capacity": "64GB",
@@ -873,14 +878,14 @@
     "ram": "4GB",
     "camera": "12 Mp + 12 Mp + 12MP",
     "zoom": "Digital, 5x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"],
-    "year": 2019
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"]
   },
 
   {
     "id": "apple-iphone-11-pro-256gb-gold",
     "category": "phones",
     "namespaceId": "apple-iphone-11-pro",
+    "year": 2019,
     "name": "Apple iPhone 11 Pro 256GB Gold",
     "capacityAvailable": ["64GB", "256GB", "512GB"],
     "capacity": "256GB",
@@ -927,6 +932,7 @@
     "id": "apple-iphone-11-pro-256gb-midnightgreen",
     "category": "phones",
     "namespaceId": "apple-iphone-11-pro",
+    "year": 2019,
     "name": "Apple iPhone 11 Pro 256GB Midnight green",
     "capacityAvailable": ["64GB", "256GB", "512GB"],
     "capacity": "256GB",
@@ -974,6 +980,7 @@
     "id": "apple-iphone-11-pro-256gb-silver",
     "category": "phones",
     "namespaceId": "apple-iphone-11-pro",
+    "year": 2019,
     "name": "Apple iPhone 11 Pro 256GB Silver",
     "capacityAvailable": ["64GB", "256GB", "512GB"],
     "capacity": "256GB",
@@ -1013,14 +1020,14 @@
     "ram": "4GB",
     "camera": "12 Mp + 12 Mp + 12MP",
     "zoom": "Digital, 10x / Optical, 2x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"],
-    "year": 2019
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"]
   },
 
   {
     "id": "apple-iphone-11-pro-256gb-spacegray",
     "category": "phones",
     "namespaceId": "apple-iphone-11-pro",
+    "year": 2019,
     "name": "Apple iPhone 11 Pro 256GB Spacegray",
     "capacityAvailable": ["64GB", "256GB", "512GB"],
     "capacity": "256GB",
@@ -1067,6 +1074,7 @@
     "id": "apple-iphone-11-pro-512gb-gold",
     "category": "phones",
     "namespaceId": "apple-iphone-11-pro",
+    "year": 2019,
     "name": "Apple iPhone 11 Pro 512GB Gold",
     "capacityAvailable": ["64GB", "256GB", "512GB"],
     "capacity": "512GB",
@@ -1106,14 +1114,14 @@
     "ram": "4GB",
     "camera": "12 Mp + 12 Mp + 12MP",
     "zoom": "Digital, 10x / Optical, 2x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"],
-    "year": 2019
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"]
   },
 
   {
     "id": "apple-iphone-11-pro-512gb-midnightgreen",
     "category": "phones",
     "namespaceId": "apple-iphone-11-pro",
+    "year": 2019,
     "name": "Apple iPhone 11 Pro 512GB Midnight green",
     "capacityAvailable": ["64GB", "256GB", "512GB"],
     "capacity": "512GB",
@@ -1161,6 +1169,7 @@
     "id": "apple-iphone-11-pro-512gb-silver",
     "category": "phones",
     "namespaceId": "apple-iphone-11-pro",
+    "year": 2019,
     "name": "Apple iPhone 11 Pro 512GB Silver",
     "capacityAvailable": ["64GB", "256GB", "512GB"],
     "capacity": "512GB",
@@ -1207,6 +1216,7 @@
     "id": "apple-iphone-11-pro-512gb-spacegray",
     "category": "phones",
     "namespaceId": "apple-iphone-11-pro",
+    "year": 2019,
     "name": "Apple iPhone 11 Pro 512GB Spacegray",
     "capacityAvailable": ["64GB", "256GB", "512GB"],
     "capacity": "512GB",
@@ -1253,6 +1263,7 @@
     "id": "apple-iphone-11-pro-64gb-gold",
     "category": "phones",
     "namespaceId": "apple-iphone-11-pro",
+    "year": 2019,
     "name": "Apple iPhone 11 Pro 64GB Gold",
     "capacityAvailable": ["64GB", "256GB", "512GB"],
     "capacity": "64GB",
@@ -1299,6 +1310,7 @@
     "id": "apple-iphone-11-pro-64gb-midnightgreen",
     "category": "phones",
     "namespaceId": "apple-iphone-11-pro",
+    "year": 2019,
     "name": "Apple iPhone 11 Pro 64GB Midnight green",
     "capacityAvailable": ["64GB", "256GB", "512GB"],
     "capacity": "64GB",
@@ -1346,6 +1358,7 @@
     "id": "apple-iphone-11-pro-64gb-silver",
     "category": "phones",
     "namespaceId": "apple-iphone-11-pro",
+    "year": 2019,
     "name": "Apple iPhone 11 Pro 64GB Silver",
     "capacityAvailable": ["64GB", "256GB", "512GB"],
     "capacity": "64GB",
@@ -1392,6 +1405,7 @@
     "id": "apple-iphone-11-pro-64gb-spacegray",
     "category": "phones",
     "namespaceId": "apple-iphone-11-pro",
+    "year": 2019,
     "name": "Apple iPhone 11 Pro 64GB Spacegray",
     "capacityAvailable": ["64GB", "256GB", "512GB"],
     "capacity": "64GB",
@@ -1438,6 +1452,7 @@
     "id": "apple-iphone-11-pro-max-256gb-gold",
     "category": "phones",
     "namespaceId": "apple-iphone-11-pro-max",
+    "year": 2019,
     "name": "Apple iPhone 11 Pro Max 256GB Gold",
     "capacityAvailable": ["64GB", "256GB", "512GB"],
     "capacity": "256GB",
@@ -1484,6 +1499,7 @@
     "id": "apple-iphone-11-pro-max-256gb-midnightgreen",
     "category": "phones",
     "namespaceId": "apple-iphone-11-pro-max",
+    "year": 2019,
     "name": "Apple iPhone 11 Pro Max 256GB Midnightgreen",
     "capacityAvailable": ["64GB", "256GB", "512GB"],
     "capacity": "256GB",
@@ -1530,6 +1546,7 @@
     "id": "apple-iphone-11-pro-max-256gb-silver",
     "category": "phones",
     "namespaceId": "apple-iphone-11-pro-max",
+    "year": 2019,
     "name": "Apple iPhone 11 Pro Max 256GB Silver",
     "capacityAvailable": ["64GB", "256GB", "512GB"],
     "capacity": "256GB",
@@ -1576,6 +1593,7 @@
     "id": "apple-iphone-11-pro-max-256gb-spacegray",
     "category": "phones",
     "namespaceId": "apple-iphone-11-pro-max",
+    "year": 2019,
     "name": "Apple iPhone 11 Pro Max 256GB Spacegray",
     "capacityAvailable": ["64GB", "256GB", "512GB"],
     "capacity": "256GB",
@@ -1622,6 +1640,7 @@
     "id": "apple-iphone-11-pro-max-512gb-gold",
     "category": "phones",
     "namespaceId": "apple-iphone-11-pro-max",
+    "year": 2019,
     "name": "Apple iPhone 11 Pro Max 512GB Gold",
     "capacityAvailable": ["64GB", "256GB", "512GB"],
     "capacity": "512GB",
@@ -1668,6 +1687,7 @@
     "id": "apple-iphone-11-pro-max-512gb-midnightgreen",
     "category": "phones",
     "namespaceId": "apple-iphone-11-pro-max",
+    "year": 2019,
     "name": "Apple iPhone 11 Pro Max 512GB Midnightgreen",
     "capacityAvailable": ["64GB", "256GB", "512GB"],
     "capacity": "512GB",
@@ -1714,6 +1734,7 @@
     "id": "apple-iphone-11-pro-max-512gb-silver",
     "category": "phones",
     "namespaceId": "apple-iphone-11-pro-max",
+    "year": 2019,
     "name": "Apple iPhone 11 Pro Max 512GB Silver",
     "capacityAvailable": ["64GB", "256GB", "512GB"],
     "capacity": "512GB",
@@ -1753,14 +1774,14 @@
     "ram": "4GB",
     "camera": "12 Mp + 12 Mp + 12MP",
     "zoom": "Digital, 10x / Optical, 2x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"],
-    "year": 2019
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"]
   },
 
   {
     "id": "apple-iphone-11-pro-max-512gb-spacegray",
     "category": "phones",
     "namespaceId": "apple-iphone-11-pro-max",
+    "year": 2019,
     "name": "Apple iPhone 11 Pro Max 512GB Spacegray",
     "capacityAvailable": ["64GB", "256GB", "512GB"],
     "capacity": "512GB",
@@ -1807,6 +1828,7 @@
     "id": "apple-iphone-11-pro-max-64gb-gold",
     "category": "phones",
     "namespaceId": "apple-iphone-11-pro-max",
+    "year": 2019,
     "name": "Apple iPhone 11 Pro Max 64GB Gold",
     "capacityAvailable": ["64GB", "256GB", "512GB"],
     "capacity": "64GB",
@@ -1853,6 +1875,7 @@
     "id": "apple-iphone-11-pro-max-64gb-midnightgreen",
     "category": "phones",
     "namespaceId": "apple-iphone-11-pro-max",
+    "year": 2019,
     "name": "Apple iPhone 11 Pro Max 64GB Midnightgreen",
     "capacityAvailable": ["64GB", "256GB", "512GB"],
     "capacity": "64GB",
@@ -1899,6 +1922,7 @@
     "id": "apple-iphone-11-pro-max-64gb-silver",
     "category": "phones",
     "namespaceId": "apple-iphone-11-pro-max",
+    "year": 2019,
     "name": "Apple iPhone 11 Pro Max 64GB Silver",
     "capacityAvailable": ["64GB", "256GB", "512GB"],
     "capacity": "64GB",
@@ -1945,6 +1969,7 @@
     "id": "apple-iphone-11-pro-max-64gb-spacegray",
     "category": "phones",
     "namespaceId": "apple-iphone-11-pro-max",
+    "year": 2019,
     "name": "Apple iPhone 11 Pro Max 64GB Spacegray",
     "capacityAvailable": ["64GB", "256GB", "512GB"],
     "capacity": "64GB",
@@ -1984,14 +2009,14 @@
     "ram": "4GB",
     "camera": "12 Mp + 12 Mp + 12MP",
     "zoom": "Digital, 10x / Optical, 2x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"],
-    "year": 2019
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"]
   },
 
   {
     "id": "apple-iphone-7-32gb-black",
     "category": "phones",
     "namespaceId": "apple-iphone-7",
+    "year": 2016,
     "name": "Apple iPhone 7 32GB Black",
     "capacityAvailable": ["32GB"],
     "capacity": "32GB",
@@ -2040,6 +2065,7 @@
     "id": "apple-iphone-7-32gb-gold",
     "category": "phones",
     "namespaceId": "apple-iphone-7",
+    "year": 2016,
     "name": "Apple iPhone 7 32GB Gold",
     "capacityAvailable": ["32GB"],
     "capacity": "32GB",
@@ -2088,6 +2114,7 @@
     "id": "apple-iphone-7-32gb-rosegold",
     "category": "phones",
     "namespaceId": "apple-iphone-7",
+    "year": 2016,
     "name": "Apple iPhone 7 32GB Rosegold",
     "capacityAvailable": ["32GB"],
     "capacity": "32GB",
@@ -2129,14 +2156,14 @@
     "ram": "2GB",
     "camera": "12 Mp + 7 Mp",
     "zoom": "Digital, 5x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"],
-    "year": 2019
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"]
   },
 
   {
     "id": "apple-iphone-7-32gb-silver",
     "category": "phones",
     "namespaceId": "apple-iphone-7",
+    "year": 2016,
     "name": "Apple iPhone 7 32GB Silver",
     "capacityAvailable": ["32GB"],
     "capacity": "32GB",
@@ -2178,14 +2205,14 @@
     "ram": "2GB",
     "camera": "12 Mp + 7 Mp",
     "zoom": "Digital, 5x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"],
-    "year": 2016
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"]
   },
 
   {
     "id": "apple-iphone-7-plus-32gb-black",
     "category": "phones",
     "namespaceId": "apple-iphone-7-plus",
+    "year": 2016,
     "name": "Apple iPhone 7 Plus 32GB Black",
     "capacityAvailable": ["32GB"],
     "capacity": "32GB",
@@ -2227,14 +2254,14 @@
     "ram": "3GB",
     "camera": "12 Mp + 7 Mp",
     "zoom": "Digital, 10x / Optical, 2x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"],
-    "year": 2016
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"]
   },
 
   {
     "id": "apple-iphone-7-plus-32gb-gold",
     "category": "phones",
     "namespaceId": "apple-iphone-7-plus",
+    "year": 2016,
     "name": "Apple iPhone 7 Plus 32GB Gold",
     "capacityAvailable": ["32GB"],
     "capacity": "32GB",
@@ -2276,14 +2303,14 @@
     "ram": "3GB",
     "camera": "12 Mp + 7 Mp",
     "zoom": "Digital, 10x / Optical, 2x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"],
-    "year": 2016
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"]
   },
 
   {
     "id": "apple-iphone-7-plus-32gb-rosegold",
     "category": "phones",
     "namespaceId": "apple-iphone-7-plus",
+    "year": 2016,
     "name": "Apple iPhone 7 Plus 32GB Rosegold",
     "capacityAvailable": ["32GB"],
     "capacity": "32GB",
@@ -2325,14 +2352,14 @@
     "ram": "3GB",
     "camera": "12 Mp + 7 Mp",
     "zoom": "Digital, 10x / Optical, 2x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"],
-    "year": 2016
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"]
   },
 
   {
     "id": "apple-iphone-7-plus-32gb-silver",
     "category": "phones",
     "namespaceId": "apple-iphone-7-plus",
+    "year": 2016,
     "name": "Apple iPhone 7 Plus 32GB Silver",
     "capacityAvailable": ["32GB"],
     "capacity": "32GB",
@@ -2374,14 +2401,14 @@
     "ram": "3GB",
     "camera": "12 Mp + 7 Mp",
     "zoom": "Digital, 10x / Optical, 2x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"],
-    "year": 2016
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"]
   },
 
   {
     "id": "apple-iphone-8-64gb-gold",
     "category": "phones",
     "namespaceId": "apple-iphone-8",
+    "year": 2017,
     "name": "Apple iPhone 8 64GB Gold",
     "capacityAvailable": ["64GB"],
     "capacity": "64GB",
@@ -2422,14 +2449,14 @@
     "ram": "2GB",
     "camera": "12 Mp + 7 Mp",
     "zoom": "Digital, 5x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"],
-    "year": 2017
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"]
   },
 
   {
     "id": "apple-iphone-8-64gb-silver",
     "category": "phones",
     "namespaceId": "apple-iphone-8",
+    "year": 2017,
     "name": "Apple iPhone 8 64GB Silver",
     "capacityAvailable": ["64GB"],
     "capacity": "64GB",
@@ -2470,14 +2497,14 @@
     "ram": "2GB",
     "camera": "12 Mp + 7 Mp",
     "zoom": "Digital, 5x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"],
-    "year": 2017
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"]
   },
 
   {
     "id": "apple-iphone-8-64gb-spacegray",
     "category": "phones",
     "namespaceId": "apple-iphone-8",
+    "year": 2017,
     "name": "Apple iPhone 8 64GB Space Gray",
     "capacityAvailable": ["64GB"],
     "capacity": "64GB",
@@ -2518,14 +2545,14 @@
     "ram": "2GB",
     "camera": "12 Mp + 7 Mp",
     "zoom": "Digital, 5x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"],
-    "year": 2017
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"]
   },
 
   {
     "id": "apple-iphone-xr-128gb-coral",
     "category": "phones",
     "namespaceId": "apple-iphone-xr",
+    "year": 2018,
     "name": "Apple iPhone XR 128GB Coral",
     "capacityAvailable": ["64GB", "128GB"],
     "capacity": "128GB",
@@ -2574,6 +2601,7 @@
     "id": "apple-iphone-xr-128gb-red",
     "category": "phones",
     "namespaceId": "apple-iphone-xr",
+    "year": 2018,
     "name": "Apple iPhone XR 128GB Red",
     "capacityAvailable": ["64GB", "128GB"],
     "capacity": "128GB",
@@ -2622,6 +2650,7 @@
     "id": "apple-iphone-xr-128gb-white",
     "category": "phones",
     "namespaceId": "apple-iphone-xr",
+    "year": 2018,
     "name": "Apple iPhone XR 128GB White",
     "capacityAvailable": ["64GB", "128GB"],
     "capacity": "128GB",
@@ -2670,6 +2699,7 @@
     "id": "apple-iphone-xr-128gb-yellow",
     "category": "phones",
     "namespaceId": "apple-iphone-xr",
+    "year": 2018,
     "name": "Apple iPhone XR 128GB Yellow",
     "capacityAvailable": ["64GB", "128GB"],
     "capacity": "128GB",
@@ -2718,6 +2748,7 @@
     "id": "apple-iphone-xr-64gb-coral",
     "category": "phones",
     "namespaceId": "apple-iphone-xr",
+    "year": 2018,
     "name": "Apple iPhone XR 64GB Coral",
     "capacityAvailable": ["64GB", "128GB"],
     "capacity": "64GB",
@@ -2764,6 +2795,7 @@
     "id": "apple-iphone-xr-64gb-red",
     "category": "phones",
     "namespaceId": "apple-iphone-xr",
+    "year": 2018,
     "name": "Apple iPhone XR 64GB Red",
     "capacityAvailable": ["64GB", "128GB"],
     "capacity": "64GB",
@@ -2812,6 +2844,7 @@
     "id": "apple-iphone-xr-64gb-white",
     "category": "phones",
     "namespaceId": "apple-iphone-xr",
+    "year": 2018,
     "name": "Apple iPhone XR 64GB White",
     "capacityAvailable": ["64GB", "128GB"],
     "capacity": "64GB",
@@ -2860,6 +2893,7 @@
     "id": "apple-iphone-xr-64gb-yellow",
     "category": "phones",
     "namespaceId": "apple-iphone-xr",
+    "year": 2018,
     "name": "Apple iPhone XR 64GB Yellow",
     "capacityAvailable": ["64GB", "128GB"],
     "capacity": "64GB",
@@ -2908,6 +2942,7 @@
     "id": "apple-iphone-xs-256gb-gold",
     "category": "phones",
     "namespaceId": "apple-iphone-xs",
+    "year": 2018,
     "name": "Apple iPhone XS 256GB Gold",
     "capacityAvailable": ["64GB", "256GB"],
     "capacity": "256GB",
@@ -2956,6 +2991,7 @@
     "id": "apple-iphone-xs-256gb-spacegray",
     "category": "phones",
     "namespaceId": "apple-iphone-xs",
+    "year": 2018,
     "name": "Apple iPhone XS 256GB Spacegray",
     "capacityAvailable": ["64GB", "256GB"],
     "capacity": "256GB",
@@ -3004,6 +3040,7 @@
     "id": "apple-iphone-xs-64gb-gold",
     "category": "phones",
     "namespaceId": "apple-iphone-xs",
+    "year": 2018,
     "name": "Apple iPhone XS 64GB Gold",
     "capacityAvailable": ["64GB", "256GB"],
     "capacity": "64GB",
@@ -3052,6 +3089,7 @@
     "id": "apple-iphone-xs-64gb-spacegray",
     "category": "phones",
     "namespaceId": "apple-iphone-xs",
+    "year": 2018,
     "name": "Apple iPhone XS 64GB Spacegray",
     "capacityAvailable": ["64GB", "256GB"],
     "capacity": "64GB",
@@ -3093,14 +3131,14 @@
     "ram": "4GB",
     "camera": "12 Mp + 12 Mp + 12MP",
     "zoom": "Digital, 10x / Optical, 2x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"],
-    "year": 2018
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"]
   },
 
   {
     "id": "apple-iphone-xs-max-256gb-gold",
     "category": "phones",
     "namespaceId": "apple-iphone-xs-max",
+    "year": 2018,
     "name": "Apple iPhone XS Max 256GB Gold",
     "capacityAvailable": ["64GB", "256GB"],
     "capacity": "256GB",
@@ -3142,14 +3180,14 @@
     "ram": "4GB",
     "camera": "12 Mp + 12 Mp + 7MP",
     "zoom": "Digital, 10x / Optical, 2x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"],
-    "year": 2018
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"]
   },
 
   {
     "id": "apple-iphone-xs-max-256gb-silver",
     "category": "phones",
     "namespaceId": "apple-iphone-xs-max",
+    "year": 2018,
     "name": "Apple iPhone XS Max 256GB Silver",
     "capacityAvailable": ["64GB", "256GB"],
     "capacity": "256GB",
@@ -3191,14 +3229,14 @@
     "ram": "4GB",
     "camera": "12 Mp + 12 Mp + 7MP",
     "zoom": "Digital, 10x / Optical, 2x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"],
-    "year": 2018
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"]
   },
 
   {
     "id": "apple-iphone-xs-max-256gb-spacegray",
     "category": "phones",
     "namespaceId": "apple-iphone-xs-max",
+    "year": 2018,
     "name": "Apple iPhone XS Max 256GB Spacegray",
     "capacityAvailable": ["64GB", "256GB"],
     "capacity": "256GB",
@@ -3240,14 +3278,14 @@
     "ram": "4GB",
     "camera": "12 Mp + 12 Mp + 7MP",
     "zoom": "Digital, 10x / Optical, 2x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"],
-    "year": 2018
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"]
   },
 
   {
     "id": "apple-iphone-xs-max-64gb-gold",
     "category": "phones",
     "namespaceId": "apple-iphone-xs-max",
+    "year": 2018,
     "name": "Apple iPhone XS Max 64GB Gold",
     "capacityAvailable": ["64GB", "256GB"],
     "capacity": "64GB",
@@ -3289,14 +3327,14 @@
     "ram": "4GB",
     "camera": "12 Mp + 12 Mp + 7MP",
     "zoom": "Digital, 10x / Optical, 2x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"],
-    "year": 2018
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"]
   },
 
   {
     "id": "apple-iphone-xs-max-64gb-silver",
     "category": "phones",
     "namespaceId": "apple-iphone-xs-max",
+    "year": 2018,
     "name": "Apple iPhone XS Max 64GB Silver",
     "capacityAvailable": ["64GB", "256GB"],
     "capacity": "64GB",
@@ -3338,14 +3376,14 @@
     "ram": "4GB",
     "camera": "12 Mp + 12 Mp + 7MP",
     "zoom": "Digital, 10x / Optical, 2x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"],
-    "year": 2018
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"]
   },
 
   {
     "id": "apple-iphone-xs-max-64gb-spacegray",
     "category": "phones",
     "namespaceId": "apple-iphone-xs-max",
+    "year": 2018,
     "name": "Apple iPhone XS Max 64GB Spacegray",
     "capacityAvailable": ["64GB", "256GB"],
     "capacity": "64GB",
@@ -3387,18 +3425,18 @@
     "ram": "4GB",
     "camera": "12 Mp + 12 Mp + 7MP",
     "zoom": "Digital, 10x / Optical, 2x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"],
-    "year": 2018
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"]
   },
   {
     "id": "apple-iphone-14-128gb-midnight",
     "category": "phones",
     "namespaceId": "apple-iphone-14",
+    "year": 2022,
     "name": "Apple iPhone 14 128GB Midnight",
     "capacityAvailable": ["128GB", "256GB", "512GB"],
     "capacity": "128GB",
     "priceRegular": 1056,
-    "priceDiscount": 980,
+    "priceDiscount": 1056,
     "colorsAvailable": ["midnight", "yellow", "purple"],
     "color": "midnight",
     "images": [
@@ -3435,18 +3473,18 @@
     "ram": "6GB",
     "camera": "12 Mp + 12 Mp + 12MP",
     "zoom": "Digital 5x, Optical 2x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE", "5G"],
-    "year": 2022
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE", "5G"]
   },
   {
     "id": "apple-iphone-14-256gb-midnight",
     "category": "phones",
     "namespaceId": "apple-iphone-14",
+    "year": 2022,
     "name": "Apple iPhone 14 256GB Midnight",
     "capacityAvailable": ["128GB", "256GB", "512GB"],
     "capacity": "256GB",
     "priceRegular": 1200,
-    "priceDiscount": 1160,
+    "priceDiscount": 1200,
     "colorsAvailable": ["midnight", "yellow", "purple"],
     "color": "midnight",
     "images": [
@@ -3483,18 +3521,18 @@
     "ram": "6GB",
     "camera": "12 Mp + 12 Mp + 12MP",
     "zoom": "Digital 5x, Optical 2x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE", "5G"],
-    "year": 2022
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE", "5G"]
   },
   {
     "id": "apple-iphone-14-512gb-midnight",
     "category": "phones",
     "namespaceId": "apple-iphone-14",
+    "year": 2022,
     "name": "Apple iPhone 14 512GB Midnight",
     "capacityAvailable": ["128GB", "256GB", "512GB"],
     "capacity": "512GB",
     "priceRegular": 1466,
-    "priceDiscount": 1378,
+    "priceDiscount": 1466,
     "colorsAvailable": ["midnight", "yellow", "purple"],
     "color": "midnight",
     "images": [
@@ -3531,18 +3569,18 @@
     "ram": "6GB",
     "camera": "12 Mp + 12 Mp + 12MP",
     "zoom": "Digital 5x, Optical 2x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE", "5G"],
-    "year": 2022
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE", "5G"]
   },
   {
     "id": "apple-iphone-14-128gb-yellow",
     "category": "phones",
     "namespaceId": "apple-iphone-14",
+    "year": 2022,
     "name": "Apple iPhone 14 128GB Yellow",
     "capacityAvailable": ["128GB", "256GB", "512GB"],
     "capacity": "128GB",
     "priceRegular": 1056,
-    "priceDiscount": 980,
+    "priceDiscount": 1056,
     "colorsAvailable": ["midnight", "yellow", "purple"],
     "color": "yellow",
     "images": [
@@ -3579,18 +3617,18 @@
     "ram": "6GB",
     "camera": "12 Mp + 12 Mp + 12MP",
     "zoom": "Digital 5x, Optical 2x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE", "5G"],
-    "year": 2022
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE", "5G"]
   },
   {
     "id": "apple-iphone-14-256gb-yellow",
     "category": "phones",
     "namespaceId": "apple-iphone-14",
+    "year": 2022,
     "name": "Apple iPhone 14 256GB Yellow",
     "capacityAvailable": ["128GB", "256GB", "512GB"],
     "capacity": "256GB",
     "priceRegular": 1200,
-    "priceDiscount": 1160,
+    "priceDiscount": 1200,
     "colorsAvailable": ["midnight", "yellow", "purple"],
     "color": "yellow",
     "images": [
@@ -3627,18 +3665,18 @@
     "ram": "6GB",
     "camera": "12 Mp + 12 Mp + 12MP",
     "zoom": "Digital 5x, Optical 2x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE", "5G"],
-    "year": 2022
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE", "5G"]
   },
   {
     "id": "apple-iphone-14-512gb-yellow",
     "category": "phones",
     "namespaceId": "apple-iphone-14",
+    "year": 2022,
     "name": "Apple iPhone 14 512GB Yellow",
     "capacityAvailable": ["128GB", "256GB", "512GB"],
     "capacity": "512GB",
     "priceRegular": 1466,
-    "priceDiscount": 1378,
+    "priceDiscount": 1466,
     "colorsAvailable": ["midnight", "yellow", "purple"],
     "color": "yellow",
     "images": [
@@ -3675,18 +3713,18 @@
     "ram": "6GB",
     "camera": "12 Mp + 12 Mp + 12MP",
     "zoom": "Digital 5x, Optical 2x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE", "5G"],
-    "year": 2022
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE", "5G"]
   },
   {
     "id": "apple-iphone-14-128gb-purple",
     "category": "phones",
     "namespaceId": "apple-iphone-14",
+    "year": 2022,
     "name": "Apple iPhone 14 128GB Purple",
     "capacityAvailable": ["128GB", "256GB", "512GB"],
     "capacity": "128GB",
     "priceRegular": 1056,
-    "priceDiscount": 980,
+    "priceDiscount": 1056,
     "colorsAvailable": ["midnight", "yellow", "purple"],
     "color": "purple",
     "images": [
@@ -3723,18 +3761,18 @@
     "ram": "6GB",
     "camera": "12 Mp + 12 Mp + 12MP",
     "zoom": "Digital 5x, Optical 2x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE", "5G"],
-    "year": 2022
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE", "5G"]
   },
   {
     "id": "apple-iphone-14-256gb-purple",
     "category": "phones",
     "namespaceId": "apple-iphone-14",
+    "year": 2022,
     "name": "Apple iPhone 14 256GB Purple",
     "capacityAvailable": ["128GB", "256GB", "512GB"],
     "capacity": "256GB",
     "priceRegular": 1256,
-    "priceDiscount": 1180,
+    "priceDiscount": 1256,
     "colorsAvailable": ["midnight", "yellow", "purple"],
     "color": "purple",
     "images": [
@@ -3771,18 +3809,18 @@
     "ram": "6GB",
     "camera": "12 Mp + 12 Mp + 12MP",
     "zoom": "Digital 5x, Optical 2x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE", "5G"],
-    "year": 2022
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE", "5G"]
   },
   {
     "id": "apple-iphone-14-512gb-purple",
     "category": "phones",
     "namespaceId": "apple-iphone-14",
+    "year": 2022,
     "name": "Apple iPhone 14 512GB Purple",
     "capacityAvailable": ["128GB", "256GB", "512GB"],
     "capacity": "512GB",
     "priceRegular": 1600,
-    "priceDiscount": 1450,
+    "priceDiscount": 1600,
     "colorsAvailable": ["midnight", "yellow", "purple"],
     "color": "purple",
     "images": [
@@ -3819,18 +3857,18 @@
     "ram": "6GB",
     "camera": "12 Mp + 12 Mp + 12MP",
     "zoom": "Digital 5x, Optical 2x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE", "5G"],
-    "year": 2022
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE", "5G"]
   },
   {
     "id": "apple-iphone-14-pro-128gb-spaceblack",
     "category": "phones",
     "namespaceId": "apple-iphone-14-pro",
+    "year": 2022,
     "name": "Apple iPhone 14 Pro 128GB Space Black",
     "capacityAvailable": ["128GB", "256GB", "512GB", "1TB"],
     "capacity": "128GB",
     "priceRegular": 1056,
-    "priceDiscount": 980,
+    "priceDiscount": 1056,
     "colorsAvailable": ["spaceblack", "gold"],
     "color": "spaceblack",
     "images": [
@@ -3867,18 +3905,18 @@
     "ram": "6GB",
     "camera": "12 Mp + 12 Mp + 12MP",
     "zoom": "Digital 5x, Optical 2x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE", "5G"],
-    "year": 2022
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE", "5G"]
   },
   {
     "id": "apple-iphone-14-pro-256gb-spaceblack",
     "category": "phones",
     "namespaceId": "apple-iphone-14-pro",
+    "year": 2022,
     "name": "Apple iPhone 14 Pro 256GB Space Black",
     "capacityAvailable": ["128GB", "256GB", "512GB", "1TB"],
     "capacity": "256GB",
     "priceRegular": 1200,
-    "priceDiscount": 1160,
+    "priceDiscount": 1200,
     "colorsAvailable": ["spaceblack", "gold"],
     "color": "spaceblack",
     "images": [
@@ -3915,18 +3953,18 @@
     "ram": "6GB",
     "camera": "12 Mp + 12 Mp + 12MP",
     "zoom": "Digital 5x, Optical 2x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE", "5G"],
-    "year": 2022
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE", "5G"]
   },
   {
     "id": "apple-iphone-14-pro-512gb-spaceblack",
     "category": "phones",
     "namespaceId": "apple-iphone-14-pro",
+    "year": 2022,
     "name": "Apple iPhone 14 Pro 512GB Space Black",
     "capacityAvailable": ["128GB", "256GB", "512GB", "1TB"],
     "capacity": "512GB",
     "priceRegular": 1466,
-    "priceDiscount": 1378,
+    "priceDiscount": 1466,
     "colorsAvailable": ["spaceblack", "gold"],
     "color": "spaceblack",
     "images": [
@@ -3963,18 +4001,18 @@
     "ram": "6GB",
     "camera": "12 Mp + 12 Mp + 12MP",
     "zoom": "Digital 5x, Optical 2x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE", "5G"],
-    "year": 2022
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE", "5G"]
   },
   {
     "id": "apple-iphone-14-pro-1tb-spaceblack",
     "category": "phones",
     "namespaceId": "apple-iphone-14-pro",
+    "year": 2022,
     "name": "Apple iPhone 14 Pro 1TB Space Black",
     "capacityAvailable": ["128GB", "256GB", "512GB", "1TB"],
     "capacity": "1TB",
     "priceRegular": 1740,
-    "priceDiscount": 1520,
+    "priceDiscount": 1740,
     "colorsAvailable": ["spaceblack", "gold"],
     "color": "spaceblack",
     "images": [
@@ -4011,13 +4049,13 @@
     "ram": "6GB",
     "camera": "48 Mp + 12 Mp + 12MP + 12Mp",
     "zoom": "Digital 5x, Optical 2x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE", "5G"],
-    "year": 2022
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE", "5G"]
   },
   {
     "id": "apple-iphone-12-64gb-black",
     "category": "phones",
     "namespaceId": "apple-iphone-12",
+    "year": 2020,
     "name": "Apple iPhone 12 64GB Black",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
     "capacity": "64GB",
@@ -4057,13 +4095,13 @@
     "ram": "4GB",
     "camera": "12 Mp + 12 Mp",
     "zoom": "Optical, 2x; Digital, 5x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"],
-    "year": 2020
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"]
   },
   {
     "id": "apple-iphone-12-128gb-black",
     "category": "phones",
     "namespaceId": "apple-iphone-12",
+    "year": 2020,
     "name": "Apple iPhone 12 128GB Black",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
     "capacity": "128GB",
@@ -4103,13 +4141,13 @@
     "ram": "4GB",
     "camera": "12 Mp + 12 Mp",
     "zoom": "Optical, 2x; Digital, 5x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"],
-    "year": 2020
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"]
   },
   {
     "id": "apple-iphone-12-256gb-black",
     "category": "phones",
     "namespaceId": "apple-iphone-12",
+    "year": 2020,
     "name": "Apple iPhone 12 256GB Black",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
     "capacity": "256GB",
@@ -4149,13 +4187,13 @@
     "ram": "4GB",
     "camera": "12 Mp + 12 Mp",
     "zoom": "Optical, 2x; Digital, 5x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"],
-    "year": 2020
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"]
   },
   {
     "id": "apple-iphone-12-64gb-purple",
     "category": "phones",
     "namespaceId": "apple-iphone-12",
+    "year": 2020,
     "name": "Apple iPhone 12 64GB Purple",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
     "capacity": "64GB",
@@ -4195,13 +4233,13 @@
     "ram": "4GB",
     "camera": "12 Mp + 12 Mp",
     "zoom": "Optical, 2x; Digital, 5x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"],
-    "year": 2020
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"]
   },
   {
     "id": "apple-iphone-12-128gb-purple",
     "category": "phones",
     "namespaceId": "apple-iphone-12",
+    "year": 2020,
     "name": "Apple iPhone 12 128GB Purple",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
     "capacity": "128GB",
@@ -4241,13 +4279,13 @@
     "ram": "4GB",
     "camera": "12 Mp + 12 Mp",
     "zoom": "Optical, 2x; Digital, 5x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"],
-    "year": 2020
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"]
   },
   {
     "id": "apple-iphone-12-256gb-purple",
     "category": "phones",
     "namespaceId": "apple-iphone-12",
+    "year": 2020,
     "name": "Apple iPhone 12 256GB Purple",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
     "capacity": "256GB",
@@ -4287,13 +4325,13 @@
     "ram": "4GB",
     "camera": "12 Mp + 12 Mp",
     "zoom": "Optical, 2x; Digital, 5x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"],
-    "year": 2020
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"]
   },
   {
     "id": "apple-iphone-12-64gb-red",
     "category": "phones",
     "namespaceId": "apple-iphone-12",
+    "year": 2020,
     "name": "Apple iPhone 12 64GB Red",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
     "capacity": "64GB",
@@ -4333,13 +4371,13 @@
     "ram": "4GB",
     "camera": "12 Mp + 12 Mp",
     "zoom": "Optical, 2x; Digital, 5x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"],
-    "year": 2020
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"]
   },
   {
     "id": "apple-iphone-12-128gb-red",
     "category": "phones",
     "namespaceId": "apple-iphone-12",
+    "year": 2020,
     "name": "Apple iPhone 12 128GB Red",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
     "capacity": "128GB",
@@ -4379,13 +4417,13 @@
     "ram": "4GB",
     "camera": "12 Mp + 12 Mp",
     "zoom": "Optical, 2x; Digital, 5x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"],
-    "year": 2020
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"]
   },
   {
     "id": "apple-iphone-12-256gb-red",
     "category": "phones",
     "namespaceId": "apple-iphone-12",
+    "year": 2020,
     "name": "Apple iPhone 12 256GB Red",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
     "capacity": "256GB",
@@ -4425,13 +4463,13 @@
     "ram": "4GB",
     "camera": "12 Mp + 12 Mp",
     "zoom": "Optical, 2x; Digital, 5x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"],
-    "year": 2020
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"]
   },
   {
     "id": "apple-iphone-12-64gb-white",
     "category": "phones",
     "namespaceId": "apple-iphone-12",
+    "year": 2020,
     "name": "Apple iPhone 12 64GB White",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
     "capacity": "64GB",
@@ -4477,6 +4515,7 @@
     "id": "apple-iphone-12-128gb-white",
     "category": "phones",
     "namespaceId": "apple-iphone-12",
+    "year": 2020,
     "name": "Apple iPhone 12 128GB White",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
     "capacity": "128GB",
@@ -4516,13 +4555,13 @@
     "ram": "4GB",
     "camera": "12 Mp + 12 Mp",
     "zoom": "Optical, 2x; Digital, 5x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"],
-    "year": 2020
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"]
   },
   {
     "id": "apple-iphone-12-256gb-white",
     "category": "phones",
     "namespaceId": "apple-iphone-12",
+    "year": 2020,
     "name": "Apple iPhone 12 256GB White",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
     "capacity": "256GB",
@@ -4562,13 +4601,13 @@
     "ram": "4GB",
     "camera": "12 Mp + 12 Mp",
     "zoom": "Optical, 2x; Digital, 5x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"],
-    "year": 2020
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"]
   },
   {
     "id": "apple-iphone-13-mini-64gb-midnight",
     "category": "phones",
     "namespaceId": "apple-iphone-13-mini",
+    "year": 2021,
     "name": "Apple iPhone 13 Mini 64GB Midnight",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
     "capacity": "64GB",
@@ -4608,13 +4647,13 @@
     "ram": "4GB",
     "camera": "12 Mp + 12 Mp",
     "zoom": "Optical, 2x; Digital, 5x",
-    "cell": ["GSM", "CDMA", "HSPA", "EVDO", "LTE", "5G"],
-    "year": 2021
+    "cell": ["GSM", "CDMA", "HSPA", "EVDO", "LTE", "5G"]
   },
   {
     "id": "apple-iphone-13-mini-128gb-midnight",
     "category": "phones",
     "namespaceId": "apple-iphone-13-mini",
+    "year": 2021,
     "name": "Apple iPhone 13 Mini 128GB Midnight",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
     "capacity": "128GB",
@@ -4654,13 +4693,13 @@
     "ram": "4GB",
     "camera": "12 Mp + 12 Mp",
     "zoom": "Optical, 2x; Digital, 5x",
-    "cell": ["GSM", "CDMA", "HSPA", "EVDO", "LTE", "5G"],
-    "year": 2021
+    "cell": ["GSM", "CDMA", "HSPA", "EVDO", "LTE", "5G"]
   },
   {
     "id": "apple-iphone-13-mini-256gb-midnight",
     "category": "phones",
     "namespaceId": "apple-iphone-13-mini",
+    "year": 2021,
     "name": "Apple iPhone 13 Mini 256GB Midnight",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
     "capacity": "256GB",
@@ -4700,13 +4739,13 @@
     "ram": "4GB",
     "camera": "12 Mp + 12 Mp",
     "zoom": "Optical, 2x; Digital, 5x",
-    "cell": ["GSM", "CDMA", "HSPA", "EVDO", "LTE", "5G"],
-    "year": 2021
+    "cell": ["GSM", "CDMA", "HSPA", "EVDO", "LTE", "5G"]
   },
   {
     "id": "apple-iphone-13-mini-64gb-pink",
     "category": "phones",
     "namespaceId": "apple-iphone-13-mini",
+    "year": 2021,
     "name": "Apple iPhone 13 Mini 64GB Pink",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
     "capacity": "64GB",
@@ -4746,13 +4785,13 @@
     "ram": "4GB",
     "camera": "12 Mp + 12 Mp",
     "zoom": "Optical, 2x; Digital, 5x",
-    "cell": ["GSM", "CDMA", "HSPA", "EVDO", "LTE", "5G"],
-    "year": 2021
+    "cell": ["GSM", "CDMA", "HSPA", "EVDO", "LTE", "5G"]
   },
   {
     "id": "apple-iphone-13-mini-128gb-pink",
     "category": "phones",
     "namespaceId": "apple-iphone-13-mini",
+    "year": 2021,
     "name": "Apple iPhone 13 Mini 128GB Pink",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
     "capacity": "128GB",
@@ -4792,13 +4831,13 @@
     "ram": "4GB",
     "camera": "12 Mp + 12 Mp",
     "zoom": "Optical, 2x; Digital, 5x",
-    "cell": ["GSM", "CDMA", "HSPA", "EVDO", "LTE", "5G"],
-    "year": 2021
+    "cell": ["GSM", "CDMA", "HSPA", "EVDO", "LTE", "5G"]
   },
   {
     "id": "apple-iphone-13-mini-256gb-pink",
     "category": "phones",
     "namespaceId": "apple-iphone-13-mini",
+    "year": 2021,
     "name": "Apple iPhone 13 Mini 256GB Pink",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
     "capacity": "256GB",
@@ -4838,13 +4877,13 @@
     "ram": "4GB",
     "camera": "12 Mp + 12 Mp",
     "zoom": "Optical, 2x; Digital, 5x",
-    "cell": ["GSM", "CDMA", "HSPA", "EVDO", "LTE", "5G"],
-    "year": 2021
+    "cell": ["GSM", "CDMA", "HSPA", "EVDO", "LTE", "5G"]
   },
   {
     "id": "apple-iphone-13-mini-64gb-white",
     "category": "phones",
     "namespaceId": "apple-iphone-13-mini",
+    "year": 2021,
     "name": "Apple iPhone 13 Mini 64GB White",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
     "capacity": "64GB",
@@ -4884,13 +4923,13 @@
     "ram": "4GB",
     "camera": "12 Mp + 12 Mp",
     "zoom": "Optical, 2x; Digital, 5x",
-    "cell": ["GSM", "CDMA", "HSPA", "EVDO", "LTE", "5G"],
-    "year": 2021
+    "cell": ["GSM", "CDMA", "HSPA", "EVDO", "LTE", "5G"]
   },
   {
     "id": "apple-iphone-13-mini-128gb-white",
     "category": "phones",
     "namespaceId": "apple-iphone-13-mini",
+    "year": 2021,
     "name": "Apple iPhone 13 Mini 128GB White",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
     "capacity": "128GB",
@@ -4930,13 +4969,13 @@
     "ram": "4GB",
     "camera": "12 Mp + 12 Mp",
     "zoom": "Optical, 2x; Digital, 5x",
-    "cell": ["GSM", "CDMA", "HSPA", "EVDO", "LTE", "5G"],
-    "year": 2021
+    "cell": ["GSM", "CDMA", "HSPA", "EVDO", "LTE", "5G"]
   },
   {
     "id": "apple-iphone-13-mini-256gb-white",
     "category": "phones",
     "namespaceId": "apple-iphone-13-mini",
+    "year": 2021,
     "name": "Apple iPhone 13 Mini 256GB White",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
     "capacity": "256GB",
@@ -4976,13 +5015,13 @@
     "ram": "4GB",
     "camera": "12 Mp + 12 Mp",
     "zoom": "Optical, 2x; Digital, 5x",
-    "cell": ["GSM", "CDMA", "HSPA", "EVDO", "LTE", "5G"],
-    "year": 2021
+    "cell": ["GSM", "CDMA", "HSPA", "EVDO", "LTE", "5G"]
   },
   {
     "id": "apple-iphone-13-mini-64gb-blue",
     "category": "phones",
     "namespaceId": "apple-iphone-13-mini",
+    "year": 2021,
     "name": "Apple iPhone 13 Mini 64GB Blue",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
     "capacity": "64GB",
@@ -5028,6 +5067,7 @@
     "id": "apple-iphone-13-mini-128gb-blue",
     "category": "phones",
     "namespaceId": "apple-iphone-13-mini",
+    "year": 2021,
     "name": "Apple iPhone 13 Mini 128GB Blue",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
     "capacity": "128GB",
@@ -5073,6 +5113,7 @@
     "id": "apple-iphone-13-mini-256gb-blue",
     "category": "phones",
     "namespaceId": "apple-iphone-13-mini",
+    "year": 2021,
     "name": "Apple iPhone 13 Mini 256GB Blue",
     "capacityAvailable": ["64GB", "128GB", "256GB"],
     "capacity": "256GB",
@@ -5112,13 +5153,13 @@
     "ram": "4GB",
     "camera": "12 Mp + 12 Mp",
     "zoom": "Optical, 2x; Digital, 5x",
-    "cell": ["GSM", "CDMA", "HSPA", "EVDO", "LTE", "5G"],
-    "year": 2021
+    "cell": ["GSM", "CDMA", "HSPA", "EVDO", "LTE", "5G"]
   },
   {
     "id": "apple-iphone-13-pro-max-128gb-sierrablue",
     "category": "phones",
     "namespaceId": "apple-iphone-13-pro-max",
+    "year": 2021,
     "name": "Apple iPhone 13 Pro Max 128GB Sierra Blue",
     "capacityAvailable": ["128GB", "256GB", "512GB", "1TB"],
     "capacity": "128GB",
@@ -5164,13 +5205,13 @@
     "ram": "6GB",
     "camera": "12 Mp + 12 Mp + 12 Mp",
     "zoom": "Optical, 3x; Digital, up to 15x",
-    "cell": ["GSM", "CDMA", "HSPA", "EVDO", "LTE", "5G"],
-    "year": 2021
+    "cell": ["GSM", "CDMA", "HSPA", "EVDO", "LTE", "5G"]
   },
   {
     "id": "apple-iphone-13-pro-max-256gb-sierrablue",
     "category": "phones",
     "namespaceId": "apple-iphone-13-pro-max",
+    "year": 2021,
     "name": "Apple iPhone 13 Pro Max 256GB Sierra Blue",
     "capacityAvailable": ["128GB", "256GB", "512GB", "1TB"],
     "capacity": "256GB",
@@ -5216,13 +5257,13 @@
     "ram": "6GB",
     "camera": "12 Mp + 12 Mp + 12 Mp",
     "zoom": "Optical, 3x; Digital, up to 15x",
-    "cell": ["GSM", "CDMA", "HSPA", "EVDO", "LTE", "5G"],
-    "year": 2021
+    "cell": ["GSM", "CDMA", "HSPA", "EVDO", "LTE", "5G"]
   },
   {
     "id": "apple-iphone-13-pro-max-512gb-sierrablue",
     "category": "phones",
     "namespaceId": "apple-iphone-13-pro-max",
+    "year": 2021,
     "name": "Apple iPhone 13 Pro Max 512GB Sierra Blue",
     "capacityAvailable": ["128GB", "256GB", "512GB", "1TB"],
     "capacity": "512GB",
@@ -5268,13 +5309,13 @@
     "ram": "6GB",
     "camera": "12 Mp + 12 Mp + 12 Mp",
     "zoom": "Optical, 3x; Digital, up to 15x",
-    "cell": ["GSM", "CDMA", "HSPA", "EVDO", "LTE", "5G"],
-    "year": 2021
+    "cell": ["GSM", "CDMA", "HSPA", "EVDO", "LTE", "5G"]
   },
   {
     "id": "apple-iphone-13-pro-max-1tb-sierrablue",
     "category": "phones",
     "namespaceId": "apple-iphone-13-pro-max",
+    "year": 2021,
     "name": "Apple iPhone 13 Pro Max 1TB Sierra Blue",
     "capacityAvailable": ["128GB", "256GB", "512GB", "1TB"],
     "capacity": "1TB",
@@ -5321,6 +5362,7 @@
     "id": "apple-iphone-13-pro-max-128gb-graphite",
     "category": "phones",
     "namespaceId": "apple-iphone-13-pro-max",
+    "year": 2021,
     "name": "Apple iPhone 13 Pro Max 128GB Graphite",
     "capacityAvailable": ["128GB", "256GB", "512GB", "1TB"],
     "capacity": "128GB",
@@ -5372,6 +5414,7 @@
     "id": "apple-iphone-13-pro-max-256gb-graphite",
     "category": "phones",
     "namespaceId": "apple-iphone-13-pro-max",
+    "year": 2021,
     "name": "Apple iPhone 13 Pro Max 256GB Graphite",
     "capacityAvailable": ["128GB", "256GB", "512GB", "1TB"],
     "capacity": "256GB",
@@ -5417,13 +5460,13 @@
     "ram": "6GB",
     "camera": "12 Mp + 12 Mp + 12 Mp",
     "zoom": "Optical, 3x; Digital, up to 15x",
-    "cell": ["GSM", "CDMA", "HSPA", "EVDO", "LTE", "5G"],
-    "year": 2021
+    "cell": ["GSM", "CDMA", "HSPA", "EVDO", "LTE", "5G"]
   },
   {
     "id": "apple-iphone-13-pro-max-512gb-graphite",
     "category": "phones",
     "namespaceId": "apple-iphone-13-pro-max",
+    "year": 2021,
     "name": "Apple iPhone 13 Pro Max 512GB Graphite",
     "capacityAvailable": ["128GB", "256GB", "512GB", "1TB"],
     "capacity": "512GB",
@@ -5475,6 +5518,7 @@
     "id": "apple-iphone-13-pro-max-1tb-graphite",
     "category": "phones",
     "namespaceId": "apple-iphone-13-pro-max",
+    "year": 2021,
     "name": "Apple iPhone 13 Pro Max 1TB Graphite",
     "capacityAvailable": ["128GB", "256GB", "512GB", "1TB"],
     "capacity": "1TB",
@@ -5515,13 +5559,13 @@
     "ram": "6GB",
     "camera": "48 Mp + 12 Mp + 12MP + 12Mp",
     "zoom": "Digital 5x, Optical 2x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE", "5G"],
-    "year": 2021
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE", "5G"]
   },
   {
     "id": "apple-iphone-13-pro-max-128gb-gold",
     "category": "phones",
     "namespaceId": "apple-iphone-13-pro-max",
+    "year": 2021,
     "name": "Apple iPhone 13 Pro Max 128GB Gold",
     "capacityAvailable": ["128GB", "256GB", "512GB", "1TB"],
     "capacity": "128GB",
@@ -5573,6 +5617,7 @@
     "id": "apple-iphone-13-pro-max-256gb-gold",
     "category": "phones",
     "namespaceId": "apple-iphone-13-pro-max",
+    "year": 2021,
     "name": "Apple iPhone 13 Pro Max 256GB Gold",
     "capacityAvailable": ["128GB", "256GB", "512GB", "1TB"],
     "capacity": "256GB",
@@ -5618,13 +5663,13 @@
     "ram": "6GB",
     "camera": "12 Mp + 12 Mp + 12 Mp",
     "zoom": "Optical, 3x; Digital, up to 15x",
-    "cell": ["GSM", "CDMA", "HSPA", "EVDO", "LTE", "5G"],
-    "year": 2021
+    "cell": ["GSM", "CDMA", "HSPA", "EVDO", "LTE", "5G"]
   },
   {
     "id": "apple-iphone-13-pro-max-512gb-gold",
     "category": "phones",
     "namespaceId": "apple-iphone-13-pro-max",
+    "year": 2021,
     "name": "Apple iPhone 13 Pro Max 512GB Gold",
     "capacityAvailable": ["128GB", "256GB", "512GB", "1TB"],
     "capacity": "512GB",
@@ -5670,13 +5715,13 @@
     "ram": "6GB",
     "camera": "12 Mp + 12 Mp + 12 Mp",
     "zoom": "Optical, 3x; Digital, up to 15x",
-    "cell": ["GSM", "CDMA", "HSPA", "EVDO", "LTE", "5G"],
-    "year": 2021
+    "cell": ["GSM", "CDMA", "HSPA", "EVDO", "LTE", "5G"]
   },
   {
     "id": "apple-iphone-13-pro-max-1tb-gold",
     "category": "phones",
     "namespaceId": "apple-iphone-13-pro-max",
+    "year": 2021,
     "name": "Apple iPhone 13 Pro Max 1TB Gold",
     "capacityAvailable": ["128GB", "256GB", "512GB", "1TB"],
     "capacity": "1TB",
@@ -5717,18 +5762,18 @@
     "ram": "6GB",
     "camera": "48 Mp + 12 Mp + 12MP + 12Mp",
     "zoom": "Digital 5x, Optical 2x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE", "5G"],
-    "year": 2021
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE", "5G"]
   },
   {
     "id": "apple-iphone-14-pro-128gb-gold",
     "category": "phones",
     "namespaceId": "apple-iphone-14-pro",
+    "year": 2022,
     "name": "Apple iPhone 14 Pro 128GB Gold",
     "capacityAvailable": ["128GB", "256GB", "512GB", "1TB"],
     "capacity": "128GB",
     "priceRegular": 1056,
-    "priceDiscount": 980,
+    "priceDiscount": 1056,
     "colorsAvailable": ["spaceblack", "gold"],
     "color": "gold",
     "images": [
@@ -5765,18 +5810,18 @@
     "ram": "6GB",
     "camera": "12 Mp + 12 Mp + 12MP",
     "zoom": "Digital 5x, Optical 2x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE", "5G"],
-    "year": 2022
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE", "5G"]
   },
   {
     "id": "apple-iphone-14-pro-256gb-gold",
     "category": "phones",
     "namespaceId": "apple-iphone-14-pro",
+    "year": 2022,
     "name": "Apple iPhone 14 Pro 256GB Gold",
     "capacityAvailable": ["128GB", "256GB", "512GB", "1TB"],
     "capacity": "256GB",
     "priceRegular": 1200,
-    "priceDiscount": 1160,
+    "priceDiscount": 1200,
     "colorsAvailable": ["spaceblack", "gold"],
     "color": "gold",
     "images": [
@@ -5813,18 +5858,18 @@
     "ram": "6GB",
     "camera": "12 Mp + 12 Mp + 12MP",
     "zoom": "Digital 5x, Optical 2x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE", "5G"],
-    "year": 2022
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE", "5G"]
   },
   {
     "id": "apple-iphone-14-pro-512gb",
     "category": "phones",
     "namespaceId": "apple-iphone-14-pro",
+    "year": 2022,
     "name": "Apple iPhone 14 Pro 512GB Gold",
     "capacityAvailable": ["128GB", "256GB", "512GB", "1TB"],
     "capacity": "512GB",
     "priceRegular": 1466,
-    "priceDiscount": 1378,
+    "priceDiscount": 1466,
     "colorsAvailable": ["spaceblack", "gold"],
     "color": "gold",
     "images": [
@@ -5861,18 +5906,18 @@
     "ram": "6GB",
     "camera": "12 Mp + 12 Mp + 12MP",
     "zoom": "Digital 5x, Optical 2x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE", "5G"],
-    "year": 2022
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE", "5G"]
   },
   {
     "id": "apple-iphone-14-pro-1tb-gold",
     "category": "phones",
     "namespaceId": "apple-iphone-14-pro",
+    "year": 2022,
     "name": "Apple iPhone 14 Pro 1TB Gold",
     "capacityAvailable": ["128GB", "256GB", "512GB", "1TB"],
     "capacity": "1TB",
     "priceRegular": 1740,
-    "priceDiscount": 1520,
+    "priceDiscount": 1740,
     "colorsAvailable": ["spaceblack", "gold"],
     "color": "gold",
     "images": [
@@ -5909,7 +5954,6 @@
     "ram": "6GB",
     "camera": "48 Mp + 12 Mp + 12MP + 12Mp",
     "zoom": "Digital 5x, Optical 2x",
-    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE", "5G"],
-    "year": 2022
+    "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE", "5G"]
   }
 ]

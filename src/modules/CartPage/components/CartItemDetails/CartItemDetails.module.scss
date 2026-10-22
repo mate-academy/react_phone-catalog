@@ -34,6 +34,18 @@
     cursor: pointer;
   }
 
+  .product-link {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    color: inherit;
+    text-decoration: none;
+
+    @include respond-to('tablet-sm') {
+      gap: 24px;
+    }
+  }
+
   .image {
     width: 66px;
     height: 66px;

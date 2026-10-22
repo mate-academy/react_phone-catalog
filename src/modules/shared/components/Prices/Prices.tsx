@@ -12,13 +12,17 @@ export const Prices: React.FC<Props> = ({
   priceRegular,
   classname,
 }) => {
+  const hasDiscount = priceDiscount && priceDiscount < priceRegular;
+
   return (
     <div className={`${styles.prices} ${classname}`}>
-      {priceDiscount && (
-        <span className={styles['price-discount']}>${priceDiscount}</span>
-      )}
+      <span className={styles['price-discount']}>
+        ${hasDiscount ? priceDiscount : priceRegular}
+      </span>
 
-      <span className={styles['price-regular']}>${priceRegular}</span>
+      {hasDiscount && (
+        <span className={styles['price-regular']}>${priceRegular}</span>
+      )}
     </div>
   );
 };

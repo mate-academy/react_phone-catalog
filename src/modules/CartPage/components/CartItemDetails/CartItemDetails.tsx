@@ -1,4 +1,5 @@
 import type React from 'react';
+import { Link } from 'react-router-dom';
 import { asset } from '../../../../helper';
 import type { CartItem } from '../../../../types/CartItem';
 import styles from './CartItemDetails.module.scss';
@@ -26,12 +27,17 @@ export const CartItemDetails: React.FC<Props> = ({
         >
           <img src={asset('img/close-secondary.svg')} alt="" />
         </button>
-        <img
-          className={styles.image}
-          src={asset(product.images[0])}
-          alt={product.name}
-        />
-        <p className={styles.name}>{product.name}</p>
+        <Link
+          to={`/${product.category}/${product.id}`}
+          className={styles['product-link']}
+        >
+          <img
+            className={styles.image}
+            src={asset(product.images[0])}
+            alt={product.name}
+          />
+          <p className={styles.name}>{product.name}</p>
+        </Link>
       </div>
 
       <div className={styles.controls}>
