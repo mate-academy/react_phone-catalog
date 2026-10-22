@@ -14,8 +14,13 @@ export const Breadcrumbs = ({ items }: Props) => {
   return (
     <div className={styles.wrapper}>
       {/* Home icon */}
-      <NavLink to="/" className={styles.iconButton} aria-label="Go to homepage">
-        <img src="./img/icons/Home.svg" alt="" />
+      <NavLink to="/" className={styles.icon} aria-label="Go to homepage">
+        <div className={styles.iconInner}>
+          <span
+            className={`${styles.maskIcon} ${styles.homeIcon}`}
+            aria-hidden="true"
+          />
+        </div>
       </NavLink>
 
       {/* Arrow after home if crumbs exist */}

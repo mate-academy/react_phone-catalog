@@ -12,20 +12,31 @@
 }
 
 /* HOME ICON BUTTON */
-.iconButton {
-  display: flex;
-  align-items: center;
+.maskIcon {
+  display: block;
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
 
-  img {
-    width: 16px;
-    height: 16px;
-    opacity: 0.6;
-    transition: opacity $transition;
-  }
+  background-color: var(--color-icons);
 
-  &:hover img {
-    opacity: 1;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+
+  @include desktop {
+    width: 24px;
+    height: 24px;
   }
+}
+
+.homeIcon {
+  mask-image: url('./img/icons/Home.svg');
+  -webkit-mask-image: url('./img/icons/Home.svg');
 }
 
 .arrow {
