@@ -1,0 +1,152 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  gap: 12px;
+  padding: 16px;
+  border: 1px solid #e2e6e9;
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: 160px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.name {
+  min-height: 42px;
+  margin: 0;
+  color: #313237;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+      color: #216cff;
+    }
+  }
+}
+
+.prices {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.price {
+  color: #313237;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.fullPrice {
+  color: #89939a;
+  font-size: 22px;
+  text-decoration: line-through;
+}
+
+.specs {
+  padding-top: 8px;
+  border-top: 1px solid #e2e6e9;
+
+  p {
+    margin: 6px 0;
+    color: #89939a;
+    font-size: 12px;
+  }
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.cartButton {
+  flex: 1;
+  min-width: 0;
+  min-height: 40px;
+  padding: 0 8px;
+  border: 0;
+  border-radius: 8px;
+  background-color: #216cff;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #0056e0;
+  }
+
+  &:active {
+    background-color: #0045b8;
+  }
+}
+
+.cartButton[aria-pressed='true'] {
+  border: 1px solid #e2e6e9;
+  background-color: #fff;
+  color: #216cff;
+
+  &:hover {
+    background-color: #eef4ff;
+  }
+}
+
+.favoriteButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid #b4bdc3;
+  border-radius: 8px;
+  background-color: #fff;
+  color: #313237;
+  cursor: pointer;
+
+  &:hover {
+    border-color: #313237;
+  }
+
+  &[aria-pressed='true'] {
+    color: #f43fa5;
+    border-color: #e2e6e9;
+  }
+
+  &:focus-visible {
+    outline: 2px solid #216cff;
+    outline-offset: 2px;
+  }
+}
+
+@media (max-width: 479px) {
+  .card {
+    padding: 12px;
+  }
+
+  .image {
+    height: 140px;
+  }
+
+  .cartButton {
+    font-size: 12px;
+  }
+}

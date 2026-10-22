@@ -1,0 +1,136 @@
+
+.footer {
+  margin-top: auto;
+  border-top: 1px solid #e2e6e9;
+  background-color: #fff;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1200px;
+  min-height: 96px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  color: #f447af;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 0.95;
+  text-decoration: none;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 64px;
+
+  a {
+    color: #89939a;
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: #313237;
+    }
+  }
+}
+
+.footerActions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.copyright {
+  color: #89939a;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.topIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid #b4bdc3;
+  border-radius: 50%;
+  color: #313237;
+  font-size: 18px;
+  transition: border-color 0.3s ease;
+}
+
+.backToTop {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  color: #89939a;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+
+  &:hover {
+    color: #313237;
+
+    .topIcon {
+      border-color: #313237;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .container {
+    flex-wrap: wrap;
+    gap: 32px;
+  }
+
+  .links {
+    gap: 24px;
+  }
+
+  .footerActions {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 479px) {
+  .container {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 32px 16px;
+  }
+
+  .links {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .footerActions {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .backToTop {
+    align-self: flex-end;
+  }
+}

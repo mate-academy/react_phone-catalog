@@ -1,0 +1,109 @@
+
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 24px 64px;
+}
+
+.title {
+  margin: 0 0 8px;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.count {
+  margin: 0 0 32px;
+  color: #89939a;
+  font-size: 14px;
+}
+
+.filters {
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 180px;
+  max-width: 100%;
+
+  label {
+    color: #89939a;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  select {
+    width: 100%;
+    padding: 12px;
+    color: #313237;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    background-color: #fff;
+    border: 1px solid #b4bdc3;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+@media (max-width: 1023px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 639px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 40px;
+
+  button {
+    min-width: 40px;
+    height: 40px;
+    padding: 0 12px;
+    color: #313237;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    background-color: #fff;
+    border: 1px solid #b4bdc3;
+    border-radius: 4px;
+    cursor: pointer;
+
+    &:disabled {
+      color: #b4bdc3;
+      cursor: not-allowed;
+    }
+
+    &:hover:not(:disabled) {
+      border-color: #313237;
+    }
+  }
+
+  .activePage {
+    color: #fff;
+    background-color: #313237;
+    border-color: #313237;
+  }
+}

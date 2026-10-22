@@ -1,0 +1,126 @@
+.page {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 32px 64px;
+}
+
+.title {
+  margin: 32px 0 8px;
+  color: #313237;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.count {
+  margin: 0 0 40px;
+  color: #89939a;
+  font-size: 14px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.filters {
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 180px;
+  max-width: 100%;
+
+  label {
+    color: #89939a;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  select {
+    width: 100%;
+    padding: 12px;
+    color: #313237;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    background-color: #fff;
+    border: 1px solid #b4bdc3;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 1023px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 639px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 40px;
+
+  button {
+    min-width: 40px;
+    height: 40px;
+    padding: 0 12px;
+    color: #313237;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    background-color: #fff;
+    border: 1px solid #b4bdc3;
+    border-radius: 4px;
+    cursor: pointer;
+
+    &:disabled {
+      color: #b4bdc3;
+      cursor: not-allowed;
+    }
+
+    &:hover:not(:disabled) {
+      border-color: #313237;
+    }
+  }
+
+  .activePage {
+    color: #fff;
+    background-color: #313237;
+    border-color: #313237;
+  }
+}
+
+@media (max-width: 767px) {
+  .page {
+    padding: 24px 16px 48px;
+  }
+
+  .title {
+    margin-top: 24px;
+    font-size: 32px;
+  }
+
+  .count {
+    margin-bottom: 32px;
+  }
+}

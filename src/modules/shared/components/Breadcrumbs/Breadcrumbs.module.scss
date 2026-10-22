@@ -1,0 +1,41 @@
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-bottom: 24px;
+  font-size: 14px;
+}
+
+.homeLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #313237;
+  text-decoration: none;
+
+  &:hover {
+    color: #f43fa5;
+  }
+}
+
+.link {
+  color: #313237;
+  text-decoration: none;
+
+  &:hover {
+    color: #f43fa5;
+  }
+}
+
+.separator {
+  color: #b4bdc3;
+  font-size: 26px;
+  line-height: 1;
+}
+
+.current {
+  color: #89939a;
+  font-weight: 600;
+}
