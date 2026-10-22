@@ -14,6 +14,7 @@ import {
   ProductImages,
   ProductOpitions,
 } from '../../components/Details';
+import { ProductTechSpecs } from '../../components/Details/ProductTechSpecs';
 
 export const ProductDetailsPage = () => {
   const { productId } = useParams();
@@ -61,16 +62,13 @@ export const ProductDetailsPage = () => {
           Back
         </a>
       </div>
-
       <div className={styles.details__name}>
         <p>{product.name}</p>
       </div>
-
       <ProductImages key={product.id} product={product} />
-
       <ProductOpitions product={product} />
-
       <ProductAbout product={product} />
+      <ProductTechSpecs product={product} />
     </section>
   );
 };
