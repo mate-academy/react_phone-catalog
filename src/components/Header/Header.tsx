@@ -1,7 +1,7 @@
 import classNames from 'classnames/bind';
 
 import { Logo } from '../Ui/Logo';
-import { IconButton } from '../Ui/IconButton';
+import { IconButton } from '../Ui/IconLinkButton';
 import { Navigation } from '../Navigation';
 
 import styles from './Header.module.scss';

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styles from './IconButton.module.scss';
+import styles from './IconLinkButton.module.scss';
 import classNames from 'classnames/bind';
 
 interface Props {
