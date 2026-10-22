@@ -18,7 +18,7 @@ export const HomePage = () => {
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
-    fetch('/api/products.json')
+    fetch(withBase('/api/products.json'))
       .then(response => response.json())
       .then(setProducts)
       .catch(() => setProducts([]));
@@ -108,7 +108,7 @@ export const HomePage = () => {
 
           <div className={styles.categoriesList}>
             <NavLink to="/phones" className={styles.category}>
-              <img src="/img/category-phones.png" alt="Phones" />
+              <img src={withBase('/img/category-phones.png')} alt="Phones" />
               <h3>Mobile phones</h3>
               {products.length > 0 && (
                 <p className={styles.categoryCount}>
@@ -118,7 +118,7 @@ export const HomePage = () => {
             </NavLink>
 
             <NavLink to="/tablets" className={styles.category}>
-              <img src="/img/category-tablets.png" alt="Tablets" />
+              <img src={withBase('/img/category-tablets.png')} alt="Tablets" />
               <h3>Tablets</h3>
               {products.length > 0 && (
                 <p className={styles.categoryCount}>
@@ -128,7 +128,10 @@ export const HomePage = () => {
             </NavLink>
 
             <NavLink to="/accessories" className={styles.category}>
-              <img src="/img/category-accessories.png" alt="Accessories" />
+              <img
+                src={withBase('/img/category-accessories.png')}
+                alt="Accessories"
+              />
               <h3>Accessories</h3>
               {products.length > 0 && (
                 <p className={styles.categoryCount}>
