@@ -68,17 +68,24 @@ export const ProductOpitions = ({ product }: ProductOpitionsProps) => {
               normalizeColor(color) === normalizeColor(product.color);
 
             return (
-              <button
+              <label
                 key={color}
-                type="button"
-                aria-label={color}
-                aria-pressed={isActive}
-                className={`${styles.options__color} ${
-                  isActive ? styles.active : ''
-                }`}
-                style={{ backgroundColor: getColorHex(color) }}
-                onClick={() => handleColor(color)}
-              />
+                className={styles['options__colorsBox--label']}
+              >
+                <input
+                  type="radio"
+                  name="color"
+                  value={color}
+                  checked={isActive}
+                  onChange={() => handleColor(color)}
+                  className={styles.visuallyHidden}
+                  aria-label={color}
+                />
+                <span
+                  className={styles['options__colorsBox--color']}
+                  style={{ backgroundColor: getColorHex(color) }}
+                />
+              </label>
             );
           })}
         </div>

@@ -49,6 +49,39 @@
       width: 100%;
       gap: 8px;
     }
+
+    &--label {
+      position: relative;
+      display: flex;
+
+      cursor: pointer;
+
+      input:checked + span {
+        box-shadow: 0 0 0 1px var(--color-primary);
+      }
+
+      input:focus-visible + span {
+        outline: 2px solid var(--color-primary);
+        outline-offset: 3px;
+      }
+    }
+
+    &--color {
+      display: block;
+      flex-shrink: 0;
+
+      width: 32px;
+      height: 32px;
+
+      border: 1px solid var(--color-secondary);
+      border-radius: 50%;
+
+      transition: transform 0.2s ease;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
   }
 
   &__color {
@@ -236,4 +269,13 @@
 
     margin-top: 24px;
   }
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
