@@ -9,7 +9,11 @@ import {
 } from '../../api/productDetails';
 import { IconTrail } from '../../components/IconTrail/IconTrail';
 
-import { ProductImages, ProductOpitions } from '../../components/Details';
+import {
+  ProductAbout,
+  ProductImages,
+  ProductOpitions,
+} from '../../components/Details';
 
 export const ProductDetailsPage = () => {
   const { productId } = useParams();
@@ -65,6 +69,8 @@ export const ProductDetailsPage = () => {
       <ProductImages key={product.id} product={product} />
 
       <ProductOpitions product={product} />
+
+      <ProductAbout product={product} />
     </section>
   );
 };

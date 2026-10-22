@@ -29,8 +29,8 @@ $desktopMin: 1200px;
 
 // #region grid das páginas
 // Altere para true para ver as colunas, ou false antes de comitar
-$show-grid-debug: true;
 $show-grid-debug: false;
+$show-grid-debug: true;
 
 @mixin page-grid {
   display: grid;
