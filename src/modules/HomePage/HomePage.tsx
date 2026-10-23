@@ -19,9 +19,9 @@ export const HomePage = () => {
         <div className={styles.homePage}>
           <h1 hidden>Product Catalog</h1>
 
-          <h1 className={styles.homePage__title}>
+          <h2 className={styles.homePage__title}>
             Welcome to Nice Gadgets store!
-          </h1>
+          </h2>
 
           <BannerSlider isLoading={isLoading} />
 

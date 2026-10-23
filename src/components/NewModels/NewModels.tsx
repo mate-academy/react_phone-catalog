@@ -43,7 +43,7 @@ export const NewModels = ({
   return (
     <section className={styles.newModels}>
       <div className={styles.newModels__title}>
-        <h1>Brand new models </h1>
+        <h2>Brand new models </h2>
         <div className={styles.newModels__barContainer}>
           <a
             onClick={() => {
