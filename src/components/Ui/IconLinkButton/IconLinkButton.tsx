@@ -10,16 +10,15 @@ interface Props {
   toggledSrc?: string;
   label?: string;
 }
+const cx = classNames.bind(styles);
 
-export const IconButton: React.FC<Props> = ({
+export const IconLinkButton: React.FC<Props> = ({
   src,
   onClick,
   toggled = false,
   toggledSrc,
   label,
 }) => {
-  const cx = classNames.bind(styles);
-
   return (
     <button
       type="button"

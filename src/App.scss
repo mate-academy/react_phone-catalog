@@ -1,1 +1,5 @@
-// not empty
+@use '../src/styles/global-variables' as *;
+
+.App {
+  background-color: $hover-and-bg-color;
+}

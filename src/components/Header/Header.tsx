@@ -1,7 +1,7 @@
 import classNames from 'classnames/bind';
 
 import { Logo } from '../Ui/Logo';
-import { IconButton } from '../Ui/IconLinkButton';
+import { IconLinkButton } from '../Ui/IconLinkButton';
 import { Navigation } from '../Navigation';
 
 import styles from './Header.module.scss';
@@ -53,7 +53,7 @@ export const Header = () => {
             key={name}
             className={cx('header__icon', `header__icon--${name}`)}
           >
-            <IconButton
+            <IconLinkButton
               src={src}
               toggledSrc={toggledSrc}
               label={label}

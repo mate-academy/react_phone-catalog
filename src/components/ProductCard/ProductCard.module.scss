@@ -1,0 +1,92 @@
+@use '../../styles/global-variables' as *;
+
+.product-card {
+  background-color: $white-color;
+  max-width: 272px;
+  width: 100%;
+  padding: 32px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &__image {
+     &-box {
+      aspect-ratio: 208 / 196;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      max-height: 220px;
+    }
+
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block
+  }
+
+  &__title {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+
+    padding-top: 16px;
+  }
+
+  &__prices {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  &__price {
+    font-weight: 800;
+    line-height: 140%;
+    font-size: 22px;
+  }
+
+  &__old-price {
+    font-weight: 500;
+    line-height: 100%;
+    font-size: 22px;
+    color: $secondary-color;
+    text-decoration: line-through;
+    text-decoration-color: #fff;       // колір фону картки
+    text-decoration-thickness: 2px;
+  }
+
+  &__divider {
+    height: 1px;
+    margin: 0;
+    border: 0;
+    background: $elements-color;
+  }
+
+  &__descriptions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__description {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__label {
+    color: $secondary-color;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  &__value {
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+}
