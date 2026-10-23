@@ -1,0 +1,66 @@
+@use '../../styles/mixins' as *;
+@use '../../styles/fonts.scss' as *;
+
+.details {
+  @include page-grid;
+
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+
+  @include on-tablet {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(24, minmax(0, 1fr));
+  }
+
+  &__backTrail {
+    margin-top: 40px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: flex-start;
+
+    width: 66px;
+    height: 16px;
+
+    gap: 4px;
+
+    img {
+      cursor: pointer;
+
+      width: 16px;
+      height: 16px;
+
+      transition: 0.5s ease;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+
+    a {
+      cursor: pointer;
+
+      color: var(--color-secondary);
+
+      @include small-text;
+
+      transition: 0.5s ease;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  &__name {
+    margin-top: 16px;
+    grid-column: 1/-1;
+
+    color: var(--color-primary);
+
+    @include h2;
+  }
+}

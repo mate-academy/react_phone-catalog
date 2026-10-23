@@ -1,0 +1,83 @@
+$mobileMin: 320px;
+$tabletMin: 640px;
+$desktopMin: 1200px;
+
+@mixin on-mobile {
+  @media (min-width: $mobileMin) and (max-width: 639px) {
+    @content;
+  }
+}
+
+@mixin on-tablet {
+  @media (min-width: $tabletMin) and (max-width: 1199px) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktopMin) {
+    @content;
+  }
+}
+
+// fonts usarão este
+@mixin on-tablet-and-desktop {
+  @media (min-width: $tabletMin) {
+    @content;
+  }
+}
+
+// #region grid das páginas
+// Altere para true para ver as colunas, ou false antes de comitar
+$show-grid-debug: true;
+$show-grid-debug: false;
+
+@mixin page-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin: 0 16px;
+
+  @if $show-grid-debug {
+    background: repeating-linear-gradient(
+      to right,
+      rgba(255, 0, 0, 0.15) 0,
+      rgba(255, 0, 0, 0.15) calc((100% - 48px) / 4),
+      transparent calc((100% - 48px) / 4),
+      transparent calc((100% - 48px) / 4 + 16px)
+    );
+  }
+
+  @include on-tablet {
+    grid-template-columns: repeat(12, 1fr);
+    margin: 0 24px;
+
+    @if $show-grid-debug {
+      background: repeating-linear-gradient(
+        to right,
+        rgba(255, 0, 0, 0.15) 0,
+        rgba(255, 0, 0, 0.15) calc((100% - 176px) / 12),
+        transparent calc((100% - 176px) / 12),
+        transparent calc((100% - 176px) / 12 + 16px)
+      );
+    }
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(24, 1fr);
+    width: 1136px;
+    margin-inline: auto;
+
+    @if $show-grid-debug {
+      background: repeating-linear-gradient(
+        to right,
+        rgba(255, 0, 0, 0.15) 0,
+        rgba(255, 0, 0, 0.15) 32px,
+        transparent 32px,
+        transparent 48px
+      );
+    }
+  }
+}
+
+// #endregion

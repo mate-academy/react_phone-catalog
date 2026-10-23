@@ -1,0 +1,43 @@
+@use '../../styles/mixins' as *;
+@use '../../styles/fonts.scss' as *;
+
+.trail {
+  grid-column: 1 / -1;
+
+  display: flex;
+
+  justify-content: flex-start;
+  align-items: center;
+
+  gap: 8px;
+
+  margin-top: 24px;
+
+  height: 16px;
+
+  a {
+    display: flex;
+    align-items: center;
+
+    @include small-text;
+
+    color: var(--color-secondary);
+    text-decoration: none;
+
+    transition: 0.5s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  img {
+    width: 16px;
+  }
+
+  p {
+    @include small-text;
+
+    color: var(--color-secondary);
+  }
+}

@@ -1,0 +1,163 @@
+@use '../../styles/mixins' as *;
+@use '../../styles/fonts.scss' as *;
+
+.footer {
+  display: flex;
+
+  flex-direction: column;
+
+  background-color: var(--color-white);
+
+  height: 257px;
+  width: 100%;
+
+  align-items: flex-start;
+  justify-content: center;
+
+  gap: 32px;
+  padding-block: 16px;
+  padding-inline: clamp(32px, 5vw, 152px);
+
+  @include on-tablet-and-desktop {
+    height: 96px;
+    padding-block: 32px;
+    padding-inline: clamp(32px, 5vw, 152px);
+
+    align-items: center;
+
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    height: 32px;
+    width: 89px;
+
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    &-link {
+      display: flex;
+      img {
+        margin: 0;
+        height: 32px;
+        width: 89px;
+
+        @include on-desktop {
+          margin: 18px 24px;
+          width: 89px;
+          height: auto;
+        }
+      }
+    }
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include on-tablet-and-desktop {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+
+      width: 379px;
+    }
+
+    a {
+      position: relative;
+
+      display: flex;
+      align-items: center;
+      height: 100%;
+
+      color: var(--color-secondary);
+      text-decoration: none;
+
+      transition: color 0.7s ease;
+
+      @include uppercase;
+
+      &::after {
+        content: '';
+
+        position: absolute;
+        bottom: 0;
+        left: 0;
+
+        width: 100%;
+        height: 2px;
+
+        background-color: var(--color-primary);
+
+        transform: scaleX(0);
+        transition: transform 0.7s ease;
+      }
+
+      &:hover {
+        color: var(--color-primary);
+
+        &::after {
+          transform: scaleX(1);
+        }
+      }
+    }
+  }
+
+  &__toTop {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    align-self: center;
+
+    white-space: nowrap;
+
+    gap: 16px;
+
+    p {
+      color: var(--color-secondary);
+
+      @include small-text;
+    }
+
+    button {
+      flex-shrink: 0;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      width: 32px;
+      height: 32px;
+
+      aspect-ratio: 1;
+
+      background: transparent;
+      border: 1px solid var(--color-icons);
+
+      cursor: pointer;
+
+      transition: border-color 0.7s ease;
+
+      &:hover {
+        border-color: var(--color-primary);
+      }
+
+      img {
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+}

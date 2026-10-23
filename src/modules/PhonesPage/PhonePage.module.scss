@@ -1,0 +1,49 @@
+@use '../../styles/mixins' as *;
+@use '../../styles/fonts.scss' as *;
+
+.phones {
+  @include page-grid;
+
+  // flex: 1;
+
+  &__title {
+    @include h1;
+
+    color: var(--color-primary);
+
+    grid-column: 1/-1;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    height: 56px;
+
+    margin-top: 24px;
+
+    @include on-tablet-and-desktop {
+      margin-top: 40px;
+    }
+
+    h1 {
+      white-space: nowrap;
+    }
+  }
+
+  &__amount {
+    @include body-text;
+
+    color: var(--color-secondary);
+
+    display: flex;
+
+    grid-column: 1/-1;
+
+    justify-content: flex-start;
+    align-items: center;
+
+    height: 21px;
+
+    margin-top: 8px;
+  }
+}

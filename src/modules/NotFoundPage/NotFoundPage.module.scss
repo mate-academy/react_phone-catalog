@@ -1,0 +1,50 @@
+/* ======================
+   404 Page
+======================= */
+// 404 page adapted from:
+// https://codepen.io/arcs/pen/vOwJBw
+
+.page {
+  padding: 40px 0;
+  background: var(--color-white);
+  font-family: Arvo, serif;
+
+  img {
+    width: 100%;
+  }
+}
+
+.fourZeroFourBg {
+  height: 400px;
+
+  background-image: url('https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  h1 {
+    font-size: 80px;
+    text-align: center;
+  }
+
+  h3 {
+    font-size: 80px;
+  }
+}
+
+.link404 {
+  display: inline-block;
+
+  margin: 20px 0;
+  padding: 10px 20px;
+
+  color: var(--color-white);
+  background: #39ac31;
+
+  text-decoration: none;
+}
+
+.contentBox404 {
+  margin-top: -50px;
+  text-align: center;
+}

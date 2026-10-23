@@ -1,0 +1,60 @@
+@use '../../../styles/mixins' as *;
+@use '../../../styles/fonts.scss' as *;
+
+.techSpecs {
+  margin-top: 56px;
+  grid-column: 1/-1;
+
+  @include on-tablet {
+    margin-top: 64px;
+  }
+
+  @include on-desktop {
+    margin-top: 80px;
+
+    grid-column: 13/-1;
+  }
+
+  &__title {
+    width: 100%;
+    height: 42px;
+    color: var(--color-primary);
+
+    @include h3;
+
+    border-bottom: 1px solid var(--color-secondary);
+
+    margin-bottom: 30px;
+
+    @include on-tablet-and-desktop {
+      margin-bottom: 25px;
+    }
+  }
+
+  &__block {
+    display: flex;
+    flex-direction: row;
+
+    justify-content: space-between;
+    align-items: flex-start;
+
+    gap: 16px;
+
+    padding-top: 8px;
+
+    &--type {
+      flex-shrink: 0;
+
+      color: var(--color-secondary);
+
+      @include body-text;
+    }
+
+    &--value {
+      color: var(--color-primary);
+      text-align: right;
+
+      @include body-text;
+    }
+  }
+}

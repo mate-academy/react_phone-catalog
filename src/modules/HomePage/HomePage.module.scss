@@ -1,0 +1,29 @@
+@use '../../styles/mixins' as *;
+@use '../../styles/fonts.scss' as *;
+
+.homePage {
+  @include page-grid;
+
+  flex: 1;
+
+  padding-bottom: 64px;
+
+  &__title {
+    margin-top: 24px;
+    grid-column: 1 / -1;
+
+    @include h1;
+
+    @include on-tablet {
+      margin-top: 32px;
+    }
+
+    @include on-desktop {
+      margin-top: 56px;
+    }
+  }
+}
+
+.cccc {
+  grid-column: 1 / -1;
+}

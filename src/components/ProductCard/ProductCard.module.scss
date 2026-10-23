@@ -1,0 +1,195 @@
+@use '../../styles/mixins' as *;
+@use '../../styles/fonts.scss' as *;
+
+.productCard {
+  display: flex;
+  flex-direction: column;
+
+  padding: 32px;
+  gap: 8px;
+
+  background-color: var(--color-white);
+
+  width: 212px;
+  height: 439px;
+
+  border: 1px solid var(--color-elements);
+
+  @include on-tablet {
+    width: 237px;
+    height: 512px;
+  }
+
+  @include on-desktop {
+    width: 272px;
+    height: 506px;
+  }
+
+  &__image {
+    width: 100%;
+    flex: 1;
+    min-height: 0;
+
+    display: flex;
+    align-items: center;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+
+    @include on-tablet {
+      max-width: 173px;
+    }
+
+    @include on-desktop {
+      max-width: 208px;
+    }
+  }
+
+  &__name {
+    margin-top: auto;
+
+    @include body-text;
+
+    color: var(--color-primary);
+
+    text-decoration: none;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: var(--color-secondary);
+    }
+  }
+
+  &__price {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__currentPrice {
+    @include h3;
+
+    color: var(--color-primary);
+  }
+
+  &__fullPrice {
+    @include h4;
+
+    color: var(--color-secondary);
+    text-decoration: line-through;
+  }
+
+  & &__horizontalBar {
+    width: 100%;
+    border-bottom: solid 1px var(--color-elements);
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    height: 77px;
+
+    padding-top: 8px;
+    padding-bottom: 8px;
+
+    gap: 8px;
+  }
+
+  &__infoItem {
+    display: flex;
+    flex-direction: row;
+
+    justify-content: space-between;
+
+    p:first-child {
+      @include small-text;
+
+      color: var(--color-secondary);
+    }
+    p:last-child {
+      @include uppercase;
+
+      color: var(--color-primary);
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+
+    button {
+      height: 40px;
+
+      border: 1px solid transparent;
+      background-color: var(--color-primary);
+      color: var(--color-white);
+
+      cursor: pointer;
+
+      transition:
+        background-color 0.3s ease,
+        color 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+
+      &:hover {
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+      }
+
+      &:first-child {
+        width: 100px;
+        border: none;
+        background-color: var(--color-primary);
+        color: var(--color-white);
+
+        &.productCard__addButton--added {
+          color: var(--color-green);
+          background-color: var(--color-white);
+
+          border: solid 1px var(--color-elements);
+        }
+      }
+
+      &:last-child {
+        width: 40px;
+        flex-shrink: 0;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border: 1px solid var(--color-icons);
+        background-color: var(--color-white);
+
+        img {
+          width: 16px;
+          height: 16px;
+        }
+      }
+    }
+
+    @include on-tablet {
+      button:first-child {
+        width: 125px;
+      }
+    }
+
+    @include on-desktop {
+      button:first-child {
+        width: 160px;
+      }
+    }
+  }
+}

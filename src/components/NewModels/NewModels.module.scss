@@ -1,0 +1,73 @@
+@use '../../styles/mixins' as *;
+@use '../../styles/fonts.scss' as *;
+
+.newModels {
+  height: 526px;
+  grid-column: 1 / -1;
+
+  margin-top: 56px;
+
+  @include on-tablet {
+    height: 577px;
+  }
+
+  @include on-desktop {
+    height: 571px;
+  }
+
+  h2 {
+    @include h1;
+  }
+
+  &__title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__barContainer {
+    height: 32px;
+    width: 80px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    a {
+      display: flex;
+      width: 32px;
+      height: 32px;
+
+      border: 1px solid var(--color-elements);
+
+      transition: all 0.5s ease;
+
+      justify-content: center;
+      align-items: center;
+      &:hover {
+        cursor: pointer;
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  &__cards {
+    display: flex;
+    flex-direction: row;
+
+    overflow-x: auto;
+
+    margin-top: 24px;
+    gap: 16px;
+
+    scroll-behavior: smooth;
+
+    @include on-tablet {
+      margin-top: 24px;
+    }
+
+    @include on-desktop {
+      margin-top: 28px;
+    }
+  }
+}

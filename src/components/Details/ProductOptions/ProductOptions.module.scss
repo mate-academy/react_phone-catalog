@@ -1,0 +1,281 @@
+@use '../../../styles/mixins' as *;
+@use '../../../styles/fonts.scss' as *;
+
+.options {
+  grid-column: 1 / -1;
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  // margin-top: 40px;
+
+  @include on-tablet {
+    grid-column: 8 / -1;
+  }
+
+  @include on-desktop {
+    grid-column: 13 / 20;
+  }
+
+  &__colorsBox {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+
+    align-items: center;
+
+    gap: 8px;
+
+    &--text {
+      display: flex;
+      flex-direction: row;
+
+      width: 100%;
+
+      justify-content: space-between;
+      color: var(--color-secondary);
+
+      @include small-text;
+    }
+
+    &--colors {
+      display: flex;
+      flex-direction: row;
+
+      width: 100%;
+      gap: 8px;
+    }
+
+    &--label {
+      position: relative;
+      display: flex;
+
+      cursor: pointer;
+
+      input:checked + span {
+        box-shadow: 0 0 0 1px var(--color-primary);
+      }
+
+      input:focus-visible + span {
+        outline: 2px solid var(--color-primary);
+        outline-offset: 3px;
+      }
+    }
+
+    &--color {
+      display: block;
+      flex-shrink: 0;
+
+      width: 32px;
+      height: 32px;
+
+      border: 1px solid var(--color-secondary);
+      border-radius: 50%;
+
+      transition: transform 0.2s ease;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  &__color {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+
+    border: 1px solid var(--color-secondary);
+    border-radius: 50%;
+
+    cursor: pointer;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    &.active {
+      box-shadow: 0 0 0 1px var(--color-primary);
+    }
+  }
+
+  &__capacityBox {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    margin-top: 24px;
+
+    gap: 8px;
+
+    &--text {
+      color: var(--color-secondary);
+
+      @include small-text;
+    }
+
+    &--capacities {
+      display: flex;
+      flex-flow: row wrap;
+
+      gap: 8px;
+    }
+
+    &--capacity {
+      padding: 8px 12px;
+
+      background: none;
+      border: 1px solid var(--color-icons);
+      color: var(--color-primary);
+
+      cursor: pointer;
+      transition: border-color 0.2s ease;
+
+      &:hover {
+        border-color: var(--color-primary);
+      }
+
+      &.active {
+        background: var(--color-primary);
+        border-color: var(--color-primary);
+        color: var(--color-white);
+      }
+    }
+  }
+
+  &__price {
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    justify-content: flex-start;
+    gap: 8px;
+
+    margin-top: 32px;
+    p:first-child {
+      color: var(--color-primary);
+
+      @include h2;
+    }
+    p:last-child {
+      color: var(--color-secondary);
+      text-decoration: line-through;
+
+      @include h4;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: row;
+
+    width: 100%;
+    margin-top: 16px;
+
+    gap: 8px;
+
+    &--cart {
+      flex: 1;
+      height: 48px;
+
+      background-color: var(--color-primary);
+      border: 1px solid var(--color-primary);
+      color: var(--color-white);
+
+      cursor: pointer;
+
+      @include button-text;
+
+      transition: 0.5s ease;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+
+      &.active {
+        background-color: var(--color-white);
+        border-color: var(--color-elements);
+        color: var(--color-green);
+      }
+    }
+
+    &--favorite {
+      flex: 0 0 48px;
+      height: 48px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background-color: var(--color-white);
+      border: 1px solid var(--color-icons);
+
+      cursor: pointer;
+
+      transition: 0.5s ease;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+
+      img {
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+
+  &__specs {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    margin-top: 24px;
+
+    gap: 8px;
+
+    &--box {
+      display: flex;
+      flex-direction: row;
+
+      justify-content: space-between;
+      align-items: center;
+
+      gap: 16px;
+
+      p:first-child {
+        color: var(--color-secondary);
+
+        @include small-text;
+      }
+
+      p:last-child {
+        color: var(--color-primary);
+        text-align: right;
+
+        @include small-text;
+      }
+    }
+  }
+
+  &__bar {
+    width: 100%;
+    border-top: 1px solid var(--color-secondary);
+
+    margin-top: 24px;
+  }
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

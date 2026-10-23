@@ -1,0 +1,148 @@
+@use '../../styles/mixins' as *;
+@use '../../styles/fonts.scss' as *;
+
+.catalog {
+  grid-column: 1 / -1;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(212px, 1fr));
+  gap: 16px;
+  justify-items: center;
+
+  @include on-tablet {
+    grid-template-columns: repeat(auto-fit, minmax(237px, 1fr));
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(auto-fit, minmax(272px, 1fr));
+  }
+
+  &__selector {
+    grid-column: 1 / -1;
+    height: 59px;
+    justify-self: stretch;
+
+    @include page-grid;
+
+    margin: 0;
+    padding: 0;
+
+    @include on-tablet-and-desktop {
+      margin: 0;
+      padding: 0;
+    }
+
+    &--container {
+      position: relative;
+
+      p {
+        @include small-text;
+
+        color: var(--color-secondary);
+      }
+
+      select {
+        height: 40px;
+        width: 100%;
+
+        margin-top: 4px;
+
+        appearance: none;
+        padding-left: 5px;
+      }
+
+      img {
+        position: absolute;
+        right: 8px;
+        top: 30px;
+        width: 16px;
+        pointer-events: none;
+      }
+    }
+
+    &--sortBy {
+      grid-column: 1/3;
+
+      @include on-tablet-and-desktop {
+        grid-column: 1/5;
+      }
+    }
+
+    &--itensOnPage {
+      grid-column: 3/-1;
+
+      @include on-tablet-and-desktop {
+        grid-column: 5/8;
+      }
+    }
+  }
+
+  &__noProducts {
+    color: var(--color-secondary);
+    grid-column: 1 / -1;
+
+    @include h4;
+  }
+
+  &__pagination {
+    grid-column: 1/-1;
+    display: flex;
+
+    margin-top: 40px;
+
+    width: 32px;
+
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+
+    &--arrows {
+      display: flex;
+      border: solid 1px var(--color-icons);
+      height: 32px;
+      width: 32px;
+
+      align-items: center;
+      justify-content: center;
+
+      transition: 0.5 ease;
+      &:hover {
+        transform: scale(1.1);
+      }
+
+      img {
+        width: 32px;
+        height: 32px;
+      }
+    }
+
+    &--pages {
+      display: flex;
+      gap: 8px;
+
+      > * {
+        border: solid 1px var(--color-icons);
+        height: 32px;
+        width: 32px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        @include body-text;
+
+        color: var(--color-primary);
+
+        transition: 0.5 ease;
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
+
+    &--active {
+      background-color: var(--color-primary);
+      color: var(--color-white);
+    }
+  }
+}
