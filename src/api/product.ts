@@ -1,7 +1,7 @@
 import { Product } from '../types/Product';
 import { ProductDetails } from '../types/ProductDetails';
 
-const BASE_URL = `${import.meta.env.BASE_URL}api`;
+const BASE_URL = `${import.meta.env.BASE_URL.replace(/\/?$/, '/')}api`;
 
 export const getProducts = async (): Promise<Product[]> => {
   const response = await fetch(`${BASE_URL}/products.json`);
