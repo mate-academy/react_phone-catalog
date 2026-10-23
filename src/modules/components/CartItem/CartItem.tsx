@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { CartItem as CartItemType } from '../../context/CartContext';
 import styles from './CartItem.module.scss';
+import { withBase } from '../../../utils/withBase';
 
 type Props = {
   item: CartItemType;
@@ -23,7 +24,7 @@ export const CartItem = ({ item, onRemove, onQuantityChange }: Props) => {
         ✕
       </button>
       <Link to={`/product/${itemId}`} className={styles.imageLink}>
-        <img src={`/${image}`} alt={name} className={styles.image} />
+        <img src={withBase(`/${image}`)} alt={name} className={styles.image} />
       </Link>
 
       <Link to={`/product/${itemId}`} className={styles.title}>

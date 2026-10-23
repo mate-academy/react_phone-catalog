@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Product } from '../../types/Product';
+import { withBase } from '../../utils/withBase';
 
 export const useProducts = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -10,7 +11,7 @@ export const useProducts = () => {
     setIsLoading(true);
     setHasError(false);
 
-    fetch('/api/products.json')
+    fetch(withBase('api/products.json'))
       .then(response => {
         if (!response.ok) {
           throw new Error('Failed to load products');

@@ -12,6 +12,7 @@ import styles from './ProductDetailsPage.module.scss';
 import { getColorValue } from './colors';
 import { getSuggestedProducts } from './getSuggestedProducts';
 import chevronIcon from '../../img/icons/Chevron (Arrow Left).svg';
+import { withBase } from '../../utils/withBase';
 
 const CATEGORY_LABELS: Record<ProductDetails['category'], string> = {
   phones: 'Phones',
@@ -44,7 +45,7 @@ export const ProductDetailsPage = () => {
     setNotFound(false);
     setProduct(null);
 
-    fetch('/api/products.json')
+    fetch(withBase('api/products.json'))
       .then(response => {
         if (!response.ok) {
           throw new Error('Failed to load products');
@@ -64,7 +65,7 @@ export const ProductDetailsPage = () => {
           return;
         }
 
-        return fetch(`/api/${summary.category}.json`)
+        return fetch(withBase(`api/${summary.category}.json`))
           .then(response => {
             if (!response.ok) {
               throw new Error('Failed to load product details');
@@ -275,11 +276,11 @@ export const ProductDetailsPage = () => {
                 }}
               >
                 <img
-                  src={
+                  src={withBase(
                     isLiked
-                      ? '/img/icons/HeartFilled.svg'
-                      : '/img/icons/Stroke.svg'
-                  }
+                      ? 'img/icons/HeartFilled.svg'
+                      : 'img/icons/Stroke.svg',
+                  )}
                   alt=""
                 />
               </button>

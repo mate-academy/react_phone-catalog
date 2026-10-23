@@ -1,7 +1,7 @@
 import { Product } from '../../../types/Product';
 import { ProductCard } from '../ProductCard';
 import { useEffect, useRef, useState } from 'react';
-
+import { withBase } from '../../../utils/withBase';
 import styles from './ProductsSlider.module.scss';
 
 type Props = {
@@ -57,7 +57,7 @@ export const ProductsSlider = ({ title, products }: Props) => {
             onClick={() => scrollBy(-1)}
             disabled={!canScrollLeft}
           >
-            <img src="/img/icons/Arrow Left.svg" alt="" />
+            <img src={withBase('/img/icons/Arrow Left.svg')} alt="" />
           </button>
 
           <button
@@ -67,7 +67,7 @@ export const ProductsSlider = ({ title, products }: Props) => {
             onClick={() => scrollBy(1)}
             disabled={!canScrollRight}
           >
-            <img src="../../img/icons/Arrow Right.svg" alt="" />
+            <img src={withBase('/img/icons/Arrow Right.svg')} alt="" />
           </button>
         </div>
       </div>

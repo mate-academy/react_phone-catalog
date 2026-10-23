@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import styles from './ImageGallery.module.scss';
+import { withBase } from '../../../utils/withBase';
 
 type Props = {
   images: string[];
@@ -27,13 +28,13 @@ export const ImageGallery = ({ images, alt }: Props) => {
             }
             onClick={() => setActiveIndex(index)}
           >
-            <img src={`/${image}`} alt="" />
+            <img src={withBase(`/${image}`)} alt="" />
           </button>
         ))}
       </div>
       <div className={styles.mainImageWrap}>
         <img
-          src={`/${images[activeIndex]}`}
+          src={withBase(`/${images[activeIndex]}`)}
           alt={alt}
           className={styles.mainImage}
         />

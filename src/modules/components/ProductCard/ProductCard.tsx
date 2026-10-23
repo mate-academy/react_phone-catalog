@@ -3,6 +3,7 @@ import { Product } from '../../../types/Product';
 import styles from './ProductCard.module.scss';
 import { useCart } from '../../context/CartContext';
 import { useFavorites } from '../../context/FavoritesContext';
+import { withBase } from '../../../utils/withBase';
 
 type Props = {
   product: Product;
@@ -21,7 +22,7 @@ export const ProductCard = ({ product }: Props) => {
   return (
     <article className={styles.card}>
       <Link to={`/product/${itemId}`} className={styles.imageLink}>
-        <img src={`/${image}`} alt={name} className={styles.image} />
+        <img src={withBase(image)} alt={name} className={styles.image} />
       </Link>
 
       <Link to={`/product/${itemId}`} className={styles.title}>
@@ -69,9 +70,9 @@ export const ProductCard = ({ product }: Props) => {
           onClick={() => toggleFavorite(product)}
         >
           <img
-            src={
-              isLiked ? '/img/icons/HeartFilled.svg' : '/img/icons/Stroke.svg'
-            }
+            src={withBase(
+              isLiked ? 'img/icons/HeartFilled.svg' : 'img/icons/Stroke.svg',
+            )}
             alt=""
           />
         </button>
