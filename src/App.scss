@@ -1,1 +1,129 @@
-// not empty
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-Regular.woff2') format('woff2'),
+       url('/fonts/Mont-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-SemiBold.woff2') format('woff2'),
+       url('/fonts/Mont-SemiBold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-Bold.woff2') format('woff2'),
+       url('/fonts/Mont-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-Heavy.woff2') format('woff2'),
+       url('/fonts/Mont-Heavy.woff') format('woff');
+  font-weight: 800;
+  font-style: normal;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: Mont, sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: Mont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #0f0f11;
+  background-color: #fff;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+
+  max-width: 1200px;
+  padding: 0 32px;
+
+  @media (max-width: 1199px) {
+    max-width: 100%;
+    padding: 0 24px;
+  }
+
+  @media (max-width: 639px) {
+    padding: 0 16px;
+  }
+}
+
+.mainGrid {
+  display: grid;
+
+  grid-template-columns: repeat(24, minmax(0, 1fr));
+  gap: 16px;
+
+  @media (max-width: 1199px) {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  @media (max-width: 639px) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+  }
+}
+
+.colFull {
+  grid-column: 1 / -1;
+}
+
+.colProductCard {
+  grid-column: span 6;
+
+  @media (max-width: 1199px) {
+    grid-column: span 6;
+  }
+
+  @media (max-width: 639px) {
+    grid-column: span 4;
+  }
+}
+
+.colGallery {
+  grid-column: span 14;
+
+  @media (max-width: 1199px) {
+    grid-column: span 12;
+  }
+
+  @media (max-width: 639px) {
+    grid-column: span 4;
+  }
+}
+
+.colDetailsPanel {
+  grid-column: span 10;
+
+  @media (max-width: 1199px) {
+    grid-column: span 12;
+  }
+
+  @media (max-width: 639px) {
+    grid-column: span 4;
+  }
+}

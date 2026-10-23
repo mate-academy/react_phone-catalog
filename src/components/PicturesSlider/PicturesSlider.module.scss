@@ -1,0 +1,94 @@
+.container {
+  margin-bottom: 80px;
+
+  @media (max-width: 639px) {
+    margin-bottom: 56px;
+  }
+}
+
+.sliderWrapper {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.window {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 0; // Або 8px, якщо сам баннер має злегка закруглені кути за макетом
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 100%;
+}
+
+.slide {
+  min-width: 100%;
+  aspect-ratio: 1040 / 400;
+
+  @media (max-width: 639px) {
+    aspect-ratio: 320 / 400;
+  }
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Квадратні/прямокутні бічні переключалки згідно з Figma */
+.btn {
+  width: 32px;
+  align-self: stretch; // Автоматично розтягує кнопку на всю висоту слайдера
+  background: #fff;
+  border: 1px solid #b4bdc3;
+  border-radius: 0; // ПРЯМІ КУТИ (замість 48px)
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+  color: #0f0f11;
+  transition: all 0.3s;
+
+  &:disabled {
+    border-color: #e2e6e9;
+    color: #e2e6e9;
+    cursor: default;
+  }
+
+  &:hover:not(:disabled) {
+    border-color: #0f0f11;
+    background-color: #0f0f11;
+    color: #fff;
+  }
+
+  @media (max-width: 639px) {
+    display: none; // На мобільних ховаємо бокові кнопки
+  }
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.dot {
+  width: 14px;
+  height: 4px;
+  background-color: #e2e6e9;
+  border: none;
+  border-radius: 0; // Точки-індикатори знизу також квадратні плашки
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &.activeDot {
+    background-color: #0f0f11;
+  }
+}

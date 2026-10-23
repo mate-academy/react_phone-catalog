@@ -1,0 +1,148 @@
+.image {
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 32px 24px 24px;
+  background: #fff;
+  border: 1px solid #e2e6e9;
+  border-radius: 0; // Прямокутна рамка картки згідно з дизайном Figma
+  box-sizing: border-box;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+
+    .image {
+      /* Збільшення картинки на 10% при наведенні */
+      transform: scale(1.1);
+    }
+  }
+}
+
+.imageLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  margin-bottom: 24px;
+  overflow: hidden;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: #0f0f11;
+  text-decoration: none;
+  margin-bottom: 8px;
+  min-height: 42px; // Забезпечує однакову висоту для назв у 2 рядки
+}
+
+.prices {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.price {
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 140%;
+  color: #0f0f11;
+}
+
+.fullPrice {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  text-decoration-line: line-through;
+  color: #89939a;
+}
+
+.divider {
+  height: 1px;
+  background-color: #e2e6e9;
+  margin-bottom: 16px;
+}
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.specRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.specLabel {
+  font-weight: 600;
+  color: #89939a;
+}
+
+.specValue {
+  font-weight: 700;
+  color: #0f0f11;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
+}
+
+/* Прямокутна кнопка Add to Cart */
+.cartBtn {
+  flex: 1;
+  height: 40px;
+  background-color: #313237;
+  color: #fff;
+  border: none;
+  border-radius: 0; // Прибрали 48px, кнопка стала прямокутною
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+
+  &:hover {
+    background-color: #0f0f11;
+  }
+
+  &.inCart {
+    background-color: #fff;
+    color: #27ae60;
+    border: 1px solid #e2e6e9;
+  }
+}
+
+/* Квадратна кнопка улюблене (серце) */
+.favBtn {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #b4bdc3;
+  border-radius: 0; // Прямокутні/квадратні кути заместь 48px (кола)
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color 0.3s;
+
+  &:hover {
+    border-color: #0f0f11;
+  }
+
+  &.isFavorite {
+    border-color: #e2e6e9;
+  }
+}

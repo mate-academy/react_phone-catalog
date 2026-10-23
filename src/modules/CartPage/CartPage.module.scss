@@ -1,0 +1,147 @@
+.pageWrapper {
+  padding-top: 24px;
+  padding-bottom: 80px;
+}
+
+.backBtn {
+  background: transparent;
+  border: none;
+  font-weight: 700;
+  font-size: 12px;
+  color: #89939a;
+  cursor: pointer;
+  margin-bottom: 16px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: color 0.3s;
+
+  &:hover {
+    color: #0f0f11;
+  }
+}
+
+.title {
+  font-weight: 800;
+  font-size: 48px;
+  line-height: 56px;
+  color: #0f0f11;
+  margin-bottom: 32px;
+
+  @media (max-width: 639px) {
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+// 16 колонок для списку товарів у 24-колонковій сітці
+.cartList {
+  grid-column: span 16;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @media (max-width: 1199px) {
+    grid-column: span 12; // Повна ширина на планшеті
+  }
+
+  @media (max-width: 639px) {
+    grid-column: span 4; // Повна ширина на мобільних
+  }
+}
+
+// 8 колонок для підсумку Checkout
+.checkoutBlock {
+  grid-column: span 8;
+
+  @media (max-width: 1199px) {
+    grid-column: span 12;
+  }
+
+  @media (max-width: 639px) {
+    grid-column: span 4;
+  }
+}
+
+/* ПРЯМОКУТНА КАРТКА ПІДСУМКУ */
+.summary {
+  border: 1px solid #e2e6e9;
+  border-radius: 0; // Прямі кути замість 16px
+  padding: 24px;
+  text-align: center;
+  background-color: #fff;
+}
+
+.totalPrice {
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  color: #0f0f11;
+  margin-bottom: 8px;
+}
+
+.totalCount {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: #89939a;
+  margin-bottom: 24px;
+}
+
+.divider {
+  height: 1px;
+  background-color: #e2e6e9;
+  margin-bottom: 24px;
+}
+
+/* ПРЯМОКУТНА КНОПКА CHECKOUT */
+.checkoutBtn {
+  width: 100%;
+  height: 48px;
+  background-color: #313237; // Темно-сірий фон згідно з Figma
+  color: #fff;
+  border: none;
+  border-radius: 0; // Прибрали 8px, кнопка стала прямокутною
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #0f0f11;
+  }
+}
+
+.emptyState {
+  text-align: center;
+  padding: 80px 0;
+}
+
+.emptyText {
+  font-size: 18px;
+  color: #89939a;
+}
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* ПРЯМОКУТНЕ МОДАЛЬНЕ ВІКНО */
+.modal {
+  background-color: #fff;
+  padding: 32px;
+  border-radius: 0; // Прямі кути для модального вікна замість 16px
+  border: 1px solid #e2e6e9;
+  max-width: 400px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: #0f0f11;
+}
