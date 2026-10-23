@@ -1,7 +1,7 @@
 import { Product } from '../types/Product';
 import { ProductDetails } from '../types/ProductDetails';
 
-const BASE_URL = '/api';
+const BASE_URL = `${import.meta.env.BASE_URL}api`;
 
 export const getProducts = async (): Promise<Product[]> => {
   const response = await fetch(`${BASE_URL}/products.json`);
@@ -16,7 +16,6 @@ export const getProducts = async (): Promise<Product[]> => {
 export const getProductDetails = async (
   productId: string,
 ): Promise<ProductDetails> => {
-  // Загружаем данные из всех категорий, чтобы найти нужный товар
   const categories = ['phones', 'tablets', 'accessories'];
 
   for (const category of categories) {
@@ -31,9 +30,7 @@ export const getProductDetails = async (
           return product;
         }
       }
-    } catch {
-      // Продолжаем поиск в следующей категории
-    }
+    } catch {}
   }
 
   throw new Error('Product not found');
@@ -42,5 +39,5 @@ export const getProductDetails = async (
 export const getSuggestedProducts = async (): Promise<Product[]> => {
   const products = await getProducts();
 
-  return products.sort(() => 0.5 - Math.random()).slice(0, 8);
+  return [...products].sort(() => 0.5 - Math.random()).slice(0, 8);
 };
