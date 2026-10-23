@@ -8,6 +8,7 @@ import { TabletDetails } from '../../types';
 
 import { getTablets } from '../../api/tablets';
 import { IconTrail } from '../../components/IconTrail/IconTrail';
+import { ErrorPage } from '../ErrorPage';
 
 export const TabletsPage = () => {
   const [hasError, setHasError] = useState<boolean>(false);
@@ -30,7 +31,7 @@ export const TabletsPage = () => {
   return (
     <>
       {hasError ? (
-        <p>Error ao carregar a página</p>
+        <ErrorPage title="Error loading tablets." />
       ) : (
         <div className={styles.tablets}>
           <IconTrail name="Tablets" choseProduct={null} />

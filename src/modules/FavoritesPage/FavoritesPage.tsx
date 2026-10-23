@@ -9,6 +9,7 @@ import { getTablets } from '../../api/tablets';
 import { CatalogCard } from '../../components/CatalogCard';
 
 import { ProductCardSkeleton } from '../../components/Loaders';
+import { ErrorPage } from '../ErrorPage';
 
 export const FavoritesPage = () => {
   const [hasError, setHasError] = useState<boolean>(false);
@@ -55,7 +56,7 @@ export const FavoritesPage = () => {
         <p>{favoriteIds.length} itens</p>
       </section>
       <div className={styles.favorites__products}>
-        {hasError && <p>Error loading favorites</p>}
+        {hasError && <ErrorPage title="Error loading favorites." />}
 
         {isLoading &&
           Array.from({ length: favoriteIds.length }).map((_, index) => (

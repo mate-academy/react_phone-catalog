@@ -8,6 +8,7 @@ import { getAccessories } from '../../api/accessories';
 
 import { ProductDetails } from '../../types';
 import { IconTrail } from '../../components/IconTrail/IconTrail';
+import { ErrorPage } from '../ErrorPage';
 
 export const AccessoriesPage = () => {
   const [hasError, setHasError] = useState<boolean>(false);
@@ -30,7 +31,7 @@ export const AccessoriesPage = () => {
   return (
     <>
       {hasError ? (
-        <p>Error ao carregar a página</p>
+        <ErrorPage title="Error loading accessories." />
       ) : (
         <div className={styles.accessories}>
           <IconTrail name="Accessories" choseProduct={null} />

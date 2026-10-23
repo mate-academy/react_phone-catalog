@@ -7,16 +7,17 @@ import { useEffect, useState } from 'react';
 import { PhoneDetails } from '../../types';
 import { getPhones } from '../../api/phones';
 import { IconTrail } from '../../components/IconTrail/IconTrail';
+import { ErrorPage } from '../ErrorPage';
 
 export const PhonePage = () => {
   const [hasError, setHasError] = useState<boolean>(false);
-  const [phones, setphones] = useState<PhoneDetails[]>([]);
+  const [phones, setPhones] = useState<PhoneDetails[]>([]);
 
   useEffect(() => {
     setHasError(false);
     getPhones()
       .then(phone => {
-        setphones(phone);
+        setPhones(phone);
       })
       .catch(() => {
         setHasError(true);
@@ -26,7 +27,7 @@ export const PhonePage = () => {
   return (
     <>
       {hasError ? (
-        <p>Error ao carregar a página</p>
+        <ErrorPage title="Error loading phones." />
       ) : (
         <div className={styles.phones}>
           <IconTrail name="Phone" choseProduct={null} />

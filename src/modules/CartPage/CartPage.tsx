@@ -11,6 +11,7 @@ import { getTablets } from '../../api/tablets';
 
 import { CartItem } from '../../components/CardItem';
 import { CartItemSkeleton } from '../../components/Loaders/CartItemSkeleton';
+import { ErrorPage } from '../ErrorPage';
 
 export const CartPage = () => {
   const [hasError, setHasError] = useState<boolean>(false);
@@ -66,7 +67,7 @@ export const CartPage = () => {
         <p>{cartIds.length} itens</p>
       </section>
       <section className={styles.cart__products}>
-        {hasError && <p>Error loading cart</p>}
+        {hasError && <ErrorPage title="Error loading cart." />}
 
         {isLoading &&
           Array.from({ length: Math.max(cartIds.length, 1) }).map(

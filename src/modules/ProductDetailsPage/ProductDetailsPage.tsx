@@ -22,25 +22,33 @@ import {
   ProductImagesSkeleton,
   ProductOptionsSkeleton,
   ProductTechSpecsSkeleton,
-  // ProductImages,
 } from '../../components/Loaders/ProductDetailsSkeleton';
+
+import { ErrorPage } from '../ErrorPage';
 
 export const ProductDetailsPage = () => {
   const { productId } = useParams();
   const [product, setProduct] = useState<DetailedProductWithNumericId>();
   const [isLoading, setIsLoading] = useState(true);
 
+  const [hasError, setHasError] = useState(false);
+
   const navigate = useNavigate();
 
   useEffect(() => {
+    setHasError(false);
+    setIsLoading(true);
+
     if (!productId) {
       setIsLoading(false);
+      setHasError(true);
 
       return;
     }
 
     getProductById(productId)
       .then(setProduct)
+      .catch(() => setHasError(true))
       .finally(() =>
         setTimeout(() => {
           setIsLoading(false);
@@ -48,8 +56,12 @@ export const ProductDetailsPage = () => {
       );
   }, [productId]);
 
+  if (hasError || (!isLoading && !product)) {
+    return <ErrorPage title="Product was not found." />;
+  }
+
   if (!product) {
-    return <p>Product was not found.</p>;
+    return null;
   }
 
   return (
