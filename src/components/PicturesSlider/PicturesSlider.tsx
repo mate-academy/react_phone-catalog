@@ -2,9 +2,9 @@ import React, { useState, useEffect, useCallback } from 'react';
 import styles from './PicturesSlider.module.scss';
 
 const bannerImages = [
-  { id: 1, src: '/img/banner-phones.png', alt: 'Banner Phones' },
-  { id: 2, src: '/img/banner-tablets.png', alt: 'Banner Tablets' },
-  { id: 3, src: '/img/banner-accessories.png', alt: 'Banner Accessories' },
+  { id: 1, src: './img/banner-phones.png', alt: 'Banner Phones' },
+  { id: 2, src: './img/banner-tablets.png', alt: 'Banner Tablets' },
+  { id: 3, src: './img/banner-accessories.png', alt: 'Banner Accessories' },
 ];
 
 export const PicturesSlider: React.FC = () => {

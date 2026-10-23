@@ -71,7 +71,7 @@ export const PhonesPage = () => {
       {/* Хлібні крихти з іконкою будинку */}
       <div className={styles.breadcrumbs}>
         <Link to="/" className={styles.crumbLink}>
-          <img src="/img/icons/home.svg" alt="Home" />
+          <img src="./img/icons/home.svg" alt="Home" />
         </Link>
         <span className={styles.crumbSeparator}>&gt;</span>
         <span className={styles.crumbCurrent}>Phones</span>

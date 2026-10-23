@@ -78,7 +78,7 @@ export const ProductDetailsPage = () => {
       {/* Хлібні крихти з іконкою хатки */}
       <div className={styles.breadcrumbs}>
         <Link to="/" className={styles.crumbLink}>
-          <img src="/img/icons/home.svg" alt="Home" />
+          <img src="./img/icons/home.svg" alt="Home" />
         </Link>
         <span className={styles.crumbSeparator}>&gt;</span>
         <Link to={`/${product.category}`} className={styles.crumbLink}>
@@ -213,8 +213,8 @@ export const ProductDetailsPage = () => {
                   <img
                     src={
                       favorite
-                        ? '/img/icons/heart-filled.svg'
-                        : '/img/icons/heart.svg'
+                        ? './img/icons/heart-filled.svg'
+                        : './img/icons/heart.svg'
                     }
                     alt="Favorite"
                   />
