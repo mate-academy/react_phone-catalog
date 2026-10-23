@@ -1,0 +1,182 @@
+.page {
+  background-color: #0f1121;
+  color: #f1f2f9;
+  min-height: 100%;
+}
+
+.container {
+  max-width: 1136px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+
+.title {
+  margin: 0 0 32px;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 56px;
+}
+
+.empty {
+  padding: 80px 0;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0 0 24px;
+  padding: 0;
+  list-style: none;
+}
+
+.summary {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: transparent;
+  text-align: center;
+}
+
+.total {
+  margin: 0 0 4px;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.totalLabel {
+  margin: 0 0 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 14px;
+}
+
+.checkoutButton {
+  width: 100%;
+  height: 48px;
+  border: 1px solid #905bff;
+  border-radius: 4px;
+  background: #905bff;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background: #8149f5;
+  }
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.modal {
+  width: 100%;
+  max-width: 400px;
+  padding: 32px 24px 24px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  background: #1a1725;
+}
+
+.modalText {
+  margin: 0 0 24px;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.modalActions {
+  display: flex;
+  gap: 8px;
+}
+
+.confirmButton,
+.cancelButton {
+  flex: 1;
+  height: 40px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.confirmButton {
+  border: 1px solid #905bff;
+  background: #905bff;
+  color: #fff;
+
+  &:hover {
+    background: #8149f5;
+  }
+}
+
+.cancelButton {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: transparent;
+  color: #fff;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.08);
+  }
+}
+
+.content {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 368px;
+  gap: 16px;
+  align-items: start;
+
+  @media (max-width: 1199px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 639px) {
+  .title {
+    font-size: 32px;
+    line-height: 40px;
+  }
+}
+
+.backButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 16px;
+  padding: 0;
+  border: none;
+  background: none;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: #fff;
+  }
+}
+
+.backIcon {
+  display: block;
+  width: 16px;
+  height: 16px;
+  transform: rotate(180deg);
+}

@@ -1,0 +1,56 @@
+.page {
+  max-width: 1136px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+
+.title {
+  margin: 0;
+  font-size: 48px;
+  line-height: 56px;
+}
+
+.count {
+  margin: 8px 0 32px;
+  color: #89939a;
+  font-size: 14px;
+}
+
+.controls {
+  display: flex;
+  margin-bottom: 24px;
+}
+
+.sort {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: #89939a;
+  font-size: 12px;
+}
+
+.sort select {
+  width: 176px;
+  height: 40px;
+  padding: 0 12px;
+  border: 1px solid #3b3e4a;
+  background-color: #0f1121;
+  color: #f1f2f9;
+}
+
+.error,
+.empty {
+  margin: 32px 0;
+  color: #89939a;
+  text-align: center;
+}
+
+.error button {
+  margin-top: 16px;
+  padding: 10px 24px;
+  border: 1px solid #905bff;
+  border-radius: 4px;
+  background: #905bff;
+  color: #fff;
+  cursor: pointer;
+}
