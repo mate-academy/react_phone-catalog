@@ -1,0 +1,29 @@
+@use '/src/styles/mixins.scss' as *;
+
+.slider {
+  @include section;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  @include text-h2;
+}
+
+.buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.list {
+  width: 100%;
+}
+
+.slide {
+  display: flex;
+  height: auto;
+}

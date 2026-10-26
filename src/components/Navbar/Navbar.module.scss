@@ -1,0 +1,15 @@
+@use '/src/styles/mixins.scss' as *;
+
+.navbar {
+  display: flex;
+  align-items: center;
+  height: 100%;
+
+  @include on-tablet {
+    gap: 16px;
+  }
+
+  @include on-desktop {
+    gap: 24px;
+  }
+}

@@ -1,0 +1,84 @@
+@use '/src/styles/mixins.scss' as *;
+@use '/src/styles/variables.scss' as *;
+
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  gap: $dropdown-gap;
+}
+
+.label {
+  color: $color-secondary;
+
+  @include text-small;
+}
+
+.wrapper {
+  position: relative;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  border: 1px solid $color-icons;
+  background-color: transparent;
+  height: 40px;
+  padding-inline: 12px;
+
+  @include text-buttons;
+  @include transition;
+
+  &:focus {
+    border: 1px solid $color-primary;
+  }
+
+  &:hover {
+    border: 1px solid $color-secondary;
+  }
+
+  &::after {
+    width: 16px;
+    height: 16px;
+    content: url('/icons/chevron-arrow-down.svg');
+
+    @include transition;
+  }
+}
+
+.open {
+  &::after {
+    rotate: 180deg;
+  }
+}
+
+.list {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: $dropdown-height + $dropdown-gap;
+  width: 100%;
+  border: 1px solid $color-elements;
+  background-color: $color-white;
+  box-shadow: 0 2px 15px 0 #0000000d;
+  padding-block: 8px;
+}
+
+.li {
+  // background-color: aqua;
+}
+
+.option {
+  padding: 6px 12px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  width: 100%;
+  color: $color-secondary;
+
+  &:hover {
+    background-color: $color-hover-gb;
+    color: $color-primary;
+  }
+}

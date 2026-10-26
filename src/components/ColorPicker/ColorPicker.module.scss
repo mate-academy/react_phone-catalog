@@ -1,0 +1,32 @@
+@use '/src/styles/mixins.scss' as *;
+@use '/src/styles/variables.scss' as *;
+
+.colorPicker {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.title {
+  color: $color-secondary;
+
+  @include text-small;
+}
+
+.list {
+  display: flex;
+  gap: 8px;
+}
+
+.button {
+  background-clip: content-box;
+  border: 1px solid $color-elements;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  padding: 2px;
+}
+
+.active {
+  border-color: $color-primary;
+}

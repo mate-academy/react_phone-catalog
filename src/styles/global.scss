@@ -1,0 +1,24 @@
+@use './mixins.scss' as *;
+@use './variables.scss' as *;
+
+html {
+  scroll-behavior: smooth;
+
+  @include text-body;
+}
+
+body {
+  background-color: $color-white;
+  margin: 0 auto;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  & main {
+    display: flex;
+    flex-grow: 1;
+  }
+}

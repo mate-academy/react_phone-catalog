@@ -1,0 +1,81 @@
+@use '/src/styles/variables.scss' as *;
+@use '/src/styles/mixins.scss' as *;
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 32px;
+  padding-block: 32px;
+
+  @include page;
+
+  @include on-tablet {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.logo {
+  flex: 1 1 0;
+  justify-content: flex-start;
+
+}
+
+.linksList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  color: $color-secondary;
+
+  @include on-tablet {
+    flex-direction: row;
+    justify-content: space-between;
+    flex: 1 1 0;
+  }
+}
+
+.link {
+  @include text-uppercase;
+  @include transition;
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+.backToTop {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  justify-content: center;
+  color: $color-secondary;
+  align-self: center;
+
+  @include transition;
+
+  @include on-tablet {
+    flex: 1 1 0;
+    justify-content: flex-end;
+  }
+
+  & svg {
+    width: 32px;
+    height: 32px;
+    box-sizing: border-box;
+    padding: 8px;
+    border: 1px solid $color-icons;
+    color: $color-icons;
+
+    @include transition;
+  }
+
+  &:hover {
+    color: $color-primary;
+
+    & svg {
+      color: $color-primary;
+      border: 1px solid $color-primary;
+    }
+  }
+}

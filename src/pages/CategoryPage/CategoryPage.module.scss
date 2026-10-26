@@ -1,0 +1,76 @@
+@use '/src/styles/mixins.scss' as *;
+@use '/src/styles/variables.scss' as *;
+
+.productPage {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  flex-grow: 1;
+
+  @include page;
+
+  padding-block: 21px 64px;
+
+  @include on-tablet {
+    padding-block: 24px 64px;
+    gap: 40px;
+  }
+
+  @include on-desktop {
+    padding-block: 24px 80px;
+  }
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.title {
+  @include text-h1;
+}
+
+.subtitle {
+  color: $color-secondary;
+}
+
+.productCatalog {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.catalogControls {
+  @include grid;
+
+  > :nth-child(1) {
+    grid-column: span 2;
+  }
+
+  > :nth-child(2) {
+    grid-column: span 2;
+  }
+
+  @include on-tablet {
+    > :nth-child(1) {
+      grid-column: span 3;
+    }
+
+    > :nth-child(2) {
+      grid-column: span 2;
+    }
+  }
+
+  @include on-desktop {
+    > :nth-child(1) {
+      grid-column: span 4;
+    }
+
+    > :nth-child(2) {
+      grid-column: span 3;
+    }
+  }
+
+  gap: 16px;
+}

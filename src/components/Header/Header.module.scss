@@ -1,0 +1,41 @@
+@use '/src/styles/variables.scss' as *;
+@use '/src/styles/mixins.scss' as *;
+
+.header {
+  position: sticky;
+  display: flex;
+  align-items: center;
+  height: $header-mobile-tablet-hight;
+  justify-content: space-between;
+  box-shadow: 0 1px 0 0 $color-elements;
+
+  z-index: 99;
+
+  @include on-desktop {
+    height: $header-desktop-hight;
+  }
+}
+
+.burger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  height: calc(100vh - $header-mobile-tablet-hight);
+  inset: 100% 0 auto;
+  z-index: 100;
+  translate: -100%;
+  background-color: $color-white;
+  box-shadow: inset 0 1px 0 $color-elements;
+
+  @include transition;
+
+  @include on-tablet {
+    display: none;
+  }
+}
+
+.burgerOpen {
+  translate: 0;
+}

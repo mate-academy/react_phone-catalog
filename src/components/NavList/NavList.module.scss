@@ -1,0 +1,29 @@
+@use '/src/styles/mixins.scss' as *;
+@use '/src//styles//variables.scss' as *;
+
+.headerList {
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+    gap: 32px;
+    height: 100%;
+  }
+
+  @include on-desktop {
+    gap: 64px;
+  }
+}
+
+.burgerList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  height: 100%;
+  padding: 24px 16px;
+
+  @include on-tablet {
+    display: none;
+  }
+}

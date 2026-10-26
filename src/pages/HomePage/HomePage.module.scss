@@ -1,0 +1,38 @@
+@use '/src/styles/mixins.scss' as *;
+
+.homePage {
+  padding-block: 24px 64px;
+  gap: 56px;
+
+  @include page;
+
+  @include on-tablet {
+    padding-block: 32px 64px;
+    gap: 64px;
+  }
+
+  @include on-desktop {
+    padding-block: 56px 80px;
+     gap: 80px;
+  }
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  @include on-tablet {
+    gap: 32px;
+  }
+
+  @include on-desktop {
+    gap: 56px;
+  }
+}
+
+.title {
+  text-align: center;
+
+  @include text-h1;
+}

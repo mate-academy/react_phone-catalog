@@ -1,0 +1,33 @@
+@use '/src/styles/mixins.scss' as *;
+@use '/src/styles/variables.scss' as *;
+
+.capacityPicker {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.title {
+  color: $color-secondary;
+
+  @include text-small;
+}
+
+.list {
+  display: flex;
+  gap: 8px;
+}
+
+.button {
+  padding-inline: 8px;
+  background-color: $color-primary;
+  border: 1px solid $color-primary;
+  color: $color-white;
+
+  @include transition;
+}
+
+.active {
+  color:$color-primary;
+  background-color: $color-white;
+}

@@ -1,0 +1,96 @@
+@use '/src/styles/variables.scss' as *;
+@use '/src/styles/mixins.scss' as *;
+
+.cartCard {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid $color-elements;
+  flex: 2 1 0;
+
+  @include on-tablet {
+    flex-direction: row;
+    gap: 24px;
+    justify-content: space-between;
+    padding: 24px;
+  }
+}
+
+.productDetails {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  @include on-tablet {
+    gap: 24px;
+  }
+}
+
+.productSummary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.close {
+  background-color: transparent;
+}
+
+.closeIcon {
+  color: $color-secondary;
+}
+
+.image {
+  padding: 7px;
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.productTitle {
+  @include text-body;
+}
+
+.quantityControl {
+  display: flex;
+}
+
+.quantityButton {
+  border: 1px solid $color-icons;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  & svg {
+    color: #000;
+  }
+
+  &:disabled {
+    border-color: $color-elements;
+    cursor: default;
+
+    & svg {
+      color: $color-icons;
+    }
+  }
+}
+
+.quantity {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+}
+
+.itemsPrice {
+  @include text-h3;
+
+  width: 80px;
+  display: flex;
+  justify-content: flex-end;
+}

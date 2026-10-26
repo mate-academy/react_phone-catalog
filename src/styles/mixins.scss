@@ -1,0 +1,174 @@
+@use './variables' as *;
+
+@mixin on-desktop {
+  @media (min-width: $breakpoint-desktop) {
+    @content;
+  }
+}
+
+@mixin on-tablet {
+  @media (min-width: $breakpoint-tablet) {
+    @content;
+  }
+}
+
+@mixin transition {
+  transition: $transition-duration;
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin page {
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+
+  padding-inline: $mob-inl-padding;
+
+  @include on-tablet {
+    padding-inline: $tablet-inl-padding;
+  }
+
+  @include on-desktop {
+    padding-inline: $desktop-inl-padding;
+  }
+}
+
+@mixin grid {
+  display: grid;
+  column-gap: 16px;
+  grid-template-columns: repeat(4, 1fr);
+
+  @include on-tablet {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(24, 32px);
+  }
+}
+
+@mixin text-h1 {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+
+  @include on-tablet {
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: -0.01em;
+  }
+}
+
+@mixin text-h2 {
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 31px;
+
+  @include on-tablet {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+}
+
+@mixin text-h3 {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 26px;
+
+  @include on-tablet {
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 31px;
+  }
+}
+
+@mixin text-h4 {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+
+  @include on-tablet {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 26px;
+  }
+}
+
+@mixin text-uppercase {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 11px;
+}
+
+@mixin text-buttons {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+@mixin text-body {
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+  font-weight: 400;
+  color: $color-primary;
+}
+
+@mixin text-small {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+@mixin shadow {
+  box-shadow: 0 3px 13px 0 #17203166;
+}
+
+@mixin section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+@mixin divider {
+  margin: 0;
+  border: 0;
+  border-bottom: 1px solid $color-elements;
+}
+
+@mixin specs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+
+    span:nth-child(1) {
+      color: $color-secondary;
+
+      @include text-small;
+    }
+
+    span:nth-child(2) {
+      font-size: 12px;
+      line-height: 100%;
+      text-align: right;
+    }
+  }
+}

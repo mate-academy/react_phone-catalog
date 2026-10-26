@@ -1,0 +1,20 @@
+@use '/src/styles/variables.scss' as *;
+@use '/src/styles/mixins.scss' as *;
+
+.button {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border: 1px solid $color-icons;
+  color: $color-primary;
+  background-color: transparent;
+
+  @include flex-center;
+  @include transition;
+
+  &:hover {
+    border: 1px solid $color-primary;
+  }
+}
+
+

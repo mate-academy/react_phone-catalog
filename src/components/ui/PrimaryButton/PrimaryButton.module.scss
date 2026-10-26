@@ -1,0 +1,29 @@
+@use '/src/styles/mixins.scss' as *;
+@use '/src/styles/variables.scss' as *;
+
+.button {
+  color: $color-white;
+  background-color: $color-primary;
+  flex: 1 1 48px;
+
+  @include flex-center;
+  @include transition;
+
+  &:hover {
+    @include shadow;
+  }
+
+  &:active {
+    transform: translateY(2px) scale(0.98);
+  }
+}
+
+.selected {
+  border: 1px solid $color-elements;
+  color: $color-green;
+  background-color: transparent;
+
+  &:hover {
+    border: 1px solid $color-green;
+  }
+}

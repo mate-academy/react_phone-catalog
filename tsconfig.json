@@ -4,7 +4,12 @@
     "src"
   ],
   "compilerOptions": {
+    "moduleResolution": "bundler",
     "sourceMap": false,
-    "types": ["node", "cypress"]
+    "types": [
+      "node",
+      "cypress"
+    ],
+    "baseUrl": "."
   }
 }

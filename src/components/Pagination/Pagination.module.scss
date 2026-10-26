@@ -1,0 +1,15 @@
+@use '/src/styles/mixins.scss' as *;
+@use '/src/styles/variables.scss' as *;
+
+.pagination {
+  @include flex-center;
+
+  gap: 16px;
+}
+
+.list {
+  display: flex;
+  gap: 8px;
+}
+
+

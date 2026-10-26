@@ -1,0 +1,56 @@
+@use '/src/styles/mixins.scss' as *;
+@use '/src/styles/variables.scss' as *;
+
+.title {
+  @include text-h2;
+}
+
+.categories {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @include on-tablet {
+    gap: 16px;
+    flex-direction: row;
+  }
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 0;
+  gap: 24px;
+}
+
+.link {
+  overflow: hidden;
+}
+
+.image {
+  @include transition;
+
+  &:hover {
+    scale: 1.1;
+  }
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.category {
+  @include text-h4;
+}
+
+.quantity {
+  color: $color-secondary;
+}

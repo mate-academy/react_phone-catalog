@@ -1,0 +1,71 @@
+@use '/src/styles/mixins.scss' as *;
+@use '/src/styles/variables.scss' as *;
+
+.productInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+
+  @include on-tablet {
+    gap: 64px;
+  }
+
+  @include on-desktop {
+    flex-direction: row;
+    gap: 80px;
+  }
+}
+
+.aboutSection {
+  @include on-desktop {
+    flex: 12 1 0;
+  }
+}
+
+.sectionTitle {
+  margin-bottom: 16px;
+
+  @include text-h3;
+}
+
+
+.divider {
+  @include divider;
+}
+
+
+
+.description {
+  display: flex;
+  flex-direction: column;
+  padding-top: 32px;
+  gap: 16px;
+}
+
+.title {
+  @include text-h4;
+}
+
+.text {
+  color: $color-secondary;
+}
+
+.specsSection {
+  @include on-desktop {
+    flex: 11 1 0;
+  }
+}
+
+.specsList {
+  @include specs-list;
+
+  padding-top: 30px;
+
+  @include on-tablet {
+    padding-top: 24px;
+  }
+
+  @include on-desktop {
+    padding-top: 16px;
+  }
+}

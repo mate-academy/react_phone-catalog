@@ -1,0 +1,58 @@
+@use '/src/styles/mixins.scss' as *;
+@use '/src/styles/variables.scss' as *;
+
+.navLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  position: relative;
+  padding-block: 8px;
+  height: 100%;
+  color: $color-secondary;
+
+  @include transition;
+  @include text-uppercase;
+}
+
+.listNavLink {
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+.iconNavLink {
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+  }
+
+  > * {
+    @include transition;
+  }
+
+  &:hover > img {
+    scale: $scale-value;
+  }
+}
+
+.iconBurgerLink {
+  display: flex;
+}
+
+.active {
+  color: $color-primary;
+
+  &::before {
+    content: '';
+    position: absolute;
+    height: 2px;
+    background-color: $color-primary;
+    inset: auto 0 0;
+
+    @include on-tablet {
+      height: 3px;
+    }
+  }
+}

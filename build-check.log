@@ -1,0 +1,251 @@
+
+> react_phone-catalog@0.1.0 build
+> mate-scripts build
+
+[33mThe CJS build of Vite's Node API is deprecated. See https://vitejs.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.[39m
+[33m[1m(!) "base" option should start with a slash.[22m[39m
+[36mvite v5.3.3 [32mbuilding for production...[36m[39m
+transforming...
+DEPRECATION WARNING: Sass's behavior for declarations that appear after nested
+rules will be changing to match the behavior specified by CSS in an upcoming
+version. To keep the existing behavior, move the declaration above the nested
+rule. To opt into the new behavior, wrap the declaration in `& {}`.
+
+More info: https://sass-lang.com/d/mixed-decls
+
+  ┌──> src\pages\FavouritesPage\FavouritesPage.module.scss
+7 │     padding-block: 24px 56px;
+  │     ^^^^^^^^^^^^^^^^^^^^^^^^ declaration
+  ╵
+  ┌──> src\styles\mixins.scss
+4 │ ┌   @media (min-width: $breakpoint-desktop) {
+5 │ │     @content;
+6 │ │   }
+  │ └─── nested rule
+  ╵
+    src\pages\FavouritesPage\FavouritesPage.module.scss 7:3  root stylesheet
+
+DEPRECATION WARNING: Sass's behavior for declarations that appear after nested
+rules will be changing to match the behavior specified by CSS in an upcoming
+version. To keep the existing behavior, move the declaration above the nested
+rule. To opt into the new behavior, wrap the declaration in `& {}`.
+
+More info: https://sass-lang.com/d/mixed-decls
+
+  ┌──> src\pages\CartPage\CartPage.module.scss
+7 │     padding-block: 24px 56px;
+  │     ^^^^^^^^^^^^^^^^^^^^^^^^ declaration
+  ╵
+  ┌──> src\styles\mixins.scss
+4 │ ┌   @media (min-width: $breakpoint-desktop) {
+5 │ │     @content;
+6 │ │   }
+  │ └─── nested rule
+  ╵
+    src\pages\CartPage\CartPage.module.scss 7:3  root stylesheet
+
+DEPRECATION WARNING: Sass's behavior for declarations that appear after nested
+rules will be changing to match the behavior specified by CSS in an upcoming
+version. To keep the existing behavior, move the declaration above the nested
+rule. To opt into the new behavior, wrap the declaration in `& {}`.
+
+More info: https://sass-lang.com/d/mixed-decls
+
+   ┌──> src\pages\FavouritesPage\FavouritesPage.module.scss
+21 │     margin-bottom: 8px;
+   │     ^^^^^^^^^^^^^^^^^^ declaration
+   ╵
+   ┌──> src\styles\mixins.scss
+10 │ ┌   @media (min-width: $breakpoint-tablet) {
+11 │ │     @content;
+12 │ │   }
+   │ └─── nested rule
+   ╵
+    src\pages\FavouritesPage\FavouritesPage.module.scss 21:3  root stylesheet
+
+DEPRECATION WARNING: Sass's behavior for declarations that appear after nested
+rules will be changing to match the behavior specified by CSS in an upcoming
+version. To keep the existing behavior, move the declaration above the nested
+rule. To opt into the new behavior, wrap the declaration in `& {}`.
+
+More info: https://sass-lang.com/d/mixed-decls
+
+   ┌──> src\pages\CartPage\CartPage.module.scss
+55 │     margin-bottom: 32px;
+   │     ^^^^^^^^^^^^^^^^^^^ declaration
+   ╵
+   ┌──> src\styles\mixins.scss
+10 │ ┌   @media (min-width: $breakpoint-tablet) {
+11 │ │     @content;
+12 │ │   }
+   │ └─── nested rule
+   ╵
+    src\pages\CartPage\CartPage.module.scss 55:3  root stylesheet
+
+DEPRECATION WARNING: Sass's behavior for declarations that appear after nested
+rules will be changing to match the behavior specified by CSS in an upcoming
+version. To keep the existing behavior, move the declaration above the nested
+rule. To opt into the new behavior, wrap the declaration in `& {}`.
+
+More info: https://sass-lang.com/d/mixed-decls
+
+  ┌──> src\pages\ProductPage\ProductPage.module.scss
+9 │     padding-block: 24px 56px;
+  │     ^^^^^^^^^^^^^^^^^^^^^^^^ declaration
+  ╵
+  ┌──> src\styles\mixins.scss
+4 │ ┌   @media (min-width: $breakpoint-desktop) {
+5 │ │     @content;
+6 │ │   }
+  │ └─── nested rule
+  ╵
+    src\pages\ProductPage\ProductPage.module.scss 9:3  root stylesheet
+
+DEPRECATION WARNING: Sass's behavior for declarations that appear after nested
+rules will be changing to match the behavior specified by CSS in an upcoming
+version. To keep the existing behavior, move the declaration above the nested
+rule. To opt into the new behavior, wrap the declaration in `& {}`.
+
+More info: https://sass-lang.com/d/mixed-decls
+
+  ┌──> src\pages\CategoryPage\CategoryPage.module.scss
+12│     padding-block: 21px 64px;
+  │     ^^^^^^^^^^^^^^^^^^^^^^^^ declaration
+  ╵
+  ┌──> src\styles\mixins.scss
+4 │ ┌   @media (min-width: $breakpoint-desktop) {
+5 │ │     @content;
+6 │ │   }
+  │ └─── nested rule
+  ╵
+    src\pages\CategoryPage\CategoryPage.module.scss 12:3  root stylesheet
+
+DEPRECATION WARNING: Sass's behavior for declarations that appear after nested
+rules will be changing to match the behavior specified by CSS in an upcoming
+version. To keep the existing behavior, move the declaration above the nested
+rule. To opt into the new behavior, wrap the declaration in `& {}`.
+
+More info: https://sass-lang.com/d/mixed-decls
+
+  ┌──> src\pages\CategoryPage\CategoryPage.module.scss
+75│     gap: 16px;
+  │     ^^^^^^^^^ declaration
+  ╵
+  ┌──> src\styles\mixins.scss
+4 │ ┌   @media (min-width: $breakpoint-desktop) {
+5 │ │     @content;
+6 │ │   }
+  │ └─── nested rule
+  ╵
+    src\pages\CategoryPage\CategoryPage.module.scss 75:3  root stylesheet
+
+DEPRECATION WARNING: Sass's behavior for declarations that appear after nested
+rules will be changing to match the behavior specified by CSS in an upcoming
+version. To keep the existing behavior, move the declaration above the nested
+rule. To opt into the new behavior, wrap the declaration in `& {}`.
+
+More info: https://sass-lang.com/d/mixed-decls
+
+  ┌──> src\components\SliderImage\SliderImage.module.scss
+7 │     row-gap: 8px;
+  │     ^^^^^^^^^^^^ declaration
+  ╵
+  ┌──> src\styles\mixins.scss
+4 │ ┌   @media (min-width: $breakpoint-desktop) {
+5 │ │     @content;
+6 │ │   }
+  │ └─── nested rule
+  ╵
+    src\components\SliderImage\SliderImage.module.scss 7:3  root stylesheet
+
+DEPRECATION WARNING: Sass's behavior for declarations that appear after nested
+rules will be changing to match the behavior specified by CSS in an upcoming
+version. To keep the existing behavior, move the declaration above the nested
+rule. To opt into the new behavior, wrap the declaration in `& {}`.
+
+More info: https://sass-lang.com/d/mixed-decls
+
+   ┌──> src\components\CartCard\CartCard.module.scss
+93 │     width: 80px;
+   │     ^^^^^^^^^^^ declaration
+   ╵
+   ┌──> src\styles\mixins.scss
+10 │ ┌   @media (min-width: $breakpoint-tablet) {
+11 │ │     @content;
+12 │ │   }
+   │ └─── nested rule
+   ╵
+    src\components\CartCard\CartCard.module.scss 93:3  root stylesheet
+
+DEPRECATION WARNING: Sass's behavior for declarations that appear after nested
+rules will be changing to match the behavior specified by CSS in an upcoming
+version. To keep the existing behavior, move the declaration above the nested
+rule. To opt into the new behavior, wrap the declaration in `& {}`.
+
+More info: https://sass-lang.com/d/mixed-decls
+
+   ┌──> src\components\CartCard\CartCard.module.scss
+94 │     display: flex;
+   │     ^^^^^^^^^^^^^ declaration
+   ╵
+   ┌──> src\styles\mixins.scss
+10 │ ┌   @media (min-width: $breakpoint-tablet) {
+11 │ │     @content;
+12 │ │   }
+   │ └─── nested rule
+   ╵
+    src\components\CartCard\CartCard.module.scss 94:3  root stylesheet
+
+DEPRECATION WARNING: Sass's behavior for declarations that appear after nested
+rules will be changing to match the behavior specified by CSS in an upcoming
+version. To keep the existing behavior, move the declaration above the nested
+rule. To opt into the new behavior, wrap the declaration in `& {}`.
+
+More info: https://sass-lang.com/d/mixed-decls
+
+   ┌──> src\components\CartCard\CartCard.module.scss
+95 │     justify-content: flex-end;
+   │     ^^^^^^^^^^^^^^^^^^^^^^^^^ declaration
+   ╵
+   ┌──> src\styles\mixins.scss
+10 │ ┌   @media (min-width: $breakpoint-tablet) {
+11 │ │     @content;
+12 │ │   }
+   │ └─── nested rule
+   ╵
+    src\components\CartCard\CartCard.module.scss 95:3  root stylesheet
+
+DEPRECATION WARNING: Sass's behavior for declarations that appear after nested
+rules will be changing to match the behavior specified by CSS in an upcoming
+version. To keep the existing behavior, move the declaration above the nested
+rule. To opt into the new behavior, wrap the declaration in `& {}`.
+
+More info: https://sass-lang.com/d/mixed-decls
+
+    ┌──> src\components\ProductInfo\ProductInfo.module.scss
+62  │     padding-top: 30px;
+    │     ^^^^^^^^^^^^^^^^^ declaration
+    ╵
+    ┌──> src\styles\mixins.scss
+168 │ ┌     span:nth-child(2) {
+169 │ │       font-size: 12px;
+170 │ │       line-height: 100%;
+171 │ │       text-align: right;
+172 │ │     }
+    │ └─── nested rule
+    ╵
+    src\components\ProductInfo\ProductInfo.module.scss 62:3  root stylesheet
+
+Browserslist: caniuse-lite is outdated. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+[32m✓[39m 220 modules transformed.
+rendering chunks...
+computing gzip size...
+[2mdist/[22m[32mindex.html                         [39m[1m[2m  0.44 kB[22m[1m[22m[2m │ gzip:   0.28 kB[22m
+[2mdist/[22m[32massets/Mont-Bold-GaJb7NZ6.otf      [39m[1m[2m171.32 kB[22m[1m[22m
+[2mdist/[22m[32massets/Mont-SemiBold-DqyBU2Go.otf  [39m[1m[2m172.50 kB[22m[1m[22m
+[2mdist/[22m[32massets/Mont-Regular-B098VKWf.otf   [39m[1m[2m173.16 kB[22m[1m[22m
+[2mdist/[22m[35massets/index-yvFr8h58.css          [39m[1m[2m 30.65 kB[22m[1m[22m[2m │ gzip:   6.13 kB[22m
+[2mdist/[22m[36massets/index-n47gjdzx.js           [39m[1m[2m339.17 kB[22m[1m[22m[2m │ gzip: 111.74 kB[22m
+[32m✓ built in 1.66s[39m

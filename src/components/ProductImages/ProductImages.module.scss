@@ -1,0 +1,52 @@
+@use '/src/styles/variables.scss' as *;
+@use '/src/styles/mixins.scss' as *;
+
+.productImages {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include on-tablet {
+    flex-direction: row-reverse;
+  }
+}
+
+.mainImage {
+  min-width: 0;
+  aspect-ratio: 1/1;
+  object-fit: contain;
+  touch-action: pan-y;
+  cursor: grab;
+
+  @include on-tablet {
+    flex: 6 1 0;
+  }
+
+  @include on-desktop {
+    flex: 5 1 0;
+  }
+}
+
+.thumbnails {
+  display: flex;
+  gap: 8px;
+  flex: 1 1 0;
+  min-width: 0;
+
+  @include on-tablet {
+    flex-direction: column;
+  }
+}
+
+.thumbnail {
+  padding: 4px;
+  aspect-ratio: 1/1;
+  min-width: 0;
+  object-fit: contain;
+  border: 1px solid $color-elements;
+  cursor: pointer;
+}
+
+.active {
+  border: 1px solid $color-primary;
+}

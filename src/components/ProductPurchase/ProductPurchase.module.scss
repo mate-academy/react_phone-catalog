@@ -1,0 +1,77 @@
+@use '/src/styles/variables.scss' as *;
+@use '/src/styles/mixins.scss' as *;
+
+.productPurchase {
+  position: relative;
+  min-width: 0;
+
+  @include on-tablet {
+    flex: 5 1 0;
+  }
+
+  @include on-desktop {
+    flex: 11 1 0;
+  }
+}
+
+.productId {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: $color-icons;
+  white-space: nowrap;
+
+  @include text-small;
+}
+
+.purchaseContent {
+  width: 100%;
+
+  @include on-tablet {
+    max-width: 320px;
+  }
+}
+
+.colorPicker {
+  margin-bottom: 24px;
+}
+
+.capacityPicker {
+  margin-bottom: 24px;
+}
+
+.divider {
+  @include divider;
+}
+
+.price {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-bottom: 16px;
+}
+
+.currentPrice {
+  @include text-h2;
+}
+
+.oldPrice {
+  color: $color-secondary;
+
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 100%;
+  text-decoration: line-through;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+
+.specsList {
+  @include specs-list;
+}
+
