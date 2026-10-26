@@ -1,0 +1,107 @@
+.item {
+  display: flex;
+  align-items: center;
+  padding: 16px 24px;
+  background-color: #fff;
+  border: 1px solid #e2e6e9;
+  border-radius: 0; // Прямокутний блок товару згідно з Figma
+  gap: 24px;
+
+  @media (max-width: 639px) {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+}
+
+.removeBtn {
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  color: #b4bdc3;
+  cursor: pointer;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s;
+
+  &:hover {
+    color: #0f0f11;
+  }
+}
+
+.imageWrapper {
+  width: 66px;
+  height: 66px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.title {
+  flex: 1;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: #0f0f11;
+  text-decoration: none;
+
+  &:hover {
+    color: #313237;
+  }
+}
+
+.quantityControl {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* КВАДРАТНІ КНОПКИ КЕРУВАННЯ КІЛЬКІСТЮ (32px x 32px) */
+.quantityBtn {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #b4bdc3;
+  border-radius: 0; // Строго квадратні кути (замість 50%)
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: #0f0f11;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &:disabled {
+    border-color: #e2e6e9;
+    color: #e2e6e9;
+    cursor: not-allowed;
+  }
+
+  &:hover:not(:disabled) {
+    border-color: #0f0f11;
+  }
+}
+
+.quantity {
+  font-weight: 600;
+  font-size: 14px;
+  min-width: 16px;
+  text-align: center;
+  color: #0f0f11;
+}
+
+.price {
+  font-weight: 800;
+  font-size: 22px;
+  color: #0f0f11;
+  min-width: 80px;
+  text-align: right;
+}

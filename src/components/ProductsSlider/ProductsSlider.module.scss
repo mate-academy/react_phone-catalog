@@ -1,0 +1,87 @@
+.container {
+  margin-bottom: 80px;
+
+  @media (max-width: 639px) {
+    margin-bottom: 56px;
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.title {
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  color: #0f0f11;
+  margin: 0;
+
+  @media (max-width: 639px) {
+    font-size: 22px;
+    line-height: 31px;
+  }
+}
+
+.buttons {
+  display: flex;
+  gap: 16px;
+}
+
+/* Квадратні кнопки навігації слайдера (32px x 32px) */
+.btn {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #b4bdc3;
+  border-radius: 0; // ПРЯМІ КУТИ (замість border-radius: 50%)
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 14px;
+  color: #0f0f11;
+  transition: all 0.3s;
+
+  &:disabled {
+    border-color: #e2e6e9;
+    color: #e2e6e9;
+    cursor: not-allowed;
+  }
+
+  &:hover:not(:disabled) {
+    border-color: #0f0f11;
+  }
+}
+
+.sliderWindow {
+  overflow: hidden;
+  width: 100%;
+}
+
+.sliderList {
+  display: flex;
+  gap: 16px;
+  transition: transform 0.5s ease;
+}
+
+.cardWrapper {
+  flex: 0 0 calc(25% - 12px); // Адаптивна ширина під 4 картки в ряд у сітці
+  min-width: 212px;
+
+  @media (max-width: 1199px) {
+    flex: 0 0 calc(33.33% - 11px);
+  }
+
+  @media (max-width: 768px) {
+    flex: 0 0 calc(50% - 8px);
+  }
+
+  @media (max-width: 480px) {
+    flex: 0 0 212px;
+  }
+}

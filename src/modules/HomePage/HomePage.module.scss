@@ -1,0 +1,34 @@
+.pageWrapper {
+  padding-top: 24px;
+  padding-bottom: 80px;
+}
+
+.title {
+  font-weight: 800;
+  font-size: 48px;
+  line-height: 56px;
+  color: #0f0f11;
+  margin-bottom: 32px;
+
+  @media (max-width: 639px) {
+    font-size: 32px;
+    line-height: 41px;
+    margin-bottom: 24px;
+  }
+}
+
+.section {
+  margin-bottom: 80px;
+
+  @media (max-width: 639px) {
+    margin-bottom: 56px;
+  }
+}
+
+.loading,
+.error {
+  text-align: center;
+  padding: 80px 0;
+  font-size: 18px;
+  color: #89939a;
+}
