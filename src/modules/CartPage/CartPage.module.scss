@@ -1,0 +1,135 @@
+@use '../../styles/colors' as colors;
+@use '../../styles/variables' as vars;
+@use '../../styles/mixins' as mixins;
+
+.page {
+  @include mixins.page-container;
+
+  padding: 40px 24px 80px;
+}
+
+.backButton {
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: colors.$text-secondary;
+  font-size: 14px;
+  cursor: pointer;
+  transition: color vars.$transition-normal;
+
+  &:hover {
+    color: colors.$text-primary;
+  }
+}
+
+.title {
+  margin: 24px 0 32px;
+  color: colors.$text-primary;
+  font-size: 48px;
+  font-weight: 800;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
+  align-items: start;
+  gap: 16px;
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+.summary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px;
+  border: 1px solid colors.$border-light;
+}
+
+.total {
+  margin: 0;
+  color: colors.$text-primary;
+  font-size: 32px;
+  font-weight: 800;
+}
+
+.count {
+  margin: 0;
+  color: colors.$text-secondary;
+  font-size: 14px;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  margin: 24px 0;
+  background-color: colors.$border-light;
+}
+
+.shopButton {
+  max-width: 200px;
+}
+
+.checkout,
+.shopButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 48px;
+  border: none;
+  background-color: colors.$text-primary;
+  color: colors.$white;
+  font-size: 14px;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color vars.$transition-normal,
+    box-shadow vars.$transition-normal;
+
+  &:hover {
+    background-color: colors.$text-primary;
+    box-shadow: 0 3px 13px rgb(23 32 49 / 26%);
+  }
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 48px 0;
+  text-align: center;
+
+  h2 {
+    margin: 0;
+    color: colors.$text-primary;
+    font-size: 24px;
+  }
+}
+
+.emptyImage {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+}
+
+@media (max-width: 767px) {
+  .page {
+    padding: 24px 16px 48px;
+  }
+
+  .title {
+    font-size: 32px;
+  }
+
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}

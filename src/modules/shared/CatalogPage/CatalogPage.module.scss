@@ -1,0 +1,126 @@
+@use '../../../styles/colors' as colors;
+@use '../../../styles/variables' as vars;
+@use '../../../styles/mixins' as mixins;
+
+.catalog {
+  @include mixins.page-container;
+
+  padding: 56px 32px 80px;
+}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 40px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+}
+
+.homeLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  color: colors.$text-primary;
+
+  &:hover {
+    color: colors.$text-secondary;
+  }
+}
+
+.breadcrumbArrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  color: colors.$border-strong;
+}
+
+.breadcrumbCurrent {
+  color: colors.$text-secondary;
+}
+
+.title {
+  margin-bottom: 8px;
+  color: colors.$text-primary;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 56px;
+  letter-spacing: -0.01em;
+}
+
+.count {
+  margin-bottom: 24px;
+  color: colors.$text-secondary;
+  font-size: 14px;
+}
+
+.controls {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-end;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.control {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  label {
+    color: colors.$text-secondary;
+    font-size: 12px;
+  }
+}
+
+.select {
+  width: 176px;
+  height: 40px;
+  padding: 0 12px;
+  border: 1px solid colors.$border-strong;
+  background-color: colors.$white;
+  color: colors.$text-primary;
+  font-size: 14px;
+  cursor: pointer;
+
+  &:hover {
+    border-color: colors.$text-secondary;
+  }
+
+  &:focus-visible {
+    outline: 2px solid colors.$text-primary;
+    outline-offset: 2px;
+  }
+}
+
+.emptyMessage {
+  margin-top: 40px;
+  padding: 32px 16px;
+  color: colors.$text-secondary;
+  font-size: 18px;
+  text-align: center;
+}
+
+@media (max-width: 767px) {
+  .catalog {
+    padding: 32px 16px 64px;
+  }
+
+  .title {
+    font-size: 32px;
+    line-height: 41px;
+  }
+
+  .controls {
+    gap: 12px;
+  }
+
+  .select {
+    width: 150px;
+  }
+}

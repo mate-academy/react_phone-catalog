@@ -1,0 +1,437 @@
+@use '../../styles/colors' as colors;
+@use '../../styles/variables' as vars;
+@use '../../styles/mixins' as mixins;
+
+.page {
+  @include mixins.page-container;
+
+  padding: 24px 24px 80px;
+}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 40px;
+  color: colors.$text-secondary;
+  font-size: 12px;
+
+  a {
+    color: colors.$text-primary;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: color vars.$transition-normal;
+
+    &:hover {
+      color: colors.$text-secondary;
+    }
+  }
+}
+
+.backButton {
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: colors.$text-secondary;
+  font-size: 14px;
+  cursor: pointer;
+  transition: color vars.$transition-normal;
+
+  &:hover {
+    color: colors.$text-primary;
+  }
+}
+
+.title {
+  margin: 24px 0 40px;
+  color: colors.$text-primary;
+  font-size: 32px;
+  font-weight: 800;
+}
+
+.productLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
+  gap: 64px;
+  margin-bottom: 80px;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: 80px minmax(0, 1fr);
+  gap: 24px;
+  min-width: 0;
+}
+
+.thumbnails {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.thumbnail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  padding: 8px;
+  border: 1px solid colors.$border-strong;
+  background-color: colors.$white;
+  cursor: pointer;
+  transition: border-color vars.$transition-normal;
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  &:hover {
+    border-color: colors.$text-primary;
+  }
+}
+
+.selected {
+  border-color: colors.$text-primary;
+}
+
+.mainImage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+
+  img {
+    display: block;
+    max-width: 100%;
+    max-height: 440px;
+    object-fit: contain;
+    transition: transform vars.$transition-normal;
+
+    &:hover {
+      transform: scale(vars.$hover-scale);
+    }
+  }
+}
+
+.options {
+  min-width: 0;
+}
+
+.optionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.optionId {
+  color: colors.$text-secondary;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15px;
+}
+
+.optionLabel {
+  margin: 0;
+  color: colors.$text-secondary;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15px;
+}
+
+.optionGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.colorGroup {
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.colorOption,
+.capacityOption {
+  position: relative;
+  cursor: pointer;
+}
+
+.colorOption input,
+.capacityOption input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.colorSwatch {
+  display: block;
+  width: 32px;
+  height: 32px;
+  padding: 2px;
+  border: 1px solid colors.$border-light;
+  border-radius: 50%;
+  box-sizing: border-box;
+  background-clip: content-box;
+  transition: border-color vars.$transition-normal;
+}
+
+.capacityOption > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 32px;
+  padding: 0 8px;
+  border: 1px solid colors.$border-strong;
+  color: colors.$text-primary;
+  font-size: 14px;
+  line-height: 21px;
+  transition:
+    border-color vars.$transition-normal,
+    background-color vars.$transition-normal,
+    color vars.$transition-normal;
+}
+
+.divider {
+  height: 1px;
+  margin: 24px 0;
+  background-color: colors.$border-light;
+}
+
+.prices {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.price {
+  color: colors.$text-primary;
+  font-size: 32px;
+  font-weight: 800;
+}
+
+.fullPrice {
+  color: colors.$text-secondary;
+  font-size: 22px;
+  text-decoration: line-through;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+
+.addButton {
+  flex: 1;
+  min-height: 48px;
+  border: 1px solid colors.$text-primary;
+  background-color: colors.$text-primary;
+  color: colors.$white;
+  cursor: pointer;
+  transition: box-shadow vars.$transition-normal;
+
+  &:hover:not(:disabled) {
+    box-shadow: 0 3px 13px rgba(colors.$text-primary, 0.26);
+  }
+}
+
+.addedButton {
+  border-color: colors.$border-light;
+  background-color: colors.$white;
+  color: colors.$success;
+  cursor: default;
+}
+
+.favoriteButton {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  border: 1px solid colors.$border-strong;
+  background-color: colors.$white;
+  color: colors.$error;
+  font-size: 24px;
+  cursor: pointer;
+  transition: border-color vars.$transition-normal;
+
+  &:hover {
+    border-color: colors.$text-primary;
+  }
+}
+
+.shortSpecs {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  div {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    font-size: 12px;
+  }
+
+  span {
+    color: colors.$text-secondary;
+  }
+
+  strong {
+    color: colors.$text-primary;
+    text-align: right;
+  }
+}
+
+.information {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
+  gap: 64px;
+  margin-bottom: 80px;
+}
+
+.about,
+.techSpecs {
+  min-width: 0;
+
+  h2 {
+    margin: 0 0 32px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid colors.$border-light;
+    color: colors.$text-primary;
+    font-size: 22px;
+  }
+}
+
+.description {
+  margin-bottom: 32px;
+
+  h3 {
+    margin: 0 0 16px;
+    color: colors.$text-primary;
+    font-size: 20px;
+  }
+
+  p {
+    color: colors.$text-secondary;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+}
+
+.specRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 12px;
+  font-size: 14px;
+
+  span {
+    color: colors.$text-secondary;
+  }
+
+  strong {
+    color: colors.$text-primary;
+    text-align: right;
+  }
+}
+
+.colorOption:hover .colorSwatch {
+  border-color: colors.$border-strong;
+}
+
+.colorOption input:checked + .colorSwatch {
+  border-color: colors.$text-primary;
+}
+
+.colorOption input:focus-visible + .colorSwatch {
+  outline: 2px solid colors.$text-primary;
+  outline-offset: 3px;
+}
+
+.capacityOption:hover > span {
+  border-color: colors.$text-primary;
+}
+
+.capacityOption input:checked + span {
+  border-color: colors.$text-primary;
+  background-color: colors.$text-primary;
+  color: colors.$white;
+}
+
+.capacityOption input:focus-visible + span {
+  outline: 2px solid colors.$text-primary;
+  outline-offset: 3px;
+}
+
+.suggestions {
+  h2 {
+    margin-bottom: 24px;
+    color: colors.$text-primary;
+    font-size: 32px;
+  }
+}
+
+.visuallyHidden {
+  @include mixins.visually-hidden;
+}
+
+@media (max-width: 1023px) {
+  .productLayout,
+  .information {
+    gap: 24px;
+  }
+
+  .gallery {
+    grid-template-columns: 60px minmax(0, 1fr);
+    gap: 16px;
+  }
+
+  .thumbnail {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+@media (max-width: 767px) {
+  .page {
+    padding: 24px 16px 48px;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+
+  .productLayout,
+  .information {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .thumbnails {
+    flex-flow: row wrap;
+    order: 2;
+  }
+
+  .mainImage {
+    min-height: 280px;
+  }
+
+  .mainImage img {
+    max-height: 300px;
+  }
+
+  .suggestions h2 {
+    font-size: 24px;
+  }
+}

@@ -1,0 +1,81 @@
+@use '../../styles/colors' as colors;
+@use '../../styles/variables' as vars;
+@use '../../styles/mixins' as mixins;
+
+.page {
+  @include mixins.page-container;
+
+  padding: 24px 24px 80px;
+}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 40px;
+  color: colors.$text-secondary;
+  font-size: 12px;
+
+  a {
+    color: colors.$text-primary;
+    text-decoration: none;
+    transition: color vars.$transition-normal;
+
+    &:hover {
+      color: colors.$text-secondary;
+    }
+  }
+}
+
+.title {
+  margin: 0 0 8px;
+  color: colors.$text-primary;
+  font-size: 48px;
+  font-weight: 800;
+}
+
+.count {
+  margin: 0 0 24px;
+  color: colors.$text-secondary;
+  font-size: 14px;
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  padding: 48px 0;
+
+  p {
+    margin: 0;
+    color: colors.$text-secondary;
+    font-size: 18px;
+  }
+}
+
+.catalogLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 0 24px;
+  background-color: colors.$text-primary;
+  color: colors.$white;
+  text-decoration: none;
+  transition: background-color vars.$transition-normal;
+
+  &:hover {
+    background-color: colors.$text-primary;
+  }
+}
+
+@media (max-width: 767px) {
+  .page {
+    padding: 24px 16px 48px;
+  }
+
+  .title {
+    font-size: 32px;
+  }
+}

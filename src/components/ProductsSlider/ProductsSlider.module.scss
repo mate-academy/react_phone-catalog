@@ -1,0 +1,76 @@
+@use '../../styles/colors' as colors;
+@use '../../styles/variables' as vars;
+@use '../../styles/mixins' as mixins;
+
+.section {
+  margin-bottom: 80px;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+
+  h2 {
+    margin: 0;
+    font-size: 28px;
+  }
+}
+
+.sliderButtons {
+  display: flex;
+  flex-shrink: 0;
+  gap: 16px;
+
+  button {
+    transition:
+      border-color vars.$transition-normal,
+      background-color vars.$transition-normal;
+
+    @include mixins.icon-button;
+
+    &:focus-visible {
+      outline: 2px solid colors.$background-light;
+      outline-offset: 2px;
+    }
+  }
+}
+
+.productsSlider {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.productItem {
+  flex: 0 0 272px;
+  min-width: 0;
+}
+
+@media (max-width: 768px) {
+  .section {
+    margin-bottom: 48px;
+  }
+
+  .sectionHeader h2 {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .productItem {
+    flex-basis: 240px;
+  }
+
+  .sliderButtons {
+    gap: 8px;
+  }
+}

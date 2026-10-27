@@ -1,0 +1,24 @@
+@use '../../styles/colors' as colors;
+@use '../../styles/variables' as vars;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 48px 24px;
+}
+
+.message {
+  color: colors.$text-primary;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.button {
+  padding: 12px 24px;
+  border: none;
+  background-color: colors.$text-primary;
+  color: colors.$white;
+  cursor: pointer;
+}

@@ -1,0 +1,55 @@
+@use './variables' as vars;
+@use './colors' as colors;
+
+@mixin page-container {
+  width: 100%;
+  max-width: vars.$container-width;
+  margin: 0 auto;
+}
+
+@mixin mobile {
+  @media (max-width: vars.$mobile-max) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: vars.$tablet-min) and (max-width: vars.$tablet-max) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: vars.$desktop-min) {
+    @content;
+  }
+}
+
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@mixin icon-button($size: 32px) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: $size;
+  height: $size;
+  border: 1px solid colors.$border-strong;
+  background: colors.$white;
+  cursor: pointer;
+  transition: border-color vars.$transition-normal;
+
+  &:hover {
+    border-color: colors.$text-primary;
+  }
+}
+

@@ -1,0 +1,381 @@
+@use '../../styles/colors' as colors;
+@use '../../styles/variables' as vars;
+@use '../../styles/mixins' as mixins;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  height: 64px;
+  padding-left: 24px;
+  border-bottom: 1px solid colors.$border-light;
+  background-color: colors.$white;
+}
+
+.logo {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-right: 48px;
+  text-decoration: none;
+}
+
+.logoText {
+  display: block;
+  width: 80px;
+  height: auto;
+}
+
+.logoIcon {
+  position: absolute;
+  top: -4px;
+  left: 45px;
+  width: 14px;
+  height: 14px;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+  gap: 32px;
+}
+
+.link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  color: colors.$text-secondary;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: color vars.$transition-normal;
+
+  &:hover {
+    color: colors.$text-primary;
+  }
+}
+
+.active {
+  color: colors.$text-primary;
+}
+
+.active::after,
+.actionActive::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background-color: colors.$text-primary;
+  content: '';
+}
+
+.desktopActions {
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+  margin-left: auto;
+}
+
+.action {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  border-left: 1px solid colors.$border-light;
+  text-decoration: none;
+  transition: background-color vars.$transition-normal;
+
+  &:hover {
+    background-color: colors.$background-light;
+  }
+
+  img {
+    display: block;
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.counter {
+  position: absolute;
+  top: 9px;
+  right: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 3px;
+  border: 1px solid colors.$white;
+  border-radius: 50%;
+  background-color: colors.$error;
+  color: colors.$white;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.search {
+  flex-shrink: 1;
+  min-width: 0;
+  margin-right: 16px;
+}
+
+.searchInput {
+  box-sizing: border-box;
+  width: 220px;
+  max-width: 100%;
+  height: 40px;
+  padding: 0 12px;
+  border: 1px solid colors.$border-strong;
+  border-radius: 0;
+  outline: none;
+  color: colors.$text-primary;
+  background-color: colors.$white;
+  font: inherit;
+  font-size: 14px;
+
+  &::placeholder {
+    color: colors.$text-secondary;
+  }
+
+  &:hover {
+    border-color: colors.$text-secondary;
+  }
+
+  &:focus {
+    border-color: colors.$text-primary;
+  }
+}
+
+.mobileMenuButton,
+.mobileMenu {
+  display: none;
+}
+
+@include mixins.tablet {
+  .header {
+    height: 48px;
+    padding-left: 16px;
+  }
+
+  .logo {
+    margin-right: 32px;
+  }
+
+  .logoText {
+    width: 64px;
+  }
+
+  .logoIcon {
+    top: -3px;
+    left: 36px;
+    width: 12px;
+    height: 12px;
+  }
+
+  .nav {
+    gap: 24px;
+  }
+
+  .action {
+    width: 48px;
+    height: 48px;
+  }
+
+  .counter {
+    top: 5px;
+    right: 5px;
+  }
+
+  .search {
+    margin-right: 8px;
+  }
+
+  .searchInput {
+    width: clamp(90px, 12vw, 150px);
+    height: 32px;
+  }
+}
+
+@media (min-width: vars.$tablet-min) and (max-width: 850px) {
+  .header {
+    padding-left: 12px;
+  }
+
+  .logo {
+    margin-right: 20px;
+  }
+
+  .nav {
+    gap: 16px;
+  }
+
+  .link {
+    font-size: 10px;
+  }
+
+  .search {
+    margin-right: 4px;
+  }
+
+  .searchInput {
+    width: 90px;
+  }
+}
+
+@include mixins.mobile {
+  .header {
+    height: 48px;
+    padding-left: 16px;
+  }
+
+  .logo {
+    margin-right: auto;
+  }
+
+  .logoText {
+    width: 64px;
+  }
+
+  .logoIcon {
+    top: -3px;
+    left: 36px;
+    width: 12px;
+    height: 12px;
+  }
+
+  .nav,
+  .desktopActions {
+    display: none;
+  }
+
+  .mobileMenuButton {
+    position: relative;
+    z-index: 102;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 4px;
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    border: 0;
+    border-left: 1px solid colors.$border-light;
+    background-color: colors.$white;
+    cursor: pointer;
+
+    span {
+      display: block;
+      width: 16px;
+      height: 2px;
+      background-color: colors.$text-primary;
+      transition:
+        transform vars.$transition-fast,
+        opacity vars.$transition-fast;
+    }
+  }
+
+  .menuButtonOpen {
+    span:first-child {
+      transform: translateY(6px) rotate(45deg);
+    }
+
+    span:nth-child(2) {
+      opacity: 0;
+    }
+
+    span:last-child {
+      transform: translateY(-6px) rotate(-45deg);
+    }
+  }
+
+  .mobileMenu {
+    position: fixed;
+    inset: 48px 0 0;
+    z-index: 101;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    background-color: colors.$white;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  .mobileMenuOpen {
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .mobileMenuContent {
+    display: flex;
+    flex: 1 0 auto;
+    flex-direction: column;
+    padding: 24px 16px;
+  }
+
+  .mobileNav {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .mobileNav .link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    font-size: 12px;
+  }
+
+  .mobileNav .active::after {
+    bottom: -4px;
+  }
+
+  .mobileActions {
+    display: flex;
+    flex-shrink: 0;
+    min-height: 64px;
+    border-top: 1px solid colors.$border-light;
+    background-color: colors.$white;
+  }
+
+  .mobileActions .action {
+    flex: 1;
+    width: 50%;
+    height: 64px;
+  }
+
+  .mobileActions .action + .action {
+    border-left: 1px solid colors.$border-light;
+  }
+
+  .mobileActions .counter {
+    top: 9px;
+    right: calc(50% - 24px);
+  }
+
+  .mobileMenu .search {
+    width: 100%;
+    margin: 0 0 24px;
+  }
+
+  .mobileMenu .searchInput {
+    width: 100%;
+    height: 40px;
+  }
+}

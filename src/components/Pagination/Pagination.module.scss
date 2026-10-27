@@ -1,0 +1,54 @@
+@use '../../styles/colors' as colors;
+@use '../../styles/variables' as vars;
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 40px 0;
+
+  button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 32px;
+    height: 32px;
+    padding: 0 8px;
+    border: 1px solid colors.$border-strong;
+    background-color: colors.$white;
+    color: colors.$text-primary;
+    cursor: pointer;
+    transition:
+      border-color vars.$transition-normal,
+      background-color vars.$transition-normal,
+      color vars.$transition-normal;
+
+    &:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    &:hover:not(:disabled) {
+      border-color: colors.$text-primary;
+    }
+  }
+
+  .active {
+    background-color: colors.$text-primary;
+    color: colors.$white;
+    border-color: colors.$text-primary;
+  }
+}
+
+.dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 32px;
+  color: colors.$text-secondary;
+  user-select: none;
+}
+

@@ -1,0 +1,495 @@
+@use '../../styles/colors' as colors;
+@use '../../styles/variables' as vars;
+@use '../../styles/mixins' as mixins;
+
+.home {
+  @include mixins.page-container;
+
+  padding: 56px 32px 80px;
+}
+
+.visuallyHidden {
+  @include mixins.visually-hidden;
+}
+
+.bannerSection,
+.section {
+  margin-bottom: 80px;
+}
+
+.welcomeTitle {
+  margin-bottom: 56px;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 56px;
+  letter-spacing: -0.01em;
+}
+
+.welcomeBreak {
+  display: none;
+}
+
+.bannerContainer {
+  display: flex;
+  gap: 16px;
+  height: 400px;
+  min-height: 0;
+}
+
+.bannerArrow {
+  flex-shrink: 0;
+  width: 32px;
+  border: 1px solid colors.$border-strong;
+  background: colors.$white;
+  cursor: pointer;
+  transition: border-color vars.$transition-normal;
+
+  &:hover {
+    border-color: colors.$text-primary;
+  }
+}
+
+.banner {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: space-around;
+  gap: 24px;
+  min-width: 0;
+  height: 100%;
+  padding: 24px;
+  overflow: hidden;
+  background: colors.$background-light;
+  text-decoration: none;
+
+  img {
+    max-width: 45%;
+    height: 270px;
+    object-fit: contain;
+    transition: transform vars.$transition-normal;
+  }
+}
+
+.bannerText {
+  color: colors.$text-primary;
+
+  h3 {
+    margin-bottom: 16px;
+    font-size: 28px;
+  }
+
+  p {
+    margin-bottom: 24px;
+  }
+
+  span {
+    display: inline-flex;
+    padding: 12px 24px;
+    background: colors.$text-primary;
+    color: colors.$white;
+    transition: transform vars.$transition-normal;
+
+    &:hover {
+      transform: scale(vars.$hover-scale);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 16px;
+
+  button {
+    width: 16px;
+    height: 4px;
+    border: 0;
+    background: colors.$border-strong;
+    cursor: pointer;
+  }
+
+  .activeDot {
+    background: colors.$text-primary;
+  }
+}
+
+.section {
+  h2 {
+    margin-bottom: 24px;
+    font-size: 28px;
+  }
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sliderButtons {
+  display: flex;
+  gap: 16px;
+
+  button {
+    @include mixins.icon-button;
+  }
+}
+
+.productsSlider {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.productItem {
+  flex: 0 0 272px;
+}
+
+.categories {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.category {
+  min-width: 0;
+  color: colors.$text-primary;
+  text-decoration: none;
+
+  h3 {
+    margin: 24px 0 4px;
+    font-size: 20px;
+  }
+
+  p {
+    color: colors.$text-secondary;
+    font-size: 14px;
+  }
+}
+
+.categoryImage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 288px;
+  padding: 24px;
+  overflow: hidden;
+  background: colors.$background-light;
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    transition: transform vars.$transition-normal;
+  }
+}
+
+.banner:hover > img {
+  transform: scale(vars.$hover-scale);
+}
+
+@media (hover: hover) {
+  .category:hover .categoryImage img {
+    transform: scale(vars.$hover-scale);
+  }
+}
+
+.status {
+  padding: 80px 24px;
+  text-align: center;
+}
+
+.iphoneBanner {
+  display: block;
+  height: 100%;
+  padding: 0;
+  overflow: hidden;
+  background: colors.$total-black;
+}
+
+.iphoneBannerDesktop {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  width: 100%;
+  height: 100%;
+  padding: 12px;
+}
+
+.iphoneBannerLeft {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+  padding: 36px 32px;
+  border-radius: 24px;
+  background: colors.$text-primary;
+
+  h3 {
+    margin: 0;
+    color: colors.$banner-accent;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.15;
+  }
+
+  p {
+    margin: 16px 0 0;
+    color: colors.$text-secondary;
+    font-size: 14px;
+    line-height: 21px;
+  }
+}
+
+.iphoneBannerButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 56px;
+  margin-top: auto;
+  border: 1px solid colors.$border-strong;
+  border-radius: 30px;
+  color: colors.$white;
+  font-size: 14px;
+  font-weight: 600;
+  transition: transform vars.$transition-normal;
+
+  &:hover {
+    transform: scale(vars.$hover-scale);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+.iphoneBannerRight {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+.iphoneBanner .iphoneBannerPhone {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  transform: none;
+  transition: none;
+}
+
+.iphoneBanner:hover .iphoneBannerPhone {
+  transform: none;
+}
+
+.iphoneBannerMobile {
+  display: none;
+}
+
+
+@include mixins.tablet {
+  .home {
+    padding: 32px 24px 64px;
+  }
+
+  .welcomeBreak {
+    display: initial;
+  }
+
+  .bannerSection,
+  .section {
+    margin-bottom: 64px;
+  }
+
+  .categoryImage {
+    height: 187px;
+    padding: 12px;
+  }
+
+  .bannerContainer {
+    height: 320px;
+  }
+
+  .iphoneBannerDesktop {
+    gap: 12px;
+    padding: 8px;
+  }
+
+  .iphoneBannerLeft {
+    padding: 30px 20px;
+    border-radius: 14px;
+
+    h3 {
+      font-size: 34px;
+      line-height: 34px;
+    }
+
+    p {
+      margin-top: 8px;
+      font-size: 14px;
+    }
+  }
+
+  .iphoneBannerButton {
+    width: 130px;
+    height: 36px;
+    font-size: 10px;
+  }
+}
+
+@include mixins.mobile {
+  .home {
+    padding: 24px 16px 64px;
+  }
+
+  .welcomeBreak {
+    display: initial;
+  }
+
+  .bannerSection,
+  .section {
+    margin-bottom: 56px;
+  }
+
+  .welcomeTitle {
+    margin-bottom: 24px;
+    font-size: 32px;
+    line-height: 41px;
+  }
+
+  .bannerContainer {
+    height: auto;
+    gap: 0;
+  }
+
+  .bannerArrow {
+    display: none;
+  }
+
+  .banner {
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px;
+
+    img {
+      max-width: 100%;
+      height: 170px;
+    }
+  }
+
+  .bannerText {
+    h3 {
+      font-size: 20px;
+    }
+
+    p {
+      display: none;
+    }
+  }
+
+  .categories {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .categoryImage {
+    height: 288px;
+    padding: 16px;
+  }
+
+  .section h2 {
+    font-size: 22px;
+  }
+
+  .iphoneBanner {
+    width: 100%;
+    height: auto;
+    min-height: 280px;
+  }
+
+  .iphoneBannerDesktop {
+    display: none;
+  }
+
+  .iphoneBannerMobile {
+    display: block;
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    min-height: 280px;
+    object-fit: cover;
+    object-position: center;
+    transform: none;
+  }
+
+  .iphoneBanner:hover .iphoneBannerMobile {
+    transform: none;
+  }
+
+  .banner:not(.iphoneBanner) {
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 280px;
+    gap: 12px;
+    padding: 24px 16px 16px;
+
+    .bannerText {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+      text-align: center;
+
+      h3 {
+        margin: 0;
+        font-size: 22px;
+        font-weight: 700;
+        line-height: 28px;
+      }
+
+      span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 40px;
+        padding: 10px 24px;
+        font-size: 12px;
+        font-weight: 600;
+        white-space: nowrap;
+      }
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      height: 150px;
+      flex-shrink: 1;
+      min-height: 0;
+      object-fit: contain;
+      object-position: center;
+    }
+  }
+
+  .mobileDotsHidden {
+    display: none;
+  }
+}

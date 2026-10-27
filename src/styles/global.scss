@@ -1,0 +1,137 @@
+@use './colors' as colors;
+
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  font-family: Mont, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  letter-spacing: 0;
+  color: colors.$text-primary;
+  background: colors.$white;
+
+  font-synthesis: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 56px;
+  letter-spacing: -0.01em;
+}
+
+h2 {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 31px;
+}
+
+h4 {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 26px;
+}
+
+p {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+}
+
+a {
+  color: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+}
+
+@media (max-width: 767px) {
+  h1 {
+    font-size: 32px;
+    line-height: 41px;
+  }
+
+  h2 {
+    font-size: 22px;
+    line-height: 31px;
+    letter-spacing: 0;
+  }
+
+  h3 {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 26px;
+  }
+
+  h4 {
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
