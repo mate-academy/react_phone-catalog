@@ -1,0 +1,18 @@
+@forward './utils/variables';
+@forward './utils/mixins';
+@forward './utils/fonts';
+
+.visually-hidden {
+  position: absolute;
+
+  overflow: hidden;
+
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+
+  visibility: hidden;
+  clip: rect(0, 0, 0, 0);
+}
