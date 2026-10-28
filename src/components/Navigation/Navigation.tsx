@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import styles from './Navigation.module.scss';
+import { useEffect } from 'react';
 const cx = classNames.bind(styles);
 
 type Props = {
@@ -15,6 +16,14 @@ const navLinks = [
 ];
 
 export const Navigation = ({ isOpen, onClose }: Props) => {
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
+
   return (
     <div className={cx('overlay', { 'overlay--open': isOpen })}>
       <nav className={cx('nav')}>

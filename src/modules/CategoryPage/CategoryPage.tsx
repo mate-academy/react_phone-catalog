@@ -17,7 +17,7 @@ export const CategoryPage = ({ category, title }: Props) => {
 
   return (
     <main className={cx('category-page')}>
-      <Breadcrumbs items={[{ label: 'Phones' }]} />
+      <Breadcrumbs items={[{ label: title }]} />
       <div className={cx('category-page__header')}>
         <h1 className={cx('category-page__title')}>{title}</h1>
         <p className={cx('category-page__products-count')}>
