@@ -7,26 +7,20 @@ $grid-gap: 16px;
 $grid-columns-mobile: 4;
 $grid-columns-tablet: 12;
 $grid-columns-desktop: 24;
-$grid-padding-mobile: 16px;
-$grid-padding-tablet: 24px;
 $grid-column-width-desktop: 32px;
-$grid-width-desktop: $grid-columns-desktop * $grid-column-width-desktop + ($grid-columns-desktop - 1) * $grid-gap;
+
 
 @mixin grid-container {
   display: grid;
   gap: $grid-gap;
   grid-template-columns: repeat($grid-columns-mobile, minmax(0, 1fr));
-  padding-inline: $grid-padding-mobile;
 
   @include bp.tablet-up {
     grid-template-columns: repeat($grid-columns-tablet, minmax(0, 1fr));
-    padding-inline: $grid-padding-tablet;
   }
 
   @include bp.desktop-up {
     grid-template-columns: repeat($grid-columns-desktop, $grid-column-width-desktop);
-    justify-content: center; // сітка по центру екрана
-    padding-inline: 0;
   }
 }
 

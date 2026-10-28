@@ -1,0 +1,83 @@
+// підправ шлях під свою структуру, де лежать міксини сітки
+@use '../../styles/mixins/grid' as grid;
+@use '../../styles/mixins/breakpoints' as bp;
+
+
+.product-list {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  &__grid {
+    @include grid.grid-container;
+  }
+
+  &__item {
+    grid-column: 1 / -1;
+
+    @include bp.tablet-up {
+      grid-column: span 6;
+    }
+
+    @media (min-width: 768px) {
+      grid-column: span 4;
+    }
+
+    @include bp.desktop-up {
+      grid-column: span 6;
+    }
+  }
+
+  &__dropdowns {
+    @include grid.grid-container;
+  }
+
+  &__sort-by {
+    grid-column: span 2;
+
+    @include bp.tablet-up {
+      grid-column: span 4;
+    }
+  }
+
+  &__items-on-page {
+    grid-column: span 2;
+
+    @include bp.tablet-up {
+      grid-column: span 3;
+    }
+  }
+
+  &__pagination {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  &__page-button {
+    min-width: 32px;
+    height: 32px;
+    padding: 0 8px;
+    border: 1px solid #b4bdc3;
+    border-radius: 50%;
+    background: transparent;
+    font: inherit;
+    cursor: pointer;
+
+    &:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    &:hover:not(:disabled) {
+      border-color: #0f1121;
+    }
+
+    &--active {
+      border-color: #0f1121;
+      background: #0f1121;
+      color: #fff;
+    }
+  }
+}

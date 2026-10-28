@@ -1,0 +1,16 @@
+@use '../../styles/mixins/breakpoints' as bp;
+@use '../../styles/global-variables' as *;
+
+.category-page {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @include bp.tablet-up {
+    gap: 40px;
+  }
+
+  &__products-count {
+    color: $secondary-color;
+  }
+}
