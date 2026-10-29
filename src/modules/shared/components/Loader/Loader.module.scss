@@ -1,0 +1,21 @@
+@use '../../../../styles/variables' as *;
+
+.loader {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 4px solid $color-elements;
+  border-top-color: $color-primary;
+  margin: 40px auto;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

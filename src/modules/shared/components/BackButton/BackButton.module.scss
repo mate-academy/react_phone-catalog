@@ -1,0 +1,14 @@
+@use '../../../../styles/mixins' as *;
+@use '../../../../styles/variables' as *;
+
+.back {
+  @include small-text;
+
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: $color-secondary;
+
+
+  &:hover { color: $color-primary; }
+}

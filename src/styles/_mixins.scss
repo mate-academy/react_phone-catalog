@@ -1,0 +1,83 @@
+@use 'variables' as *;
+
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content
+  }
+};
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content
+  }
+};
+
+@mixin h1 {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 41px;
+
+  @include on-desktop {
+    font-size: 48px;
+    line-height: 56px;
+  }
+};
+
+@mixin h2 {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 31px;
+
+  @include on-desktop {
+    font-size: 32px;
+    line-height: 41px;
+  }
+};
+
+@mixin h3 {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 26px;
+
+  @include on-desktop {
+    font-size: 22px;
+    line-height: 31px;
+  }
+};
+
+@mixin h4 {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+
+  @include on-desktop {
+    font-size: 20px;
+    line-height: 26px;
+  }
+};
+
+@mixin  uppercase {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+};
+
+@mixin buttons {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+};
+
+@mixin small-text {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15px;
+};
+
+@mixin body-text {
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 400;
+}

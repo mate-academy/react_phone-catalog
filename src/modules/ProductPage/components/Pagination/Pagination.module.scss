@@ -1,0 +1,44 @@
+@use '../../../../styles/mixins' as *;
+@use '../../../../styles/variables' as *;
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.pages {
+  display: flex;
+  gap: 8px;
+}
+
+.button {
+  @include body-text;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid $color-icons;
+  background-color: $color-white;
+  color: $color-primary;
+  cursor: pointer;
+  transition: border-color 0.3s;
+
+  &:hover {
+    border-color: $color-primary;
+  }
+
+  &:disabled {
+    border-color: $color-elements;
+    opacity: 0.5;
+    cursor: default;
+  }
+}
+
+.active {
+  border-color: $color-primary;
+  background-color: $color-primary;
+  color: $color-white;
+}

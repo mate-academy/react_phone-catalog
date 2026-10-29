@@ -1,0 +1,127 @@
+@use '../../../../styles/mixins' as *;
+@use '../../../../styles/variables' as *;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 32px;
+  border: 1px solid $color-elements;
+  background-color: $color-white;
+  transition: box-shadow 0.3s;
+
+  &:hover {
+    box-shadow: 0 3px 13px rgba(23, 32, 49, 0.2);
+  }
+}
+
+.imageLink {
+  display: flex;
+  justify-content: center;
+}
+
+.image {
+  height: 196px;
+  object-fit: contain;
+  transition: transform 0.3s;
+
+  .card:hover & {
+    transform: scale(1.1);
+  }
+}
+
+.name {
+  @include body-text;
+
+  min-height: 42px;
+  margin-top: 24px;
+  color: $color-primary;
+}
+
+.price {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.newPrice {
+  @include h3;
+}
+
+.oldPrice {
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 31px;
+  color: $color-secondary;
+  text-decoration: line-through;
+}
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 8px 0 0;
+  padding-top: 16px;
+  border-top: 1px solid $color-elements;
+}
+
+.spec {
+  @include small-text;
+
+  display: flex;
+  justify-content: space-between;
+
+  dt {
+    color: $color-secondary;
+  }
+
+  dd {
+    margin: 0;
+    color: $color-primary;
+  }
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.addButton {
+  @include buttons;
+
+  flex: 1;
+  height: 40px;
+  color: $color-white;
+  background-color: $color-primary;
+  transition: box-shadow 0.3s;
+
+  &:hover {
+    box-shadow: 0 3px 13px rgba(23, 32, 49, 0.4);
+  }
+}
+
+.added {
+  border: 1px solid $color-elements;
+  color: $color-green;
+  background-color: $color-white;
+
+  &:hover {
+    box-shadow: none;
+  }
+}
+
+.favButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid $color-icons;
+  transition: border-color 0.3s;
+
+  &:hover {
+    border-color: $color-primary;
+  }
+}

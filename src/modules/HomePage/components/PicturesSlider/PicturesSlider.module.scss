@@ -1,0 +1,72 @@
+@use '../../../../styles/mixins' as *;
+@use '../../../../styles/variables' as *;
+
+.slider {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  @include on-tablet {
+    padding: 0 24px;
+  }
+
+  @include on-desktop {
+    padding: 0 32px;
+  }
+}
+
+.main {
+  display: flex;
+  gap: 16px;
+}
+
+.arrow {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  width: 32px;
+  border: 1px solid $color-icons;
+  transition: border-color 0.3s;
+
+  &:hover {
+    border-color: $color-primary;
+  }
+
+  @include on-tablet {
+    display: flex;
+  }
+}
+
+.picture {
+  width: 100%;
+  min-width: 0;
+  height: 320px;
+  object-fit: cover;
+
+  @include on-tablet {
+    height: 189px;
+  }
+
+  @include on-desktop {
+    height: 400px;
+  }
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+}
+
+.dot {
+  width: 14px;
+  height: 4px;
+  margin: 10px 0;
+  background-color: $color-elements;
+  transition: background-color 0.3s;
+}
+
+.dotActive {
+  background-color: $color-primary;
+}

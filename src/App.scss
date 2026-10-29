@@ -1,1 +1,35 @@
-// not empty
+@use './styles/reset';
+@use './styles/fonts';
+@use './styles/mixins' as *;
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main {
+  flex: 1;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  padding: 0 16px;
+  margin: 0 auto;
+
+  @include on-tablet {
+    grid-template-columns: repeat(12, 1fr);
+    padding: 0 24px
+  };
+
+  @include on-desktop {
+    max-width: 1200px;
+    grid-template-columns: repeat(24, 1fr);
+    padding: 0 32px;
+  }
+}

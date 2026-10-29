@@ -1,0 +1,89 @@
+@use '../../../../styles/mixins' as *;
+@use '../../../../styles/variables' as *;
+
+.prices {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.newPrice {
+  @include h1;
+
+  color: $color-primary;
+}
+
+.oldPrice {
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 28px;
+  color: $color-secondary;
+  text-decoration: line-through;
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.addButton {
+  @include buttons;
+
+  flex: 1;
+  height: 48px;
+  color: $color-white;
+  background-color: $color-primary;
+  transition: box-shadow 0.3s;
+
+  &:hover {
+    box-shadow: 0 3px 13px rgba(23, 32, 49, 0.4);
+  }
+}
+
+.added {
+  border: 1px solid $color-elements;
+  color: $color-green;
+  background-color: $color-white;
+
+  &:hover {
+    box-shadow: none;
+  }
+}
+
+.favButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid $color-icons;
+  transition: border-color 0.3s;
+
+  &:hover {
+    border-color: $color-primary;
+  }
+}
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 32px 0 0;
+}
+
+.spec {
+  @include small-text;
+
+  display: flex;
+  justify-content: space-between;
+
+  dt {
+    color: $color-secondary;
+  }
+
+  dd {
+    margin: 0;
+    color: $color-primary;
+  }
+}
