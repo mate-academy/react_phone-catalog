@@ -1,0 +1,102 @@
+@use '../../styles/grid.scss' as *;
+@use '../../styles/reset.scss' as *;
+@use '../../styles/colors.scss' as *;
+@use '../../styles/fonts.scss' as *;
+
+
+.PhonesPage{
+  &-title{
+    @include h1;
+    
+    grid-column: 1/-1;
+    margin-bottom: 8px;
+    padding: 0;
+  }
+
+  &-amount{
+    @include body-text;
+    
+    grid-column: 1/-1;
+    color: $secondary;
+    margin-bottom: 40px;
+  }
+  
+}
+
+.filter.grid--sub{
+  margin-bottom: 24px;
+}
+
+.filter{
+  flex-wrap: wrap;
+  grid-column: 1/-1;
+  gap: 16px;
+  
+
+  > * {
+    &:first-child {
+      grid-column: span 4;
+      
+      @media (max-width: 639px){
+        grid-column: span 2;
+      }
+      
+    }
+
+    &:nth-child(2) {
+      grid-column: span 3;
+      
+      @media (max-width: 639px){
+        grid-column: span 2;
+      }
+    }
+  }
+}
+
+.pangination{
+  grid-column: 1/-1;
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 80px;
+
+  &-icon{
+    width: 16px;
+    height: 16px;
+    padding: 8px;
+    border: solid 1px $icons;
+
+    &:hover {
+      border-color: $primary;
+    }
+  }
+
+  &-pages{
+    display: flex;
+    gap: 8px;
+
+    &-item{
+      @include body-text;
+      
+      display: flex;
+      width: 16px;
+    height: 16px;
+    padding: 8px;
+    border: solid 1px $icons;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    color: $primary;
+    
+    &.is-active{
+      background-color: $primary;
+      color: $white;
+    }
+
+    &:hover {
+      border-color: $primary;
+    }
+    }
+    }
+}

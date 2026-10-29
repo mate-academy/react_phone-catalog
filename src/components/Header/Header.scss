@@ -1,0 +1,322 @@
+@use '../../styles/fonts.scss';
+@use '../../styles/colors.scss' as *;
+@use '../../styles/grid.scss' as *;
+@use '../../styles//mixins.scss' as *;
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100px;
+  box-sizing: border-box;
+  font-family: Mont-Regular, sans-serif;
+}
+
+
+.Header {
+  position: relative;
+  display: block;
+  height: 64px;
+  z-index: 10;
+  border-bottom: 1px solid $elements;
+  
+  @include on-tablet{
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    
+  }
+  
+  @include on-desktop{
+    display: flex;
+    
+    align-items: center;
+  }
+ 
+  
+&-navContainer {
+    justify-content: center;
+   
+    @include on-tablet {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      justify-content: left;
+    }
+    
+    @include on-desktop {
+      justify-content: left;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+}
+
+
+&-logo {
+  height: 28px;
+  object-fit: contain;
+  padding-left: 24px;
+}
+
+&-nav {
+   width: 100%;
+  flex-direction: column;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  
+  @include on-tablet{
+    flex-direction: row;
+    display: flex;
+    gap: 64px;
+    list-style: none;
+    
+  }
+  
+  @include on-desktop{
+    flex-direction: row;
+    display: flex;
+    gap: 64px;
+    list-style: none;
+  }
+
+}
+
+&-nav-Item {
+  display: block;
+  padding: 16px 0;
+  font-size: 12px;
+  font-weight: 800;
+  color: $secondary;
+  text-decoration: none;
+  font-family: Mont-Bold, sans-serif;
+  text-transform: uppercase;
+  position: relative;
+  
+  @include on-tablet{
+    padding: 24px 0;
+  }
+  
+  @include on-desktop{
+    padding: 24px 0;
+  }
+
+  &:hover {
+    color: $primary;
+  }
+
+  &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px; // товщина смужки
+      background-color: $primary;
+      
+      // За замовчуванням прихована
+      opacity: 0;
+      transform: scaleX(0);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+  &.is-active {
+    color: $primary;
+    &::after {
+        opacity: 1;
+        transform: scaleX(1); // плавно розгортається або просто показується
+      }
+  }
+}
+
+&-iconContainer{
+  display: flex;
+  justify-content: space-around;
+  margin-top: auto;
+  border-top: 1px solid $elements;
+  width: 100%;
+  
+  @include on-tablet{
+    border-top: none;
+    width:auto;
+  }
+  
+  @include on-desktop{
+    border-top: none;
+    width:auto;
+  }
+  
+  
+  &-item{
+    box-sizing: border-box;
+    position: relative;
+    border-left: none;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    &:first-child{
+      border-right: 1px solid $elements;
+    }
+    
+    @include on-tablet{
+      border-left: 1px solid $elements;
+    }
+
+        &-icon {
+      width: 16px;
+      height: 16px;
+      object-fit: contain;
+      transform-origin: right center;
+      transition: transform 0.2s ease;
+      padding: 24px;
+      
+    }
+    
+    &:hover .Header-icon {
+      transform: scale(1.05);
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px; 
+      background-color: $primary;
+      opacity: 0;
+      transform: scaleX(0);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+  &.is-active {
+    color: $primary;
+    &::after {
+        opacity: 1;
+        transform: scaleX(1); // плавно розгортається або просто показується
+      }
+  }
+  }
+  
+}
+
+
+
+&-favoritesCount{
+  position:absolute;
+  top: 17px;
+  right: calc((100% / 2) - 16px);
+  font-family: Mont-Regular, sans-serif;
+  font-size: 8px;
+  color: $white;
+  background-color: $red;
+  width: 12px;
+  height: 12px;
+  text-align: center;
+  line-height: 12px;
+  border-radius: 50%;
+  border: solid 1px $white;
+  
+  padding: 1px;
+
+}
+
+&-top {
+    display: flex;
+    height: 64px;
+    align-items: center;
+    justify-content: space-between;
+    
+    @include on-tablet {
+      display: contents;
+      
+    }
+    
+    @include on-desktop {
+      display: contents;
+    }
+  }
+
+  &-burger {
+    display: flex;
+    width: 64px;
+    height: 64px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    border-left: 1px solid $elements;
+
+    @include on-tablet {
+      display: none;
+      
+    }
+    
+    @include on-desktop {
+      display: none;
+    }
+  
+     &-icon {
+        width: 16px;
+        height: 16px;
+        transition: transform 0.2s ease, opacity 0.2s ease;
+      }
+
+  }
+
+ 
+
+&-menu {
+  align-items: center;
+  position: fixed;
+  z-index: 10;
+  inset: 65px 0 0;
+  display: none;
+  flex-direction: column;
+  box-sizing: border-box;
+  background-color: $white;
+  overflow-y: auto;
+
+  @include on-tablet {
+    margin-left: 24px;
+    position: static;
+    inset: auto;
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0;
+    overflow: visible;
+    background-color: transparent;
+  }
+
+  @include on-desktop {
+    margin-left: 24px;
+    position: static;
+    inset: auto;
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0;
+    overflow: visible;
+    background-color: transparent;;
+  }
+}
+
+  &.is-menu-open &-menu {
+    display: flex;
+    
+  }
+
+  
+
+    
+  
+
+
+}
+

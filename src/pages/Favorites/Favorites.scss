@@ -1,0 +1,26 @@
+@use '../../styles/grid.scss' as *;
+@use '../../styles/reset.scss' as *;
+@use '../../styles/colors.scss' as *;
+@use '../../styles/fonts.scss' as *;
+
+
+.Favorites {
+  &-title{
+    grid-column: 1/-1;
+    
+    @include h1;
+    
+    color: $primary;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 8px;
+  }
+  &-amount{
+    grid-column: 1/-1;
+    
+    @include body-text;
+    
+    color: $secondary;
+    margin-bottom: 40px;
+  }
+}

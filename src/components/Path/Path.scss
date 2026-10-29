@@ -1,0 +1,44 @@
+@use '../../styles/colors.scss' as *;
+@use '../../styles/fonts.scss' as *;
+@use '../../styles/reset.scss' as *;
+
+
+.Path {
+  display: flex;
+  gap: 8px;
+  margin-top: 24px;
+  margin-bottom: 40px;
+  align-items: center;
+  grid-column: 1/-1;
+
+&-icon{
+  width: 16px;
+  height: 16px;
+}
+
+&-homeLogo{
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+&-item{
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+&-name{
+  @include small-text;
+  
+  color: $secondary;
+  
+
+  &:hover {
+    color: $primary;
+  }
+}
+
+}
