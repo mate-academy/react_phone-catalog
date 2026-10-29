@@ -1,0 +1,85 @@
+@use '../../styles/variables' as vars;
+@use '../../styles/mixins' as mixins;
+
+.slider {
+  margin-top: 56px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.title {
+  margin: 0;
+  color: vars.$c-primary;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 31px;
+
+  @include mixins.on-tablet {
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+.arrows {
+  display: flex;
+  gap: 16px;
+}
+
+.arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid vars.$c-icons;
+  background-color: vars.$c-white;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+
+  &:disabled {
+    border-color: vars.$c-elements;
+    cursor: default;
+
+    img {
+      opacity: 0.4;
+    }
+  }
+
+   &:hover:not(:disabled) {
+    border-color: vars.$c-primary;
+  }
+}
+
+.track {
+   display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 220px;
+  gap: 16px;
+  margin-right: -1 * vars.$mobile-padding;
+  padding-right: vars.$mobile-padding;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  > * {
+    scroll-snap-align: start;
+  }
+
+  @include mixins.on-tablet {
+    grid-auto-columns: 288px;
+  }
+
+  @include mixins.on-desktop {
+    grid-auto-columns: 272px;
+  }
+}

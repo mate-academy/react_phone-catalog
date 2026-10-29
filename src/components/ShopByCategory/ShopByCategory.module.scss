@@ -1,0 +1,66 @@
+@use '../../styles/variables' as vars;
+@use '../../styles/mixins' as mixins;
+
+.section {
+  margin-top: 56px;
+}
+
+.title {
+  margin: 0 0 24px;
+  color: vars.$c-primary;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 31px;
+
+  @include mixins.on-tablet {
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+.list {
+  display: grid;
+  gap: 24px;
+
+  @include mixins.on-tablet {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+}
+
+.tile {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.imageWrap {
+  overflow: hidden;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.tile:hover .image {
+  transform: scale(1.1);
+}
+
+.tileTitle {
+  margin: 24px 0 4px;
+  color: vars.$c-primary;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 26px;
+}
+
+.count {
+  margin: 0;
+  color: vars.$c-secondary;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+}

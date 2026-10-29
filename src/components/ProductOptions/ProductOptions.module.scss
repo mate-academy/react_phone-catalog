@@ -1,0 +1,200 @@
+@use '../../styles/variables' as vars;
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.group {
+  margin: 0;
+  padding: 0 0 24px;
+  border: none;
+  border-bottom: 1px solid vars.$c-elements;
+}
+
+.legend {
+  margin-bottom: 8px;
+  padding: 0;
+  color: vars.$c-secondary;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.capacityText {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 64px;
+  height: 32px;
+  padding: 0 12px;
+  border: 1px solid vars.$c-icons;
+  color: vars.$c-primary;
+  font-size: 14px;
+  font-weight: 600;
+  transition:
+    border-color 0.3s ease,
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+.swatch {
+  position: relative;
+  cursor: pointer;
+}
+
+.swatchColor {
+  display: block;
+  width: 32px;
+  height: 32px;
+  border: 2px solid vars.$c-white;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px vars.$c-icons;
+  transition: box-shadow 0.3s ease;
+}
+
+.swatch:hover .swatchColor {
+  box-shadow: 0 0 0 1px vars.$c-secondary;
+}
+
+.input:checked + .swatchColor {
+  box-shadow: 0 0 0 1px vars.$c-primary;
+}
+
+.input:focus-visible + .swatchColor,
+.input:focus-visible + .capacityText {
+  outline: 2px solid vars.$c-primary;
+  outline-offset: 2px;
+}
+
+.capacity {
+  position: relative;
+  cursor: pointer;
+}
+
+.capacity:hover .capacityText {
+  border-color: vars.$c-secondary;
+}
+
+.input:checked + .capacityText {
+  border-color: vars.$c-primary;
+  background-color: vars.$c-primary;
+  color: vars.$c-white;
+}
+
+.prices {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin: 0;
+}
+
+.price {
+  color: vars.$c-primary;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 41px;
+}
+
+.fullPrice {
+  color: vars.$c-secondary;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 31px;
+  text-decoration: line-through;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.addButton {
+  flex-grow: 1;
+  height: 48px;
+  border: none;
+  background-color: vars.$c-primary;
+  color: vars.$c-white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 3px 13px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.favoriteButton {
+  width: 48px;
+  height: 48px;
+  border: 1px solid vars.$c-icons;
+  background-color: vars.$c-white;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+
+  &:hover {
+    border-color: vars.$c-primary;
+  }
+}
+
+.specs {
+  margin: 0;
+}
+
+.spec {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.specName {
+  color: vars.$c-secondary;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15px;
+}
+
+.specValue {
+  margin: 0;
+  color: vars.$c-primary;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15px;
+  text-align: right;
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.addButtonAdded {
+  border: 1px solid vars.$c-icons;
+  background-color: vars.$c-white;
+  color: vars.$c-green;
+  cursor: default;
+
+  &:hover {
+    box-shadow: none;
+  }
+}

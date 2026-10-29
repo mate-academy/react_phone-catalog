@@ -1,0 +1,88 @@
+@use '../../styles/variables' as vars;
+@use '../../styles/mixins' as mixins;
+
+.footer {
+  border-top: 1px solid vars.$c-elements;
+  background-color: vars.$c-white;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  padding-block: 32px;
+
+  @include mixins.container;
+
+  @include mixins.on-tablet {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    padding-block: 0;
+  }
+}
+
+.logo {
+  display: flex;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include mixins.on-tablet {
+    flex-direction: row;
+    gap: 48px;
+  }
+}
+
+.link {
+  color: vars.$c-secondary;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: vars.$c-primary;
+  }
+}
+
+.arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid vars.$c-icons;
+  transition: border-color 0.3s ease;
+
+  img {
+    transform: rotate(-90deg);
+  }
+}
+
+.backToTop {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0;
+  border: none;
+  background: none;
+  color: vars.$c-secondary;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15px;
+  cursor: pointer;
+
+  &:hover .arrow {
+    border-color: vars.$c-primary;
+  }
+}
+
+

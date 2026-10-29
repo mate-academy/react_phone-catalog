@@ -1,0 +1,52 @@
+@use '../../styles/variables' as vars;
+@use '../../styles/mixins' as mixins;
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 40px;
+
+  @include mixins.on-tablet {
+    gap: 16px;
+  }
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid vars.$c-icons;
+  background-color: vars.$c-white;
+  color: vars.$c-primary;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  cursor: pointer;
+  transition:
+    border-color 0.3s ease,
+    background-color 0.3s ease,
+    color 0.3s ease;
+
+     &:disabled {
+    border-color: vars.$c-elements;
+    cursor: default;
+
+    img {
+      opacity: 0.4;
+    }
+  }
+
+  &:hover:not(:disabled) {
+    border-color: vars.$c-primary;
+  }
+
+  &[aria-current='page'] {
+    border-color: vars.$c-primary;
+    background-color: vars.$c-primary;
+    color: vars.$c-white;
+  }
+}

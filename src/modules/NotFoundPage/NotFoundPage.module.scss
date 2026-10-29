@@ -1,0 +1,51 @@
+@use '../../styles/variables' as vars;
+@use '../../styles/mixins' as mixins;
+
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding-block: 48px 64px;
+  text-align: center;
+
+  @include mixins.container;
+}
+
+.title {
+  margin: 0;
+  color: vars.$c-primary;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 41px;
+
+  @include mixins.on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: -0.01em;
+  }
+}
+
+.image {
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 0 32px;
+  background-color: vars.$c-primary;
+  color: vars.$c-white;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 3px 13px rgba(0, 0, 0, 0.2);
+  }
+}

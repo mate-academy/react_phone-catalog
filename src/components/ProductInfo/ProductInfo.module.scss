@@ -1,0 +1,82 @@
+@use '../../styles/variables' as vars;
+@use '../../styles/mixins' as mixins;
+
+.info {
+  row-gap: 56px;
+  margin-top: 56px;
+
+  @include mixins.grid;
+}
+
+.about {
+  grid-column: 1 / -1;
+
+  @include mixins.on-desktop {
+    grid-column: 1 / span 12;
+  }
+}
+
+.specsSection {
+  grid-column: 1 / -1;
+
+  @include mixins.on-desktop {
+    grid-column: 14 / span 11;
+  }
+}
+
+.heading {
+  margin: 0 0 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid vars.$c-elements;
+  color: vars.$c-primary;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 26px;
+}
+
+.block {
+  margin-bottom: 32px;
+}
+
+.blockTitle {
+  margin: 0 0 16px;
+  color: vars.$c-primary;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+}
+
+.text {
+  margin: 0 0 8px;
+  color: vars.$c-secondary;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+}
+
+.list {
+  margin: 0;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.name {
+  color: vars.$c-secondary;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+}
+
+.value {
+  margin: 0;
+  color: vars.$c-primary;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  text-align: right;
+}

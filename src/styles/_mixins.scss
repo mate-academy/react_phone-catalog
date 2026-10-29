@@ -1,0 +1,44 @@
+@use './variables' as vars;
+
+@mixin on-tablet {
+  @media (min-width: vars.$tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: vars.$desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin container {
+  width: 100%;
+  max-width: vars.$max-content-width;
+  margin: 0 auto;
+  padding-inline: vars.$mobile-padding;
+
+  @include on-tablet {
+    padding-inline: vars.$tablet-padding;
+  }
+
+  @include on-desktop {
+    padding-inline: vars.$desktop-padding;
+  }
+}
+
+@mixin grid {
+  display: grid;
+  grid-template-columns: repeat(vars.$mobile-columns, 1fr);
+  column-gap: vars.$grid-gap-mobile;
+
+  @include on-tablet {
+    grid-template-columns: repeat(vars.$tablet-columns, 1fr);
+    column-gap: vars.$grid-gap-tablet;
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(vars.$desktop-columns, 1fr);
+    column-gap: vars.$grid-gap-desktop;
+  }
+}

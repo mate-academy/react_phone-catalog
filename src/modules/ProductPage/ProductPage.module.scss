@@ -1,0 +1,79 @@
+@use '../../styles/variables' as vars;
+@use '../../styles/mixins' as mixins;
+
+.page {
+  padding-block: 24px 64px;
+
+  @include mixins.container;
+}
+
+.title {
+  margin: 0 0 32px;
+  color: vars.$c-primary;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 31px;
+
+  @include mixins.on-tablet {
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+.message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding-block: 80px;
+  color: vars.$c-secondary;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+}
+
+.reload {
+  height: 40px;
+  padding: 0 32px;
+  border: none;
+  background-color: vars.$c-primary;
+  color: vars.$c-white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 3px 13px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.content {
+  row-gap: 32px;
+
+  @include mixins.grid;
+}
+
+.gallery {
+  grid-column: 1 / -1;
+
+  @include mixins.on-tablet {
+    grid-column: 1 / span 6;
+  }
+
+  @include mixins.on-desktop {
+    grid-column: 1 / span 12;
+  }
+}
+
+.options {
+  grid-column: 1 / -1;
+
+  @include mixins.on-tablet {
+    grid-column: 8 / span 5;
+  }
+
+  @include mixins.on-desktop {
+    grid-column: 14 / span 7;
+  }
+}

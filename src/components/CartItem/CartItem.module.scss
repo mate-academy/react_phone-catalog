@@ -1,0 +1,115 @@
+@use '../../styles/variables' as vars;
+@use '../../styles/mixins' as mixins;
+
+.item {
+  display: grid;
+  grid-template-columns: 24px 48px 1fr auto;
+  grid-template-areas:
+    'remove image name name'
+    'controls controls controls price';
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid vars.$c-elements;
+  background-color: vars.$c-white;
+
+  @include mixins.on-tablet {
+    grid-template-columns: 24px 80px 1fr auto auto;
+    grid-template-areas: 'remove image name controls price';
+    gap: 24px;
+    padding: 24px;
+  }
+}
+
+.remove {
+  grid-area: remove;
+  padding: 0;
+  border: none;
+  background: none;
+  color: vars.$c-icons;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: vars.$c-primary;
+  }
+}
+
+.imageLink {
+  grid-area: image;
+  display: block;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  max-height: 80px;
+  object-fit: contain;
+}
+
+.name {
+  grid-area: name;
+  color: vars.$c-primary;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: vars.$c-secondary;
+  }
+}
+
+.controls {
+  grid-area: controls;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.quantityButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid vars.$c-icons;
+  background-color: vars.$c-white;
+  color: vars.$c-primary;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+
+  &:disabled {
+    border-color: vars.$c-elements;
+    color: vars.$c-icons;
+    cursor: default;
+  }
+
+  &:hover:not(:disabled) {
+    border-color: vars.$c-primary;
+  }
+}
+
+.quantity {
+  min-width: 16px;
+  color: vars.$c-primary;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.price {
+  grid-area: price;
+  justify-self: end;
+  margin: 0;
+  color: vars.$c-primary;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 31px;
+}

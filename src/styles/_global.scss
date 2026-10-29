@@ -1,0 +1,26 @@
+@use './variables' as vars;
+@use './mixins' as mixins;
+
+body {
+  font-family: Mont, sans-serif;
+  color: vars.$c-primary;
+  background-color: vars.$c-white;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex-grow: 1;
+}
+
+.container {
+  @include mixins.container;
+}
+
+.grid {
+  @include mixins.grid;
+}

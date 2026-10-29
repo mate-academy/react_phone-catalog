@@ -1,0 +1,21 @@
+@use '../../styles/variables' as vars;
+
+.button {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 24px;
+  padding: 0;
+  border: none;
+  background: none;
+  color: vars.$c-secondary;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: vars.$c-primary;
+  }
+}

@@ -1,0 +1,273 @@
+@use '../../styles/variables' as vars;
+@use '../../styles/mixins' as mixins;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  width: 100%;
+  height: 64px;
+  border-bottom: 1px solid vars.$c-elements;
+  background-color: vars.$c-white;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  height: 100%;
+
+  @include mixins.container;
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  color: vars.$c-primary;
+  text-decoration: none;
+  font-weight: 700;
+  line-height: 1;
+
+  span:first-child {
+    font-size: 20px;
+  }
+
+  span:last-child {
+    font-size: 10px;
+  }
+}
+
+.nav {
+  display: none;
+
+  @include mixins.on-tablet {
+    display: flex;
+    align-items: center;
+    margin-left: 40px;
+    gap: 32px;
+  }
+
+  @include mixins.on-desktop {
+    margin-left: 48px;
+    gap: 48px;
+  }
+}
+
+.navLink {
+  position: relative;
+  color: vars.$c-secondary;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 64px;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: vars.$c-primary;
+  }
+}
+
+.actions {
+  display: none;
+  display: flex;
+  margin-left: auto;
+  height: 100%;
+
+  @include mixins.on-tablet {
+    display: flex;
+  }
+}
+
+.action {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 100%;
+  color: vars.$c-primary;
+  text-decoration: none;
+  border-left: 1px solid vars.$c-elements;
+  transition:
+    color 0.3s ease,
+    background-color 0.3s ease;
+
+  &:last-child {
+    border-right: 1px solid vars.$c-elements;
+  }
+
+  &:hover {
+    color: vars.$c-secondary;
+    background-color: vars.$c-hover-bg;
+  }
+}
+
+.navLinkActive {
+  color: vars.$c-primary;
+
+  &::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 4px;
+    background-color: vars.$c-primary;
+  }
+}
+
+.badge {
+  position: absolute;
+  top: 12px;
+  right: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 14px;
+  height: 14px;
+  padding: 0 4px;
+  border-radius: 7px;
+  background-color: vars.$c-red;
+  color: vars.$c-white;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.burger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 100%;
+  margin-left: auto;
+  padding: 0;
+  border: none;
+  border-left: 1px solid vars.$c-elements;
+  background: none;
+  cursor: pointer;
+
+  @include mixins.on-tablet {
+    display: none;
+  }
+}
+
+.burgerLines {
+  position: relative;
+  display: block;
+  width: 16px;
+  height: 2px;
+  background-color: vars.$c-primary;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 16px;
+    height: 2px;
+    background-color: vars.$c-primary;
+  }
+
+  &::before {
+    top: -5px;
+  }
+
+  &::after {
+    top: 5px;
+  }
+}
+
+.menu {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  background-color: vars.$c-white;
+
+  @include mixins.on-tablet {
+    display: none;
+  }
+}
+
+.menuTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  padding-left: 16px;
+  border-bottom: 1px solid vars.$c-elements;
+}
+
+.close {
+  width: 64px;
+  height: 100%;
+  padding: 0;
+  border: none;
+  border-left: 1px solid vars.$c-elements;
+  background: none;
+  color: vars.$c-primary;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.menuNav {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+}
+
+.menuLink {
+  position: relative;
+  padding-block: 8px;
+  color: vars.$c-secondary;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+}
+
+.menuLinkActive {
+  color: vars.$c-primary;
+
+  &::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 4px;
+    background-color: vars.$c-primary;
+  }
+}
+
+.menuActions {
+  display: flex;
+  border-top: 1px solid vars.$c-elements;
+}
+
+.menuAction {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  height: 64px;
+
+  & + & {
+    border-left: 1px solid vars.$c-elements;
+  }
+}
+
+.menuIcon {
+  position: relative;
+  display: flex;
+
+  .badge {
+    top: -8px;
+    right: -10px;
+  }
+}

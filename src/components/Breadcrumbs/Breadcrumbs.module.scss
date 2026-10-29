@@ -1,0 +1,35 @@
+@use '../../styles/variables' as vars;
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.home {
+  display: flex;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.link,
+.current {
+  color: vars.$c-secondary;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15px;
+}
+
+.link {
+  text-decoration: none;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: vars.$c-primary;
+  }
+}

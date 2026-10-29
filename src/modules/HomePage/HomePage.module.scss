@@ -1,0 +1,50 @@
+@use '../../styles/variables' as vars;
+@use '../../styles/mixins' as mixins;
+
+.page {
+  padding-block: 24px 64px;
+
+  @include mixins.container;
+}
+
+.title {
+  margin: 0 0 24px;
+  color: vars.$c-primary;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 41px;
+
+  @include mixins.on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: -0.01em;
+  }
+}
+
+.message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding-block: 80px;
+  color: vars.$c-secondary;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+}
+
+.reload {
+  height: 40px;
+  padding: 0 32px;
+  border: none;
+  background-color: vars.$c-primary;
+  color: vars.$c-white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 3px 13px rgba(0, 0, 0, 0.2);
+  }
+}
