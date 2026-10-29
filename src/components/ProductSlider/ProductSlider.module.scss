@@ -1,0 +1,82 @@
+@use '../../styles/mixins/breakpoints' as bp;
+
+.slider {
+  --gutter: 16px;
+  --gap: 16px;
+  --card-width: 280px;
+
+  @include bp.tablet-up {
+    --gutter: 24px;
+    --card-width: 237px;
+  }
+
+  @include bp.desktop-up {
+    --gutter: 0px;
+    --card-width: calc((100% - 3 * var(--gap)) / 4);
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  &__controls {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: 1px solid var(--elements, #e2e6e9);
+    border-radius: 50%;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+    transition: border-color 0.2s;
+
+     &:disabled {
+      opacity: 0.4;
+      cursor: default;
+    }
+
+    &:hover:not(:disabled),
+    &:focus-visible {
+      border-color: currentColor;
+    }
+  }
+
+  &__track {
+    display: flex;
+    gap: var(--gap);
+    margin: 0;
+    list-style: none;
+
+    margin-inline: calc(-1 * var(--gutter));
+    padding: 0 var(--gutter);
+    scroll-padding-inline: var(--gutter);
+
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain;
+
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__item {
+    flex: 0 0 var(--card-width);
+    scroll-snap-align: start;
+  }
+}

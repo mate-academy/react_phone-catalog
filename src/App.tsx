@@ -1,6 +1,7 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { Layout } from './components/Layout';
 import { CategoryPage } from './modules/CategoryPage';
+import { HomePage } from './modules/HomePage';
 import './App.scss';
 
 export const App = () => {
@@ -9,7 +10,7 @@ export const App = () => {
       <div className="App">
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route index element={<h1>Home</h1>} />
+            <Route index element={<HomePage />} />
             <Route
               path="phones"
               element={<CategoryPage category="phones" title="Mobile phones" />}
