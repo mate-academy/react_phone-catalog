@@ -1,0 +1,133 @@
+@use '../../styles/mixins/grid' as grid;
+@use '../../styles/mixins/breakpoints' as bp;
+@use '../../styles/global-variables' as *;
+
+.product-page {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+
+  @include bp.tablet-up {
+    gap: 64px;
+  }
+
+  @include bp.desktop-up {
+    gap: 80px;
+  }
+
+  &__breadcrumbs {
+    margin-bottom: 24px;
+
+    @include bp.tablet-up {
+      gap: 40px;
+    }
+  }
+
+  &__back-button {
+    margin-bottom: 16px;
+  }
+
+  &__title {
+    margin-bottom: 32px;
+
+    @include bp.tablet-up {
+      margin-bottom: 40px
+    }
+  }
+
+  &__main-content {
+    @include grid.grid-container;
+  }
+
+  &__gallery {
+    grid-column: 1 / -1;
+
+    @include bp.tablet-up {
+      grid-column: span 7;
+    }
+
+    @include bp.desktop-up {
+      grid-column: span 12;
+    }
+  }
+
+  &__controls {
+    grid-column: 1 / -1;
+
+    @include bp.tablet-up {
+      grid-column: 8 / -1;
+    }
+
+    @include bp.desktop-up {
+      grid-column: 14 / -1;
+    }
+  }
+
+  &__description {
+    @include grid.grid-container;
+  }
+
+  &__section-title {
+    padding-bottom: 16px;
+    border-bottom: 1px solid $elements-color;
+  }
+
+  &__about {
+    grid-column: -1 / 1;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include bp.desktop-up {
+      grid-column: 1 / 13;
+    }
+
+    &-title {
+      margin-bottom: 16px;
+    }
+
+    &-text {
+      color: $secondary-color;
+      line-height: 21px;
+      font-weight: 600;
+    }
+  }
+
+  &__tech {
+    grid-column: -1 / 1;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include bp.desktop-up {
+      grid-column: 14 / -1;
+    }
+
+    &-items-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    &-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 40px;
+    }
+
+    &-label {
+      color: $secondary-color;
+      line-height: 21px;
+      font-weight: 500;
+    }
+
+    &-value {
+      line-height: 21px;
+      font-weight: 600;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+
+}

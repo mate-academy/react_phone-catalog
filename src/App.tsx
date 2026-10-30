@@ -3,10 +3,14 @@ import { Layout } from './components/Layout';
 import { CategoryPage } from './modules/CategoryPage';
 import { HomePage } from './modules/HomePage';
 import './App.scss';
+import { ProductPage } from './modules/ProductPage';
+import { ScrollToTop } from './components/ScrollToTop';
 
 export const App = () => {
   return (
     <BrowserRouter>
+      <ScrollToTop />
+
       <div className="App">
         <Routes>
           <Route path="/" element={<Layout />}>
@@ -25,6 +29,7 @@ export const App = () => {
                 <CategoryPage category="accessories" title="Accessories" />
               }
             />
+            <Route path=":category/:productId" element={<ProductPage />} />
             <Route path="home" element={<Navigate to="/" replace />} />
             <Route path="*" element={<h1>Page not found</h1>} />
           </Route>

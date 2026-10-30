@@ -1,4 +1,5 @@
 import classNames from 'classnames/bind';
+import { Link } from 'react-router-dom';
 
 import type { Product } from '../../types/Product';
 import { WishlistButton } from '../Ui/WishlistButton';
@@ -12,7 +13,19 @@ type Props = {
 };
 
 export const ProductCard = ({ product }: Props) => {
-  const { name, image, price, fullPrice, screen, capacity, ram } = product;
+  const {
+    name,
+    image,
+    price,
+    fullPrice,
+    screen,
+    capacity,
+    ram,
+    category,
+    itemId,
+  } = product;
+
+  const productLink = `/${category}/${itemId}`;
 
   const descriptions = [
     { label: 'Screen', value: screen },
@@ -22,14 +35,16 @@ export const ProductCard = ({ product }: Props) => {
 
   return (
     <div className={cx('product-card')}>
-      <div className={cx('product-card__image-box')}>
+      <Link to={productLink} className={cx('product-card__image-box')}>
         <img
           className={cx('product-card__image')}
           src={`/${image}`}
           alt={name}
         />
-      </div>
-      <div className={cx('product-card__title')}>{name}</div>
+      </Link>
+      <Link to={productLink} className={cx('product-card__title')}>
+        {name}
+      </Link>
       <div className={cx('product-card__prices')}>
         <div className={cx('product-card__price')}>${price}</div>
         {fullPrice > price && (

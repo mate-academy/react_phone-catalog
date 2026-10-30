@@ -6,8 +6,8 @@ import styles from './Breadcrumbs.module.scss';
 const cx = classNames.bind(styles);
 
 export type BreadcrumbItem = {
-  label: string;
-  to?: string; // якщо немає — це поточна сторінка (без посилання)
+  label: string | string;
+  to?: string;
 };
 
 type Props = {
