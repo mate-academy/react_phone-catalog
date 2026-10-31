@@ -5,7 +5,7 @@ import { CategoryPage } from './modules/CategoryPage';
 import { HomePage } from './modules/HomePage';
 import './App.scss';
 import { ProductPage } from './modules/ProductPage';
-import { FavouritesPage } from './modules/FavouritesPage'
+import { FavouritesPage } from './modules/FavouritesPage';
 import { ScrollToTop } from './components/ScrollToTop';
 import { FavouritesProvider } from './context/FavouritesContext';
 
