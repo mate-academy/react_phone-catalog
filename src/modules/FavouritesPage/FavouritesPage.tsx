@@ -62,7 +62,7 @@ export const FavouritesPage = () => {
 
     if (wishlistProducts.length === 0) {
       return (
-        <p className={cx('favourites-page__message')}>Your wishlist is empty</p>
+        <p className={cx('favourites-page__message')}>There is no favourites</p>
       );
     }
 
@@ -79,7 +79,7 @@ export const FavouritesPage = () => {
         {!isLoading && !hasError && (
           <p className={cx('favourites-page__products-count')}>
             {wishlistProducts.length}{' '}
-            {wishlistProducts.length === 1 ? 'model' : 'models'}
+            {wishlistProducts.length === 1 ? 'item' : 'items'}
           </p>
         )}
       </div>

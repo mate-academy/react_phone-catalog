@@ -1,3 +1,5 @@
+@use './mixins/breakpoints' as *;
+
 $elements-color: #E2E6E9;
 $primary-color: #0F0F11;
 $secondary-color: #89939A;

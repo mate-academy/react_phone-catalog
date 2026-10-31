@@ -1,4 +1,5 @@
 @use '../../styles/mixins/breakpoints' as bp;
+@use '../../styles/global-variables' as *;
 
 .layout {
   width: 100%;
@@ -6,15 +7,17 @@
   margin-inline: auto;
   padding-inline: 16px;
   padding-block: 24px;
+  min-height: calc(100dvh - $header-height-mobile);
 
   @include bp.tablet-up {
     padding-inline: 24px;
-    padding-block: 32px;;
+    padding-block: 32px;
   }
 
   @include bp.desktop-up {
     max-width: 1200px;
     padding-inline: 32px;
     padding-block: 54px;
+    min-height: calc(100dvh - $header-height-desktop);
   }
 }
