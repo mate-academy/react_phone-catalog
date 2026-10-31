@@ -1,37 +1,45 @@
 import React from 'react';
-
-import styles from './IconLinkButton.module.scss';
+import { NavLink } from 'react-router-dom';
 import classNames from 'classnames/bind';
 
+import styles from './IconLinkButton.module.scss';
+
 interface Props {
+  to: string;
   src: string;
-  onClick: () => void;
+  label?: string;
+  className?: string;
+  onClick?: () => void;
   toggled?: boolean;
   toggledSrc?: string;
-  label?: string;
 }
+
 const cx = classNames.bind(styles);
 
 export const IconLinkButton: React.FC<Props> = ({
+  to,
   src,
+  label,
+  className,
   onClick,
   toggled = false,
   toggledSrc,
-  label,
 }) => {
   return (
-    <button
-      type="button"
+    <NavLink
+      to={to}
       aria-label={label}
       title={label}
       onClick={onClick}
-      className={cx('icon-button')}
+      className={({ isActive }) =>
+        cx('icon-link', { 'icon-link--active': isActive }, className)
+      }
     >
       <img
         src={toggled && toggledSrc ? toggledSrc : src}
         alt=""
-        className={cx('icon-button__icon')}
+        className={cx('icon-link__icon')}
       />
-    </button>
+    </NavLink>
   );
 };

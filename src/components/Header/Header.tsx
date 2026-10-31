@@ -2,41 +2,17 @@ import classNames from 'classnames/bind';
 
 import { Logo } from '../Ui/Logo';
 import { IconLinkButton } from '../Ui/IconLinkButton';
+import { BurgerButton } from '../Ui/BurgerButton';
 import { Navigation } from '../Navigation';
+import { useBurgerMenu } from '../../hooks/useBurgerMenu';
+import { ACTION_ICONS } from '../../constants/actionIcons';
 
 import styles from './Header.module.scss';
-import { useState } from 'react';
 
 const cx = classNames.bind(styles);
 
 export const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const handleMenuIconClick = () => {
-    setIsMenuOpen(prev => !prev);
-  };
-
-  const HEADER_ICONS = [
-    {
-      name: 'menu',
-      src: '/img/icons/Menu.svg',
-      toggledSrc: '/img/icons/Close.svg',
-      label: 'Menu',
-      onclick: handleMenuIconClick,
-    },
-    {
-      name: 'favourites',
-      src: '/img/icons/Favourites.svg',
-      label: 'Favourites',
-      onclick: () => {},
-    },
-    {
-      name: 'shopping-bag',
-      src: '/img/icons/Shopping-bag.svg',
-      label: 'Shopping bag',
-      onclick: () => {},
-    },
-  ];
+  const { isOpen } = useBurgerMenu();
 
   return (
     <header className={cx('header')}>
@@ -44,23 +20,20 @@ export const Header = () => {
         <div className={cx('header__logo')}>
           <Logo />
         </div>
-        <Navigation isOpen={isMenuOpen} onClose={handleMenuIconClick} />
+        <Navigation isOpen={isOpen} />
       </div>
 
       <div className={cx('header__icons-wrapper')}>
-        {HEADER_ICONS.map(({ name, src, toggledSrc, label, onclick }) => (
-          <div
+        <BurgerButton isOpen={isOpen} className={cx('header__burger')} />
+
+        {ACTION_ICONS.map(({ name, src, label, to }) => (
+          <IconLinkButton
             key={name}
+            to={to}
+            src={src}
+            label={label}
             className={cx('header__icon', `header__icon--${name}`)}
-          >
-            <IconLinkButton
-              src={src}
-              toggledSrc={toggledSrc}
-              label={label}
-              onClick={onclick}
-              toggled={name === 'menu' ? isMenuOpen : false}
-            />
-          </div>
+          />
         ))}
       </div>
     </header>

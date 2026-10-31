@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
-import type { Product } from '../../../types/Product';
-import { getProductsByCategory } from '../../../services/productService';
+import type { Product } from '../types/Product';
+import { getProductsByCategory } from '../services/productService';
 
 export const useProducts = (category: Product['category']) => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -9,7 +9,7 @@ export const useProducts = (category: Product['category']) => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    let isActive = true; // щоб не оновлювати стан після зміни категорії чи розмонтування
+    let isActive = true;
 
     setIsLoading(true);
     setError(null);

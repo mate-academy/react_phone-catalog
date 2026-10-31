@@ -9,6 +9,7 @@ import { COLOR_HEX, DEFAULT_COLOR_HEX } from '../../../../constants/colors';
 import { Button } from '../../../../components/Ui/Button';
 import { WishlistButton } from '../../../../components/Ui/WishlistButton';
 import styles from './ProductControls.module.scss';
+import { useFavourites } from '../../../../hooks/useFavourites';
 
 const cx = classNames.bind(styles);
 
@@ -19,6 +20,7 @@ type Props = {
 
 export const ProductFunc = ({ product, onVariantChange }: Props) => {
   const {
+    id,
     colorsAvailable,
     color,
     capacityAvailable,
@@ -37,6 +39,7 @@ export const ProductFunc = ({ product, onVariantChange }: Props) => {
     { label: 'Processor', value: processor },
     { label: 'RAM', value: ram },
   ];
+  const { isInFavourites, toggleFavourites } = useFavourites();
 
   return (
     <div className={cx('product-controls')}>
@@ -114,7 +117,10 @@ export const ProductFunc = ({ product, onVariantChange }: Props) => {
         <Button onClick={() => {}} textAfterClick="Added">
           Add to cart
         </Button>
-        <WishlistButton selected={false} onClick={() => {}} />
+        <WishlistButton
+          selected={isInFavourites(id)}
+          onClick={() => toggleFavourites(id)}
+        />
       </div>
 
       <dl className={cx('product-controls__specs')}>

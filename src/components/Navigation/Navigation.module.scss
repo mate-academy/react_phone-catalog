@@ -3,12 +3,17 @@
 
 .overlay {
   position: fixed;
-  inset: $header-height-mobile 0 0 0; // top, right, bottom, left
+  inset: $header-height-mobile 0 0 0;
   background: $white-color;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s, visibility 0.3s;
   z-index: 9;
+
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overscroll-behavior: contain;
 
   &--open {
     opacity: 1;
@@ -21,24 +26,27 @@
     opacity: 1;
     visibility: visible;
     background: transparent;
-    display: flex;
+    flex-direction: row;
     align-items: stretch;
     height: 100%;
+    overflow: visible;
   }
 }
 
 .nav {
-  @include mobile-only {
-    margin-top: 24px;
-  }
-
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 16px;
-  height: 100%;
+
+  @include mobile-only {
+    flex: 1;
+    padding-top: 24px;
+  }
 
   @include tablet-up {
+    height: 100%;
     flex-direction: row;
     align-items: stretch;
     gap: 32px;
@@ -64,7 +72,7 @@
     }
 
     @include tablet-up {
-      border-bottom: 3px solid transparent
+      border-bottom: 3px solid transparent;
     }
 
     &:hover,
@@ -77,5 +85,31 @@
       border-color: $primary-color;
       color: $primary-color;
     }
+  }
+
+  &__footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    @include tablet-up {
+      display: none;
+    }
+  }
+
+  &__footer &__footer-item {
+    width: 100%;
+    height: 64px;
+    border-top: 1px solid $elements-color;
+
+    &:first-child {
+      border-left: none;
+    }
+  }
+}
+
+@include mobile-only {
+  html:has(.overlay--open),
+  body:has(.overlay--open) {
+    overflow: hidden;
   }
 }

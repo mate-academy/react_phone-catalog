@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import type { Product } from '../../types/Product';
 import { WishlistButton } from '../Ui/WishlistButton';
 import { Button } from '../Ui/Button/Button';
+import { useFavourites } from '../../hooks/useFavourites';
 import styles from './ProductCard.module.scss';
 
 const cx = classNames.bind(styles);
@@ -32,6 +33,8 @@ export const ProductCard = ({ product }: Props) => {
     { label: 'Capacity', value: capacity },
     { label: 'RAM', value: ram },
   ];
+
+  const { isInFavourites, toggleFavourites } = useFavourites();
 
   return (
     <div className={cx('product-card')}>
@@ -64,7 +67,10 @@ export const ProductCard = ({ product }: Props) => {
         <Button onClick={() => {}} textAfterClick={'Added'}>
           Add to cart
         </Button>
-        <WishlistButton selected={false} onClick={() => {}} />
+        <WishlistButton
+          selected={isInFavourites(itemId)}
+          onClick={() => toggleFavourites(itemId)}
+        />
       </div>
     </div>
   );

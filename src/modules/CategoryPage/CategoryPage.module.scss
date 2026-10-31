@@ -1,4 +1,5 @@
 @use '../../styles/mixins/breakpoints' as bp;
+@use '../../styles/mixins/grid' as grid;
 @use '../../styles/global-variables' as *;
 
 .category-page {
@@ -12,5 +13,25 @@
 
   &__products-count {
     color: $secondary-color;
+  }
+
+  &__dropdowns {
+    @include grid.grid-container;
+  }
+
+  &__sort-by {
+    grid-column: span 2;
+
+    @include bp.tablet-up {
+      grid-column: span 4;
+    }
+  }
+
+  &__items-on-page {
+    grid-column: span 2;
+
+    @include bp.tablet-up {
+      grid-column: span 3;
+    }
   }
 }
