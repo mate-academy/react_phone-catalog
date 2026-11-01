@@ -1,15 +1,16 @@
 import { Outlet } from 'react-router-dom';
 import { Header } from './modules/shared/Header';
-import './App.scss';
+import { Footer } from './modules/shared/Footer';
+import styles from './App.module.scss';
 
 export const App = () => (
-  <div className="App">
+  <div className={styles.app}>
     <Header />
 
-    <main>
+    <main className={styles.main}>
       <Outlet />
     </main>
 
-    {/* Footer will go here */}
+    <Footer />
   </div>
 );

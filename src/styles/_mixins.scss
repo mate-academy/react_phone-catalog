@@ -29,3 +29,19 @@
     transition: transform $transition-duration;
   }
 }
+
+// Centered content column with responsive side paddings
+@mixin page-container {
+  width: 100%;
+  max-width: $content-max-width + 2 * $page-padding-desktop;
+  margin-inline: auto;
+  padding-inline: $page-padding-mobile;
+
+  @include on-tablet {
+    padding-inline: $page-padding-tablet;
+  }
+
+  @include on-desktop {
+    padding-inline: $page-padding-desktop;
+  }
+}

@@ -11,6 +11,12 @@
   --color-accent: #313237;
   --color-green: #27ae60;
   --color-red: #eb5757;
+
+  // Small square buttons (UI Kit)
+  --color-button-bg: #fff;
+  --color-button-border: #b4bdc3;
+  --color-button-bg-hover: #fff;
+  --color-button-border-hover: #313237;
 }
 
 // Dark theme: only overrides what changes.
@@ -23,4 +29,10 @@
   --color-surface-1: #161827;
   --color-surface-2: #323542;
   --color-accent: #905bff;
+
+  // Small square buttons (UI Kit)
+  --color-button-bg: #323542;
+  --color-button-border: #323542;
+  --color-button-bg-hover: #4a4d58;
+  --color-button-border-hover: #4a4d58;
 }

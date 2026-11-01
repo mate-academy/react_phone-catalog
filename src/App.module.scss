@@ -1,0 +1,13 @@
+@use './styles/utils' as *;
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+.main {
+  flex-grow: 1;
+
+  @include page-container;
+}
