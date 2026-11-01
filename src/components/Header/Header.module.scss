@@ -1,0 +1,7 @@
+@use '../../styles/variables' as *;
+
+.header {
+  position: static;
+  top: 0;
+  z-index: 10;
+}
