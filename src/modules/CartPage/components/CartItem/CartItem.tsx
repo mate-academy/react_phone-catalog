@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useShop } from '../../../../context/ShopContext';
 import { CartItem as CartItemType } from '../../../../api/types';
+import { formatMemory, formatPrice } from '../../../../shared/utils/format';
 import styles from './CartItem.module.scss';
 
 interface CartItemProps {
@@ -10,6 +11,11 @@ interface CartItemProps {
 export const CartItem = ({ item }: CartItemProps) => {
   const { updateQuantity, removeFromCart } = useShop();
   const { quantity, product } = item;
+
+  const unitPrice = formatPrice(product.price);
+  const fullPrice = formatPrice(product.fullPrice);
+  const lineTotal =
+    product.price !== undefined ? `$${(product.price ?? 0) * quantity}` : null;
 
   return (
     <div className={styles.item}>
@@ -22,13 +28,11 @@ export const CartItem = ({ item }: CartItemProps) => {
       </Link>
       <div className={styles.info}>
         <Link to={`/product/${product.id}`} className={styles.title}>
-          {product.name}
+          {formatMemory(product.name)}
         </Link>
         <div className={styles.prices}>
-          <span className={styles.price}>${product.price}</span>
-          {product.fullPrice && (
-            <s className={styles.fullPrice}>${product.fullPrice}</s>
-          )}
+          {unitPrice && <span className={styles.price}>{unitPrice}</span>}
+          {fullPrice && <s className={styles.fullPrice}>{fullPrice}</s>}
         </div>
         <div className={styles.controls}>
           <button
@@ -49,9 +53,7 @@ export const CartItem = ({ item }: CartItemProps) => {
         </div>
       </div>
       <div className={styles.right}>
-        <span className={styles.lineTotal}>
-          ${(product.price ?? 0) * quantity}
-        </span>
+        {lineTotal && <span className={styles.lineTotal}>{lineTotal}</span>}
         <button
           type="button"
           className={styles.removeButton}

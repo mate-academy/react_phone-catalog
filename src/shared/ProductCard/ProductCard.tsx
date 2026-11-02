@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useShop } from '../../context/ShopContext';
 import { Product } from '../../api/types';
+import { formatMemory, formatPrice } from '../../shared/utils/format';
 import styles from './ProductCard.module.scss';
 
 interface ProductCardProps {
@@ -17,6 +18,8 @@ export const ProductCard = ({ product }: ProductCardProps) => {
     : 0;
   const isAdded = isInCart(product.id);
   const favorite = isFavorite(product.id);
+  const price = formatPrice(product.price);
+  const fullPrice = formatPrice(product.fullPrice);
 
   return (
     <article className={styles.card}>
@@ -30,13 +33,11 @@ export const ProductCard = ({ product }: ProductCardProps) => {
       </Link>
       <div className={styles.info}>
         <Link to={`/product/${product.id}`} className={styles.title}>
-          {product.name}
+          {formatMemory(product.name)}
         </Link>
         <div className={styles.prices}>
-          <span className={styles.price}>${product.price}</span>
-          {product.fullPrice && (
-            <s className={styles.fullPrice}>${product.fullPrice}</s>
-          )}
+          {price && <span className={styles.price}>{price}</span>}
+          {fullPrice && <s className={styles.fullPrice}>{fullPrice}</s>}
         </div>
         <div className={styles.actions}>
           <button

@@ -7,6 +7,7 @@ import { Loader } from '../../shared/Loader';
 import { ProductImagePicker } from './components/ProductImagePicker';
 import { ProductOptions } from './components/ProductOptions';
 import { YouMayAlsoLike } from './components/YouMayAlsoLike';
+import { formatMemory, formatPrice } from '../../shared/utils/format';
 import styles from './ProductDetailsPage.module.scss';
 
 export const ProductDetailsPage = () => {
@@ -137,7 +138,7 @@ export const ProductDetailsPage = () => {
   const breadcrumbItems: BreadcrumbItem[] = [
     { label: 'Home', path: '/' },
     { label: categoryLabel, path: `/${product.category}` },
-    { label: product.name },
+    { label: formatMemory(product.name) },
   ];
 
   return (
@@ -157,11 +158,15 @@ export const ProductDetailsPage = () => {
           onSelect={setImageIndex}
         />
         <div className={styles.info}>
-          <h1 className={styles.title}>{product.name}</h1>
+          <h1 className={styles.title}>{formatMemory(product.name)}</h1>
           <div className={styles.prices}>
-            <span className={styles.price}>${product.price}</span>
-            {product.fullPrice && (
-              <s className={styles.fullPrice}>${product.fullPrice}</s>
+            {formatPrice(product.price) && (
+              <span className={styles.price}>{formatPrice(product.price)}</span>
+            )}
+            {formatPrice(product.fullPrice) && (
+              <s className={styles.fullPrice}>
+                {formatPrice(product.fullPrice)}
+              </s>
             )}
           </div>
           {product.screen && <p className={styles.meta}>{product.screen}</p>}

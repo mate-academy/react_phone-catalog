@@ -1,4 +1,5 @@
 import { Product } from '../../../../api/types';
+import { formatMemory } from '../../../../shared/utils/format';
 import styles from './ProductOptions.module.scss';
 
 interface ProductOptionsProps {
@@ -36,7 +37,7 @@ export const ProductOptions = ({
             checked={selected === option}
             onChange={() => onSelect(option)}
           />
-          {option}
+          {formatMemory(option)}
         </label>
       ))}
     </fieldset>
