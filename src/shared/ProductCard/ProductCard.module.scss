@@ -98,6 +98,14 @@
   background: var(--accent-hover);
 }
 
+.added {
+  background: #2f9e44;
+}
+
+.added:hover {
+  background: #2b8a38;
+}
+
 .favoriteButton {
   display: inline-flex;
   align-items: center;

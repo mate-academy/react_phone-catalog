@@ -41,7 +41,11 @@ export const ProductCard = ({ product }: ProductCardProps) => {
         <div className={styles.actions}>
           <button
             type="button"
-            className={styles.cartButton}
+            className={
+              isAdded
+                ? `${styles.cartButton} ${styles.added}`
+                : styles.cartButton
+            }
             onClick={() => addToCart(product)}
           >
             {isAdded ? 'Added to cart' : 'Add to cart'}
