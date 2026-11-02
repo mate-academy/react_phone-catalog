@@ -3,10 +3,13 @@ import Loading from './Loading';
 import Model from './Model';
 import { Product } from '../interface/Product';
 import { useEffect, useState } from 'react';
+// import { useParams } from 'react-router-dom';
 
 const ProductItems = () => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState<Product[]>([]);
+
+  // const { product } = useParams();
 
   useEffect(() => {
     fetch('http://localhost:5173/api/products.json')

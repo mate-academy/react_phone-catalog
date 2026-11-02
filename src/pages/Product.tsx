@@ -20,6 +20,10 @@ const ProductItem = () => {
   const [realProduct, setRealProduct] = useState<Phone | undefined>(undefined);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [product]);
+
+  useEffect(() => {
     fetch('http://localhost:5173/api/products.json')
       .then(response => response.json())
       .then(result => {
@@ -43,13 +47,17 @@ const ProductItem = () => {
   }, [data, product]);
 
   useEffect(() => {
-    const category = productExists?.category;
+    if (!productExists) {
+      return;
+    }
 
-    fetch(`http://localhost:5173/api/${category}.json`)
+    setRealProduct(undefined);
+
+    fetch(`http://localhost:5173/api/${productExists.category}.json`)
       .then(response => response.json())
       .then((result: Phone[]) => {
         const foundProduct = result.find(
-          item => item.name === productExists?.name,
+          item => item.name === productExists.name,
         );
 
         setRealProduct(foundProduct);
