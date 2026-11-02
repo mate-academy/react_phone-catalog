@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import NavPage from '../components/NavPage';
 import ProductData from '../components/ProductData';
 import ProductParagraphs from '../components/ProductParagraphs';
+import ProductItems from '../components/ProductItems';
 import { useEffect, useState } from 'react';
 import Loading from '../components/Loading';
 import { Product, Phone } from '../interface/Product';
@@ -76,6 +77,7 @@ const ProductItem = () => {
                     realProduct={realProduct}
                   />
                   <ProductParagraphs realProduct={realProduct} />
+                  <ProductItems />
                 </>
               )}
             </main>

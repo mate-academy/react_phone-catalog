@@ -54,9 +54,11 @@ const ProductParagraphs = ({ realProduct }: ProductParagraphsProps) => {
               (text: { title: string; text: string[] }, i: number) => {
                 return (
                   <div key={i}>
-                    <h3>{text.title}</h3>
+                    <h3 className="product__subtitle">{text.title}</h3>
                     {text.text.map((paragraph, j) => (
-                      <p key={j}>{paragraph}</p>
+                      <p key={j} className="product__paragraph">
+                        {paragraph}
+                      </p>
                     ))}
                   </div>
                 );
