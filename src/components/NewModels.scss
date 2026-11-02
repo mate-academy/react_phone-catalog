@@ -91,3 +91,17 @@
     }
   }
 }
+
+.product__items {
+  margin-top: 50px;
+
+  .product__models {
+    overflow: hidden;
+
+    .product__slides {
+      display: flex;
+      gap: 15px;
+      max-width: 100%;
+    }
+  }
+}

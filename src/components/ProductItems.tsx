@@ -26,15 +26,17 @@ const ProductItems = () => {
   return (
     <div className="product__items">
       <h2 className="product__title">You may also like</h2>
-      {loading ? (
-        <Loading />
-      ) : (
-        <div className="product__slides">
-          {data.slice(0, 8).map(item => {
-            return <Model item={item} key={item.id} />;
-          })}
-        </div>
-      )}
+      <div className="models__items product__models">
+        {loading ? (
+          <Loading />
+        ) : (
+          <div className="product__slides">
+            {data.slice(0, 8).map(item => {
+              return <Model item={item} key={item.id} />;
+            })}
+          </div>
+        )}
+      </div>
     </div>
   );
 };

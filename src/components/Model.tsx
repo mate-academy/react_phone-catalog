@@ -12,7 +12,7 @@ const Model = ({ item, catalog }: ModelProps) => {
   return (
     <article className="model__item">
       <img
-        src={catalog ? item.images?.[0] : item.image}
+        src={`/${catalog ? item.images?.[0] : item.image}`}
         alt={item.name}
         className="model__image"
       />
