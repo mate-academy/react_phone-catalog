@@ -63,7 +63,11 @@ export const HomePage = () => {
   }, [catalogProducts]);
 
   const newProducts = useMemo(
-    () => [...catalogProducts].sort((a, b) => (b.year ?? 0) - (a.year ?? 0)),
+    () =>
+      [...catalogProducts]
+        .filter(product => (product.fullPrice ?? 0) <= (product.price ?? 0))
+        .sort((a, b) => (b.year ?? 0) - (a.year ?? 0))
+        .slice(0, 10),
     [catalogProducts],
   );
 

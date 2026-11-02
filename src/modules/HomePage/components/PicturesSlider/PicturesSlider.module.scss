@@ -41,8 +41,9 @@
   height: 44px;
   border: none;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.85);
-  color: #1b2230;
+  background: var(--accent);
+  color: #fff;
+  box-shadow: var(--shadow);
 }
 
 .dots {
