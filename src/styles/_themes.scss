@@ -17,6 +17,11 @@
   --color-button-border: #b4bdc3;
   --color-button-bg-hover: #fff;
   --color-button-border-hover: #313237;
+
+  // Primary button (UI Kit)
+  --color-text-on-accent: #fff;
+  --color-accent-hover: #313237;
+  --shadow-accent-hover: 0 3px 13px rgba(23, 32, 49, 0.4);
 }
 
 // Dark theme: only overrides what changes.
@@ -35,4 +40,8 @@
   --color-button-border: #323542;
   --color-button-bg-hover: #4a4d58;
   --color-button-border-hover: #4a4d58;
+
+  // Primary button (UI Kit)
+  --color-accent-hover: #a378ff;
+  --shadow-accent-hover: none;
 }

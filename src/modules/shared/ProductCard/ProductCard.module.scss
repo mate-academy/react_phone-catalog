@@ -1,0 +1,102 @@
+@use '../../../styles/utils' as *;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 32px;
+  border: 1px solid var(--color-elements);
+  background-color: var(--color-surface-1);
+}
+
+.imageLink {
+  display: flex;
+  height: 196px;
+  margin-bottom: 24px;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.title {
+  flex-grow: 1;
+  margin-bottom: 8px;
+  color: var(--color-text-primary);
+}
+
+.prices {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--color-elements);
+}
+
+.price {
+  color: var(--color-text-primary);
+
+  @include h3;
+}
+
+.fullPrice {
+  color: var(--color-text-secondary);
+
+  @include h3;
+}
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.spec {
+  @include small-text;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.specLabel {
+  color: var(--color-text-secondary);
+}
+
+.specValue {
+  color: var(--color-text-primary);
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.addButton {
+  @include button-text;
+
+  flex-grow: 1;
+  height: 40px;
+  border: 0;
+  background-color: var(--color-accent);
+  color: var(--color-text-on-accent);
+  transition:
+    background-color $transition-duration,
+    box-shadow $transition-duration;
+
+  &:hover {
+    background-color: var(--color-accent-hover);
+    box-shadow: var(--shadow-accent-hover);
+  }
+}
+
+.favoriteButton {
+  @include square-button(40px);
+
+  &:hover {
+    @include square-button-hover;
+  }
+}
