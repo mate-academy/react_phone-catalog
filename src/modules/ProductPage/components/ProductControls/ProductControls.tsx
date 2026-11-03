@@ -10,6 +10,7 @@ import { Button } from '../../../../components/Ui/Button';
 import { WishlistButton } from '../../../../components/Ui/WishlistButton';
 import styles from './ProductControls.module.scss';
 import { useFavourites } from '../../../../hooks/useFavourites';
+import { useCart } from '../../../../hooks/useCart';
 
 const cx = classNames.bind(styles);
 
@@ -40,6 +41,7 @@ export const ProductFunc = ({ product, onVariantChange }: Props) => {
     { label: 'RAM', value: ram },
   ];
   const { isInFavourites, toggleFavourites } = useFavourites();
+  const { addToCart } = useCart();
 
   return (
     <div className={cx('product-controls')}>
@@ -114,7 +116,7 @@ export const ProductFunc = ({ product, onVariantChange }: Props) => {
       </div>
 
       <div className={cx('product-controls__buttons')}>
-        <Button onClick={() => {}} textAfterClick="Added">
+        <Button onClick={() => addToCart(id)} textAfterClick="Added">
           Add to cart
         </Button>
         <WishlistButton

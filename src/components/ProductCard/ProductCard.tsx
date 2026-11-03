@@ -5,6 +5,8 @@ import type { Product } from '../../types/Product';
 import { WishlistButton } from '../Ui/WishlistButton';
 import { Button } from '../Ui/Button/Button';
 import { useFavourites } from '../../hooks/useFavourites';
+import { useCart } from '../../hooks/useCart';
+
 import styles from './ProductCard.module.scss';
 
 const cx = classNames.bind(styles);
@@ -35,6 +37,7 @@ export const ProductCard = ({ product }: Props) => {
   ];
 
   const { isInFavourites, toggleFavourites } = useFavourites();
+  const { addToCart } = useCart();
 
   return (
     <div className={cx('product-card')}>
@@ -64,7 +67,7 @@ export const ProductCard = ({ product }: Props) => {
         ))}
       </div>
       <div className={cx('product-card__buttons')}>
-        <Button onClick={() => {}} textAfterClick={'Added'}>
+        <Button onClick={() => addToCart(itemId)} textAfterClick={'Added'}>
           Add to cart
         </Button>
         <WishlistButton

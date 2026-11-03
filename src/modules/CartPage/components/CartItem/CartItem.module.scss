@@ -1,0 +1,102 @@
+@use '../../../../styles/mixins/breakpoints' as *;
+@use '../../../../styles/mixins/grid' as *;
+@use '../../../../styles/global-variables' as *;
+
+.cart-item {
+  @include col(full);
+
+  display: grid;
+  grid-template-columns: subgrid;
+  row-gap: 16px;
+  align-items: center;
+  padding: 16px;
+  background: $white-color;
+  border: 1px solid $elements-color;
+  border-radius: 16px;
+
+  @include tablet-up {
+    padding: 24px 16px;
+  }
+
+  &__remove {
+    @include col(1);
+
+    display: flex;
+    justify-self: start;
+    padding: 0;
+    color: $icons-color;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 0.2s;
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
+
+  &__image {
+    @include col(1, 2);
+
+    width: 100%;
+    max-height: 80px;
+    object-fit: contain;
+  }
+
+  &__title {
+    @include col(2, 4, 7);
+
+    font-size: 14px;
+    line-height: 21px;
+    color: $primary-color;
+  }
+
+  &__counter {
+    @include col(2, 3, 3);
+
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  &__counter-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    color: $primary-color;
+    background: $white-color;
+    border: 1px solid $icons-color;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: border-color 0.2s;
+
+    &:disabled {
+      color: $icons-color;
+      border-color: $elements-color;
+      cursor: not-allowed;
+    }
+
+    &:hover:not(:disabled) {
+      border-color: $primary-color;
+    }
+  }
+
+  &__quantity {
+    min-width: 16px;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  &__price {
+    @include col(2, 2, 3);
+
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 28px;
+    text-align: right;
+    color: $primary-color;
+  }
+}
