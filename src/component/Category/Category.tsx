@@ -2,7 +2,7 @@ import './Category.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouse } from '@fortawesome/free-solid-svg-icons';
 import { importCookie, exportCookie, deleteCookie } from '../cookie';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { useSearchParams, useParams } from 'react-router-dom';
 import { Product } from '../../interface';
 import { getApi } from '../../getApi';
@@ -40,6 +40,7 @@ export const Category = () => {
   useEffect(() => {
     getCookie();
   }, []);
+
   const setValues = (
     event: React.ChangeEvent<HTMLSelectElement>,
     set: string,
@@ -67,15 +68,18 @@ export const Category = () => {
     setSearchParams(url);
   };
 
-  const foundProductYear = (product: CategoryType) => {
-    const yearProduct = products.find(r => product.id === r.itemId);
+  const foundProductYear = useCallback(
+    (product: CategoryType) => {
+      const yearProduct = products.find(r => product.id === r.itemId);
 
-    if (yearProduct) {
-      return yearProduct.year;
-    }
+      if (yearProduct) {
+        return yearProduct.year;
+      }
 
-    return 0;
-  };
+      return 0;
+    },
+    [products],
+  );
 
   const changeType = (original: CategoryType) => {
     const especificProduct: Product | undefined = products.find(
@@ -85,7 +89,7 @@ export const Category = () => {
     return especificProduct;
   };
 
-  const getData = async () => {
+  const getData = useCallback(async () => {
     if (searchParams.size === 0) {
       setSearchParams({
         sort: 'newest',
@@ -130,7 +134,7 @@ export const Category = () => {
     } catch (e) {
       throw new Error('Erro no getData');
     }
-  };
+  }, [params.category, searchParams, setSearchParams, foundProductYear]);
 
   const resetFilters = () => {
     setSearchParams(defaultParams);
@@ -162,7 +166,7 @@ export const Category = () => {
 
   useEffect(() => {
     getData();
-  }, [params.category, searchParams]);
+  }, [getData]);
 
   const currentPage =
     Math.floor(

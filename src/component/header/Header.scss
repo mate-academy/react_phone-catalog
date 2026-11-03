@@ -73,7 +73,7 @@
   }
 }
 
-.placeHeaderDiv:has(.placesHeader:hover) .placesHeader:not(:hover):not(.is-active) {
+.placeHeaderDiv:has(.placesHeader:hover) .placesHeader:not(:hover, .is-active) {
   opacity: 0.5;
 }
 

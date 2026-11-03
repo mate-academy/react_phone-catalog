@@ -5,13 +5,14 @@ import { Products } from './component/Products/Products';
 import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { ShopByCategory } from './component/ShopByCategory/ShopByCategory';
 import { Category } from './component/Category/Category';
-import { ProdutoEspecifico } from './component/ProdutoEspecifico/ProdutoEspecifico';
+import { ProdutoEspec } from './component/ProdutoEspecifico/ProdutoEspecifico';
 import { SavedProducts } from './component/savedProducts/savedProducts';
 import { FooterRender } from './component/Footer/footer';
 import { Favorite } from './component/favorite/favorite';
 import { useParams } from 'react-router-dom';
+
 export const App = () => {
-  const CategoryRouter = () => {
+  const CategoryRouter = (): JSX.Element | null => {
     const { category } = useParams();
 
     if (
@@ -21,6 +22,8 @@ export const App = () => {
     ) {
       return <Category />;
     }
+
+    return null;
   };
 
   return (
@@ -31,7 +34,7 @@ export const App = () => {
         <Routes>
           <Route path="/:category" element={<CategoryRouter />} />
           <Route path="/" element={<Navigate to="/home" />} />
-          <Route path="/productMain" element={<ProdutoEspecifico />}></Route>
+          <Route path="/productMain" element={<ProdutoEspec />}></Route>
           <Route
             path="/home"
             element={

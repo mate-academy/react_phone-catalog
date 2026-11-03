@@ -18,7 +18,7 @@ $arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width=
   padding-inline: 24px;
 }
 
-@keyframes fadeUp {
+@keyframes fade-up {
   from {
     opacity: 0;
     transform: translateY(16px);
@@ -30,60 +30,8 @@ $arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width=
   }
 }
 
-.pages-div {
-  @include container;
-  padding-top: 28px;
-
-  h5 {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin: 0 0 28px;
-
-    font-size: 14px;
-    font-weight: 400;
-
-    svg {
-      margin: 0;
-      color: $color-muted;
-      font-size: 14px;
-    }
-
-    span {
-      color: $color-muted;
-      opacity: 0.7;
-    }
-
-    span:last-child {
-      color: $color-text;
-      font-weight: 600;
-      opacity: 1;
-    }
-  }
-}
-
-.textInformation-div {
-  @include container;
-
-  h1 {
-    margin: 0 0 8px;
-
-    color: $color-text;
-    font-size: clamp(30px, 5vw, 44px);
-    font-weight: 800;
-    line-height: 1.08;
-    letter-spacing: -0.035em;
-  }
-
-  h4 {
-    margin: 0 0 32px;
-
-    color: $color-muted;
-    font-size: 15px;
-    font-weight: 400;
-  }
-}
-
+// Fica antes de .pages-div para respeitar no-descending-specificity
+// (seletor "span" de menor especificidade vem primeiro)
 .optionsNav {
   display: flex;
   flex-wrap: wrap;
@@ -107,6 +55,61 @@ $arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width=
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
+  }
+}
+
+.pages-div {
+  @include container;
+
+  padding-top: 28px;
+
+  h5 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 28px;
+
+    font-size: 14px;
+    font-weight: 400;
+
+    svg {
+      margin: 0;
+      color: $color-muted;
+      font-size: 14px;
+    }
+
+    > span:not(:last-child) {
+      color: $color-muted;
+      opacity: 0.7;
+    }
+
+    > span:last-child {
+      color: $color-text;
+      font-weight: 600;
+      opacity: 1;
+    }
+  }
+}
+
+.textInformation-div {
+  @include container;
+
+  h1 {
+    margin: 0 0 8px;
+
+    color: $color-text;
+    font-size: clamp(30px, 5vw, 44px);
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -0.04em;
+  }
+
+  h4 {
+    margin: 0 0 32px;
+
+    color: $color-muted;
+    font-size: 15px;
+    font-weight: 400;
   }
 }
 
@@ -211,7 +214,7 @@ $arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width=
   border-radius: $radius-card;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
 
-  animation: fadeUp 0.5s $ease both;
+  animation: fade-up 0.5s $ease both;
 
   transition:
     transform 0.3s $ease,
@@ -281,7 +284,6 @@ $arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width=
 
 .productName {
   display: -webkit-box;
-  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 
@@ -315,7 +317,7 @@ $arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width=
     color: $color-accent;
     font-size: 24px;
     font-weight: 800;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.04em;
   }
 }
 
@@ -366,34 +368,6 @@ $arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width=
   margin-top: auto;
 }
 
-.addToCard,
-.addFavorite {
-  height: 44px;
-
-  border-radius: $radius-control;
-
-  font-family: inherit;
-  font-size: 12px;
-  font-weight: 700;
-
-  cursor: pointer;
-
-  transition:
-    background 0.2s ease,
-    border-color 0.2s ease,
-    color 0.2s ease,
-    transform 0.15s ease;
-
-  &:active {
-    transform: scale(0.95);
-  }
-
-  &:focus-visible {
-    outline: 2px solid $color-accent;
-    outline-offset: 2px;
-  }
-}
-
 .addToCard {
   flex: 1;
 
@@ -402,6 +376,10 @@ $arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width=
 
   color: #fff;
   letter-spacing: 0.06em;
+
+  &:active {
+    transform: scale(0.95);
+  }
 
   &:hover {
     background: #333;
@@ -429,6 +407,10 @@ $arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width=
     line-height: 1;
   }
 
+  &:active {
+    transform: scale(0.95);
+  }
+
   &:hover {
     background: $color-surface;
     border-color: $color-accent;
@@ -439,11 +421,14 @@ $arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width=
     border-color: rgba(229, 72, 77, 0.35);
     color: white;
     background-color: $color-danger;
+
     &::before {
       content: '♥';
     }
   }
 }
+
+// ---------- Paginação (bloco único, sem duplicatas) ----------
 
 .pagination-div {
   @include container;
@@ -485,7 +470,9 @@ $arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width=
     color 0.2s ease,
     transform 0.2s $ease,
     box-shadow 0.25s $ease;
+}
 
+.pagination-button {
   &:hover {
     background: $color-surface;
     border-color: $color-accent;
@@ -494,9 +481,7 @@ $arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width=
   &:active {
     transform: scale(0.94);
   }
-}
 
-.pagination-button {
   &.active,
   &.is-active {
     background: $color-accent;
@@ -506,8 +491,16 @@ $arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width=
   }
 }
 
-.pagination-seta:hover {
-  transform: scale(1.06);
+.pagination-seta {
+  &:hover {
+    background: $color-surface;
+    border-color: $color-accent;
+    transform: scale(1.06);
+  }
+
+  &:active {
+    transform: scale(0.94);
+  }
 }
 
 .pagination-dots {
@@ -554,7 +547,8 @@ $arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width=
     transition: none;
   }
 }
-.savedCart{
+
+.savedCart {
   background-color: rgb(255, 255, 255) !important;
   border: 2px solid green !important;
   color: black !important;

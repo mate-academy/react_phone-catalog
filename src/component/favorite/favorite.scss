@@ -17,7 +17,7 @@ $ease: cubic-bezier(0.22, 1, 0.36, 1);
   padding-inline: 24px;
 }
 
-@keyframes fadeUp {
+@keyframes fade-up {
   from {
     opacity: 0;
     transform: translateY(16px);
@@ -31,6 +31,7 @@ $ease: cubic-bezier(0.22, 1, 0.36, 1);
 
 .pages-div {
   @include container;
+
   padding-top: 28px;
 
   h5 {
@@ -71,7 +72,7 @@ $ease: cubic-bezier(0.22, 1, 0.36, 1);
     font-size: clamp(30px, 5vw, 44px);
     font-weight: 800;
     line-height: 1.08;
-    letter-spacing: -0.035em;
+    letter-spacing: -0.04em;
   }
 
   h4 {
@@ -117,7 +118,7 @@ $ease: cubic-bezier(0.22, 1, 0.36, 1);
   border-radius: $radius-card;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
 
-  animation: fadeUp 0.5s $ease both;
+  animation: fade-up 0.5s $ease both;
 
   transition:
     transform 0.3s $ease,
@@ -187,7 +188,6 @@ $ease: cubic-bezier(0.22, 1, 0.36, 1);
 
 .productName {
   display: -webkit-box;
-  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 
@@ -272,15 +272,19 @@ $ease: cubic-bezier(0.22, 1, 0.36, 1);
   margin-top: auto;
 }
 
-.addToCart,
-.addFavorite {
+.addToCart {
+  flex: 1;
   height: 44px;
 
+  background: $color-accent;
+  border: 1px solid $color-accent;
   border-radius: $radius-control;
 
+  color: #fff;
   font-family: inherit;
   font-size: 12px;
   font-weight: 700;
+  letter-spacing: 0.06em;
 
   cursor: pointer;
 
@@ -290,6 +294,11 @@ $ease: cubic-bezier(0.22, 1, 0.36, 1);
     color 0.2s ease,
     transform 0.15s ease;
 
+  &:hover {
+    background: #333;
+    border-color: #333;
+  }
+
   &:active {
     transform: scale(0.95);
   }
@@ -297,21 +306,6 @@ $ease: cubic-bezier(0.22, 1, 0.36, 1);
   &:focus-visible {
     outline: 2px solid $color-accent;
     outline-offset: 2px;
-  }
-}
-
-.addToCart {
-  flex: 1;
-
-  background: $color-accent;
-  border: 1px solid $color-accent;
-
-  color: #fff;
-  letter-spacing: 0.06em;
-
-  &:hover {
-    background: #333;
-    border-color: #333;
   }
 
   &.savedCart {
@@ -321,20 +315,31 @@ $ease: cubic-bezier(0.22, 1, 0.36, 1);
   }
 }
 
-// Heart button: the text is hidden (font-size: 0), the icon comes from ::before
 .addFavorite {
   display: flex;
   align-items: center;
   justify-content: center;
 
   width: 44px;
+  height: 44px;
   overflow: hidden;
 
   background: $color-bg;
   border: 1px solid $color-border;
+  border-radius: $radius-control;
 
   color: #666;
+  font-family: inherit;
   font-size: 0;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.15s ease;
 
   &::before {
     content: '♡';
@@ -346,6 +351,15 @@ $ease: cubic-bezier(0.22, 1, 0.36, 1);
     background: $color-surface;
     border-color: $color-accent;
     color: $color-accent;
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-accent;
+    outline-offset: 2px;
   }
 
   &.saved-favorite {

@@ -82,8 +82,7 @@ export const Products = ({ page }: { page: string }) => {
                           !importCookie('cart')?.some(r => r.id === product.id)
                         ) {
                           exportCookie(product, 'cart', product.id);
-                        }
-                        else{
+                        } else {
                           deleteCookie('cart', product.id);
                         }
                       }}
@@ -101,12 +100,10 @@ export const Products = ({ page }: { page: string }) => {
                           )
                         ) {
                           exportCookie(product, 'favorities', product.id);
-                        }
-                        else{
+                        } else {
                           deleteCookie('favorities', product.id);
                         }
                       }}
-                      
                     >
                       ADD FAVORITE
                     </button>

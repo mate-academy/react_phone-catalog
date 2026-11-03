@@ -6,9 +6,9 @@ import './ProductoEspecifico.scss';
 import { getApi } from '../../getApi';
 import { CategoryType } from '../../interface';
 import { Product } from '../../interface';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 
-export const ProdutoEspecifico = () => {
+export const ProdutoEspec = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [productShip, setProductShip] = useState<Product>();
   const [product, setProduct] = useState<CategoryType | undefined>();
@@ -28,7 +28,7 @@ export const ProdutoEspecifico = () => {
     getCookie();
   }, []);
 
-  const getData = async () => {
+  const getData = useCallback(async () => {
     try {
       const newArr: Product[] = await getApi('products');
       const especificProduct: Product | undefined = newArr.find(
@@ -47,7 +47,7 @@ export const ProdutoEspecifico = () => {
     } catch (e) {
       throw new Error('Erro no getData');
     }
-  };
+  }, [searchParams]);
 
   const setNewProduct = (color: string, capacity: string) => {
     const newName = `${product?.namespaceId.split('_')}-${capacity.toLowerCase()}-${color.toLowerCase()}`;
@@ -65,7 +65,7 @@ export const ProdutoEspecifico = () => {
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [getData]);
 
   return (
     <>
