@@ -1,4 +1,5 @@
 import { Phone } from '../interface/Product';
+import { useEffect, useState } from 'react';
 
 interface ProductInfoProps {
   realProduct: Phone;
@@ -15,6 +16,14 @@ const ProductInfo = ({
   currentColor,
   setCurrentColor,
 }: ProductInfoProps) => {
+  const [favorite, setFavorite] = useState(false);
+
+  useEffect(() => {
+    const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+
+    setFavorite(favorites.includes(realProduct.name));
+  }, [realProduct.name]);
+
   return (
     <div className="product__info">
       <h3 className="product__subtitle">Available colors</h3>
@@ -64,8 +73,34 @@ const ProductInfo = ({
       </h4>
       <div className="product__buttons">
         <button className="product__button">Add to cart</button>
-        <button className="product__favorite">
-          <img src="/img/heart.svg" alt="Add to favorites" />
+        <button
+          className="product__favorite"
+          onClick={() => {
+            const favorites = JSON.parse(
+              localStorage.getItem('favorites') || '[]',
+            );
+
+            if (favorite) {
+              const updatedFavorites = favorites.filter(
+                (name: string) => name !== realProduct.name,
+              );
+
+              localStorage.setItem(
+                'favorites',
+                JSON.stringify(updatedFavorites),
+              );
+              setFavorite(false);
+            } else {
+              favorites.push(realProduct.name);
+              localStorage.setItem('favorites', JSON.stringify(favorites));
+              setFavorite(true);
+            }
+          }}
+        >
+          <img
+            src={favorite ? '/img/heart-full.svg' : '/img/heart.svg'}
+            alt="Add to favorites"
+          />
         </button>
       </div>
       <table className="product__table">

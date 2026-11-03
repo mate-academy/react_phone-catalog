@@ -1,5 +1,6 @@
 import { Product } from '../interface/Product';
 import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 interface ModelProps {
   item: Product;
@@ -8,6 +9,14 @@ interface ModelProps {
 
 const Model = ({ item, catalog }: ModelProps) => {
   const navigate = useNavigate();
+
+  const [favorite, setFavorite] = useState(false);
+
+  useEffect(() => {
+    const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+
+    setFavorite(favorites.includes(item.name));
+  }, [item.name]);
 
   return (
     <article className="model__item">
@@ -39,9 +48,36 @@ const Model = ({ item, catalog }: ModelProps) => {
         >
           Add to cart
         </button>
-        <div className="model__heart">
-          <img src="/img/heart.svg" alt="heart icon svg" />
-        </div>
+        <button
+          className="model__heart"
+          onClick={() => {
+            const favorites = JSON.parse(
+              localStorage.getItem('favorites') || '[]',
+            );
+
+            if (favorite) {
+              const updatedFavorites = favorites.filter(
+                (name: string) => name !== item.name,
+              );
+
+              localStorage.setItem(
+                'favorites',
+                JSON.stringify(updatedFavorites),
+              );
+
+              setFavorite(false);
+            } else {
+              favorites.push(item.name);
+              localStorage.setItem('favorites', JSON.stringify(favorites));
+              setFavorite(true);
+            }
+          }}
+        >
+          <img
+            src={favorite ? '/img/heart-full.svg' : '/img/heart.svg'}
+            alt="heart icon svg"
+          />
+        </button>
       </div>
     </article>
   );
