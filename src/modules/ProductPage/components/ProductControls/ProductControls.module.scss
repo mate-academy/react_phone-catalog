@@ -1,0 +1,161 @@
+@use '../../../../styles/global-variables' as *;
+
+.product-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__title {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+    color: $secondary-color;
+  }
+
+  &__divider {
+    width: 100%;
+    height: 1px;
+    margin: 0;
+    border: none;
+    background: $elements-color;
+  }
+
+  &__colors {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__color {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    background: transparent;
+    border: 1px solid $elements-color;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: border-color 0.2s;
+
+    &:hover {
+      border-color: $icons-color;
+    }
+
+    &--active,
+    &--active:hover {
+      border-color: $primary-color;
+      cursor: default;
+    }
+  }
+
+  &__color-dot {
+    display: block;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+  }
+
+  // ---------- capacity ----------
+  &__capacities {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  &__capacity {
+    min-width: 64px;
+    height: 32px;
+    padding: 0 8px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    color: $primary-color;
+    background: $white-color;
+    border: 1px solid #b4bdc3;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: border-color 0.2s;
+
+    &:hover {
+      border-color: $primary-color;
+    }
+
+    &--active,
+    &--active:hover {
+      color: #fff;
+      background: $primary-color;
+      border-color: $primary-color;
+      cursor: default;
+    }
+  }
+
+  &__prices {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+
+  &__price {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    color: $primary-color
+  }
+
+  &__old-price {
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 28px;
+    color: $secondary-color;
+    text-decoration: line-through;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+
+    > :first-child {
+      flex: 1;
+    }
+  }
+
+  &__specs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 0;
+  }
+
+  &__spec {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    min-width: 0;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+  }
+
+  &__spec-label {
+    flex-shrink: 0;
+    color: $secondary-color;
+  }
+
+  &__spec-value {
+    min-width: 0;
+    margin: 0;
+    overflow: hidden;
+    color: $primary-color;
+    text-align: right;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}

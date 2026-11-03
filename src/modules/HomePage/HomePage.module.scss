@@ -1,0 +1,42 @@
+@use '../../styles/mixins/breakpoints' as bp;
+
+.home-page {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+
+  @include bp.tablet-up {
+    gap: 64px;
+  }
+
+  @include bp.desktop-up {
+    gap: 80px;
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    @include bp.tablet-up {
+      gap: 32px;
+    }
+
+    @include bp.desktop-up {
+      gap: 56px;
+    }
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}

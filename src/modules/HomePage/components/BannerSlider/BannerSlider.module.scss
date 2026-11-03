@@ -1,0 +1,112 @@
+@use '../../../../styles/global-variables' as *;
+@use '../../../../styles/mixins/breakpoints' as *;
+@use '../../../../styles/mixins/zoom' as *;
+
+.slider {
+  display: grid;
+  grid-template-columns: 100%;
+  row-gap: 16px;
+
+  @include image-zoom;
+
+  @include tablet-up {
+    grid-template-columns: 32px minmax(0, 1fr) 32px;
+    column-gap: 16px;
+    align-items: stretch;
+  }
+
+  &__track {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain;
+    border-radius: 8px;
+
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    @include tablet-up {
+      grid-column: 2;
+      grid-row: 1;
+    }
+  }
+
+  &__slide {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    display: block;
+  }
+
+  &__image {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    aspect-ratio: 1 / 1.07;
+
+    @include tablet-up {
+      aspect-ratio: 2.6 / 1;
+    }
+  }
+
+  &__button {
+    display: none;
+
+    @include tablet-up {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      grid-row: 1;
+      padding: 0;
+      border: 1px solid var(--elements, #e2e6e9);
+      border-radius: 16px;
+      background: transparent;
+      color: $primary-color;
+      cursor: pointer;
+      transition: border-color 0.2s;
+
+      &:hover,
+      &:focus-visible {
+        border-color: $primary-color;
+      }
+    }
+
+    &--prev {
+      grid-column: 1;
+    }
+
+    &--next {
+      grid-column: 3;
+    }
+  }
+
+  &__dots {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+
+    @include tablet-up {
+      grid-column: 2;
+      grid-row: 2;
+    }
+  }
+
+  &__dot {
+    width: 14px;
+    height: 4px;
+    padding: 0;
+    border: 0;
+    background: var(--elements, #e2e6e9);
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &--active {
+      background: $primary-color;
+    }
+  }
+}

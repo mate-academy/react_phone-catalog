@@ -1,0 +1,29 @@
+@use '../../../styles/global-variables' as *;
+
+.wishlist-button {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid $icons-color;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--color-black);
+  cursor: pointer;
+
+  &__icon {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.5;
+  }
+
+  &:hover {
+    border-color: $primary-color;
+  }
+
+  &--selected {
+    border-color: $elements-color;
+  }
+}

@@ -1,0 +1,21 @@
+@mixin image-zoom(
+  $scale: 1.08,
+  $duration: 0.3s,
+  $selector: 'img',
+  $clip: true
+) {
+  @if $clip {
+    overflow: hidden;
+  }
+
+  #{$selector} {
+    transition: transform $duration ease;
+    will-change: transform;
+  }
+
+  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    &:hover #{$selector} {
+      transform: scale($scale);
+    }
+  }
+}

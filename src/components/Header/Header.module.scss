@@ -1,0 +1,77 @@
+@use '../../styles/mixins/breakpoints' as *;
+@use '../../styles/global-variables' as *;
+
+@mixin tablet-up-only-visible {
+  display: none;
+
+  @include tablet-up {
+    display: block;
+  }
+}
+
+.header {
+  background-color: $white-color;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+
+  height: $header-height-mobile;
+  box-sizing: border-box;
+
+  position: relative;
+
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+  @include desktop-up {
+    height: $header-height-desktop;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background: $elements-color;
+    pointer-events: none;
+  }
+
+  &__logo {
+    padding: 0 16px;
+
+    @include desktop-up {
+      padding: 0 24px;
+    }
+  }
+
+  &__nav-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    @include desktop-up {
+      gap: 24px;
+    }
+  }
+
+  &__icons-wrapper {
+    display: flex;
+  }
+
+  &__burger {
+    @include tablet-up {
+      display: none;
+    }
+  }
+
+  &__icon {
+    &--favourites,
+    &--shopping-bag {
+      @include tablet-up-only-visible;
+    }
+  }
+}

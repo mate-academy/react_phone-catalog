@@ -1,0 +1,37 @@
+@use '../../styles/mixins/breakpoints' as bp;
+@use '../../styles/mixins/grid' as grid;
+@use '../../styles/global-variables' as *;
+
+.category-page {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @include bp.tablet-up {
+    gap: 40px;
+  }
+
+  &__products-count {
+    color: $secondary-color;
+  }
+
+  &__dropdowns {
+    @include grid.grid-container;
+  }
+
+  &__sort-by {
+    grid-column: span 2;
+
+    @include bp.tablet-up {
+      grid-column: span 4;
+    }
+  }
+
+  &__items-on-page {
+    grid-column: span 2;
+
+    @include bp.tablet-up {
+      grid-column: span 3;
+    }
+  }
+}
