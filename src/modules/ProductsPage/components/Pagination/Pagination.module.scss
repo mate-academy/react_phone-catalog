@@ -1,0 +1,62 @@
+@use '/src/styles/utils' as *;
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 64px;
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+}
+
+.button {
+  border: 1px solid $c-icons;
+}
+
+.button,
+.pageButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  cursor: pointer;
+  border: 1px solid $c-elements;
+  border-radius: 50%;
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
+
+  &.active {
+    background: $c-primary;
+    color: $c-white;
+    border: none;
+  }
+
+  &:disabled {
+    border: 1px solid $c-elements;
+    cursor: default;
+  }
+
+  &:hover:not(:disabled) {
+    border: 1px solid $c-primary;
+  }
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  list-style: none;
+
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

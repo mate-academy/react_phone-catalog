@@ -1,0 +1,84 @@
+@use '/src/styles/utils' as *;
+
+.favouritesPage {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  gap: 8px;
+  font-size: 12px;
+  max-width: 100%;
+  margin: 24px 0;
+  color: $c-secondary;
+
+  &Link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    text-transform: capitalize;
+  }
+
+  @include on-tablet {
+    margin: 24px 0 40px;
+  }
+}
+
+.title {
+  margin-bottom: 8px;
+  line-height: 41px;
+
+  @include on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+.favouritesCount {
+  font-size: 14px;
+  color: $c-secondary;
+  line-height: 21px;
+  margin-bottom: 32px;
+
+  @include on-tablet {
+    margin-bottom: 40px;
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+      @include page-grid;
+
+  & > * {
+    grid-column: span 4;
+
+    @include on-tablet {
+      grid-column: span 6;
+
+    }
+
+    @media (min-width: 768px) {
+      grid-column: span 4;
+    }
+
+    @include on-desktop {
+      grid-column: span 6;
+    }
+  }
+}

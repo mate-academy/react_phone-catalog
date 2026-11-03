@@ -1,0 +1,192 @@
+@use '/src/styles/utils' as *;
+
+.menu {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+
+  display: flex;
+  flex-direction: column;
+
+  background-color: $c-white;
+
+  @include on-tablet {
+    display: none !important;
+  }
+}
+
+.topBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 48px;
+  padding-left: 16px;
+  box-shadow: 0 1px 0 0 $c-elements;
+  margin-bottom: 24px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.closeBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 100%;
+  padding: 0;
+
+  background: transparent;
+  border: none;
+  border-left: 1px solid $c-elements;
+  cursor: pointer;
+}
+
+.closeIcon {
+  display: block;
+  width: 16px;
+  height: 16px;
+
+  background-image: url('/img/icons/close.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.navList {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  height: fit-content;
+
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.navItem {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.navLink {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 27px;
+
+  font-family: $main-font-family;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  color: $c-secondary;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  &.isActive {
+    color: $c-primary;
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background-color: $c-primary;
+    }
+  }
+}
+
+.footer {
+  display: flex;
+  height: 64px;
+  border-top: 1px solid $c-elements;
+}
+
+.actionsBtn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  height: 64px;
+
+  color: $c-primary;
+  text-decoration: none;
+
+  &:first-child {
+    border-right: 1px solid $c-elements;
+  }
+
+  &.isActive {
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background-color: $c-primary;
+    }
+  }
+}
+
+.iconWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconBag {
+  display: block;
+  width: 16px;
+  height: 16px;
+  background-image: url('/img/icons/cart.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 14px;
+  height: 14px;
+
+  font-size: 9px;
+  font-weight: 600;
+  color: $c-white;
+
+  background-color: $c-secondary-accent;
+  border: 1px solid $c-white;
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+.iconHeart {
+  display: block;
+  width: 16px;
+  height: 16px;
+  background-image: url('/img/icons/heart.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+}
