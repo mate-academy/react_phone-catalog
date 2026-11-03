@@ -1,4 +1,3 @@
-// components/ProductGallery/ProductGallery.tsx
 import { useState } from 'react';
 import classNames from 'classnames/bind';
 
@@ -36,7 +35,7 @@ export const ProductGallery = ({ images, name }: Props) => {
           >
             <img
               className={cx('product-gallery__thumb-image')}
-              src={`/${src}`}
+              src={`${src}`}
               alt={`${name} preview ${index + 1}`}
             />
           </button>
@@ -46,7 +45,7 @@ export const ProductGallery = ({ images, name }: Props) => {
       <div className={cx('product-gallery__main')}>
         <img
           className={cx('product-gallery__main-image')}
-          src={`/${mainImage}`}
+          src={`${mainImage}`}
           alt={name}
         />
       </div>
