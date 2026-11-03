@@ -1,0 +1,154 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --blue: #4169e1;
+  --blue-soft: #e8eefc;
+  --dark: #111827;
+  --gray: #6b7280;
+  --bg: rgba(255, 255, 255, 0.85);
+  --border: #e5e7eb;
+  --radius: 5px;
+}
+
+.headerTop {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 12px 32px;
+  background-color: var(--bg);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+
+  h2 {
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    color: var(--dark);
+    white-space: nowrap;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: var(--blue);
+    }
+  }
+}
+
+
+.placeHeaderDiv {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 auto;
+}
+
+.placesHeader {
+  padding: 8px 16px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none;
+  text-transform: capitalize;
+  color: var(--gray);
+  border-radius: 5px;
+  transition: all 0.25s ease;
+
+  &:hover {
+    color: var(--dark);
+    background-color: #f3f4f6;
+  }
+
+  &.is-active {
+    color: #fff;
+    background-color: var(--dark);
+    box-shadow: 0 4px 10px rgba(17, 24, 39, 0.25);
+  }
+}
+
+.placeHeaderDiv:has(.placesHeader:hover) .placesHeader:not(:hover):not(.is-active) {
+  opacity: 0.5;
+}
+
+
+input {
+  width: 220px;
+  height: 40px;
+  padding: 0 16px;
+  font-size: 0.9rem;
+  background-color: #f3f4f6;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  outline: none;
+  transition: all 0.25s ease;
+
+  &:focus {
+    width: 260px;
+    background-color: #fff;
+    border-color: var(--blue);
+    box-shadow: 0 0 0 4px var(--blue-soft);
+  }
+}
+
+.iconsNavConteiner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.icons-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 46px;
+  height: 46px;
+  color: var(--dark);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.25s ease;
+
+  &:hover {
+    color: var(--blue);
+    background-color: var(--blue-soft);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: scale(0.94);
+  }
+}
+
+@media (max-width: 1000px) {
+  .headerTop {
+    padding: 12px 20px;
+  }
+
+  input {
+    width: 160px;
+  }
+}
+
+@media (max-width: 700px) {
+  .headerTop {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .placeHeaderDiv {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    overflow-x: auto;
+  }
+
+  input {
+    display: none;
+  }
+}
