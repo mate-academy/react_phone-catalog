@@ -21,19 +21,19 @@ export const Categories = () => {
   const categories = [
     {
       name: 'Mobile phones',
-      image: '/img/category-phones-baner.png',
+      image: 'img/category-phones-baner.png',
       count: counts.phonesCount,
       link: '/phones',
     },
     {
       name: 'Tablets',
-      image: '/img/category-tablets-baner.png',
+      image: 'img/category-tablets-baner.png',
       count: counts.tabletsCount,
       link: '/tablets',
     },
     {
       name: 'Accessories',
-      image: '/img/category-accessories-baner.png',
+      image: 'img/category-accessories-baner.png',
       count: counts.accessoriesCount,
       link: '/accessories',
     },
