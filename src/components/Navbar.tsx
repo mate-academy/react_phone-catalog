@@ -70,11 +70,27 @@ const Navbar = () => {
             showMenu ? 'navbar__icons navbar__icons--active' : 'navbar__icons'
           }
         >
-          <li className="navbar__icon">
-            <img src="/img/heart.svg" alt="heart icon svg" />
+          <li
+            className={
+              location.pathname === '/favorites'
+                ? 'navbar__icon navbar__icon--active'
+                : 'navbar__icon'
+            }
+          >
+            <Link to="/favorites">
+              <img src="/img/heart.svg" alt="heart icon svg" />
+            </Link>
           </li>
-          <li className="navbar__icon">
-            <img src="/img/shopping-bag.svg" alt="bag icon svg" />
+          <li
+            className={
+              location.pathname === '/cart'
+                ? 'navbar__icon navbar__icon--active'
+                : 'navbar__icon'
+            }
+          >
+            <Link to="/cart">
+              <img src="/img/shopping-bag.svg" alt="bag icon svg" />
+            </Link>
           </li>
         </ul>
         <button
