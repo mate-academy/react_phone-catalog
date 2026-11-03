@@ -15,6 +15,7 @@
     border-radius: 15px;
     border: 1px solid var(--light-gray);
     padding: 30px;
+    background-color: white;
 
     .model__image {
       width: 100%;
@@ -95,13 +96,46 @@
 .product__items {
   margin-top: 50px;
 
+  .product__title {
+    font-size: 35px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    align-items: flex-end;
+  }
+
   .product__models {
     overflow: hidden;
+    max-width: 100%;
 
     .product__slides {
       display: flex;
       gap: 15px;
-      max-width: 100%;
+      min-width: 1200px;
+      position: relative;
+      transition: var(--transition);
+
+      .model__item {
+        min-width: 17.5%;
+      }
+    }
+  }
+
+  .product__arrows {
+    display: flex;
+    gap: 10px;
+
+    .product__arrow {
+      border-radius: 50%;
+      border: 1px solid var(--dark-gray);
+      width: 35px;
+      height: 35px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: transparent;
+      cursor: pointer;
     }
   }
 }
