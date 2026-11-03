@@ -45,3 +45,25 @@
     padding-inline: $page-padding-desktop;
   }
 }
+
+// Small square button from the UI Kit
+@mixin square-button($size: 32px) {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: $size;
+  height: $size;
+  padding: 0;
+  border: 1px solid var(--color-button-border);
+  background-color: var(--color-button-bg);
+  color: var(--color-text-primary);
+  transition:
+    border-color $transition-duration,
+    background-color $transition-duration;
+}
+
+@mixin square-button-hover {
+  border-color: var(--color-button-border-hover);
+  background-color: var(--color-button-bg-hover);
+}
