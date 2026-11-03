@@ -22,7 +22,7 @@ export const useProducts = (category: Product['category']) => {
       })
       .catch(() => {
         if (isActive) {
-          setError('Не вдалося завантажити товари');
+          setError('Failed to load products');
         }
       })
       .finally(() => {

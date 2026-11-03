@@ -1,6 +1,6 @@
 import type { Product } from '../types/Product';
 
-const PRODUCTS_URL = '/api/products.json';
+const PRODUCTS_URL = 'api/products.json';
 
 let cache: Promise<Product[]> | null = null;
 

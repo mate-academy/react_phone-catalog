@@ -13,8 +13,8 @@ interface Props {
 
 const cx = classNames.bind(styles);
 
-const MENU_ICON = '/img/icons/Menu.svg';
-const CLOSE_ICON = '/img/icons/Close.svg';
+const MENU_ICON = 'img/icons/Menu.svg';
+const CLOSE_ICON = 'img/icons/Close.svg';
 
 export const BurgerButton: React.FC<Props> = ({ isOpen, className }) => {
   const { pathname, search } = useLocation();

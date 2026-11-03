@@ -4,6 +4,6 @@ const cx = classNames.bind(styles);
 
 export const Logo = () => (
   <a href="/" className={cx('logo')}>
-    <img src="public/img/Logo.png" alt="Logo" className={cx('logo__image')} />
+    <img src="img/Logo.png" alt="Logo" className={cx('logo__image')} />
   </a>
 );

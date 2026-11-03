@@ -44,7 +44,7 @@ export const ProductCard = ({ product }: Props) => {
       <Link to={productLink} className={cx('product-card__image-box')}>
         <img
           className={cx('product-card__image')}
-          src={`/${image}`}
+          src={`${image}`}
           alt={name}
         />
       </Link>

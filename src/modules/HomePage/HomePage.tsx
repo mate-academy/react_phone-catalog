@@ -18,22 +18,22 @@ const slides: BannerSlide[] = [
     id: '1',
     to: '/phones',
     alt: 'iPhone 14 Pro, now available in our store',
-    desktopSrc: 'public/img/phones-baner.png',
-    mobileSrc: 'public/img/phones-baner-mobile.png',
+    desktopSrc: 'img/phones-baner.png',
+    mobileSrc: 'img/phones-baner-mobile.png',
   },
   {
     id: '2',
     to: '/phones',
     alt: 'iPhone 14 Pro, now available in our store',
-    desktopSrc: 'public/img/phones-baner.png',
-    mobileSrc: 'public/img/phones-baner-mobile.png',
+    desktopSrc: 'img/phones-baner.png',
+    mobileSrc: 'img/phones-baner-mobile.png',
   },
   {
     id: '3',
     to: '/phones',
     alt: 'iPhone 14 Pro, now available in our store',
-    desktopSrc: 'public/img/phones-baner.png',
-    mobileSrc: 'public/img/phones-baner-mobile.png',
+    desktopSrc: 'img/phones-baner.png',
+    mobileSrc: 'img/phones-baner-mobile.png',
   },
 ];
 

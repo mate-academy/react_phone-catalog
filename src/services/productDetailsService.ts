@@ -11,7 +11,7 @@ const cache: Partial<Record<Category, Promise<ProductDetails[]>>> = {};
 
 const getCategoryDetails = (category: Category): Promise<ProductDetails[]> => {
   if (!cache[category]) {
-    cache[category] = fetch(`/api/${category}.json`)
+    cache[category] = fetch(`api/${category}.json`)
       .then(response => {
         if (!response.ok) {
           throw new Error(`Failed to load ${category}: ${response.status}`);
@@ -38,7 +38,6 @@ export const getProductDetails = async (
   return items.find(item => item.id === productId);
 };
 
-// для перемикання кольору/пам'яті: формує id сусіднього варіанта
 export const buildVariantId = (
   namespaceId: string,
   capacity: string,

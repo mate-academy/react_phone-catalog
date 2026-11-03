@@ -9,8 +9,8 @@ export type BannerSlide = {
   id: string;
   to: string;
   alt: string;
-  desktopSrc: string; // tablet + desktop
-  mobileSrc: string; // 320–639px
+  desktopSrc: string;
+  mobileSrc: string;
 };
 
 type Props = {

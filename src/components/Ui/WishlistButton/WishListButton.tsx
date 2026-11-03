@@ -19,8 +19,8 @@ export const WishlistButton = ({ selected, onClick }: WishlistButtonProps) => (
     <img
       src={
         selected
-          ? '/img/icons/Favourites-selected.svg'
-          : '/img/icons/Favourites.svg'
+          ? 'img/icons/Favourites-selected.svg'
+          : 'img/icons/Favourites.svg'
       }
       alt="Wishlist icon"
     />
