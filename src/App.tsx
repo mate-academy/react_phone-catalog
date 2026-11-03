@@ -1,4 +1,4 @@
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { HashRouter, Navigate, Route, Routes } from 'react-router-dom';
 
 import { Layout } from './components/Layout';
 import { CategoryPage } from './modules/CategoryPage';
@@ -15,7 +15,7 @@ export const App = () => {
   return (
     <CartProvider>
       <FavouritesProvider>
-        <BrowserRouter>
+        <HashRouter>
           <ScrollToTop />
 
           <div className="App">
@@ -46,7 +46,7 @@ export const App = () => {
               </Route>
             </Routes>
           </div>
-        </BrowserRouter>
+        </HashRouter>
       </FavouritesProvider>
     </CartProvider>
   );
