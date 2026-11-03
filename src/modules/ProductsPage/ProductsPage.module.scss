@@ -33,8 +33,14 @@
   }
 }
 
+.skeletonGrid {
+  margin-top: 24px;
+
+  @include page-grid;
+}
+
 .categoryCount {
-    font-size: 14px;
+  font-size: 14px;
   color: $c-secondary;
   line-height: 21px;
   margin-bottom: 32px;

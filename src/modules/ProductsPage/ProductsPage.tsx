@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
-import { Loader } from '../../components/Loader';
 import { getProducts } from '../shared/services/api';
 import { Product } from '../shared/types';
 import { getNormalizedImagePath } from '../shared/getNormalizedImagePath';
@@ -8,6 +7,8 @@ import { PerPageSelect } from './components/PerPageSelect';
 import { ProductList } from './components/ProductList/ProductList';
 import { SortSelect } from './components/SortSelect/';
 import styles from './ProductsPage.module.scss';
+import { ProductCardSkeleton } from '../shared/components/ProductCardSkeleton';
+import listStyles from './components/ProductList/ProductList.module.scss';
 
 type Props = {
   category: 'phones' | 'tablets' | 'accessories';
@@ -23,6 +24,8 @@ export const ProductsPage = ({ category, title }: Props) => {
   const rawPage = Number(searchParams.get('page'));
   const page = !rawPage || rawPage < 1 ? 1 : rawPage;
   const perPage = searchParams.get('perPage') || 'all';
+
+  const searchQuery = searchParams.get('query') || '';
 
   const [allProducts, setAllProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -84,8 +87,20 @@ export const ProductsPage = ({ category, title }: Props) => {
     };
   }, [fetchProducts]);
 
+  const filteredProducts = useMemo(() => {
+    const normalizedQuery = searchQuery.trim().toLowerCase();
+
+    if (!normalizedQuery) {
+      return allProducts;
+    }
+
+    return allProducts.filter(product =>
+      product.name.toLowerCase().includes(normalizedQuery),
+    );
+  }, [allProducts, searchQuery]);
+
   const sortedProducts = useMemo(() => {
-    return [...allProducts].sort((a, b) => {
+    return [...filteredProducts].sort((a, b) => {
       switch (sort) {
         case 'title':
           return a.name.localeCompare(b.name);
@@ -96,7 +111,7 @@ export const ProductsPage = ({ category, title }: Props) => {
           return b.year - a.year;
       }
     });
-  }, [allProducts, sort]);
+  }, [filteredProducts, sort]);
 
   const visibleProducts = useMemo(() => {
     if (perPage === 'all') {
@@ -163,8 +178,15 @@ export const ProductsPage = ({ category, title }: Props) => {
 
       <h1 className={styles.title}>{title}</h1>
 
-      {isLoading ? (
+      {/* {isLoading ? (
         <Loader />
+      ) : hasError ? ( */}
+      {isLoading ? (
+        <div className={listStyles.list}>
+          {Array.from({ length: 8 }).map((_, index) => (
+            <ProductCardSkeleton key={index} />
+          ))}
+        </div>
       ) : hasError ? (
         <div className={styles.errorContainer}>
           <p>Something went wrong</p>
@@ -174,7 +196,7 @@ export const ProductsPage = ({ category, title }: Props) => {
         </div>
       ) : (
         <>
-          <p className={styles.categoryCount}>{allProducts.length} models</p>
+          <p className={styles.categoryCount}>{sortedProducts.length} models</p>
 
           <div className={styles.controls}>
             <SortSelect
@@ -187,8 +209,12 @@ export const ProductsPage = ({ category, title }: Props) => {
             />
           </div>
 
-          {allProducts.length === 0 ? (
-            <p>There are no {category} yet</p>
+          {sortedProducts.length === 0 ? (
+            <p>
+              {searchQuery
+                ? 'There are no products matching the query'
+                : `There are no ${category} yet`}
+            </p>
           ) : (
             <ProductList
               products={visibleProducts}
