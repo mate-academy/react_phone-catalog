@@ -1,10 +1,13 @@
 @use '../../../../styles/global-variables' as *;
 @use '../../../../styles/mixins/breakpoints' as *;
+@use '../../../../styles/mixins/zoom' as *;
 
 .slider {
   display: grid;
   grid-template-columns: 100%;
   row-gap: 16px;
+
+  @include image-zoom;
 
   @include tablet-up {
     grid-template-columns: 32px minmax(0, 1fr) 32px;
@@ -19,7 +22,6 @@
     overscroll-behavior-x: contain;
     border-radius: 8px;
 
-    // ховаємо смугу прокрутки
     scrollbar-width: none;
     -ms-overflow-style: none;
 
@@ -45,10 +47,10 @@
     width: 100%;
     height: auto;
     object-fit: cover;
-    aspect-ratio: 1 / 1.07; // mobile, підлаштуй під свій макет
+    aspect-ratio: 1 / 1.07;
 
     @include tablet-up {
-      aspect-ratio: 2.6 / 1; // tablet + desktop
+      aspect-ratio: 2.6 / 1;
     }
   }
 

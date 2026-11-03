@@ -49,7 +49,8 @@ export const HomePage = () => {
   return (
     <main className={cx('home-page')}>
       <section className={cx('home-page__header')}>
-        <h1>Welcome to Nice Gadgets store!</h1>
+        <h1 className={cx('visually-hidden')}>Product Catalog</h1>
+        <h2>Welcome to Nice Gadgets store!</h2>
         <BannerSlider slides={slides} />
       </section>
 

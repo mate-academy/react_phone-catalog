@@ -1,7 +1,9 @@
+import classNames from 'classnames/bind';
 import styles from './Logo.module.scss';
+const cx = classNames.bind(styles);
 
 export const Logo = () => (
-  <a href="/">
-    <img src="public/img/Logo.png" alt="Logo" className={styles.logo} />
+  <a href="/" className={cx('logo')}>
+    <img src="public/img/Logo.png" alt="Logo" className={cx('logo__image')} />
   </a>
 );

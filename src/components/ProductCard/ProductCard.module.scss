@@ -1,4 +1,5 @@
 @use '../../styles/global-variables' as *;
+@use '../../styles/mixins/zoom' as *;
 
 .product-card {
   background-color: $white-color;
@@ -24,6 +25,8 @@
       display: flex;
       justify-content: center;
       max-height: 220px;
+
+      @include image-zoom;
     }
 
     width: 100%;
@@ -60,7 +63,7 @@
     font-size: 22px;
     color: $secondary-color;
     text-decoration: line-through;
-    text-decoration-color: #fff;       // колір фону картки
+    text-decoration-color: #fff;
     text-decoration-thickness: 2px;
   }
 

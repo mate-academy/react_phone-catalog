@@ -8,7 +8,7 @@
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s, visibility 0.3s;
-  z-index: 9;
+  z-index: 99; 
 
   display: flex;
   flex-direction: column;
@@ -30,6 +30,7 @@
     align-items: stretch;
     height: 100%;
     overflow: visible;
+    z-index: auto;
   }
 }
 
@@ -104,12 +105,5 @@
     &:first-child {
       border-left: none;
     }
-  }
-}
-
-@include mobile-only {
-  html:has(.overlay--open),
-  body:has(.overlay--open) {
-    overflow: hidden;
   }
 }
