@@ -1,6 +1,7 @@
 .card {
   display: flex;
   flex-direction: column;
+  height: 100%;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 12px;
@@ -16,6 +17,8 @@
 .imageLink {
   position: relative;
   display: block;
+  overflow: hidden;
+  padding: 8px;
 }
 
 .image {
@@ -26,7 +29,7 @@
 }
 
 .imageLink:hover .image {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 .discount {
@@ -74,6 +77,11 @@
 
 .fullPrice {
   font-size: 13px;
+  color: var(--muted);
+}
+
+.specs {
+  font-size: 12px;
   color: var(--muted);
 }
 

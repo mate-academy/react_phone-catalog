@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useShop } from '../../context/ShopContext';
+import { getProductPrice } from '../../shared/utils/format';
 import { CartItem as CartItemType } from '../../api/types';
 import { CartItem } from './components/CartItem';
 import styles from './CartPage.module.scss';
@@ -8,7 +9,7 @@ export const CartPage = () => {
   const { cart, clearCart } = useShop();
 
   const totalAmount = cart.reduce(
-    (sum, item) => sum + (item.product.price ?? 0) * item.quantity,
+    (sum, item) => sum + getProductPrice(item.product) * item.quantity,
     0,
   );
   const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);

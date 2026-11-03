@@ -1,7 +1,11 @@
 import { Link } from 'react-router-dom';
 import { useShop } from '../../context/ShopContext';
 import { Product } from '../../api/types';
-import { formatMemory, formatPrice } from '../../shared/utils/format';
+import {
+  formatMemory,
+  formatPrice,
+  getProductPrice,
+} from '../../shared/utils/format';
 import styles from './ProductCard.module.scss';
 
 interface ProductCardProps {
@@ -11,15 +15,17 @@ interface ProductCardProps {
 export const ProductCard = ({ product }: ProductCardProps) => {
   const { addToCart, isInCart, isFavorite, toggleFavorite } = useShop();
 
-  const discount = (product.fullPrice ?? 0) - (product.price ?? 0);
-  const isDiscount = discount > 0;
+  const unitPrice = getProductPrice(product);
+  const fullPriceValue =
+    product.fullPrice ?? product.priceRegular ?? product.priceDiscount;
+  const isDiscount = fullPriceValue !== undefined && fullPriceValue > unitPrice;
   const percent = isDiscount
-    ? Math.round((discount / (product.fullPrice ?? 1)) * 100)
+    ? Math.round(((fullPriceValue - unitPrice) / fullPriceValue) * 100)
     : 0;
   const isAdded = isInCart(product.id);
   const favorite = isFavorite(product.id);
-  const price = formatPrice(product.price);
-  const fullPrice = formatPrice(product.fullPrice);
+  const price = formatPrice(unitPrice);
+  const fullPrice = formatPrice(fullPriceValue);
 
   return (
     <article className={styles.card}>
@@ -39,6 +45,11 @@ export const ProductCard = ({ product }: ProductCardProps) => {
           {price && <span className={styles.price}>{price}</span>}
           {fullPrice && <s className={styles.fullPrice}>{fullPrice}</s>}
         </div>
+        {(product.screen || product.ram) && (
+          <div className={styles.specs}>
+            {[product.screen, product.ram].filter(Boolean).join(' · ')}
+          </div>
+        )}
         <div className={styles.actions}>
           <button
             type="button"

@@ -21,6 +21,8 @@
 .slide {
   min-width: 240px;
   max-width: 240px;
+  display: flex;
+  flex-direction: column;
 }
 
 .arrows {

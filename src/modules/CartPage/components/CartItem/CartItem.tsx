@@ -1,7 +1,11 @@
 import { Link } from 'react-router-dom';
 import { useShop } from '../../../../context/ShopContext';
 import { CartItem as CartItemType } from '../../../../api/types';
-import { formatMemory, formatPrice } from '../../../../shared/utils/format';
+import {
+  formatMemory,
+  formatPrice,
+  getProductPrice,
+} from '../../../../shared/utils/format';
 import styles from './CartItem.module.scss';
 
 interface CartItemProps {
@@ -12,10 +16,9 @@ export const CartItem = ({ item }: CartItemProps) => {
   const { updateQuantity, removeFromCart } = useShop();
   const { quantity, product } = item;
 
-  const unitPrice = formatPrice(product.price);
-  const fullPrice = formatPrice(product.fullPrice);
-  const lineTotal =
-    product.price !== undefined ? `$${(product.price ?? 0) * quantity}` : null;
+  const unitPrice = formatPrice(getProductPrice(product));
+  const fullPrice = formatPrice(product.fullPrice ?? product.priceRegular);
+  const lineTotal = formatPrice(getProductPrice(product) * quantity);
 
   return (
     <div className={styles.item}>
