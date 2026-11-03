@@ -1,3 +1,9 @@
 .favorites__items {
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+
+  .model__item {
+    min-width: 75%;
+  }
 }
