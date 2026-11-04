@@ -1,6 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { getProductById, getSuggestedProducts } from '../../api/productsApi';
+import {
+  getDetailedProducts,
+  getProductById,
+  getSuggestedProducts,
+} from '../../api/productsApi';
 import { Product } from '../../api/types';
 import { Breadcrumbs, BreadcrumbItem } from '../../shared/Breadcrumbs';
 import { Loader } from '../../shared/Loader';
@@ -57,6 +61,7 @@ export const ProductDetailsPage = () => {
   const [color, setColor] = useState<string | undefined>();
   const [capacity, setCapacity] = useState<string | undefined>();
   const [imageIndex, setImageIndex] = useState(0);
+  const [overrideImages, setOverrideImages] = useState<string[] | null>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -123,9 +128,11 @@ export const ProductDetailsPage = () => {
     color ?? product?.colorsAvailable?.[0] ?? product?.color;
   const selectedCapacity =
     capacity ?? product?.capacityAvailable?.[0] ?? product?.capacity;
-  const selectedImage = product?.images?.[imageIndex] ?? product?.images?.[0];
+  const selectedImage = overrideImages
+    ? (overrideImages[imageIndex] ?? overrideImages[0])
+    : (product?.images?.[imageIndex] ?? product?.images?.[0]);
 
-  const handleColorChange = (nextColor: string) => {
+  const handleColorChange = async (nextColor: string) => {
     setColor(nextColor);
 
     const normalized = nextColor.trim().toLowerCase().replace(/\s+/g, '');
@@ -137,7 +144,27 @@ export const ProductDetailsPage = () => {
     );
 
     if (matchIndex !== -1) {
+      setOverrideImages(null);
       setImageIndex(matchIndex);
+
+      return;
+    }
+
+    if (!product) {
+      return;
+    }
+
+    const allProducts = await getDetailedProducts();
+    const found = allProducts.find(
+      item =>
+        item.namespaceId === product.namespaceId &&
+        item.capacity === selectedCapacity &&
+        item.color?.trim().toLowerCase().replace(/\s+/g, '') === normalized,
+    );
+
+    if (found?.images?.length) {
+      setOverrideImages(found.images);
+      setImageIndex(0);
     }
   };
 
@@ -220,7 +247,7 @@ export const ProductDetailsPage = () => {
       </button>
       <div className={styles.details}>
         <ProductImagePicker
-          images={product.images}
+          images={overrideImages ?? product.images}
           selectedImage={selectedImage}
           onSelect={setImageIndex}
         />
