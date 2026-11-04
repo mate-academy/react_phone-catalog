@@ -7,12 +7,46 @@ import { Loader } from '../../shared/Loader';
 import { ProductImagePicker } from './components/ProductImagePicker';
 import { ProductOptions } from './components/ProductOptions';
 import { YouMayAlsoLike } from './components/YouMayAlsoLike';
-import { formatMemory, formatPrice } from '../../shared/utils/format';
+import { useShop } from '../../context/ShopContext';
+import {
+  getProductPrice,
+  formatMemory,
+  formatPrice,
+} from '../../shared/utils/format';
 import styles from './ProductDetailsPage.module.scss';
+
+const MEMORY_PRICE_MULTIPLIERS: Record<string, number> = {
+  '64GB': 1,
+  '128GB': 1.6,
+  '256GB': 2.4,
+  '512GB': 3.2,
+  '1TB': 4,
+  '2TB': 4.8,
+};
+
+const COLOR_PRICE_MULTIPLIERS: Record<string, number> = {
+  black: 1,
+  white: 1,
+  red: 1,
+  blue: 1,
+  green: 1,
+  yellow: 1,
+  purple: 1,
+  pink: 1,
+  silver: 1.2,
+  gold: 1.5,
+  graphite: 1.3,
+  midnight: 1.3,
+  midnightgreen: 1.3,
+  spacegray: 1.3,
+  spaceblack: 1.3,
+  sierrablue: 1.3,
+};
 
 export const ProductDetailsPage = () => {
   const { productId } = useParams<{ productId: string }>();
   const navigate = useNavigate();
+  const { addToCart, isInCart } = useShop();
 
   const [product, setProduct] = useState<Product | undefined>();
   const [isLoading, setIsLoading] = useState(true);
@@ -91,6 +125,21 @@ export const ProductDetailsPage = () => {
     capacity ?? product?.capacityAvailable?.[0] ?? product?.capacity;
   const selectedImage = product?.images?.[imageIndex] ?? product?.images?.[0];
 
+  const unitPrice = product ? getProductPrice(product) : 0;
+  const fullPriceValue =
+    product?.fullPrice ?? product?.priceRegular ?? product?.priceDiscount;
+  const fullPriceRatio =
+    unitPrice > 0 && fullPriceValue ? fullPriceValue / unitPrice : 1;
+  const memoryMultiplier =
+    MEMORY_PRICE_MULTIPLIERS[selectedCapacity ?? ''] ?? 1;
+  const colorMultiplier =
+    COLOR_PRICE_MULTIPLIERS[
+      (selectedColor ?? '').trim().toLowerCase().replace(/\s+/g, '')
+    ] ?? 1;
+  const displayPrice = unitPrice * memoryMultiplier * colorMultiplier;
+  const displayFullPrice = displayPrice * fullPriceRatio;
+  const isAdded = product ? isInCart(product.id) : false;
+
   if (isLoading) {
     return (
       <div className={styles.page}>
@@ -160,14 +209,27 @@ export const ProductDetailsPage = () => {
         <div className={styles.info}>
           <h1 className={styles.title}>{formatMemory(product.name)}</h1>
           <div className={styles.prices}>
-            {formatPrice(product.price) && (
-              <span className={styles.price}>{formatPrice(product.price)}</span>
+            {displayPrice > 0 && formatPrice(displayPrice) && (
+              <span className={styles.price}>{formatPrice(displayPrice)}</span>
             )}
-            {formatPrice(product.fullPrice) && (
+            {displayFullPrice > 0 && formatPrice(displayFullPrice) && (
               <s className={styles.fullPrice}>
-                {formatPrice(product.fullPrice)}
+                {formatPrice(displayFullPrice)}
               </s>
             )}
+          </div>
+          <div className={styles.addToCart}>
+            <button
+              type="button"
+              className={
+                isAdded
+                  ? `${styles.addToCartButton} ${styles.added}`
+                  : styles.addToCartButton
+              }
+              onClick={() => addToCart(product)}
+            >
+              {isAdded ? 'Added to cart' : 'Add to cart'}
+            </button>
           </div>
           {product.screen && <p className={styles.meta}>{product.screen}</p>}
           <ProductOptions

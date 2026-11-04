@@ -60,6 +60,31 @@
   font-size: 16px;
 }
 
+.addToCart {
+  margin-top: 8px;
+}
+
+.addToCartButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.addToCartButton:hover {
+  background: var(--accent-hover);
+}
+
+.added {
+  background: #2f9e44;
+}
+
 .meta {
   margin: 0;
   color: var(--muted);
