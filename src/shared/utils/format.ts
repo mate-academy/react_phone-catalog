@@ -5,7 +5,7 @@ export const formatPrice = (price: number | undefined): string | null => {
     return null;
   }
 
-  return `$${price}`;
+  return `$${Math.round(price)}`;
 };
 
 export const getProductPrice = (product: Product): number => {

@@ -125,6 +125,22 @@ export const ProductDetailsPage = () => {
     capacity ?? product?.capacityAvailable?.[0] ?? product?.capacity;
   const selectedImage = product?.images?.[imageIndex] ?? product?.images?.[0];
 
+  const handleColorChange = (nextColor: string) => {
+    setColor(nextColor);
+
+    const normalized = nextColor.trim().toLowerCase().replace(/\s+/g, '');
+    const images = product?.images ?? [];
+    const matchIndex = images.findIndex(
+      image =>
+        image.split('/').at(3)?.trim().toLowerCase().replace(/\s+/g, '') ===
+        normalized,
+    );
+
+    if (matchIndex !== -1) {
+      setImageIndex(matchIndex);
+    }
+  };
+
   const unitPrice = product ? getProductPrice(product) : 0;
   const fullPriceValue =
     product?.fullPrice ?? product?.priceRegular ?? product?.priceDiscount;
@@ -136,8 +152,10 @@ export const ProductDetailsPage = () => {
     COLOR_PRICE_MULTIPLIERS[
       (selectedColor ?? '').trim().toLowerCase().replace(/\s+/g, '')
     ] ?? 1;
-  const displayPrice = unitPrice * memoryMultiplier * colorMultiplier;
-  const displayFullPrice = displayPrice * fullPriceRatio;
+  const displayPrice = Math.round(
+    unitPrice * memoryMultiplier * colorMultiplier,
+  );
+  const displayFullPrice = Math.round(displayPrice * fullPriceRatio);
   const isAdded = product ? isInCart(product.id) : false;
 
   if (isLoading) {
@@ -236,7 +254,7 @@ export const ProductDetailsPage = () => {
             product={product}
             color={selectedColor}
             capacity={selectedCapacity}
-            onColorChange={setColor}
+            onColorChange={handleColorChange}
             onCapacityChange={setCapacity}
           />
           {product.description && product.description.length > 0 && (
