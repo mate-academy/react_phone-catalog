@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import Logo from '../../../assets/logo.svg?react';
-import ArrowUpIcon from '../../../assets/icons/arrow-up.svg?react';
+import Logo from '../../../../assets/logo.svg?react';
+import ArrowUpIcon from '../../../../assets/icons/arrow-up.svg?react';
 import styles from './Footer.module.scss';
 
 const GITHUB_PROFILE = 'https://github.com/lucashel-design';

@@ -1,4 +1,4 @@
-@use '../../../styles/utils' as *;
+@use '../../../../styles/utils' as *;
 
 .footer {
   box-shadow: 0 -1px 0 var(--color-elements);
@@ -13,7 +13,7 @@
 
   @include page-container;
 
-    @include on-tablet {
+  @include on-tablet {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 0;
@@ -38,7 +38,7 @@
   flex-direction: column;
   gap: 16px;
 
-    @include on-tablet {
+  @include on-tablet {
     flex-direction: row;
     gap: 0;
     justify-content: space-between;
@@ -76,7 +76,7 @@
     justify-self: end;
   }
 
-    &:hover .backToTopIcon {
+  &:hover .backToTopIcon {
     @include square-button-hover;
   }
 }

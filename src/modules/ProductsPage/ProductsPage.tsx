@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import { getProductsByCategory } from '../../api/products';
 import { Category } from '../../types/Category';
 import { Product } from '../../types/Product';
-import { Loader } from '../shared/Loader';
-import { ProductsList } from '../shared/ProductsList';
+import { Loader } from '../shared/components/Loader';
+import { ProductsList } from '../shared/components/ProductsList';
 import styles from './ProductsPage.module.scss';
 
 const TITLES: Record<Category, string> = {

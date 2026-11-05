@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom';
-import { Header } from './modules/shared/Header';
-import { Footer } from './modules/shared/Footer';
+import { Header } from './modules/shared/components/Header';
+import { Footer } from './modules/shared/components/Footer';
 import styles from './App.module.scss';
 
 export const App = () => (

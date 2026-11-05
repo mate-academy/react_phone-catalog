@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
-import { Product } from '../../../types/Product';
+import { Product } from '../../../../types/Product';
 import styles from './ProductCard.module.scss';
-import HeartIcon from '../../../assets/icons/heart.svg?react';
+import HeartIcon from '../../../../assets/icons/heart.svg?react';
 
 interface Props {
   product: Product;

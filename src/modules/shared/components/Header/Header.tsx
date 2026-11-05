@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import classNames from 'classnames';
 import { Link, NavLink } from 'react-router-dom';
-import { NAV_LINKS } from '../constants/navLinks';
+import { NAV_LINKS } from '../../constants/navLinks';
 import { BurgerMenu } from '../BurgerMenu';
-import Logo from '../../../assets/logo.svg?react';
-import HeartIcon from '../../../assets/icons/heart.svg?react';
-import CartIcon from '../../../assets/icons/cart.svg?react';
-import MenuIcon from '../../../assets/icons/menu.svg?react';
-import CloseIcon from '../../../assets/icons/close.svg?react';
+import Logo from '../../../../assets/logo.svg?react';
+import HeartIcon from '../../../../assets/icons/heart.svg?react';
+import CartIcon from '../../../../assets/icons/cart.svg?react';
+import MenuIcon from '../../../../assets/icons/menu.svg?react';
+import CloseIcon from '../../../../assets/icons/close.svg?react';
 import styles from './Header.module.scss';
 
 const getNavLinkClass = ({ isActive }: { isActive: boolean }) =>

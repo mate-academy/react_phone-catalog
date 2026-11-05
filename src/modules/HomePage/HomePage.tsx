@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { getProducts } from '../../api/products';
 import { Product } from '../../types/Product';
-import { ProductCard } from '../shared/ProductCard';
+import { ProductCard } from '../shared/components/ProductCard';
 
 // TEMPORARY TEST: remove before committing
 export const HomePage = () => {

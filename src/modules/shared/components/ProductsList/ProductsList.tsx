@@ -1,4 +1,4 @@
-import { Product } from '../../../types/Product';
+import { Product } from '../../../../types/Product';
 import { ProductCard } from '../ProductCard';
 import styles from './ProductsList.module.scss';
 

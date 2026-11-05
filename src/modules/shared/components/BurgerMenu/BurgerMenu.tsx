@@ -1,8 +1,8 @@
 import classNames from 'classnames';
 import { NavLink } from 'react-router-dom';
-import { NAV_LINKS } from '../constants/navLinks';
-import HeartIcon from '../../../assets/icons/heart.svg?react';
-import CartIcon from '../../../assets/icons/cart.svg?react';
+import { NAV_LINKS } from '../../constants/navLinks';
+import HeartIcon from '../../../../assets/icons/heart.svg?react';
+import CartIcon from '../../../../assets/icons/cart.svg?react';
 import styles from './BurgerMenu.module.scss';
 
 interface Props {
