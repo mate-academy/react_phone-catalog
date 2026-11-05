@@ -28,6 +28,15 @@
   }
 }
 
+.perPageDropdown {
+  flex: 1;
+
+  @include on-tablet {
+    flex: none;
+    width: 128px;
+  }
+}
+
 .message {
   display: flex;
   flex-direction: column;

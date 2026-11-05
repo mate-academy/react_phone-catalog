@@ -1,0 +1,46 @@
+@use '../../../../styles/utils' as *;
+
+.pagination {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.pages {
+  display: flex;
+  gap: 8px;
+}
+
+.arrow {
+  @include square-button;
+
+  &:disabled {
+    border-color: var(--color-elements);
+    background-color: transparent;
+    color: var(--color-icons);
+    cursor: default;
+  }
+
+  &:hover:not(:disabled) {
+    @include square-button-hover;
+  }
+}
+
+.page {
+  @include square-button;
+  @include button-text;
+
+  &:hover {
+    @include square-button-hover;
+  }
+}
+
+.active {
+  &,
+  &:hover {
+    border-color: var(--color-accent);
+    background-color: var(--color-accent);
+    color: var(--color-text-on-accent);
+  }
+}

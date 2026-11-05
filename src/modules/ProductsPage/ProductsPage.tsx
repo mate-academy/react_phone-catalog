@@ -3,9 +3,17 @@ import { useSearchParams } from 'react-router-dom';
 import { getProductsByCategory } from '../../api/products';
 import { Category } from '../../types/Category';
 import { Product } from '../../types/Product';
+import { Dropdown } from '../shared/components/Dropdown';
 import { Loader } from '../shared/components/Loader';
 import { ProductsList } from '../shared/components/ProductsList';
-import { Dropdown } from '../shared/components/Dropdown';
+import { getSearchWith } from '../shared/utils/getSearchWith';
+import { Pagination } from './components/Pagination';
+import {
+  DEFAULT_PER_PAGE,
+  PER_PAGE_OPTIONS,
+  isPerPage,
+  paginate,
+} from './utils/pagination';
 import {
   DEFAULT_SORT,
   SORT_OPTIONS,
@@ -33,6 +41,11 @@ export const ProductsPage = ({ category }: Props) => {
 
   const sortParam = searchParams.get('sort');
   const sort = isSortType(sortParam) ? sortParam : DEFAULT_SORT;
+
+  const perPageParam = searchParams.get('perPage');
+  const perPage = isPerPage(perPageParam) ? perPageParam : DEFAULT_PER_PAGE;
+
+  const pageParam = Math.floor(Number(searchParams.get('page'))) || 1;
 
   useEffect(() => {
     let isCurrent = true;
@@ -65,10 +78,23 @@ export const ProductsPage = ({ category }: Props) => {
   const reload = () => setReloadCount(count => count + 1);
 
   const handleSortChange = (value: string) => {
-    const params = new URLSearchParams(searchParams);
+    setSearchParams(getSearchWith(searchParams, { sort: value, page: null }));
+  };
 
-    params.set('sort', value);
-    setSearchParams(params);
+  const handlePerPageChange = (value: string) => {
+    setSearchParams(
+      getSearchWith(searchParams, {
+        perPage: value === DEFAULT_PER_PAGE ? null : value,
+        page: null,
+      }),
+    );
+  };
+
+  const handlePageChange = (page: number) => {
+    setSearchParams(
+      getSearchWith(searchParams, { page: page === 1 ? null : String(page) }),
+    );
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const renderContent = () => {
@@ -92,6 +118,12 @@ export const ProductsPage = ({ category }: Props) => {
       return <p className={styles.message}>There are no {category} yet</p>;
     }
 
+    const { pageItems, currentPage, totalPages } = paginate(
+      sortProducts(products, sort),
+      perPage,
+      pageParam,
+    );
+
     return (
       <>
         <p className={styles.count}>{products.length} models</p>
@@ -104,9 +136,23 @@ export const ProductsPage = ({ category }: Props) => {
             onChange={handleSortChange}
             className={styles.sortDropdown}
           />
+
+          <Dropdown
+            label="Items on page"
+            value={perPage}
+            options={PER_PAGE_OPTIONS}
+            onChange={handlePerPageChange}
+            className={styles.perPageDropdown}
+          />
         </div>
 
-        <ProductsList products={sortProducts(products, sort)} />
+        <ProductsList products={pageItems} />
+
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={handlePageChange}
+        />
       </>
     );
   };
