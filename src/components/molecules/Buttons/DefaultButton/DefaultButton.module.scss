@@ -1,0 +1,37 @@
+@use '@/app/styles/colors' as *;
+@use '@/app/styles/variables' as *;
+
+:where(.button) {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 32px;
+  height: 32px;
+
+  border: 1px solid $elements;
+  border-radius: 0;
+
+  background: none;
+
+  color: $primary;
+
+  transition:
+    border-color $transition-time,
+    background-color $transition-time,
+    box-shadow $transition-time,
+    color $transition-time;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+
+  &:not(:disabled) {
+    cursor: pointer;
+  }
+
+  &:not(:disabled):not([data-selected='true']):hover {
+    border-color: $primary;
+  }
+}

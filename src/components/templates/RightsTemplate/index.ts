@@ -1,0 +1,1 @@
+export { RightsTemplate } from './RightsTemplate';

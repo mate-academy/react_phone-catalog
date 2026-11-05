@@ -1,0 +1,40 @@
+@use '@/app/styles/colors' as *;
+
+.switcher {
+  display: flex;
+  align-items: center;
+  width: 54px;
+  height: 30px;
+  padding: 2px;
+  margin: 0 12px;
+  border: 1px solid $elements;
+  border-radius: 999px;
+  background-color: $hover;
+  cursor: pointer;
+  flex-shrink: 0;
+  box-sizing: border-box;
+
+  &:focus-visible {
+    outline: 2px solid $primary;
+    outline-offset: 3px;
+  }
+}
+
+.thumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: $primary;
+  color: $white;
+  font-size: 9px;
+  font-weight: 700;
+  transition: transform 0.25s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+.ukrainian {
+  transform: translateX(25px);
+}

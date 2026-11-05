@@ -1,0 +1,26 @@
+@use '@/app/styles/colors' as *;
+
+.button:disabled {
+  border-color: $elements;
+}
+
+:global(html[data-theme='dark']) .button {
+  border-color: #626772;
+
+  > span {
+    filter: brightness(0) invert(1);
+    opacity: 0.8;
+  }
+
+  &:not(:disabled):hover > span {
+    opacity: 1;
+  }
+
+  &:disabled {
+    border-color: var(--color-elements);
+
+    > span {
+      opacity: 0.45;
+    }
+  }
+}

@@ -1,0 +1,74 @@
+@use '@/app/styles/mixins' as *;
+@use '@/app/styles/colors' as *;
+@use '@/app/styles/variables' as *;
+
+.container {
+  grid-column: 1 / -1;
+  width: 100%;
+  min-width: 0;
+
+  padding-top: 24px;
+
+  padding-bottom: 56px;
+  @include on('tablet') {
+    padding-bottom: 64px;
+  }
+
+  @include on('desktop') {
+    padding-bottom: 80px;
+  }
+}
+
+.cart {
+  margin-bottom: 16px;
+}
+
+.historyButton {
+  position: relative;
+  color: $primary;
+  text-decoration: none;
+  font-weight: 600;
+  transition: border-color 0.3s;
+  height: min-content;
+
+  &::after {
+    content: '';
+
+    position: absolute;
+    bottom: -2px;
+    right: 0;
+    left: 0;
+    height: 1px;
+
+    background-color: $primary;
+    transform: scaleX(0);
+
+    transition: transform $transition-time;
+  }
+
+  &:hover {
+    &::after {
+      transform: scaleX(1);
+    }
+  }
+}
+
+.backButton {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 24px;
+  margin-bottom: 24px;
+
+  @include on('tablet') {
+    margin-top: 40px;
+    margin-bottom: 16px;
+  }
+}
+
+.cartHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}

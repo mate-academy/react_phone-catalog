@@ -1,0 +1,1 @@
+export { NotFoundTemplate } from './NotFoundTemplate';

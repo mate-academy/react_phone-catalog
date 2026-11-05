@@ -1,0 +1,21 @@
+@use '@/app/styles/mixins' as *;
+@use '@/app/styles/colors' as *;
+
+.section {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+}
+
+.title {
+  color: $primary;
+  margin-bottom: 16px;
+}
+
+.line {
+  width: 100%;
+  background-color: $elements;
+  height: 1px;
+  margin-bottom: 32px;
+}

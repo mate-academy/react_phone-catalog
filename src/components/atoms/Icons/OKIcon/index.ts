@@ -1,0 +1,1 @@
+export { OKIcon } from './OKIcon';

@@ -1,0 +1,59 @@
+@use '@/app/styles/colors' as *;
+@use '@/app/styles/variables' as *;
+
+.container {
+  grid-column: span 1;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  width: 100%;
+  justify-content: space-between;
+  opacity: 0.5;
+  transition: opacity $transition-time;
+
+  cursor: default;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  .divider {
+    flex: 1;
+    align-self: center;
+
+    min-width: 8px;
+    height: 2px;
+
+    background: repeating-linear-gradient(
+      to right,
+      $elements 0,
+      $elements 2px,
+      transparent 2px,
+      transparent 8px
+    );
+  }
+
+  .icon {
+    max-width: 16px;
+  }
+
+  .text {
+    color: $primary;
+    text-wrap: nowrap;
+  }
+}
+
+:global(html[data-theme='dark']) .container {
+  opacity: 0.85;
+
+  .icon {
+    filter: brightness(0) invert(1);
+  }
+
+  &:hover {
+    opacity: 1;
+  }
+}

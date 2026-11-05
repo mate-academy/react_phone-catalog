@@ -1,0 +1,5 @@
+:global(html[data-theme='dark']) .backButton {
+  > span:first-child {
+    filter: brightness(0) invert(1);
+  }
+}

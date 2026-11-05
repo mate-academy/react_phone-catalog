@@ -1,0 +1,35 @@
+@use '@/app/styles/_variables' as *;
+
+@mixin on($screen-type) {
+  @each $width, $type in $screen-sizes {
+    @if $type == $screen-type {
+      @media (min-width: #{$width}px) {
+        @content;
+      }
+    }
+  }
+}
+
+@mixin grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+
+  padding-inline: 16px;
+
+  @include on('tablet') {
+    grid-template-columns: repeat(12, 1fr);
+    gap: 16px;
+
+    padding-inline: 24px;
+  }
+
+  @include on('desktop') {
+    grid-template-columns: repeat(24, 32px);
+
+    justify-content: center;
+    gap: 16px;
+
+    padding-inline: 0;
+  }
+}

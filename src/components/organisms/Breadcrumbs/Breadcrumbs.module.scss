@@ -1,0 +1,26 @@
+@use '@/app/styles/colors' as *;
+@use '@/app/styles/variables' as *;
+@use '@/app/styles/mixins' as *;
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.itemLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  color: $primary;
+}
+
+.active {
+  color: $secondary;
+}
+
+:global(html[data-theme='dark']) .homeIcon {
+  filter: brightness(0) invert(1);
+}

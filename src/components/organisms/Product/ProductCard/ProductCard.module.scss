@@ -1,0 +1,225 @@
+@use '@/app/styles/mixins' as *;
+@use '@/app/styles/colors' as *;
+@use '@/app/styles/variables' as *;
+
+@keyframes product-card-enter {
+  from {
+    opacity: 0;
+    transform: translateX(-32px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.card {
+  position: relative;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+
+  padding: 32px;
+
+  border: 1px solid $elements;
+  border-radius: 15px;
+
+  background: conic-gradient(
+    from 90deg,
+    oklch(100% 0 89.88) 0% 7.692%,
+    oklch(100% 0 89.88) 7.692% 15.385%,
+    oklch(100% 0 89.88) 15.385% 23.077%,
+    oklch(100% 0 89.88) 23.077% 30.769%,
+    oklch(100% 0 89.88) 30.769% 38.462%,
+    oklch(100% 0 89.88) 38.462% 46.154%,
+    oklch(100% 0 89.88) 46.154% 53.846%,
+    oklch(100% 0 89.88) 53.846% 61.538%,
+    oklch(100% 0 89.88) 61.538% 69.231%,
+    oklch(100% 0 89.88) 69.231% 76.923%,
+    oklch(100% 0 89.88) 76.923% 84.615%,
+    oklch(100% 0 89.88) 84.615% 92.308%,
+    oklch(100% 0 89.88) 92.308% 100%
+  );
+
+  box-shadow:
+    rgba(50, 50, 93, 0.1) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.05) 0px 3px 7px -3px;
+  transition: box-shadow 0.2s ease;
+
+  &.loaded {
+    animation: product-card-enter 700ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+
+    @media (prefers-reduced-motion: reduce) {
+      animation: none;
+    }
+  }
+
+  &:hover {
+    box-shadow:
+      rgba(50, 50, 93, 0.2) 0px 12px 24px -4px,
+      rgba(0, 0, 0, 0.12) 0px 6px 14px -4px;
+  }
+
+  .ratingBadge {
+    position: absolute;
+    z-index: 2;
+
+    top: 12px;
+    right: 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+
+    max-width: calc(100% - 24px);
+    min-height: 26px;
+    padding: 4px 8px;
+
+    border: 1px solid $elements;
+    border-radius: 8px;
+
+    background: rgba(255, 255, 255, 0.95);
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+
+    pointer-events: none;
+
+    @include on('tablet') {
+      top: 16px;
+      right: 16px;
+    }
+  }
+
+  .ratingStars {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+
+    flex-shrink: 0;
+
+    svg {
+      display: block;
+      width: 12px;
+      height: 12px;
+    }
+
+    @include on('tablet') {
+      svg {
+        width: 14px;
+        height: 14px;
+      }
+    }
+  }
+
+  .ratingValue {
+    color: $primary;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .reviewsCount {
+    color: $secondary;
+    font-size: 10px;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .image {
+    display: block;
+
+    width: 100%;
+    height: 129px;
+
+    object-fit: contain;
+
+    @include on('tablet') {
+      height: 196px;
+    }
+  }
+
+  .title {
+    margin-top: 24px;
+    margin-bottom: 8px;
+  }
+
+  .prices {
+    display: flex;
+    align-items: baseline;
+    gap: 4px 8px;
+    margin-top: auto;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+
+    @include on('tablet') {
+      flex-wrap: nowrap;
+    }
+  }
+
+  .oldPrice {
+    color: $secondary;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.4;
+    text-decoration: line-through;
+  }
+
+  .specs {
+    padding: 8px 0;
+    margin-bottom: 10px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .favourite {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+  }
+}
+
+:global(html[data-theme='dark']) .card {
+  background: var(--color-surface);
+
+  border-color: var(--color-elements);
+
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.24);
+
+  &:hover {
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.38);
+  }
+
+  .ratingBadge {
+    background: var(--color-background);
+    border-color: var(--color-elements);
+  }
+}
+
+:global(html[data-theme='dark']) .favouriteIcon {
+  filter: brightness(0) invert(1);
+}
+
+.card {
+  :global(.react-loading-skeleton) {
+    --base-color: #{$elements};
+    --highlight-color: #{$hover};
+  }
+}

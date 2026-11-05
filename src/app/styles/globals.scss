@@ -1,0 +1,54 @@
+@use 'reset' as *;
+@use 'colors' as *;
+@use 'fonts' as *;
+
+:root {
+  --color-primary: #313237;
+  --color-secondary: #89939a;
+  --color-icons: #b4bdc3;
+  --color-elements: #e2e6e9;
+  --color-hover: #fafbfc;
+  --color-background: #fafbfc;
+  --color-surface: #ffffff;
+
+  --page-background: radial-gradient(
+    circle at 50% 50%,
+    #ffffff 0%,
+    #f1f1f1 100%
+  );
+}
+
+body[data-scroll-locked][data-scroll-locked] {
+  overflow-y: scroll !important;
+  margin-right: 0 !important;
+}
+
+:root[data-theme='dark'] {
+  --color-primary: #f1f2f3;
+  --color-secondary: #a0a6b0;
+  --color-icons: #777e8a;
+  --color-elements: #3b3e46;
+  --color-hover: #303238;
+  --color-background: #202127;
+  --color-surface: #272930;
+
+  --page-background: radial-gradient(
+    circle at 50% 50%,
+    #2b2d33 0%,
+    #191a1f 100%
+  );
+}
+
+body {
+  font-family: 'Mont', sans-serif;
+  color: var(--color-primary);
+  background: var(--page-background);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 500ms;
+    animation-timing-function: ease-in-out;
+  }
+}

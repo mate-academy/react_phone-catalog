@@ -1,0 +1,37 @@
+@use '@/app/styles/colors' as *;
+
+.currencySwitch {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.currencyButton {
+  padding: 7px 14px;
+
+  border: 1px solid $elements;
+  border-radius: 30px;
+
+  background-color: transparent;
+  color: $secondary;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    border-color: $primary;
+    color: $primary;
+  }
+}
+
+.activeCurrency {
+  background-color: $primary;
+  color: $white;
+
+  &:hover {
+    color: $white;
+  }
+}

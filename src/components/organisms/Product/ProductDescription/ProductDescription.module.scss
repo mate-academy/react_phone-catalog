@@ -1,0 +1,28 @@
+@use '@/app/styles/colors' as *;
+
+.description {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  .title {
+    color: $primary;
+  }
+
+  .section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .text {
+    color: #89939a;
+    white-space: pre-line;
+  }
+}
+
+:global(html[data-theme='dark']) .description {
+  .text {
+    color: #aeb5c2;
+  }
+}

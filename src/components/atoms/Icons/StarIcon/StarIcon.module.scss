@@ -1,0 +1,7 @@
+:global(html[data-theme='dark']) .emptyStar {
+  background-image: none;
+  background-color: #a0a6b0;
+
+  mask: var(--icon) center / contain no-repeat;
+  -webkit-mask: var(--icon) center / contain no-repeat;
+}

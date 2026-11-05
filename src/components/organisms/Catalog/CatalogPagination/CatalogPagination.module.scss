@@ -1,0 +1,62 @@
+@use '@/app/styles/colors' as *;
+@use '@/app/styles/variables' as *;
+@use '@/app/styles/mixins' as *;
+
+.container {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+
+  .page {
+    display: flex;
+    flex: 0 0 auto;
+    justify-content: center;
+    align-items: center;
+    min-width: 32px;
+    height: 32px;
+    padding: 0 8px;
+    border: 1px solid $elements;
+    background-color: $background;
+    color: $primary;
+    font-size: 14px;
+    cursor: pointer;
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease,
+      border-color 0.2s ease;
+
+    &:hover {
+      border-color: $primary;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+
+  .active {
+    background-color: $primary;
+    color: $white;
+    border-color: $primary;
+    cursor: default;
+  }
+
+  @include on(mobile) {
+    gap: 4px;
+    margin-top: 24px;
+
+    .page {
+      min-width: 28px;
+      height: 28px;
+      padding: 0 6px;
+      font-size: 12px;
+    }
+  }
+}

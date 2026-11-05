@@ -1,0 +1,13 @@
+export { ArrowIcon } from './ArrowIcon';
+export { CartIcon } from './CartIcon';
+export { CloseIcon } from './CloseIcon';
+export { FavouritesIcon } from './FavouritesIcon';
+export { HomeIcon } from './HomeIcon';
+export { Icon } from './Icon';
+export { IconWithCounter } from './IconWithCounter';
+export { MenuIcon } from './MenuIcon';
+export { MinusIcon } from './MinusIcon';
+export { PlusIcon } from './PlusIcon';
+export { OKIcon } from './OKIcon';
+export { SearchIcon } from './SearchIcon';
+export { StarIcon } from './StarIcon';

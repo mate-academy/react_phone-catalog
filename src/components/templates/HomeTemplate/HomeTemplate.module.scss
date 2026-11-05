@@ -1,0 +1,46 @@
+@use '@/app/styles/mixins' as *;
+
+.container {
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-column: 1 / -1;
+  height: min-content;
+
+  padding-top: 24px;
+  padding-bottom: 64px;
+
+  @include on('tablet') {
+    padding-top: 32px;
+  }
+
+  @include on('desktop') {
+    padding-top: 56px;
+    padding-bottom: 80px;
+  }
+}
+
+.title {
+  grid-column: 1 / -1;
+
+  margin-bottom: 24px;
+
+  @include on('tablet') {
+    margin-bottom: 32px;
+  }
+
+  @include on('desktop') {
+    margin-bottom: 56px;
+  }
+}
+
+.content {
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-column: 1 / -1;
+
+  row-gap: 32px;
+
+  @include on('tablet') {
+    row-gap: 48px;
+  }
+}

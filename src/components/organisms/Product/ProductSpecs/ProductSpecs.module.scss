@@ -1,0 +1,44 @@
+@use '@/app/styles/colors' as *;
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.row {
+  display: flex;
+  align-items: baseline;
+  width: 100%;
+  gap: 8px;
+  min-width: 0;
+}
+
+.specName {
+  color: $secondary;
+  flex-shrink: 0;
+}
+
+.specText {
+  flex-shrink: 0;
+  color: $primary;
+  text-align: right;
+}
+
+.specDivider {
+  flex: 1;
+  align-self: baseline;
+
+  min-width: 8px;
+  height: 2px;
+
+  background: repeating-linear-gradient(
+    to right,
+    $elements 0,
+    $elements 2px,
+    transparent 2px,
+    transparent 8px
+  );
+
+  opacity: 0.6;
+}

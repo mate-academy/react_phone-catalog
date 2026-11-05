@@ -1,0 +1,232 @@
+@use '@/app/styles/mixins' as *;
+@use '@/app/styles/colors' as *;
+@use '@/app/styles/variables' as *;
+
+.slider {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: stretch;
+  gap: 16px;
+
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+
+  @include on('tablet') {
+    display: grid;
+    grid-template-columns: subgrid;
+    align-items: start;
+  }
+}
+
+.thumbnails {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @include on('tablet') {
+    grid-column: span 1;
+
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+
+    gap: 8px;
+
+    width: 100%;
+    overflow: visible;
+  }
+
+  @include on('desktop') {
+    grid-column: span 2;
+    gap: 16px;
+  }
+}
+
+.thumbnail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+
+  flex: 0 0 48px;
+  width: 48px;
+  height: 48px;
+
+  padding: 4px;
+
+  border: 1px solid $secondary;
+  background: $white;
+
+  cursor: pointer;
+  overflow: hidden;
+  opacity: 0.5;
+
+  transition:
+    border-color $transition-time,
+    opacity $transition-time;
+
+  @include on('tablet') {
+    flex: 0 0 auto;
+
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+
+    min-width: 0;
+    padding: 4px;
+  }
+
+  @include on('desktop') {
+    padding: 8px;
+  }
+
+  &:hover {
+    border-color: $primary;
+  }
+
+  img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+    min-height: 0;
+
+    object-fit: contain;
+  }
+}
+
+.activeThumbnail {
+  border-color: $primary;
+  opacity: 1;
+}
+
+.mainSlider {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+
+  overflow: hidden;
+
+  @include on('tablet') {
+    grid-column: span 6;
+  }
+
+  @include on('desktop') {
+    grid-column: span 10;
+  }
+
+  :global(.swiper-slide) {
+    min-width: 0;
+    overflow: hidden;
+  }
+}
+
+.mainImage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 288px;
+  min-width: 0;
+  overflow: hidden;
+
+  > img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+  }
+
+  @include on('tablet') {
+    height: 360px;
+  }
+
+  @include on('desktop') {
+    height: 464px;
+  }
+}
+
+.viewer360 {
+  position: relative;
+
+  width: 100%;
+  height: 288px;
+
+  overflow: hidden;
+
+  > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100% !important;
+    height: 100% !important;
+    min-width: 0;
+    max-width: 100%;
+
+    overflow: hidden;
+  }
+
+  img {
+    display: block;
+
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100%;
+    max-height: 100%;
+
+    object-fit: contain !important;
+    object-position: center;
+  }
+
+  @include on('tablet') {
+    height: 360px;
+  }
+
+  @include on('desktop') {
+    height: 464px;
+  }
+}
+
+.thumbnail360 {
+  .previewIcon {
+    display: block;
+
+    width: 50%;
+    height: 50%;
+
+    background-color: $primary;
+
+    mask-image: url('@/shared/assets/icons/360.svg');
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+
+    -webkit-mask-image: url('@/shared/assets/icons/360.svg');
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    -webkit-mask-size: contain;
+  }
+}

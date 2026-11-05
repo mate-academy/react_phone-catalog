@@ -1,0 +1,503 @@
+@use '@/app/styles/colors' as *;
+@use '@/app/styles/mixins' as *;
+
+.container {
+  grid-column: 1 / -1;
+
+  display: grid;
+  grid-template-columns: subgrid;
+  align-content: start;
+
+  height: min-content;
+
+  padding-top: 24px;
+  padding-bottom: 56px;
+
+  @include on('tablet') {
+    padding-bottom: 64px;
+  }
+
+  @include on('desktop') {
+    padding-bottom: 80px;
+  }
+}
+
+.title {
+  grid-column: 1 / -1;
+
+  margin-bottom: 8px;
+
+  color: $primary;
+  font-weight: 700;
+}
+
+.backButton {
+  grid-column: 1 / -1;
+
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  width: min-content;
+  margin-bottom: 16px;
+}
+
+.formCard {
+  grid-column: 1 / -1;
+
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  width: 100%;
+  min-width: 0;
+  padding: 16px;
+
+  background-color: $white;
+  border: 1px solid $elements;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+
+  @include on('tablet') {
+    padding: 24px;
+  }
+
+  @include on('desktop') {
+    padding: 32px;
+  }
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  min-width: 0;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
+
+  @include on('tablet') {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.subtitle {
+  margin-bottom: 8px;
+
+  color: $primary;
+  font-weight: 600;
+}
+
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  min-width: 0;
+
+  label {
+    font-size: 14px;
+    color: $secondary;
+    font-weight: 500;
+  }
+
+  .phoneInput {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    min-width: 0;
+
+    span {
+      white-space: nowrap;
+    }
+
+    input {
+      flex: 1;
+      min-width: 0;
+    }
+  }
+
+  input {
+    box-sizing: border-box;
+
+    width: 100%;
+    min-width: 0;
+    padding: 12px 16px;
+
+    font-size: 15px;
+    color: $primary;
+
+    background-color: $white;
+    border: 1px solid $elements;
+    border-radius: 8px;
+    outline: none;
+
+    transition: all 0.2s ease;
+
+    &:focus {
+      border-color: $primary;
+      box-shadow: 0 0 0 3px rgba(49, 50, 55, 0.1);
+    }
+
+    &::placeholder {
+      color: $icons;
+    }
+  }
+}
+
+.relativeContainer {
+  position: relative;
+}
+
+.dropdownList {
+  position: absolute;
+  z-index: 100;
+
+  top: 100%;
+  left: 0;
+  right: 0;
+
+  max-height: 200px;
+  overflow-y: auto;
+
+  margin: 4px 0 0;
+  padding: 0;
+
+  list-style: none;
+
+  background-color: $white;
+  border: 1px solid $elements;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.dropdownItem {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: 0;
+  background: $white;
+  padding: 10px 16px;
+
+  color: $primary;
+  font-size: 14px;
+
+  cursor: pointer;
+
+  &:hover {
+    background-color: $hover;
+  }
+}
+
+.selectInput {
+  box-sizing: border-box;
+
+  width: 100%;
+  min-width: 0;
+  padding: 12px 16px;
+
+  font-size: 15px;
+  color: $primary;
+
+  background-color: $white;
+  border: 1px solid $elements;
+  border-radius: 8px;
+  outline: none;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+
+  &:focus {
+    border-color: $primary;
+    box-shadow: 0 0 0 3px rgba(49, 50, 55, 0.1);
+  }
+}
+
+.errorInput {
+  border-color: $red !important;
+  background-color: #fef2f2;
+
+  &:focus {
+    box-shadow: 0 0 0 3px rgba(235, 87, 87, 0.15) !important;
+  }
+}
+
+.errorText {
+  margin-top: 2px;
+
+  color: $red;
+  font-size: 12px;
+}
+
+.submitError {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+
+  padding: 14px 16px;
+
+  color: $red;
+  font-size: 14px;
+  line-height: 1.5;
+
+  background-color: rgba(235, 87, 87, 0.08);
+  border: 1px solid rgba(235, 87, 87, 0.3);
+  border-radius: 10px;
+
+  animation: fadeIn 0.2s ease;
+
+  p {
+    flex: 1;
+    margin: 0;
+  }
+}
+
+.submitErrorIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  width: 20px;
+  height: 20px;
+
+  color: $red;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+
+  border: 1.5px solid currentColor;
+  border-radius: 50%;
+}
+
+.submitButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+
+  width: 100%;
+  margin-top: 12px;
+  padding: 12px 24px;
+
+  color: $white;
+  font-weight: 600;
+
+  background-color: $green;
+  border: none;
+  border-radius: 8px;
+
+  cursor: pointer;
+
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.9;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.modalOverlay {
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(4px);
+
+  animation: fadeIn 0.2s ease;
+}
+
+.successModal {
+  position: relative;
+
+  box-sizing: border-box;
+
+  width: 100%;
+  max-width: 420px;
+  padding: 32px 20px 24px;
+
+  color: $primary;
+  text-align: center;
+
+  background: $white;
+  border: 1px solid $elements;
+  border-radius: 20px;
+
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+
+  animation: modalAppear 0.25s ease;
+
+  @include on('tablet') {
+    padding: 36px 28px;
+    border-radius: 24px;
+  }
+}
+
+.closeButton {
+  position: absolute;
+
+  top: 14px;
+  right: 14px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+
+  color: $secondary;
+  font-size: 18px;
+
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+
+  cursor: pointer;
+
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background: $elements;
+  }
+}
+
+.successIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 20px;
+
+  color: #218848;
+  font-size: 36px;
+  font-weight: 700;
+
+  background: #e5f8eb;
+  border-radius: 50%;
+}
+
+.successTitle {
+  margin: 0 0 12px;
+
+  color: $primary;
+  font-size: 20px;
+  line-height: 1.3;
+
+  @include on('tablet') {
+    font-size: 22px;
+  }
+}
+
+.successText {
+  margin: 0 0 24px;
+
+  color: $secondary;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.ttnBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  margin-bottom: 24px;
+  padding: 16px;
+
+  background-color: $hover;
+  border: 1px solid $elements;
+  border-radius: 12px;
+}
+
+.ttnLabel {
+  color: $secondary;
+  font-size: 13px;
+}
+
+.ttnNumber {
+  overflow-wrap: anywhere;
+
+  color: $primary;
+  font-size: 18px;
+  letter-spacing: 0.5px;
+
+  @include on('tablet') {
+    font-size: 20px;
+  }
+}
+
+.successButton {
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 20px;
+
+  color: $white;
+  font-size: 14px;
+  font-weight: 600;
+
+  background: $primary;
+  border: none;
+  border-radius: 48px;
+
+  cursor: pointer;
+
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $primary;
+    outline-offset: 3px;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalAppear {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+:global(html[data-theme='dark']) .submitButton {
+  background-color: #27ae60;
+  color: #fff;
+}

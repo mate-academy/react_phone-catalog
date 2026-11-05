@@ -1,0 +1,8 @@
+staticSites:
+  - name: group-project-2026
+    buildCommand: npm ci && npm run build
+    publishPath: ./dist
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
