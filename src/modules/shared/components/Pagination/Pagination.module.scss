@@ -5,16 +5,32 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  margin: 40px 0;
+  margin: 24px 0 64px;
+
+  @include on-tablet {
+    margin: 40px 0 64px;
+
+    @include on-desktop {
+      margin: 40px 0 80px;
+    }
+  }
 
   &List {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
     gap: 8px;
     margin: 0;
     padding: 0;
     list-style: none;
+  }
+
+  &Dots {
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    color: var(--color-text-secondary);
   }
 
   &Button {
