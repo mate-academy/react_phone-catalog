@@ -1,0 +1,7 @@
+@use '@/app/styles/colors' as *;
+
+.button[data-selected='true'] {
+  background: $primary;
+  color: $white;
+  border: none;
+}

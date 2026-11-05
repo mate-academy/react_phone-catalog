@@ -1,0 +1,40 @@
+@use '@/app/styles/colors' as *;
+
+.counter {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+
+  &::before {
+    content: var(--quantity);
+
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-sizing: border-box;
+    width: 14px;
+    height: 14px;
+
+    border: 1px solid $white;
+    border-radius: 50%;
+
+    color: $white;
+    font-size: 8px;
+    font-weight: 600;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+
+    background-color: #eb5757;
+  }
+}

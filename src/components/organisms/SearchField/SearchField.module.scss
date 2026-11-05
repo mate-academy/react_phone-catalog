@@ -1,0 +1,354 @@
+@use '@/app/styles/colors' as *;
+@use '@/app/styles/mixins' as *;
+
+@keyframes search-results-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.container {
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  min-height: 44px;
+  padding-inline: 14px;
+
+  background-color: $hover;
+  border: 1px solid $elements;
+  border-radius: 999px;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+
+  &:focus-within {
+    border-color: $primary;
+    box-shadow: 0 0 0 3px rgba(49, 50, 55, 0.06);
+  }
+}
+
+.icon {
+  flex: 0 0 18px;
+
+  width: 18px;
+  height: 18px;
+
+  color: $secondary;
+}
+
+.input {
+  box-sizing: border-box;
+
+  flex: 1 1 auto;
+
+  width: 100%;
+  min-width: 0;
+  min-height: 42px;
+  padding: 0;
+
+  color: $primary;
+  font-size: 14px;
+  line-height: 20px;
+
+  background: transparent;
+  border: 0;
+  outline: 0;
+
+  &::placeholder {
+    color: $secondary;
+  }
+
+  &::-webkit-search-cancel-button {
+    display: none;
+  }
+}
+
+.clearButton {
+  display: flex;
+  flex: 0 0 24px;
+  align-items: center;
+  justify-content: center;
+
+  width: 24px;
+  height: 24px;
+  padding: 0;
+
+  color: $secondary;
+
+  background: transparent;
+  border: 0;
+  border-radius: 50%;
+
+  cursor: pointer;
+
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    transform 0.2s ease;
+
+  &:hover {
+    color: $primary;
+    background-color: $elements;
+  }
+
+  &:active {
+    transform: scale(0.9);
+  }
+}
+
+.clearButtonHidden {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.clearIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.results {
+  z-index: 1000;
+
+  max-height: min(70vh, 480px);
+
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+
+  padding: 6px;
+
+  background-color: $white;
+  border: 1px solid $elements;
+  border-radius: 16px;
+
+  box-shadow:
+    0 4px 12px rgba(49, 50, 55, 0.04),
+    0 16px 40px rgba(49, 50, 55, 0.12);
+
+  scrollbar-width: thin;
+  scrollbar-color: $icons transparent;
+
+  transform-origin: top center;
+
+  animation: search-results-enter 220ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $icons;
+    border: 2px solid $white;
+    border-radius: 999px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: $secondary;
+  }
+}
+
+.result {
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  width: 100%;
+  min-width: 0;
+  min-height: 88px;
+
+  padding: 12px;
+
+  color: $primary;
+  text-decoration: none;
+
+  border-radius: 10px;
+  outline: none;
+
+  transition:
+    background-color 180ms ease,
+    box-shadow 180ms ease;
+
+  &:hover,
+  &:focus-visible {
+    background-color: $hover;
+  }
+
+  &:focus-visible {
+    box-shadow: inset 0 0 0 1px $primary;
+  }
+
+  &:active {
+    background-color: $elements;
+  }
+}
+
+.result + .result {
+  margin-top: 2px;
+}
+
+.productImage {
+  box-sizing: border-box;
+
+  flex: 0 0 64px;
+
+  display: block;
+
+  width: 64px;
+  height: 64px;
+  padding: 6px;
+
+  object-fit: contain;
+
+  background-color: $hover;
+  border: 1px solid $elements;
+  border-radius: 10px;
+}
+
+.productInfo {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+
+  min-width: 0;
+}
+
+.productName,
+.productDetails,
+.productPrice {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.productName {
+  color: $primary;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.productDetails {
+  color: $secondary;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.productPrice {
+  margin-top: 2px;
+
+  color: $primary;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 20px;
+
+  font-variant-numeric: tabular-nums;
+}
+
+.message {
+  margin: 0;
+  padding: 24px 16px;
+
+  color: $secondary;
+  font-size: 14px;
+  line-height: 22px;
+  text-align: center;
+}
+
+@include on('tablet') {
+  .container {
+    gap: 12px;
+
+    min-height: 48px;
+    padding-inline: 16px;
+  }
+
+  .icon {
+    flex-basis: 20px;
+
+    width: 20px;
+    height: 20px;
+  }
+
+  .input {
+    min-height: 46px;
+
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .results {
+    padding: 8px;
+    border-radius: 18px;
+  }
+
+  .result {
+    gap: 16px;
+
+    min-height: 100px;
+    padding: 14px;
+    border-radius: 12px;
+  }
+
+  .productImage {
+    flex-basis: 72px;
+
+    width: 72px;
+    height: 72px;
+    padding: 8px;
+  }
+
+  .productName {
+    font-size: 15px;
+    line-height: 22px;
+  }
+
+  .productDetails {
+    font-size: 13px;
+    line-height: 20px;
+  }
+
+  .productPrice {
+    font-size: 16px;
+    line-height: 22px;
+  }
+}
+
+@include on('desktop') {
+  .container {
+    padding-inline: 18px;
+  }
+
+  .results {
+    max-height: min(70vh, 520px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .results {
+    animation: none;
+  }
+
+  .container,
+  .clearButton,
+  .result {
+    transition: none;
+  }
+}

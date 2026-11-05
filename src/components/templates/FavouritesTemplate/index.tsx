@@ -1,0 +1,1 @@
+export { FavouritesTemplate } from './FavouritesTemplate';

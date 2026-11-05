@@ -1,0 +1,21 @@
+@use '@/app/styles/colors' as *;
+
+.button {
+  max-width: 100%;
+
+  border: none;
+
+  background: $primary;
+  color: $white;
+
+  &:not(:disabled):not([data-selected='true']):hover {
+    box-shadow: 0px 3px 13px 0px rgba(23, 32, 49, 0.4);
+  }
+
+  &[data-selected='true'] {
+    border: 1px solid $elements;
+
+    background: $white;
+    color: $green;
+  }
+}

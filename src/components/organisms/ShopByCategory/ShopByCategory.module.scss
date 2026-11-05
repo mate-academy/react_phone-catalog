@@ -1,0 +1,41 @@
+@use '@/app/styles/colors' as *;
+@use '@/app/styles/mixins' as *;
+@use '@/app/styles/reset' as *;
+
+.container {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: subgrid;
+}
+
+.info {
+  grid-column: 1 / -1;
+  margin-bottom: 24px;
+  @include on('tablet') {
+    margin-bottom: 32px;
+  }
+}
+
+.subtitle {
+  color: $secondary;
+}
+
+.grid {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: subgrid;
+  row-gap: 16px;
+}
+
+.cardWrapper {
+  grid-column: 1 / -1;
+  min-width: 0;
+
+  @include on('tablet') {
+    grid-column: span 4;
+  }
+
+  @include on('desktop') {
+    grid-column: span 8;
+  }
+}

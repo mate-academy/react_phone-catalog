@@ -1,0 +1,45 @@
+@use '@/app/styles/mixins' as *;
+@use '@/app/styles/colors' as *;
+
+.container {
+  grid-column: 1 / -1;
+
+  width: 100%;
+  min-width: 0;
+  color: $primary;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.subtitle {
+  color: $secondary;
+}
+
+.arrowButton {
+  display: flex;
+  gap: 16px;
+  flex-shrink: 0;
+}
+
+.track {
+  width: 100%;
+  min-width: 0;
+
+  overflow-x: clip;
+  padding: 10px;
+}
+
+.swiper {
+  width: 100%;
+  overflow: visible;
+}
+
+.item {
+  height: auto;
+}

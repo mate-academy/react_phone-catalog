@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 800 800">
+  <!-- Generator: Adobe Illustrator 29.8.1, SVG Export Plug-In . SVG Version: 2.1.1 Build 2)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: none;
+        stroke: #020202;
+        stroke-miterlimit: 333.33;
+        stroke-width: 63.67px;
+      }
+    </style>
+  </defs>
+  <path class="st0" d="M718.33,368.33c.84,17.13,14.54,30.83,31.67,31.67v222.67H50v-222.67c17.58-5.46,27.41-24.14,21.95-41.72-3.26-10.48-11.46-18.69-21.95-21.95v-159h700v159c-17.25.85-31,14.74-31.67,32Z"/>
+  <polygon class="st0" points="463.67 304.67 336.33 304.67 209 304.67 209 432 336.33 432 463.67 432 591 432 591 304.67 463.67 304.67"/>
+  <line class="st0" x1="145.33" y1="527.33" x2="145.33" y2="622.67"/>
+  <line class="st0" x1="272.67" y1="527.33" x2="272.67" y2="622.67"/>
+  <line class="st0" x1="400" y1="527.33" x2="400" y2="622.67"/>
+  <line class="st0" x1="527.33" y1="527.33" x2="527.33" y2="622.67"/>
+  <line class="st0" x1="654.67" y1="527.33" x2="654.67" y2="622.67"/>
+</svg>

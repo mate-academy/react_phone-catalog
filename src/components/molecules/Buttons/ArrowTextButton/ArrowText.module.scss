@@ -1,0 +1,14 @@
+@use '@/app/styles/colors' as *;
+
+.button {
+  height: auto;
+  gap: 4px;
+
+  border: none;
+
+  color: $secondary;
+
+  &:not(:disabled):hover {
+    color: $primary;
+  }
+}

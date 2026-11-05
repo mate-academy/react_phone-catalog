@@ -1,0 +1,1 @@
+export { ContactsTemplate } from './ContactsTemplate';

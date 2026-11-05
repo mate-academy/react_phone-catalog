@@ -1,0 +1,1 @@
+export { StarIcon } from './StarIcon';

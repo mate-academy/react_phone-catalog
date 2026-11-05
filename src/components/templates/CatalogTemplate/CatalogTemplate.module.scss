@@ -1,0 +1,83 @@
+@use '@/app/styles/typography' as *;
+@use '@/app/styles/mixins' as *;
+@use '@/app/styles/colors' as *;
+
+.breadcrumbs {
+  grid-column: 1 / -1;
+  margin-bottom: 40px;
+}
+
+.container {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+
+  padding-top: 24px;
+  padding-bottom: 56px;
+
+  @include on('tablet') {
+    padding-bottom: 64px;
+  }
+
+  @include on('desktop') {
+    padding-bottom: 80px;
+  }
+
+  .title {
+    @include h1;
+    color: $primary;
+  }
+
+  .content {
+    @include grid;
+    gap: 40px 16px;
+
+    > .card:nth-child(1) {
+      animation-delay: 0ms;
+    }
+
+    > .card:nth-child(2) {
+      animation-delay: 60ms;
+    }
+
+    > .card:nth-child(3) {
+      animation-delay: 120ms;
+    }
+
+    > .card:nth-child(4) {
+      animation-delay: 180ms;
+    }
+
+    > .card:nth-child(5) {
+      animation-delay: 240ms;
+    }
+
+    > .card:nth-child(6) {
+      animation-delay: 300ms;
+    }
+
+    > .card:nth-child(7) {
+      animation-delay: 360ms;
+    }
+
+    > .card:nth-child(8) {
+      animation-delay: 420ms;
+    }
+  }
+  .card {
+    grid-column: 1/-1;
+
+    @include on('tablet') {
+      grid-column: span 6;
+    }
+  }
+}
+
+.modelsCount {
+  width: 200px;
+  color: $secondary;
+}
+
+.content {
+  margin-bottom: 40px;
+}

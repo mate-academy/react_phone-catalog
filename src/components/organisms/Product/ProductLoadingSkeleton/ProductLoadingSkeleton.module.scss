@@ -1,0 +1,215 @@
+@use '@/app/styles/colors' as *;
+@use '@/app/styles/mixins' as *;
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.productTitle {
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 480px;
+}
+
+.rating {
+  display: none;
+  flex-shrink: 0;
+
+  @include on('tablet') {
+    display: block;
+  }
+}
+
+.gallery {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 16px;
+
+  width: 100%;
+  min-width: 0;
+
+  @include on('tablet') {
+    flex-direction: row;
+    gap: 16px;
+  }
+
+  @include on('desktop') {
+    gap: 24px;
+  }
+}
+
+.thumbnails {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 8px;
+
+  @include on('tablet') {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+}
+
+.thumbnail {
+  display: block;
+
+  width: 48px;
+  height: 48px;
+
+  @include on('desktop') {
+    width: 64px;
+    height: 64px;
+  }
+}
+
+.mainImage {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 288px;
+
+  @include on('tablet') {
+    height: 360px;
+  }
+
+  @include on('desktop') {
+    height: 440px;
+  }
+}
+
+.imageSkeleton {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+}
+
+.purchaseContent {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  width: 100%;
+  min-width: 0;
+}
+
+.optionGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.colors,
+.capacities {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.priceBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  padding-top: 20px;
+  border-top: 1px solid $elements;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.cartButton {
+  display: block;
+
+  width: 100%;
+  height: 48px;
+}
+
+.favouriteButton {
+  display: block;
+
+  width: 48px;
+  height: 48px;
+}
+
+.actions > :first-child {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.purchaseDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sectionContent {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  min-width: 0;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: $elements;
+}
+
+.descriptionBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.paragraph {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.specs {
+  display: flex;
+  flex-direction: column;
+}
+
+.specRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 20px;
+
+  padding: 14px 0;
+  border-bottom: 1px solid $elements;
+}
+
+.comment {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  padding: 24px 0;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid $elements;
+  }
+}
+
+.commentHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.container {
+  :global(.react-loading-skeleton) {
+    --base-color: #{$elements};
+    --highlight-color: #{$hover};
+  }
+}

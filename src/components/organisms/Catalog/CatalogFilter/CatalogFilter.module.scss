@@ -1,0 +1,38 @@
+@use '@/app/styles/mixins' as *;
+
+.container {
+  display: flex;
+
+  grid-column: 1 / -1;
+  gap: 16px;
+  margin-top: 40px;
+  margin-bottom: 24px;
+}
+
+.itemsOnPage {
+  width: 136px;
+}
+
+.sortBy {
+  width: 136px;
+}
+
+@include on('tablet') {
+  .itemsOnPage {
+    width: 136px;
+  }
+
+  .sortBy {
+    width: 187px;
+  }
+}
+
+@include on('desktop') {
+  .itemsOnPage {
+    width: 128px;
+  }
+
+  .sortBy {
+    width: 176px;
+  }
+}

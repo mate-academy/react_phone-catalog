@@ -1,0 +1,126 @@
+@use '@/app/styles/mixins' as *;
+@use '@/app/styles/colors' as *;
+
+.breadcrumbs {
+  grid-column: 1 / -1;
+  margin-bottom: 40px;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-column: 1 / -1;
+  height: min-content;
+  padding-top: 64px;
+  padding-bottom: 56px;
+
+  @include on('tablet') {
+    padding-top: 24px;
+    padding-bottom: 64px;
+  }
+
+  @include on('desktop') {
+    padding-bottom: 80px;
+  }
+}
+
+.info {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  row-gap: 40px;
+
+  margin-bottom: 56px;
+
+  @include on('tablet') {
+    display: grid;
+    grid-template-columns: subgrid;
+    row-gap: normal;
+
+    margin-bottom: 64px;
+  }
+
+  @include on('desktop') {
+    margin-bottom: 80px;
+  }
+}
+
+.slider {
+  @include on('tablet') {
+    grid-column: span 7;
+  }
+
+  @include on('desktop') {
+    grid-column: span 12;
+  }
+}
+
+.purchase {
+  @include on('tablet') {
+    grid-column: span 5;
+  }
+
+  @include on('desktop') {
+    grid-column: span 11;
+  }
+}
+
+.backButton {
+  grid-column: 1 / -1;
+  justify-self: start;
+  margin-bottom: 16px;
+}
+
+.titleRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  grid-column: 1 / -1;
+  margin-bottom: 32px;
+
+  @include on('tablet') {
+    margin-bottom: 40px;
+  }
+}
+
+.title {
+  color: $primary;
+}
+
+.firstSection {
+  grid-column: 1 / -1;
+  margin-bottom: 56px;
+
+  @include on('desktop') {
+    grid-column: 1 / span 12;
+    margin-bottom: 80px;
+  }
+}
+
+.secondSection {
+  grid-column: 1 / -1;
+  margin-bottom: 56px;
+
+  @include on('desktop') {
+    grid-column: span 11;
+    margin-bottom: 0;
+  }
+}
+
+.separator {
+  display: none;
+
+  @include on('desktop') {
+    display: block;
+    grid-column: span 1;
+  }
+}
+
+.comments {
+  grid-column: 1 / -1;
+  margin-bottom: 56px;
+
+  @include on('desktop') {
+    margin-bottom: 80px;
+  }
+}

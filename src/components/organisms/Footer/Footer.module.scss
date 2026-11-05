@@ -1,0 +1,94 @@
+@use '@/app/styles/mixins' as *;
+@use '@/app/styles/colors' as *;
+
+.wrapper {
+  @include grid;
+  box-shadow: 0px -1px 0px 0px $elements;
+}
+
+.container {
+  padding-block: 32px;
+  grid-column: 1 / -1;
+
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @include on('tablet') {
+    flex-direction: row;
+    justify-content: space-between;
+
+    gap: normal;
+  }
+}
+
+.itemContainer {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include on('tablet') {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12;
+  }
+}
+
+.typo {
+  color: $secondary;
+  cursor: pointer;
+
+  &:hover {
+    color: $primary;
+  }
+}
+
+.button_top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 16px;
+  cursor: pointer;
+
+  margin-inline: auto;
+
+  @include on('tablet') {
+    margin-right: 0;
+    margin-left: auto;
+  }
+
+  &:hover {
+    color: $primary;
+
+    .typo {
+      color: $primary;
+    }
+
+    .arrowbutton {
+      border-color: $primary;
+    }
+  }
+
+  @include on('tablet') {
+    justify-content: flex-end;
+  }
+}
+
+.footerCurrency {
+  display: none;
+
+  @include on('tablet') {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

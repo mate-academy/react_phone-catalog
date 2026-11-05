@@ -1,0 +1,86 @@
+@use '@/app/styles/colors' as *;
+@use '@/app/styles/variables' as *;
+@use '@/app/styles/mixins' as *;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+}
+
+.container {
+  box-shadow:
+    rgba(50, 50, 93, 0.25) 0px 30px 60px -12px,
+    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  margin-bottom: 24px;
+  position: relative;
+
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  padding: 20px;
+  border-radius: 15px;
+
+  @include on('desktop') {
+    padding: 50px;
+    border-radius: 25px;
+  }
+}
+
+.image {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  display: block;
+  width: 100%;
+
+  transform-origin: center bottom;
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  .card:hover & {
+    transform: scale(1.1);
+  }
+}
+
+.title {
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.count {
+  color: $secondary;
+}
+
+:global(html[data-theme='dark']) .count {
+  color: #cdd3db;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+:global(html[data-theme='dark']) .container {
+  --glow-color: 170 100 255;
+
+  &[data-category='tablets'] {
+    --glow-color: 71 140 255;
+  }
+
+  &[data-category='accessories'] {
+    --glow-color: 220 177 95;
+  }
+
+  box-shadow:
+    0 8px 20px rgb(var(--glow-color) / 0.12),
+    0 0 14px rgb(var(--glow-color) / 0.08);
+
+  transition: box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow:
+      0 10px 25px rgb(var(--glow-color) / 0.2),
+      0 0 20px rgb(var(--glow-color) / 0.14);
+  }
+}

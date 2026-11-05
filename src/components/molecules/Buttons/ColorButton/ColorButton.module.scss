@@ -1,0 +1,23 @@
+@use '@/app/styles/colors' as *;
+
+.button {
+  border-radius: 50%;
+
+  &::after {
+    content: '';
+
+    position: absolute;
+    inset: 10%;
+
+    border-radius: 50%;
+    background-color: var(--selected-color);
+  }
+
+  &:not([data-selected='true']):hover {
+    border-color: $icons;
+  }
+
+  &[data-selected='true'] {
+    border-color: $primary;
+  }
+}

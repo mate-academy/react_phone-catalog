@@ -1,0 +1,206 @@
+@use '@/app/styles/mixins' as *;
+@use '@/app/styles/colors' as *;
+@use '@/app/styles/variables' as *;
+
+.container {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-template-rows: auto;
+  row-gap: 24px;
+  height: min-content;
+
+  padding-top: 24px;
+  padding-bottom: 56px;
+
+  @include on('tablet') {
+    padding-bottom: 64px;
+  }
+
+  @include on('desktop') {
+    padding-bottom: 80px;
+  }
+
+  @include on('tablet') {
+    grid-template-rows: auto auto;
+    row-gap: 24px;
+  }
+
+  .title {
+    grid-column: 1 / -1;
+    text-align: center;
+
+    @include on('tablet') {
+      grid-row: 1;
+    }
+  }
+
+  .sectionTitle {
+    text-align: center;
+  }
+
+  .developersSection {
+    grid-column: 1 / -1;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 12px;
+    height: min-content;
+
+    @include on('tablet') {
+      grid-row: 2;
+      grid-column: 1 / 7;
+    }
+
+    @include on('desktop') {
+      grid-column: 1 / 7;
+    }
+
+    .collapsiblesList {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      .collapsibleItem {
+        border: 1px solid $elements;
+        border-radius: 8px;
+        overflow: hidden;
+        background-color: $white;
+
+        &:hover {
+          border-color: $primary;
+          transition: border-color $transition-time;
+
+          .arrow {
+            border-color: $primary;
+          }
+        }
+
+        .collapsibleHeader {
+          width: 100%;
+          padding: 12px 14px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          background: none;
+          border: none;
+          cursor: pointer;
+          text-align: left;
+          font-family: inherit;
+
+          &:hover {
+            background-color: $hover;
+          }
+        }
+
+        .collapsibleContent {
+          padding: 10px 14px 14px;
+          border-top: 1px solid $elements;
+          background-color: rgba(0, 0, 0, 0.01);
+          display: flex;
+          flex-direction: column;
+          gap: 6px;
+        }
+      }
+    }
+  }
+
+  .form {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 13px;
+    height: min-content;
+
+    @include on('tablet') {
+      grid-row: 2;
+      grid-column: 8 / 13;
+    }
+
+    @include on('desktop') {
+      grid-column: 8 / 18;
+    }
+
+    .input,
+    .textarea {
+      width: 100%;
+      padding: 12px 16px;
+      font-size: 14px;
+      font-family: inherit;
+      border: 1px solid $elements;
+      border-radius: 8px;
+      background-color: $white;
+      outline: none;
+      transition: border-color 0.2s ease;
+
+      &::placeholder {
+        color: $secondary;
+      }
+
+      &:focus {
+        border-color: $primary;
+      }
+    }
+
+    .errorInput {
+      border-color: $red !important;
+    }
+
+    .errorText {
+      font-size: 12px;
+      color: $red;
+      margin-left: 4px;
+    }
+
+    .textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+  }
+
+  .contentWrapper {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+
+    @include on('tablet') {
+      grid-row: 3;
+      grid-column: 1 / 7;
+    }
+
+    @include on('desktop') {
+      grid-row: 2;
+      grid-column: 19 / 25;
+    }
+
+    .info {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      text-align: center;
+    }
+  }
+
+  .mapContainer {
+    width: 100%;
+    height: 250px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+
+    iframe {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+.successText {
+  color: $green;
+  font-size: 14px;
+}
