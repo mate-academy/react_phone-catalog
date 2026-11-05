@@ -5,10 +5,12 @@ import NavPage from '../components/NavPage';
 import { useState, useEffect } from 'react';
 import Model from '../components/Model';
 import { Product } from '../interface/Product';
+import Loading from '../components/Loading';
 
 const Favorites = () => {
   const [quantity, setQuantity] = useState(0);
   const [data, setData] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
@@ -28,6 +30,7 @@ const Favorites = () => {
         );
 
         setData(favoriteProducts);
+        setLoading(false);
       })
       .catch(error => {
         // eslint-disable-next-line no-console
@@ -42,6 +45,7 @@ const Favorites = () => {
         <h1 className="favorites__title">Favorites</h1>
         <span className="favorites__quantity">{quantity} items</span>
         <div className="favorites__items models__items">
+          {loading && <Loading />}
           {data.length === 0 ? (
             <p className="favorites__empty">No favorites yet</p>
           ) : (

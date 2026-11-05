@@ -1,9 +1,21 @@
-.favorites__items {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 15px;
+.favorites {
+  .favorites__items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 15px;
 
-  .model__item {
-    min-width: 75%;
+    .model__item {
+      min-width: 75%;
+    }
+  }
+
+  .favorites__title {
+    font-size: 50px;
+  }
+
+  .favorites__quantity {
+    color: var(--dark-gray);
+    font-size: 20px;
+    margin: 10px 0;
   }
 }
