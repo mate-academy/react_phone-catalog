@@ -2,4 +2,35 @@
   .cart__title {
     font-size: 50px;
   }
+  .cart__main {
+    display: flex;
+    justify-content: space-between;
+    gap: 25px;
+    margin-top: 40px;
+
+    .cart__items {
+      width: 75%;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      .cart__item {
+        border: 1px solid var(--light-gray);
+        border-radius: 10px;
+        height: 160px;
+        overflow: hidden;
+
+        .cart__image {
+          width: 65px;
+        }
+      }
+    }
+
+    .cart__aside {
+      width: 25%;
+      border: 1px solid var(--light-gray);
+      border-radius: 10px;
+      max-height: 200px;
+    }
+  }
 }

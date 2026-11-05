@@ -117,6 +117,13 @@ $laptop: 990px;
           justify-content: center;
         }
 
+        &:nth-of-type(1) {
+          a {
+            border-right: 1px solid var(--light-gray);
+            border-left: 1px solid var(--light-gray);
+          }
+        }
+
         &.navbar__icon--active {
           &::after {
             content: '';

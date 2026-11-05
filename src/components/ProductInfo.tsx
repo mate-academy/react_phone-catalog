@@ -72,7 +72,21 @@ const ProductInfo = ({
         <span className="product__subprice">${realProduct.priceRegular}</span>
       </h4>
       <div className="product__buttons">
-        <button className="product__button">Add to cart</button>
+        <button
+          className="product__button"
+          onClick={() => {
+            const cart: string[] = JSON.parse(
+              localStorage.getItem('cart') || '[]',
+            );
+
+            if (!cart.includes(realProduct.name)) {
+              cart.push(realProduct.name);
+              localStorage.setItem('cart', JSON.stringify(cart));
+            }
+          }}
+        >
+          Add to cart
+        </button>
         <button
           className="product__favorite"
           onClick={() => {
