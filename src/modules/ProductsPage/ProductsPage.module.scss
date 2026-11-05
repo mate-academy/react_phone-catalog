@@ -13,6 +13,21 @@
   color: var(--color-text-secondary);
 }
 
+.controls {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.sortDropdown {
+  flex: 1;
+
+  @include on-tablet {
+    flex: none;
+    width: 176px;
+  }
+}
+
 .message {
   display: flex;
   flex-direction: column;

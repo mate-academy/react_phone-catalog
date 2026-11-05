@@ -1,6 +1,8 @@
 // Light theme (default).
 // Variables are named by ROLE, not by the Figma color name.
 :root {
+    color-scheme: light;
+
   --color-text-primary: #313237;
   --color-text-secondary: #89939a;
   --color-icons: #b4bdc3;
@@ -26,6 +28,8 @@
 
 // Dark theme: only overrides what changes.
 [data-theme='dark'] {
+    color-scheme: dark;
+
   --color-text-primary: #f1f2f9;
   --color-text-secondary: #75767f;
   --color-icons: #4a4d58;

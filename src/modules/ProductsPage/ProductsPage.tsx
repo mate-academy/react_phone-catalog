@@ -1,9 +1,17 @@
 import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { getProductsByCategory } from '../../api/products';
 import { Category } from '../../types/Category';
 import { Product } from '../../types/Product';
 import { Loader } from '../shared/components/Loader';
 import { ProductsList } from '../shared/components/ProductsList';
+import { Dropdown } from '../shared/components/Dropdown';
+import {
+  DEFAULT_SORT,
+  SORT_OPTIONS,
+  isSortType,
+  sortProducts,
+} from './utils/sorting';
 import styles from './ProductsPage.module.scss';
 
 const TITLES: Record<Category, string> = {
@@ -21,6 +29,10 @@ export const ProductsPage = ({ category }: Props) => {
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
   const [reloadCount, setReloadCount] = useState(0);
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const sortParam = searchParams.get('sort');
+  const sort = isSortType(sortParam) ? sortParam : DEFAULT_SORT;
 
   useEffect(() => {
     let isCurrent = true;
@@ -52,6 +64,13 @@ export const ProductsPage = ({ category }: Props) => {
 
   const reload = () => setReloadCount(count => count + 1);
 
+  const handleSortChange = (value: string) => {
+    const params = new URLSearchParams(searchParams);
+
+    params.set('sort', value);
+    setSearchParams(params);
+  };
+
   const renderContent = () => {
     if (isLoading) {
       return <Loader />;
@@ -77,7 +96,17 @@ export const ProductsPage = ({ category }: Props) => {
       <>
         <p className={styles.count}>{products.length} models</p>
 
-        <ProductsList products={products} />
+        <div className={styles.controls}>
+          <Dropdown
+            label="Sort by"
+            value={sort}
+            options={SORT_OPTIONS}
+            onChange={handleSortChange}
+            className={styles.sortDropdown}
+          />
+        </div>
+
+        <ProductsList products={sortProducts(products, sort)} />
       </>
     );
   };
