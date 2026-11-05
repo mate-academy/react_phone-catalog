@@ -100,7 +100,7 @@ export const ProductDetailsPage = () => {
       <button
         type="button"
         className={styles.productDetailsBack}
-        onClick={() => navigate(-1)}
+        onClick={() => navigate(`/${category}`)}
       >
         <span aria-hidden="true" className={styles.productDetailsBackImage} />
         <span className={styles.productDetailsBackText}>Back</span>

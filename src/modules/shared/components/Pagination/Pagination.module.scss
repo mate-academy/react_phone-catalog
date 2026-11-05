@@ -5,14 +5,12 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  margin: 24px 0 64px;
+  margin: auto 0 64px;
+  padding-top: 24px;
 
-  @include on-tablet {
-    margin: 40px 0 64px;
-
-    @include on-desktop {
-      margin: 40px 0 80px;
-    }
+  @include on-desktop {
+    margin: auto 0 80px;
+    padding-top: 40px;
   }
 
   &List {

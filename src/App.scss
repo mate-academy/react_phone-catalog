@@ -27,6 +27,8 @@ body {
 
 .main {
   flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 // Global container: limits content width and centers it.
@@ -36,6 +38,11 @@ body {
   padding: 0 16px;
   max-width: 1200px;
   margin: 0 auto;
+
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 
   @include on-tablet {
     padding: 0 24px;

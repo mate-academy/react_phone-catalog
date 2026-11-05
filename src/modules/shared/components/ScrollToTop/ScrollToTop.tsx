@@ -9,7 +9,7 @@ export const ScrollToTop = () => {
       return;
     }
 
-    window.scrollTo({ top: 0 });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [pathname, state]);
 
   return null;
