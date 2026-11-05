@@ -1,1 +1,54 @@
-// not empty
+@import './styles/theme';
+@import './styles/fonts';
+@import './styles/mixins';
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+// Sticky footer: footer is always at the bottom,
+// even when the page content is short.
+// .main gets flex-grow: 1 and takes the free space.
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+// Global container: limits content width and centers it.
+// Use it INSIDE blocks (header, footer, main) so their
+// background and borders stay full width.
+.container {
+  padding: 0 16px;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  @include on-tablet {
+    padding: 0 24px;
+  }
+
+  @include on-desktop {
+    padding: 0 32px;
+  }
+}

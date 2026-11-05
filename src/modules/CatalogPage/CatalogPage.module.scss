@@ -1,0 +1,121 @@
+@import '../../styles/mixins';
+
+.catalogPage {
+  padding-top: 24px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+
+  &Title {
+    margin: 24px 0 0;
+
+    @include h1;
+
+    @include on-tablet {
+      margin-top: 40px;
+    }
+  }
+
+  &Count {
+    margin: 8px 0 0;
+    color: var(--color-text-secondary);
+  }
+
+  &Filters {
+    display: flex;
+    gap: 16px;
+    margin: 32px 0 24px;
+
+    @include on-tablet {
+      margin-top: 40px;
+    }
+  }
+
+  &Field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &Label {
+    color: var(--color-text-secondary);
+
+    @include small-text;
+  }
+
+  &Select {
+    width: 136px;
+    height: 40px;
+    padding: 0 12px;
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--color-text);
+    background-color: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    cursor: pointer;
+    appearance: none;
+    background-image: var(--select-arrow);
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    transition: border-color 0.3s;
+
+    @include on-tablet {
+      width: 176px;
+    }
+
+    &:focus-visible {
+      border-color: var(--color-text);
+      outline: none;
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        border-color: var(--color-text);
+      }
+    }
+  }
+
+  &Message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    min-height: 35vh;
+    text-align: center;
+  }
+
+  &MessageTitle {
+    margin: 0;
+
+    @include h2;
+  }
+
+  &MessageButton {
+    min-width: 180px;
+    height: 48px;
+    padding: 0 24px;
+    font-family: inherit;
+    color: var(--color-text-on-accent);
+    background-color: var(--color-accent);
+    border: none;
+    cursor: pointer;
+    transition:
+      background-color 0.3s,
+      box-shadow 0.3s;
+
+    @include buttons;
+
+    &:focus-visible {
+      background-color: var(--color-accent-hover);
+      box-shadow: var(--shadow-button-hover);
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        background-color: var(--color-accent-hover);
+        box-shadow: var(--shadow-button-hover);
+      }
+    }
+  }
+}

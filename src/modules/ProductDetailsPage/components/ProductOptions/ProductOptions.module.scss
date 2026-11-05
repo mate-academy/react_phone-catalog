@@ -1,0 +1,244 @@
+@import '../../../../styles/mixins';
+
+.productOptions {
+  &Header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+
+  &Label {
+    color: var(--color-text-secondary);
+    margin: 0;
+
+    @include small-text;
+  }
+
+  &Colors {
+    display: flex;
+    gap: 8px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  &Color {
+    display: block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid var(--color-bg);
+    box-shadow: 0 0 0 1px var(--color-border);
+    transition:
+      transform 0.3s,
+      box-shadow 0.3s;
+
+    &Active {
+      box-shadow: 0 0 0 1px var(--color-text);
+    }
+
+    &:focus-visible {
+      transform: scale(1.1);
+      box-shadow: 0 0 0 1px var(--color-accent);
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 0 1px var(--color-accent);
+      }
+    }
+  }
+
+  &Section {
+    padding: 24px 0;
+    margin: 24px 0 32px;
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  &Capacities {
+    display: flex;
+    gap: 8px;
+    padding: 0;
+    margin: 8px 0 0;
+    list-style: none;
+  }
+
+  &Capacity {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    padding: 7px 8px 4px;
+    color: var(--color-text);
+    text-decoration: none;
+    border: 1px solid var(--color-button-border);
+    cursor: pointer;
+    transition:
+      border-color 0.3s,
+      color 0.3s;
+
+    &:focus-visible {
+      color: var(--color-accent);
+      border-color: var(--color-accent);
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        color: var(--color-accent);
+        border-color: var(--color-accent);
+      }
+    }
+
+    &Active {
+      color: var(--color-bg);
+      background-color: var(--color-text);
+      border-color: var(--color-text);
+
+      @media (hover: hover) {
+        &:hover {
+          color: var(--color-bg);
+          border-color: var(--color-text);
+        }
+      }
+    }
+  }
+
+  &Prices {
+    display: flex;
+    gap: 8px;
+    align-items: baseline;
+  }
+
+  &Price {
+    margin: 0;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+
+  &FullPrice {
+    color: var(--color-text-secondary);
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 100%;
+  }
+
+  &Actions {
+    display: flex;
+    height: 48px;
+    gap: 8px;
+    margin: 16px 0 32px;
+  }
+
+  &FavoriteIcon {
+    @include icon('/img-logo-icons/icons/icon-favourites-Heart-like.svg');
+  }
+
+  &FavoriteIconActive {
+    @include icon('/img-logo-icons/icons/favourites-heart-like-red.svg');
+
+    background-color: var(--color-red);
+  }
+
+  &AddButton {
+    flex-grow: 1;
+    background-color: var(--color-accent);
+    color: var(--color-text-on-accent);
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    transition:
+      background-color 0.3s,
+      box-shadow 0.3s;
+
+    @include buttons;
+
+    &:focus-visible {
+      background-color: var(--color-accent-hover);
+      box-shadow: var(--shadow-button-hover);
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        background-color: var(--color-accent-hover);
+        box-shadow: var(--shadow-button-hover);
+      }
+    }
+
+    &Active {
+      color: var(--color-added-text);
+      background-color: transparent;
+      border: 1px solid var(--color-border);
+      cursor: default;
+
+      @media (hover: hover) {
+        &:hover {
+          background-color: transparent;
+          border-color: var(--color-text);
+        }
+      }
+    }
+  }
+
+  &FavoriteButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    background-color: var(--color-bg-secondary);
+    color: var(--color-text);
+    border: 1px solid var(--color-button-border);
+    padding: 0;
+    cursor: pointer;
+    transition:
+      background-color 0.3s,
+      border-color 0.3s;
+
+    &:focus-visible {
+      background-color: var(--color-bg-secondary-hover);
+      border-color: var(--color-border-hover);
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        background-color: var(--color-bg-secondary-hover);
+        border-color: var(--color-border-hover);
+      }
+    }
+
+    &Active {
+      background-color: transparent;
+      border: 1px solid var(--color-border);
+
+      @media (hover: hover) {
+        &:hover {
+          background-color: transparent;
+          border-color: var(--color-text);
+        }
+      }
+    }
+  }
+
+  &Specs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &Spec {
+    display: flex;
+    justify-content: space-between;
+
+    @include small-text;
+
+    &Name {
+      color: var(--color-text-secondary);
+    }
+  }
+}

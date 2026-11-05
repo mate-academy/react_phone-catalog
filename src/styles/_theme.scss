@@ -1,0 +1,71 @@
+:root {
+  --logo-url: url('/img-logo-icons/logo-black.svg');
+  --select-arrow: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%23F1F2F9' stroke-width='2'%3E%3Cpath d='M4 6l4 4 4-4'/%3E%3C/svg%3E");
+  --color-loader-ring: var(--color-text);
+   --color-field-search-bg: #161827;
+
+  // Backgrounds
+  --color-bg: #0f1121;
+  --color-bg-secondary: #323542;
+  --color-bg-card: #161827;
+  --color-bg-secondary-hover: #4a4d58;
+
+  // Text colors
+  --color-text: #f1f2f9;
+  --color-text-secondary: #75767f;
+  --color-text-on-accent: #fff;
+  --color-added-text: var(--color-text);
+
+  // Borders
+  --color-border: #3b3e4a;
+  --color-border-hover: #4a4d58;
+  --color-card-border: transparent;
+  --color-button-border: var(--color-bg-secondary);
+
+  // Accent and status
+  --color-accent: #905bff;
+  --color-accent-hover: #a378ff;
+  --shadow-button-hover: none;
+  --color-green: #27ae60;
+  --color-red: #eb5757;
+  --color-card-ring: var(--color-accent);
+  --shadow-card-hover: 0 8px 24px rgb(144 91 255 / 25%);
+  --shadow-photo-hover: 0 0 0 1px var(--color-accent),
+    0 8px 32px rgb(144 91 255 / 30%);
+}
+
+[data-theme='light'] {
+  --logo-url: url('/img-logo-icons/logo-light.svg');
+  --select-arrow: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%23313237' stroke-width='2'%3E%3Cpath d='M4 6l4 4 4-4'/%3E%3C/svg%3E");
+  --color-loader-ring: #89939a;
+  --color-field-search-bg: #f3f5f6;
+
+  // Backgrounds
+  --color-bg: #fff;
+  --color-bg-secondary: #fff;
+  --color-bg-card: #fff;
+  --color-bg-secondary-hover: #fff;
+
+  // Text colors
+  --color-text: #313237;
+  --color-text-secondary: #89939a;
+  --color-text-on-accent: #fff;
+  --color-added-text: #27ae60;
+
+  // Borders
+  --color-border: #e2e6e9;
+  --color-border-hover: #313237;
+  --color-card-border: #e2e6e9;
+  --color-button-border: #b4bdc3;
+
+  // Accent and status
+  --color-accent: #313237;
+  --color-accent-hover: #313237;
+  --shadow-button-hover: 0 6px 18px rgb(23 32 49 / 35%);
+  --color-green: #27ae60;
+  --color-red: #eb5757;
+  --color-card-ring: #89939a;
+  --shadow-card-hover: 0 2px 8px rgb(15 17 33 / 10%),
+    0 16px 36px rgb(15 17 33 / 22%);
+  --shadow-photo-hover: 0 0 0 2px #313237, 0 14px 36px rgb(23 32 49 / 40%);
+}

@@ -1,0 +1,152 @@
+@import '../../styles/mixins';
+
+.productDetails {
+  padding: 24px 0 36px;
+
+  &Error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    min-height: calc(100vh - 300px);
+    text-align: center;
+  }
+
+  &ErrorTitle {
+    margin: 0;
+
+    @include h2;
+  }
+
+  &ErrorText {
+    margin: 0;
+    color: var(--color-text-secondary);
+  }
+
+  &ErrorButton {
+    min-width: 180px;
+    height: 48px;
+    padding: 0 24px;
+    font-family: inherit;
+    color: var(--color-text);
+    background-color: var(--color-accent);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    @include buttons;
+
+    &:focus-visible {
+      background-color: var(--color-accent-hover);
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        background-color: var(--color-accent-hover);
+      }
+    }
+  }
+
+  &NotFound {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    padding: 48px 0;
+  }
+
+  &NotFoundImage {
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+  }
+
+  &NotFoundTitle {
+    margin: 0;
+    text-align: center;
+
+    @include h2;
+  }
+
+  &Back {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: none;
+    padding: 0;
+    margin-top: 24px;
+    color: var(--color-text);
+    border: none;
+    font-family: inherit;
+    cursor: pointer;
+    transition: color 0.3s;
+
+    @include small-text;
+
+    @include on-tablet {
+      margin-top: 40px;
+    }
+
+    &Image {
+      width: 16px;
+      height: 16px;
+      background-color: currentColor;
+      mask-image: url('/img-logo-icons/icons/arrow-left.svg');
+      mask-repeat: no-repeat;
+      mask-position: center;
+      mask-size: contain;
+    }
+
+    &Text {
+      padding-top: 3px;
+    }
+
+    &:focus-visible {
+      color: var(--color-accent);
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        color: var(--color-accent);
+      }
+    }
+  }
+
+  &Title {
+    margin: 16px 0 32px;
+
+    @include h2;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &Top {
+    display: grid;
+    gap: 40px;
+    margin-bottom: 56px;
+
+    @include on-tablet {
+      grid-template-columns: 7fr 5fr;
+      gap: 16px;
+    }
+
+    @include on-desktop {
+      grid-template-columns: 560px 320px;
+      gap: 64px;
+    }
+  }
+
+  &Bottom {
+    display: grid;
+    gap: 56px;
+    margin-bottom: 56px;
+
+    @include on-desktop {
+      grid-template-columns: 560px 512px;
+      gap: 64px;
+    }
+  }
+}

@@ -1,0 +1,33 @@
+@import '../../../../styles/mixins';
+
+.backToTop {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  color: var(--color-text);
+  background-color: var(--color-bg-secondary);
+  border: 1px solid var(--color-button-border);
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:focus-visible {
+    background-color: var(--color-bg-secondary-hover);
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: var(--color-bg-secondary-hover);
+    }
+  }
+
+  &Icon {
+    @include icon('/img-logo-icons/icons/arrow-up.svg');
+  }
+}

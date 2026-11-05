@@ -1,0 +1,72 @@
+// Text styles from Figma "Typography"
+// Body text is set on <body> in App.scss
+
+// Headings: mobile values first, Desktop/Tablet values from 640px
+@mixin h1 {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+
+  @include on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+@mixin h2 {
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 31px;
+
+  @include on-tablet {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+}
+
+@mixin h3 {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 26px;
+
+  @include on-tablet {
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 31px;
+  }
+}
+
+@mixin h4 {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+
+  @include on-tablet {
+    font-size: 20px;
+    line-height: 26px;
+  }
+}
+
+// Same on all screens
+
+@mixin uppercase {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+@mixin buttons {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+@mixin small-text {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+}

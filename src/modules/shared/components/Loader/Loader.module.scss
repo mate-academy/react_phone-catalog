@@ -1,0 +1,40 @@
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh;
+
+  &Spinner {
+    position: relative;
+    width: 44px;
+    height: 44px;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 3px solid transparent;
+      border-radius: 50%;
+    }
+
+    &::before {
+      border-top-color: var(--color-accent);
+      border-bottom-color: var(--color-accent);
+      animation: loader-spin 1.2s linear infinite;
+    }
+
+    &::after {
+      inset: 8px;
+      border-left-color: var(--color-loader-ring);
+      border-right-color: var(--color-loader-ring);
+      animation: loader-spin 0.9s linear infinite reverse;
+    }
+  }
+}
+
+@keyframes loader-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

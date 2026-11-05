@@ -1,0 +1,102 @@
+@import '../../styles/mixins';
+
+.favoritesPage {
+  padding: 24px 0 56px;
+
+  @include on-tablet {
+    padding-bottom: 64px;
+  }
+
+  @include on-desktop {
+    padding-bottom: 80px;
+  }
+
+  &Head {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 8px;
+
+    @include on-tablet {
+      gap: 40px;
+    }
+  }
+
+  &Title {
+    margin: 0;
+
+    @include h1;
+  }
+
+  &Count {
+    display: block;
+    color: var(--color-text-secondary);
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &Empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    min-height: 40vh;
+    text-align: center;
+  }
+
+  &EmptyIcon {
+    width: 64px;
+    height: 64px;
+    background-color: var(--color-border);
+    mask-image: url('/img-logo-icons/icons/icon-favourites-Heart-like.svg');
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+  }
+
+  &EmptyTitle {
+    margin: 0;
+
+    @include h2;
+  }
+
+  &EmptyText {
+    max-width: 320px;
+    margin: 0;
+    color: var(--color-text-secondary);
+
+    @include small-text;
+  }
+
+  &EmptyButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 180px;
+    height: 48px;
+    margin-top: 8px;
+    padding: 0 24px;
+    background-color: var(--color-accent);
+    color: var(--color-text-on-accent);
+    text-decoration: none;
+    transition: background-color 0.3s;
+
+    @include buttons;
+
+    &:focus-visible {
+      background-color: var(--color-accent-hover);
+      box-shadow: var(--shadow-button-hover);
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        background-color: var(--color-accent-hover);
+        box-shadow: var(--shadow-button-hover);
+      }
+    }
+  }
+}

@@ -1,0 +1,124 @@
+@import '../../../../styles/mixins';
+
+.containerFooter {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @include on-tablet {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.footer {
+  padding: 32px 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.logo {
+  box-sizing: content-box;
+  width: 89px;
+  height: 32px;
+  background-image: var(--logo-url);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-origin: content-box;
+  background-position: center;
+}
+
+.nav {
+  &List {
+    @include uppercase;
+
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 16px;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 70px;
+    }
+
+    @include on-desktop {
+      gap: 105px;
+    }
+  }
+
+  &Link {
+    text-decoration: none;
+    color: var(--color-text);
+    display: inline-block;
+    transition: transform 0.3s;
+
+    &:focus-visible {
+      transform: scale(1.1);
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+}
+
+.backToTop {
+  display: flex;
+  align-self: center;
+  align-items: center;
+  gap: 16px;
+  border: none;
+  padding: 0;
+  background-color: transparent;
+  cursor: pointer;
+  color: var(--color-text);
+
+  &Text {
+    color: var(--color-text-secondary);
+    transition: transform 0.3s;
+
+    @include small-text;
+  }
+
+  &Icon {
+    @include icon('/img-logo-icons/icons/arrow-up.svg');
+  }
+
+  &Button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    width: 32px;
+    background-color: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    transition:
+      background-color 0.3s,
+      border-color 0.3s;
+  }
+
+  &:focus-visible &Text {
+    transform: scale(1.1);
+  }
+
+  &:focus-visible &Button {
+    background-color: var(--color-bg-secondary-hover);
+    border-color: var(--color-border-hover);
+  }
+
+  @media (hover: hover) {
+    &:hover &Button {
+      background-color: var(--color-bg-secondary-hover);
+      border-color: var(--color-border-hover);
+    }
+
+    &:hover &Text {
+      transform: scale(1.1);
+    }
+  }
+}

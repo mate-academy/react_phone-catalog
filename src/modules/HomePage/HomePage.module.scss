@@ -1,0 +1,23 @@
+@import '../../styles/mixins';
+
+.homePage{
+  margin-bottom: 40px;
+
+  @include on-desktop {
+    margin-bottom: 56px;
+  }
+  
+  &Title {
+    margin: 24px 0;
+
+    @include h1;
+
+    @include on-tablet {
+      margin: 36px 0;
+    }
+
+    @include on-desktop {
+      margin: 56px 0;
+    }
+  }
+}

@@ -1,0 +1,88 @@
+@import '../../../../styles/mixins';
+
+.productsSlider {
+  &Title {
+    margin: 0;
+
+    @include h2;
+  }
+
+  &Header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  &Buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &IconPrev {
+    @include icon('/img-logo-icons/icons/arrow-left.svg');
+  }
+
+  &IconNext {
+    @include icon('/img-logo-icons/icons/arrow-right.svg');
+  }
+
+  &Button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: 1px solid var(--color-border);
+    background-color: var(--color-bg-secondary);
+    color: var(--color-text);
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:disabled {
+      cursor: default;
+      background-color: var(--color-bg);
+      color: var(--color-text-secondary);
+    }
+
+    &:focus-visible {
+      background-color: var(--color-bg-secondary-hover);
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        background-color: var(--color-bg-secondary-hover);
+      }
+    }
+  }
+
+  &Track {
+    margin: 0;
+    display: flex;
+    gap: 16px;
+    padding: 8px 0 24px;
+    list-style: none;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &Item {
+    display: flex;
+    flex: 0 0 212px;
+    scroll-snap-align: start;
+
+    @include on-tablet {
+      flex-basis: 237px;
+    }
+
+    @include on-desktop {
+      flex-basis: 272px;
+    }
+  }
+}

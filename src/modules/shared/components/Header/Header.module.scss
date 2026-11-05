@@ -1,0 +1,208 @@
+@import '../../../../styles/mixins';
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 48px;
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+
+  position: sticky;
+  top: 0;
+  z-index: 10;
+
+  @include on-desktop {
+    height: 64px;
+  }
+}
+
+.menuButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  width: 48px;
+  padding: 0;
+  color: var(--color-text);
+  background: none;
+  border: none;
+  border-left: 1px solid var(--color-border);
+  cursor: pointer;
+
+  @include on-tablet {
+    display: none;
+  }
+}
+
+.menuIcon {
+  @include icon('/img-logo-icons/icons/icon-menu-burger.svg');
+}
+
+.logo {
+  will-change: transform;
+  box-sizing: content-box;
+  width: 64px;
+  height: 22px;
+  padding: 13px 16px;
+  background-image: var(--logo-url);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-origin: content-box;
+  background-position: center;
+  transition: transform 0.3s;
+
+  @include on-desktop {
+    width: 80px;
+    height: 28px;
+    padding: 18px 24px;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &:focus-visible {
+    transform: scale(1.1);
+  }
+}
+
+.searchButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  color: var(--color-text);
+  background-color: transparent;
+  border: none;
+
+  &Icon {
+    @include icon('/img-logo-icons/icons/search.svg');
+  }
+
+  @media (hover: hover) {
+    &:hover &Icon {
+      transform: scale(1.2);
+    }
+  }
+
+  &:focus-visible &Icon {
+    transform: scale(1.2);
+  }
+}
+
+.searchPopover {
+  position: absolute;
+  top: 52px;
+  right: 8px;
+  z-index: 3;
+  width: 260px;
+  padding: 5px;
+  background-color: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-card-hover);
+
+  @include on-desktop {
+    top: 68px;
+  }
+}
+
+.nav {
+  display: none;
+  height: 100%;
+  margin-right: auto;
+
+  @include on-tablet {
+    display: flex;
+  }
+
+  &List {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 32px;
+
+    @include on-desktop {
+      gap: 64px;
+    }
+  }
+
+  &Link {
+    @include uppercase;
+
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    text-decoration: none;
+    color: var(--color-text-secondary);
+    transition: color 0.3s;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: var(--color-text);
+      transform: scaleX(0);
+      transition: transform 0.3s;
+    }
+
+    &:hover,
+    &:focus-visible,
+    &Active {
+      color: var(--color-text);
+
+      &::after {
+        transform: scaleX(1);
+      }
+    }
+  }
+}
+
+.action {
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+  }
+
+  &ItemFavorites {
+    @include icon('/img-logo-icons/icons/icon-favourites-Heart-like.svg');
+  }
+
+  &ItemCart {
+    @include icon('/img-logo-icons/icons/icon-shopping-Cart.svg');
+  }
+
+  &Link {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 48px;
+    width: 48px;
+    border-left: 1px solid var(--color-border);
+    color: var(--color-text);
+
+    @include on-desktop {
+      height: 64px;
+      width: 64px;
+    }
+  }
+
+  &Link:hover &ItemFavorites,
+  &Link:hover &ItemCart,
+  &Link:focus-visible &ItemFavorites,
+  &Link:focus-visible &ItemCart {
+    transform: scale(1.2);
+  }
+}

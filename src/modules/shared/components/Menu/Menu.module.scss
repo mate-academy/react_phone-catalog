@@ -1,0 +1,191 @@
+@import '../../../../styles/mixins';
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  background-color: var(--color-bg);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.3s,
+    visibility 0.3s;
+
+  @include on-tablet {
+    display: none;
+  }
+
+  &Open {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.top {
+  height: 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--color-border);
+
+  &Logo {
+    padding: 13px 16px;
+    box-sizing: content-box;
+    width: 64px;
+    height: 22px;
+    background-image: var(--logo-url);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-origin: content-box;
+    background-position: center;
+  }
+
+  &Close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    padding: 0;
+    background: none;
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    border-left: 1px solid var(--color-border);
+    color: var(--color-text);
+  }
+
+  &CloseIcon {
+    @include icon('/img-logo-icons/icons/icon-close.svg');
+  }
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  margin: 24px 16px auto;
+
+  &List {
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &Item {
+    opacity: 0;
+    transform: translateY(14px);
+    transition:
+      opacity 0.35s,
+      transform 0.35s;
+  }
+
+  &Link {
+    @include uppercase;
+
+    display: block;
+    padding: 8px 0;
+    position: relative;
+    text-decoration: none;
+    color: var(--color-text-secondary);
+    transition: color 0.3s;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: var(--color-text);
+      transform: scaleX(0);
+      transition: transform 0.3s;
+    }
+
+    &Active,
+    &:focus-visible {
+      color: var(--color-text);
+
+      &::after {
+        transform: scaleX(1);
+      }
+    }
+  }
+}
+
+.bottom {
+  display: flex;
+  height: 64px;
+  border-top: 1px solid var(--color-border);
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 0.35s,
+    transform 0.35s;
+
+  &IconFavorites {
+    @include icon('/img-logo-icons/icons/icon-favourites-Heart-like.svg');
+  }
+
+  &IconCart {
+    @include icon('/img-logo-icons/icons/icon-shopping-Cart.svg');
+  }
+
+  &Link {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    color: var(--color-text);
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: var(--color-text);
+      transform: scaleX(0);
+      transition: transform 0.3s;
+    }
+
+    &Active::after,
+    &:focus-visible::after {
+      transform: scaleX(1);
+    }
+
+    &:last-child {
+      border-left: 1px solid var(--color-border);
+    }
+  }
+}
+
+.menuOpen .navItem {
+  opacity: 1;
+  transform: translateY(0);
+
+  &:nth-child(1) {
+    transition-delay: 0.15s;
+  }
+  &:nth-child(2) {
+    transition-delay: 0.23s;
+  }
+  &:nth-child(3) {
+    transition-delay: 0.31s;
+  }
+  &:nth-child(4) {
+    transition-delay: 0.39s;
+  }
+}
+
+.menuOpen .bottom {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.47s;
+}

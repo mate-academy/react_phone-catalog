@@ -1,0 +1,36 @@
+@import '../../../../styles/mixins';
+
+.navPath {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-text-secondary);
+
+  &Home {
+    display: flex;
+    color: var(--color-text);
+  }
+
+  &HomeIcon {
+    @include icon('/img-logo-icons/icons/icon-home.svg');
+  }
+
+  &Arrow {
+    @include icon('/img-logo-icons/icons/arrow-right.svg');
+  }
+
+  &Link {
+    text-decoration: none;
+    color: var(--color-text);
+    padding-top: 3px;
+
+    @include small-text;
+  }
+
+  &Current {
+    padding-top: 3px;
+    color: var(--color-text-secondary);
+
+    @include small-text;
+  }
+}
