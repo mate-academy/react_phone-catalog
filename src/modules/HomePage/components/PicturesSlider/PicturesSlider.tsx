@@ -1,14 +1,39 @@
 import { useEffect, useState } from 'react';
 import styles from './PicturesSlider.module.scss';
 import classNames from 'classnames';
+import { Link } from 'react-router-dom';
 
 const IMAGE_BANNER = [
-  { wide: 'img/banner-1.jpg', square: 'img/banner-1-mobile.jpg' },
-  { wide: 'img/banner-2.jpg', square: 'img/banner-2-mobile.jpg' },
-  { wide: 'img/banner-3.jpg', square: 'img/banner-3-mobile.jpg' },
-  { wide: 'img/banner-4.jpg', square: 'img/banner-4-mobile.jpg' },
-  { wide: 'img/banner-5.jpg', square: 'img/banner-5-mobile.jpg' },
-  { wide: 'img/banner-6.jpg', square: 'img/banner-6-mobile.jpg' },
+  {
+    wide: 'img/banner-1.jpg',
+    square: 'img/banner-1-mobile.jpg',
+    link: '/phones',
+  },
+  {
+    wide: 'img/banner-2.jpg',
+    square: 'img/banner-2-mobile.jpg',
+    link: '/accessories',
+  },
+  {
+    wide: 'img/banner-3.jpg',
+    square: 'img/banner-3-mobile.jpg',
+    link: '/phones',
+  },
+  {
+    wide: 'img/banner-4.jpg',
+    square: 'img/banner-4-mobile.jpg',
+    link: '/tablets',
+  },
+  {
+    wide: 'img/banner-5.jpg',
+    square: 'img/banner-5-mobile.jpg',
+    link: '/phones',
+  },
+  {
+    wide: 'img/banner-6.jpg',
+    square: 'img/banner-6-mobile.jpg',
+    link: '/accessories',
+  },
 ];
 
 export const PicturesSlider = () => {
@@ -65,14 +90,16 @@ export const PicturesSlider = () => {
                   [styles.picturesSliderItemActive]: index === currentIndex,
                 })}
               >
-                <picture>
-                  <source media="(min-width: 640px)" srcSet={image.wide} />
-                  <img
-                    src={image.square}
-                    alt=""
-                    className={styles.picturesSliderImage}
-                  />
-                </picture>
+                <Link to={image.link} className={styles.picturesSliderLink}>
+                  <picture>
+                    <source media="(min-width: 640px)" srcSet={image.wide} />
+                    <img
+                      src={image.square}
+                      alt=""
+                      className={styles.picturesSliderImage}
+                    />
+                  </picture>
+                </Link>
               </li>
             );
           })}

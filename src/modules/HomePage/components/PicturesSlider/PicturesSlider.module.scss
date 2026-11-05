@@ -1,5 +1,7 @@
 @import '../../../../styles/mixins';
 
+src/modules/shared/components/Pagination
+
 .picturesSlider {
   display: flex;
   align-items: center;
@@ -34,11 +36,18 @@
     transition:
       opacity 0.6s,
       transform 0.6s;
+      pointer-events: none;
+  }
+
+  &Link {
+    display: block;
+    height: 100%;
   }
 
   &ItemActive {
     opacity: 1;
     transform: scale(1);
+    pointer-events: auto;
   }
 
   &Image {
