@@ -38,12 +38,7 @@ const Cart = () => {
             )}
             {data.map(item => {
               return (
-                <CartItem
-                  key={item.name}
-                  item={item}
-                  total={total}
-                  quantity={quantity}
-                />
+                <CartItem key={item.name} item={item} quantity={quantity} />
               );
             })}
           </div>

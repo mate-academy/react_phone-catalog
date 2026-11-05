@@ -2,11 +2,10 @@ import { Product } from '../interface/Product';
 
 interface CartItemProps {
   item: Product;
-  total: number;
   quantity: number;
 }
 
-const CartItem = ({ item, total, quantity }: CartItemProps) => {
+const CartItem = ({ item, quantity }: CartItemProps) => {
   return (
     <div className="cart__item" key={item.name}>
       <button
@@ -30,7 +29,7 @@ const CartItem = ({ item, total, quantity }: CartItemProps) => {
         <span className="cart__quantity-num">{quantity}</span>
         <span className="cart__quantity-btn">-</span>
       </div>
-      <span className="cart__price">${total}</span>
+      <span className="cart__price">${item.price}</span>
     </div>
   );
 };
