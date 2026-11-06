@@ -22,7 +22,7 @@ const Phones = () => {
   const pages = [];
 
   useEffect(() => {
-    fetch('http://localhost:5173/api/phones.json')
+    fetch(`${import.meta.env.VITE_PUBLIC_URL}api/phones.json`)
       .then(response => response.json())
       .then(result => {
         setData(result);

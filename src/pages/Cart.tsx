@@ -12,7 +12,7 @@ const Cart = () => {
   useEffect(() => {
     const cart: string[] = JSON.parse(localStorage.getItem('cart') || '[]');
 
-    fetch('http://localhost:5173/api/products.json')
+    fetch(`${import.meta.env.VITE_PUBLIC_URL}api/products.json`)
       .then(response => response.json())
       .then((result: Product[]) => {
         setData(result.filter(item => cart.includes(item.name)));

@@ -22,7 +22,7 @@ const Tablets = () => {
   const pages = [];
 
   useEffect(() => {
-    fetch('http://localhost:5173/api/tablets.json')
+    fetch(`${import.meta.env.VITE_PUBLIC_URL}api/tablets.json`)
       .then(response => response.json())
       .then(result => {
         setData(result);

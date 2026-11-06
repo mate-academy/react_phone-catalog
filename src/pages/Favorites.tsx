@@ -20,7 +20,7 @@ const Favorites = () => {
   }, []);
 
   useEffect(() => {
-    fetch('http://localhost:5173/api/products.json')
+    fetch(`${import.meta.env.VITE_PUBLIC_URL}api/products.json`)
       .then(response => response.json())
       .then(result => {
         const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');

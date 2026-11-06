@@ -22,7 +22,7 @@ const Accessories = () => {
   const pages = [];
 
   useEffect(() => {
-    fetch('http://localhost:5173/api/accessories.json')
+    fetch(`${import.meta.env.VITE_PUBLIC_URL}api/accessories.json`)
       .then(response => response.json())
       .then(result => {
         setData(result);

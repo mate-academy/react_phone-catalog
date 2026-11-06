@@ -53,7 +53,9 @@ const ProductItem = () => {
 
     setRealProduct(undefined);
 
-    fetch(`http://localhost:5173/api/${productExists.category}.json`)
+    fetch(
+      `${import.meta.env.VITE_PUBLIC_URL}api/${productExists.category}.json`,
+    )
       .then(response => response.json())
       .then((result: Phone[]) => {
         const foundProduct = result.find(
