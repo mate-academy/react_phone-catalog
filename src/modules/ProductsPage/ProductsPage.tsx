@@ -6,6 +6,8 @@ import { Product } from '../../types/Product';
 import { Dropdown } from '../shared/components/Dropdown';
 import { Loader } from '../shared/components/Loader';
 import { ProductsList } from '../shared/components/ProductsList';
+import { Breadcrumbs } from '../shared/components/Breadcrumbs';
+import { CATEGORY_NAMES } from '../shared/constants/categoryNames';
 import { getSearchWith } from '../shared/utils/getSearchWith';
 import { Pagination } from './components/Pagination';
 import {
@@ -159,6 +161,11 @@ export const ProductsPage = ({ category }: Props) => {
 
   return (
     <div className={styles.page}>
+      <Breadcrumbs
+        items={[{ label: CATEGORY_NAMES[category] }]}
+        className={styles.breadcrumbs}
+      />
+
       <h1 className={styles.title}>{TITLES[category]}</h1>
 
       {renderContent()}

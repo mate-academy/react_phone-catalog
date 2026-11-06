@@ -11,13 +11,15 @@ h3,
 h4,
 p,
 ul,
+ol,
 dl,
 dd,
 figure {
   margin: 0;
 }
 
-ul {
+ul,
+ol {
   padding: 0;
   list-style: none;
 }
