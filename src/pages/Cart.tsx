@@ -12,7 +12,9 @@ const Cart = () => {
   useEffect(() => {
     const cart: string[] = JSON.parse(localStorage.getItem('cart') || '[]');
 
-    fetch(`${import.meta.env.VITE_PUBLIC_URL}api/products.json`)
+    fetch(
+      `https://johnnyvasconcelos.github.io/react_phone-catalog/api/products.json`,
+    )
       .then(response => response.json())
       .then((result: Product[]) => {
         setData(result.filter(item => cart.includes(item.name)));

@@ -22,7 +22,9 @@ const Tablets = () => {
   const pages = [];
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_PUBLIC_URL}api/tablets.json`)
+    fetch(
+      `https://johnnyvasconcelos.github.io/react_phone-catalog/api/tablets.json`,
+    )
       .then(response => response.json())
       .then(result => {
         setData(result);

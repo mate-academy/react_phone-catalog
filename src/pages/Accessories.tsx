@@ -22,7 +22,9 @@ const Accessories = () => {
   const pages = [];
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_PUBLIC_URL}api/accessories.json`)
+    fetch(
+      `https://johnnyvasconcelos.github.io/react_phone-catalog/api/accessories.json`,
+    )
       .then(response => response.json())
       .then(result => {
         setData(result);
