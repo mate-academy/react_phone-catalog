@@ -36,7 +36,10 @@ const Carousel = ({ carouselItem, setCarouselItem }: CarouselProps) => {
               movePrev();
             }}
           >
-            <img src="/img/left.svg" alt="icon left chevron svg" />
+            <img
+              src={`${import.meta.env.VITE_PUBLIC_URL}/img/left.svg`}
+              alt="icon left chevron svg"
+            />
           </button>
           <div className="header__space">
             <div
