@@ -1,17 +1,23 @@
-import { Header } from './components/Header';
-import { Footer } from './components/Footer';
-
-import main from './App.module.scss';
 import { Outlet } from 'react-router-dom';
 
-export const App = () => (
-  <div className={main.app}>
-    <Header />
+import { Header } from './components/Header';
+import { Sidebar } from './components/Sidebar';
+import { Footer } from './components/Footer';
 
-    <main className={main.main}>
-      <Outlet />
-    </main>
+import styles from './App.module.scss';
 
-    <Footer />
-  </div>
-);
+export const App = () => {
+  return (
+    <div className={styles.app}>
+      <Header />
+
+      <Sidebar />
+
+      <main className={styles.main}>
+        <Outlet />
+      </main>
+
+      <Footer />
+    </div>
+  );
+};

@@ -1,0 +1,13 @@
+.burger-menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 100%;
+  border-left: 1px solid var(--color-elements);
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+  }
+}

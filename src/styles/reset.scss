@@ -4,6 +4,7 @@
   box-sizing: border-box;
 }
 
+picture,
 img {
   display: block;
   max-width: 100%;
@@ -17,10 +18,12 @@ h4 {
 }
 
 a {
+  display: block;
   color: inherit;
   text-decoration: none;
 }
 
+nav,
 ul,
 ol {
   margin: 0;
@@ -41,4 +44,5 @@ button {
   background: none;
   border: 0;
   cursor: pointer;
+  padding: 0;
 }

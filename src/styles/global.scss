@@ -1,10 +1,18 @@
+@use 'variables' as *;
+@use 'mixins' as *;
 @use 'fonts';
 @use 'reset';
-@use 'mixins' as *;
 
 :root {
+  --header-height: 48px;
+
+  @include from($breakpoint-desktop) {
+    --header-height: 64px;
+  }
+
   // Typography
-  --font-family-primary: Mont, sans-serif;
+  --font-family-primary: Mont,
+  sans-serif;
 
   // Colors
   --color-accent: #4219d0;
@@ -13,7 +21,7 @@
   --color-secondary: #89939a;
   --color-icon: #b4bdc3;
   --color-elements: #e2e6e9;
-  --color-hover-bg: #fafbfc;
+  --color-background: #fafbfc;
   --color-white: #fff;
   --color-green: #27ae60;
   --color-red: #eb5757;
@@ -27,7 +35,12 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 80px;
+  scroll-padding-top: var(--header-height);
+}
+
+html,
+body {
+  overflow-x: hidden;
 }
 
 body {
