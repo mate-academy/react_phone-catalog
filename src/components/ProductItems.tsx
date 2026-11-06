@@ -57,13 +57,19 @@ const ProductItems = () => {
             className="product__arrow"
             onClick={() => moveCarousel('minus')}
           >
-            <img alt="Previous" src="/img/left.svg" />
+            <img
+              alt="Previous"
+              src={`${import.meta.env.VITE_PUBLIC_URL}/img/left.svg`}
+            />
           </button>
           <button
             className="product__arrow"
             onClick={() => moveCarousel('plus')}
           >
-            <img alt="Next" src="/img/right.svg" />
+            <img
+              alt="Next"
+              src={`${import.meta.env.VITE_PUBLIC_URL}/img/right.svg`}
+            />
           </button>
         </div>
       </h2>

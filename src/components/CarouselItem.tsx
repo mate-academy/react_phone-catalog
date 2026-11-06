@@ -3,7 +3,7 @@ const CarouselItem = () => {
     <div className="header__item">
       <img
         className="header__image"
-        src="/img/banner-1.png"
+        src={`${import.meta.env.VITE_PUBLIC_URL}/img/banner-1.png`}
         alt="phone banner"
       />
     </div>

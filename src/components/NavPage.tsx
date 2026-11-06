@@ -11,9 +11,15 @@ const NavPage = ({ page, products }: NavPageProps) => {
     <>
       <nav className="navpage">
         <Link to="/">
-          <img src="/img/home.svg" alt="icon home svg" />
+          <img
+            src={`${import.meta.env.VITE_PUBLIC_URL}/img/home.svg`}
+            alt="icon home svg"
+          />
         </Link>
-        <img src="/img/chevron-right-light.svg" alt="icon chevron svg" />
+        <img
+          src={`${import.meta.env.VITE_PUBLIC_URL}/img/chevron-right-light.svg`}
+          alt="icon chevron svg"
+        />
         {products ? (
           <Link to={`/${page}`} className="navpage__subtitle">
             {page}
@@ -23,14 +29,20 @@ const NavPage = ({ page, products }: NavPageProps) => {
         )}
         {products && (
           <>
-            <img src="/img/chevron-right-light.svg" alt="icon chevron svg" />
+            <img
+              src={`${import.meta.env.VITE_PUBLIC_URL}/img/chevron-right-light.svg`}
+              alt="icon chevron svg"
+            />
             <p className="navpage__title">{products}</p>
           </>
         )}
       </nav>
       {products && (
         <Link to={`/${page}`} className="navpage__back">
-          <img src="/img/chevron-left.svg" alt="icon chevron svg" />
+          <img
+            src={`${import.meta.env.VITE_PUBLIC_URL}/img/chevron-left.svg`}
+            alt="icon chevron svg"
+          />
           <p>Back</p>
         </Link>
       )}

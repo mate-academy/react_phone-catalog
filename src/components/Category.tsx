@@ -11,7 +11,7 @@ const Category = ({ item }: CategoryProps) => {
       <Link className="categories__link" to={`/${item.id}`}>
         <div className="categories__box">
           <img
-            src={`/img/${item.image}.webp`}
+            src={`${import.meta.env.VITE_PUBLIC_URL}/img/${item.image}.webp`}
             alt="phone category"
             className="categories__image"
           />

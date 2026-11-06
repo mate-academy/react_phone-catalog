@@ -20,7 +20,10 @@ const CartItem = ({ item, quantity }: CartItemProps) => {
           window.location.reload();
         }}
       >
-        <img src="/img/close.svg" alt="Close" />
+        <img
+          src={`${import.meta.env.VITE_PUBLIC_URL}/img/close.svg`}
+          alt="Close"
+        />
       </button>
       <img src={item.image} alt={item.name} className="cart__image" />
       <span className="cart__title">{item.name}</span>

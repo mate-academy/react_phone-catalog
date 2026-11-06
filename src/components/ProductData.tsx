@@ -35,7 +35,7 @@ const ProductData = ({ product, realProduct }: ProductDataProps) => {
           />
           <img
             className="product__image"
-            src={`/${currentImage}`}
+            src={`${import.meta.env.VITE_PUBLIC_URL}/${currentImage}`}
             alt={product.name}
           />
         </div>

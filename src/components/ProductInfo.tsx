@@ -112,7 +112,11 @@ const ProductInfo = ({
           }}
         >
           <img
-            src={favorite ? '/img/heart-full.svg' : '/img/heart.svg'}
+            src={
+              favorite
+                ? `${import.meta.env.VITE_PUBLIC_URL}/img/heart-full.svg`
+                : `${import.meta.env.VITE_PUBLIC_URL}/img/heart.svg`
+            }
             alt="Add to favorites"
           />
         </button>

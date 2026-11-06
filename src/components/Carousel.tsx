@@ -61,7 +61,10 @@ const Carousel = ({ carouselItem, setCarouselItem }: CarouselProps) => {
               moveNext();
             }}
           >
-            <img src="/img/right.svg" alt="icon right chevron svg" />
+            <img
+              src={`${import.meta.env.VITE_PUBLIC_URL}/img/right.svg`}
+              alt="icon right chevron svg"
+            />
           </button>
         </div>
       </div>

@@ -28,7 +28,10 @@ const ProductCarousel = ({
             setCurrentImage(realProduct.images?.[i]);
           }}
         >
-          <img src={`/${image}`} alt={`${product.name} ${i + 1}`} />
+          <img
+            src={`${import.meta.env.VITE_PUBLIC_URL}/${image}`}
+            alt={`${product.name} ${i + 1}`}
+          />
         </div>
       ))}
     </div>

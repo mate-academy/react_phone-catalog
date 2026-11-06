@@ -21,7 +21,10 @@ const Pagination = ({ pages, setPage, currentPage }: PaginationProps) => {
           setSearchParams({ page: page.toString() });
         }}
       >
-        <img src="/img/chevron-left.svg" alt="chevron left" />
+        <img
+          src={`${import.meta.env.VITE_PUBLIC_URL}/img/chevron-left.svg`}
+          alt="chevron left"
+        />
       </button>
       {pages.map(p => {
         return (
@@ -46,7 +49,10 @@ const Pagination = ({ pages, setPage, currentPage }: PaginationProps) => {
           setSearchParams({ page: page.toString() });
         }}
       >
-        <img src="/img/chevron-right.svg" alt="chevron right" />
+        <img
+          src={`${import.meta.env.VITE_PUBLIC_URL}/img/chevron-right.svg`}
+          alt="chevron right"
+        />
       </button>
     </nav>
   );

@@ -21,7 +21,7 @@ const Model = ({ item, catalog }: ModelProps) => {
   return (
     <article className="model__item">
       <img
-        src={`/${catalog ? item.images?.[0] : item.image}`}
+        src={`${import.meta.env.VITE_PUBLIC_URL}/${catalog ? item.images?.[0] : item.image}`}
         alt={item.name}
         className="model__image"
       />
@@ -74,7 +74,11 @@ const Model = ({ item, catalog }: ModelProps) => {
           }}
         >
           <img
-            src={favorite ? '/img/heart-full.svg' : '/img/heart.svg'}
+            src={
+              favorite
+                ? `${import.meta.env.VITE_PUBLIC_URL}/img/heart-full.svg`
+                : `${import.meta.env.VITE_PUBLIC_URL}/img/heart.svg`
+            }
             alt="heart icon svg"
           />
         </button>
