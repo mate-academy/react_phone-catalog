@@ -11,7 +11,7 @@ import Favorites from './pages/Favorites';
 import Cart from './pages/Cart';
 
 export const App = () => (
-  <BrowserRouter>
+  <BrowserRouter basename="/react_phone-catalog">
     <div className="App">
       <Navbar />
       <div className="section">
