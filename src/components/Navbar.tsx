@@ -13,7 +13,10 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="navbar__container">
         <Link to="/home">
-          <img src="/img/logo.png" alt="nice gadjets" />
+          <img
+            src={`${import.meta.env.VITE_PUBLIC_URL}/img/logo.png`}
+            alt="nice gadjets"
+          />
         </Link>
         <ul
           className={
@@ -78,7 +81,10 @@ const Navbar = () => {
             }
           >
             <Link to="/favorites">
-              <img src="/img/heart.svg" alt="heart icon svg" />
+              <img
+                src={`${import.meta.env.VITE_PUBLIC_URL}/img/heart.svg`}
+                alt="heart icon svg"
+              />
             </Link>
           </li>
           <li
@@ -89,7 +95,10 @@ const Navbar = () => {
             }
           >
             <Link to="/cart">
-              <img src="/img/shopping-bag.svg" alt="bag icon svg" />
+              <img
+                src={`${import.meta.env.VITE_PUBLIC_URL}/img/shopping-bag.svg`}
+                alt="bag icon svg"
+              />
             </Link>
           </li>
         </ul>
@@ -98,7 +107,11 @@ const Navbar = () => {
           onClick={() => setShowMenu(!showMenu)}
         >
           <img
-            src={showMenu ? '/img/close.svg' : '/img/menu.svg'}
+            src={
+              showMenu
+                ? `${import.meta.env.VITE_PUBLIC_URL}/img/close.svg`
+                : `${import.meta.env.VITE_PUBLIC_URL}/img/menu.svg`
+            }
             alt="menu icon png"
             className="navbar__button"
           />
