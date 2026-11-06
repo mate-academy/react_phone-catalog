@@ -24,7 +24,9 @@ const ProductItem = () => {
   }, [product]);
 
   useEffect(() => {
-    fetch('http://localhost:5173/api/products.json')
+    fetch(
+      `https://johnnyvasconcelos.github.io/react_phone-catalog/api/products.json`,
+    )
       .then(response => response.json())
       .then(result => {
         setData(result);
