@@ -165,6 +165,34 @@ export const ProductDetailsPage = () => {
     if (found?.images?.length) {
       setOverrideImages(found.images);
       setImageIndex(0);
+      navigate(`/product/${found.id}`);
+    }
+  };
+
+  const handleCapacityChange = async (nextCapacity: string) => {
+    setCapacity(nextCapacity);
+
+    if (!product) {
+      return;
+    }
+
+    const normalizedCapacity = nextCapacity.trim();
+    const normalizedColor = (selectedColor ?? product.color ?? '')
+      .trim()
+      .toLowerCase()
+      .replace(/\s+/g, '');
+
+    const allProducts = await getDetailedProducts();
+    const found = allProducts.find(
+      item =>
+        item.namespaceId === product.namespaceId &&
+        item.capacity === normalizedCapacity &&
+        item.color?.trim().toLowerCase().replace(/\s+/g, '') ===
+          normalizedColor,
+    );
+
+    if (found) {
+      navigate(`/product/${found.id}`);
     }
   };
 
@@ -282,7 +310,7 @@ export const ProductDetailsPage = () => {
             color={selectedColor}
             capacity={selectedCapacity}
             onColorChange={handleColorChange}
-            onCapacityChange={setCapacity}
+            onCapacityChange={handleCapacityChange}
           />
           {product.description && product.description.length > 0 && (
             <div className={styles.about}>

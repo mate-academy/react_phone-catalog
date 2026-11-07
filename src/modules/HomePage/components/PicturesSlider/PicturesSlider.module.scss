@@ -47,13 +47,10 @@
 }
 
 .dots {
-  position: absolute;
-  bottom: 12px;
-  left: 0;
-  right: 0;
   display: flex;
   justify-content: center;
   gap: 8px;
+  margin-top: 12px;
 }
 
 .dot {
