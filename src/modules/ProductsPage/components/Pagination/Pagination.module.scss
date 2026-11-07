@@ -16,10 +16,7 @@
   @include square-button;
 
   &:disabled {
-    border-color: var(--color-elements);
-    background-color: transparent;
-    color: var(--color-icons);
-    cursor: default;
+    @include square-button-disabled;
   }
 
   &:hover:not(:disabled) {

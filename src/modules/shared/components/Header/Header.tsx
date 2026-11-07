@@ -10,6 +10,7 @@ import MenuIcon from '../../../../assets/icons/menu.svg?react';
 import CloseIcon from '../../../../assets/icons/close.svg?react';
 import styles from './Header.module.scss';
 import { IconWithCounter } from '../IconWithCounter';
+import { useCart } from '../../context/CartContext';
 import { useFavorites } from '../../context/FavoritesContext';
 
 const getNavLinkClass = ({ isActive }: { isActive: boolean }) =>
@@ -22,6 +23,7 @@ export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const { favorites } = useFavorites();
+  const { totalQuantity } = useCart();
   const toggleMenu = () => setIsMenuOpen(current => !current);
   const closeMenu = () => setIsMenuOpen(false);
 
@@ -60,7 +62,9 @@ export const Header = () => {
         </NavLink>
 
         <NavLink to="/cart" className={getIconLinkClass} aria-label="Cart">
-          <CartIcon />
+          <IconWithCounter count={totalQuantity}>
+            <CartIcon />
+          </IconWithCounter>
         </NavLink>
       </div>
 

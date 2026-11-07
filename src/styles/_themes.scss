@@ -24,6 +24,11 @@
   --color-text-on-accent: #fff;
   --color-accent-hover: #313237;
   --shadow-accent-hover: 0 3px 13px rgba(23, 32, 49, 0.4);
+
+  // Primary button, selected state (UI Kit)
+  --color-selected-bg: #fff;
+  --color-selected-border: #e2e6e9;
+  --color-selected-text: #27ae60;
 }
 
 // Dark theme: only overrides what changes.
@@ -48,4 +53,9 @@
   // Primary button (UI Kit)
   --color-accent-hover: #a378ff;
   --shadow-accent-hover: none;
+
+  // Primary button, selected state (UI Kit)
+  --color-selected-bg: #323542;
+  --color-selected-border: #323542;
+  --color-selected-text: #f1f2f9;
 }

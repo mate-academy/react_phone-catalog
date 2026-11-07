@@ -67,3 +67,27 @@
   border-color: var(--color-button-border-hover);
   background-color: var(--color-button-bg-hover);
 }
+
+
+@mixin square-button-disabled {
+  border-color: var(--color-elements);
+  background-color: transparent;
+  color: var(--color-icons);
+  cursor: default;
+}
+
+// Primary button from the UI Kit (typography comes from the button-text mixin)
+@mixin primary-button($height: 40px) {
+  height: $height;
+  border: 0;
+  background-color: var(--color-accent);
+  color: var(--color-text-on-accent);
+  transition:
+    background-color $transition-duration,
+    box-shadow $transition-duration;
+
+  &:hover {
+    background-color: var(--color-accent-hover);
+    box-shadow: var(--shadow-accent-hover);
+  }
+}

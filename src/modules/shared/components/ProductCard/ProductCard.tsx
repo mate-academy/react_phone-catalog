@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Product } from '../../../../types/Product';
 import HeartIcon from '../../../../assets/icons/heart.svg?react';
 import HeartFilledIcon from '../../../../assets/icons/heart-filled.svg?react';
+import { useCart } from '../../context/CartContext';
 import { useFavorites } from '../../context/FavoritesContext';
 import styles from './ProductCard.module.scss';
 
@@ -14,7 +15,9 @@ export const ProductCard = ({ product }: Props) => {
   const { itemId, name, image, price, fullPrice, screen, capacity, ram } =
     product;
 
+  const { isInCart, addToCart } = useCart();
   const { isFavorite, toggleFavorite } = useFavorites();
+  const isAdded = isInCart(itemId);
   const isFavorited = isFavorite(itemId);
 
   const productUrl = `/product/${itemId}`;
@@ -55,8 +58,14 @@ export const ProductCard = ({ product }: Props) => {
       </dl>
 
       <div className={styles.actions}>
-        <button type="button" className={styles.addButton}>
-          Add to cart
+        <button
+          type="button"
+          className={classNames(styles.addButton, {
+            [styles.addButtonActive]: isAdded,
+          })}
+          onClick={() => addToCart(product)}
+        >
+          {isAdded ? 'Added to cart' : 'Add to cart'}
         </button>
 
         <button

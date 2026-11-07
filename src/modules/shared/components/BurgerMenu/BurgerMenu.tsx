@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import { NavLink } from 'react-router-dom';
 import { NAV_LINKS } from '../../constants/navLinks';
+import { useCart } from '../../context/CartContext';
 import { useFavorites } from '../../context/FavoritesContext';
 import { IconWithCounter } from '../IconWithCounter';
 import HeartIcon from '../../../../assets/icons/heart.svg?react';
@@ -20,6 +21,7 @@ const getIconLinkClass = ({ isActive }: { isActive: boolean }) =>
 
 export const BurgerMenu = ({ isOpen, onClose }: Props) => {
   const { favorites } = useFavorites();
+  const { totalQuantity } = useCart();
 
   return (
     <div className={classNames(styles.menu, { [styles.open]: isOpen })}>
@@ -53,7 +55,9 @@ export const BurgerMenu = ({ isOpen, onClose }: Props) => {
           aria-label="Cart"
           onClick={onClose}
         >
-          <CartIcon />
+          <IconWithCounter count={totalQuantity}>
+            <CartIcon />
+          </IconWithCounter>
         </NavLink>
       </div>
     </div>
