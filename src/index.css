@@ -1,0 +1,146 @@
+@import 'tailwindcss';
+
+@font-face {
+  font-family: Mont;
+  src:
+    url('/fonts/Mont-Regular.woff2') format('woff2'),
+    url('/fonts/Mont-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Mont;
+  src:
+    url('/fonts/Mont-SemiBold.woff2') format('woff2'),
+    url('/fonts/Mont-SemiBold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Mont;
+  src:
+    url('/fonts/Mont-Bold.woff2') format('woff2'),
+    url('/fonts/Mont-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --color-primary: #313237;
+  --color-secondary: #89939a;
+  --color-icons: #b4bdc3;
+  --color-elements: #e2e6e9;
+  --color-white: #fff;
+  --color-green: #27ae60;
+  --color-red: #eb5757;
+}
+
+.dark {
+  --color-primary: #0f1121;
+  --color-secondary: #75767f;
+  --color-icons: #4a4d58;
+  --color-elements: #3b3e4a;
+  --color-white: #f1f2f9;
+  --color-green: #27ae60;
+  --color-red: #eb5757;
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-primary: var(--color-primary);
+  --color-secondary: var(--color-secondary);
+  --color-icons: var(--color-icons);
+  --color-elements: var(--color-elements);
+  --color-white: var(--color-white);
+  --color-green: var(--color-green);
+  --color-red: var(--color-red);
+  --font-mont: 'Mont', sans-serif;
+  --color-hover-bg: #fafbfc;
+  --color-silver: #f0f0f0;
+  --color-spacegray: #4c4c4c;
+  --color-midnightgreen: #5f7170;
+  --color-gold: #fcdbc1;
+  --breakpoint-sm: 480px;
+  --breakpoint-md: 640px;
+  --breakpoint-em: 768px;
+  --breakpoint-lg: 1200px;
+  --color-surface-2-dark: #323542;
+  --color-surface-1-dark: #161827;
+  --color-accent-dark: #905bff;
+  --color-accent-hover-dark: #a378ff;
+  --color-rosegold: #b76e79;
+  --color-skyblue: #6ba1c4;
+  --color-starlight: #f9f3ee;
+  --color-pink: #ffd1dc;
+  --color-midnight: #171e27;
+  --color-sierrablue: #9bb5ce;
+  --color-graphite: #5c5b57;
+  --color-spaceblack: #0a0c0d;
+  --color-blue: #0071e3;
+}
+
+@layer utilities {
+  .hover-zoom {
+    @apply hover:scale-110 transition-transform ease-in-out duration-300;
+  }
+
+  .hover-zoom-small {
+    @apply hover:scale-105 transition-transform ease-in-out duration-300;
+  }
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html.dark {
+    color-scheme: dark;
+  }
+
+  html,
+  body {
+    background-color: var(--color-white) !important;
+    color: var(--color-primary);
+    min-height: 100vh;
+  }
+
+  html.dark,
+  html.dark body {
+    background-color: var(--color-primary) !important;
+    color: var(--color-white);
+  }
+
+  button:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+@keyframes d-splash-loader {
+  0% {
+    opacity: 0;
+    transform: scale(1);
+  }
+  45% {
+    opacity: 1;
+    transform: scale(0.7);
+  }
+  65% {
+    opacity: 1;
+    transform: scale(0.7);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+
+.animate-splash-dot {
+  animation: d-splash-loader 3s ease-in-out infinite;
+}
