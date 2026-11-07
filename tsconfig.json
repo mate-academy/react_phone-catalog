@@ -1,10 +1,17 @@
 {
   "extends": "@mate-academy/students-ts-config",
-  "include": [
-    "src"
-  ],
   "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["DOM", "DOM.Iterable", "ES2022"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "downlevelIteration": true,
+    "skipLibCheck": true,
     "sourceMap": false,
-    "types": ["node", "cypress"]
-  }
+    "ignoreDeprecations": "6.0",
+    "jsx": "react-jsx",
+    "types": ["vite/client", "node"]
+  },
+  "include": ["src", "cypress"]
 }
