@@ -1,0 +1,23 @@
+.wrapper {
+  position: relative;
+  display: flex;
+}
+
+.counter {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 14px;
+  height: 14px;
+  padding-inline: 3px;
+  border: 1px solid var(--color-bg);
+  border-radius: 7px;
+  background-color: var(--color-red);
+  color: var(--color-text-on-accent);
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1;
+}

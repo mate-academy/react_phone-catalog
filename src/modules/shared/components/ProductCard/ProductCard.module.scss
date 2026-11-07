@@ -104,3 +104,8 @@
     @include square-button-hover;
   }
 }
+
+.favoriteButtonActive {
+  border-color: var(--color-elements);
+  color: var(--color-red);
+}

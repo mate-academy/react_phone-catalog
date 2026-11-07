@@ -1,7 +1,10 @@
+import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 import { Product } from '../../../../types/Product';
-import styles from './ProductCard.module.scss';
 import HeartIcon from '../../../../assets/icons/heart.svg?react';
+import HeartFilledIcon from '../../../../assets/icons/heart-filled.svg?react';
+import { useFavorites } from '../../context/FavoritesContext';
+import styles from './ProductCard.module.scss';
 
 interface Props {
   product: Product;
@@ -10,6 +13,9 @@ interface Props {
 export const ProductCard = ({ product }: Props) => {
   const { itemId, name, image, price, fullPrice, screen, capacity, ram } =
     product;
+
+  const { isFavorite, toggleFavorite } = useFavorites();
+  const isFavorited = isFavorite(itemId);
 
   const productUrl = `/product/${itemId}`;
 
@@ -55,10 +61,14 @@ export const ProductCard = ({ product }: Props) => {
 
         <button
           type="button"
-          className={styles.favoriteButton}
+          className={classNames(styles.favoriteButton, {
+            [styles.favoriteButtonActive]: isFavorited,
+          })}
           aria-label="Add to favourites"
+          aria-pressed={isFavorited}
+          onClick={() => toggleFavorite(product)}
         >
-          <HeartIcon />
+          {isFavorited ? <HeartFilledIcon /> : <HeartIcon />}
         </button>
       </div>
     </article>

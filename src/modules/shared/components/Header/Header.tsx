@@ -9,6 +9,8 @@ import CartIcon from '../../../../assets/icons/cart.svg?react';
 import MenuIcon from '../../../../assets/icons/menu.svg?react';
 import CloseIcon from '../../../../assets/icons/close.svg?react';
 import styles from './Header.module.scss';
+import { IconWithCounter } from '../IconWithCounter';
+import { useFavorites } from '../../context/FavoritesContext';
 
 const getNavLinkClass = ({ isActive }: { isActive: boolean }) =>
   classNames(styles.navLink, { [styles.active]: isActive });
@@ -19,6 +21,7 @@ const getIconLinkClass = ({ isActive }: { isActive: boolean }) =>
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const { favorites } = useFavorites();
   const toggleMenu = () => setIsMenuOpen(current => !current);
   const closeMenu = () => setIsMenuOpen(false);
 
@@ -51,7 +54,9 @@ export const Header = () => {
           className={getIconLinkClass}
           aria-label="Favourites"
         >
-          <HeartIcon />
+          <IconWithCounter count={favorites.length}>
+            <HeartIcon />
+          </IconWithCounter>
         </NavLink>
 
         <NavLink to="/cart" className={getIconLinkClass} aria-label="Cart">
