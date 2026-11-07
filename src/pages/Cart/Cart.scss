@@ -1,0 +1,221 @@
+.cart-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 16px 64px;
+  box-sizing: border-box;
+
+  @media (min-width: 640px) {
+    padding: 32px 24px 80px;
+  }
+
+  &__back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 24px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--muted-text);
+    text-decoration: none;
+    transition: color 0.2s;
+
+    &:hover {
+      color: #ffffff;
+    }
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 1.25;
+    color: #ffffff;
+    margin: 0 0 32px 0;
+
+    @media (min-width: 640px) {
+      font-size: 48px;
+    }
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    align-items: start;
+
+    @media (min-width: 1024px) {
+      grid-template-columns: 1fr 368px;
+      gap: 16px;
+    }
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px;
+    background: #ffffff;
+    border: 1px solid #e2e6e9;
+    border-radius: 0;
+
+    @media (min-width: 640px) {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px;
+      gap: 24px;
+    }
+
+    &-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      width: 100%;
+
+      @media (min-width: 640px) {
+        width: auto;
+        flex: 1;
+        gap: 24px;
+      }
+    }
+
+    &-remove {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: none;
+      border: none;
+      padding: 0;
+      width: 16px;
+      height: 16px;
+      color: #89939a;
+      cursor: pointer;
+      transition: color 0.2s;
+
+      &:hover {
+        color: #313237;
+      }
+    }
+
+    &-image {
+      width: 66px;
+      height: 66px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    &-title {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 21px;
+      color: #313237;
+      margin: 0;
+    }
+
+    &-right {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+
+      @media (min-width: 640px) {
+        width: auto;
+        justify-content: flex-end;
+        gap: 24px;
+      }
+    }
+
+    &-counter {
+      display: flex;
+      align-items: center;
+      gap: 0;
+
+      button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        background: #ffffff;
+        border: 1px solid #e2e6e9;
+        border-radius: 0;
+        font-size: 16px;
+        color: #313237;
+        cursor: pointer;
+        transition: border-color 0.2s;
+
+        &:hover:not(:disabled) {
+          border-color: #313237;
+        }
+
+        &:disabled {
+          opacity: 0.3;
+          cursor: not-allowed;
+          border-color: #e2e6e9;
+        }
+      }
+
+      span {
+        width: 32px;
+        text-align: center;
+        font-size: 14px;
+        font-weight: 600;
+        color: #313237;
+      }
+    }
+
+    &-price {
+      font-size: 22px;
+      font-weight: 800;
+      color: #313237;
+      text-align: right;
+    }
+  }
+
+  &__summary {
+    padding: 24px;
+    background: #ffffff;
+    border: 1px solid #e2e6e9;
+    border-radius: 0;
+    height: fit-content;
+    text-align: center;
+
+    &-total {
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 1;
+      color: #313237;
+      margin-bottom: 8px;
+    }
+
+    &-count {
+      font-size: 14px;
+      color: #89939a;
+      margin-bottom: 24px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid #e2e6e9;
+    }
+
+    &-button {
+      width: 100%;
+      height: 48px;
+      background: #313237;
+      color: #ffffff;
+      border: none;
+      border-radius: 0;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color 0.2s;
+
+      &:hover {
+        background-color: #111111;
+      }
+    }
+  }
+}

@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, Link } from 'react-router-dom';
 
 import { useLanguage } from '../../context/LanguageContext';
 import { ProductSkeleton } from '../../components/ProductSkeleton';
 import { ProductsList } from '../../components/ProductsList';
 import { Product } from '../../types/Product';
 import { getProducts } from '../../utils/api';
+import { Pagination } from '../../components/Pagination/Pagination';
+import './Phones.scss';
 
 export const Phones = () => {
   const { t } = useLanguage();
@@ -41,33 +43,7 @@ export const Phones = () => {
   useEffect(() => {
     loadProducts();
   }, []);
-
-  if (isLoading) {
-    return (
-      <section>
-        <h1>{t('phones')}</h1>
-
-        <div className="products-skeleton">
-          {Array.from({ length: 8 }).map((_, index) => (
-            <ProductSkeleton key={index} />
-          ))}
-        </div>
-      </section>
-    );
-  }
-
-  if (error) {
-    return (
-      <section>
-        <p>{t('somethingWentWrong')}</p>
-
-        <button type="button" onClick={loadProducts}>
-          {t('reload')}
-        </button>
-      </section>
-    );
-  }
-
+  
   const phones = products
     .filter(product => product.category === 'phones')
     .filter(product => product.name.toLowerCase().includes(query))
@@ -87,22 +63,8 @@ export const Phones = () => {
       }
     });
 
-  if (phones.length === 0) {
-    return (
-      <section>
-        <h1>{t('phones')}</h1>
-
-        <p>{query ? t('noPhonesMatching') : t('noPhones')}</p>
-      </section>
-    );
-  }
-
   const perPage = perPageParam === 'all' ? phones.length : Number(perPageParam);
-
-  const totalPages = Math.ceil(phones.length / perPage);
-
   const startIndex = (page - 1) * perPage;
-
   const visiblePhones = phones.slice(startIndex, startIndex + perPage);
 
   const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -141,56 +103,93 @@ export const Phones = () => {
     setSearchParams(newParams);
   };
 
-  return (
-    <section>
-      <h1>{t('phones')}</h1>
+  if (isLoading) {
+    return (
+      <section>
+        <nav className="phones-page__breadcrumbs" aria-label="Breadcrumb">
+          <Link to="/" className="phones-page__home-link">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2 6.5L8 2L14 6.5V13.5C14 13.7761 13.7761 14 13.5 14H10V10H6V14H2.5C2.22386 14 2 13.7761 2 13.5V6.5Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </Link>
+          <span>/</span>
+          <span>{t('phones')}</span>
+        </nav>
 
-      <label>
-        {t('sortBy')}{' '}
-        <select value={sort} onChange={handleSortChange}>
-          <option value="age">{t('newest')}</option>
+        <h1>Mobile phones</h1>
 
-          <option value="name">{t('alphabetically')}</option>
-
-          <option value="price">{t('cheapest')}</option>
-        </select>
-      </label>
-
-      <label>
-        {t('itemsPerPage')}{' '}
-        <select value={perPageParam} onChange={handlePerPageChange}>
-          <option value="4">4</option>
-          <option value="8">8</option>
-          <option value="16">16</option>
-          <option value="all">{t('all')}</option>
-        </select>
-      </label>
-
-      <ProductsList products={visiblePhones} />
-
-      {totalPages > 1 && perPageParam !== 'all' && (
-        <div>
-          <button
-            type="button"
-            disabled={page === 1}
-            onClick={() => goToPage(page - 1)}
-          >
-            {t('prev')}
-          </button>
-
-          <span>
-            {' '}
-            {t('page')} {page} {t('of')} {totalPages}{' '}
-          </span>
-
-          <button
-            type="button"
-            disabled={page >= totalPages}
-            onClick={() => goToPage(page + 1)}
-          >
-            {t('next')}
-          </button>
+        <div className="products-skeleton">
+          {Array.from({ length: 8 }).map((_, index) => (
+            <ProductSkeleton key={index} />
+          ))}
         </div>
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section>
+        <p>{t('somethingWentWrong')}</p>
+
+        <button type="button" onClick={loadProducts}>
+          {t('reload')}
+        </button>
+      </section>
+    );
+  }
+
+  return (
+    <section className="phones-page">
+      <nav className="phones-page__breadcrumbs" aria-label="Breadcrumb">
+        <Link to="/" className="phones-page__home-link">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2 6.5L8 2L14 6.5V13.5C14 13.7761 13.7761 14 13.5 14H10V10H6V14H2.5C2.22386 14 2 13.7761 2 13.5V6.5Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </Link>
+        <span className="phones-page__arrow">/</span>
+        <span className="phones-page__current">{t('phones')}</span>
+      </nav>
+
+      <h1 className="phones-page__title">{t('mobilePhones')}</h1>
+      <p className="phones-page__models-count">{phones.length} models</p>
+
+      {phones.length === 0 ? (
+        <p>{query ? t('noPhonesMatching') : t('noPhones')}</p>
+      ) : (
+        <>
+          <div className="phones-page__filters">
+            <label>
+              {t('sortBy')}{' '}
+              <select value={sort} onChange={handleSortChange}>
+                <option value="age">{t('newest')}</option>
+                <option value="name">{t('alphabetically')}</option>
+                <option value="price">{t('cheapest')}</option>
+              </select>
+            </label>
+
+            <label>
+              {t('itemsPerPage')}{' '}
+              <select value={perPageParam} onChange={handlePerPageChange}>
+                <option value="4">4</option>
+                <option value="8">8</option>
+                <option value="16">16</option>
+                <option value="all">{t('all')}</option>
+              </select>
+            </label>
+          </div>
+
+          <ProductsList products={visiblePhones} />
+
+          {perPageParam !== 'all' && (
+            <Pagination
+              total={phones.length}
+              perPage={perPage}
+              currentPage={page}
+              onPageChange={goToPage}
+            />
+          )}
+        </>
       )}
     </section>
   );

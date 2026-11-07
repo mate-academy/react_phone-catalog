@@ -9,10 +9,17 @@ export const translations = {
     cart: 'Cart',
     backToTop: 'Back to top',
     goTo: 'Go to',
+    added: 'Added',
+    welcomeTitle: 'Welcome to Nice Gadgets store!',
+    mobilePhones: 'Mobile phones',
+
+    totalFor: 'Total for',
+    item: 'item',
+    items: 'items',
 
     github: 'GitHub',
     contacts: 'Contacts',
-    rights: 'All rights reserved',
+    rights: 'rights',
 
     home: 'Home',
     productCatalog: 'Product Catalog',
@@ -92,10 +99,17 @@ export const translations = {
     cart: 'Кошик',
     backToTop: 'На початок',
     goTo: 'Перейти до',
+    added: 'Додано',
+    welcomeTitle: 'Ласкаво просимо до магазину Nice Gadgets!',
+    mobilePhones: 'Мобільні телефони',
+
+    totalFor: 'Всього за',
+    item: 'товар',
+    items: 'товарів',
 
     github: 'GitHub',
     contacts: 'Контакти',
-    rights: 'Всі права захищені',
+    rights: 'права',
 
     home: 'Головна',
     productCatalog: 'Каталог товарів',

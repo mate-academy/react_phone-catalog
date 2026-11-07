@@ -1,5 +1,7 @@
+import { Link } from 'react-router-dom';
 import { useLanguage } from '../../context/LanguageContext';
 import { useCart } from '../../context/CartContext';
+import './Cart.scss';
 
 export const Cart = () => {
   const { t } = useLanguage();
@@ -24,87 +26,96 @@ export const Cart = () => {
   };
 
   return (
-    <section>
-      <h1>{t('cart')}</h1>
+    <section className="cart-page">
+      <Link to={-1 as any} className="cart-page__back-link">
+        &lt; {t('back') || 'Back'}
+      </Link>
+
+      <h1 className="cart-page__title">{t('cart')}</h1>
 
       {state.items.length === 0 ? (
         <p>{t('cartEmpty')}</p>
       ) : (
-        <>
-          {state.items.map(item => (
-            <article key={item.id}>
-              <img
-                src={`${import.meta.env.BASE_URL}${item.image}`}
-                alt={item.name}
-                width="150"
-              />
+        <div className="cart-page__content">
+          <div className="cart-page__items">
+            {state.items.map(item => (
+              <article key={item.id} className="cart-page__item">
+                <div className="cart-page__item-left">
+                  <button
+                    type="button"
+                    className="cart-page__item-remove"
+                    onClick={() =>
+                      dispatch({
+                        type: 'REMOVE_FROM_CART',
+                        id: item.id,
+                      })
+                    }
+                  >
+                    ✕
+                  </button>
 
-              <h2>{item.name}</h2>
+                  <img
+                    src={`${import.meta.env.BASE_URL}${item.image}`}
+                    alt={item.name}
+                    className="cart-page__item-image"
+                  />
 
-              <p>
-                {t('price')}: ${item.price}
-              </p>
+                  <h2 className="cart-page__item-title">{item.name}</h2>
+                </div>
 
-              <div>
-                <button
-                  type="button"
-                  onClick={() =>
-                    dispatch({
-                      type: 'DECREASE',
-                      id: item.id,
-                    })
-                  }
-                >
-                  -
-                </button>
+                <div className="cart-page__item-right">
+                  <div className="cart-page__item-counter">
+                    <button
+                      type="button"
+                      disabled={item.quantity <= 1}
+                      onClick={() =>
+                        dispatch({
+                          type: 'DECREASE',
+                          id: item.id,
+                        })
+                      }
+                    >
+                      -
+                    </button>
 
-                <span> {item.quantity} </span>
+                    <span>{item.quantity}</span>
 
-                <button
-                  type="button"
-                  onClick={() =>
-                    dispatch({
-                      type: 'INCREASE',
-                      id: item.id,
-                    })
-                  }
-                >
-                  +
-                </button>
-              </div>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        dispatch({
+                          type: 'INCREASE',
+                          id: item.id,
+                        })
+                      }
+                    >
+                      +
+                    </button>
+                  </div>
 
-              <p>
-                {t('total')}: ${item.price * item.quantity}
-              </p>
+                  <span className="cart-page__item-price">
+                    ${item.price * item.quantity}
+                  </span>
+                </div>
+              </article>
+            ))}
+          </div>
+          
+          <div className="cart-page__summary">
+            <div className="cart-page__summary-total">${total}</div>
+            <div className="cart-page__summary-count">
+              {t('totalFor')} {totalQuantity} {totalQuantity === 1 ? t('item') : t('items')}
+            </div>
 
-              <button
-                type="button"
-                onClick={() =>
-                  dispatch({
-                    type: 'REMOVE_FROM_CART',
-                    id: item.id,
-                  })
-                }
-              >
-                x
-              </button>
-            </article>
-          ))}
-
-          <hr />
-
-          <p>
-            {t('totalItems')} {totalQuantity}
-          </p>
-
-          <h2>
-            {t('total')} ${total}
-          </h2>
-
-          <button type="button" onClick={handleCheckout}>
-            {t('checkout')}
-          </button>
-        </>
+            <button
+              type="button"
+              className="cart-page__summary-button"
+              onClick={handleCheckout}
+            >
+              {t('checkout')}
+            </button>
+          </div>
+        </div>
       )}
     </section>
   );

@@ -14,17 +14,20 @@ type Props = {
 };
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
-  const { dispatch: cartDispatch } = useCart();
+  const { state: cart, dispatch: cartDispatch } = useCart();
   const { state: favorites, dispatch: favDispatch } = useFavorites();
   const { t } = useLanguage();
 
+  const isInCart = cart.items.some(item => item.id === product.id);
   const isFavorite = favorites.items.some(item => item.id === product.id);
 
   const handleCart = () => {
-    cartDispatch({
-      type: 'ADD_TO_CART',
-      product,
-    });
+    if (!isInCart) {
+      cartDispatch({
+        type: 'ADD_TO_CART',
+        product,
+      });
+    }
   };
 
   const handleFavorite = () => {
@@ -68,10 +71,12 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       <div className="product-card__actions">
         <button
           type="button"
-          className="product-card__cart-button"
+          className={cn('product-card__cart-button', {
+            'product-card__cart-button--added': isInCart,
+          })}
           onClick={handleCart}
         >
-          {t('addToCart')}
+          {isInCart ? t('added') : t('addToCart')}
         </button>
 
         <button

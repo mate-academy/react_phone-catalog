@@ -1,0 +1,29 @@
+.home {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.home__title {
+  width: calc(100% - 64px);
+  max-width: 1136px;
+  margin: 24px auto 32px;
+  font-size: clamp(26px, 4vw, 48px);
+  font-weight: 800;
+  line-height: 1.2;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .home__title {
+    width: calc(100% - 32px);
+    margin: 20px auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .home__title {
+    width: calc(100% - 24px);
+  }
+}
