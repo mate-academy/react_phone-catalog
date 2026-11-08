@@ -1,13 +1,15 @@
-import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { getProductsByCategory } from '../../api/products';
 import { Category } from '../../types/Category';
-import { Product } from '../../types/Product';
+import { Breadcrumbs } from '../shared/components/Breadcrumbs';
 import { Dropdown } from '../shared/components/Dropdown';
+import { ErrorMessage } from '../shared/components/ErrorMessage';
 import { Loader } from '../shared/components/Loader';
 import { ProductsList } from '../shared/components/ProductsList';
-import { Breadcrumbs } from '../shared/components/Breadcrumbs';
-import { CATEGORY_NAMES } from '../shared/constants/categoryNames';
+import {
+  CATEGORY_NAMES,
+  CATEGORY_TITLES,
+} from '../shared/constants/categoryNames';
+import { useProducts } from '../shared/hooks/useProducts';
 import { getSearchWith } from '../shared/utils/getSearchWith';
 import { Pagination } from './components/Pagination';
 import {
@@ -24,21 +26,12 @@ import {
 } from './utils/sorting';
 import styles from './ProductsPage.module.scss';
 
-const TITLES: Record<Category, string> = {
-  phones: 'Mobile phones',
-  tablets: 'Tablets',
-  accessories: 'Accessories',
-};
-
 interface Props {
   category: Category;
 }
 
 export const ProductsPage = ({ category }: Props) => {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [hasError, setHasError] = useState(false);
-  const [reloadCount, setReloadCount] = useState(0);
+  const { products: allProducts, isLoading, hasError, reload } = useProducts();
   const [searchParams, setSearchParams] = useSearchParams();
 
   const sortParam = searchParams.get('sort');
@@ -49,35 +42,7 @@ export const ProductsPage = ({ category }: Props) => {
 
   const pageParam = Math.floor(Number(searchParams.get('page'))) || 1;
 
-  useEffect(() => {
-    let isCurrent = true;
-
-    setIsLoading(true);
-    setHasError(false);
-
-    getProductsByCategory(category)
-      .then(data => {
-        if (isCurrent) {
-          setProducts(data);
-        }
-      })
-      .catch(() => {
-        if (isCurrent) {
-          setHasError(true);
-        }
-      })
-      .finally(() => {
-        if (isCurrent) {
-          setIsLoading(false);
-        }
-      });
-
-    return () => {
-      isCurrent = false;
-    };
-  }, [category, reloadCount]);
-
-  const reload = () => setReloadCount(count => count + 1);
+  const products = allProducts.filter(product => product.category === category);
 
   const handleSortChange = (value: string) => {
     setSearchParams(getSearchWith(searchParams, { sort: value, page: null }));
@@ -105,15 +70,7 @@ export const ProductsPage = ({ category }: Props) => {
     }
 
     if (hasError) {
-      return (
-        <div className={styles.message}>
-          <p>Something went wrong</p>
-
-          <button type="button" className={styles.reload} onClick={reload}>
-            Reload
-          </button>
-        </div>
-      );
+      return <ErrorMessage onReload={reload} className={styles.message} />;
     }
 
     if (products.length === 0) {
@@ -166,7 +123,7 @@ export const ProductsPage = ({ category }: Props) => {
         className={styles.breadcrumbs}
       />
 
-      <h1 className={styles.title}>{TITLES[category]}</h1>
+      <h1 className={styles.title}>{CATEGORY_TITLES[category]}</h1>
 
       {renderContent()}
     </div>

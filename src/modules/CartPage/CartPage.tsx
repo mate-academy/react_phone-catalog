@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { BackButton } from '../shared/components/BackButton';
 import { useCart } from '../shared/context/CartContext';
 import { pluralize } from '../shared/utils/pluralize';
-import { CartItem } from '../shared/components/CartItem';
+import { CartItem } from './components/CartItem';
 import { CheckoutModal } from './components/CheckoutModal';
 import styles from './CartPage.module.scss';
 

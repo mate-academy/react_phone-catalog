@@ -1,0 +1,37 @@
+@use '../../styles/utils' as *;
+
+.page {
+  padding-top: 24px;
+
+  @include on-desktop {
+    padding-top: 56px;
+  }
+}
+
+.hiddenTitle {
+  @include visually-hidden;
+}
+
+.title {
+  margin-bottom: 24px;
+
+  @include h1;
+
+  @include on-tablet {
+    margin-bottom: 32px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 56px;
+  }
+}
+
+.blocks {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+
+  @include on-desktop {
+    gap: 80px;
+  }
+}

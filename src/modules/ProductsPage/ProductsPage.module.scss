@@ -42,19 +42,5 @@
 }
 
 .message {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  align-items: flex-start;
   margin-top: 24px;
-}
-
-.reload {
-  @include button-text;
-
-  padding: 0;
-  border: 0;
-  background-color: transparent;
-  color: var(--color-text-primary);
-  text-decoration: underline;
 }

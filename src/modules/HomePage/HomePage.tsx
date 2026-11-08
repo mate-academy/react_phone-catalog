@@ -1,27 +1,41 @@
-import { useEffect, useState } from 'react';
-import { getProducts } from '../../api/products';
-import { Product } from '../../types/Product';
-import { ProductCard } from '../shared/components/ProductCard';
+import { ErrorMessage } from '../shared/components/ErrorMessage';
+import { Loader } from '../shared/components/Loader';
+import { useProducts } from '../shared/hooks/useProducts';
+import { Categories } from './components/Categories';
+import styles from './HomePage.module.scss';
 
-// TEMPORARY TEST: remove before committing
 export const HomePage = () => {
-  const [products, setProducts] = useState<Product[]>([]);
+  const { products, isLoading, hasError, reload } = useProducts();
 
-  useEffect(() => {
-    getProducts().then(data => setProducts(data.slice(0, 4)));
-  }, []);
+  const renderContent = () => {
+    if (isLoading) {
+      return <Loader />;
+    }
+
+    if (hasError) {
+      return <ErrorMessage onReload={reload} />;
+    }
+
+    return (
+      <div className={styles.blocks}>
+        {/* Brand new models slider will go here */}
+
+        <Categories products={products} />
+
+        {/* Hot prices slider will go here */}
+      </div>
+    );
+  };
 
   return (
-    <>
-      <h1>Product Catalog</h1>
+    <div className={styles.page}>
+      <h1 className={styles.hiddenTitle}>Product Catalog</h1>
 
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px' }}>
-        {products.map(product => (
-          <div key={product.id} style={{ width: '272px' }}>
-            <ProductCard product={product} />
-          </div>
-        ))}
-      </div>
-    </>
+      <h2 className={styles.title}>Welcome to Nice Gadgets store!</h2>
+
+      {/* Pictures slider will go here */}
+
+      {renderContent()}
+    </div>
   );
 };

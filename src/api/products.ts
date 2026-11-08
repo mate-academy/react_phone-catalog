@@ -1,4 +1,3 @@
-import { Category } from '../types/Category';
 import { Product } from '../types/Product';
 import { ProductDetails } from '../types/ProductDetails';
 
@@ -28,14 +27,6 @@ async function request<T>(endpoint: string): Promise<T> {
 
 export function getProducts(): Promise<Product[]> {
   return request<Product[]>('products.json');
-}
-
-export async function getProductsByCategory(
-  category: Category,
-): Promise<Product[]> {
-  const products = await getProducts();
-
-  return products.filter(product => product.category === category);
 }
 
 export async function getProductDetails(
