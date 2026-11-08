@@ -26,6 +26,14 @@
   }
 }
 
+.banner {
+  margin-bottom: 64px;
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+}
+
 .blocks {
   display: flex;
   flex-direction: column;

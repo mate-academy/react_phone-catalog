@@ -2,6 +2,7 @@ import { useProducts } from '../shared/hooks/useProducts';
 import { ErrorMessage } from '../shared/components/ErrorMessage';
 import { Loader } from '../shared/components/Loader';
 import { Categories } from './components/Categories';
+import { PicturesSlider } from './components/PicturesSlider';
 import { ProductsSlider } from '../shared/components/ProductsSlider';
 import {
   getBrandNewProducts,
@@ -45,7 +46,7 @@ export const HomePage = () => {
 
       <h2 className={styles.title}>Welcome to Nice Gadgets store!</h2>
 
-      {/* Pictures slider will go here */}
+      <PicturesSlider className={styles.banner} />
 
       {renderContent()}
     </div>
