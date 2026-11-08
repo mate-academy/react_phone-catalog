@@ -4,8 +4,15 @@ import { BackButton } from '../../components/BackButton/BackButton';
 import styles from './CartPage.module.scss';
 
 export const CartPage = () => {
-  const { items, totalPrice, removeFromCart, increase, decrease, clearCart } =
-    useCart();
+  const {
+    items,
+    totalPrice,
+    totalCount,
+    removeFromCart,
+    increase,
+    decrease,
+    clearCart,
+  } = useCart();
 
   const handleCheckout = () => {
     const confirmed = confirm("Checkout isn't available yet. Clear your cart?");
@@ -56,7 +63,10 @@ export const CartPage = () => {
           <aside className={styles.summary}>
             <div className={styles.totalBlock}>
               <span className={styles.totalPrice}>${totalPrice}</span>
-              <p className={styles.count}>Total for {items.length} items</p>
+
+              <p className={styles.count}>
+                Total for {totalCount} {totalCount === 1 ? 'item' : 'items'}
+              </p>
             </div>
 
             <button className={styles.checkout} onClick={handleCheckout}>
