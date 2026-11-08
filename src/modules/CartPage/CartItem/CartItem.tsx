@@ -1,4 +1,5 @@
 import styles from './CartItem.module.scss';
+import { Link } from 'react-router-dom';
 import { CartItem as CartItemType } from '../../../types';
 
 interface CartItemProps {
@@ -28,13 +29,15 @@ export const CartItem: React.FC<CartItemProps> = ({
           <img src="./img/icons/Close.svg" alt="" />
         </button>
 
-        <img
-          src={product.image}
-          alt={product.name}
-          className={styles.itemImage}
-        />
+        <Link to={`/item/${product.itemId}`} className={styles.productLink}>
+          <img
+            src={product.image}
+            alt={product.name}
+            className={styles.itemImage}
+          />
 
-        <span className={styles.itemName}>{product.name}</span>
+          <span className={styles.itemName}>{product.name}</span>
+        </Link>
       </div>
 
       {/* QUANTITY + PRICE */}
