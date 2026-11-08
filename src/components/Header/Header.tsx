@@ -107,10 +107,9 @@ export const Header = () => {
           onClick={() => setIsMenuOpen(true)}
           aria-label="Open menu"
         >
-          <img
-            className={styles.burgerImage}
-            src="./img/icons/Menu.svg"
-            alt="Menu"
+          <span
+            className={`${styles.maskIcon} ${styles.menuIcon}`}
+            aria-hidden="true"
           />
         </button>
 
@@ -141,10 +140,9 @@ export const Header = () => {
                 onClick={() => setIsMenuOpen(false)}
                 aria-label="Close menu"
               >
-                <img
-                  className={styles.closeImage}
-                  src="./img/icons/Close.svg"
-                  alt="Close"
+                <span
+                  className={`${styles.maskIcon} ${styles.closeIcon}`}
+                  aria-hidden="true"
                 />
               </button>
             </div>
@@ -187,9 +185,6 @@ export const Header = () => {
 
             {/* Mobile actions */}
             <div className={styles.mobileActions}>
-              <LanguageSwitcher />
-              <ThemeSwitcher />
-
               {/* Favorites */}
               <NavLink
                 to="/favorites"
