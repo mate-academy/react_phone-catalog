@@ -1,11 +1,19 @@
+import { useState } from 'react';
 import { BackButton } from '../shared/components/BackButton';
 import { useCart } from '../shared/context/CartContext';
 import { pluralize } from '../shared/utils/pluralize';
 import { CartItem } from '../shared/components/CartItem';
+import { CheckoutModal } from './components/CheckoutModal';
 import styles from './CartPage.module.scss';
 
 export const CartPage = () => {
-  const { items, totalQuantity, totalPrice } = useCart();
+  const { items, totalQuantity, totalPrice, clearCart } = useCart();
+  const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
+
+  const handleConfirm = () => {
+    clearCart();
+    setIsCheckoutOpen(false);
+  };
 
   return (
     <div className={styles.page}>
@@ -40,12 +48,22 @@ export const CartPage = () => {
               Total for {pluralize(totalQuantity, 'item')}
             </p>
 
-            <button type="button" className={styles.checkout}>
+            <button
+              type="button"
+              className={styles.checkout}
+              onClick={() => setIsCheckoutOpen(true)}
+            >
               Checkout
             </button>
           </section>
         </div>
       )}
+
+      <CheckoutModal
+        isOpen={isCheckoutOpen}
+        onConfirm={handleConfirm}
+        onCancel={() => setIsCheckoutOpen(false)}
+      />
     </div>
   );
 };
