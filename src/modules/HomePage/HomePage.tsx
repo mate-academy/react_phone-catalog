@@ -1,7 +1,12 @@
+import { useProducts } from '../shared/hooks/useProducts';
 import { ErrorMessage } from '../shared/components/ErrorMessage';
 import { Loader } from '../shared/components/Loader';
-import { useProducts } from '../shared/hooks/useProducts';
 import { Categories } from './components/Categories';
+import { ProductsSlider } from '../shared/components/ProductsSlider';
+import {
+  getBrandNewProducts,
+  getHotPriceProducts,
+} from './utils/selectProducts';
 import styles from './HomePage.module.scss';
 
 export const HomePage = () => {
@@ -18,11 +23,18 @@ export const HomePage = () => {
 
     return (
       <div className={styles.blocks}>
-        {/* Brand new models slider will go here */}
+        <ProductsSlider
+          title="Brand new models"
+          products={getBrandNewProducts(products)}
+          showDiscount={false}
+        />
 
         <Categories products={products} />
 
-        {/* Hot prices slider will go here */}
+        <ProductsSlider
+          title="Hot prices"
+          products={getHotPriceProducts(products)}
+        />
       </div>
     );
   };

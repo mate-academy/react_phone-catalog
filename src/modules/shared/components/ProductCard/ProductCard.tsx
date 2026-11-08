@@ -9,9 +9,10 @@ import styles from './ProductCard.module.scss';
 
 interface Props {
   product: Product;
+  showDiscount?: boolean;
 }
 
-export const ProductCard = ({ product }: Props) => {
+export const ProductCard = ({ product, showDiscount = true }: Props) => {
   const { itemId, name, image, price, fullPrice, screen, capacity, ram } =
     product;
 
@@ -43,10 +44,9 @@ export const ProductCard = ({ product }: Props) => {
         {name}
       </Link>
 
-      <p className={styles.prices}>
-        <span className={styles.price}>${price}</span>
-        <s className={styles.fullPrice}>${fullPrice}</s>
-      </p>
+      <span className={styles.price}>${showDiscount ? price : fullPrice}</span>
+
+      {showDiscount && <s className={styles.fullPrice}>${fullPrice}</s>}
 
       <dl className={styles.specs}>
         {specs.map(({ label, value }) => (

@@ -1,0 +1,63 @@
+@use '../../../../styles/utils' as *;
+
+.header {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.title {
+  @include h2;
+}
+
+.buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.button {
+  @include square-button-interactive;
+}
+
+// Below desktop, the list bleeds to the screen edges (as in Figma)
+.list {
+  display: flex;
+  gap: 16px;
+  margin-inline: -$page-padding-mobile;
+  padding-inline: $page-padding-mobile;
+  overflow-x: auto;
+  scroll-padding-inline: $page-padding-mobile;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @include on-tablet {
+    margin-inline: -$page-padding-tablet;
+    padding-inline: $page-padding-tablet;
+    scroll-padding-inline: $page-padding-tablet;
+  }
+
+  @include on-desktop {
+    margin-inline: 0;
+    padding-inline: 0;
+    scroll-padding-inline: 0;
+  }
+}
+
+.item {
+  flex: 0 0 212px;
+  scroll-snap-align: start;
+
+  @include on-tablet {
+    flex-basis: 237px;
+  }
+
+  @include on-desktop {
+    flex-basis: 272px;
+  }
+}
