@@ -13,15 +13,7 @@
 }
 
 .arrow {
-  @include square-button;
-
-  &:disabled {
-    @include square-button-disabled;
-  }
-
-  &:hover:not(:disabled) {
-    @include square-button-hover;
-  }
+  @include square-button-interactive;
 }
 
 .page {

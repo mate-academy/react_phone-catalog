@@ -104,3 +104,16 @@
   white-space: nowrap;
   clip-path: inset(50%);
 }
+
+// Square button with disabled and hover states
+@mixin square-button-interactive($size: 32px) {
+  @include square-button($size);
+
+  &:disabled {
+    @include square-button-disabled;
+  }
+
+  &:hover:not(:disabled) {
+    @include square-button-hover;
+  }
+}
