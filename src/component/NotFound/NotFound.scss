@@ -1,0 +1,60 @@
+.not-found {
+  --nf-bg: #0f0f11;
+  --nf-text: #f1f1f5;
+  --nf-accent: #9360ff;
+  --nf-accent-hover: #a67aff;
+
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 48px 20px;
+  color: var(--nf-bg);
+  text-align: center;
+}
+
+.not-found__title {
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+}
+
+.not-found__image {
+  display: block;
+  width: min(480px, 100%);
+  height: auto;
+}
+
+.not-found__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 214px;
+  height: 50px;
+  padding: 0 28px;
+  border-radius: 8px;
+  background: var(--nf-accent);
+  color: #fff;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.not-found__button:hover {
+  background: var(--nf-accent-hover);
+}
+
+.not-found__button:active {
+  transform: scale(0.98);
+}
+
+.not-found__button:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 3px;
+}

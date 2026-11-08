@@ -7,6 +7,7 @@ import { getApi } from '../../getApi';
 import { CategoryType } from '../../interface';
 import { Product } from '../../interface';
 import { useEffect, useState, useCallback } from 'react';
+import { NotFound } from '../NotFound/NotFound';
 
 export const ProdutoEspec = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -66,6 +67,10 @@ export const ProdutoEspec = () => {
   useEffect(() => {
     getData();
   }, [getData]);
+
+  if (!product) {
+    return <NotFound notFound={'product'} />;
+  }
 
   return (
     <>
