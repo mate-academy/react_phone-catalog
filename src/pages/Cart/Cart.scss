@@ -13,14 +13,24 @@
     align-items: center;
     gap: 8px;
     margin-bottom: 24px;
+    padding: 0;
+    border: none;
+    outline: none;
+    background: transparent;
     font-size: 12px;
     font-weight: 600;
     color: var(--muted-text);
     text-decoration: none;
+    cursor: pointer;
     transition: color 0.2s;
 
     &:hover {
-      color: #ffffff;
+      color: #fff;
+    }
+
+    &:focus,
+    &:focus-visible {
+      outline: none;
     }
   }
 
@@ -28,8 +38,8 @@
     font-size: 32px;
     font-weight: 800;
     line-height: 1.25;
-    color: #ffffff;
-    margin: 0 0 32px 0;
+    color: #fff;
+    margin: 0 0 32px;
 
     @media (min-width: 640px) {
       font-size: 48px;
@@ -59,7 +69,7 @@
     flex-direction: column;
     gap: 16px;
     padding: 16px;
-    background: #ffffff;
+    background: #fff;
     border: 1px solid #e2e6e9;
     border-radius: 0;
 
@@ -102,11 +112,33 @@
       }
     }
 
+    &-image-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
     &-image {
       width: 66px;
       height: 66px;
       object-fit: contain;
       flex-shrink: 0;
+      transition: transform 0.2s ease;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+
+    &-title-link {
+      text-decoration: none;
+      color: inherit;
+
+      &:hover {
+        text-decoration: underline;
+      }
     }
 
     &-title {
@@ -141,7 +173,7 @@
         justify-content: center;
         width: 32px;
         height: 32px;
-        background: #ffffff;
+        background: #fff;
         border: 1px solid #e2e6e9;
         border-radius: 0;
         font-size: 16px;
@@ -149,14 +181,14 @@
         cursor: pointer;
         transition: border-color 0.2s;
 
-        &:hover:not(:disabled) {
-          border-color: #313237;
-        }
-
         &:disabled {
           opacity: 0.3;
           cursor: not-allowed;
           border-color: #e2e6e9;
+        }
+
+        &:hover:not(:disabled) {
+          border-color: #313237;
         }
       }
 
@@ -179,7 +211,7 @@
 
   &__summary {
     padding: 24px;
-    background: #ffffff;
+    background: #fff;
     border: 1px solid #e2e6e9;
     border-radius: 0;
     height: fit-content;
@@ -205,7 +237,7 @@
       width: 100%;
       height: 48px;
       background: #313237;
-      color: #ffffff;
+      color: #fff;
       border: none;
       border-radius: 0;
       font-size: 14px;
@@ -214,7 +246,7 @@
       transition: background-color 0.2s;
 
       &:hover {
-        background-color: #111111;
+        background-color: #111;
       }
     }
   }

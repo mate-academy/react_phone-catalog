@@ -4,8 +4,7 @@
   margin: 28px auto 24px;
   display: grid;
   grid-template-columns: 24px minmax(0, 1fr) 24px;
-  column-gap: 12px;
-  row-gap: 12px;
+  gap: 12px;
   align-items: center;
   box-sizing: border-box;
 }
@@ -75,8 +74,7 @@
 @media (max-width: 600px) {
   .pictures-slider {
     grid-template-columns: 18px minmax(0, 1fr) 18px;
-    column-gap: 6px;
-    row-gap: 10px;
+    gap: 10px 6px;
     margin-top: 20px;
   }
 

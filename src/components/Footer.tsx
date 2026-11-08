@@ -71,9 +71,7 @@ export const Footer = () => {
             </button>
           </div>
 
-          <span className="footer__language-status">
-            Current {language}
-          </span>
+          <span className="footer__language-status">Current {language}</span>
         </div>
 
         <button

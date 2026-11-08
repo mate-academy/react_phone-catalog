@@ -24,25 +24,21 @@ export const Home = () => {
             whiteSpace: 'nowrap',
             border: 0,
           }}
-        >Product Catalog</h1>
-        
+        >
+          Product Catalog
+        </h1>
+
         <p className="home__title" role="heading" aria-level={1}>
           {t('welcomeTitle')}
         </p>
 
         <PicturesSlider />
 
-        <ProductsSlider
-          title={t('hotPrices')}
-          type="hot"
-        />
+        <ProductsSlider title={t('hotPrices')} type="hot" />
 
         <ShopByCategory />
 
-        <ProductsSlider
-          title={t('newestProducts')}
-          type="newest"
-        />
+        <ProductsSlider title={t('newestProducts')} type="newest" />
       </div>
     </section>
   );

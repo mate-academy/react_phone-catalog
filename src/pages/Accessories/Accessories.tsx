@@ -8,6 +8,10 @@ import { Product } from '../../types/Product';
 import { getProducts } from '../../utils/api';
 import { Pagination } from '../../components/Pagination/Pagination';
 
+const HOME_ICON_PATH =
+  'M2 6.5L8 2L14 6.5V13.5C14 13.7761 13.7761 14 13.5 14H10V10H6V14H2.5' +
+  'C2.22386 14 2 13.7761 2 13.5V6.5Z';
+
 export const Accessories = () => {
   const { t } = useLanguage();
 
@@ -108,14 +112,30 @@ export const Accessories = () => {
     setSearchParams(newParams);
   };
 
+  const homeIcon = (
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 16 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d={HOME_ICON_PATH}
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+
   if (isLoading) {
     return (
       <section className="phones-page">
         <nav className="phones-page__breadcrumbs" aria-label="Breadcrumb">
           <Link to="/" className="phones-page__home-link">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M2 6.5L8 2L14 6.5V13.5C14 13.7761 13.7761 14 13.5 14H10V10H6V14H2.5C2.22386 14 2 13.7761 2 13.5V6.5Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
+            {homeIcon}
           </Link>
           <span className="phones-page__slash">/</span>
           <span>{t('accessories')}</span>
@@ -144,13 +164,15 @@ export const Accessories = () => {
     );
   }
 
+  const noProductsMessage = query
+    ? t('noAccessoriesMatching')
+    : t('noAccessories');
+
   return (
     <section className="phones-page">
       <nav className="phones-page__breadcrumbs" aria-label="Breadcrumb">
         <Link to="/" className="phones-page__home-link">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M2 6.5L8 2L14 6.5V13.5C14 13.7761 13.7761 14 13.5 14H10V10H6V14H2.5C2.22386 14 2 13.7761 2 13.5V6.5Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
+          {homeIcon}
         </Link>
         <span className="phones-page__slash">/</span>
         <span className="phones-page__current">{t('accessories')}</span>
@@ -160,7 +182,7 @@ export const Accessories = () => {
       <p className="phones-page__models-count">{accessories.length} models</p>
 
       {accessories.length === 0 ? (
-        <p>{query ? t('noAccessoriesMatching') : t('noAccessories')}</p>
+        <p>{noProductsMessage}</p>
       ) : (
         <>
           <div className="phones-page__filters">

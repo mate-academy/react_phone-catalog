@@ -5,19 +5,19 @@
 }
 
 :root {  
-  --bg-color: #ffffff;
-  --surface-bg: #ffffff;
+  --bg-color: #fff;
+  --surface-bg: #fff;
   --text-color: #313237;
   --secondary-text: #89939a;
   --border-color: #e2e6e9;
   --border-hover: #b4bdc3;
-  --input-bg: #ffffff;
+  --input-bg: #fff;
   --hover-bg: #fafbfc;
   --accent-color: #313237;
   --accent-hover: #4e525a;
   --badge-bg: #313237;
-  --badge-text: #ffffff;
-  --focus-shadow: 0 0 0 2px rgba(49, 50, 55, 0.2);
+  --badge-text: #fff;
+  --focus-shadow: 0 0 0 2px rgb(49 50 55 / 20%);
 }
 
 body.theme-dark {  
@@ -30,10 +30,10 @@ body.theme-dark {
   --input-bg: #161827;
   --hover-bg: #222533;
   --accent-color: #f4f5f6;
-  --accent-hover: #ffffff;
-  --badge-bg: #ffffff;
+  --accent-hover: #fff;
+  --badge-bg: #fff;
   --badge-text: #0f1121;
-  --focus-shadow: 0 0 0 2px rgba(244, 245, 246, 0.2);
+  --focus-shadow: 0 0 0 2px rgb(244 245 246 / 20%);
 }
 
 html {
@@ -46,7 +46,7 @@ body {
   padding: 0;
   background-color: var(--bg-color);
   color: var(--text-color);
-  font-family: 'Mont', 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: Mont, Montserrat, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transition:
@@ -54,7 +54,7 @@ body {
     color 0.3s ease;
 }
 
-#root {
+[id="root"] {
   min-height: 100vh;
   display: flex;
   flex-direction: column;

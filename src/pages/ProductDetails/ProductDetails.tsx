@@ -48,12 +48,11 @@ export const ProductDetails = () => {
 
         setProducts(data);
 
-        const foundProduct = data.find(
-          item => String(item.id) === id,
-        );
+        const foundProduct = data.find(item => String(item.id) === id);
 
         if (!foundProduct) {
           setError(true);
+
           return;
         }
 
@@ -70,8 +69,7 @@ export const ProductDetails = () => {
 
         setImages(
           [0, 1, 2, 3, 4].map(
-            index =>
-              `${imageFolder}/${String(index).padStart(2, '0')}.webp`,
+            index => `${imageFolder}/${String(index).padStart(2, '0')}.webp`,
           ),
         );
       })
@@ -120,13 +118,9 @@ export const ProductDetails = () => {
   const colors = [...new Set(variants.map(item => item.color))];
   const capacities = [...new Set(variants.map(item => item.capacity))];
 
-  const isFavorite = favorites.items.some(
-    item => item.id === product.id,
-  );
+  const isFavorite = favorites.items.some(item => item.id === product.id);
 
-  const isInCart = cart.items.some(
-    item => item.id === product.id,
-  );
+  const isInCart = cart.items.some(item => item.id === product.id);
 
   const handleImageError = (image: string) => {
     setImages(current => current.filter(item => item !== image));
@@ -136,9 +130,7 @@ export const ProductDetails = () => {
   const handleColorChange = (color: string) => {
     const variant =
       variants.find(
-        item =>
-          item.color === color &&
-          item.capacity === product.capacity,
+        item => item.color === color && item.capacity === product.capacity,
       ) || variants.find(item => item.color === color);
 
     if (variant) {
@@ -149,9 +141,7 @@ export const ProductDetails = () => {
   const handleCapacityChange = (capacity: string) => {
     const variant =
       variants.find(
-        item =>
-          item.capacity === capacity &&
-          item.color === product.color,
+        item => item.capacity === capacity && item.color === product.color,
       ) || variants.find(item => item.capacity === capacity);
 
     if (variant) {
@@ -170,12 +160,8 @@ export const ProductDetails = () => {
 
   const handleFavorite = () => {
     favoritesDispatch({
-      type: isFavorite
-        ? 'REMOVE_FROM_FAVORITES'
-        : 'ADD_TO_FAVORITES',
-      ...(isFavorite
-        ? { id: product.id }
-        : { product }),
+      type: isFavorite ? 'REMOVE_FROM_FAVORITES' : 'ADD_TO_FAVORITES',
+      ...(isFavorite ? { id: product.id } : { product }),
     } as Parameters<typeof favoritesDispatch>[0]);
   };
 
@@ -214,9 +200,7 @@ export const ProductDetails = () => {
 
           <span>/</span>
 
-          <Link to={`/${product.category}`}>
-            {t(product.category)}
-          </Link>
+          <Link to={`/${product.category}`}>{t(product.category)}</Link>
 
           <span>/</span>
 
@@ -226,9 +210,7 @@ export const ProductDetails = () => {
         </nav>
       </div>
 
-      <h1 className="product-details__title">
-        {product.name}
-      </h1>
+      <h1 className="product-details__title">{product.name}</h1>
 
       <div className="product-details__main">
         <div className="product-details__gallery">
@@ -344,9 +326,7 @@ export const ProductDetails = () => {
             <button
               type="button"
               className={`product-details__cart-button ${
-                isInCart
-                  ? 'product-details__cart-button--added'
-                  : ''
+                isInCart ? 'product-details__cart-button--added' : ''
               }`}
               onClick={handleCart}
               disabled={isInCart}
@@ -357,9 +337,7 @@ export const ProductDetails = () => {
             <button
               type="button"
               className={`product-details__favorite ${
-                isFavorite
-                  ? 'product-details__favorite--active'
-                  : ''
+                isFavorite ? 'product-details__favorite--active' : ''
               }`}
               onClick={handleFavorite}
               aria-label={t('favorites')}

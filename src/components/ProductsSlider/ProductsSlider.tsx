@@ -81,7 +81,7 @@ export const ProductsSlider = ({ title, type = 'hot' }: Props) => {
           </button>
 
           <button type="button" onClick={scrollRight} aria-label={t('next')}>
-            &#8250;
+            &#8249;
           </button>
         </div>
       </div>
@@ -89,7 +89,7 @@ export const ProductsSlider = ({ title, type = 'hot' }: Props) => {
       <div className="products-slider__container" ref={sliderRef}>
         {products.map(product => (
           <div className="products-slider__item" key={product.id}>
-            <ProductCard product={product} />
+            <ProductCard product={product} hasDiscount={type === 'hot'} />
           </div>
         ))}
       </div>

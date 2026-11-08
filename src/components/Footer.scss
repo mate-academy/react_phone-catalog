@@ -1,6 +1,6 @@
 .footer {
   width: 100%;
-  background: #ffffff;
+  background: #fff;
   border-top: 1px solid #e2e8f0;
   margin-top: 40px;
 
@@ -116,7 +116,7 @@
     &.is-active {
       border-color: #313237;
       background-color: #313237;
-      color: #ffffff;
+      color: #fff;
     }
   }
 
@@ -124,6 +124,24 @@
     color: #89939a;
     font-size: 11px;
     white-space: nowrap;
+  }
+  
+  &__button-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    width: 32px;
+    height: 32px;
+
+    border: 1px solid #b4bdc3;
+
+    color: #313237;
+    font-size: 20px;
+    line-height: 1;
+
+    transition: border-color 0.2s;
   }
 
   &__button {
@@ -156,23 +174,6 @@
     }
   }
 
-  &__button-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-
-    width: 32px;
-    height: 32px;
-
-    border: 1px solid #b4bdc3;
-
-    color: #313237;
-    font-size: 20px;
-    line-height: 1;
-
-    transition: border-color 0.2s;
-  }
 }
 
 @media (min-width: 601px) and (max-width: 900px) {

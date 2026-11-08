@@ -4,7 +4,7 @@
   padding: 40px 16px;
 
   &__title {
-    margin: 0 0 24px 0;
+    margin: 0 0 24px;
     font-size: 32px;
     font-weight: 800;
     color: #313237;
@@ -17,54 +17,12 @@
     gap: 16px;
   }
 
-  &__item {
-    display: flex;
-    flex-direction: column;
-    text-decoration: none;
-    cursor: pointer;
-   
-    &:hover {
-      .shop-by-category__image-container {
-        transform: scale(1.04);
-        z-index: 2;
-      }
-    }
-   
-    &--1 {
-      .shop-by-category__image-container {
-        background-color: #57525b;
-      }
-      .shop-by-category__image {
-        transform: scale(0.95) translate(21%, 18%);
-      }
-    }
-    
-    &--2 {
-      .shop-by-category__image-container {
-        background-color: #7b7b80;
-      }
-      .shop-by-category__image {
-        transform: scale(0.95) translate(21%, 18%);
-      }
-    }
-    
-    &--3 {
-      .shop-by-category__image-container {
-        background-color: #633842;
-      }
-      .shop-by-category__image {
-        transform: scale(0.85) translate(19%, 22%);
-      }
-    }
-  }
-
   &__image-container {
     width: 100%;
     aspect-ratio: 1 / 1;
     overflow: hidden;
     margin-bottom: 16px;
     position: relative;
-   
     transition: transform 0.3s ease;
     will-change: transform;
   }
@@ -79,8 +37,52 @@
     transform-origin: center center;
   }
 
+  &__item {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    cursor: pointer;
+
+    &--1 {
+      .shop-by-category__image-container {
+        background-color: #57525b;
+      }
+
+      .shop-by-category__image {
+        transform: scale(0.95) translate(21%, 18%);
+      }
+    }
+
+    &--2 {
+      .shop-by-category__image-container {
+        background-color: #7b7b80;
+      }
+
+      .shop-by-category__image {
+        transform: scale(0.95) translate(21%, 18%);
+      }
+    }
+
+    &--3 {
+      .shop-by-category__image-container {
+        background-color: #633842;
+      }
+
+      .shop-by-category__image {
+        transform: scale(0.85) translate(19%, 22%);
+      }
+    }
+
+    &:hover {
+      .shop-by-category__image-container {
+        transform: scale(1.04);
+        z-index: 2;
+      }
+    }
+  }
+
   &__category-title {
-    margin: 0 0 4px 0;
+    margin: 0 0 4px;
     font-size: 20px;
     font-weight: 700;
     color: #313237;
@@ -105,7 +107,7 @@ body.theme-dark {
   .shop-by-category {
     &__title,
     &__category-title {
-      color: #ffffff;
+      color: #fff;
     }
 
     &__subtitle {

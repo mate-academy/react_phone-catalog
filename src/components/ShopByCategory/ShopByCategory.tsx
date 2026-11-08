@@ -50,9 +50,7 @@ export const ShopByCategory = () => {
             <h3 className="shop-by-category__category-title">
               {t(category.key)}
             </h3>
-            <p className="shop-by-category__subtitle">
-              {category.countKey}
-            </p>
+            <p className="shop-by-category__subtitle">{category.countKey}</p>
           </Link>
         ))}
       </div>

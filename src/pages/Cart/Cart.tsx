@@ -1,9 +1,12 @@
-import { Link } from 'react-router-dom';
-import { useLanguage } from '../../context/LanguageContext';
+import { Link, useNavigate } from 'react-router-dom';
+
 import { useCart } from '../../context/CartContext';
+import { useLanguage } from '../../context/LanguageContext';
+
 import './Cart.scss';
 
 export const Cart = () => {
+  const navigate = useNavigate();
   const { t } = useLanguage();
   const { state, dispatch } = useCart();
 
@@ -27,9 +30,13 @@ export const Cart = () => {
 
   return (
     <section className="cart-page">
-      <Link to={-1 as any} className="cart-page__back-link">
+      <button
+        type="button"
+        onClick={() => navigate(-1)}
+        className="cart-page__back-link"
+      >
         &lt; {t('back') || 'Back'}
-      </Link>
+      </button>
 
       <h1 className="cart-page__title">{t('cart')}</h1>
 
@@ -54,13 +61,23 @@ export const Cart = () => {
                     ✕
                   </button>
 
-                  <img
-                    src={`${import.meta.env.BASE_URL}${item.image}`}
-                    alt={item.name}
-                    className="cart-page__item-image"
-                  />
+                  <Link
+                    to={`/product/${item.id}`}
+                    className="cart-page__item-image-link"
+                  >
+                    <img
+                      src={`${import.meta.env.BASE_URL}${item.image}`}
+                      alt={item.name}
+                      className="cart-page__item-image"
+                    />
+                  </Link>
 
-                  <h2 className="cart-page__item-title">{item.name}</h2>
+                  <Link
+                    to={`/product/${item.id}`}
+                    className="cart-page__item-title-link"
+                  >
+                    <h2 className="cart-page__item-title">{item.name}</h2>
+                  </Link>
                 </div>
 
                 <div className="cart-page__item-right">
@@ -100,11 +117,12 @@ export const Cart = () => {
               </article>
             ))}
           </div>
-          
+
           <div className="cart-page__summary">
             <div className="cart-page__summary-total">${total}</div>
             <div className="cart-page__summary-count">
-              {t('totalFor')} {totalQuantity} {totalQuantity === 1 ? t('item') : t('items')}
+              {t('totalFor')} {totalQuantity}{' '}
+              {totalQuantity === 1 ? t('item') : t('items')}
             </div>
 
             <button

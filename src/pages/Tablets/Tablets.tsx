@@ -110,8 +110,21 @@ export const Tablets = () => {
       <section className="phones-page">
         <nav className="phones-page__breadcrumbs" aria-label="Breadcrumb">
           <Link to="/" className="phones-page__home-link">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M2 6.5L8 2L14 6.5V13.5C14 13.7761 13.7761 14 13.5 14H10V10H6V14H2.5C2.22386 14 2 13.7761 2 13.5V6.5Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M2 6.5L8 2L14 6.5V13.5C14 13.7761 13.7761
+                14 13.5 14H10V10H6V14H2.5C2.22386 14 2 13.7761 2 13.5V6.5Z"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
             </svg>
           </Link>
           <span className="phones-page__slash">/</span>
@@ -145,14 +158,27 @@ export const Tablets = () => {
     <section className="phones-page">
       <nav className="phones-page__breadcrumbs" aria-label="Breadcrumb">
         <Link to="/" className="phones-page__home-link">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M2 6.5L8 2L14 6.5V13.5C14 13.7761 13.7761 14 13.5 14H10V10H6V14H2.5C2.22386 14 2 13.7761 2 13.5V6.5Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M2 6.5L8 2L14 6.5V13.5C14 13.7761 13.7761
+              14 13.5 14H10V10H6V14H2.5C2.22386 14 2 13.7761 2 13.5V6.5Z"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
           </svg>
         </Link>
         <span className="phones-page__slash">/</span>
         <span className="phones-page__current">{t('tablets')}</span>
       </nav>
-      
+
       <h1 className="phones-page__title">{t('tablets')}</h1>
       <p className="phones-page__models-count">{tablets.length} models</p>
 

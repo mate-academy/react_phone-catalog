@@ -11,15 +11,24 @@ import './ProductCard.scss';
 
 type Props = {
   product: Product;
+  hasDiscount?: boolean;
 };
 
-export const ProductCard: React.FC<Props> = ({ product }) => {
+export const ProductCard: React.FC<Props> = ({
+  product,
+  hasDiscount = false,
+}) => {
   const { state: cart, dispatch: cartDispatch } = useCart();
   const { state: favorites, dispatch: favDispatch } = useFavorites();
   const { t } = useLanguage();
 
   const isInCart = cart.items.some(item => item.id === product.id);
   const isFavorite = favorites.items.some(item => item.id === product.id);
+
+  // Якщо знижка активна — показуємо product.price, якщо ні — повну ціну
+  const currentPrice = hasDiscount
+    ? product.price
+    : product.fullPrice || product.price;
 
   const handleCart = () => {
     if (!isInCart) {
@@ -61,9 +70,9 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       </Link>
 
       <div className="product-card__price">
-        <span className="product-card__price-current">${product.price}</span>
+        <span className="product-card__price-current">${currentPrice}</span>
 
-        {product.fullPrice > product.price && (
+        {hasDiscount && product.fullPrice > product.price && (
           <span className="product-card__price-full">${product.fullPrice}</span>
         )}
       </div>

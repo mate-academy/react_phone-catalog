@@ -10,6 +10,17 @@ import './Header.scss';
 
 type IconName = 'menu' | 'close' | 'heart' | 'bag' | 'sun' | 'moon';
 
+const HEART_PATH =
+  'M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8' +
+  'l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z';
+
+const SUN_PATH_1 =
+  'M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2';
+const SUN_PATH_2 = 'M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42';
+
+const ACTIVE_MOBILE_LINK_CLASS =
+  'header__mobile-category header__mobile-category--active';
+
 const Icon = ({ name }: { name: IconName }) => {
   const commonProps = {
     width: 24,
@@ -41,7 +52,7 @@ const Icon = ({ name }: { name: IconName }) => {
     case 'heart':
       return (
         <svg {...commonProps}>
-          <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z" />
+          <path d={HEART_PATH} />
         </svg>
       );
 
@@ -57,7 +68,7 @@ const Icon = ({ name }: { name: IconName }) => {
       return (
         <svg {...commonProps}>
           <circle cx="12" cy="12" r="4" />
-          <path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42" />
+          <path d={`${SUN_PATH_1}${SUN_PATH_2}`} />
         </svg>
       );
 
@@ -84,16 +95,11 @@ export const Header = () => {
   const [query, setQuery] = useState(queryFromUrl);
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const showSearch = [
-    '/phones',
-    '/tablets',
-    '/accessories',
-  ].includes(location.pathname);
-
-  const cartCount = cart.items.reduce(
-    (sum, item) => sum + item.quantity,
-    0,
+  const showSearch = ['/phones', '/tablets', '/accessories'].includes(
+    location.pathname,
   );
+
+  const cartCount = cart.items.reduce((sum, item) => sum + item.quantity, 0);
 
   const favoritesCount = favorites.items.length;
 
@@ -157,11 +163,7 @@ export const Header = () => {
   ];
 
   const logo = (
-    <Link
-      to="/"
-      className="header__logo"
-      aria-label="Nice Gadgets — Home"
-    >
+    <Link to="/" className="header__logo" aria-label="Nice Gadgets — Home">
       <img
         src={`${import.meta.env.BASE_URL}favicon.png`}
         alt=""
@@ -188,18 +190,24 @@ export const Header = () => {
       type="button"
       onClick={toggleTheme}
       className="header__icon-button"
-      aria-label={theme === 'light' ? 'Enable dark theme' : 'Enable light theme'}
+      aria-label={
+        theme === 'light' ? 'Enable dark theme' : 'Enable light theme'
+      }
       title={theme === 'light' ? 'Dark theme' : 'Light theme'}
     >
       <Icon name={theme === 'light' ? 'moon' : 'sun'} />
     </button>
   );
 
+  const favoritesAriaLabel = `${t('favorites')}${
+    favoritesCount ? ` (${favoritesCount})` : ''
+  }`;
+
   const favoritesLink = (
     <Link
       to="/favorites"
       className="header__icon-button header__icon-link"
-      aria-label={`${t('favorites')}${favoritesCount ? ` (${favoritesCount})` : ''}`}
+      aria-label={favoritesAriaLabel}
     >
       <Icon name="heart" />
       {favoritesCount > 0 && (
@@ -208,16 +216,16 @@ export const Header = () => {
     </Link>
   );
 
+  const cartAriaLabel = `${t('cart')}${cartCount ? ` (${cartCount})` : ''}`;
+
   const cartLink = (
     <Link
       to="/cart"
       className="header__icon-button header__icon-link"
-      aria-label={`${t('cart')}${cartCount ? ` (${cartCount})` : ''}`}
+      aria-label={cartAriaLabel}
     >
       <Icon name="bag" />
-      {cartCount > 0 && (
-        <span className="header__count">{cartCount}</span>
-      )}
+      {cartCount > 0 && <span className="header__count">{cartCount}</span>}
     </Link>
   );
 
@@ -333,7 +341,7 @@ export const Header = () => {
                   onClick={() => setMenuOpen(false)}
                   className={
                     location.pathname === item.to
-                      ? 'header__mobile-category header__mobile-category--active'
+                      ? ACTIVE_MOBILE_LINK_CLASS
                       : 'header__mobile-category'
                   }
                 >

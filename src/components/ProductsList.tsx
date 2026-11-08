@@ -5,13 +5,18 @@ import { ProductCard } from './ProductCard';
 
 type Props = {
   products: Product[];
+  hasDiscount?: boolean;
 };
 
-export const ProductsList = ({ products }: Props) => {
+export const ProductsList = ({ products, hasDiscount = true }: Props) => {
   return (
     <div className="products-list">
       {products.map(product => (
-        <ProductCard key={product.id} product={product} />
+        <ProductCard
+          key={product.id}
+          product={product}
+          hasDiscount={hasDiscount}
+        />
       ))}
     </div>
   );
