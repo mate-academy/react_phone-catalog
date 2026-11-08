@@ -1,0 +1,310 @@
+/* stylelint-disable no-descending-specificity */
+@mixin tablet {
+  @media (max-width: 1199px) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: 639px) {
+    @content;
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 56px 32px 80px;
+  box-sizing: border-box;
+
+  &>section~section {
+    margin-top: 80px;
+  }
+
+  @include tablet {
+    padding: 32px 24px 64px;
+
+    &>section~section {
+      margin-top: 64px;
+    }
+  }
+
+  @include mobile {
+    padding: 24px 16px 64px;
+
+    &>section~section {
+      margin-top: 56px;
+    }
+  }
+}
+
+.mainTitle {
+  font-family: Mont, sans-serif;
+  font-weight: 800;
+  font-size: 48px;
+  line-height: 56px;
+  margin: 0 0 56px;
+  letter-spacing: -1%;
+  color: #313237;
+
+  @include tablet {
+    margin-bottom: 32px;
+  }
+
+  @include mobile {
+    font-size: 32px;
+    line-height: 41px;
+    margin-bottom: 24px;
+  }
+}
+
+.brandNewArrows {
+  display: flex;
+  gap: 8px;
+
+  button {
+    width: 32px;
+    height: 32px;
+    border: 1px solid #e2e6e9;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    img {
+      transition: opacity 0.3s ease;
+    }
+
+    &:hover:not(:disabled) {
+      border-color: #313237;
+    }
+
+    &:disabled {
+      border-color: #e2e6e9;
+      cursor: not-allowed;
+
+      img {
+        opacity: 0.3;
+      }
+    }
+  }
+}
+
+.sectionTitle {
+  font-family: Mont, sans-serif;
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -1%;
+  margin: 0;
+  color: #313237;
+
+  @include mobile {
+    font-size: 22px;
+    line-height: 31px;
+  }
+}
+
+.shopByCategory {
+  width: 100%;
+
+  .sectionTitle {
+    margin-bottom: 24px;
+  }
+}
+
+.imageWrapper {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  margin-bottom: 16px;
+  position: relative;
+
+  img {
+    position: absolute;
+    right: -20px;
+    bottom: -50px;
+    width: 85%;
+    height: auto;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+}
+
+/* BANNER SLIDER */
+.slider {
+  display: grid;
+  grid-template-columns: 32px 1fr 32px;
+  align-items: center;
+  gap: 16px;
+
+  & button {
+    width: 32px;
+    height: 100%;
+    border: 1px solid #e2e6e9;
+    background: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      border-color: #313237;
+    }
+  }
+
+  & button:first-child {
+    justify-self: end;
+  }
+
+  & button:last-child {
+    justify-self: start;
+  }
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    margin: 0 -16px;
+
+    & button {
+      display: none;
+    }
+  }
+}
+
+.bannerPicture {
+  display: block;
+  width: 100%;
+}
+
+.banner {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin: 16px auto 0;
+  width: 100%;
+}
+
+.dot {
+  width: 14px;
+  height: 4px;
+  background-color: #e2e6e9;
+  margin: 10px 0;
+  flex-shrink: 0;
+  flex-grow: 0;
+  display: block;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &.active {
+    background-color: #313237;
+  }
+}
+
+/* SECTION HEADERS */
+.brandNewHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+
+
+/* CARDS SLIDER (нативный горизонтальный скролл) */
+.cardsContainer {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Обёртка задаёт ширину карточки ProductCard внутри слайдера.
+   display: flex растягивает карточки до одной высоты */
+.cardWrapper {
+  display: flex;
+  flex-shrink: 0;
+  width: 272px;
+
+  @include tablet {
+    width: 237px;
+  }
+
+  @include mobile {
+    width: 212px;
+  }
+
+  /* двойной класс перебивает фиксированную ширину .card в ProductCard */
+  &.cardWrapper>* {
+    width: 100%;
+  }
+}
+
+/* SHOP BY CATEGORY SECTION */
+.categoryGrid {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+
+  @include mobile {
+    flex-direction: column;
+    gap: 32px;
+  }
+}
+
+.categoryCard {
+  flex: 1;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.categoryCard:hover {
+  img {
+    transform: scale(1.1);
+    transform-origin: right bottom;
+  }
+}
+
+.phonesBg {
+  background-color: #6d6474;
+}
+
+.tabletsBg {
+  background-color: #86888c;
+}
+
+.accessoriesBg {
+  background-color: #7d2647;
+}
+
+.cardTitle {
+  font-family: Mont, sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 26px;
+  color: #313237;
+  margin: 0 0 4px;
+}
+
+.cardCount {
+  font-family: Mont, sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  color: #89939a;
+  margin: 0;
+}
