@@ -70,6 +70,7 @@ export const ProductDetailsPage = () => {
     setHasError(false);
     setProduct(undefined);
     setSuggestedProducts([]);
+    setOverrideImages(null);
 
     getProductById(productId ?? '')
       .then(result => {
