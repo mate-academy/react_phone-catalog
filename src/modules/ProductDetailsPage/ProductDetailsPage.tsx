@@ -4,6 +4,8 @@ import { Breadcrumbs } from '../shared/components/Breadcrumbs';
 import { ErrorMessage } from '../shared/components/ErrorMessage';
 import { Loader } from '../shared/components/Loader';
 import { CATEGORY_NAMES } from '../shared/constants/categoryNames';
+import { ProductActions } from '../shared/components/ProductActions';
+import { SpecsList } from '../shared/components/SpecsList';
 import { ProductGallery } from './components/ProductGallery';
 import { useProductDetails } from './hooks/useProductDetails';
 import styles from './ProductDetailsPage.module.scss';
@@ -37,7 +39,14 @@ export const ProductDetailsPage = () => {
       );
     }
 
-    const { details } = data;
+    const { product, details } = data;
+
+    const shortSpecs = [
+      { label: 'Screen', value: details.screen },
+      { label: 'Resolution', value: details.resolution },
+      { label: 'Processor', value: details.processor },
+      { label: 'RAM', value: details.ram },
+    ];
 
     return (
       <>
@@ -64,7 +73,20 @@ export const ProductDetailsPage = () => {
           />
 
           <div className={styles.options}>
-            {/* Colors, capacity, price and buttons will go here */}
+            {/* Colors and capacity will go here */}
+
+            <p className={styles.prices}>
+              <span className={styles.price}>${details.priceDiscount}</span>
+              <s className={styles.fullPrice}>${details.priceRegular}</s>
+            </p>
+
+            <ProductActions
+              product={product}
+              size="large"
+              className={styles.actions}
+            />
+
+            <SpecsList specs={shortSpecs} />
           </div>
         </div>
       </>

@@ -37,6 +37,32 @@
   }
 }
 
+.options {
+  display: flex;
+  flex-direction: column;
+}
+
+.prices {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.price {
+  @include h2;
+}
+
+.fullPrice {
+  color: var(--color-text-secondary);
+
+  @include h3;
+}
+
+.actions {
+  margin-bottom: 32px;
+}
+
 .notFound {
   display: flex;
   flex-direction: column;
