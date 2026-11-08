@@ -1,0 +1,117 @@
+.shop-by-category {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 16px;
+
+  &__title {
+    margin: 0 0 24px;
+    font-size: 32px;
+    font-weight: 800;
+    color: #313237;
+    letter-spacing: -0.01em;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  &__image-container {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    margin-bottom: 16px;
+    position: relative;
+    transition: transform 0.3s ease;
+    will-change: transform;
+  }
+
+  &__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transform-origin: center center;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    cursor: pointer;
+
+    &--1 {
+      .shop-by-category__image-container {
+        background-color: #57525b;
+      }
+
+      .shop-by-category__image {
+        transform: scale(0.95) translate(21%, 18%);
+      }
+    }
+
+    &--2 {
+      .shop-by-category__image-container {
+        background-color: #7b7b80;
+      }
+
+      .shop-by-category__image {
+        transform: scale(0.95) translate(21%, 18%);
+      }
+    }
+
+    &--3 {
+      .shop-by-category__image-container {
+        background-color: #633842;
+      }
+
+      .shop-by-category__image {
+        transform: scale(0.85) translate(19%, 22%);
+      }
+    }
+
+    &:hover {
+      .shop-by-category__image-container {
+        transform: scale(1.04);
+        z-index: 2;
+      }
+    }
+  }
+
+  &__category-title {
+    margin: 0 0 4px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #313237;
+  }
+
+  &__subtitle {
+    margin: 0;
+    font-size: 14px;
+    color: #89939a;
+  }
+}
+
+@media (max-width: 768px) {
+  .shop-by-category {
+    &__list {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+body.theme-dark {
+  .shop-by-category {
+    &__title,
+    &__category-title {
+      color: #fff;
+    }
+
+    &__subtitle {
+      color: #75767f;
+    }
+  }
+}

@@ -1,0 +1,100 @@
+.phones-page {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 16px 64px;
+  box-sizing: border-box;
+
+  @media (min-width: 640px) {
+    padding: 32px 24px 80px;
+  }
+
+  &__breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 24px;
+    font-size: 12px;
+    color: var(--muted-text);
+  }
+
+  &__home-link {
+    display: flex;
+    align-items: center;
+    color: var(--text-color);
+    transition: opacity 0.2s;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  &__arrow {
+    color: var(--muted-text);
+  }
+
+  &__current {
+    color: var(--muted-text);
+    font-weight: 600;
+  }
+
+  &__title {
+    margin: 0 0 8px;
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 1.25;
+    color: var(--text-color);
+
+    @media (min-width: 640px) {
+      font-size: 48px;
+    }
+  }
+
+  &__models-count {
+    margin: 0 0 32px;
+    font-size: 14px;
+    line-height: 21px;
+    color: var(--muted-text);
+  }
+
+  &__filters {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 24px;
+    max-width: 320px;
+
+    label {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--muted-text);
+
+      select {
+        width: 100%;
+        height: 40px;
+        padding: 0 32px 0 12px;
+        background-color: var(--input-bg);
+        border: 1px solid var(--input-border);
+        border-radius: 0;
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--text-color);
+        cursor: pointer;
+        outline: none;
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 6L8 10L12 6' stroke='%2389939a' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 12px center;
+        transition: border-color 0.2s;
+
+        &:hover,
+        &:focus {
+          border-color: var(--text-color);
+        }
+      }
+    }
+  }
+}

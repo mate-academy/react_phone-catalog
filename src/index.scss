@@ -1,0 +1,77 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {  
+  --bg-color: #fff;
+  --surface-bg: #fff;
+  --text-color: #313237;
+  --secondary-text: #89939a;
+  --border-color: #e2e6e9;
+  --border-hover: #b4bdc3;
+  --input-bg: #fff;
+  --hover-bg: #fafbfc;
+  --accent-color: #313237;
+  --accent-hover: #4e525a;
+  --badge-bg: #313237;
+  --badge-text: #fff;
+  --focus-shadow: 0 0 0 2px rgb(49 50 55 / 20%);
+}
+
+body.theme-dark {  
+  --bg-color: #0f1121;
+  --surface-bg: #161827;
+  --text-color: #f4f5f6;
+  --secondary-text: #75767f;
+  --border-color: #323542;
+  --border-hover: #4a4d58;
+  --input-bg: #161827;
+  --hover-bg: #222533;
+  --accent-color: #f4f5f6;
+  --accent-hover: #fff;
+  --badge-bg: #fff;
+  --badge-text: #0f1121;
+  --focus-shadow: 0 0 0 2px rgb(244 245 246 / 20%);
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: Mont, Montserrat, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+[id="root"] {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1 0 auto;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
