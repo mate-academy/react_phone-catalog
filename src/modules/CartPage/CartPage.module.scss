@@ -1,0 +1,73 @@
+@use '../../styles/utils' as *;
+
+.page {
+  padding-top: 24px;
+}
+
+.back {
+  margin-bottom: 16px;
+}
+
+.title {
+  margin-bottom: 32px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @include on-desktop {
+    display: grid;
+    grid-template-columns: 1fr 368px;
+    gap: 16px;
+    align-items: start;
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.summary {
+  padding: 24px;
+  border: 1px solid var(--color-elements);
+  text-align: center;
+}
+
+.total {
+  @include h2;
+}
+
+.totalLabel {
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--color-elements);
+  color: var(--color-text-secondary);
+}
+
+.checkout {
+  @include button-text;
+
+  width: 100%;
+
+  @include primary-button(48px);
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+}
+
+.emptyImage {
+  width: 100%;
+  max-width: 400px;
+}
+
+.emptyText {
+  @include h2;
+}
