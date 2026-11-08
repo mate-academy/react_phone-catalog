@@ -4,6 +4,7 @@ import { Breadcrumbs } from '../shared/components/Breadcrumbs';
 import { ErrorMessage } from '../shared/components/ErrorMessage';
 import { Loader } from '../shared/components/Loader';
 import { CATEGORY_NAMES } from '../shared/constants/categoryNames';
+import { ProductGallery } from './components/ProductGallery';
 import { useProductDetails } from './hooks/useProductDetails';
 import styles from './ProductDetailsPage.module.scss';
 
@@ -55,7 +56,17 @@ export const ProductDetailsPage = () => {
 
         <h1 className={styles.title}>{details.name}</h1>
 
-        {/* Gallery, options and specs will go here */}
+        <div className={styles.main}>
+          <ProductGallery
+            key={details.id}
+            images={details.images}
+            name={details.name}
+          />
+
+          <div className={styles.options}>
+            {/* Colors, capacity, price and buttons will go here */}
+          </div>
+        </div>
       </>
     );
   };

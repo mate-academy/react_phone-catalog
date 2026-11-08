@@ -22,6 +22,21 @@
   }
 }
 
+.main {
+  display: grid;
+  gap: 40px;
+
+  @include on-tablet {
+    grid-template-columns: 7fr 5fr;
+    gap: 16px;
+  }
+
+  @include on-desktop {
+    grid-template-columns: 560px 320px;
+    column-gap: 64px;
+  }
+}
+
 .notFound {
   display: flex;
   flex-direction: column;
