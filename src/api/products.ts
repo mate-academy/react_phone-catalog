@@ -1,5 +1,6 @@
 import { Product } from '../types/Product';
 import { ProductDetails } from '../types/ProductDetails';
+import { ProductWithDetails } from '../types/ProductWithDetails';
 
 // Relative path: works on localhost and on GitHub Pages
 const API_URL = 'api';
@@ -31,7 +32,7 @@ export function getProducts(): Promise<Product[]> {
 
 export async function getProductDetails(
   itemId: string,
-): Promise<ProductDetails | null> {
+): Promise<ProductWithDetails | null> {
   const products = await getProducts();
   const product = products.find(item => item.itemId === itemId);
 
@@ -39,7 +40,10 @@ export async function getProductDetails(
     return null;
   }
 
-  const details = await request<ProductDetails[]>(`${product.category}.json`);
+  const allDetails = await request<ProductDetails[]>(
+    `${product.category}.json`,
+  );
+  const details = allDetails.find(item => item.id === itemId);
 
-  return details.find(item => item.id === itemId) ?? null;
+  return details ? { product, details } : null;
 }

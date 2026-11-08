@@ -1,0 +1,39 @@
+@use '../../styles/utils' as *;
+
+.page {
+  padding-top: 24px;
+}
+
+.breadcrumbs {
+  margin-bottom: 40px;
+}
+
+.back {
+  margin-bottom: 16px;
+}
+
+.title {
+  margin-bottom: 32px;
+
+  @include h2;
+
+  @include on-tablet {
+    margin-bottom: 40px;
+  }
+}
+
+.notFound {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+}
+
+.notFoundImage {
+  width: 100%;
+  max-width: 400px;
+}
+
+.notFoundText {
+  @include h2;
+}
