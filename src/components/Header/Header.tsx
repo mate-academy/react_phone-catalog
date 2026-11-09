@@ -22,8 +22,11 @@ export const Header = () => {
 
   const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
   const favoritesCount = favorites.length;
+
   const { theme } = useTheme();
-  const logoSrc = `${import.meta.env.BASE_URL}/img/logo/${
+  const baseUrl = import.meta.env.BASE_URL.replace(/\/+$/, '');
+
+  const logoSrc = `${baseUrl}/img/logo/${
     theme === 'dark' ? 'Logo.svg' : 'LogoLight.svg'
   }`;
 
