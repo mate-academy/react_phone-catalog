@@ -23,21 +23,16 @@ export const Header = () => {
   const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
   const favoritesCount = favorites.length;
   const { theme } = useTheme();
+  const logoSrc = `${import.meta.env.BASE_URL}img/logo/${
+    theme === 'dark' ? 'Logo.svg' : 'LogoLight.svg'
+  }`;
 
   return (
     <header className={styles.header}>
       <div className={styles.headerContainer}>
         {/* Logo */}
         <NavLink to="/" replace className={styles.logo}>
-          <img
-            src={
-              theme === 'dark'
-                ? './img/logo/Logo.svg'
-                : './img/logo/LogoLight.svg'
-            }
-            alt="Logo"
-            className={styles.logoImage}
-          />
+          <img src={logoSrc} alt="Nice Gadgets" className={styles.logoImage} />
         </NavLink>
 
         {/* Desktop navigation */}
@@ -125,12 +120,8 @@ export const Header = () => {
                 onClick={() => setIsMenuOpen(false)}
               >
                 <img
-                  src={
-                    theme === 'dark'
-                      ? './img/logo/Logo.svg'
-                      : './img/logo/LogoLight.svg'
-                  }
-                  alt="Logo"
+                  src={logoSrc}
+                  alt="Nice Gadgets"
                   className={styles.mobileLogoImage}
                 />
               </NavLink>
