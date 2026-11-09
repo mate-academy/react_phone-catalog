@@ -3,23 +3,14 @@ import styles from './ProductsList.module.scss';
 
 interface Product {
   id: string;
-  category: string;
-  namespaceId: string;
+  category?: string;
   name: string;
-  capacityAvailable: string[];
-  capacity: string;
   priceRegular: number;
   priceDiscount: number;
-  colorsAvailable: string[];
-  color: string;
   images: string[];
   screen: string;
-  resolution: string;
-  processor: string;
+  capacity: string;
   ram: string;
-  camera: string;
-  zoom: string;
-  cell: string[];
 }
 
 interface Props {

@@ -61,7 +61,8 @@ export const ProductSelectors = ({ product }: ProductSelectorsProps) => {
             return (
               <Link
                 key={colorName}
-                to={`/phones/${targetId}`}
+                to={`/${product.category}/${targetId}`}
+                replace
                 className={`${styles.colorCircle} ${isActive ? styles.activeColor : ''}`}
                 style={{ backgroundColor: actualColor }}
                 title={colorName}
@@ -84,7 +85,8 @@ export const ProductSelectors = ({ product }: ProductSelectorsProps) => {
             return (
               <Link
                 key={cap}
-                to={`/phones/${targetId}`}
+                to={`/${product.category}/${targetId}`}
+                replace
                 className={`${styles.capacityTab} ${isActive ? styles.activeCapacity : ''}`}
               >
                 {cap}

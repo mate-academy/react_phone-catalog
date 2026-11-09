@@ -53,16 +53,19 @@ export const HomePage = () => {
       id: 1,
       desktop: './img/home-page-banner.png',
       mobile: './img/home-page-banner-mobile.png',
+      link: '/phones/apple-iphone-14-pro-128gb-spaceblack',
     },
     {
       id: 2,
       desktop: './img/home-page-banner.png',
       mobile: './img/home-page-banner-mobile.png',
+      link: './phones/apple-iphone-14-pro-128gb-spaceblack',
     },
     {
       id: 3,
       desktop: './img/home-page-banner.png',
       mobile: './img/home-page-banner-mobile.png',
+      link: './phones/apple-iphone-14-pro-128gb-spaceblack',
     },
   ];
 
@@ -130,18 +133,22 @@ export const HomePage = () => {
           <img src="./img/icons/arrow-left.svg" alt="Previous" />
         </button>
 
-        <picture className={styles.bannerPicture}>
-          <source
-            media="(max-width: 639px)"
-            srcSet={banners[currentBannerIndex].mobile}
-          />
-          <img
-            className={styles.banner}
-            src={banners[currentBannerIndex].desktop}
-            alt="Banner"
-          />
-        </picture>
-
+        <Link
+          to={banners[currentBannerIndex].link}
+          className={styles.bannerLink}
+        >
+          <picture className={styles.bannerPicture}>
+            <source
+              media="(max-width: 639px)"
+              srcSet={banners[currentBannerIndex].mobile}
+            />
+            <img
+              className={styles.banner}
+              src={banners[currentBannerIndex].desktop}
+              alt="Banner"
+            />
+          </picture>
+        </Link>
         <button type="button" onClick={goToNextBanner}>
           <img src="./img/icons/arrow-right.svg" alt="Next" />
         </button>
