@@ -8,6 +8,7 @@ import { ProductActions } from '../shared/components/ProductActions';
 import { SpecsList } from '../shared/components/SpecsList';
 import { ProductGallery } from './components/ProductGallery';
 import { ProductInfo } from './components/ProductInfo';
+import { SuggestedProducts } from './components/SuggestedProducts';
 import { useProductDetails } from './hooks/useProductDetails';
 import { VariantSelector } from './components/VariantSelector';
 import styles from './ProductDetailsPage.module.scss';
@@ -93,6 +94,12 @@ export const ProductDetailsPage = () => {
         </div>
 
         <ProductInfo details={details} className={styles.info} />
+
+        <SuggestedProducts
+          key={details.namespaceId}
+          namespaceId={details.namespaceId}
+          className={styles.suggested}
+        />
       </>
     );
   };

@@ -9,12 +9,14 @@ interface Props {
   title: string;
   products: Product[];
   showDiscount?: boolean;
+  className?: string;
 }
 
 export const ProductsSlider = ({
   title,
   products,
   showDiscount = true,
+  className,
 }: Props) => {
   const listRef = useRef<HTMLUListElement>(null);
   const [canScrollPrev, setCanScrollPrev] = useState(false);
@@ -55,7 +57,7 @@ export const ProductsSlider = ({
   };
 
   return (
-    <section>
+    <section className={className}>
       <div className={styles.header}>
         <h2 className={styles.title}>{title}</h2>
 

@@ -63,7 +63,8 @@
   margin-bottom: 32px;
 }
 
-.info {
+.info,
+.suggested {
   margin-top: 56px;
 
   @include on-desktop {

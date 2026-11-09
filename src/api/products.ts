@@ -47,3 +47,30 @@ export async function getProductDetails(
 
   return details ? { product, details } : null;
 }
+
+const SUGGESTIONS_COUNT = 12;
+
+// Fisher-Yates shuffle: every order has the same chance
+function shuffle<T>(items: T[]): T[] {
+  const result = [...items];
+
+  for (let i = result.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+
+    [result[i], result[j]] = [result[j], result[i]];
+  }
+
+  return result;
+}
+
+export async function getSuggestedProducts(
+  namespaceId: string,
+): Promise<Product[]> {
+  const products = await getProducts();
+
+  // Variants of the current model: namespace + capacity + color
+  const sameModel = new RegExp(`^${namespaceId}-\\d+(gb|tb|mm)-`);
+  const others = products.filter(product => !sameModel.test(product.itemId));
+
+  return shuffle(others).slice(0, SUGGESTIONS_COUNT);
+}
