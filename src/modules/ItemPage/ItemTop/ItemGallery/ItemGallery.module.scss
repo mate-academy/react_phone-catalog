@@ -1,0 +1,108 @@
+.gallery {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+  min-width: 0;
+}
+
+.thumbs {
+  display: flex;
+  gap: $space-3;
+  overflow-x: auto;
+  order: 2;
+}
+
+.thumb {
+  flex: 0 0 auto;
+  width: $thumbnail-size;
+  height: $thumbnail-size;
+  padding: 0;
+  overflow: hidden;
+
+  border: 1px solid transparent;
+  border-radius: $radius-s;
+  background: transparent;
+
+  cursor: pointer;
+
+  &.active {
+    border-color: var(--accent-primary);
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+
+  order: 1;
+  min-width: 0;
+  width: 100%;
+
+  img {
+    display: block;
+    max-width: 274px;
+    max-height: 274px;
+    object-fit: contain;
+  }
+}
+
+@include tablet {
+  .gallery {
+    display: grid;
+    grid-template-columns: $thumbnail-size minmax(0, 1fr);
+    gap: $space-3;
+    width: 100%;
+  }
+
+  .thumbs {
+    flex-direction: column;
+    overflow-x: hidden;
+    order: 1;
+    max-height: 260px;
+  }
+
+  .main {
+    order: 2;
+    width: 100%;
+    aspect-ratio: 1;
+
+    img {
+      max-height: 274px;
+    }
+  }
+}
+
+@include desktop {
+  .gallery {
+    display: grid;
+    grid-template-columns: $thumbnail-size minmax(0, 1fr);
+    gap: $space-3;
+    width: 100%;
+  }
+
+  .thumbs {
+    flex-direction: column;
+    overflow-x: hidden;
+    order: 1;
+  }
+
+  .main {
+    order: 2;
+    width: 100%;
+    aspect-ratio: 1;
+
+    img {
+      max-width: 442px;
+      max-height: 442px;
+    }
+  }
+}

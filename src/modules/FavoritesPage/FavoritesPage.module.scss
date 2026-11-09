@@ -1,0 +1,57 @@
+.favoritesGrid {
+  @include container;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(212px, 1fr));
+  gap: $space-4;
+  padding-block: $space-4;
+}
+
+.counter {
+  @include counter-text;
+
+  color: var(--text-secondary);
+  margin-bottom: $space-6;
+}
+
+
+.heartButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+
+  border-radius: 50%;
+  transition: background-color $hover-transition;
+
+  img {
+    width: 20px;
+    height: 20px;
+    transition: transform $transition, opacity $transition;
+    opacity: 0.8;
+  }
+
+  &:hover {
+    background-color: var(--surface-3);
+
+    img {
+      transform: scale(1.1);
+      opacity: 1;
+    }
+  }
+
+  &.active {
+    background-color: var(--color-red);
+
+    img {
+      transform: scale(1.15);
+      opacity: 1;
+    }
+  }
+}

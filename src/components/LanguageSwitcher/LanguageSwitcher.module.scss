@@ -1,0 +1,46 @@
+.button {
+  position: relative;
+
+  width: 48px;
+  height: 48px;
+
+  border: none;
+  border-left: 1px solid var(--color-elements);
+  background: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+
+  padding: 0;
+
+  color: var(--text-secondary);
+
+  font-family: inherit;
+  font-size: $menu-font-size;
+  font-weight: $h2-weight;
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition: color 0.2s ease;
+
+  @include desktop {
+    width: 64px;
+    height: 64px;
+  }
+
+
+  &:hover {
+    color: var(--text-primary);
+  }
+}
+
+.active {
+  color: var(--accent-primary);
+}
+
+.separator {
+  color: var(--text-secondary);
+}

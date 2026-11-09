@@ -1,0 +1,59 @@
+public/
+  api/
+  img/
+
+src/
+  components/
+    Header/
+    Footer/
+    Logo/
+    Button/
+    ProductCard/
+    ProductSlider/
+    Pagination/
+    Breadcrumbs/
+    Loader/
+    BackButton/
+    SearchBar/
+    CategoryCard/
+
+  modules/
+    HomePage/
+      HomePage.tsx
+      HomePage.module.scss
+      index.ts
+      components/
+        HeroBanner/
+        HotPrices/
+        NewModels/
+        Categories/
+
+    ProductPage/
+      ProductPage.tsx
+      ProductPage.module.scss
+      components/
+        ProductGallery/
+        ProductSpecs/
+        ProductActions/
+
+    ProductDetailsPage/
+    CartPage/
+    FavouritesPage/
+    NotFoundPage/
+
+  shared/
+    utils/
+      api.ts
+      getImageUrl.ts
+      formatPrice.ts
+    hooks/
+      useFetch.ts
+      useLocalStorage.ts
+    types/
+      Phone.ts
+      Category.ts
+      ApiResponse.ts
+    constants/
+      routes.ts
+      breakpoints.ts
+      storageKeys.ts

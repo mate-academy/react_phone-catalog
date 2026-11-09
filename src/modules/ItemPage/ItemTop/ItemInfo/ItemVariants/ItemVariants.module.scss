@@ -1,0 +1,91 @@
+   .variants {
+    display: flex;
+    flex-direction: column;
+    gap: $space-4;
+  }
+
+  .label {
+    font-size: $menu-font-size;
+    font-weight: $menu-font-weight;
+    line-height: $menu-line-height;
+    letter-spacing: $menu-letter-spacing;
+    text-transform: $menu-text-transform;
+    color: var(--text-secondary);
+    margin-bottom: $space-2;
+  }
+
+  .colorsSection {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: $space-4;
+    border-bottom: 1px solid var(--color-elements);
+  }
+
+  .colors {
+    display: flex;
+    gap: $space-2;
+  }
+
+  /* COLOR BUTTON — CIRCLE */
+  .colorCircle {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+
+    border: 1px solid var(--color-elements);
+    background: var(--surface-1);
+
+    cursor: pointer;
+    transition: border-color $transition, transform $transition;
+
+    &:hover {
+      border-color: var(--accent-primary);
+      transform: scale(1.05);
+    }
+  }
+
+  /* ACTIVE COLOR */
+  .colorCircle.active {
+    outline: 2px solid var(--accent-primary);
+    outline-offset: 2px;
+  }
+
+  .capacitySection {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: $space-4;
+    border-bottom: 1px solid var(--color-elements);
+  }
+
+  .capacity {
+    display: flex;
+    gap: $space-2;
+  }
+
+  .capacityButton {
+    padding: $space-2;
+
+
+    border: 1px solid var(--color-elements);
+    background: var(--surface-1);
+
+    cursor: pointer;
+    font-size: $menu-font-size;
+    color: var(--text-primary);
+    min-width: 54px;
+    text-align: center;
+
+    transition: all $transition;
+
+    &:hover {
+      border-color: var(--accent-primary);
+      background: var(--surface-3);
+    }
+  }
+
+  /* ACTIVE CAPACITY */
+  .capacityButton.active {
+    background: var(--accent-primary);
+    color: var(--text-primary);
+    border-color: var(--accent-primary);
+  }

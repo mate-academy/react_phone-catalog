@@ -1,0 +1,68 @@
+.button {
+  position: relative;
+
+  width: 48px;
+  height: 48px;
+
+  border-left: 1px solid var(--color-elements);
+  background: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+
+  padding: 0;
+
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-icons);
+
+  cursor: pointer;
+
+  transition: background-color $transition, transform $transition,
+    opacity $transition;
+
+  @include desktop {
+    width: 64px;
+    height: 64px;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+
+    width: 0;
+    height: 2px;
+
+    background: var(--accent-primary);
+    border-radius: $radius-s;
+
+    transition: width $transition;
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  &:active {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+}
+
+.active {
+  color: var(--text-primary);
+}
+
+.separator {
+  color: var(--color-icons);
+}
+

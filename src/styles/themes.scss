@@ -1,0 +1,67 @@
+:root {
+  /* Backgrounds */
+  --bg-primary: #0f1121;
+  --bg-secondary: #0d0f1d;
+
+  /* Text */
+  --text-primary: #f1f2f9;
+  --text-secondary: #75767f;
+
+  /* Accent */
+  --accent-primary: #905bff;
+  --accent-hover: #a378ff;
+  --accent-active: #323542;
+
+  /* Surfaces */
+  --surface-1: #161827;
+  --surface-2: #323542;
+  --surface-3: #2a2d42;
+
+  /* Slider */
+  --slider-btn-bg: var(--color-elements);
+  --slider-btn-hover: var(--color-secondary);
+
+  /* Semantic */
+  --color-secondary: #75767f;
+  --color-elements: #3b3e4a;
+  --color-icons: #4a4d58;
+
+  /* Components */
+  --favorite-color: var(--color-red);
+  --color-red: #eb5757;
+}
+
+/* Light theme */
+
+:root[data-theme='light'] {
+  /* Backgrounds */
+  --bg-primary: #fff;
+  --bg-secondary: #f5f5f7;
+
+  /* Text */
+  --text-primary: #313237;
+  --text-secondary: #6a6d6f;
+
+  /* Accent */
+  --accent-primary: #905bff;
+  --accent-hover: #a378ff;
+  --accent-active: #e9e0ff;
+
+  /* Surfaces */
+  --surface-1: #fff;
+  --surface-2: #434444;
+  --surface-3: #323334;
+
+  /* Slider */
+  --slider-btn-bg: #fff;
+  --slider-btn-hover: #4f4f51;
+
+  /* Semantic */
+  --color-secondary: #89939a;
+  --color-elements: #5c5e64;
+  --color-icons: #313237;
+
+  /* Components */
+  --favorite-color: var(--color-red);
+  --color-red: #eb5757;
+}

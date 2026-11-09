@@ -1,0 +1,30 @@
+.backButton {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 32px 0 0;
+
+  color: var(--text-primary);
+
+  font-family: $font-family-primary;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+
+  transition: color $transition;
+
+  &:hover {
+    color: var(--text-secondary);
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+    display: block;
+    color: var(--color-icons);
+  }
+}

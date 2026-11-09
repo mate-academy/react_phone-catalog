@@ -1,0 +1,91 @@
+.catalog {
+  @include container;
+
+  padding-inline: 0 !important;
+}
+
+.headerBlock {
+  display: flex;
+  flex-direction: column;
+  gap: $space-1;
+
+  margin-bottom: $space-4;
+}
+
+.title {
+  @include h2;
+
+  margin-bottom: $space-1;
+  color: var(--text-primary);
+}
+
+.counter {
+  @include counter-text;
+
+  margin-bottom: $space-2;
+
+  color: var(--text-secondary);
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: $space-4;
+
+  margin-bottom: $space-5;
+
+  @include mobile {
+    align-items: flex-start;
+    gap: $space-3;
+  }
+}
+
+.control {
+  display: flex;
+  flex-direction: column;
+  gap: $space-1;
+
+  label {
+    @include small-text;
+
+    color: var(--text-secondary);
+  }
+
+  select {
+    @include body-text;
+
+    padding: $space-2 $space-3;
+
+    background: var(--slider-btn-bg);
+    border: 1px solid var(--color-elements);
+    border-radius: $radius-s;
+
+    color: var(--text-primary);
+
+    cursor: pointer;
+
+    transition:
+      background-color $transition,
+      border-color $transition,
+      color $transition;
+
+    &:hover {
+      background: var(--accent-primary);
+
+      /* optional */
+      border-color: var(--text-primary);
+    }
+
+    &:focus {
+      outline: none;
+      border-color: var(--slider-btn-bg);
+    }
+  }
+}
+
+.catalogGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(212px, 1fr));
+  gap: 24px;
+}
