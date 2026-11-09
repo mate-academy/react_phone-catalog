@@ -11,7 +11,7 @@ export const Layout = () => {
   const items = useBreadcrumbs();
 
   return (
-    <>
+    <div className={styles.layout}>
       <Header />
 
       <main className={styles.main}>
@@ -27,6 +27,6 @@ export const Layout = () => {
       </main>
 
       <Footer />
-    </>
+    </div>
   );
 };
