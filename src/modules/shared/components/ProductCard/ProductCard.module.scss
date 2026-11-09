@@ -1,0 +1,57 @@
+@use '../../../../styles/utils' as *;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  height: 100%;
+  padding: 32px;
+  border: 1px solid var(--color-elements);
+  background-color: var(--color-surface-1);
+}
+
+.imageLink {
+  display: flex;
+  height: 196px;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform $transition-duration;
+
+  .imageLink:hover & {
+    transform: scale(1.1);
+  }
+}
+
+.title {
+  flex-grow: 1;
+  padding-top: 16px;
+  color: var(--color-text-primary);
+}
+
+.prices {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--color-elements);
+}
+
+.price {
+  color: var(--color-text-primary);
+
+  @include h3;
+}
+
+.fullPrice {
+  color: var(--color-text-secondary);
+
+  @include h3;
+}
+
+.specs {
+  padding-block: 8px;
+}

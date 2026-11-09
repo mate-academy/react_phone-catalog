@@ -1,0 +1,46 @@
+@use '../../../../styles/utils' as *;
+
+.list {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.item {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  min-width: 0;
+}
+
+.homeLink {
+  display: flex;
+  color: var(--color-text-primary);
+}
+
+.separator {
+  flex-shrink: 0;
+  color: var(--color-icons);
+}
+
+.link,
+.current {
+  @include small-text;
+}
+
+.link {
+  color: var(--color-text-primary);
+  white-space: nowrap;
+  transition: color $transition-duration;
+
+  &:hover {
+    color: var(--color-text-secondary);
+  }
+}
+
+.current {
+  overflow: hidden;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

@@ -1,0 +1,119 @@
+@use 'variables' as *;
+
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+// Underline for the link of the current page.
+// Hidden by default; the module's .active class shows it.
+@mixin active-underline {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--color-text-primary);
+    transform: scaleX(0);
+    transition: transform $transition-duration;
+  }
+}
+
+// Centered content column with responsive side paddings
+@mixin page-container {
+  width: 100%;
+  max-width: $content-max-width + 2 * $page-padding-desktop;
+  margin-inline: auto;
+  padding-inline: $page-padding-mobile;
+
+  @include on-tablet {
+    padding-inline: $page-padding-tablet;
+  }
+
+  @include on-desktop {
+    padding-inline: $page-padding-desktop;
+  }
+}
+
+// Small square button from the UI Kit
+@mixin square-button($size: 32px) {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: $size;
+  height: $size;
+  padding: 0;
+  border: 1px solid var(--color-button-border);
+  background-color: var(--color-button-bg);
+  color: var(--color-text-primary);
+  transition:
+    border-color $transition-duration,
+    background-color $transition-duration;
+}
+
+@mixin square-button-hover {
+  border-color: var(--color-button-border-hover);
+  background-color: var(--color-button-bg-hover);
+}
+
+
+@mixin square-button-disabled {
+  border-color: var(--color-elements);
+  background-color: transparent;
+  color: var(--color-icons);
+  cursor: default;
+}
+
+// Primary button from the UI Kit (typography comes from the button-text mixin)
+@mixin primary-button($height: 40px) {
+  height: $height;
+  border: 0;
+  background-color: var(--color-accent);
+  color: var(--color-text-on-accent);
+  transition:
+    background-color $transition-duration,
+    box-shadow $transition-duration;
+
+  &:hover {
+    background-color: var(--color-accent-hover);
+    box-shadow: var(--shadow-accent-hover);
+  }
+}
+
+// Hidden on screen, still read by screen readers and tests
+@mixin visually-hidden {
+  position: absolute;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  white-space: nowrap;
+  clip-path: inset(50%);
+}
+
+// Square button with disabled and hover states
+@mixin square-button-interactive($size: 32px) {
+  @include square-button($size);
+
+  &:disabled {
+    @include square-button-disabled;
+  }
+
+  &:hover:not(:disabled) {
+    @include square-button-hover;
+  }
+}

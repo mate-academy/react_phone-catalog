@@ -1,0 +1,16 @@
+// Breakpoints (mobile-first: each value is a MINIMUM width)
+$tablet-min-width: 640px;
+$desktop-min-width: 1200px;
+
+// Page layout
+$content-max-width: 1136px;
+$page-padding-mobile: 16px;
+$page-padding-tablet: 24px;
+$page-padding-desktop: 32px;
+
+// Animations
+$transition-duration: 0.3s;
+
+// Header
+$header-height-mobile: 48px;
+$header-height-desktop: 64px;

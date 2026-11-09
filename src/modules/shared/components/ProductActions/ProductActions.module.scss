@@ -1,0 +1,49 @@
+@use '../../../../styles/utils' as *;
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.addButton {
+  @include button-text;
+
+  flex-grow: 1;
+
+  @include primary-button;
+}
+
+.addButtonActive {
+  &,
+  &:hover {
+    border: 1px solid var(--color-selected-border);
+    background-color: var(--color-selected-bg);
+    box-shadow: none;
+    color: var(--color-selected-text);
+    cursor: default;
+  }
+}
+
+.favoriteButton {
+  @include square-button(40px);
+
+  &:hover {
+    @include square-button-hover;
+  }
+}
+
+.favoriteButtonActive {
+  border-color: var(--color-elements);
+  color: var(--color-red);
+}
+
+.large {
+  .addButton {
+    height: 48px;
+  }
+
+  .favoriteButton {
+    width: 48px;
+    height: 48px;
+  }
+}

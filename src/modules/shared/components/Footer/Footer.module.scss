@@ -1,0 +1,82 @@
+@use '../../../../styles/utils' as *;
+
+.footer {
+  box-shadow: 0 -1px 0 var(--color-elements);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: flex-start;
+  padding-block: 32px;
+
+  @include page-container;
+
+  @include on-tablet {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    align-items: center;
+
+    // From tablet up, Figma uses the desktop footer (32px side padding)
+    padding-inline: $page-padding-desktop;
+  }
+}
+
+.logo {
+  display: flex;
+  color: var(--color-text-primary);
+
+  @include on-tablet {
+    justify-self: start;
+  }
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include on-tablet {
+    flex-direction: row;
+    gap: 0;
+    justify-content: space-between;
+  }
+}
+
+.link {
+  @include uppercase;
+
+  color: var(--color-text-secondary);
+  transition: color $transition-duration;
+
+  &:hover {
+    color: var(--color-text-primary);
+  }
+}
+
+.backToTopIcon {
+  @include square-button;
+}
+
+.backToTop {
+  @include small-text;
+
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  align-self: center;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  color: var(--color-text-secondary);
+
+  @include on-tablet {
+    justify-self: end;
+  }
+
+  &:hover .backToTopIcon {
+    @include square-button-hover;
+  }
+}

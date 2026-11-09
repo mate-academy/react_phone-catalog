@@ -1,0 +1,51 @@
+@use '../../../../styles/utils' as *;
+
+.dialog {
+  width: calc(100% - 32px);
+  max-width: 400px;
+  padding: 32px;
+  border: 1px solid var(--color-elements);
+  background-color: var(--color-surface-1);
+  color: var(--color-text-primary);
+
+  &::backdrop {
+    background-color: rgba(15, 17, 33, 0.6);
+  }
+}
+
+.text {
+  margin-bottom: 32px;
+
+  @include h4;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.cancel,
+.confirm {
+  @include button-text;
+
+  padding-inline: 24px;
+}
+
+.cancel {
+  height: 40px;
+  border: 1px solid var(--color-button-border);
+  background-color: var(--color-button-bg);
+  color: var(--color-text-primary);
+  transition:
+    border-color $transition-duration,
+    background-color $transition-duration;
+
+  &:hover {
+    @include square-button-hover;
+  }
+}
+
+.confirm {
+  @include primary-button;
+}

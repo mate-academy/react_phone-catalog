@@ -1,0 +1,89 @@
+@use '../../styles/utils' as *;
+
+.page {
+  padding-top: 24px;
+}
+
+.breadcrumbs {
+  margin-bottom: 40px;
+}
+
+.back {
+  margin-bottom: 16px;
+}
+
+.title {
+  margin-bottom: 32px;
+
+  @include h2;
+
+  @include on-tablet {
+    margin-bottom: 40px;
+  }
+}
+
+.main {
+  display: grid;
+  gap: 40px;
+
+  @include on-tablet {
+    grid-template-columns: 7fr 5fr;
+    gap: 16px;
+  }
+
+  @include on-desktop {
+    grid-template-columns: 560px 320px;
+    column-gap: 64px;
+  }
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+}
+
+.prices {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.price {
+  @include h2;
+}
+
+.fullPrice {
+  color: var(--color-text-secondary);
+
+  @include h3;
+}
+
+.actions {
+  margin-bottom: 32px;
+}
+
+.info,
+.suggested {
+  margin-top: 56px;
+
+  @include on-desktop {
+    margin-top: 80px;
+  }
+}
+
+.notFound {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+}
+
+.notFoundImage {
+  width: 100%;
+  max-width: 400px;
+}
+
+.notFoundText {
+  @include h2;
+}

@@ -1,0 +1,64 @@
+@use '../../../../styles/utils' as *;
+
+.title {
+  margin-bottom: 24px;
+
+  @include h2;
+}
+
+.list {
+  display: grid;
+  gap: 32px;
+
+  @include on-tablet {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  color: var(--color-text-primary);
+}
+
+.imageWrapper {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1;
+  margin-bottom: 24px;
+}
+
+.phones {
+  background-color: #6d6474;
+}
+
+.tablets {
+  background-color: #8d8d92;
+}
+
+.accessories {
+  background-color: #973d5f;
+}
+
+.image {
+  position: absolute;
+  top: 16%;
+  left: 16%;
+  width: 100%;
+  transition: transform $transition-duration;
+
+  .card:hover & {
+    transform: scale(1.1);
+  }
+}
+
+.name {
+  margin-bottom: 4px;
+
+  @include h4;
+}
+
+.count {
+  color: var(--color-text-secondary);
+}

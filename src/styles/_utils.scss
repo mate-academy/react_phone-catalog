@@ -1,0 +1,5 @@
+// Tools only: generates NO CSS by itself.
+// Safe to @use in every .module.scss file.
+@forward 'variables';
+@forward 'mixins';
+@forward 'typography';

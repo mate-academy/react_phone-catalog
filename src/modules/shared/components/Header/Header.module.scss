@@ -1,0 +1,134 @@
+@use '../../../../styles/utils' as *;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  height: $header-height-mobile;
+  padding-left: 16px;
+  background-color: var(--color-bg);
+  box-shadow: 0 1px 0 var(--color-elements);
+
+  @include on-desktop {
+    height: $header-height-desktop;
+    padding-left: 24px;
+  }
+}
+
+.logo {
+  display: flex;
+  flex-shrink: 0;
+  color: var(--color-text-primary);
+}
+
+.logoImage {
+  width: 64px;
+  height: auto;
+
+  @include on-desktop {
+    width: 80px;
+  }
+}
+
+.nav {
+  display: none;
+  align-self: stretch;
+  margin-left: 32px;
+
+  @include on-tablet {
+    display: block;
+  }
+
+  @include on-desktop {
+    margin-left: 48px;
+  }
+}
+
+.navList {
+  display: flex;
+  gap: 32px;
+  height: 100%;
+
+  @include on-desktop {
+    gap: 64px;
+  }
+}
+
+.navItem {
+  display: flex;
+}
+
+// Shared by text links and icon links: the underline of the active page
+.navLink,
+.iconLink {
+  display: flex;
+  align-items: center;
+  transition:
+    color $transition-duration,
+    background-color $transition-duration;
+
+  @include active-underline;
+}
+
+.navLink {
+  @include uppercase;
+
+  color: var(--color-text-secondary);
+
+  &:hover {
+    color: var(--color-text-primary);
+  }
+}
+
+.actions {
+  display: none;
+  align-self: stretch;
+  margin-left: auto;
+
+  @include on-tablet {
+    display: flex;
+  }
+}
+
+.iconLink {
+  justify-content: center;
+  width: 48px;
+  box-shadow: -1px 0 0 var(--color-elements);
+  color: var(--color-text-primary);
+
+  &:hover {
+    background-color: var(--color-surface-2);
+  }
+
+  @include on-desktop {
+    width: 64px;
+  }
+}
+
+.active {
+  color: var(--color-text-primary);
+
+  &::after {
+    transform: scaleX(1);
+  }
+}
+
+.menuButton {
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+  justify-content: center;
+  width: 48px;
+  margin-left: auto;
+  padding: 0;
+  border: 0;
+  box-shadow: -1px 0 0 var(--color-elements);
+  background-color: transparent;
+  color: var(--color-text-primary);
+
+  @include on-tablet {
+    display: none;
+  }
+}

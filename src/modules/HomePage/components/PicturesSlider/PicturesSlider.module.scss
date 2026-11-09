@@ -1,0 +1,100 @@
+@use '../../../../styles/utils' as *;
+
+.viewport {
+  display: flex;
+
+  @include on-tablet {
+    display: grid;
+    grid-template-columns: 32px 1fr 32px;
+    gap: 16px;
+  }
+}
+
+.arrow {
+  display: none;
+
+  @include on-tablet {
+    @include square-button;
+
+    height: auto;
+  }
+
+  &:hover {
+    @include square-button-hover;
+  }
+}
+
+// Mobile: the slider bleeds to the screen edges and is moved by swiping
+.list {
+  display: flex;
+  flex-grow: 1;
+  min-width: 0;
+  margin-inline: -$page-padding-mobile;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @include on-tablet {
+    margin-inline: 0;
+  }
+}
+
+.slide {
+  flex: 0 0 100%;
+  overflow: hidden;
+  aspect-ratio: 1;
+  background-color: var(--color-surface-2);
+  scroll-snap-align: start;
+
+  @include on-tablet {
+    aspect-ratio: 1040 / 400;
+  }
+}
+
+.link {
+  display: block;
+  height: 100%;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform $transition-duration;
+
+  .link:hover & {
+    transform: scale(1.1);
+  }
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  height: 32px;
+}
+
+.dot {
+  width: 24px;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+
+  &::after {
+    content: '';
+    display: block;
+    width: 14px;
+    height: 4px;
+    margin: 0 auto;
+    background-color: var(--color-elements);
+    transition: background-color $transition-duration;
+  }
+}
+
+.dotActive::after {
+  background-color: var(--color-text-primary);
+}

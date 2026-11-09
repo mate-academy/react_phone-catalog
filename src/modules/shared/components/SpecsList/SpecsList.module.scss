@@ -1,0 +1,28 @@
+@use '../../../../styles/utils' as *;
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.spec {
+  @include small-text;
+
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+}
+
+.label {
+  color: var(--color-text-secondary);
+}
+
+.value {
+  color: var(--color-text-primary);
+  text-align: right;
+}
+
+.medium .spec {
+  @include body-text;
+}
