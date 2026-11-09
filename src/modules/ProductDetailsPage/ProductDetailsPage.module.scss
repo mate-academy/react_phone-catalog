@@ -63,6 +63,14 @@
   margin-bottom: 32px;
 }
 
+.info {
+  margin-top: 56px;
+
+  @include on-desktop {
+    margin-top: 80px;
+  }
+}
+
 .notFound {
   display: flex;
   flex-direction: column;

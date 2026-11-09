@@ -7,6 +7,7 @@ import { CATEGORY_NAMES } from '../shared/constants/categoryNames';
 import { ProductActions } from '../shared/components/ProductActions';
 import { SpecsList } from '../shared/components/SpecsList';
 import { ProductGallery } from './components/ProductGallery';
+import { ProductInfo } from './components/ProductInfo';
 import { useProductDetails } from './hooks/useProductDetails';
 import { VariantSelector } from './components/VariantSelector';
 import styles from './ProductDetailsPage.module.scss';
@@ -90,6 +91,8 @@ export const ProductDetailsPage = () => {
             <SpecsList specs={shortSpecs} />
           </div>
         </div>
+
+        <ProductInfo details={details} className={styles.info} />
       </>
     );
   };

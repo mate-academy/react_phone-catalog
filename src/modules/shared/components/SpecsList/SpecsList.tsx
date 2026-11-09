@@ -8,11 +8,16 @@ export interface Spec {
 
 interface Props {
   specs: Spec[];
+  size?: 'small' | 'medium';
   className?: string;
 }
 
-export const SpecsList = ({ specs, className }: Props) => (
-  <dl className={classNames(styles.specs, className)}>
+export const SpecsList = ({ specs, size = 'small', className }: Props) => (
+  <dl
+    className={classNames(styles.specs, className, {
+      [styles.medium]: size === 'medium',
+    })}
+  >
     {specs.map(({ label, value }) => (
       <div key={label} className={styles.spec}>
         <dt className={styles.label}>{label}</dt>

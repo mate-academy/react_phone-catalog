@@ -22,3 +22,7 @@
   color: var(--color-text-primary);
   text-align: right;
 }
+
+.medium .spec {
+  @include body-text;
+}
