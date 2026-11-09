@@ -100,7 +100,7 @@ export const ProductCard: React.FC<Props> = ({
         >
           <img
             src={
-              isLiked ? '/img/icons/heart-filled.svg' : '/img/icons/heart.svg'
+              isLiked ? './img/icons/heart-filled.svg' : './img/icons/heart.svg'
             }
             alt=""
           />
