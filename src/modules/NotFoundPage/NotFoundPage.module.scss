@@ -1,0 +1,29 @@
+@use '../../styles/utils' as *;
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+  padding-top: 24px;
+  text-align: center;
+}
+
+.image {
+  width: 100%;
+  max-width: 400px;
+}
+
+.title {
+  @include h2;
+}
+
+.homeLink {
+  @include button-text;
+
+  display: flex;
+  align-items: center;
+  padding-inline: 24px;
+
+  @include primary-button(48px);
+}
