@@ -180,7 +180,7 @@ export const AccessoriesPage = () => {
             onClick={() => currentPage > 1 && handlePageChange(currentPage - 1)}
             disabled={currentPage === 1}
           >
-            <img src="/img/icons/slider/slider-arrow-left.svg" alt="Left" />
+            <img src="./img/icons/slider/slider-arrow-left.svg" alt="Left" />
           </button>
 
           {visiblePages.map(pageNum => (
@@ -206,7 +206,7 @@ export const AccessoriesPage = () => {
             }
             disabled={currentPage === totalPages}
           >
-            <img src="/img/icons/slider/slider-arrow-right.svg" alt="Right" />
+            <img src="./img/icons/slider/slider-arrow-right.svg" alt="Right" />
           </button>
         </div>
       )}

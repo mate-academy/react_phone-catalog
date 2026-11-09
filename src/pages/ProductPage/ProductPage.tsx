@@ -55,7 +55,7 @@ export const ProductPage = () => {
     setIsLoading(true);
     setError(false);
 
-    fetch(`/api/${category}.json`)
+    fetch(`./api/${category}.json`)
       .then(r => r.json())
       .then((data: Product[]) => {
         setProducts(data);

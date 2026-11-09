@@ -5,7 +5,7 @@ export const FooterMobile = () => {
   return (
     <footer className={styles.footer}>
       <NavLink to="/">
-        <img src="/img/icons/logo.svg" alt="Logo" />
+        <img src="./img/icons/logo.svg" alt="Logo" />
       </NavLink>
 
       <nav className={styles.navigation}>
@@ -30,7 +30,7 @@ export const FooterMobile = () => {
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         >
           Back to top
-          <img src="/img/icons/arrow-up.svg" alt="Arrow Up" />
+          <img src="./img/icons/arrow-up.svg" alt="Arrow Up" />
         </button>
       </div>
     </footer>

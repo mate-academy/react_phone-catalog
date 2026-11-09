@@ -61,7 +61,7 @@ export const RelatedProducts = ({ products }: RelatedProductsProps) => {
               onClick={handlePrevCard}
               disabled={currentCardIndex === 0}
             >
-              <img src="/img/icons/arrow-left.svg" alt="Previous" />
+              <img src="./img/icons/arrow-left.svg" alt="Previous" />
             </button>
 
             <button
@@ -69,7 +69,7 @@ export const RelatedProducts = ({ products }: RelatedProductsProps) => {
               onClick={handleNextCard}
               disabled={currentCardIndex >= maxIndex}
             >
-              <img src="/img/icons/arrow-right.svg" alt="Next" />
+              <img src="./img/icons/arrow-right.svg" alt="Next" />
             </button>
           </div>
         </div>
@@ -89,7 +89,7 @@ export const RelatedProducts = ({ products }: RelatedProductsProps) => {
                 className={styles.card}
               >
                 <img
-                  src={`/${product.images[0]}`}
+                  src={`./${product.images[0]}`}
                   alt={product.name}
                   className={styles.cardImage}
                 />
@@ -129,7 +129,7 @@ export const RelatedProducts = ({ products }: RelatedProductsProps) => {
                     Add to cart
                   </button>
                   <img
-                    src="/img/icons/heart.svg"
+                    src="./img/icons/heart.svg"
                     alt="Favorites"
                     className={styles.cardHeart}
                   />

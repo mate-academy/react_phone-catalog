@@ -127,7 +127,7 @@ export const HomePage = () => {
 
       <section className={styles.slider}>
         <button type="button" onClick={goToPreviousBanner}>
-          <img src="/img/icons/arrow-left.svg" alt="Previous" />
+          <img src="./img/icons/arrow-left.svg" alt="Previous" />
         </button>
 
         <picture className={styles.bannerPicture}>
@@ -143,7 +143,7 @@ export const HomePage = () => {
         </picture>
 
         <button type="button" onClick={goToNextBanner}>
-          <img src="/img/icons/arrow-right.svg" alt="Next" />
+          <img src="./img/icons/arrow-right.svg" alt="Next" />
         </button>
       </section>
 
@@ -166,7 +166,7 @@ export const HomePage = () => {
               onClick={() => brandNew.scroll(-1)}
               disabled={!brandNew.canPrev}
             >
-              <img src="/img/icons/arrow-left.svg" alt="Previous" />
+              <img src="./img/icons/arrow-left.svg" alt="Previous" />
             </button>
 
             <button
@@ -174,7 +174,7 @@ export const HomePage = () => {
               onClick={() => brandNew.scroll(1)}
               disabled={!brandNew.canNext}
             >
-              <img src="/img/icons/arrow-right.svg" alt="Next" />
+              <img src="./img/icons/arrow-right.svg" alt="Next" />
             </button>
           </div>
         </div>
@@ -198,7 +198,7 @@ export const HomePage = () => {
         <div className={styles.categoryGrid}>
           <Link to="/phones" className={styles.categoryCard}>
             <div className={`${styles.imageWrapper} ${styles.phonesBg}`}>
-              <img src="/img/category-phones.webp" alt="Mobile phones" />
+              <img src="./img/category-phones.webp" alt="Mobile phones" />
             </div>
             <h4 className={styles.cardTitle}>Mobile phones</h4>
             <p className={styles.cardCount}>{`${phonesCount} models`}</p>
@@ -206,7 +206,7 @@ export const HomePage = () => {
 
           <Link to="/tablets" className={styles.categoryCard}>
             <div className={`${styles.imageWrapper} ${styles.tabletsBg}`}>
-              <img src="/img/category-tablets.webp" alt="Tablets" />
+              <img src="./img/category-tablets.webp" alt="Tablets" />
             </div>
             <h4 className={styles.cardTitle}>Tablets</h4>
             <p className={styles.cardCount}>{`${tabletsCount} models`}</p>
@@ -214,7 +214,7 @@ export const HomePage = () => {
 
           <Link to="/accessories" className={styles.categoryCard}>
             <div className={`${styles.imageWrapper} ${styles.accessoriesBg}`}>
-              <img src="/img/category-accessories.webp" alt="Accessories" />
+              <img src="./img/category-accessories.webp" alt="Accessories" />
             </div>
             <h4 className={styles.cardTitle}>Accessories</h4>
             <p className={styles.cardCount}>{`${accessoriesCount} models`}</p>
@@ -231,7 +231,7 @@ export const HomePage = () => {
               onClick={() => hotPrices.scroll(-1)}
               disabled={!hotPrices.canPrev}
             >
-              <img src="/img/icons/arrow-left.svg" alt="Previous" />
+              <img src="./img/icons/arrow-left.svg" alt="Previous" />
             </button>
 
             <button
@@ -239,7 +239,7 @@ export const HomePage = () => {
               onClick={() => hotPrices.scroll(1)}
               disabled={!hotPrices.canNext}
             >
-              <img src="/img/icons/arrow-right.svg" alt="Next" />
+              <img src="./img/icons/arrow-right.svg" alt="Next" />
             </button>
           </div>
         </div>

@@ -32,7 +32,7 @@ export const HeaderMobile = () => {
     <header className={styles.header}>
       <div className={styles.bar}>
         <NavLink to="/" className={styles.logo} onClick={closeMenu}>
-          <img src="/img/icons/logo.svg" alt="Logo" />
+          <img src="./img/icons/logo.svg" alt="Logo" />
         </NavLink>
 
         <button
@@ -68,11 +68,11 @@ export const HeaderMobile = () => {
 
         <div className={styles.footer}>
           <NavLink to="/favorites" className={getIconClass} onClick={closeMenu}>
-            <img src="/img/icons/heart.svg" alt="Favorites" />
+            <img src="./img/icons/heart.svg" alt="Favorites" />
           </NavLink>
 
           <NavLink to="/cart" className={getIconClass} onClick={closeMenu}>
-            <img src="/img/icons/bag.svg" alt="Cart" />
+            <img src="./img/icons/bag.svg" alt="Cart" />
           </NavLink>
         </div>
       </div>

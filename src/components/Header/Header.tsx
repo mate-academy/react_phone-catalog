@@ -13,7 +13,10 @@ export const Header = () => {
       <header className={styles.header}>
         <div className={styles.logo}>
           <NavLink to="/">
-            <img src="/img/icons/logo.svg" alt="Logo" />
+            <img
+              src={`${import.meta.env.BASE_URL}img/icons/logo.svg`}
+              alt="Logo"
+            />
           </NavLink>
         </div>
 
@@ -41,7 +44,7 @@ export const Header = () => {
               `${styles.favLink} ${isActive ? styles.iconActive : ''}`
             }
           >
-            <img src="/img/icons/heart.svg" alt="Favorites" />
+            <img src={`./img/icons/heart.svg`} alt="Favorites" />
             {favoriteIds.length > 0 && (
               <span className={styles.badge}>{favoriteIds.length}</span>
             )}
@@ -53,7 +56,12 @@ export const Header = () => {
               `${styles.favLink} ${isActive ? styles.iconActive : ''}`
             }
           >
-            <img src="/img/icons/bag.svg" alt="Cart" className={styles.bag} />
+            <img
+              src={`./img/icons/bag.svg`}
+              alt="Cart"
+              className={styles.bag}
+            />
+
             {totalCount > 0 && (
               <span className={styles.badge}>{totalCount}</span>
             )}

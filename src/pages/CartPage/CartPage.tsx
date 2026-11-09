@@ -45,7 +45,7 @@ export const CartPage = () => {
         className={styles.backButton}
         onClick={() => navigate(-1)}
       >
-        <img src="/img/icons/arrow-left.svg" alt="" />
+        <img src="./img/icons/arrow-left.svg" alt="" />
         Back
       </button>
 
@@ -76,7 +76,7 @@ export const CartPage = () => {
                   to={`/${product.category}/${product.id}`}
                   className={styles.image}
                 >
-                  <img src={`/${product.images[0]}`} alt={product.name} />
+                  <img src={`./${product.images[0]}`} alt={product.name} />
                 </Link>
 
                 <Link
