@@ -2,14 +2,14 @@
   background-color: var(--bg-primary);
   border-top: 1px solid var(--color-elements);
 
-  padding: $space-5 $space-4;
+  padding: $space-5 $space-3;
 
   @include tablet {
-    padding: $space-5 $space-6;
+    padding: $space-5 $space-4;
   }
 
   @include desktop {
-    padding: $space-6;
+    padding: $space-5;
   }
 }
 
