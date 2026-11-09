@@ -8,6 +8,7 @@ import { ProductActions } from '../shared/components/ProductActions';
 import { SpecsList } from '../shared/components/SpecsList';
 import { ProductGallery } from './components/ProductGallery';
 import { useProductDetails } from './hooks/useProductDetails';
+import { VariantSelector } from './components/VariantSelector';
 import styles from './ProductDetailsPage.module.scss';
 
 export const ProductDetailsPage = () => {
@@ -73,7 +74,7 @@ export const ProductDetailsPage = () => {
           />
 
           <div className={styles.options}>
-            {/* Colors and capacity will go here */}
+            <VariantSelector details={details} productNumber={product.id} />
 
             <p className={styles.prices}>
               <span className={styles.price}>${details.priceDiscount}</span>

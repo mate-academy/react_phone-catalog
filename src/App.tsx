@@ -5,11 +5,13 @@ import { Footer } from './modules/shared/components/Footer';
 import styles from './App.module.scss';
 
 export const App = () => {
-  const { pathname } = useLocation();
+  const { pathname, state } = useLocation();
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
+    if (!state?.keepScroll) {
+      window.scrollTo(0, 0);
+    }
+  }, [pathname, state]);
 
   return (
     <div className={styles.app}>

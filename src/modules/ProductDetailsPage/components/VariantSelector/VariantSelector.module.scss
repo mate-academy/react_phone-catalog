@@ -1,0 +1,90 @@
+@use '../../../../styles/utils' as *;
+
+.group {
+  position: relative;
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--color-elements);
+}
+
+.legend {
+  margin-bottom: 8px;
+  color: var(--color-text-secondary);
+
+  @include small-text;
+}
+
+.id {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: var(--color-icons);
+
+  @include small-text;
+}
+
+.options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.option {
+  display: flex;
+  cursor: pointer;
+}
+
+.input {
+  @include visually-hidden;
+}
+
+.hiddenText {
+  @include visually-hidden;
+}
+
+.swatch {
+  width: 32px;
+  height: 32px;
+  padding: 2px;
+  border: 1px solid var(--color-elements);
+  border-radius: 50%;
+  background-clip: content-box;
+  transition: border-color $transition-duration;
+
+  .option:hover & {
+    border-color: var(--color-icons);
+  }
+}
+
+.capacity {
+  @include body-text;
+
+  padding: 4px 8px;
+  border: 1px solid var(--color-button-border);
+  background-color: var(--color-button-bg);
+  color: var(--color-text-primary);
+  transition:
+    border-color $transition-duration,
+    background-color $transition-duration,
+    color $transition-duration;
+
+  .option:hover & {
+    border-color: var(--color-button-border-hover);
+  }
+}
+
+.input:checked + .swatch {
+  border-color: var(--color-text-primary);
+}
+
+.input:checked + .capacity {
+  border-color: var(--color-accent);
+  background-color: var(--color-accent);
+  color: var(--color-text-on-accent);
+}
+
+.input:focus-visible + .swatch,
+.input:focus-visible + .capacity {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
