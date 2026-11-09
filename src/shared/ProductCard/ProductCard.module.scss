@@ -6,7 +6,9 @@
   border: 1px solid var(--border);
   border-radius: 12px;
   overflow: hidden;
-  transition: box-shadow 0.25s ease, transform 0.25s ease;
+  transition:
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
 }
 
 .card:hover {
@@ -30,18 +32,6 @@
 
 .imageLink:hover .image {
   transform: scale(1.05);
-}
-
-.discount {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  padding: 4px 8px;
-  border-radius: 8px;
-  background: var(--danger);
-  color: #fff;
-  font-size: 12px;
-  font-weight: 700;
 }
 
 .info {
@@ -81,8 +71,33 @@
 }
 
 .specs {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 0;
+  padding: 8px 0;
+  border-top: 1px solid var(--elements);
+  border-bottom: 1px solid var(--elements);
+}
+
+.specRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.specRow dt {
   font-size: 12px;
   color: var(--muted);
+}
+
+.specRow dd {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text);
+  text-align: right;
 }
 
 .actions {
@@ -93,44 +108,52 @@
 }
 
 .cartButton {
-  padding: 8px 14px;
-  border: none;
+  flex: 1;
+  padding: 10px 14px;
+  border: 1px solid var(--text);
   border-radius: 8px;
-  background: var(--accent);
+  background: var(--text);
   color: #fff;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
 }
 
 .cartButton:hover {
-  background: var(--accent-hover);
+  border-color: var(--icons);
+  background: var(--muted);
 }
 
 .added {
-  background: #2f9e44;
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #fff;
 }
 
 .added:hover {
-  background: #2b8a38;
+  border-color: var(--accent);
+  background: var(--accent-hover);
+  box-shadow: none;
 }
 
 .favoriteButton {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
-  border: none;
-  border-radius: 50%;
-  background: transparent;
-  color: var(--muted);
-  font-size: 18px;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--elements);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 16px;
 }
 
 .favoriteButton:hover {
-  color: var(--heart);
+  border-color: var(--icons);
+  box-shadow: var(--shadow);
 }
 
 .favoriteButton.active {
+  border-color: var(--danger);
   color: var(--heart);
 }

@@ -41,8 +41,19 @@
 
 .title {
   margin: 0;
-  font-size: 28px;
+  font-size: 32px;
+  line-height: 41px;
   font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+
+.buyRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 8px;
 }
 
 .prices {
@@ -52,12 +63,14 @@
 }
 
 .price {
-  font-size: 26px;
-  font-weight: 700;
+  font-size: 32px;
+  line-height: 41px;
+  font-weight: 800;
+  color: var(--text);
 }
 
 .fullPrice {
-  font-size: 16px;
+  font-size: 22px;
 }
 
 .addToCart {
@@ -69,25 +82,66 @@
   align-items: center;
   justify-content: center;
   padding: 12px 24px;
-  border: none;
+  border: 1px solid var(--text);
   border-radius: 8px;
-  background: var(--accent);
+  background: var(--text);
   color: #fff;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
 }
 
 .addToCartButton:hover {
-  background: var(--accent-hover);
+  background: var(--muted);
+  border-color: var(--icons);
 }
 
 .added {
-  background: #2f9e44;
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #fff;
+}
+
+.added:hover {
+  border-color: var(--accent);
+  background: var(--accent-hover);
 }
 
 .meta {
   margin: 0;
   color: var(--muted);
+}
+
+.productId {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--icons);
+}
+
+.shortSpecs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 16px 0 0;
+  padding: 16px;
+  border: 1px solid var(--elements);
+  border-radius: 12px;
+  background: var(--surface);
+}
+
+.infoColumns {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  gap: 32px;
+  align-items: start;
+}
+
+.sectionTitle {
+  margin: 0 0 8px;
+  font-size: 22px;
+  line-height: 31px;
+  font-weight: 700;
+  color: var(--text);
 }
 
 .about {
@@ -113,11 +167,6 @@
   gap: 12px;
 }
 
-.techTitle {
-  margin: 0;
-  font-size: 20px;
-}
-
 .spec {
   display: grid;
   grid-template-columns: 140px 1fr;
@@ -131,6 +180,13 @@
 
 .spec dd {
   margin: 0;
+}
+
+@media (max-width: 1023px) {
+  .details,
+  .infoColumns {
+    grid-template-columns: 1fr;
+  }
 }
 
 .reloadButton {

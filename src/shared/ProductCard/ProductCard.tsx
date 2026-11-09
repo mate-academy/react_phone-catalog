@@ -18,10 +18,6 @@ export const ProductCard = ({ product }: ProductCardProps) => {
   const unitPrice = getProductPrice(product);
   const fullPriceValue =
     product.fullPrice ?? product.priceRegular ?? product.priceDiscount;
-  const isDiscount = fullPriceValue !== undefined && fullPriceValue > unitPrice;
-  const percent = isDiscount
-    ? Math.round(((fullPriceValue - unitPrice) / fullPriceValue) * 100)
-    : 0;
   const isAdded = isInCart(product.id);
   const favorite = isFavorite(product.id);
   const price = formatPrice(unitPrice);
@@ -35,7 +31,6 @@ export const ProductCard = ({ product }: ProductCardProps) => {
           alt={product.name}
           className={styles.image}
         />
-        {isDiscount && <span className={styles.discount}>-{percent}%</span>}
       </Link>
       <div className={styles.info}>
         <Link to={`/product/${product.id}`} className={styles.title}>
@@ -45,10 +40,27 @@ export const ProductCard = ({ product }: ProductCardProps) => {
           {price && <span className={styles.price}>{price}</span>}
           {fullPrice && <s className={styles.fullPrice}>{fullPrice}</s>}
         </div>
-        {(product.screen || product.ram) && (
-          <div className={styles.specs}>
-            {[product.screen, product.ram].filter(Boolean).join(' · ')}
-          </div>
+        {(product.screen || product.capacity || product.ram) && (
+          <dl className={styles.specs}>
+            {product.screen && (
+              <div className={styles.specRow}>
+                <dt>Screen</dt>
+                <dd>{product.screen}</dd>
+              </div>
+            )}
+            {product.capacity && (
+              <div className={styles.specRow}>
+                <dt>Capacity</dt>
+                <dd>{formatMemory(product.capacity)}</dd>
+              </div>
+            )}
+            {product.ram && (
+              <div className={styles.specRow}>
+                <dt>RAM</dt>
+                <dd>{formatMemory(product.ram)}</dd>
+              </div>
+            )}
+          </dl>
         )}
         <div className={styles.actions}>
           <button

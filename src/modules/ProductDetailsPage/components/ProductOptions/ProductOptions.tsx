@@ -4,6 +4,7 @@ import styles from './ProductOptions.module.scss';
 
 interface ProductOptionsProps {
   product: Product;
+  productId?: string;
   color?: string;
   capacity?: string;
   onColorChange: (color: string) => void;
@@ -12,6 +13,7 @@ interface ProductOptionsProps {
 
 export const ProductOptions = ({
   product,
+  productId,
   color,
   capacity,
   onColorChange,
@@ -25,9 +27,13 @@ export const ProductOptions = ({
     options: string[],
     selected: string | undefined,
     onSelect: (value: string) => void,
+    idLabel?: string,
   ) => (
     <fieldset className={styles.group}>
-      <legend className={styles.legend}>{legend}</legend>
+      <div className={styles.legendRow}>
+        <legend className={styles.legend}>{legend}</legend>
+        {idLabel && <span className={styles.idLabel}>{idLabel}</span>}
+      </div>
       {options.map(option => (
         <label key={option} className={styles.option}>
           <input
@@ -45,8 +51,14 @@ export const ProductOptions = ({
 
   return (
     <div className={styles.options}>
-      {renderGroup('Color', colors, color, onColorChange)}
-      {renderGroup('Capacity', capacities, capacity, onCapacityChange)}
+      {renderGroup(
+        'Available colors',
+        colors,
+        color,
+        onColorChange,
+        productId ? `ID: ${productId}` : undefined,
+      )}
+      {renderGroup('Select capacity', capacities, capacity, onCapacityChange)}
     </div>
   );
 };

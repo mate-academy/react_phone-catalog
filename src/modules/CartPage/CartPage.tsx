@@ -40,23 +40,29 @@ export const CartPage = () => {
 
   return (
     <div className={styles.page}>
+      <Link to="/" className={styles.backLink}>
+        <i className="fas fa-chevron-left" /> Back
+      </Link>
       <h1 className={styles.title}>Cart</h1>
-      <div className={styles.list}>
-        {cartItems.map(item => (
-          <CartItem key={item.product.id} item={item} />
-        ))}
-      </div>
-      <div className={styles.summary}>
-        <span className={styles.summaryText}>
-          Total amount: ${totalAmount} / Quantity: {totalQuantity}
-        </span>
-        <button
-          type="button"
-          className={styles.checkoutButton}
-          onClick={handleCheckout}
-        >
-          Checkout
-        </button>
+      <div className={styles.layout}>
+        <div className={styles.list}>
+          {cartItems.map(item => (
+            <CartItem key={item.product.id} item={item} />
+          ))}
+        </div>
+        <aside className={styles.summary}>
+          <span className={styles.total}>${totalAmount}</span>
+          <span className={styles.summaryText}>
+            Total for {totalQuantity} items
+          </span>
+          <button
+            type="button"
+            className={styles.checkoutButton}
+            onClick={handleCheckout}
+          >
+            Checkout
+          </button>
+        </aside>
       </div>
     </div>
   );

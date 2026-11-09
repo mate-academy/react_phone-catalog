@@ -4,7 +4,8 @@ export interface NavItem {
 }
 
 export const NAV_ITEMS: NavItem[] = [
-  { label: 'Phones', path: '/phones' },
-  { label: 'Tablets', path: '/tablets' },
-  { label: 'Accessories', path: '/accessories' },
+  { label: 'home', path: '/' },
+  { label: 'phones', path: '/phones' },
+  { label: 'tablets', path: '/tablets' },
+  { label: 'accessories', path: '/accessories' },
 ];

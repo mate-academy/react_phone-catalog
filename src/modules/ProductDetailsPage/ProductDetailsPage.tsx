@@ -259,7 +259,6 @@ export const ProductDetailsPage = () => {
   const categoryLabel = `${product.category.charAt(0).toUpperCase()}${product.category.slice(1)}`;
 
   const breadcrumbItems: BreadcrumbItem[] = [
-    { label: 'Home', path: '/' },
     { label: categoryLabel, path: `/${product.category}` },
     { label: formatMemory(product.name) },
   ];
@@ -282,17 +281,27 @@ export const ProductDetailsPage = () => {
         />
         <div className={styles.info}>
           <h1 className={styles.title}>{formatMemory(product.name)}</h1>
-          <div className={styles.prices}>
-            {displayPrice > 0 && formatPrice(displayPrice) && (
-              <span className={styles.price}>{formatPrice(displayPrice)}</span>
-            )}
-            {displayFullPrice > 0 && formatPrice(displayFullPrice) && (
-              <s className={styles.fullPrice}>
-                {formatPrice(displayFullPrice)}
-              </s>
-            )}
-          </div>
-          <div className={styles.addToCart}>
+          <ProductOptions
+            product={product}
+            productId={product.id}
+            color={selectedColor}
+            capacity={selectedCapacity}
+            onColorChange={handleColorChange}
+            onCapacityChange={handleCapacityChange}
+          />
+          <div className={styles.buyRow}>
+            <div className={styles.prices}>
+              {displayPrice > 0 && formatPrice(displayPrice) && (
+                <span className={styles.price}>
+                  {formatPrice(displayPrice)}
+                </span>
+              )}
+              {displayFullPrice > 0 && formatPrice(displayFullPrice) && (
+                <s className={styles.fullPrice}>
+                  {formatPrice(displayFullPrice)}
+                </s>
+              )}
+            </div>
             <button
               type="button"
               className={
@@ -305,19 +314,47 @@ export const ProductDetailsPage = () => {
               {isAdded ? 'Added to cart' : 'Add to cart'}
             </button>
           </div>
-          {product.screen && <p className={styles.meta}>{product.screen}</p>}
-          <ProductOptions
-            product={product}
-            color={selectedColor}
-            capacity={selectedCapacity}
-            onColorChange={handleColorChange}
-            onCapacityChange={handleCapacityChange}
-          />
+          {(product.screen ||
+            product.resolution ||
+            product.processor ||
+            product.ram) && (
+            <dl className={styles.shortSpecs}>
+              {product.screen && (
+                <div key="screen" className={styles.spec}>
+                  <dt>Screen</dt>
+                  <dd>{product.screen}</dd>
+                </div>
+              )}
+              {product.resolution && (
+                <div key="resolution" className={styles.spec}>
+                  <dt>Resolution</dt>
+                  <dd>{product.resolution}</dd>
+                </div>
+              )}
+              {product.processor && (
+                <div key="processor" className={styles.spec}>
+                  <dt>Processor</dt>
+                  <dd>{product.processor}</dd>
+                </div>
+              )}
+              {product.ram && (
+                <div key="ram" className={styles.spec}>
+                  <dt>RAM</dt>
+                  <dd>{formatMemory(product.ram)}</dd>
+                </div>
+              )}
+            </dl>
+          )}
+        </div>
+      </div>
+      {(product.description?.length || product.screen) && (
+        <div className={styles.infoColumns}>
           {product.description && product.description.length > 0 && (
             <div className={styles.about}>
+              <h2 className={styles.sectionTitle}>About</h2>
               {product.description.map(block => (
                 <div key={block.title} className={styles.aboutBlock}>
-                  <h2 className={styles.aboutTitle}>{block.title}</h2>
+                  <h3 className={styles.aboutTitle}>{block.title}</h3>
                   {block.text.map((text, index) => (
                     <p key={`${block.title}-${index}`}>{text}</p>
                   ))}
@@ -327,7 +364,7 @@ export const ProductDetailsPage = () => {
           )}
           {product.screen && (
             <div className={styles.tech}>
-              <h2 className={styles.techTitle}>Tech specs</h2>
+              <h2 className={styles.sectionTitle}>Tech specs</h2>
               <dl>
                 {product.screen && (
                   <div key="screen" className={styles.spec}>
@@ -350,7 +387,13 @@ export const ProductDetailsPage = () => {
                 {product.ram && (
                   <div key="ram" className={styles.spec}>
                     <dt>RAM</dt>
-                    <dd>{product.ram}</dd>
+                    <dd>{formatMemory(product.ram)}</dd>
+                  </div>
+                )}
+                {product.capacity && (
+                  <div key="builtInMemory" className={styles.spec}>
+                    <dt>Built in memory</dt>
+                    <dd>{formatMemory(product.capacity)}</dd>
                   </div>
                 )}
                 {product.camera && (
@@ -375,7 +418,7 @@ export const ProductDetailsPage = () => {
             </div>
           )}
         </div>
-      </div>
+      )}
       <YouMayAlsoLike
         products={suggestedProducts}
         isLoading={suggestionsLoading}

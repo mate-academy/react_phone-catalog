@@ -14,14 +14,23 @@ export const Footer = () => {
           target="_blank"
           rel="noreferrer"
         >
-          <i className="fab fa-github" /> GitHub
+          <i className="fab fa-github" /> Github
         </a>
+
+        <nav className={styles.links}>
+          <a className={styles.link} href="mailto:store@nicegadgets.com">
+            Contacts
+          </a>
+          <span className={styles.link}>rights</span>
+        </nav>
+
         <button
           type="button"
           className={styles.backToTop}
           onClick={handleBackToTop}
         >
-          <i className="fas fa-arrow-up" /> Back to top
+          Back to top
+          <i className="fas fa-arrow-up" />
         </button>
       </div>
     </footer>

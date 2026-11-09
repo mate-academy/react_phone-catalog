@@ -7,10 +7,23 @@
   margin: 0;
 }
 
+.legendRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+}
+
 .legend {
   padding: 0;
   font-size: 16px;
   font-weight: 600;
+}
+
+.idLabel {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--icons);
 }
 
 .option {

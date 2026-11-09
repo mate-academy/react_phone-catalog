@@ -6,8 +6,18 @@
 
 .title {
   margin: 0;
-  font-size: 32px;
-  font-weight: 700;
+  font-size: 48px;
+  line-height: 56px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+
+.modelsCount {
+  margin: -8px 0 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--muted);
 }
 
 .controls {

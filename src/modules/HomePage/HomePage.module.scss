@@ -17,6 +17,22 @@
   border: 0;
 }
 
+.welcomeTitle {
+  margin: 0;
+  font-size: 48px;
+  line-height: 56px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+
+@media (max-width: 639px) {
+  .welcomeTitle {
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
 .section {
   display: flex;
   flex-direction: column;

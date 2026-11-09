@@ -71,6 +71,16 @@ export const HomePage = () => {
     [catalogProducts],
   );
 
+  const counts = useMemo(() => {
+    const result: Record<string, number> = {};
+
+    for (const item of catalogProducts) {
+      result[item.category] = (result[item.category] ?? 0) + 1;
+    }
+
+    return result;
+  }, [catalogProducts]);
+
   if (isLoading) {
     return <div className={styles.home} />;
   }
@@ -82,18 +92,22 @@ export const HomePage = () => {
   return (
     <div className={styles.home}>
       <h1 className={styles.visuallyHidden}>Product Catalog</h1>
+      <h2 className={styles.welcomeTitle}>Welcome to Nice Gadgets store!</h2>
       <PicturesSlider images={SLIDE_IMAGES} />
 
       <section className={styles.section}>
+        <ProductsSlider
+          title="Brand new models"
+          products={newProducts.slice(0, 10)}
+        />
+      </section>
+
+      <section className={styles.section}>
+        <ShopByCategory counts={counts} />
+      </section>
+
+      <section className={styles.section}>
         <ProductsSlider title="Hot prices" products={hotPrices.slice(0, 10)} />
-      </section>
-
-      <section className={styles.section}>
-        <ShopByCategory />
-      </section>
-
-      <section className={styles.section}>
-        <ProductsSlider title="Newest" products={newProducts.slice(0, 10)} />
       </section>
     </div>
   );

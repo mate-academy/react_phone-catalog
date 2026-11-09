@@ -43,7 +43,10 @@ export const FavoritesPage = () => {
 
   return (
     <div className={styles.page}>
-      <h1 className={styles.title}>Favorites</h1>
+      <h1 className={styles.title}>Favourites</h1>
+      {!isLoading && !hasError && (
+        <p className={styles.itemsCount}>{products.length} items</p>
+      )}
       {isLoading ? (
         <Loader count={4} />
       ) : hasError ? (

@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { useShop } from '../../context/ShopContext';
 import { NAV_ITEMS } from '../constants/navigation';
 import { SearchInput } from '../SearchInput';
+import { getImageUrl } from '../utils/images';
 import styles from './Header.module.scss';
 
 const THEME_STORAGE_KEY = 'phone-theme';
@@ -31,16 +32,34 @@ export const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.container}>
-        <Link to="/" className={styles.logo} aria-label="Phone Catalog home">
-          <i className="fas fa-mobile-alt" />
-          <span>Phone Catalog</span>
+        <Link to="/" className={styles.logo} aria-label="Nice Gadgets home">
+          <span className={styles.logoRow}>
+            NICE
+            <img
+              src={getImageUrl('/img/favicon.png')}
+              alt=""
+              className={styles.logoImg}
+            />
+          </span>
+          <span>GADGETS</span>
         </Link>
         <nav className={styles.nav}>
-          {NAV_ITEMS.map(item => (
-            <Link key={item.path} to={item.path} className={styles.navLink}>
-              {item.label}
-            </Link>
-          ))}
+          {NAV_ITEMS.map(item => {
+            const isActive =
+              item.path === '/'
+                ? location.pathname === '/'
+                : location.pathname.startsWith(item.path);
+
+            return (
+              <Link
+                key={item.path}
+                to={item.path}
+                className={`${styles.navLink} ${isActive ? styles.navLinkActive : ''}`}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
         </nav>
         <div className={styles.actions}>
           {isSearchable && <SearchInput />}

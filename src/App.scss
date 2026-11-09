@@ -1,17 +1,19 @@
 :root {
-  --bg: #f4f6f9;
+  --bg: #fafbfc;
   --surface: #fff;
-  --surface-alt: #eef2f7;
-  --text: #1b2230;
-  --muted: #5f6b7c;
-  --border: #e3e8f0;
-  --accent: #326ce5;
-  --accent-hover: #2a5bc0;
-  --accent-soft: rgba(50, 108, 229, 0.12);
-  --danger: #e5484d;
+  --surface-alt: #f0f2f5;
+  --text: #313237;
+  --muted: #89939a;
+  --icons: #b4bdc3;
+  --elements: #e2e6e9;
+  --border: #e2e6e9;
+  --accent: #27ae60;
+  --accent-hover: #219452;
+  --accent-soft: rgba(39, 174, 96, 0.12);
+  --danger: #eb5757;
   --header-bg: rgba(255, 255, 255, 0.94);
-  --shadow: 0 6px 20px rgba(16, 24, 40, 0.08);
-  --heart: #e5484d;
+  --shadow: 0 6px 20px rgba(49, 50, 55, 0.08);
+  --heart: #eb5757;
   --input-bg: #fff;
 }
 
@@ -21,10 +23,12 @@
   --surface-alt: #1f2940;
   --text: #eef2f8;
   --muted: #9aa7ba;
+  --icons: #9aa7ba;
+  --elements: #2a3550;
   --border: #2a3550;
-  --accent: #5b8def;
-  --accent-hover: #7aa2f7;
-  --accent-soft: rgba(91, 141, 239, 0.2);
+  --accent: #2ecc71;
+  --accent-hover: #27ae60;
+  --accent-soft: rgba(46, 204, 113, 0.2);
   --danger: #ff6b70;
   --header-bg: rgba(15, 20, 32, 0.92);
   --shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
@@ -44,8 +48,18 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  transition: background 0.3s ease, color 0.3s ease;
+  font-family:
+    Mont,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
 }
 
 .app {

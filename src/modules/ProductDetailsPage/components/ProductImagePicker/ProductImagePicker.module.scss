@@ -1,10 +1,19 @@
 .picker {
   display: flex;
+  flex-direction: row;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.thumbs {
+  display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 8px;
+  order: -1;
 }
 
 .mainImage {
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -26,19 +35,13 @@
   background: var(--surface-alt);
 }
 
-.thumbs {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
 .thumb {
   width: 64px;
   height: 64px;
   padding: 0;
-  border: 2px solid transparent;
+  border: 1px solid var(--elements);
   border-radius: 8px;
-  background: transparent;
+  background: var(--surface);
   overflow: hidden;
 }
 
@@ -49,5 +52,16 @@
 }
 
 .thumb.active {
-  border-color: var(--accent);
+  border: 2px solid var(--text);
+}
+
+@media (max-width: 639px) {
+  .picker {
+    flex-direction: column;
+  }
+
+  .thumbs {
+    flex-direction: row;
+    order: 1;
+  }
 }

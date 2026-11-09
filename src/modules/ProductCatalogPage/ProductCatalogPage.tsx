@@ -5,10 +5,17 @@ import { Product } from '../../api/types';
 import { ProductsList } from '../../shared/ProductsList';
 import { Pagination } from '../../shared/Pagination';
 import { Loader } from '../../shared/Loader';
+import { Breadcrumbs } from '../../shared/Breadcrumbs';
 import { NotFoundPage } from '../NotFoundPage';
 import styles from './ProductCatalogPage.module.scss';
 
 const VALID_CATEGORIES = ['phones', 'tablets', 'accessories'];
+
+const CATEGORY_TITLES: Record<string, string> = {
+  phones: 'Mobile phones',
+  tablets: 'Tablets',
+  accessories: 'Accessories',
+};
 
 const SORT_VALUES = ['age', 'title', 'price'] as const;
 
@@ -23,7 +30,7 @@ export const ProductCatalogPage = () => {
   const query = (searchParams.get('query') ?? '').trim();
   const sort = (searchParams.get('sort') ?? 'age') as SortValue;
   const page = Number(searchParams.get('page') ?? '1');
-  const perPage = (searchParams.get('perPage') ?? 'all') as string;
+  const perPage = (searchParams.get('perPage') ?? '16') as string;
 
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -123,11 +130,18 @@ export const ProductCatalogPage = () => {
     return <NotFoundPage />;
   }
 
+  const categoryLabel =
+    CATEGORY_TITLES[category ?? ''] ??
+    `${(category ?? '').charAt(0).toUpperCase()}${(category ?? '').slice(1)}`;
+  const crumbLabel = `${(category ?? '').charAt(0).toUpperCase()}${(category ?? '').slice(1)}`;
+
   return (
     <div className={styles.page}>
-      <h1
-        className={styles.title}
-      >{`${(category ?? '').charAt(0).toUpperCase()}${(category ?? '').slice(1)} page`}</h1>
+      <Breadcrumbs items={[{ label: crumbLabel, path: `/${category}` }]} />
+      <h1 className={styles.title}>{categoryLabel}</h1>
+      {!isLoading && !hasError && (
+        <p className={styles.modelsCount}>{products.length} models</p>
+      )}
       <div className={styles.controls}>
         <label className={styles.control}>
           <span className={styles.label}>Sort by</span>
