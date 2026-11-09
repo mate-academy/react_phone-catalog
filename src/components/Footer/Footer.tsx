@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { NavLink } from 'react-router-dom';
 import styles from './Footer.module.scss';
 import { FooterMobile } from '../FooterMobile/FooterMobile';
@@ -18,10 +19,12 @@ export const Footer = () => {
               </NavLink>
             </li>
             <li className={styles.item}>
-              <NavLink to="/contacts">Contacts</NavLink>
+              <NavLink to="https://github.com/Ivan7457">Contacts</NavLink>
             </li>
             <li className={styles.item}>
-              <NavLink to="/rights">Rights</NavLink>
+              <NavLink to="https://github.com/Ivan7457/react_phone-catalog#readme">
+                Rights
+              </NavLink>
             </li>
           </ul>
         </nav>

@@ -54,9 +54,6 @@ export const CartPage = () => {
       {cartProducts.length === 0 ? (
         <div className={styles.empty}>
           <p>Your cart is empty</p>
-          <Link to="/phones" className={styles.emptyLink}>
-            Browse phones
-          </Link>
         </div>
       ) : (
         <div className={styles.layout}>

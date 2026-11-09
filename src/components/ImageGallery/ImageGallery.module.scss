@@ -17,7 +17,7 @@
   flex-direction: column;
   gap: 16px;
   scrollbar-width: none;
-  width: 76px;
+  width: 88px;
   flex-shrink: 0;
   max-height: 560px;
   overflow-y: auto;
@@ -68,13 +68,15 @@
     outline: 3px solid rgba(34, 139, 230, 0.18);
     outline-offset: 2px;
   }
+
+  .active {
+    border: 2px solid #222;
+    transform: scale(1.02);
+    box-shadow: 0 10px 22px rgba(34, 34, 34, 0.08);
+  }
 }
 
-.active {
-  border: 2px solid #222;
-  transform: scale(1.02);
-  box-shadow: 0 10px 22px rgba(34, 34, 34, 0.08);
-}
+
 
 .mainImage {
   display: flex;

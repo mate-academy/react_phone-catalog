@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import styles from './FavoritesPage.module.scss';
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 import { ProductsList } from '../../components/ProductsList/ProductsList';
@@ -35,9 +34,6 @@ export const FavoritesPage = () => {
       ) : (
         <div className={styles.empty}>
           <p>You have not added anything to favourites yet.</p>
-          <Link to="/phones" className={styles.emptyLink}>
-            Browse phones
-          </Link>
         </div>
       )}
     </div>
