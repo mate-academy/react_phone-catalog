@@ -20,10 +20,11 @@
   flex-direction: column;
   align-items: center;
   gap: 0;
+  width: 80px;
   line-height: 1.1;
-  font-size: 14px;
+  font-size: 11px;
   font-weight: 800;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--text);
   text-decoration: none;
@@ -32,21 +33,22 @@
 .logoRow {
   display: flex;
   align-items: center;
-  gap: 6px;
+  justify-content: center;
+  gap: 4px;
 }
 
 .logoImg {
-  width: 20px;
-  height: 20px;
+  width: 14px;
+  height: 14px;
   object-fit: contain;
 }
 
 .nav {
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: 64px;
   flex: 1;
-  margin-left: 24px;
+  margin-left: 40px;
 }
 
 .navLink {
