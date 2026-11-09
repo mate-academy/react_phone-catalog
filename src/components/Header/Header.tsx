@@ -13,10 +13,7 @@ export const Header = () => {
       <header className={styles.header}>
         <div className={styles.logo}>
           <NavLink to="/">
-            <img
-              src={`${import.meta.env.BASE_URL}img/icons/logo.svg`}
-              alt="Logo"
-            />
+            <img src={`./img/icons/logo.svg`} alt="Logo" />
           </NavLink>
         </div>
 

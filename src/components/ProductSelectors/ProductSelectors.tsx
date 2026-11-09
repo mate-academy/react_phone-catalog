@@ -124,7 +124,9 @@ export const ProductSelectors = ({ product }: ProductSelectorsProps) => {
             <img
               onClick={() => toggleFavorite(product.id)}
               src={
-                isLiked ? '/img/icons/heart-filled.svg' : '/img/icons/heart.svg'
+                isLiked
+                  ? './img/icons/heart-filled.svg'
+                  : './img/icons/heart.svg'
               }
               alt="Favorites"
               className={styles.cardHeart}

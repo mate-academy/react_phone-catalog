@@ -51,18 +51,18 @@ export const HomePage = () => {
   const banners = [
     {
       id: 1,
-      desktop: '/img/home-page-banner.png',
-      mobile: '/img/home-page-banner-mobile.png',
+      desktop: './img/home-page-banner.png',
+      mobile: './img/home-page-banner-mobile.png',
     },
     {
       id: 2,
-      desktop: '/img/home-page-banner.png',
-      mobile: '/img/home-page-banner-mobile.png',
+      desktop: './img/home-page-banner.png',
+      mobile: './img/home-page-banner-mobile.png',
     },
     {
       id: 3,
-      desktop: '/img/home-page-banner.png',
-      mobile: '/img/home-page-banner-mobile.png',
+      desktop: './img/home-page-banner.png',
+      mobile: './img/home-page-banner-mobile.png',
     },
   ];
 

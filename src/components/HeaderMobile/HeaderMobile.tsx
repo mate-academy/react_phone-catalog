@@ -42,7 +42,7 @@ export const HeaderMobile = () => {
           aria-label={isOpen ? 'Close menu' : 'Open menu'}
         >
           <img
-            src={isOpen ? '/img/icons/close.svg' : '/img/icons/menu.svg'}
+            src={isOpen ? './img/icons/close.svg' : './img/icons/menu.svg'}
             alt=""
           />
         </button>
