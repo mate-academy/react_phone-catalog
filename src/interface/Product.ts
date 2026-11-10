@@ -5,6 +5,7 @@ export interface Product {
   name: string;
   fullPrice: number;
   price: number;
+  priceRegular: number;
   screen: string;
   capacity: string;
   color: string;

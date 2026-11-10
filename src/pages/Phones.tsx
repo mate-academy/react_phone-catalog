@@ -14,6 +14,7 @@ const Phones = () => {
   const [items, setItems] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [itemsOnPage, setItemsOnPage] = useState(16);
+  const [filter, setFilter] = useState('newest');
 
   // pagination
 
@@ -45,8 +46,18 @@ const Phones = () => {
     startPage = (page - 1) * itemsOnPage;
     endPage = startPage + itemsOnPage;
 
-    setItems(data.slice(startPage, endPage));
-  }, [page, data, itemsOnPage]);
+    const srt = [...data];
+
+    if (filter === 'alphabetical') {
+      srt.sort((a, b) => a.name.localeCompare(b.name));
+    } else if (filter === 'price') {
+      srt.sort((a, b) => a.priceRegular - b.priceRegular);
+    } else if (filter === 'newest') {
+      srt.map(item => item);
+    }
+
+    setItems(srt.slice(startPage, endPage));
+  }, [page, data, itemsOnPage, filter]);
 
   for (let i = 1; i <= totalPages; i++) {
     pages.push(i);
@@ -58,7 +69,11 @@ const Phones = () => {
         <div className="container column">
           <NavPage page="Phones" />
           <h1 className="products__title">Mobile phones</h1>
-          <Filters quantity={data.length} setItemsOnPage={setItemsOnPage} />
+          <Filters
+            quantity={data.length}
+            setItemsOnPage={setItemsOnPage}
+            setFilter={setFilter}
+          />
         </div>
         <section className="products__catalog">
           <div className="models__items container-grid">
