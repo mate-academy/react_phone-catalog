@@ -7,18 +7,21 @@ import '../components/HotPrices';
 //import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Pagination from '../components/Pagination';
+import Filters from './Filters';
 
 const Tablets = () => {
   const [data, setData] = useState<Product[]>([]);
   const [items, setItems] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
+  const [itemsOnPage, setItemsOnPage] = useState(16);
+  const [filter, setFilter] = useState('newest');
 
   // pagination
 
   const [page, setPage] = useState(1);
-  let startPage = (page - 1) * 16;
-  let endPage = startPage + 16;
-  const totalPages = Math.ceil(data.length / 16);
+  let startPage = (page - 1) * itemsOnPage;
+  let endPage = startPage + itemsOnPage;
+  const totalPages = Math.ceil(data.length / itemsOnPage);
   const pages = [];
 
   useEffect(() => {
@@ -40,11 +43,21 @@ const Tablets = () => {
   }, []);
 
   useEffect(() => {
-    startPage = (page - 1) * 16;
-    endPage = startPage + 16;
+    startPage = (page - 1) * itemsOnPage;
+    endPage = startPage + itemsOnPage;
 
-    setItems(data.slice(startPage, endPage));
-  }, [page, data]);
+    const srt = [...data];
+
+    if (filter === 'alphabetical') {
+      srt.sort((a, b) => a.name.localeCompare(b.name));
+    } else if (filter === 'price') {
+      srt.sort((a, b) => a.priceRegular - b.priceRegular);
+    } else if (filter === 'newest') {
+      srt.map(item => item);
+    }
+
+    setItems(srt.slice(startPage, endPage));
+  }, [page, data, itemsOnPage, filter]);
 
   for (let i = 1; i <= totalPages; i++) {
     pages.push(i);
@@ -56,6 +69,11 @@ const Tablets = () => {
         <div className="container column">
           <NavPage page="Tablets" />
           <h1 className="products__title">Tablets</h1>
+          <Filters
+            quantity={data.length}
+            setItemsOnPage={setItemsOnPage}
+            setFilter={setFilter}
+          />
         </div>
         <section className="products__catalog">
           <div className="models__items container-grid">

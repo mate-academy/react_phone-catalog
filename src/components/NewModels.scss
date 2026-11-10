@@ -1,3 +1,6 @@
+$laptop: 990px;
+$tablet: 767px;
+
 .models__items {
   display: flex;
   justify-content: space-between;
@@ -20,6 +23,16 @@
     .model__image {
       width: 100%;
       margin-bottom: 15px;
+      height: 200px;
+      object-fit: contain;
+
+      @media (max-width: $laptop) {
+        height: 180px;
+      }
+
+      @media (max-width: $tablet) {
+        height: 150px;
+      }
     }
 
     .model__title {
