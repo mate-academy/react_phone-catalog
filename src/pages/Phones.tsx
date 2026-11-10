@@ -7,6 +7,7 @@ import '../components/HotPrices';
 //import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Pagination from '../components/Pagination';
+import Filters from './Filters';
 
 const Phones = () => {
   const [data, setData] = useState<Product[]>([]);
@@ -56,6 +57,7 @@ const Phones = () => {
         <div className="container column">
           <NavPage page="Phones" />
           <h1 className="products__title">Mobile phones</h1>
+          <Filters quantity={data.length} />
         </div>
         <section className="products__catalog">
           <div className="models__items container-grid">
