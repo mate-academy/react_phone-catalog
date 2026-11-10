@@ -2,9 +2,10 @@ import './Filters.scss';
 
 interface FiltersProps {
   quantity: number;
+  setItemsOnPage: (itemsOnPage: number) => void;
 }
 
-const Filters = ({ quantity }: FiltersProps) => {
+const Filters = ({ quantity, setItemsOnPage }: FiltersProps) => {
   return (
     <div className="filters">
       <span className="filters__quantity">{quantity} models</span>
@@ -21,11 +22,14 @@ const Filters = ({ quantity }: FiltersProps) => {
         </div>
         <div className="filters__category">
           <span className="filters__category-title">Items on page</span>
-          <select className="filters__select">
-            <option value="8" defaultChecked>
-              8
+          <select
+            className="filters__select"
+            onChange={e => setItemsOnPage(Number(e.target.value))}
+          >
+            <option value="16" defaultChecked>
+              16
             </option>
-            <option value="16">16</option>
+            <option value="8">8</option>
             <option value="32">32</option>
           </select>
         </div>

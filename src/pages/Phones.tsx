@@ -13,13 +13,14 @@ const Phones = () => {
   const [data, setData] = useState<Product[]>([]);
   const [items, setItems] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
+  const [itemsOnPage, setItemsOnPage] = useState(16);
 
   // pagination
 
   const [page, setPage] = useState(1);
-  let startPage = (page - 1) * 16;
-  let endPage = startPage + 16;
-  const totalPages = Math.ceil(data.length / 16);
+  let startPage = (page - 1) * itemsOnPage;
+  let endPage = startPage + itemsOnPage;
+  const totalPages = Math.ceil(data.length / itemsOnPage);
   const pages = [];
 
   useEffect(() => {
@@ -41,11 +42,11 @@ const Phones = () => {
   }, []);
 
   useEffect(() => {
-    startPage = (page - 1) * 16;
-    endPage = startPage + 16;
+    startPage = (page - 1) * itemsOnPage;
+    endPage = startPage + itemsOnPage;
 
     setItems(data.slice(startPage, endPage));
-  }, [page, data]);
+  }, [page, data, itemsOnPage]);
 
   for (let i = 1; i <= totalPages; i++) {
     pages.push(i);
@@ -57,7 +58,7 @@ const Phones = () => {
         <div className="container column">
           <NavPage page="Phones" />
           <h1 className="products__title">Mobile phones</h1>
-          <Filters quantity={data.length} />
+          <Filters quantity={data.length} setItemsOnPage={setItemsOnPage} />
         </div>
         <section className="products__catalog">
           <div className="models__items container-grid">
