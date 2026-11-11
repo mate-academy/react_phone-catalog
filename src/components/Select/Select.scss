@@ -1,0 +1,88 @@
+.select {
+  position: relative;
+  width: 250px;
+  font-family: Mont, sans-serif;
+  display: flex;
+  gap: 16px;
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #b4bdc3;
+    background: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    color: #313237;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    text-align: left;
+
+    &:hover {
+      border-color: #89939a;
+    }
+  }
+
+  &__arrow {
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-image: url('../../../public/img/icons/arrow-down-dropdowns.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: transform 0.2s ease;
+  }
+
+    &--open {
+    .select__button {
+      border-color: #313237;
+    }
+
+    .select__arrow {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin: 4px 0 0;
+    padding: 0;
+    list-style: none;
+    border: 1px solid #e2e5e7;
+    background: #fff;
+    z-index: 100;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+
+  &__item {
+    margin: 0;
+    padding: 0;
+  }
+
+  &__option {
+    width: 100%;
+    padding: 12px 16px;
+    border: none;
+    background: none;
+    text-align: left;
+    cursor: pointer;
+    font-size: 14px;
+    color: #89939a;
+    transition: background-color 0.2s ease, color 0.2s ease;
+
+    &:hover {
+      background: #f5f6f7;
+      color: #313237;
+    }
+
+    &--active {
+      color: #313237;
+      font-weight: 500;
+    }
+  }
+}
