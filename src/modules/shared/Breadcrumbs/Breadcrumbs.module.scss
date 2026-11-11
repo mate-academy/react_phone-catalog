@@ -1,0 +1,42 @@
+@use '../../../styles/variables.scss' as *;
+@use '../../../styles/mixins.scss' as *;
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-top: 24px;
+  min-width: 0;
+  font-size: 12px;
+
+  &__segment {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+  }
+
+  &__item {
+    text-decoration: none;
+    color: $color-white;
+  }
+
+  &__separator {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-image: url('/img/icons/arrow-right-gray.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    flex-shrink: 0;
+  }
+
+  &__current {
+    color: $color-gray-4;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
+  }
+}

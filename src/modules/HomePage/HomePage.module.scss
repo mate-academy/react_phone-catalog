@@ -1,0 +1,92 @@
+@use '../../styles/variables.scss' as *;
+@use '../../styles/mixins.scss' as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  padding-block: 56px 64px;
+  gap: 56px;
+
+  @include OnTablet {
+    padding-block: 64px 64px;
+    gap: 64px;
+  }
+
+  @include OnDesktop {
+    padding-block: 80px 80px;
+    gap: 80px;
+  }
+}
+
+.header {
+  @include OnTablet {
+    padding: 0 24px;
+  }
+
+  @include OnDesktop {
+    max-width: 1136px;
+    box-sizing: border-box;
+    margin: 0 auto;
+  }
+
+  &__title {
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+    color: $color-white;
+    margin: 0;
+    padding: 24px 16px;
+
+    @include OnTablet {
+      padding: 32px 0;
+    }
+
+    @include OnDesktop {
+      padding: 56px 0;
+    }
+  }
+}
+
+.categories {
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 24px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include OnTablet {
+      flex-direction: row;
+      gap: 16px;
+    }
+  }
+}
+
+.category {
+  display: flex;
+  flex-direction: column;
+
+  @include OnTablet {
+    flex-grow: 1;
+  }
+
+  &__image {
+    width: 100%;
+  }
+
+  &__name {
+    font-weight: 700;
+    font-size: 20px;
+    margin: 24px 0 4px 0;
+    text-decoration: none;
+    color: $color-white;
+  }
+
+  &__info {
+    font-size: 14px;
+    line-height: 21px;
+    color: $color-gray-4;
+  }
+}

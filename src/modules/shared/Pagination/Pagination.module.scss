@@ -1,0 +1,68 @@
+@use '../../../styles/variables.scss' as *;
+@use '../../../styles/mixins.scss' as *;
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  @include OnTablet {
+    gap: 16px;
+  }
+
+  &__pages {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    @include OnTablet {
+      gap: 8px;
+    }
+  }
+
+  &__btn,
+  &__page {
+    @include IconButton;
+  }
+
+  &__btn {
+    background-color: $color-gray-5;
+    border: 1px solid $color-gray-5;
+
+    &_left {
+      background-image: url('/img/icons/arrow-left.svg');
+    }
+
+    &_right {
+      background-image: url('/img/icons/arrow-right.svg');
+    }
+
+    &_disabled {
+      cursor: not-allowed;
+      background-color: transparent;
+      border-color: $color-gray-3;
+    }
+
+    &:hover {
+      background-color: $color-gray-1;
+      border-color: $color-gray-1;
+    }
+  }
+
+  &__page {
+    background: $color-bg-secondary;
+    border: 1px solid $color-bg-secondary;
+    color: $color-white;
+
+    &_active {
+      background: $color-accent;
+      border-color: $color-accent;
+    }
+
+    &:hover {
+      background: $color-gray-3;
+      border-color: $color-gray-3;
+    }
+  }
+}

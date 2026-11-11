@@ -1,0 +1,37 @@
+@use '../../styles/variables.scss' as *;
+@use '../../styles/mixins.scss' as *;
+
+.favourites {
+  padding-block: 24px 56px;
+
+  @include OnTablet {
+    padding-block: 40px 64px;
+  }
+
+  @include OnDesktop {
+    padding-block: 40px 80px;
+  }
+
+  &__title {
+    margin-bottom: 8px;
+  }
+
+  &__info {
+    margin: 0;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    margin-bottom: 32px;
+
+    @include OnTablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(212px, 272px));
+    justify-content: center;
+    gap: 40px 16px;
+  }
+}

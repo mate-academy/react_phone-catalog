@@ -1,0 +1,213 @@
+@use '../../styles/variables.scss' as *;
+@use '../../styles/mixins.scss' as *;
+
+.card {
+  padding-block: 24px;
+
+  @include OnTablet {
+    padding-block: 40px 64px;
+  }
+
+  @include OnDesktop {
+    padding-block: 40px 80px;
+  }
+
+  &__title {
+    margin-top: 16px;
+    margin-bottom: 32px;
+  }
+
+  &__content {
+    @include OnTablet {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    @include OnDesktop {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 64px;
+    }
+  }
+
+  &__info {
+    margin-top: 40px;
+
+    @include OnTablet {
+      margin-top: 0;
+      justify-self: end;
+    }
+
+    @include OnDesktop {
+      justify-self: start;
+      width: 320px;
+    }
+  }
+
+  &__colors {
+    &_top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+
+      font-weight: 700;
+      font-size: 12px;
+    }
+
+    &_swatches {
+      margin-bottom: 24px;
+    }
+  }
+
+  &__options {
+    margin-top: 24px;
+    margin-bottom: 24px;
+
+    &_title {
+      margin: 0 0 8px 0;
+      font-weight: 700;
+      font-size: 12px;
+    }
+
+    &_toggle {
+    }
+  }
+
+  &__prices {
+    font-size: 22px;
+    line-height: 140%;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 32px 0 16px 0;
+  }
+
+  &__price {
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+    color: $color-white;
+  }
+
+  &__price_old {
+    text-decoration: line-through;
+    font-weight: 600;
+    font-size: 22px;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__add_btn {
+    border: none;
+    outline: none;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+    padding: 9.5px 0;
+    text-align: center;
+    flex-grow: 1;
+    color: $color-white;
+    background-color: $color-accent;
+  }
+
+  &__chars {
+    margin: 32px 0 56px 0;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+  }
+
+  &__read {
+    @include OnDesktop {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 64px;
+      margin: 80px 0;
+    }
+  }
+
+  &__about {
+    &__title {
+      font-weight: 700;
+      font-size: 20px;
+      color: $color-white;
+      margin: 0;
+      padding-bottom: 16px;
+
+      @include OnTablet {
+        font-size: 22px;
+      }
+    }
+
+    &__blocks {
+      margin-top: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    &__block {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    &__sub_title {
+      font-weight: 700;
+      font-size: 16px;
+      color: $color-white;
+      margin: 0;
+
+      @include OnTablet {
+        font-size: 20px;
+      }
+    }
+
+    &__texts {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      font-size: 14px;
+      line-height: 21px;
+    }
+
+    &__text {
+      margin: 0;
+    }
+  }
+
+  &__specs {
+    margin: 56px 0;
+
+    @include OnTablet {
+      margin: 64px 0;
+    }
+
+    @include OnDesktop {
+      margin: 0;
+    }
+
+    &__title {
+      font-weight: 700;
+      font-size: 20px;
+      color: $color-white;
+      padding-bottom: 16px;
+      margin: 0;
+
+      @include OnTablet {
+        font-size: 22px;
+      }
+    }
+
+    &__list {
+      margin-top: 30px;
+    }
+  }
+}

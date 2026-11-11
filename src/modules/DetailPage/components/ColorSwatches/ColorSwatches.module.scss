@@ -1,0 +1,28 @@
+@use '../../../../styles/variables.scss' as *;
+
+.swatches {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.swatchWrapper {
+  padding: 2px;
+  border-radius: 50%;
+  border: 2px solid $color-gray-3;
+  cursor: pointer;
+
+  &.active {
+    border-color: $color-white;
+  }
+
+  &:hover:not(.active) {
+    border-color: $color-gray-4;
+  }
+}
+
+.swatch {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+}

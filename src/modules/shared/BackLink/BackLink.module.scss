@@ -1,0 +1,40 @@
+@use '../../../styles/variables.scss' as *;
+
+.back {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  width: 66px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: $color-white;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 100%;
+  text-decoration: none;
+
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-image: url('/img/icons/arrow-left.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    flex-shrink: 0;
+  }
+
+  &:hover {
+    color: $color-accent;
+
+    &::before {
+      background-image: url('/img/icons/arrow-left-accent.svg');
+    }
+  }
+
+  span {
+    padding-top: 2px;
+  }
+}
