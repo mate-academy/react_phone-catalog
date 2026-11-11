@@ -15,22 +15,13 @@ export const ProductCard: React.FC<Props> = ({
   product,
   hasDiscount = false,
 }) => {
-  const { cart, addToCart, removeFromCart } = useCart();
+  const { cart, addToCart } = useCart();
   const { toggleFavorite, isFavorite } = useFavorites();
 
   const isInCart = cart.some(item => item.product.id === product.id);
   const favorite = isFavorite(product.id);
 
-  const handleCartClick = () => {
-    if (isInCart) {
-      removeFromCart(product.id);
-    } else {
-      addToCart(product);
-    }
-  };
-
-  const showDiscount =
-    hasDiscount && product.fullPrice && product.fullPrice > product.price;
+  const showDiscount = hasDiscount && product.fullPrice > product.price;
 
   return (
     <div className={styles.card} data-cy="productCard">
@@ -54,6 +45,7 @@ export const ProductCard: React.FC<Props> = ({
 
       <div className={styles.priceContainer}>
         <span className={styles.price}>${product.price}</span>
+
         {showDiscount && (
           <span className={styles.fullPrice}>${product.fullPrice}</span>
         )}
@@ -66,10 +58,12 @@ export const ProductCard: React.FC<Props> = ({
           <span className={styles.specLabel}>Screen</span>
           <span className={styles.specValue}>{product.screen}</span>
         </div>
+
         <div className={styles.specItem}>
           <span className={styles.specLabel}>Capacity</span>
           <span className={styles.specValue}>{product.capacity}</span>
         </div>
+
         <div className={styles.specItem}>
           <span className={styles.specLabel}>RAM</span>
           <span className={styles.specValue}>{product.ram}</span>
@@ -80,7 +74,11 @@ export const ProductCard: React.FC<Props> = ({
         <button
           type="button"
           className={`${styles.cartButton} ${isInCart ? styles.added : ''}`}
-          onClick={handleCartClick}
+          onClick={() => {
+            if (!isInCart) {
+              addToCart(product);
+            }
+          }}
         >
           {isInCart ? 'Added to cart' : 'Add to cart'}
         </button>
@@ -89,7 +87,7 @@ export const ProductCard: React.FC<Props> = ({
           type="button"
           className={`${styles.favButton} ${favorite ? styles.active : ''}`}
           onClick={() => toggleFavorite(product)}
-          aria-label="favorite"
+          aria-label={favorite ? 'Remove from favorites' : 'Add to favorites'}
         >
           <span className={favorite ? styles.favIconActive : styles.favIcon} />
         </button>

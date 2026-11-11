@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Product } from '../../types/Product';
+import { getProducts } from '../../api/products';
 import { ProductCard } from '../../components/ProductCard/ProductCard';
+import { Loader } from '../../components/Loader/Loader';
 import styles from './CatalogPage.module.scss';
 
 interface Props {
@@ -9,32 +11,50 @@ interface Props {
   category: 'phones' | 'tablets' | 'accessories';
 }
 
+const categoryNames = {
+  phones: 'phones',
+  tablets: 'tablets',
+  accessories: 'accessories',
+};
+
 export const CatalogPage: React.FC<Props> = ({ title, category }) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
+  const [hasError, setHasError] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
 
   const sortBy = searchParams.get('sort') || 'age';
-  const perPage = searchParams.get('perPage') || '16';
-  const currentPage = Number(searchParams.get('page')) || 1;
+  const query = searchParams.get('query') || '';
+  const perPageParam = searchParams.get('perPage') || 'all';
+  const requestedPage = Number(searchParams.get('page')) || 1;
+
+  const loadProducts = async () => {
+    try {
+      setLoading(true);
+      setHasError(false);
+
+      const allProducts = await getProducts();
+
+      setProducts(allProducts.filter(product => product.category === category));
+    } catch {
+      setHasError(true);
+      setProducts([]);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    setLoading(true);
-    const BASE_URL = import.meta.env.BASE_URL || '/';
-    const normalizedBase = BASE_URL.endsWith('/') ? BASE_URL : `${BASE_URL}/`;
-
-    fetch(`${normalizedBase}api/products.json`)
-      .then(res => res.json())
-      .then((data: Product[]) => {
-        const filtered = data.filter(p => p.category === category);
-
-        setProducts(filtered);
-        setLoading(false);
-      })
-      .catch(() => setLoading(false));
+    loadProducts();
   }, [category]);
 
-  const sortedProducts = [...products].sort((a, b) => {
+  const normalizedQuery = query.trim().toLowerCase();
+
+  const filteredProducts = products.filter(product =>
+    product.name.toLowerCase().includes(normalizedQuery),
+  );
+
+  const sortedProducts = [...filteredProducts].sort((a, b) => {
     if (sortBy === 'title') {
       return a.name.localeCompare(b.name);
     }
@@ -43,49 +63,93 @@ export const CatalogPage: React.FC<Props> = ({ title, category }) => {
       return a.price - b.price;
     }
 
-    if (sortBy === 'age') {
-      return b.year - a.year;
-    }
-
-    return 0;
+    return b.year - a.year;
   });
 
   const itemsPerPage =
-    perPage === 'all' ? sortedProducts.length : Number(perPage);
-  const startIdx = (currentPage - 1) * itemsPerPage;
-  const visibleProducts = sortedProducts.slice(
-    startIdx,
-    startIdx + itemsPerPage,
-  );
-  const totalPages =
-    perPage === 'all' ? 1 : Math.ceil(sortedProducts.length / itemsPerPage);
+    perPageParam === '4' || perPageParam === '8' || perPageParam === '16'
+      ? Number(perPageParam)
+      : sortedProducts.length || 1;
 
-  const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    searchParams.set('sort', e.target.value);
-    searchParams.set('page', '1');
-    setSearchParams(searchParams);
+  const totalPages =
+    perPageParam === 'all'
+      ? 1
+      : Math.ceil(sortedProducts.length / itemsPerPage);
+
+  const currentPage =
+    totalPages > 0 ? Math.min(Math.max(requestedPage, 1), totalPages) : 1;
+
+  const startIndex = (currentPage - 1) * itemsPerPage;
+
+  const visibleProducts =
+    perPageParam === 'all'
+      ? sortedProducts
+      : sortedProducts.slice(startIndex, startIndex + itemsPerPage);
+
+  const updateParams = (changes: Record<string, string | null>) => {
+    setSearchParams(previous => {
+      const next = new URLSearchParams(previous);
+
+      Object.entries(changes).forEach(([key, value]) => {
+        if (value === null) {
+          next.delete(key);
+        } else {
+          next.set(key, value);
+        }
+      });
+
+      return next;
+    });
   };
 
-  const handlePerPageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    searchParams.set('perPage', e.target.value);
-    searchParams.set('page', '1');
-    setSearchParams(searchParams);
+  const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    updateParams({
+      sort: event.target.value,
+      page: null,
+    });
+  };
+
+  const handlePerPageChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const value = event.target.value;
+
+    updateParams({
+      perPage: value === 'all' ? null : value,
+      page: null,
+    });
   };
 
   if (loading) {
-    return <div className={styles.loader}>Loading...</div>;
+    return <Loader />;
+  }
+
+  if (hasError) {
+    return (
+      <div className={styles.message}>
+        <p>Something went wrong</p>
+
+        <button
+          type="button"
+          className={styles.reloadButton}
+          onClick={loadProducts}
+        >
+          Reload
+        </button>
+      </div>
+    );
   }
 
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>{title}</h1>
-      <p className={styles.count}>{products.length} models</p>
+
+      <p className={styles.count}>{sortedProducts.length} models</p>
 
       <div className={styles.filters}>
         <div className={styles.filterGroup}>
           <label htmlFor="sort-select" className={styles.label}>
             Sort by
           </label>
+
           <select
             id="sort-select"
             value={sortBy}
@@ -102,42 +166,84 @@ export const CatalogPage: React.FC<Props> = ({ title, category }) => {
           <label htmlFor="per-page-select" className={styles.label}>
             Items on page
           </label>
+
           <select
             id="per-page-select"
-            value={perPage}
+            value={perPageParam}
             onChange={handlePerPageChange}
             className={styles.select}
           >
             <option value="4">4</option>
             <option value="8">8</option>
             <option value="16">16</option>
-            <option value="all">All</option>
+            <option value="all">all</option>
           </select>
         </div>
       </div>
 
-      <div className={styles.grid}>
-        {visibleProducts.map(product => (
-          <ProductCard key={product.id} product={product} />
-        ))}
-      </div>
+      {sortedProducts.length === 0 ? (
+        <p className={styles.empty}>
+          {query.trim()
+            ? `There are no ${categoryNames[category]} matching the query`
+            : `There are no ${categoryNames[category]} yet`}
+        </p>
+      ) : (
+        <>
+          <div className={styles.grid}>
+            {visibleProducts.map(product => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
 
-      {totalPages > 1 && (
-        <div className={styles.pagination}>
-          {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
-            <button
-              type="button"
-              key={page}
-              className={`${styles.pageButton} ${currentPage === page ? styles.active : ''}`}
-              onClick={() => {
-                searchParams.set('page', String(page));
-                setSearchParams(searchParams);
-              }}
-            >
-              {page}
-            </button>
-          ))}
-        </div>
+          {totalPages > 1 && (
+            <div className={styles.pagination}>
+              <button
+                type="button"
+                className={styles.pageButton}
+                disabled={currentPage === 1}
+                onClick={() =>
+                  updateParams({
+                    page: currentPage === 2 ? null : String(currentPage - 1),
+                  })
+                }
+              >
+                ‹
+              </button>
+
+              {Array.from({ length: totalPages }, (_, index) => index + 1).map(
+                page => (
+                  <button
+                    type="button"
+                    key={page}
+                    className={`${styles.pageButton} ${
+                      currentPage === page ? styles.active : ''
+                    }`}
+                    onClick={() =>
+                      updateParams({
+                        page: page === 1 ? null : String(page),
+                      })
+                    }
+                  >
+                    {page}
+                  </button>
+                ),
+              )}
+
+              <button
+                type="button"
+                className={styles.pageButton}
+                disabled={currentPage === totalPages}
+                onClick={() =>
+                  updateParams({
+                    page: String(currentPage + 1),
+                  })
+                }
+              >
+                ›
+              </button>
+            </div>
+          )}
+        </>
       )}
     </div>
   );

@@ -28,16 +28,15 @@
   }
 }
 
-.imageLink {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .image {
   width: 66px;
   height: 66px;
   object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.imageLink:hover .image {
+  transform: scale(1.1);
 }
 
 .title {

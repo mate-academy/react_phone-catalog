@@ -6,7 +6,10 @@
   border-radius: 8px;
   display: flex;
   flex-direction: column;
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.3s ease,
+    border-color 0.3s ease;
 
   &:hover {
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
@@ -29,6 +32,11 @@
   max-height: 100%;
   max-width: 100%;
   object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.imageLink:hover .image {
+  transform: scale(1.1);
 }
 
 .title {
@@ -42,6 +50,7 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
   min-height: 42px;
+  transition: color 0.3s ease;
 
   &:hover {
     color: #9097a2;
@@ -85,6 +94,7 @@
 .specItem {
   display: flex;
   justify-content: space-between;
+  gap: 8px;
 }
 
 .specLabel {
@@ -94,6 +104,7 @@
 .specValue {
   color: #f1f2f3;
   font-weight: 500;
+  text-align: right;
 }
 
 .actions {
@@ -113,7 +124,7 @@
   border-radius: 4px;
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: background-color 0.2s ease;
 
   &:hover {
     background-color: #7b44ff;
@@ -137,14 +148,13 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  transition: all 0.2s;
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease;
 
   &:hover {
     border-color: #757982;
-  }
-
-  &.active {
-    border-color: #323542;
+    transform: scale(1.05);
   }
 }
 
@@ -157,7 +167,7 @@
   font-style: normal;
   line-height: 18px;
   text-align: center;
-  transition: color 0.2s;
+  transition: color 0.2s ease;
 }
 
 .favIcon {

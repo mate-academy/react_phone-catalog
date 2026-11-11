@@ -1,27 +1,26 @@
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 24px 32px 80px;
+  padding: 40px 24px 80px;
 }
 
 .title {
   font-size: 48px;
   font-weight: 800;
-  color: #fff;
+  color: #f1f2f9;
   margin-bottom: 8px;
 }
 
 .count {
   font-size: 14px;
   color: #8993a4;
-  margin-bottom: 16px;
+  margin-bottom: 24px;
 }
 
 .filters {
   display: flex;
   gap: 16px;
-  margin-top: 24px;
-  margin-bottom: 24px;
+  margin-bottom: 32px;
 }
 
 .filterGroup {
@@ -37,7 +36,7 @@
 }
 
 .select {
-  height: 36px;
+  height: 40px;
   padding: 0 12px;
   background-color: #323542;
   border: 1px solid #323542;
@@ -59,7 +58,11 @@
   gap: 16px;
   margin-bottom: 40px;
 
-  @media (max-width: 1024px) {
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: 900px) {
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -79,8 +82,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   border: 1px solid #323542;
   background-color: #323542;
@@ -88,7 +91,9 @@
   font-size: 14px;
   font-weight: 700;
   cursor: pointer;
-  transition: background-color 0.3s, border-color 0.3s;
+  transition:
+    background-color 0.3s,
+    border-color 0.3s;
 
   &:disabled {
     opacity: 0.5;
@@ -99,21 +104,38 @@
     border-color: #8993a4;
     background-color: #4a4d5e;
   }
-
-  &.active {
-    background-color: #905bfe;
-    border-color: #905bfe;
-
-    &:hover:not(:disabled) {
-      background-color: #905bfe;
-      border-color: #905bfe;
-    }
-  }
 }
 
-.loader {
-  color: #fff;
+.active {
+  background-color: #905bfe;
+  border-color: #905bfe;
+}
+
+.empty,
+.message {
   text-align: center;
-  font-size: 20px;
-  margin-top: 50px;
+  color: #8993a4;
+  font-size: 18px;
+  margin-top: 60px;
+}
+
+.message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.reloadButton {
+  padding: 12px 24px;
+  border: 0;
+  border-radius: 8px;
+  background-color: #905bff;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #7b44ff;
+  }
 }

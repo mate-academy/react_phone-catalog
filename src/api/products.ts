@@ -1,7 +1,7 @@
 import { Product } from '../types/Product';
 import { ProductDetails } from '../types/ProductDetails';
 
-export const normalizePath = (path: string) => {
+export const normalizePath = (path: string): string => {
   if (!path) {
     return '';
   }
@@ -23,55 +23,63 @@ export const normalizePath = (path: string) => {
 };
 
 export const getProducts = async (): Promise<Product[]> => {
-  try {
-    const url = normalizePath('/api/products.json');
-    const response = await fetch(url);
+  const response = await fetch(normalizePath('/api/products.json'));
 
-    if (!response.ok) {
-      return [];
-    }
-
-    const products: Product[] = await response.json();
-
-    return products.map(p => ({
-      ...p,
-      image: normalizePath(p.image),
-    }));
-  } catch {
-    return [];
+  if (!response.ok) {
+    throw new Error('Failed to load products');
   }
+
+  const products: Product[] = await response.json();
+
+  return products.map(product => ({
+    ...product,
+    image: normalizePath(product.image),
+  }));
 };
 
 export const getProductDetails = async (
   productId: string,
 ): Promise<ProductDetails | null> => {
-  try {
-    const [phonesRes, tabletsRes, accessoriesRes] = await Promise.all([
-      fetch(normalizePath('/api/phones.json')),
-      fetch(normalizePath('/api/tablets.json')),
-      fetch(normalizePath('/api/accessories.json')),
-    ]);
+  const responses = await Promise.all([
+    fetch(normalizePath('/api/phones.json')),
+    fetch(normalizePath('/api/tablets.json')),
+    fetch(normalizePath('/api/accessories.json')),
+  ]);
 
-    const phones: ProductDetails[] = phonesRes.ok ? await phonesRes.json() : [];
-    const tablets: ProductDetails[] = tabletsRes.ok
-      ? await tabletsRes.json()
-      : [];
-    const accessories: ProductDetails[] = accessoriesRes.ok
-      ? await accessoriesRes.json()
-      : [];
+  if (responses.some(response => !response.ok)) {
+    throw new Error('Failed to load product details');
+  }
 
-    const allDetails = [...phones, ...tablets, ...accessories];
-    const found = allDetails.find(product => product.id === productId);
+  const [phones, tablets, accessories] = await Promise.all(
+    responses.map(response => response.json()),
+  );
 
-    if (!found) {
-      return null;
-    }
+  const allDetails: ProductDetails[] = [...phones, ...tablets, ...accessories];
 
-    return {
-      ...found,
-      images: found.images.map(normalizePath),
-    };
-  } catch {
+  const found = allDetails.find(product => product.id === productId);
+
+  if (!found) {
     return null;
   }
+
+  return {
+    ...found,
+    images: found.images.map(normalizePath),
+  };
+};
+
+export const getSuggestedProducts = async (
+  currentProductId: string,
+): Promise<Product[]> => {
+  const products = await getProducts();
+
+  const availableProducts = products.filter(
+    product =>
+      product.itemId !== currentProductId &&
+      String(product.id) !== currentProductId,
+  );
+
+  const shuffled = [...availableProducts].sort(() => Math.random() - 0.5);
+
+  return shuffled.slice(0, 4);
 };

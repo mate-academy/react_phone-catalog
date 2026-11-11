@@ -13,21 +13,21 @@ export const CartItem: React.FC<Props> = ({ cartItem }) => {
   const { removeFromCart, changeQuantity } = useCart();
   const { product, quantity } = cartItem;
 
+  const productLink = `/${product.category}/${product.itemId}`;
+
   return (
     <div className={styles.cartItem} data-cy="cartItem">
       <button
         type="button"
         className={styles.deleteBtn}
         onClick={() => removeFromCart(product.id)}
+        aria-label={`Remove ${product.name} from cart`}
         data-cy="cartDeleteButton"
       >
         ✕
       </button>
 
-      <Link
-        to={`/${product.category}/${product.itemId}`}
-        className={styles.imageLink}
-      >
+      <Link to={productLink} className={styles.imageLink}>
         <img
           src={normalizePath(product.image)}
           alt={product.name}
@@ -35,11 +35,7 @@ export const CartItem: React.FC<Props> = ({ cartItem }) => {
         />
       </Link>
 
-      <Link
-        to={`/${product.category}/${product.itemId}`}
-        className={styles.title}
-        style={{ cursor: 'pointer' }}
-      >
+      <Link to={productLink} className={styles.title}>
         {product.name}
       </Link>
 
@@ -52,7 +48,9 @@ export const CartItem: React.FC<Props> = ({ cartItem }) => {
         >
           -
         </button>
+
         <span className={styles.quantity}>{quantity}</span>
+
         <button
           type="button"
           className={styles.counterBtn}

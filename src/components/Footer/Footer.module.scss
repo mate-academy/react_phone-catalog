@@ -1,69 +1,93 @@
 .footer {
-  background-color: #fff;
-  border-top: 1px solid #e2e6e9;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background-color: #0f1121;
+  border-top: 1px solid #32353e;
   padding: 32px 0;
+  margin-top: auto;
 
-  &__content {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 32px;
+  .container {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 24px;
   }
 
-  &__logo {
+  .logoBlock {
     display: flex;
     align-items: center;
   }
 
-  &__nav {
+  .logoLink {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+  }
+
+  .logo {
+    height: 24px;
+    width: auto;
+  }
+
+  .navBlock {
     display: flex;
     gap: 32px;
   }
 
-  &__link {
-    color: #8993a4;
+  .navLink {
+    color: #89939a;
     font-size: 12px;
-    font-weight: 700;
-    text-transform: uppercase;
+    font-weight: 800;
     text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
     transition: color 0.3s;
 
     &:hover {
-      color: #313237;
+      color: #fff;
     }
   }
 
-  &__arrow {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 32px;
-    height: 32px;
-    border: 1px solid #b4bdc3;
-    background-color: #fff;
-    transition: border-color 0.3s;
-  }
-
-  &__backToTop {
+  .toTopBlock {
     display: flex;
     align-items: center;
     gap: 16px;
-    background: transparent;
-    border: none;
-    color: #8993a4;
+  }
+
+  .toTopText {
+    color: #89939a;
     font-size: 12px;
     font-weight: 700;
+  }
+
+  .toTopButton {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid #75767f;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
-    transition: color 0.3s;
+    transition: border-color 0.3s, background-color 0.3s;
 
     &:hover {
-      color: #313237;
+      border-color: #fff;
+      background-color: #32353e;
+    }
 
-      .footer__arrow {
-        border-color: #313237;
-      }
+    &::after {
+      content: '';
+      display: block;
+      width: 8px;
+      height: 8px;
+      border-top: 2px solid #fff;
+      border-right: 2px solid #fff;
+      transform: translateY(2px) rotate(-45deg);
     }
   }
 }

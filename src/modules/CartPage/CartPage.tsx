@@ -1,30 +1,27 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useCart } from '../../context/CartContext';
-import { normalizePath } from '../../api/products';
+import { CartItem } from '../../components/CartItem';
 import styles from './CartPage.module.scss';
 
 export const CartPage: React.FC = () => {
-  const {
-    cart,
-    removeFromCart,
-    changeQuantity,
-    clearCart,
-    totalPrice,
-    totalQuantity,
-  } = useCart();
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { cart, clearCart, totalPrice, totalQuantity } = useCart();
 
   const handleCheckout = () => {
-    setIsModalOpen(true);
-    clearCart();
+    const confirmed = window.confirm(
+      'Checkout is not implemented yet. Do you want to clear the Cart?',
+    );
+
+    if (confirmed) {
+      clearCart();
+    }
   };
 
-  if (cart.length === 0 && !isModalOpen) {
+  if (cart.length === 0) {
     return (
       <div className={styles.cartPage}>
-        <div className={styles.emptyCart}>
-          <h1>Your cart is empty</h1>
-        </div>
+        <h1 className={styles.title}>Cart</h1>
+
+        <div className={styles.emptyCart}>Your cart is empty</div>
       </div>
     );
   }
@@ -33,80 +30,31 @@ export const CartPage: React.FC = () => {
     <div className={styles.cartPage}>
       <h1 className={styles.title}>Cart</h1>
 
-      {isModalOpen ? (
-        <div className={styles.successMessage}>
-          <h2>Checkout successfully completed! 🎉</h2>
-          <p>Thank you for your purchase. We will contact you soon.</p>
+      <div className={styles.content}>
+        <div className={styles.itemsList}>
+          {cart.map(item => (
+            <CartItem key={item.product.id} cartItem={item} />
+          ))}
         </div>
-      ) : (
-        <div className={styles.content}>
-          <div className={styles.itemsList}>
-            {cart.map(item => {
-              return (
-                <div
-                  key={item.product.id}
-                  className={styles.cartItem}
-                  data-cy="cartItem"
-                >
-                  <button
-                    type="button"
-                    className={styles.deleteButton}
-                    onClick={() => removeFromCart(item.product.id)}
-                    data-cy="cartDeleteButton"
-                  >
-                    ✕
-                  </button>
 
-                  <img
-                    src={normalizePath(item.product.image)}
-                    alt={item.product.name}
-                    className={styles.image}
-                  />
+        <div className={styles.checkoutBlock}>
+          <div className={styles.totalAmount}>
+            <span className={styles.totalPrice}>${totalPrice}</span>
 
-                  <span className={styles.itemName}>{item.product.name}</span>
-
-                  <div className={styles.counter}>
-                    <button
-                      type="button"
-                      disabled={item.quantity <= 1}
-                      onClick={() => changeQuantity(item.product.id, -1)}
-                    >
-                      -
-                    </button>
-                    <span>{item.quantity}</span>
-                    <button
-                      type="button"
-                      onClick={() => changeQuantity(item.product.id, 1)}
-                    >
-                      +
-                    </button>
-                  </div>
-
-                  <span className={styles.price}>
-                    ${item.product.price * item.quantity}
-                  </span>
-                </div>
-              );
-            })}
+            <span className={styles.totalItems}>
+              Total for {totalQuantity} items
+            </span>
           </div>
 
-          <div className={styles.checkoutBlock}>
-            <div className={styles.totalAmount}>
-              <span className={styles.totalPrice}>${totalPrice}</span>
-              <span className={styles.totalItems}>
-                Total for {totalQuantity} items
-              </span>
-            </div>
-            <button
-              type="button"
-              className={styles.checkoutBtn}
-              onClick={handleCheckout}
-            >
-              Checkout
-            </button>
-          </div>
+          <button
+            type="button"
+            className={styles.checkoutBtn}
+            onClick={handleCheckout}
+          >
+            Checkout
+          </button>
         </div>
-      )}
+      </div>
     </div>
   );
 };

@@ -4,25 +4,6 @@
   padding: 24px 16px 64px;
 }
 
-.breadcrumbs {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 12px;
-  color: #75767f;
-  margin-bottom: 40px;
-
-  .link {
-    color: #f1f2f9;
-    text-decoration: none;
-    transition: color 0.3s;
-
-    &:hover {
-      color: #905bfc;
-    }
-  }
-}
-
 .title {
   font-size: 32px;
   font-weight: 800;
@@ -34,7 +15,7 @@
   display: flex;
   gap: 64px;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     flex-direction: column;
     gap: 32px;
   }
@@ -44,7 +25,6 @@
   display: flex;
   gap: 16px;
   flex: 1;
-  max-width: 580px;
 
   @media (max-width: 640px) {
     flex-direction: column-reverse;
@@ -92,6 +72,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #161827;
+  border-radius: 16px;
+  border: 1px solid #323542;
 
   img {
     max-width: 100%;
@@ -105,12 +88,18 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
+  flex-shrink: 0;
+
+  @media (max-width: 1024px) {
+    width: 100%;
+  }
 }
 
 .label {
   font-size: 12px;
   color: #75767f;
   margin-bottom: 8px;
+  display: block;
 }
 
 .colorsList {
@@ -224,14 +213,35 @@
   }
 }
 
-.shortSpecs,
-.fullSpecs {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+.favIcon,
+.favIconActive {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  font-style: normal;
+  text-align: center;
+}
+
+.favIcon {
+  color: #757982;
+
+  &::before {
+    content: '♡';
+  }
+}
+
+.favIconActive {
+  color: #eb5757;
+
+  &::before {
+    content: '♥';
+  }
 }
 
 .shortSpecs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   padding-top: 8px;
 }
 
@@ -266,7 +276,8 @@
 }
 
 .techSpecsSection {
-  width: 500px;
+  width: 450px;
+  flex-shrink: 0;
 
   @media (max-width: 768px) {
     width: 100%;
@@ -297,15 +308,22 @@
   font-size: 14px;
   line-height: 1.5;
   color: #75767f;
+  margin-bottom: 12px;
 }
 
-.notFound {
-  text-align: center;
-  color: #f1f2f9;
-  font-size: 24px;
-  margin-top: 64px;
+.fullSpecs {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .youMayLike {
   margin-top: 80px;
+}
+
+.loader {
+  text-align: center;
+  color: #f1f2f9;
+  padding: 60px;
+  font-size: 18px;
 }

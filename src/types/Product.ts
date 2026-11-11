@@ -1,6 +1,8 @@
+export type ProductCategory = 'phones' | 'tablets' | 'accessories';
+
 export interface Product {
   id: number;
-  category: string;
+  category: ProductCategory;
   itemId: string;
   name: string;
   fullPrice: number;
