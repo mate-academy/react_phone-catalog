@@ -1,0 +1,1 @@
+export { SkeletonCategoryCard } from './SkeletonCategoryCard';

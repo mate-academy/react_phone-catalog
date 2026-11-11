@@ -36,11 +36,12 @@
   font-weight: 700;
   font-size: 22px;
   line-height: 31px;
+  letter-spacing: -0.01px;
 
   @include from($breakpoint-tablet) {
     font-size: 32px;
     line-height: 41px;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.01px;
   }
 }
 
@@ -69,16 +70,16 @@
 
 @mixin container {
   width: 100%;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 16px;
+  padding-inline: 16px;
 
   @include from($breakpoint-tablet) {
-    padding: 0 24px;
+    padding-inline: 24px;
   }
 
   @include from($breakpoint-desktop) {
-    max-width: 1136px;
-    padding: 0;
+    padding-inline: 32px;
   }
 }
 

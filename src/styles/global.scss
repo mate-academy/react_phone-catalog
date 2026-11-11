@@ -26,11 +26,25 @@
   --color-green: #27ae60;
   --color-red: #eb5757;
 
+  // Toast
+  --toastify-color-progress-light: var(--color-accent);
+  --toastify-color-progress-error: var(--color-red);
+
+  // Error Message
+  --error-message: rgba(235, 87, 87, 0.7);
+
+  // Shadow
+  --shadow-primary: rgba(23, 32, 49, 0.4);
+
   // Transition
   --transition: 0.3s ease;
 
-  // Scale
+  // Transform
   --scale-hover: 1.1;
+  --translate-hover: -4px;
+
+  // DarkMode
+  --dark-background: #101013;
 }
 
 html {
@@ -59,6 +73,11 @@ body {
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+hr {
+  border: 0;
+  margin: 0;
 }
 
 h1 {

@@ -1,0 +1,149 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background-color: var(--color-white);
+  border-radius: 8px;
+  padding: 32px;
+  border: 1px solid var(--color-elements);
+  min-width: 0;
+  transition: border-color var(--transition);
+
+  &:hover {
+    border-color: var(--color-accent);
+  }
+
+  &__link {
+    height: 100%;
+  }
+
+  &__picture {
+    width: 100%;
+  }
+
+  &__image {
+    width: 100%;
+    max-height: 194px;
+    object-fit: contain;
+  }
+
+  &__meta {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__title {
+    margin-top: 16px;
+    font-size: 14px;
+    line-height: 21px;
+  }
+
+  &__price {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__new-price {
+    font-size: 22px;
+    line-height: 30px;
+
+    > :first-child {
+      display: block;
+    }
+  }
+
+  &__old-price {
+    color: var(--color-secondary);
+    font-size: 22px;
+    line-height: 30px;
+    text-decoration: line-through;
+  }
+
+  &__line {
+    width: 100%;
+    height: 1px;
+    background-color: var(--color-primary);
+  }
+
+  &__rows {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 8px 0;
+  }
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+  }
+
+  &__row-left {
+    color: var(--color-secondary);
+  }
+
+  &__row-right {
+    color: var(--color-primary);
+  }
+
+  &__controller {
+    display: flex;
+    gap: 8px;
+
+  }
+
+  &__button-accept {
+    flex: 1;
+    min-width: 0;
+    background-color: var(--color-accent);
+    border-radius: 48px;
+    height: 40px;
+    color: var(--color-white);
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: 600;
+    text-align: center;
+    transition: box-shadow var(--transition);
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 var(--shadow-primary);
+    }
+  }
+
+  &__button-favorite {
+    display: flex;
+    flex-shrink: 0;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--color-icon);
+    border-radius: 999px;
+    transition: border-color var(--transition);
+    cursor: pointer;
+
+    &:hover {
+      border-color: var(--color-primary);
+    }
+  }
+
+  &__icon-heart {
+    width: 16px;
+    height: 16px;
+    fill: var(--color-primary);
+  }
+
+  &__button-favotire--selected {
+    .product-card__icon-heart {
+      color: var(--color-secondary-accent);
+    }
+  }
+}

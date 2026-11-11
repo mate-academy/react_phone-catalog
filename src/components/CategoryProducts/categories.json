@@ -1,0 +1,23 @@
+[
+  {
+    "path": "/phones",
+    "category": "phones",
+    "title": "Mobile phones",
+    "src": "/src/assets/category/phone.png",
+    "background": "#A0B5F8"
+  },
+  {
+    "path": "/tablets",
+    "category": "tablets",
+    "title": "Tablets",
+    "src": "/src/assets/category/tablet.png",
+    "background": "#8D8D92"
+  },
+  {
+    "path": "/accessories",
+    "category": "accessories",
+    "title": "Accessories",
+    "src": "/src/assets/category/accessorie.png",
+    "background": "#D06160"
+  }
+]

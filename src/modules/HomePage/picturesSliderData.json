@@ -1,0 +1,32 @@
+[
+  {
+    "id": "phones",
+    "src": "/src/modules/assets/iphones.png",
+    "alt": "Phones",
+    "path": "/phones"
+  },
+  {
+    "id": "accessories-displays",
+    "src": "/src/modules/assets/displays.png",
+    "alt": "Accessories Displays",
+    "path": "/accessories"
+  },
+  {
+    "id": "tablets",
+    "src": "/src/modules/assets/tablets.png",
+    "alt": "Tablets",
+    "path": "/tablets"
+  },
+  {
+    "id": "accessorie-sets",
+    "src": "/src/modules/assets/accessories_sets.png",
+    "alt": "Accessorie Sets",
+    "path": "/accessories"
+  },
+  {
+    "id": "iphone-by-accessories",
+    "src": "/src/modules/assets/iphone_by_accessories.png",
+    "alt": "Iphone By Accessories",
+    "path": "/accessories"
+  }
+]
