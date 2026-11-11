@@ -57,15 +57,15 @@ export const HomePage = () => {
     },
     {
       id: 2,
-      desktop: './img/home-page-banner.png',
-      mobile: './img/home-page-banner-mobile.png',
-      link: './phones/apple-iphone-14-pro-128gb-spaceblack',
+      desktop: './img/home-page-banner-2.png',
+      mobile: './img/home-page-banner-mobile-2.png',
+      link: './phones',
     },
     {
       id: 3,
-      desktop: './img/home-page-banner.png',
-      mobile: './img/home-page-banner-mobile.png',
-      link: './phones/apple-iphone-14-pro-128gb-spaceblack',
+      desktop: './img/home-page-banner-3.png',
+      mobile: './img/home-page-banner-mobile-3.png',
+      link: './accessories',
     },
   ];
 
