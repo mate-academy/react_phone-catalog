@@ -2,6 +2,8 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
+  width: 100%;
+  max-width: 464px;
 }
 
 .section {
@@ -144,47 +146,31 @@
 .addToCard {
   appearance: none;
   -webkit-appearance: none;
-  border: none;
-
-  width: 100%;
+  flex: 1 1 0;
+  min-width: 0;
   height: 48px;
-  padding: 13.5px 91px;
-
+  padding: 0;
+  border: 1px solid #313237;
+  background-color: #313237;
   font-family: Mont, sans-serif;
   font-weight: 700;
   font-size: 14px;
   line-height: 21px;
   text-align: center;
-  color: #FFF;
+  color: #fff;
   white-space: nowrap;
-
-  background-color: #313237;
-
-  &:hover {
-    cursor: pointer;
-  }
-
-  &:active {
-    color: #27AE60;
-    border: 1px solid #E2E6E9
-  }
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
 }
 
 .added {
-  appearance: none;
-  -webkit-appearance: none;
-
-  width: 100%;
-  height: 40px;
-
-  font-family: Mont, sans-serif;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 21px;
-  text-align: center;
-  color: #27AE60;
-  background-color: #FFF;
-  border: 1px solid #E2E6E9
+  color: #27ae60;
+  background-color: #fff;
+  border-color: #e2e6e9;
+  cursor: default;
 }
 
 .cardHeart {

@@ -25,7 +25,7 @@ export const ProductCard: React.FC<Props> = ({
   product,
   showOldPrice = true,
 }) => {
-  const { isInCart, addToCart, removeFromCart } = useCart();
+  const { isInCart, addToCart } = useCart();
   const isAdded = isInCart(product.id);
 
   const { isFavorite, toggleFavorite } = useFavorites();
@@ -75,13 +75,12 @@ export const ProductCard: React.FC<Props> = ({
       </div>
       <div className={styles.cardButton}>
         <button
+          type="button"
           className={`${styles.addToCard} ${isAdded ? styles.added : ''}`}
           onClick={e => {
             e.preventDefault();
 
-            if (isAdded) {
-              removeFromCart(product.id);
-            } else {
+            if (!isAdded) {
               addToCart(product.id);
             }
           }}
