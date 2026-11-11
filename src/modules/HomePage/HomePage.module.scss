@@ -1,0 +1,17 @@
+.homePage {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  padding: 0 24px;
+  max-width: 1250px;
+  margin: 0 auto;
+
+  @media (max-width: 640px) {
+    gap: 48px;
+    padding: 0 16px;
+  }
+
+  section {
+    width: 100%;
+  }
+}
