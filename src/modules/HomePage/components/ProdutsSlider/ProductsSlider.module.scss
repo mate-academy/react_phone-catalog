@@ -1,0 +1,61 @@
+@use '../../../../styles/variables.scss' as *;
+@use '../../../../styles/mixins.scss' as *;
+
+.slider {
+  &__top {
+    padding: 0 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+
+    @include OnTablet {
+      padding: 0 24px;
+    }
+
+    @include OnDesktop {
+      max-width: 1136px;
+      box-sizing: border-box;
+      margin: 0 auto 24px;
+      padding: 0;
+    }
+  }
+
+  &__btns {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__btn {
+    @include IconButton;
+    border: 1px solid $color-gray-3;
+    background-color: $color-gray-5;
+
+    &_left {
+      background-image: url('/img/icons/arrow-left.svg');
+    }
+
+    &_right {
+      background-image: url('/img/icons/arrow-right.svg');
+    }
+  }
+}
+
+.cards {
+  padding: 0 16px;
+  display: flex;
+  overflow-x: auto;
+  gap: 16px;
+
+  @include OnTablet {
+    padding: 0 24px;
+  }
+
+  @include OnDesktop {
+    max-width: 1136px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 0;
+  }
+}

@@ -1,0 +1,191 @@
+@use './variables.scss' as *;
+@use './mixins.scss' as *;
+
+@font-face {
+  font-family: 'Mont';
+  src: url('/fonts/Mont-Regular.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mont';
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mont';
+  src: url('/fonts/Mont-Bold.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+}
+
+:root {
+  --header-height: 48px;
+
+  @include OnDesktop {
+    --header-height: 64px;
+  }
+}
+
+html,
+body {
+  margin: 0;
+  font-weight: 600;
+  font-family: 'Mont', sans-serif;
+  color: $color-gray-4;
+  background-color: $color-bg-primary;
+}
+
+.page-title {
+  color: $color-white;
+  margin: 0;
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -1%;
+
+  @include OnTablet {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+.section-title {
+  color: $color-white;
+  margin: 0;
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 140%;
+}
+
+.spec {
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 14px;
+    line-height: 21px;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  &__name {
+  }
+
+  &__value {
+    color: $color-white;
+    text-align: right;
+  }
+}
+
+.favourite-btn {
+  @include IconButton(40px, 40px);
+  background-color: $color-gray-5;
+  background-image: url('/img/icons/like.svg');
+  border: 1px solid $color-gray-5;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+
+  &:hover {
+    background-color: $color-gray-1;
+    border-color: $color-gray-1;
+  }
+
+  &--active {
+    background-color: transparent;
+    border-color: $color-gray-3;
+    background-image: url('/img/icons/like-red.svg');
+  }
+}
+
+.btn {
+  flex-grow: 1;
+  border: none;
+  outline: none;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+  padding: 9.5px 0;
+  text-align: center;
+  color: $color-white;
+  background-color: $color-accent;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: $color-accent-hover;
+  }
+
+  &--selected {
+    background-color: $color-gray-5;
+
+    &:hover {
+      background-color: $color-gray-5;
+    }
+  }
+}
+
+.divider {
+  border-top: 1px solid $color-gray-3;
+}
+
+.inline-container {
+  padding-inline: 16px;
+
+  @include OnTablet {
+    padding-inline: 24px;
+  }
+
+  @include OnDesktop {
+    max-width: 1136px;
+    box-sizing: border-box;
+    margin-inline: auto;
+    padding-inline: 0;
+  }
+}
+
+.not-found {
+  padding-block: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+
+  @include OnTablet {
+    padding-block: 40px 64px;
+  }
+
+  @include OnDesktop {
+    padding-block: 40px 80px;
+  }
+
+  &--image {
+    box-sizing: border-box;
+    width: 100%;
+
+    @include OnTablet {
+      width: 45%;
+    }
+  }
+
+  &--title {
+    text-align: center;
+  }
+
+  &--link {
+    text-decoration: none;
+    color: $color-accent;
+    cursor: pointer;
+  }
+}

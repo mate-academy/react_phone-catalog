@@ -1,0 +1,77 @@
+@use '../../styles/variables.scss' as *;
+@use '../../styles/mixins.scss' as *;
+
+.cart {
+  padding-block: 24px 56px;
+
+  @include OnTablet {
+    padding-block: 40px 64px;
+  }
+
+  @include OnDesktop {
+    padding-block: 40px 80px;
+  }
+
+  &__backlink {
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    margin-bottom: 32px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include OnDesktop {
+      display: grid;
+      grid-template-columns: 1fr 370px;
+      gap: 16px;
+      align-items: start;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+.summary {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 15px;
+  padding: 16px;
+  border: 1px solid $color-gray-3;
+
+  @include OnTablet {
+    padding: 24px;
+  }
+
+  @include OnDesktop {
+    gap: 24px;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__price {
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+    color: $color-white;
+  }
+
+  &__items {
+    font-size: 14px;
+    line-height: 21px;
+  }
+}

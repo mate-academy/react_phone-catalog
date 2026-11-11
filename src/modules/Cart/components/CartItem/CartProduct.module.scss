@@ -1,0 +1,110 @@
+@use '../../../../styles/variables.scss' as *;
+@use '../../../../styles/mixins.scss' as *;
+
+.item {
+  padding: 16px;
+  background-color: $color-bg-secondary;
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 16px 80px 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+    'delete image name'
+    'quantity quantity price';
+  align-items: center;
+
+  @include OnTablet {
+    padding: 24px;
+    gap: 24px;
+    gap: 24px;
+    grid-template-columns: auto auto 1fr auto 80px;
+    grid-template-areas: 'delete image name quantity price';
+  }
+
+  // &__row1 {
+  //   display: flex;
+  //   align-items: center;
+  //   gap: 16px;
+  //   justify-content: space-between;
+
+  //   @include OnTablet {
+  //     gap: 24px;
+  //   }
+  // }
+
+  &__btn__delete {
+    @include IconButton(16px, 16px);
+    background-image: url('/img/icons/cross.svg');
+    flex-grow: 0;
+    grid-area: delete;
+  }
+
+  &__image {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    padding: 7px;
+    box-sizing: border-box;
+    flex-grow: 0;
+    grid-area: image;
+  }
+
+  // &__row2 {
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: space-between;
+
+  //   @include OnTablet {
+  //     gap: 24px;
+  //     flex-grow: 1;
+  //     justify-content: space-between;
+  //   }
+  // }
+
+  &__name {
+    font-size: 14px;
+    line-height: 21px;
+    color: $color-white;
+    grid-area: name;
+
+    @include OnTablet {
+      // max-width: 176px;
+    }
+  }
+
+  &__quantity {
+    display: flex;
+    align-items: center;
+    grid-area: quantity;
+  }
+
+  &__amount {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $color-white;
+  }
+
+  &__btn__decr {
+    @include IconButton;
+    background-image: url('/img/icons/minus-gray.svg');
+    border: 1px solid $color-gray-3;
+  }
+
+  &__btn__incr {
+    @include IconButton;
+    background-image: url('/img/icons/plus.svg');
+    background-color: $color-gray-5;
+  }
+
+  &__price {
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+    color: $color-white;
+    grid-area: price;
+    justify-self: end;
+  }
+}

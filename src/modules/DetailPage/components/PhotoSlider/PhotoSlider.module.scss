@@ -1,0 +1,70 @@
+@use '../../../../styles/variables.scss' as *;
+@use '../../../../styles/mixins.scss' as *;
+
+.slider {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include OnTablet {
+    flex-direction: row-reverse;
+    align-items: start;
+  }
+}
+
+.mainPhoto {
+  box-sizing: border-box;
+  width: 100%;
+  height: 288px;
+  padding: 7px;
+  aspect-ratio: 1 / 1;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+
+  @include OnDesktop {
+    height: 464px;
+  }
+
+  img {
+    height: 100%;
+  }
+}
+
+.thumbnails {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+
+  @include OnTablet {
+    flex-direction: column;
+    // align-items: start;
+  }
+}
+
+.thumb {
+  padding: 2px;
+  width: 49px;
+  height: 49px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid $color-gray-3;
+  transition: border-color 0.2s ease;
+  display: flex;
+  justify-content: center;
+
+  img {
+    // width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &.active {
+    border-color: $color-white;
+  }
+
+  &:hover:not(.active) {
+    border-color: lighten($color-gray-3, 20%);
+  }
+}

@@ -1,0 +1,28 @@
+@use './variables.scss' as *;
+
+@mixin IconButton($width: 32px, $height: 32px) {
+  border: 1px solid transparent;
+  outline: none;
+  display: inline-block;
+  box-sizing: border-box;
+
+  width: $width;
+  height: $height;
+  background-color: transparent;
+  color: inherit;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+@mixin OnTablet {
+  @media (min-width: #{$tablet}) {
+    @content;
+  }
+}
+
+@mixin OnDesktop {
+  @media (min-width: #{$desktop}) {
+    @content;
+  }
+}

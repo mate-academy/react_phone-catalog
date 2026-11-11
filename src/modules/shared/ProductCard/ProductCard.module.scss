@@ -1,0 +1,87 @@
+@use '../../../styles/variables.scss' as *;
+@use '../../../styles/mixins.scss' as *;
+
+.card {
+  min-width: 212px;
+  max-width: 288px;
+  height: 440px;
+  padding: 32px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: $color-bg-secondary;
+  text-decoration: none;
+  color: inherit;
+
+  > * {
+    flex-shrink: 0;
+    flex-grow: 0;
+  }
+
+  &__img {
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-height: 0;
+    object-fit: contain;
+    width: 100%;
+  }
+
+  &__name {
+    font-size: 14px;
+    line-height: 21px;
+    color: $color-white;
+  }
+
+  &__prices {
+    font-size: 22px;
+    line-height: 140%;
+    display: flex;
+    gap: 8px;
+  }
+
+  &__price {
+    font-weight: 800;
+    font-size: 22px;
+    color: $color-white;
+  }
+
+  &__price_old {
+    text-decoration: line-through;
+  }
+
+  &__border {
+    border-bottom: 1px solid $color-gray-3;
+  }
+
+  &__chars {
+    margin: 8px 0 8px 0;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__add_btn {
+    border: none;
+    outline: none;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+    padding: 9.5px 0;
+    text-align: center;
+    flex-grow: 1;
+    color: $color-white;
+    background-color: $color-accent;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $color-accent-hover;
+    }
+  }
+}

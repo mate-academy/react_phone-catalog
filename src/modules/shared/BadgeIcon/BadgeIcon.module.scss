@@ -1,0 +1,45 @@
+@use '../../../styles/variables.scss' as *;
+
+.badgeIcon {
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: 48px;
+
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.favourites {
+  background-image: url('/img/icons/like.svg');
+}
+
+.cart {
+  background-image: url('/img/icons/cart.svg');
+}
+
+.badge {
+  position: absolute;
+  top: calc(50% - 8px);
+  left: calc(50% + 7px);
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 14px;
+  height: 14px;
+  padding: 0 2px;
+  box-sizing: border-box;
+
+  border: 1px solid $color-bg-primary;
+  border-radius: 50%;
+
+  background-color: $color-warn;
+  color: $color-white;
+
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1;
+}

@@ -1,0 +1,28 @@
+@use '../../../../styles/variables.scss' as *;
+
+.options {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.option {
+  cursor: pointer;
+  padding: 7px 8px 4px 8px;
+  display: inline-block;
+  border: 1px solid $color-gray-1;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: $color-white;
+
+  &.active {
+    border-color: $color-white;
+    background: $color-white;
+    color: $color-bg-primary;
+  }
+
+  &:hover:not(.active) {
+    border-color: $color-gray-4;
+  }
+}
