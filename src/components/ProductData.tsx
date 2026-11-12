@@ -1,5 +1,5 @@
 import { Product, Phone } from '../interface/Product';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ProductInfo from './ProductInfo';
 import ProductCarousel from './ProductCarousel';
 
@@ -23,9 +23,24 @@ const ProductData = ({
     realProduct.capacityAvailable?.[0],
   );
 
+  const colors = ['Black', 'Red', 'White', 'Yellow', 'Gold', 'Purple', 'Green'];
+
+  /* 
+  const colorCurr = colors.find(col => {
+    return realProduct.name.includes(col);
+  });
+  */
+
   const [currentColor, setCurrentColor] = useState<string | undefined>(
+    // colorCurr,
     realProduct.colorsAvailable?.[0],
   );
+
+  useEffect(() => {
+    const colorCurr = colors.find(col => realProduct.name.includes(col));
+
+    setCurrentColor(colorCurr);
+  }, [realProduct.name]);
 
   return (
     <div className="product__data">

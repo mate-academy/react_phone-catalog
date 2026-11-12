@@ -34,7 +34,7 @@ const ProductInfo = ({
           <div
             key={i}
             className={
-              currentColor === color
+              currentColor?.toLowerCase() === color.toLowerCase()
                 ? 'product__color product__color--active'
                 : 'product__color'
             }
