@@ -20,18 +20,25 @@ $tablet: 767px;
     padding: 30px;
     background-color: white;
 
-    .model__image {
+    .model__button-image {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
       width: 100%;
-      margin-bottom: 15px;
-      height: 200px;
-      object-fit: contain;
 
-      @media (max-width: $laptop) {
-        height: 180px;
-      }
+      .model__image {
+        width: 100%;
+        margin-bottom: 15px;
+        height: 200px;
+        object-fit: contain;
 
-      @media (max-width: $tablet) {
-        height: 150px;
+        @media (max-width: $laptop) {
+          height: 180px;
+        }
+
+        @media (max-width: $tablet) {
+          height: 150px;
+        }
       }
     }
 
@@ -39,6 +46,9 @@ $tablet: 767px;
       font-size: 14px;
       font-weight: 500;
       margin-bottom: 15px;
+      background: transparent;
+      cursor: pointer;
+      border: none;
     }
 
     .model__price {

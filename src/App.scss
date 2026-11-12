@@ -73,6 +73,34 @@ body {
   flex-direction: column;
 }
 
+.add-effect {
+  border: 3px solid #09ac6d;
+  color: #09ac6d;
+  background-color: #f1f5f3;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  position: fixed;
+  z-index: -1;
+  bottom: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 18px;
+  font-weight: 700;
+  transition: 0.5s all ease-out;
+  opacity: 0;
+
+  &.add-effect-active {
+    bottom: 50px;
+    opacity: 1;
+    z-index: 200;
+  }
+
+  @media (max-width: $mobile) {
+    font-size: 14px;
+  }
+}
+
 .not-found-image {
   width: 90%;
   margin: 120px auto 20px;

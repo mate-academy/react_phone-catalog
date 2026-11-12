@@ -5,9 +5,10 @@ import { useEffect, useState } from 'react';
 interface ModelProps {
   item: Product;
   catalog?: boolean;
+  changeEffect: (nam: string) => void;
 }
 
-const Model = ({ item, catalog }: ModelProps) => {
+const Model = ({ item, catalog, changeEffect }: ModelProps) => {
   const navigate = useNavigate();
 
   const [favorite, setFavorite] = useState(false);
@@ -20,12 +21,26 @@ const Model = ({ item, catalog }: ModelProps) => {
 
   return (
     <article className="model__item">
-      <img
-        src={`${import.meta.env.VITE_PUBLIC_URL}/${catalog ? item.images?.[0] : item.image}`}
-        alt={item.name}
-        className="model__image"
-      />
-      <h2 className="model__title">{item.name}</h2>
+      <button
+        className="model__button-image"
+        onClick={() => {
+          navigate(`/products/${encodeURIComponent(item.name)}`);
+        }}
+      >
+        <img
+          src={`${import.meta.env.VITE_PUBLIC_URL}/${catalog ? item.images?.[0] : item.image}`}
+          alt={item.name}
+          className="model__image"
+        />
+      </button>
+      <button
+        className="model__title"
+        onClick={() => {
+          navigate(`/products/${encodeURIComponent(item.name)}`);
+        }}
+      >
+        {item.name}
+      </button>
       <h3 className="model__price">{item.price}</h3>
       <table className="model__table">
         <tr>
@@ -44,7 +59,9 @@ const Model = ({ item, catalog }: ModelProps) => {
       <div className="model__footer">
         <button
           className="model_button"
-          onClick={() => navigate(`/products/${encodeURIComponent(item.name)}`)}
+          onClick={() => {
+            changeEffect(item.name);
+          }}
         >
           Add to cart
         </button>
