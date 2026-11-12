@@ -8,6 +8,7 @@ import '../components/HotPrices';
 import Footer from '../components/Footer';
 import Pagination from '../components/Pagination';
 import Filters from './Filters';
+import AddEffect from '../components/AddEffect';
 
 const Tablets = () => {
   const [data, setData] = useState<Product[]>([]);
@@ -23,6 +24,8 @@ const Tablets = () => {
   let endPage = startPage + itemsOnPage;
   const totalPages = Math.ceil(data.length / itemsOnPage);
   const pages = [];
+  const [effect, setEffect] = useState(false);
+  const [nameProduct, setNameProduct] = useState('');
 
   useEffect(() => {
     fetch(
@@ -63,6 +66,14 @@ const Tablets = () => {
     pages.push(i);
   }
 
+  function changeEffect(nam: string) {
+    setEffect(true);
+    setNameProduct(nam);
+    setTimeout(() => {
+      setEffect(false);
+    }, 3000);
+  }
+
   return (
     <>
       <main className="products">
@@ -79,12 +90,20 @@ const Tablets = () => {
           <div className="models__items container-grid">
             {loading && <Loading />}
             {items.map(item => {
-              return <Model item={item} key={item.id} catalog={true} />;
+              return (
+                <Model
+                  item={item}
+                  key={item.id}
+                  catalog={true}
+                  changeEffect={changeEffect}
+                />
+              );
             })}
           </div>
 
           <Pagination pages={pages} setPage={setPage} currentPage={page} />
         </section>
+        <AddEffect effect={effect} name={nameProduct} />
       </main>
       <Footer />
     </>

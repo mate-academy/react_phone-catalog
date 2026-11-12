@@ -8,6 +8,7 @@ import ProductItems from '../components/ProductItems';
 import { useEffect, useState } from 'react';
 import Loading from '../components/Loading';
 import { Product, Phone } from '../interface/Product';
+import AddEffect from '../components/AddEffect';
 
 const ProductItem = () => {
   const { product } = useParams();
@@ -18,6 +19,8 @@ const ProductItem = () => {
     undefined,
   );
   const [realProduct, setRealProduct] = useState<Phone | undefined>(undefined);
+  const [effect, setEffect] = useState(false);
+  const [nameProduct, setNameProduct] = useState('');
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -72,6 +75,14 @@ const ProductItem = () => {
       });
   }, [productExists]);
 
+  function changeEffect(nam: string) {
+    setEffect(true);
+    setNameProduct(nam);
+    setTimeout(() => {
+      setEffect(false);
+    }, 3000);
+  }
+
   return (
     <>
       <div className="container column">
@@ -87,6 +98,7 @@ const ProductItem = () => {
                   <ProductData
                     product={productExists}
                     realProduct={realProduct}
+                    changeEffect={changeEffect}
                   />
                   <ProductParagraphs realProduct={realProduct} />
                   <ProductItems />
@@ -96,6 +108,7 @@ const ProductItem = () => {
           </div>
         )}
       </div>
+      <AddEffect effect={effect} name={nameProduct} />
       <Footer />
     </>
   );

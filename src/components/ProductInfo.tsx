@@ -7,6 +7,7 @@ interface ProductInfoProps {
   setCurrentCapacity: React.Dispatch<React.SetStateAction<string | undefined>>;
   currentColor: string | undefined;
   setCurrentColor: React.Dispatch<React.SetStateAction<string | undefined>>;
+  changeEffect: (nam: string) => void;
 }
 
 const ProductInfo = ({
@@ -15,6 +16,7 @@ const ProductInfo = ({
   setCurrentCapacity,
   currentColor,
   setCurrentColor,
+  changeEffect,
 }: ProductInfoProps) => {
   const [favorite, setFavorite] = useState(false);
 
@@ -83,6 +85,8 @@ const ProductInfo = ({
               cart.push(realProduct.name);
               localStorage.setItem('cart', JSON.stringify(cart));
             }
+
+            changeEffect(realProduct.name);
           }}
         >
           Add to cart

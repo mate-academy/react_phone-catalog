@@ -6,9 +6,14 @@ import ProductCarousel from './ProductCarousel';
 interface ProductDataProps {
   product: Product;
   realProduct: Phone;
+  changeEffect: (nam: string) => void;
 }
 
-const ProductData = ({ product, realProduct }: ProductDataProps) => {
+const ProductData = ({
+  product,
+  realProduct,
+  changeEffect,
+}: ProductDataProps) => {
   const [imageActive, setImageActive] = useState(0);
 
   const [currentImage, setCurrentImage] = useState<string | undefined>(
@@ -48,6 +53,7 @@ const ProductData = ({ product, realProduct }: ProductDataProps) => {
             setCurrentCapacity={setCurrentCapacity}
             currentColor={currentColor}
             setCurrentColor={setCurrentColor}
+            changeEffect={changeEffect}
           />
         </div>
         <span className="product__id">ID: {product.id}</span>

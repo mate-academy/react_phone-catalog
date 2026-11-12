@@ -60,6 +60,15 @@ const Model = ({ item, catalog, changeEffect }: ModelProps) => {
         <button
           className="model_button"
           onClick={() => {
+            const cart: string[] = JSON.parse(
+              localStorage.getItem('cart') || '[]',
+            );
+
+            if (!cart.includes(item.name)) {
+              cart.push(item.name);
+              localStorage.setItem('cart', JSON.stringify(cart));
+            }
+
             changeEffect(item.name);
           }}
         >

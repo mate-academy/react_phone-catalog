@@ -4,10 +4,13 @@ import Model from './Model';
 import { Product } from '../interface/Product';
 import { useEffect, useState } from 'react';
 // import { useParams } from 'react-router-dom';
+import AddEffect from './AddEffect';
 
 const ProductItems = () => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState<Product[]>([]);
+  const [effect, setEffect] = useState(false);
+  const [nameProduct, setNameProduct] = useState('');
 
   // const { product } = useParams();
 
@@ -50,6 +53,14 @@ const ProductItems = () => {
     }
   }
 
+  function changeEffect(nam: string) {
+    setEffect(true);
+    setNameProduct(nam);
+    setTimeout(() => {
+      setEffect(false);
+    }, 3000);
+  }
+
   return (
     <div className="product__items">
       <h2 className="product__title">
@@ -81,11 +92,14 @@ const ProductItems = () => {
         ) : (
           <div className="product__slides" style={{ left: `${left}%` }}>
             {data.slice(0, 8).map(item => {
-              return <Model item={item} key={item.id} />;
+              return (
+                <Model item={item} key={item.id} changeEffect={changeEffect} />
+              );
             })}
           </div>
         )}
       </div>
+      <AddEffect effect={effect} name={nameProduct} />
     </div>
   );
 };
