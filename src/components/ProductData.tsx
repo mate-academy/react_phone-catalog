@@ -1,5 +1,5 @@
 import { Product, Phone } from '../interface/Product';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import ProductInfo from './ProductInfo';
 import ProductCarousel from './ProductCarousel';
 
@@ -7,40 +7,28 @@ interface ProductDataProps {
   product: Product;
   realProduct: Phone;
   changeEffect: (nam: string) => void;
+  currentCapacity: string | undefined;
+  setCurrentCapacity: React.Dispatch<React.SetStateAction<string | undefined>>;
+  currentColor: string | undefined;
+  setCurrentColor: React.Dispatch<React.SetStateAction<string | undefined>>;
+  productName: (nam: string) => void;
 }
 
 const ProductData = ({
   product,
   realProduct,
   changeEffect,
+  currentCapacity,
+  currentColor,
+  setCurrentCapacity,
+  setCurrentColor,
+  productName,
 }: ProductDataProps) => {
   const [imageActive, setImageActive] = useState(0);
 
   const [currentImage, setCurrentImage] = useState<string | undefined>(
     realProduct.images?.[0],
   );
-  const [currentCapacity, setCurrentCapacity] = useState<string | undefined>(
-    realProduct.capacityAvailable?.[0],
-  );
-
-  const colors = ['Black', 'Red', 'White', 'Yellow', 'Gold', 'Purple', 'Green'];
-
-  /* 
-  const colorCurr = colors.find(col => {
-    return realProduct.name.includes(col);
-  });
-  */
-
-  const [currentColor, setCurrentColor] = useState<string | undefined>(
-    // colorCurr,
-    realProduct.colorsAvailable?.[0],
-  );
-
-  useEffect(() => {
-    const colorCurr = colors.find(col => realProduct.name.includes(col));
-
-    setCurrentColor(colorCurr);
-  }, [realProduct.name]);
 
   return (
     <div className="product__data">
@@ -69,6 +57,7 @@ const ProductData = ({
             currentColor={currentColor}
             setCurrentColor={setCurrentColor}
             changeEffect={changeEffect}
+            productName={productName}
           />
         </div>
         <span className="product__id">ID: {product.id}</span>

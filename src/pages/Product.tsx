@@ -20,7 +20,7 @@ const ProductItem = () => {
   );
   const [realProduct, setRealProduct] = useState<Phone | undefined>(undefined);
   const [effect, setEffect] = useState(false);
-  const [nameProduct, setNameProduct] = useState('');
+  const [, setNameProduct] = useState('');
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -83,6 +83,75 @@ const ProductItem = () => {
     }, 3000);
   }
 
+  const [currentCapacity, setCurrentCapacity] = useState<string | undefined>(
+    realProduct?.capacityAvailable?.[0],
+  );
+
+  const colors = [
+    'Black',
+    'Silver',
+    'Red',
+    'White',
+    'Yellow',
+    'Blue',
+    'Purple',
+    'Green',
+    'Rose Gold',
+    'Gold',
+    'Starlight',
+    'Pink',
+    'Sky Blue',
+    'Spacegray',
+    'Space Gray',
+    'Gray',
+  ];
+  const capacities = ['256GB', '64GB', '32GB', '128GB', '1TB', '2TB', '512GB'];
+
+  /* 
+  const colorCurr = colors.find(col => {
+    return realProduct.name.includes(col);
+  });
+  */
+
+  const [currentColor, setCurrentColor] = useState<string | undefined>(
+    // colorCurr,
+    realProduct?.colorsAvailable?.[0],
+  );
+
+  useEffect(() => {
+    const colorCurr = colors.find(col => realProduct?.name.includes(col));
+    const capacityCurr = capacities.find(cap =>
+      realProduct?.name.includes(cap),
+    );
+
+    setCurrentColor(colorCurr);
+    setCurrentCapacity(capacityCurr);
+  }, [realProduct?.name]);
+
+  const capitalize = (str: string) =>
+    str.charAt(0).toUpperCase() + str.slice(1);
+
+  function productName() {
+    const colorCurr = colors.find(col => realProduct?.name.includes(col));
+    const capacityCurr = capacities.find(cap =>
+      realProduct?.name.includes(cap),
+    );
+
+    if (
+      !product ||
+      !colorCurr ||
+      !currentColor ||
+      !currentCapacity ||
+      !capacityCurr
+    ) {
+      return product;
+    }
+
+    return product
+      .replace(capacityCurr, currentCapacity)
+      .replace(colorCurr, capitalize(currentColor));
+  }
+
   return (
     <>
       <div className="container column">
@@ -91,7 +160,7 @@ const ProductItem = () => {
           <Loading />
         ) : (
           <div className="product">
-            <h1 className="product__title">{product}</h1>
+            <h1 className="product__title">{productName()}</h1>
             <main className="product__main">
               {productExists && realProduct && (
                 <>
@@ -99,6 +168,11 @@ const ProductItem = () => {
                     product={productExists}
                     realProduct={realProduct}
                     changeEffect={changeEffect}
+                    currentColor={currentColor}
+                    setCurrentColor={setCurrentColor}
+                    currentCapacity={currentCapacity}
+                    setCurrentCapacity={setCurrentCapacity}
+                    productName={productName}
                   />
                   <ProductParagraphs realProduct={realProduct} />
                   <ProductItems />
@@ -108,7 +182,7 @@ const ProductItem = () => {
           </div>
         )}
       </div>
-      <AddEffect effect={effect} name={nameProduct} />
+      <AddEffect effect={effect} name={productName()} />
       <Footer />
     </>
   );

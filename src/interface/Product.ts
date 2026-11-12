@@ -46,3 +46,9 @@ export interface Phone {
   zoom: string;
   cell: string[];
 }
+
+export interface LocalProduct {
+  id: string;
+  capacity: string | undefined;
+  color: string | undefined;
+}

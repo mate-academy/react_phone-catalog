@@ -1,4 +1,4 @@
-import { Phone } from '../interface/Product';
+import { LocalProduct, Phone } from '../interface/Product';
 import { useEffect, useState } from 'react';
 
 interface ProductInfoProps {
@@ -8,6 +8,7 @@ interface ProductInfoProps {
   currentColor: string | undefined;
   setCurrentColor: React.Dispatch<React.SetStateAction<string | undefined>>;
   changeEffect: (nam: string) => void;
+  productName: (nam: string) => void;
 }
 
 const ProductInfo = ({
@@ -23,7 +24,9 @@ const ProductInfo = ({
   useEffect(() => {
     const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
 
-    setFavorite(favorites.includes(realProduct.name));
+    setFavorite(
+      favorites.some((item: LocalProduct) => item.id === realProduct.id),
+    );
   }, [realProduct.name]);
 
   return (
@@ -77,12 +80,16 @@ const ProductInfo = ({
         <button
           className="product__button"
           onClick={() => {
-            const cart: string[] = JSON.parse(
+            const cart: LocalProduct[] = JSON.parse(
               localStorage.getItem('cart') || '[]',
             );
 
-            if (!cart.includes(realProduct.name)) {
-              cart.push(realProduct.name);
+            if (!cart.some(item => item.id === realProduct.id)) {
+              cart.push({
+                id: realProduct.id,
+                capacity: currentCapacity,
+                color: currentColor,
+              });
               localStorage.setItem('cart', JSON.stringify(cart));
             }
 
@@ -94,13 +101,13 @@ const ProductInfo = ({
         <button
           className="product__favorite"
           onClick={() => {
-            const favorites = JSON.parse(
+            const favorites: LocalProduct[] = JSON.parse(
               localStorage.getItem('favorites') || '[]',
             );
 
             if (favorite) {
               const updatedFavorites = favorites.filter(
-                (name: string) => name !== realProduct.name,
+                item => item.id !== realProduct.id,
               );
 
               localStorage.setItem(
@@ -109,7 +116,11 @@ const ProductInfo = ({
               );
               setFavorite(false);
             } else {
-              favorites.push(realProduct.name);
+              favorites.push({
+                id: realProduct.id,
+                capacity: currentCapacity,
+                color: currentColor,
+              });
               localStorage.setItem('favorites', JSON.stringify(favorites));
               setFavorite(true);
             }
