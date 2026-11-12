@@ -1,11 +1,12 @@
 .favorites {
   .favorites__items {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(220px, 200px));
     gap: 15px;
 
     .model__item {
-      min-width: 75%;
+      width: 100%;
+      max-width: 200px;
     }
   }
 

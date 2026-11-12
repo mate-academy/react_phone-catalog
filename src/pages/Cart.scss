@@ -123,6 +123,13 @@ $mobile: 560px;
           font-weight: 700;
           font-size: 20px;
         }
+
+        .cart__button {
+          background-color: transparent;
+          padding: 0;
+          border: none;
+          cursor: pointer;
+        }
       }
     }
   }
