@@ -1,7 +1,7 @@
 .home {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 40px;
   padding-bottom: 32px;
 }
 
@@ -18,7 +18,7 @@
 }
 
 .welcomeTitle {
-  margin: 0;
+  margin: 24px 0 0;
   font-size: 48px;
   line-height: 56px;
   font-weight: 800;
