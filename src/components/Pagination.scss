@@ -1,0 +1,39 @@
+$mobile: 560px;
+
+.products__pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  gap: 10px;
+
+  .products__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 100px;
+    border: 1px solid var(--dark-gray);
+    font-weight: 500;
+    font-size: 16px;
+    color: var(--dark);
+    cursor: pointer;
+    transition: var(--transition);
+
+    &.active {
+      background-color: var(--dark);
+      color: var(--light);
+    }
+
+    &:hover {
+      background-color: var(--dark);
+      color: var(--light);
+    }
+
+    @media screen and (max-width: $mobile) {
+      width: 25px;
+      height: 25px;
+      font-size: 12px;
+    }
+  }
+}

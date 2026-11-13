@@ -1,0 +1,136 @@
+$laptop: 990px;
+$tablet: 767px;
+$mobile: 560px;
+
+.cart {
+  .cart__title {
+    font-size: 50px;
+  }
+  .cart__main {
+    display: flex;
+    justify-content: space-between;
+    gap: 25px;
+    margin-top: 40px;
+
+    @media (max-width: $laptop) {
+      flex-direction: column;
+    }
+
+    .cart__aside {
+      width: 30%;
+      border: 1px solid var(--light-gray);
+      border-radius: 10px;
+      max-height: 150px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 25px;
+
+      @media (max-width: $laptop) {
+        width: 100%;
+      }
+
+      .cart__price {
+        font-weight: 700;
+        font-size: 30px;
+      }
+
+      .cart__details {
+        color: var(--dark-gray);
+        font-weight: 600;
+        font-size: 13px;
+        margin-top: 5px;
+      }
+
+      .cart__line {
+        width: 100%;
+        height: 1px;
+        background-color: var(--light-gray);
+        margin: 20px 0;
+      }
+
+      .cart__button {
+        background-color: var(--emphasis);
+        font-weight: 600;
+        color: var(--light);
+        font-size: 15px;
+        border: none;
+        border-radius: 10px;
+        padding: 14px 20px;
+        width: 100%;
+        cursor: pointer;
+      }
+    }
+
+    .cart__items {
+      width: 70%;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      @media (max-width: $laptop) {
+        width: 100%;
+      }
+
+      .cart__item {
+        border: 1px solid var(--light-gray);
+        border-radius: 10px;
+        max-height: 120px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 25px;
+
+        .cart__image {
+          width: 55px;
+        }
+
+        .cart__close {
+          opacity: 0.3;
+          cursor: pointer;
+          background: transparent;
+          border: none;
+        }
+
+        .cart__title {
+          font-weight: 600;
+          font-size: 14px;
+        }
+
+        .cart__quantity-btn {
+          background: transparent;
+          border: 1px solid var(--light-gray);
+          font-size: 15px;
+          font-weight: 600;
+          cursor: pointer;
+          border-radius: 50%;
+          width: 25px;
+          height: 25px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          margin: 0 10px;
+        }
+
+        .cart__quantity-num {
+          font-weight: 700;
+          font-size: 12px;
+        }
+
+        .cart__price {
+          font-weight: 700;
+          font-size: 20px;
+        }
+
+        .cart__button {
+          background-color: transparent;
+          padding: 0;
+          border: none;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

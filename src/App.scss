@@ -1,1 +1,128 @@
 // not empty
+
+$laptop: 990px;
+$tablet: 767px;
+$mobile: 560px;
+
+// variables
+
+:root {
+  --emphasis: #f86800;
+  --light: #fafbfc;
+  --dark: #0f0f11;
+  --light-gray: #e2e6e9;
+  --dark-gray: #89939a;
+  --transition: 0.4s all ease-in;
+}
+
+// font
+
+@import 'https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap';
+
+// global settings
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  font-family: Montserrat, sans-serif;
+  background-color: var(--light);
+  color: var(--dark);
+}
+
+.container {
+  width: 90%;
+  max-width: 1136px;
+  margin: 0 auto;
+  display: flex;
+}
+
+.container-grid {
+  width: 90%;
+  max-width: 1136px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.container-grid > * {
+  box-sizing: border-box;
+  flex: 1 1 calc(25% - 16px);
+  max-width: calc(25% - 12px);
+  min-width: 200px;
+}
+
+.container.column,
+.column {
+  flex-direction: column;
+}
+
+.add-effect {
+  border: 3px solid #09ac6d;
+  color: #09ac6d;
+  background-color: #f1f5f3;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  position: fixed;
+  z-index: -1;
+  bottom: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 18px;
+  font-weight: 700;
+  transition: 0.5s all ease-out;
+  opacity: 0;
+
+  &.add-effect-active {
+    bottom: 50px;
+    opacity: 1;
+    z-index: 200;
+  }
+
+  @media (max-width: $mobile) {
+    font-size: 14px;
+  }
+}
+
+.not-found-image {
+  width: 90%;
+  margin: 120px auto 20px;
+  display: block;
+  max-width: 450px;
+}
+
+@media (max-width: $laptop) {
+  .not-found-image {
+    margin: 80px auto 20px;
+  }
+}
+
+@media (max-width: $tablet) {
+  .not-found-image {
+    margin: 60px auto 20px;
+  }
+}
+
+@media (max-width: $mobile) {
+  .not-found-image {
+    margin: 40px auto 5px;
+    max-width: 250px;
+  }
+}
