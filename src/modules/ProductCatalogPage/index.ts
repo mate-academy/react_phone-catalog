@@ -1,0 +1,1 @@
+export { ProductCatalogPage } from './ProductCatalogPage';

@@ -1,0 +1,33 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.title {
+  margin: 0;
+  font-size: 48px;
+  line-height: 56px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+
+.itemsCount {
+  margin: -8px 0 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+@media (max-width: 639px) {
+  .title {
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+.error {
+  padding: 64px 16px;
+  text-align: center;
+}

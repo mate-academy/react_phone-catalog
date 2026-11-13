@@ -1,0 +1,48 @@
+.slider {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.title {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.track {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 8px;
+}
+
+.slide {
+  min-width: 240px;
+  max-width: 240px;
+  display: flex;
+  flex-direction: column;
+}
+
+.arrows {
+  display: flex;
+  justify-content: space-between;
+}
+
+.arrow,
+.arrowNext {
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  color: var(--text);
+}
+
+.arrowNext {
+  margin-left: auto;
+  background: var(--accent);
+  color: #fff;
+}

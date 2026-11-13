@@ -1,0 +1,159 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  transition:
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
+}
+
+.card:hover {
+  box-shadow: var(--shadow);
+  transform: translateY(-2px);
+}
+
+.imageLink {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  padding: 8px;
+}
+
+.image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  transition: transform 0.25s ease;
+}
+
+.imageLink:hover .image {
+  transform: scale(1.05);
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  flex: 1;
+}
+
+.title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.35;
+}
+
+.title:hover {
+  color: var(--accent);
+}
+
+.prices {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.price {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.fullPrice {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 0;
+  padding: 8px 0;
+  border-top: 1px solid var(--elements);
+  border-bottom: 1px solid var(--elements);
+}
+
+.specRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.specRow dt {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.specRow dd {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text);
+  text-align: right;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: auto;
+}
+
+.cartButton {
+  flex: 1;
+  padding: 10px 14px;
+  border: 1px solid var(--text);
+  border-radius: 8px;
+  background: var(--text);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.cartButton:hover {
+  border-color: var(--icons);
+  background: var(--muted);
+}
+
+.added {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #fff;
+}
+
+.added:hover {
+  border-color: var(--accent);
+  background: var(--accent-hover);
+  box-shadow: none;
+}
+
+.favoriteButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--elements);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 16px;
+}
+
+.favoriteButton:hover {
+  border-color: var(--icons);
+  box-shadow: var(--shadow);
+}
+
+.favoriteButton.active {
+  border-color: var(--danger);
+  color: var(--heart);
+}
