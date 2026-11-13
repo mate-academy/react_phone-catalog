@@ -49,6 +49,8 @@ export interface Phone {
 
 export interface LocalProduct {
   id: string;
-  capacity: string | undefined;
-  color: string | undefined;
+  capacity?: string | undefined;
+  color?: string | undefined;
+  title?: string;
+  quantity?: number;
 }

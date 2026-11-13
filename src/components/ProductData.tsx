@@ -11,7 +11,7 @@ interface ProductDataProps {
   setCurrentCapacity: React.Dispatch<React.SetStateAction<string | undefined>>;
   currentColor: string | undefined;
   setCurrentColor: React.Dispatch<React.SetStateAction<string | undefined>>;
-  productName: (nam: string) => void;
+  productName: () => string | undefined;
 }
 
 const ProductData = ({

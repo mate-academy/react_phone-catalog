@@ -3,21 +3,27 @@ import './Cart.scss';
 import '../components/NewModels.scss';
 import NavPage from '../components/NavPage';
 import { useState, useEffect } from 'react';
-import { Product } from '../interface/Product';
+import { Product, LocalProduct } from '../interface/Product';
 import CartItem from './CartItem';
 
 const Cart = () => {
   const [data, setData] = useState<Product[]>([]);
+  const [cart, setCart] = useState<LocalProduct[]>([]);
 
   useEffect(() => {
-    const cart: string[] = JSON.parse(localStorage.getItem('cart') || '[]');
+    const storedCart: LocalProduct[] = JSON.parse(
+      localStorage.getItem('cart') || '[]',
+    );
+
+    setCart(storedCart);
+    const cartIds = storedCart.map(c => c.id);
 
     fetch(
       `https://johnnyvasconcelos.github.io/react_phone-catalog/api/products.json`,
     )
       .then(response => response.json())
       .then((result: Product[]) => {
-        setData(result.filter(item => cart.includes(item.name)));
+        setData(result.filter(item => cartIds.includes(item.itemId)));
       })
       .catch(error => {
         // eslint-disable-next-line no-console
@@ -26,7 +32,37 @@ const Cart = () => {
   }, []);
 
   const quantity = data.length;
-  const total = data.reduce((sum, item) => sum + item.price, 0);
+
+  const productQuantity = function (id: string) {
+    return (
+      cart.find(c => {
+        return c.id === id;
+      })?.quantity ?? 1
+    );
+  };
+
+  const changeQuantity = function (id: string, numb: number) {
+    const newCart = cart.map(i => {
+      if (i.id !== id) {
+        return i;
+      }
+
+      const newQuantity = (i.quantity ?? 1) + numb;
+
+      if (newQuantity < 1) {
+        return { ...i, quantity: 1 };
+      }
+
+      return { ...i, quantity: newQuantity };
+    });
+
+    setCart(newCart);
+    localStorage.setItem('cart', JSON.stringify(newCart));
+  };
+
+  const total = data.reduce((sum, item) => {
+    return sum + item.price * productQuantity(item.itemId);
+  }, 0);
 
   return (
     <div className="cart">
@@ -40,7 +76,15 @@ const Cart = () => {
             )}
             {data.map(item => {
               return (
-                <CartItem key={item.name} item={item} quantity={quantity} />
+                <CartItem
+                  title={
+                    cart.find(c => c.id === item.itemId)?.title ?? item.name
+                  }
+                  key={item.name}
+                  item={item}
+                  quantity={productQuantity(item.itemId)}
+                  changeQuantity={changeQuantity}
+                />
               );
             })}
           </div>
@@ -51,9 +95,9 @@ const Cart = () => {
             <button
               className="cart__button"
               onClick={() => {
-                const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+                const car = JSON.parse(localStorage.getItem('cart') || '[]');
 
-                localStorage.setItem('cart', JSON.stringify(cart));
+                localStorage.setItem('cart', JSON.stringify(car));
               }}
             >
               Checkout

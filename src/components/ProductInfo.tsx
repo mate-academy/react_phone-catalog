@@ -8,7 +8,7 @@ interface ProductInfoProps {
   currentColor: string | undefined;
   setCurrentColor: React.Dispatch<React.SetStateAction<string | undefined>>;
   changeEffect: (nam: string) => void;
-  productName: (nam: string) => void;
+  productName: () => string | undefined;
 }
 
 const ProductInfo = ({
@@ -18,8 +18,10 @@ const ProductInfo = ({
   currentColor,
   setCurrentColor,
   changeEffect,
+  productName,
 }: ProductInfoProps) => {
   const [favorite, setFavorite] = useState(false);
+  // const [productNameConst, setProductNameConst] = useState('');
 
   useEffect(() => {
     const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
@@ -27,6 +29,8 @@ const ProductInfo = ({
     setFavorite(
       favorites.some((item: LocalProduct) => item.id === realProduct.id),
     );
+
+    // setProductNameConst(productName());
   }, [realProduct.name]);
 
   return (
@@ -89,6 +93,7 @@ const ProductInfo = ({
                 id: realProduct.id,
                 capacity: currentCapacity,
                 color: currentColor,
+                title: productName(),
               });
               localStorage.setItem('cart', JSON.stringify(cart));
             }
@@ -120,6 +125,7 @@ const ProductInfo = ({
                 id: realProduct.id,
                 capacity: currentCapacity,
                 color: currentColor,
+                title: productName(),
               });
               localStorage.setItem('favorites', JSON.stringify(favorites));
               setFavorite(true);

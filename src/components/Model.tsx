@@ -1,4 +1,4 @@
-import { Product } from '../interface/Product';
+import { Product, LocalProduct } from '../interface/Product';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
@@ -60,16 +60,19 @@ const Model = ({ item, catalog, changeEffect }: ModelProps) => {
         <button
           className="model_button"
           onClick={() => {
-            const cart: string[] = JSON.parse(
+            changeEffect(item.name);
+            const cart: LocalProduct[] = JSON.parse(
               localStorage.getItem('cart') || '[]',
             );
 
-            if (!cart.includes(item.name)) {
-              cart.push(item.name);
+            if (!cart.some(c => c.id === item.itemId)) {
+              cart.push({
+                id: item.itemId,
+                color: item.color,
+                title: item.name,
+              });
               localStorage.setItem('cart', JSON.stringify(cart));
             }
-
-            changeEffect(item.name);
           }}
         >
           Add to cart
