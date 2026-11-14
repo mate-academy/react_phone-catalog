@@ -9,11 +9,13 @@
     "react-router-dom": "^7.18.5"
   },
   "scripts": {
+    "start": "vite",
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "format": "prettier --write \"src/**/*.{ts,tsx,scss,css,json}\"",
-    "prepare": "husky"
+    "preview": "vite preview",
+    "test": "mate-scripts test",
+    "deploy": "gh-pages -d dist --add"
   },
   "lint-staged": {
     "*.{ts,tsx}": [
