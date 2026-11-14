@@ -1,0 +1,48 @@
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.home {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  width: 100%;
+  max-width: 1136px;
+  min-width: 0;
+  margin: 0 auto;
+  padding: 24px 16px 64px;
+  overflow-x: hidden;
+
+  @media (min-width: 640px) {
+    gap: 64px;
+    padding: 32px 24px 64px;
+  }
+
+  @media (min-width: 1200px) {
+    gap: 80px;
+    padding: 56px 0 80px;
+    overflow-x: visible;
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: #313237;
+    margin: 0 0 -24px;
+
+    @media (min-width: 640px) {
+      font-size: 48px;
+      line-height: 56px;
+    }
+  }
+}

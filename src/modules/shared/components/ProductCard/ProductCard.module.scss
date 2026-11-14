@@ -1,0 +1,149 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  border: 1px solid #e2e6e9;
+  background-color: #ffffff;
+  transition: box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.1);
+  }
+
+  &__imageLink {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 130px;
+    margin-bottom: 24px;
+    overflow: none;
+  }
+
+  &__image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.08);
+    }
+  }
+
+  &__title {
+    min-height: 42px;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    color: #313237;
+    text-decoration: none;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: #89939a;
+    }
+  }
+
+  &__prices {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  &__price {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 1.4;
+    color: #313237;
+  }
+
+  &__fullPrice {
+    font-size: 22px;
+    font-weight: 600;
+    color: #89939a;
+    text-decoration: line-through;
+  }
+
+  &__divider {
+    height: 1px;
+    background-color: #e2e6e9;
+    margin-bottom: 16px;
+  }
+
+  &__specs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  &__specRow {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  &__specName {
+    color: #89939a;
+  }
+
+  &__specValue {
+    color: #313237;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+    margin-top: auto;
+  }
+
+  &__addBtn {
+    flex: 1;
+    height: 40px;
+    border: 1px solid transparent;
+    background-color: #313237;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition:
+      box-shadow 0.3s ease,
+      background-color 0.3s ease,
+      color 0.3s ease;
+
+    &:hover:not(:disabled) {
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.4);
+    }
+
+    &--added {
+      background-color: #ffffff;
+      border-color: #e2e6e9;
+      color: #27ae60;
+      cursor: default;
+    }
+  }
+
+  &__favBtn {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #b4bdc3;
+    background-color: #ffffff;
+    font-size: 18px;
+    line-height: 1;
+    color: #313237;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+
+    &:hover {
+      border-color: #313237;
+    }
+
+    &--active {
+      border-color: #e2e6e9;
+      color: #eb5757;
+    }
+  }
+}
