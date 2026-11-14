@@ -22,6 +22,18 @@ const CATEGORY_LABELS: Record<ProductDetails['category'], string> = {
 
 export const ProductDetailsPage = () => {
   const { productId } = useParams<{ productId: string }>();
+
+  useEffect(() => {
+    const timeoutId = window.setTimeout(() => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    }, 100);
+
+    return () => window.clearTimeout(timeoutId);
+  }, [productId]);
+
   const navigate = useNavigate();
   const { addToCart, items } = useCart();
   const { toggleFavorite, isFavorite } = useFavorites();
@@ -105,7 +117,7 @@ export const ProductDetailsPage = () => {
     );
 
     if (match) {
-      navigate(`/product/${match.id}`);
+      navigate(`/product/${match.id}`, { replace: true });
     }
   };
 
@@ -115,7 +127,7 @@ export const ProductDetailsPage = () => {
     );
 
     if (match) {
-      navigate(`/product/${match.id}`);
+      navigate(`/product/${match.id}`, { replace: true });
     }
   };
 

@@ -7,13 +7,14 @@ import { withBase } from '../../../utils/withBase';
 
 type Props = {
   product: Product;
+  showDiscount?: boolean;
 };
 
-export const ProductCard = ({ product }: Props) => {
+export const ProductCard = ({ product, showDiscount = true }: Props) => {
   const { itemId, name, price, fullPrice, screen, capacity, ram, image } =
     product;
 
-  const hasDiscount = fullPrice > price;
+  const hasDiscount = showDiscount && fullPrice > price;
   const { addToCart, items } = useCart();
   const isInCart = items.some(item => item.id === product.id);
   const { toggleFavorite, isFavorite } = useFavorites();

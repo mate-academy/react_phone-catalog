@@ -101,7 +101,11 @@ export const HomePage = () => {
           ))}
         </div>
 
-        <ProductsSlider title="Brand new models" products={newestProducts} />
+        <ProductsSlider
+          title="Brand new models"
+          products={newestProducts}
+          showDiscount={false}
+        />
 
         <section className={styles.categories}>
           <h2 className={styles.sectionTitle}>Shop by category</h2>

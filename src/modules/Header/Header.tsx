@@ -95,15 +95,21 @@ export const Header = () => {
             className={getActionClass}
             aria-label="Favorites"
           >
-            <img src={withBase('/img/icons/Stroke.svg')} alt="Favorite" />
-            {favoritesCount > 0 && (
-              <span className={styles.badge}>{favoritesCount}</span>
-            )}
+            <span className={styles.iconWrap}>
+              <img src={withBase('/img/icons/Stroke.svg')} alt="Favorite" />
+              {favoritesCount > 0 && (
+                <span className={styles.badge}>{favoritesCount}</span>
+              )}
+            </span>
           </NavLink>
 
           <NavLink to="/cart" className={getActionClass} aria-label="Cart">
-            <img src={withBase('/img/icons/Cart.svg')} alt="Cart" />
-            {cartCount > 0 && <span className={styles.badge}>{cartCount}</span>}
+            <span className={styles.iconWrap}>
+              <img src={withBase('/img/icons/Cart.svg')} alt="Cart" />
+              {cartCount > 0 && (
+                <span className={styles.badge}>{cartCount}</span>
+              )}
+            </span>
           </NavLink>
         </div>
 
@@ -162,10 +168,12 @@ export const Header = () => {
             aria-label="Favorites"
             onClick={closeMenu}
           >
-            <img src={withBase('/img/icons/Stroke.svg')} alt="" />
-            {favoritesCount > 0 && (
-              <span className={styles.badge}>{favoritesCount}</span>
-            )}
+            <span className={styles.iconWrap}>
+              <img src={withBase('/img/icons/Stroke.svg')} alt="" />
+              {favoritesCount > 0 && (
+                <span className={styles.badge}>{favoritesCount}</span>
+              )}
+            </span>
           </NavLink>
 
           <NavLink
@@ -174,8 +182,12 @@ export const Header = () => {
             aria-label="Cart"
             onClick={closeMenu}
           >
-            <img src={withBase('/img/icons/Cart.svg')} alt="" />
-            {cartCount > 0 && <span className={styles.badge}>{cartCount}</span>}
+            <span className={styles.iconWrap}>
+              <img src={withBase('/img/icons/Cart.svg')} alt="" />
+              {cartCount > 0 && (
+                <span className={styles.badge}>{cartCount}</span>
+              )}
+            </span>
           </NavLink>
         </div>
       </div>

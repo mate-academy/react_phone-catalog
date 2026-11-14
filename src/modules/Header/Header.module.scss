@@ -286,20 +286,25 @@ $bp-mobile: 639px;
   }
 }
 
+.iconWrap {
+  position: relative;
+  display: flex;
+}
+
 .badge {
   position: absolute;
-  top: 8px;
-  right: 8px;
+  top: -6px;
+  right: -8px;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 16px;
-  height: 16px;
-  padding: 0 4px;
-  border-radius: 8px;
+  min-width: 12px;
+  height: 12px;
+  padding: 0 3px;
+  border-radius: 6px;
   background: #eb5757;
   color: #fff;
-  font-size: 10px;
+  font-size: 8px;
   font-weight: 700;
   line-height: 1;
 }
