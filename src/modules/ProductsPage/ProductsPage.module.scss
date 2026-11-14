@@ -1,0 +1,48 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.product-page {
+  height: 100%;
+
+  &__wrapper {
+    @include container;
+
+    padding-block: 24px;
+  }
+
+  &__header {
+    padding-bottom: 32px;
+
+    @include from($breakpoint-tablet) {
+      padding-bottom: 40px;
+    }
+  }
+
+  &__header-title {
+    @include h1;
+
+    padding-bottom: 8px;
+    padding-top: 24px;
+
+    @include from($breakpoint-tablet) {
+      padding-top: 40px;
+    }
+  }
+
+  &__header-subtitle {
+    font-size: 14px;
+    line-height: 21px;
+    color: var(--color-secondary);
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
