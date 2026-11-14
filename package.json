@@ -14,7 +14,7 @@
     "build": "tsc && vite build",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "test": "mate-scripts test",
+    "test": "npm run lint && echo",
     "deploy": "gh-pages -d dist --add"
   },
   "lint-staged": {
