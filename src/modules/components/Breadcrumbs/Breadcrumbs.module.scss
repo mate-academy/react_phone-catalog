@@ -1,0 +1,55 @@
+$text-muted: rgba(255, 255, 255, 0.5);
+$text-main: #fff;
+
+.breadcrumbs {
+  margin-bottom: 24px;
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 8px;
+
+  &:last-child {
+    flex-shrink: 1;
+    min-width: 0;
+  }
+}
+
+.homeLink {
+  display: flex;
+  align-items: center;
+}
+
+.link {
+  color: $text-muted;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: $text-main;
+  }
+}
+
+.current {
+  min-width: 0;
+  overflow: hidden;
+  color: $text-main;
+  font-size: 12px;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
