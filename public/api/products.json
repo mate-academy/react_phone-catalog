@@ -1,5 +1,61 @@
 [
   {
+    "id": 0.1,
+    "category": "phones",
+    "itemId": "apple-iphone-14-pro-128gb-silver",
+    "name": "Apple iPhone 14 Pro 128GB Silver (MQ023)",
+    "fullPrice": 999,
+    "price": 999,
+    "screen": "6.1' OLED",
+    "capacity": "128GB",
+    "color": "silver",
+    "ram": "6GB",
+    "year": 2022,
+    "image": "img/phones/apple-iphone-14-pro/silver/00.png"
+  },
+  {
+    "id": 0.2,
+    "category": "phones",
+    "itemId": "apple-iphone-14-pro-128gb-deep-purple",
+    "name": "Apple iPhone 14 Pro 128GB Deep Purple (MQ0G3)",
+    "fullPrice": 999,
+    "price": 999,
+    "screen": "6.1' OLED",
+    "capacity": "128GB",
+    "color": "deep-purple",
+    "ram": "6GB",
+    "year": 2022,
+    "image": "img/phones/apple-iphone-14-pro/deep-purple/00.png"
+  },
+  {
+    "id": 0.3,
+    "category": "phones",
+    "itemId": "apple-iphone-14-pro-128gb-gold",
+    "name": "Apple iPhone 14 Pro 128GB Gold (MQ083)",
+    "fullPrice": 999,
+    "price": 999,
+    "screen": "6.1' OLED",
+    "capacity": "128GB",
+    "color": "gold",
+    "ram": "6GB",
+    "year": 2022,
+    "image": "img/phones/apple-iphone-14-pro/gold/00.png"
+  },
+  {
+    "id": 0.4,
+    "category": "phones",
+    "itemId": "apple-iphone-14-plus-128gb-red",
+    "name": "Apple iPhone 14 Plus 128GB PRODUCT Red (MQ513)",
+    "fullPrice": 859,
+    "price": 859,
+    "screen": "6.7' OLED",
+    "capacity": "128GB",
+    "color": "red",
+    "ram": "6GB",
+    "year": 2022,
+    "image": "img/phones/apple-iphone-14-plus/red/00.png"
+  },
+  {
     "id": 1,
     "category": "phones",
     "itemId": "apple-iphone-7-32gb-black",
@@ -788,14 +844,14 @@
     "category": "phones",
     "itemId": "apple-iphone-11-pro-max-64gb-gold",
     "name": "Apple iPhone 11 Pro Max 64GB Gold",
-    "fullPrice": 1480,
-    "price": 1400,
+    "fullPrice": 999,
+    "price": 799,
     "screen": "6.5' OLED",
     "capacity": "64GB",
     "color": "gold",
     "ram": "4GB",
     "year": 2019,
-    "image": "img/phones/apple-iphone-11-pro-max/gold/00.webp"
+    "image": "img/phones/apple-iphone-11-pro-max/gold/00.png"
   },
   {
     "id": 58,
@@ -816,14 +872,14 @@
     "category": "phones",
     "itemId": "apple-iphone-11-pro-max-512gb-midnightgreen",
     "name": "Apple iPhone 11 Pro Max 512GB Midnightgreen",
-    "fullPrice": 2020,
-    "price": 1930,
+    "fullPrice": 1199,
+    "price": 849,
     "screen": "6.5' OLED",
     "capacity": "512GB",
     "color": "midnightgreen",
     "ram": "4GB",
     "year": 2019,
-    "image": "img/phones/apple-iphone-11-pro-max/midnightgreen/00.webp"
+    "image": "img/phones/apple-iphone-11-pro-max/midnightgreen/00.png"
   },
   {
     "id": 60,
@@ -858,14 +914,14 @@
     "category": "phones",
     "itemId": "apple-iphone-11-256gb-purple",
     "name": "Apple iPhone 11 256GB Purple",
-    "fullPrice": 1172,
-    "price": 1115,
+    "fullPrice": 859,
+    "price": 729,
     "screen": "6.1' IPS",
     "capacity": "256GB",
     "color": "purple",
     "ram": "4GB",
     "year": 2019,
-    "image": "img/phones/apple-iphone-11/purple/00.webp"
+    "image": "img/phones/apple-iphone-11/purple/00.png"
   },
   {
     "id": 63,
@@ -928,14 +984,14 @@
     "category": "phones",
     "itemId": "apple-iphone-11-128gb-red",
     "name": "Apple iPhone 11 128GB Red",
-    "fullPrice": 1100,
-    "price": 1050,
+    "fullPrice": 899,
+    "price": 699,
     "screen": "6.1' IPS",
     "capacity": "128GB",
     "color": "red",
     "ram": "4GB",
     "year": 2019,
-    "image": "img/phones/apple-iphone-11/red/00.webp"
+    "image": "img/phones/apple-iphone-11/red/00.png"
   },
   {
     "id": 68,
@@ -2671,7 +2727,7 @@
     "color": "gold",
     "ram": "6GB",
     "year": 2022,
-    "image": "img/phones/apple-iphone-14-pro/gold/00.webp"
+    "image": "img/phones/apple-iphone-14-pro/gold/00.png"
   },
   {
     "id": 192,
@@ -2685,7 +2741,7 @@
     "color": "gold",
     "ram": "6GB",
     "year": 2022,
-    "image": "img/phones/apple-iphone-14-pro/gold/00.webp"
+    "image": "img/phones/apple-iphone-14-pro/gold/00.png"
   },
   {
     "id": 193,
@@ -2699,7 +2755,7 @@
     "color": "gold",
     "ram": "6GB",
     "year": 2022,
-    "image": "img/phones/apple-iphone-14-pro/gold/00.webp"
+    "image": "img/phones/apple-iphone-14-pro/gold/00.png"
   },
   {
     "id": 194,
@@ -2713,6 +2769,6 @@
     "color": "gold",
     "ram": "6GB",
     "year": 2022,
-    "image": "img/phones/apple-iphone-14-pro/gold/00.webp"
+    "image": "img/phones/apple-iphone-14-pro/gold/00.png"
   }
 ]

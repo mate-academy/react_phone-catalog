@@ -1,0 +1,90 @@
+.slider {
+  --card-width: 212px;
+
+  @media (min-width: 640px) {
+    --card-width: 237px;
+  }
+
+  @media (min-width: 1200px) {
+    --card-width: 272px;
+  }
+
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  min-width: 0;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 1.4;
+    color: #313237;
+    margin: 0;
+
+    @media (min-width: 640px) {
+      font-size: 32px;
+      letter-spacing: -0.01em;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__btn {
+    width: 32px;
+    height: 32px;
+    border: 1px solid #b4bdc3;
+    background-color: #ffffff;
+    color: #313237;
+    font-size: 18px;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+
+    &:hover:not(:disabled) {
+      border-color: #313237;
+    }
+
+    &:disabled {
+      border-color: #e2e6e9;
+      color: #b4bdc3;
+      cursor: default;
+    }
+  }
+
+  &__viewport {
+    overflow: hidden;
+    margin-right: -16px;
+
+    @media (min-width: 640px) {
+      margin-right: -24px;
+    }
+
+    @media (min-width: 1200px) {
+      margin-right: 0;
+    }
+  }
+
+  &__track {
+    display: flex;
+    gap: 16px;
+    transition: transform 0.4s ease;
+  }
+
+  &__item {
+    flex: 0 0 var(--card-width);
+    display: flex;
+
+    & > * {
+      width: 100%;
+    }
+  }
+}
