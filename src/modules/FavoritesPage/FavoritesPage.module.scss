@@ -1,0 +1,41 @@
+.page {
+  background-color: #0f1121;
+  color: #f1f2f9;
+  min-height: 100%;
+}
+
+.container {
+  max-width: 1136px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+
+.title {
+  margin: 0 0 8px;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 56px;
+}
+
+.count {
+  margin: 0 0 32px;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 12px;
+}
+
+.empty {
+  padding: 80px 0;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+}
+
+@media (max-width: 639px) {
+  .container {
+    padding: 24px 16px 48px;
+  }
+
+  .title {
+    font-size: 32px;
+    line-height: 40px;
+  }
+}

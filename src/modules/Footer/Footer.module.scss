@@ -1,0 +1,125 @@
+$bg-footer: #0f0f1a;
+$border-color: rgba(255, 255, 255, 0.08);
+$text-main: #fff;
+$text-muted: rgba(255, 255, 255, 0.6);
+$bp-tablet: 1199px;
+$bp-mobile: 639px;
+
+@mixin tablet {
+  @media (max-width: $bp-tablet) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: $bp-mobile) {
+    @content;
+  }
+}
+
+.footer {
+  background: $bg-footer;
+  border-top: 1px solid $border-color;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  max-width: 1136px;
+  margin: 0 auto;
+  padding: 32px 24px;
+
+  @include tablet {
+    padding: 32px 16px;
+  }
+
+   @include mobile {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+    padding: 32px 16px;
+  }
+}
+
+.logo {
+  display: flex;
+  flex-shrink: 0;
+
+  img {
+    display: block;
+    height: 32px;
+  }
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  gap: 64px;
+
+  a {
+    color: $text-muted;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: $text-main;
+    }
+  }
+
+  @include tablet {
+    gap: 40px;
+  }
+
+   @include mobile {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+}
+
+.backToTop {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 16px;
+  color: $text-muted;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: $text-main;
+  }
+  
+   @include mobile {
+    align-self: center;
+  }
+}
+
+.backToTopButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid #323542;
+  background: #323542;
+  transition: background-color 0.2s ease;
+
+  img {
+    display: block;
+    width: 16px;
+    height: 16px;
+  }
+
+  .backToTop:hover & {
+    background: #4a4d5a;
+  }
+}
