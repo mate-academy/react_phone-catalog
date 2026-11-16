@@ -5,9 +5,28 @@ import './Navbar.scss';
 import { useLocation } from 'react-router-dom';
 
 import { Link } from 'react-router-dom';
-const Navbar = () => {
+
+const Navbar = ({ favorites }: { favorites: string[] }) => {
   const [showMenu, setShowMenu] = useState(false);
   const location = useLocation();
+
+  /*
+  const [, setDataFavorites] = useState([]);
+  const [, setDataProducts] = useState([]);
+  const [quantityFavorites, setQuantityFavorites] = useState(0);
+  const [quantityProducts, setQuantityProducts] = useState(0);
+
+  useEffect(() => {
+    const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+    const products = JSON.parse(localStorage.getItem('cart') || '[]');
+
+    setDataFavorites(favorites);
+    setDataProducts(products);
+    setQuantityFavorites(favorites.length);
+    setQuantityProducts(products.length);
+  }, []);
+
+  */
 
   return (
     <nav className="navbar">
@@ -80,7 +99,7 @@ const Navbar = () => {
                 : 'navbar__icon'
             }
           >
-            <div className="navbar__status">0</div>
+            <div className="navbar__status">{favorites.length}</div>
             <Link to="/favorites">
               <img
                 src={`${import.meta.env.VITE_PUBLIC_URL}/img/heart.svg`}
@@ -95,7 +114,7 @@ const Navbar = () => {
                 : 'navbar__icon'
             }
           >
-            <div className="navbar__status">0</div>
+            <div className="navbar__status">{/*quantityProducts*/}</div>
             <Link to="/cart">
               <img
                 src={`${import.meta.env.VITE_PUBLIC_URL}/img/shopping-bag.svg`}

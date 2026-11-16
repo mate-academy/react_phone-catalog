@@ -17,6 +17,10 @@ const Tablets = () => {
   const [itemsOnPage, setItemsOnPage] = useState(16);
   const [filter, setFilter] = useState('newest');
 
+  const [favorites, setFavorites] = useState<string[]>(
+    JSON.parse(localStorage.getItem('favorites') || '[]'),
+  );
+
   // pagination
 
   const [page, setPage] = useState(1);
@@ -96,6 +100,8 @@ const Tablets = () => {
                   key={item.id}
                   catalog={true}
                   changeEffect={changeEffect}
+                  favorites={favorites}
+                  setFavorites={setFavorites}
                 />
               );
             })}

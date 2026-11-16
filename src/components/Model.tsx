@@ -1,23 +1,24 @@
 import { Product, LocalProduct } from '../interface/Product';
 import { useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
 
 interface ModelProps {
   item: Product;
   catalog?: boolean;
   changeEffect: (nam: string) => void;
+  favorites: string[];
+  setFavorites: (list: string[]) => void;
 }
 
-const Model = ({ item, catalog, changeEffect }: ModelProps) => {
+const Model = ({
+  item,
+  catalog,
+  changeEffect,
+  favorites,
+  setFavorites,
+}: ModelProps) => {
   const navigate = useNavigate();
 
-  const [favorite, setFavorite] = useState(false);
-
-  useEffect(() => {
-    const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
-
-    setFavorite(favorites.includes(item.name));
-  }, [item.name]);
+  const favorite = favorites.includes(item.name);
 
   return (
     <article className="model__item">
@@ -80,26 +81,12 @@ const Model = ({ item, catalog, changeEffect }: ModelProps) => {
         <button
           className="model__heart"
           onClick={() => {
-            const favorites = JSON.parse(
-              localStorage.getItem('favorites') || '[]',
-            );
+            const updated = favorite
+              ? favorites.filter(name => name !== item.name)
+              : [...favorites, item.name];
 
-            if (favorite) {
-              const updatedFavorites = favorites.filter(
-                (name: string) => name !== item.name,
-              );
-
-              localStorage.setItem(
-                'favorites',
-                JSON.stringify(updatedFavorites),
-              );
-
-              setFavorite(false);
-            } else {
-              favorites.push(item.name);
-              localStorage.setItem('favorites', JSON.stringify(favorites));
-              setFavorite(true);
-            }
+            setFavorites(updated);
+            localStorage.setItem('favorites', JSON.stringify(updated));
           }}
         >
           <img

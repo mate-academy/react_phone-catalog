@@ -10,6 +10,9 @@ const NewModels = () => {
   const [data, setData] = useState<Product[]>([]);
   const [effect, setEffect] = useState(false);
   const [nameProduct, setNameProduct] = useState('');
+  const [favorites, setFavorites] = useState<string[]>(
+    JSON.parse(localStorage.getItem('favorites') || '[]'),
+  );
 
   useEffect(() => {
     fetch(
@@ -44,7 +47,13 @@ const NewModels = () => {
         <div className="models__items">
           {data.slice(0, 4).map(item => {
             return (
-              <Model item={item} key={item.id} changeEffect={changeEffect} />
+              <Model
+                favorites={favorites}
+                setFavorites={setFavorites}
+                item={item}
+                key={item.id}
+                changeEffect={changeEffect}
+              />
             );
           })}
         </div>

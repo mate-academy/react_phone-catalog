@@ -6,18 +6,19 @@ import { useState, useEffect } from 'react';
 import Model from '../components/Model';
 import { Product } from '../interface/Product';
 import Loading from '../components/Loading';
+import AddEffect from '../components/AddEffect';
 
-const Favorites = () => {
-  const [quantity, setQuantity] = useState(0);
+const Favorites = ({
+  favorites,
+  setFavorites,
+}: {
+  favorites: string[];
+  setFavorites: (list: string[]) => void;
+}) => {
   const [data, setData] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
-
-    setData(favorites);
-    setQuantity(favorites.length);
-  }, []);
+  const [effect, setEffect] = useState(false);
+  const [nameProduct, setNameProduct] = useState('');
 
   useEffect(() => {
     fetch(
@@ -25,8 +26,6 @@ const Favorites = () => {
     )
       .then(response => response.json())
       .then(result => {
-        const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
-
         const favoriteProducts = result.filter((item: Product) =>
           favorites.includes(item.name),
         );
@@ -38,24 +37,41 @@ const Favorites = () => {
         // eslint-disable-next-line no-console
         console.error(error);
       });
-  }, [data]);
+  }, [favorites]);
+
+  function changeEffect(nam: string) {
+    setEffect(true);
+    setNameProduct(nam);
+    setTimeout(() => {
+      setEffect(false);
+    }, 3000);
+  }
 
   return (
     <div className="favorites">
       <div className="container column">
         <NavPage page="Favorites" />
         <h1 className="favorites__title">Favorites</h1>
-        <span className="favorites__quantity">{quantity} items</span>
+        <span className="favorites__quantity">{data.length} items</span>
         <div className="favorites__items models__items">
           {loading && <Loading />}
           {data.length === 0 ? (
             <p className="favorites__empty">No favorites yet</p>
           ) : (
             data.map((item: Product) => {
-              return <Model key={item.id} item={item} />;
+              return (
+                <Model
+                  changeEffect={changeEffect}
+                  favorites={favorites}
+                  setFavorites={setFavorites}
+                  key={item.id}
+                  item={item}
+                />
+              );
             })
           )}
         </div>
+        <AddEffect effect={effect} name={nameProduct} />
       </div>
       <Footer />
     </div>

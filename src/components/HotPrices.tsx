@@ -3,10 +3,18 @@ import { useEffect, useState } from 'react';
 import Loading from './Loading';
 import Model from './Model';
 import { Product } from '../interface/Product';
+import AddEffect from './AddEffect';
 
 const HotPrices = () => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState<Product[]>([]);
+
+  const [favorites, setFavorites] = useState<string[]>(
+    JSON.parse(localStorage.getItem('favorites') || '[]'),
+  );
+
+  const [effect, setEffect] = useState(false);
+  const [nameProduct, setNameProduct] = useState('');
 
   useEffect(() => {
     fetch(
@@ -30,6 +38,14 @@ const HotPrices = () => {
       });
   }, []);
 
+  function changeEffect(nam: string) {
+    setEffect(true);
+    setNameProduct(nam);
+    setTimeout(() => {
+      setEffect(false);
+    }, 3000);
+  }
+
   return (
     <section className="models">
       <div className="container column">
@@ -40,10 +56,19 @@ const HotPrices = () => {
             .slice(0, 4)
             .reverse()
             .map(item => {
-              return <Model item={item} key={item.id} />;
+              return (
+                <Model
+                  item={item}
+                  key={item.id}
+                  favorites={favorites}
+                  setFavorites={setFavorites}
+                  changeEffect={changeEffect}
+                />
+              );
             })}
         </div>
       </div>
+      <AddEffect effect={effect} name={nameProduct} />
     </section>
   );
 };

@@ -27,6 +27,10 @@ const Accessories = () => {
   const [effect, setEffect] = useState(false);
   const [nameProduct, setNameProduct] = useState('');
 
+  const [favorites, setFavorites] = useState<string[]>(
+    JSON.parse(localStorage.getItem('favorites') || '[]'),
+  );
+
   useEffect(() => {
     fetch(
       `https://johnnyvasconcelos.github.io/react_phone-catalog/api/accessories.json`,
@@ -96,6 +100,8 @@ const Accessories = () => {
                   key={item.id}
                   catalog={true}
                   changeEffect={changeEffect}
+                  favorites={favorites}
+                  setFavorites={setFavorites}
                 />
               );
             })}

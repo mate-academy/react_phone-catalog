@@ -125,6 +125,16 @@ $laptop: 990px;
           top: 25px;
           left: 35%;
           transform: translateX(-50%);
+
+          @media (max-width: $laptop) {
+            left: 48%;
+            top: 10px;
+            min-width: 14px;
+            min-height: 14px;
+            width: 14px;
+            height: 14px;
+            font-size: 9px;
+          }
         }
 
         a {
