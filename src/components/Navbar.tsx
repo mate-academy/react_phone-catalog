@@ -80,6 +80,7 @@ const Navbar = () => {
                 : 'navbar__icon'
             }
           >
+            <div className="navbar__status">0</div>
             <Link to="/favorites">
               <img
                 src={`${import.meta.env.VITE_PUBLIC_URL}/img/heart.svg`}
@@ -94,6 +95,7 @@ const Navbar = () => {
                 : 'navbar__icon'
             }
           >
+            <div className="navbar__status">0</div>
             <Link to="/cart">
               <img
                 src={`${import.meta.env.VITE_PUBLIC_URL}/img/shopping-bag.svg`}

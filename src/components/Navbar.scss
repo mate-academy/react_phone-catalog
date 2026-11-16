@@ -109,6 +109,24 @@ $laptop: 990px;
         position: relative;
         width: 60px;
 
+        .navbar__status {
+          background-color: #e43833;
+          color: #fff;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 50%;
+          min-width: 16px;
+          min-height: 16px;
+          width: 16px;
+          height: 16px;
+          font-size: 10px;
+          position: absolute;
+          top: 25px;
+          left: 35%;
+          transform: translateX(-50%);
+        }
+
         a {
           height: 100%;
           width: 100%;
