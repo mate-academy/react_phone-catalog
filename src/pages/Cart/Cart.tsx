@@ -5,11 +5,14 @@ import { useCart } from '../../contexts/CartContext';
 import DeleteIcon from '../../assets/icons/delete_icon.png';
 import MinusIcon from '../../assets/icons/minus_icon.png';
 import PlusIcon from '../../assets/icons/plus_icon.png';
+import { useState } from 'react';
+import { CheckoutDialog } from '../../components/CheckoutDialog/CheckoutDialog';
 
 export const Cart = () => {
   const { cart, changeQuantity, removeFromCart, totalCount, totalPrice } =
     useCart();
   const navigate = useNavigate();
+  const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
 
   return (
     <div className="Cart  grid">
@@ -78,9 +81,25 @@ export const Cart = () => {
       </div>
       <div className="Cart-total">
         <span className="Cart-total-price">${totalPrice}</span>
-        <span className="Cart-total-amount">{`Total for ${totalCount} items`}</span>
-        <button className="Cart-total-checkout">Checkout</button>
+        <span className="Cart-total-amount">
+          Total for {totalCount} {totalCount === 1 ? 'item' : 'items'}
+        </span>
+        <button
+          className="Cart-total-checkout"
+          type="button"
+          disabled={totalCount === 0}
+          onClick={() => setIsCheckoutOpen(true)}
+        >
+          Checkout
+        </button>
       </div>
+      {isCheckoutOpen && (
+        <CheckoutDialog
+          totalCount={totalCount}
+          totalPrice={totalPrice}
+          onClose={() => setIsCheckoutOpen(false)}
+        />
+      )}
     </div>
   );
 };

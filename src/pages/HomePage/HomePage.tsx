@@ -32,7 +32,11 @@ export const HomePage: React.FC<Props> = ({ products }) => {
         <h2 className="HomePage-title ">Welcome to Nice Gadgets store!</h2>
       </div>
       <Slider />
-      <ProductSlider products={brandNewProducts} title="Brand new models" />
+      <ProductSlider
+        products={brandNewProducts}
+        title="Brand new models"
+        showDiscount={false}
+      />
       <div className="Categories grid--sub">
         <h2 className="Categories-title">Shop by category</h2>
         <div className="Categories-list grid--sub">

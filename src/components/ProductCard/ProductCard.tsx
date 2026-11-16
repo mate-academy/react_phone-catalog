@@ -9,9 +9,13 @@ import { getPublicUrl } from '../../utils/publicUrl';
 
 interface Props {
   product: ProductDetailShort;
+  showDiscount?: boolean;
 }
 
-export const ProductCard: React.FC<Props> = ({ product }) => {
+export const ProductCard: React.FC<Props> = ({
+  product,
+  showDiscount = true,
+}) => {
   const { toggleFavorite, isFavorite } = useFavorites();
   const { toggleCart, isInCart } = useCart();
   const {
@@ -38,8 +42,12 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         />
         <span className="ProductCard-title">{name}</span>
         <div className="ProductCard-priceContainer">
-          <span className="ProductCard-price">{'$' + price}</span>
-          <span className="ProductCard-discountPrice">{'$' + fullPrice}</span>
+          <span className="ProductCard-price">
+            ${showDiscount ? price : fullPrice}
+          </span>
+          {showDiscount && price < fullPrice && (
+            <span className="ProductCard-discountPrice">${fullPrice}</span>
+          )}
         </div>
         <div className="ProductCard-info">
           <ul>

@@ -1,0 +1,44 @@
+@use '../../styles/colors.scss' as *;
+@use '../../styles/fonts.scss' as *;
+
+.CheckoutDialog {
+  box-sizing: border-box;
+  width: min(480px, calc(100% - 32px));
+  max-height: calc(100dvh - 32px);
+  padding: 32px;
+  border: 1px solid $elements;
+  color: $primary;
+  background-color: $white;
+
+  &::backdrop {
+    background-color: rgba(49, 50, 55, 0.5);
+  }
+
+  &-title {
+    margin: 0 0 16px;
+
+    @include h3;
+  }
+
+  &-summary {
+    font-weight: 700;
+  }
+
+  &-button {
+    width: 100%;
+    min-height: 48px;
+    margin-top: 16px;
+    padding: 12px;
+    color: $white;
+    background-color: $primary;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+    }
+
+    &:focus-visible {
+      outline: 2px solid $primary;
+      outline-offset: 4px;
+    }
+  }
+}

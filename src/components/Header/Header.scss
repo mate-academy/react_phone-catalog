@@ -6,7 +6,6 @@
 body {
   margin: 0;
   padding: 0;
-  height: 100px;
   box-sizing: border-box;
   font-family: Mont-Regular, sans-serif;
 }
@@ -277,6 +276,7 @@ body {
   box-sizing: border-box;
   background-color: $white;
   overflow-y: auto;
+  overscroll-behavior: contain;
 
   @include on-tablet {
     margin-left: 24px;

@@ -5,9 +5,10 @@ import favoritesIcon from '../../assets/icons/favorites_icon.png';
 import cartIcon from '../../assets/icons/cart_icon.png';
 import { useFavorites } from '../../contexts/FavoritesContext';
 import { useCart } from '../../contexts/CartContext';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import BurgerIcon from '../../assets/icons/burger_icon.png';
 import CloseIcon from '../../assets/icons/delete_icon.png';
+import { useScrollLock } from '../../hooks/useScrollLock';
 
 const getLinkClass = ({ isActive }: { isActive: boolean }) =>
   isActive ? 'Header-nav-Item is-active' : 'Header-nav-Item';
@@ -20,7 +21,31 @@ export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const closeMenu = () => setIsMenuOpen(false);
   const { favorites } = useFavorites();
-  const { cart } = useCart();
+  const { totalCount } = useCart();
+
+  useScrollLock(isMenuOpen);
+
+  useEffect(() => {
+    const desktopQuery = window.matchMedia('(min-width: 640px)');
+    const handleResize = () => {
+      if (desktopQuery.matches) {
+        setIsMenuOpen(false);
+      }
+    };
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setIsMenuOpen(false);
+      }
+    };
+
+    desktopQuery.addEventListener('change', handleResize);
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      desktopQuery.removeEventListener('change', handleResize);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
 
   return (
     <header className={isMenuOpen ? 'Header is-menu-open' : 'Header'}>
@@ -105,8 +130,8 @@ export const Header = () => {
               alt="Cart"
               className="Header-iconContainer-item-icon"
             />
-            {cart.length > 0 && (
-              <span className="Header-favoritesCount">{cart.length}</span>
+            {totalCount > 0 && (
+              <span className="Header-favoritesCount">{totalCount}</span>
             )}
           </NavLink>
         </div>

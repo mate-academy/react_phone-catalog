@@ -8,11 +8,16 @@ import { useState } from 'react';
 interface Props {
   products: ProductDetailShort[];
   title: string;
+  showDiscount?: boolean;
 }
 
 const VISIBLE_PRODUCTS = 4;
 
-export const ProductSlider: React.FC<Props> = ({ products, title }) => {
+export const ProductSlider: React.FC<Props> = ({
+  products,
+  title,
+  showDiscount = true,
+}) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const maxIndex = Math.max(0, products.length - VISIBLE_PRODUCTS);
 
@@ -56,7 +61,11 @@ export const ProductSlider: React.FC<Props> = ({ products, title }) => {
           }}
         >
           {products.map(product => (
-            <ProductCard key={product.id} product={product} />
+            <ProductCard
+              key={product.id}
+              product={product}
+              showDiscount={showDiscount}
+            />
           ))}
         </div>
       </div>
