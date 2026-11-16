@@ -2,21 +2,21 @@
 @use './mixins.scss' as *;
 
 @font-face {
-  font-family: 'Mont';
+  font-family: Mont;
   src: url('/fonts/Mont-Regular.otf') format('opentype');
   font-weight: 600;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Mont';
+  font-family: Mont;
   src: url('/fonts/Mont-SemiBold.otf') format('opentype');
   font-weight: 700;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Mont';
+  font-family: Mont;
   src: url('/fonts/Mont-Bold.otf') format('opentype');
   font-weight: 800;
   font-style: normal;
@@ -25,7 +25,7 @@
 :root {
   --header-height: 48px;
 
-  @include OnDesktop {
+  @include on-desktop {
     --header-height: 64px;
   }
 }
@@ -34,7 +34,7 @@ html,
 body {
   margin: 0;
   font-weight: 600;
-  font-family: 'Mont', sans-serif;
+  font-family: Mont, sans-serif;
   color: $color-gray-4;
   background-color: $color-bg-primary;
 }
@@ -47,7 +47,7 @@ body {
   line-height: 41px;
   letter-spacing: -1%;
 
-  @include OnTablet {
+  @include on-tablet {
     font-size: 48px;
     line-height: 56px;
   }
@@ -79,9 +79,6 @@ body {
     align-items: baseline;
   }
 
-  &__name {
-  }
-
   &__value {
     color: $color-white;
     text-align: right;
@@ -89,7 +86,8 @@ body {
 }
 
 .favourite-btn {
-  @include IconButton(40px, 40px);
+  @include icon-button(40px, 40px);
+
   background-color: $color-gray-5;
   background-image: url('/img/icons/like.svg');
   border: 1px solid $color-gray-5;
@@ -143,11 +141,11 @@ body {
 .inline-container {
   padding-inline: 16px;
 
-  @include OnTablet {
+  @include on-tablet {
     padding-inline: 24px;
   }
 
-  @include OnDesktop {
+  @include on-desktop {
     max-width: 1136px;
     box-sizing: border-box;
     margin-inline: auto;
@@ -162,11 +160,11 @@ body {
   align-items: center;
   gap: 20px;
 
-  @include OnTablet {
+  @include on-tablet {
     padding-block: 40px 64px;
   }
 
-  @include OnDesktop {
+  @include on-desktop {
     padding-block: 40px 80px;
   }
 
@@ -174,7 +172,7 @@ body {
     box-sizing: border-box;
     width: 100%;
 
-    @include OnTablet {
+    @include on-tablet {
       width: 45%;
     }
   }

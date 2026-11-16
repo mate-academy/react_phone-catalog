@@ -3,15 +3,12 @@
 .catalog {
   padding-block: 24px 64px;
 
-  @include OnTablet {
+  @include on-tablet {
     padding-block: 40px 64px;
   }
 
-  @include OnDesktop {
+  @include on-desktop {
     padding-block: 40px 80px;
-  }
-
-  &__title {
   }
 
   &__info {
@@ -48,7 +45,7 @@
     justify-content: center;
     gap: 40px 16px;
 
-    @include OnTablet {
+    @include on-tablet {
       margin-bottom: 40px;
     }
   }

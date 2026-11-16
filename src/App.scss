@@ -21,7 +21,7 @@
     width: 64px;
     margin-left: 16px;
 
-    @include OnDesktop {
+    @include on-desktop {
       margin-left: 24px;
     }
   }
@@ -45,7 +45,7 @@
     background-repeat: no-repeat;
     background-position: center;
 
-    @include OnTablet {
+    @include on-tablet {
       display: none;
     }
 
@@ -59,16 +59,15 @@
     height: 100%;
     margin-left: 16px;
     flex-grow: 1;
-    display: flex;
     align-items: center;
     justify-content: space-between;
     display: none;
 
-    @include OnTablet {
+    @include on-tablet {
       display: flex;
     }
 
-    @include OnDesktop {
+    @include on-desktop {
       margin-left: 24px;
     }
   }
@@ -79,7 +78,7 @@
     display: flex;
     gap: 32px;
 
-    @include OnDesktop {
+    @include on-desktop {
       gap: 64px;
     }
   }
@@ -134,7 +133,7 @@
   &--open {
     display: block;
 
-    @include OnTablet {
+    @include on-tablet {
       display: none;
     }
   }
@@ -203,14 +202,14 @@
   flex-direction: column;
   gap: 32px;
 
-  @include OnTablet {
+  @include on-tablet {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     padding: 32px;
   }
 
-  @include OnDesktop {
+  @include on-desktop {
     width: 1136px;
     box-sizing: border-box;
     padding: 32px 0;
@@ -231,19 +230,18 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
-    text-transform: uppercase;
     font-weight: 800;
     font-size: 12px;
     letter-spacing: 4%;
     text-transform: uppercase;
 
-    @include OnTablet {
+    @include on-tablet {
       flex-direction: row;
       align-items: center;
       gap: 14px;
     }
 
-    @include OnDesktop {
+    @include on-desktop {
       gap: 100px;
     }
   }
@@ -269,11 +267,9 @@
     cursor: pointer;
   }
 
-  &__top_link_text {
-  }
-
   &__top_link_icon {
-    @include IconButton;
+    @include icon-button;
+
     background-image: url('/img/icons/arrow-top.svg');
     background-color: $color-gray-5;
   }

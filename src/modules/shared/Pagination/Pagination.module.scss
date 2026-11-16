@@ -7,7 +7,7 @@
   justify-content: center;
   gap: 6px;
 
-  @include OnTablet {
+  @include on-tablet {
     gap: 16px;
   }
 
@@ -16,14 +16,14 @@
     align-items: center;
     gap: 6px;
 
-    @include OnTablet {
+    @include on-tablet {
       gap: 8px;
     }
   }
 
   &__btn,
   &__page {
-    @include IconButton;
+    @include icon-button;
   }
 
   &__btn {

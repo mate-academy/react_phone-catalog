@@ -4,11 +4,11 @@
 .favourites {
   padding-block: 24px 56px;
 
-  @include OnTablet {
+  @include on-tablet {
     padding-block: 40px 64px;
   }
 
-  @include OnDesktop {
+  @include on-desktop {
     padding-block: 40px 80px;
   }
 
@@ -23,7 +23,7 @@
     line-height: 21px;
     margin-bottom: 32px;
 
-    @include OnTablet {
+    @include on-tablet {
       margin-bottom: 40px;
     }
   }

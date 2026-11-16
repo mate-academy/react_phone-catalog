@@ -6,34 +6,23 @@
   background-color: $color-bg-secondary;
   display: grid;
   gap: 16px;
-  grid-template-columns: 16px 80px 1fr;
-  grid-template-rows: auto;
-  grid-template-areas:
-    'delete image name'
-    'quantity quantity price';
+  grid-template:
+    'delete image name' auto
+    'quantity quantity price' auto
+    / 16px 80px 1fr;
   align-items: center;
 
-  @include OnTablet {
+  @include on-tablet {
     padding: 24px;
     gap: 24px;
-    gap: 24px;
-    grid-template-columns: auto auto 1fr auto 80px;
-    grid-template-areas: 'delete image name quantity price';
+    grid-template:
+      'delete image name quantity price' auto
+      / auto auto 1fr auto 80px;
   }
 
-  // &__row1 {
-  //   display: flex;
-  //   align-items: center;
-  //   gap: 16px;
-  //   justify-content: space-between;
-
-  //   @include OnTablet {
-  //     gap: 24px;
-  //   }
-  // }
-
   &__btn__delete {
-    @include IconButton(16px, 16px);
+    @include icon-button(16px, 16px);
+
     background-image: url('/img/icons/cross.svg');
     flex-grow: 0;
     grid-area: delete;
@@ -49,25 +38,13 @@
     grid-area: image;
   }
 
-  // &__row2 {
-  //   display: flex;
-  //   align-items: center;
-  //   justify-content: space-between;
-
-  //   @include OnTablet {
-  //     gap: 24px;
-  //     flex-grow: 1;
-  //     justify-content: space-between;
-  //   }
-  // }
-
   &__name {
     font-size: 14px;
     line-height: 21px;
     color: $color-white;
     grid-area: name;
 
-    @include OnTablet {
+    @include on-tablet {
       // max-width: 176px;
     }
   }
@@ -88,13 +65,15 @@
   }
 
   &__btn__decr {
-    @include IconButton;
+    @include icon-button;
+
     background-image: url('/img/icons/minus-gray.svg');
     border: 1px solid $color-gray-3;
   }
 
   &__btn__incr {
-    @include IconButton;
+    @include icon-button;
+
     background-image: url('/img/icons/plus.svg');
     background-color: $color-gray-5;
   }

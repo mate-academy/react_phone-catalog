@@ -11,11 +11,11 @@
     gap: 19px;
     height: 320px;
 
-    @include OnTablet {
+    @include on-tablet {
       height: 190px;
     }
 
-    @include OnDesktop {
+    @include on-desktop {
       height: 400px;
     }
   }
@@ -32,7 +32,7 @@
 
     display: none;
 
-    @include OnTablet {
+    @include on-tablet {
       display: inline-block;
     }
 

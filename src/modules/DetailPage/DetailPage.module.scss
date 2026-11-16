@@ -4,11 +4,11 @@
 .card {
   padding-block: 24px;
 
-  @include OnTablet {
+  @include on-tablet {
     padding-block: 40px 64px;
   }
 
-  @include OnDesktop {
+  @include on-desktop {
     padding-block: 40px 80px;
   }
 
@@ -18,13 +18,13 @@
   }
 
   &__content {
-    @include OnTablet {
+    @include on-tablet {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 16px;
     }
 
-    @include OnDesktop {
+    @include on-desktop {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 64px;
@@ -34,12 +34,12 @@
   &__info {
     margin-top: 40px;
 
-    @include OnTablet {
+    @include on-tablet {
       margin-top: 0;
       justify-self: end;
     }
 
-    @include OnDesktop {
+    @include on-desktop {
       justify-self: start;
       width: 320px;
     }
@@ -66,12 +66,9 @@
     margin-bottom: 24px;
 
     &_title {
-      margin: 0 0 8px 0;
+      margin: 0 0 8px;
       font-weight: 700;
       font-size: 12px;
-    }
-
-    &_toggle {
     }
   }
 
@@ -81,7 +78,7 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    margin: 32px 0 16px 0;
+    margin: 32px 0 16px;
   }
 
   &__price {
@@ -118,14 +115,14 @@
   }
 
   &__chars {
-    margin: 32px 0 56px 0;
+    margin: 32px 0 56px;
     font-weight: 700;
     font-size: 12px;
     line-height: 100%;
   }
 
   &__read {
-    @include OnDesktop {
+    @include on-desktop {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 64px;
@@ -141,7 +138,7 @@
       margin: 0;
       padding-bottom: 16px;
 
-      @include OnTablet {
+      @include on-tablet {
         font-size: 22px;
       }
     }
@@ -165,7 +162,7 @@
       color: $color-white;
       margin: 0;
 
-      @include OnTablet {
+      @include on-tablet {
         font-size: 20px;
       }
     }
@@ -186,11 +183,11 @@
   &__specs {
     margin: 56px 0;
 
-    @include OnTablet {
+    @include on-tablet {
       margin: 64px 0;
     }
 
-    @include OnDesktop {
+    @include on-desktop {
       margin: 0;
     }
 
@@ -201,7 +198,7 @@
       padding-bottom: 16px;
       margin: 0;
 
-      @include OnTablet {
+      @include on-tablet {
         font-size: 22px;
       }
     }

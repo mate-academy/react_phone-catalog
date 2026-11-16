@@ -1,6 +1,6 @@
 @use './variables.scss' as *;
 
-@mixin IconButton($width: 32px, $height: 32px) {
+@mixin icon-button($width: 32px, $height: 32px) {
   border: 1px solid transparent;
   outline: none;
   display: inline-block;
@@ -15,13 +15,13 @@
   background-position: center;
 }
 
-@mixin OnTablet {
+@mixin on-tablet {
   @media (min-width: #{$tablet}) {
     @content;
   }
 }
 
-@mixin OnDesktop {
+@mixin on-desktop {
   @media (min-width: #{$desktop}) {
     @content;
   }

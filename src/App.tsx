@@ -1,4 +1,4 @@
-import { Link, Navigate, NavLink, Route, Routes } from 'react-router-dom';
+import { Link, NavLink, Route, Routes } from 'react-router-dom';
 import './App.scss';
 import { HomePage } from './modules/HomePage';
 import { Catalog } from './modules/Catalog';
@@ -130,7 +130,7 @@ export const App = () => {
       <div className="wrapper">
         <main className="main">
           <Routes>
-            <Route path="/" element={<Navigate to="/home" replace />} />
+            <Route path="/" element={<HomePage />} />
             <Route path="/home" element={<HomePage />} />
             <Route
               path="/phones"

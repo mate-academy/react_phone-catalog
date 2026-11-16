@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import styles from './ProductsSlider.module.scss';
-import { NormalizedProduct, Product } from '../../../../interfaces/Product';
+import { NormalizedProduct } from '../../../../interfaces/Product';
 import { ProductCard } from '../../../shared/ProductCard';
 
 type Props = {
