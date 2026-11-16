@@ -1,0 +1,126 @@
+@use './mixins.scss' as *;
+
+@font-face {
+  font-family: Mont-Bold; // Назва, яку ви придумаєте для шрифту
+  src: url('/fonts/Mont-Bold.otf') format('opentype');
+  font-weight: 800; 
+  font-style: normal;
+  font-display: swap; // Щоб текст показувався одразу без затримок
+}
+
+@font-face {
+  font-family: Mont-Regular;
+  src: url('/fonts/Mont-Regular.otf') format('opentype');
+  font-weight: 500; 
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Mont-SemiBold;
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+  font-weight: 700; 
+  font-style: normal;
+  font-display: swap;
+}
+
+$bold: 'Mont-Bold', sans-serif;
+$regular: 'Mont-Regular', sans-serif;
+$semibold: 'Mont-SemiBold', sans-serif;
+
+@mixin h1{
+  font-family: $bold;
+  font-size: 32px;
+  letter-spacing: -0.01em;
+
+  @include on-tablet {
+    font-size: 48px;
+    
+  }
+
+  @include on-desktop {
+    font-size: 48px;
+    
+  }
+}
+
+@mixin h2{
+  font-family: $bold;
+  font-size: 22px;
+  letter-spacing: -0.01em;
+  line-height: 41px;
+   
+  @include on-tablet {
+    font-size: 32px;
+    line-height: 41px;
+  }
+  
+  @include on-desktop {
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+@mixin h3{
+font-family: $bold;
+  font-size: 20px;
+  
+  letter-spacing: 0;
+   
+  @include on-tablet {
+    font-size: 22px;
+  
+  }
+  
+  @include on-desktop {
+    font-size: 22px;
+  
+  }
+}
+
+@mixin h4{
+font-family: $semibold;
+  font-size: 16px;
+  
+  letter-spacing: 0;
+   
+  @include on-tablet {
+    font-size: 20px;
+    
+  }
+  
+  @include on-desktop {
+    font-size: 20px;
+    
+  }
+  
+}
+
+@mixin uppercase{
+font-family: $bold;
+  font-size: 14px;
+  
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+@mixin buttons{
+font-family: $semibold;
+  font-size: 14px;
+  
+  letter-spacing: 0;
+}
+
+@mixin body-text{
+font-family: $regular;
+  font-size: 12px;
+  
+  letter-spacing: 0;
+}
+
+@mixin small-text{
+font-family: $bold;
+  font-size: 12px;
+  
+  letter-spacing: 0;
+}

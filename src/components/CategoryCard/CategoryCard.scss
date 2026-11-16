@@ -1,0 +1,35 @@
+@use '../../styles/colors.scss' as *;
+@use '../../styles/fonts.scss' as *;
+@use '../../styles/reset.scss' as *;
+
+.CategoryCard {
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.3s ease;
+  
+  &-photo{
+    margin-bottom: 24px;
+  }
+
+  &-title{
+    font-family: Mont-Regular, sans-serif;
+    color: $primary;
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  &-amount{
+    font-family: Mont-Regular, sans-serif;
+    color: $secondary;
+    font-size: 14px;
+    font-weight: 500;
+
+  }
+
+  &:hover {
+  transform: scale(1.03);
+}
+
+}

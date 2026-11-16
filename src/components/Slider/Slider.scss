@@ -1,0 +1,120 @@
+@use '../../styles/grid.scss' as *;
+@use '../../styles/reset.scss' as *;
+@use '../../styles/colors.scss' as *;
+@use '../../styles//mixins.scss' as *;
+
+.slider {
+  margin-bottom: 56px;
+
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+  
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+
+  &__btn {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    border: 1px solid $icons;
+    
+    
+
+    @include on-tablet {
+    display: flex;
+    }
+    
+    @include on-desktop {
+    display: flex;
+    }
+
+    &:hover {
+      border-color: $primary;
+    }
+
+    &--prev {
+      grid-column: 1 / 2;
+      
+    }
+
+    &--next {
+      grid-column: 24 / 25;
+      
+      @include on-tablet {
+      grid-column: 12 / 13;
+      }
+      
+      @include on-desktop {
+      grid-column: 24 / 25;
+      }
+    }
+  }
+
+  &__btn-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__viewport {
+  grid-column: 1 / -1;
+  width: 100%;
+  min-width: 0;
+  overflow: auto hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @include on-tablet {
+    grid-column: 2 / 12;
+  }
+
+  @include on-desktop {
+    grid-column: 2 / 24;
+  }
+}
+
+&__track {
+  display: flex;
+  width: 100%;
+}
+
+&__item {
+  flex: 0 0 100%;
+  width: 100%;
+  
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+&__pagination {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 16px;
+}
+
+&__dot {
+  width: 14px;
+  height: 4px;
+  padding: 0;
+  border: 0;
+  background-color: $icons;
+  cursor: pointer;
+
+  &.is-active {
+    background-color: $primary;
+  }
+}
+}

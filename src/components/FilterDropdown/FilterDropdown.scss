@@ -1,0 +1,80 @@
+@use '../../styles/colors.scss' as *;
+@use '../../styles/fonts.scss' as *;
+
+.filter-item{
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+  position: relative;
+
+}
+
+.filter-name{
+  color: $secondary;
+  
+  @include small-text;
+}
+
+.filter-select{
+  align-items: center;
+  appearance: none;
+  background-color: $white;
+  background-image: url('../../assets/icons/downArrow_icon.png');
+  background-position: right 16px center;
+  background-repeat: no-repeat;
+  background-size: 16px 16px;
+  border: 1px solid $icons;
+  color: $primary;
+  cursor: pointer;
+  display: flex;
+  height: 40px;
+  justify-content: space-between;
+  padding: 0 48px 0 16px;
+  width: 100%;
+  
+  @include buttons;
+
+  &:hover{
+    border-color: $secondary;
+  }
+
+  &:focus-visible,
+  &.is-open{
+    border-color: $primary;
+    background-image: url('../../assets/icons/upArrow_icon.png');
+  }
+}
+
+.filter-options{
+  background-color: $white;
+  border: 1px solid $elements;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: calc(100% + 6px);
+  z-index: 1;
+}
+
+.filter-select-item{
+  align-items: center;
+  color: $secondary;
+  cursor: pointer;
+  display: flex;
+  min-height: 32px;
+  padding: 4px 16px;
+  
+  @include buttons;
+
+  &:hover,
+  &:focus-visible{
+    background-color: $hover_bg;
+    color: $primary;
+    outline: none;
+  }
+
+  &[aria-selected='true']{
+    color: $primary;
+  }
+}

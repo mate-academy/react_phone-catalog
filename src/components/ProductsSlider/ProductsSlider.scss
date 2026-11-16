@@ -1,0 +1,107 @@
+@use '../../styles/colors.scss' as *;
+@use '../../styles/fonts.scss' as *;
+@use '../../styles/reset.scss' as *;
+@use '../../styles/grid.scss' as *;
+
+.NewModels.grid--sub{
+  margin-bottom: 40px;
+}
+
+.NewModels {
+  
+
+  &-title-container {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    
+  }
+
+  &-title {
+    grid-column: 1 / -1;
+    margin-top: 0;
+    
+    
+    @include h2;
+  }
+
+  &-title-Buttons {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &-title-Button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: 1px solid $icons;
+    background: transparent;
+    cursor: pointer;
+    
+    &:disabled {
+      border-color: $elements;
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+
+    &:hover:not(:disabled) {
+      border-color: $primary;
+    }
+
+
+    img {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &-viewport {
+    grid-column: 1 / -1;
+    width: 100%;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  &-track {
+    display: flex;
+    gap: $gutter;
+    width: 100%;
+    transition: transform 0.4s ease-in-out;
+    will-change: transform;
+
+    .ProductCard {
+      box-sizing: border-box;
+      flex: 0 0 calc((100% - #{$gutter * 3}) / 4);
+    }
+  }
+}
+
+@media (max-width: 639px) {
+  .NewModels-viewport {
+    overflow: auto hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .NewModels-track {
+    width: max-content;
+    transform: none !important;
+    transition: none;
+  }
+
+  .NewModels-track .ProductCard {
+    flex: 0 0 65vw;
+    scroll-snap-align: start;
+  }
+
+  .NewModels-title-Buttons {
+    display: none;
+  }
+}

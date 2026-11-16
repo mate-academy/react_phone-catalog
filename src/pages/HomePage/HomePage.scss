@@ -1,0 +1,62 @@
+@use '../../styles/colors.scss' as *;
+@use '../../styles/fonts.scss' as *;
+@use '../../styles/reset.scss' as *;
+@use '../../styles/mixins.scss' as *;
+
+.Categories-title {
+  grid-column: 1 / -1;
+    margin-top: 0;
+    margin-bottom: 24px;
+    
+    @include h2;
+    
+}
+
+.Categories{
+  margin-bottom: 32px;
+ &-list-item{
+    grid-column: 1/-1;
+  }
+  
+  @include on-tablet {
+    margin-bottom: 64px;
+    &-list-item{
+    grid-column: span 4;
+    }
+  }
+  
+  @include on-desktop {
+    margin-bottom: 80px;
+    &-list-item{
+    grid-column: span 8;
+    }
+  }
+}
+
+
+.HomePage {
+
+&-title {
+    @include h1;
+    
+    margin-bottom: 24px;
+    grid-column: 1 / -1;
+    
+    @include on-tablet {
+      margin-bottom: 32px;
+      grid-column: 1 / -1;
+    }
+    
+    @include on-desktop {
+      margin-bottom: 56px;
+      grid-column: 1 / -1;
+    }
+  }
+}
+
+.hiden {
+  visibility: hidden;
+  height: 0;
+  padding: 0;
+  margin: 0;
+}
