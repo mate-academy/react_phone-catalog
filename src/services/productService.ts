@@ -2,7 +2,7 @@
 
 import { Product } from '../interfaces/Product';
 
-const API_URL = '/api/products.json';
+const API_URL = 'api/products.json';
 
 let productsCache: Product[] | null = null;
 

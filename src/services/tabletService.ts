@@ -2,7 +2,7 @@
 
 import { Tablet } from '../interfaces/Product';
 
-const API_URL = '/api/tablets.json';
+const API_URL = 'api/tablets.json';
 
 let tabletsCache: Tablet[] | null = null;
 

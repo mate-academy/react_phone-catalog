@@ -26,13 +26,13 @@ export const HomePage = () => {
         <h1 className={styles.header__title}>Welcome to Nice Gadgets store!</h1>
         <Slider>
           <div>
-            <img src="/img/imgs/header-slider1.png" alt="Slide 1" />
+            <img src="img/imgs/header-slider1.png" alt="Slide 1" />
           </div>
           <div>
-            <img src="/img/imgs/header-slider2.png" alt="Slide 2" />
+            <img src="img/imgs/header-slider2.png" alt="Slide 2" />
           </div>
           <div>
-            <img src="/img/imgs/header-slider3.png" alt="Slide 3" />
+            <img src="img/imgs/header-slider3.png" alt="Slide 3" />
           </div>
         </Slider>
       </header>
@@ -44,7 +44,7 @@ export const HomePage = () => {
             <ul className={styles.categories__list}>
               <li className={styles.category}>
                 <img
-                  src="/img/imgs/category-phone.png"
+                  src="img/imgs/category-phone.png"
                   alt="Phones"
                   className={styles.category__image}
                 />
@@ -55,7 +55,7 @@ export const HomePage = () => {
               </li>
               <li className={styles.category}>
                 <img
-                  src="/img/imgs/category-tablets.png"
+                  src="img/imgs/category-tablets.png"
                   alt="Tablets"
                   className={styles.category__image}
                 />
@@ -66,7 +66,7 @@ export const HomePage = () => {
               </li>
               <li className={styles.category}>
                 <img
-                  src="/img/imgs/category-accessories.png"
+                  src="img/imgs/category-accessories.png"
                   alt="Accessories"
                   className={styles.category__image}
                 />

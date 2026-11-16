@@ -16,8 +16,8 @@ export const Breadcrumbs = () => {
 
   return (
     <nav className={styles.breadcrumbs}>
-      <Link to="/home" className={styles.breadcrumbs__item}>
-        <img src="/img/icons/home.svg" alt="home" />
+      <Link to="/" className={styles.breadcrumbs__item}>
+        <img src="img/icons/home.svg" alt="home" />
       </Link>
 
       {segments.map((segment, index) => {

@@ -45,7 +45,7 @@ export const ProductCard = ({ item }: Props) => {
     >
       <img
         className={styles.card__img}
-        src={`/${product.image}`}
+        src={product.image}
         alt={product.name}
       />
       <span className={styles.card__name}>{product.name}</span>

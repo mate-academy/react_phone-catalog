@@ -15,7 +15,7 @@ import { useFavourites } from './context/FavouritesContext';
 import { NotFoundPage } from './modules/shared/NotFoundPage';
 
 const menuItems = [
-  { to: '/home', label: 'Home' },
+  { to: '/', label: 'Home' },
   { to: '/phones', label: 'Phones' },
   { to: '/tablets', label: 'Tablets' },
   { to: '/accessories', label: 'Accessories' },
@@ -54,10 +54,10 @@ export const App = () => {
   return (
     <div className="App">
       <div className="header">
-        <Link to="/home" className="header__logo_link">
+        <Link to="/" className="header__logo_link">
           <img
             className="header__logo_img"
-            src="/img/imgs/logo.png"
+            src="img/imgs/logo.png"
             alt="Nice Gadgets Logo"
           />
         </Link>
@@ -131,7 +131,6 @@ export const App = () => {
         <main className="main">
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/home" element={<HomePage />} />
             <Route
               path="/phones"
               element={<Catalog service={phoneService} title="Mobile phones" />}
@@ -165,10 +164,10 @@ export const App = () => {
         </main>
         <div className="divider"></div>
         <footer className="footer">
-          <Link to="/home" className="footer__logo_link">
+          <Link to="/" className="footer__logo_link">
             <img
               className="footer__logo_img"
-              src="/img/imgs/logo.png"
+              src="img/imgs/logo.png"
               alt="Nice Gadgets Logo"
             />
           </Link>

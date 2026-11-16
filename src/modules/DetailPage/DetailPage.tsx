@@ -134,7 +134,7 @@ export const DetailPage: React.FC<Props> = ({ service }) => {
     return (
       <div className="not-found inline-container">
         <img
-          src="/img/product-not-found.png"
+          src="img/product-not-found.png"
           alt="not found"
           className="not-found--image"
         />

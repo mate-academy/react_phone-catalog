@@ -11,7 +11,7 @@ export const PhotoSlider: React.FC<Props> = ({ photos }) => {
   return (
     <div className={styles.slider}>
       <div className={styles.mainPhoto}>
-        <img src={`/${photos[activeIndex]}`} alt="product" />
+        <img src={photos[activeIndex]} alt="product" />
       </div>
 
       <div className={styles.thumbnails}>
@@ -21,7 +21,7 @@ export const PhotoSlider: React.FC<Props> = ({ photos }) => {
             className={`${styles.thumb} ${index === activeIndex ? styles.active : ''}`}
             onClick={() => setActiveIndex(index)}
           >
-            <img src={`/${photo}`} alt={`photo ${index + 1}`} />
+            <img src={photo} alt={`photo ${index + 1}`} />
           </div>
         ))}
       </div>

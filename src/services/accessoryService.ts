@@ -2,7 +2,7 @@
 
 import { Accessory } from '../interfaces/Product';
 
-const API_URL = '/api/accessories.json';
+const API_URL = 'api/accessories.json';
 
 let accessoriesCache: Accessory[] | null = null;
 
