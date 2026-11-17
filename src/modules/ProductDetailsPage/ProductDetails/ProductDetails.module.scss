@@ -1,0 +1,486 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.product-details {
+  &__title {
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 31px;
+    color: var(--color-primary);
+    margin-bottom: 24px;
+
+    @include from($breakpoint-tablet) {
+      margin-bottom: 40px;
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -0.01rem;
+    }
+  }
+
+  &__overview,
+  &__info {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+
+    @include from($breakpoint-tablet) {
+      grid-template-columns: repeat(12, 1fr);
+    }
+
+    @include from($breakpoint-desktop) {
+      grid-template-columns: repeat(24, 1fr);
+    }
+  }
+
+  &__overview {
+    margin-bottom: 56px;
+
+    @include from($breakpoint-tablet) {
+      margin-bottom: 64px;
+    }
+
+    @include from($breakpoint-desktop) {
+      margin-bottom: 80px;
+    }
+  }
+
+  &__purchase {
+    position: relative;
+
+    @include from($breakpoint-tablet) {
+      grid-column: 8 / -1;
+    }
+
+    @include from($breakpoint-desktop) {
+      grid-column: 14 / -1;
+    }
+  }
+
+  &__info {
+    row-gap: 56px;
+    margin-bottom: 56px;
+
+    @include from($breakpoint-tablet) {
+      row-gap: 64px;
+      margin-bottom: 64px;
+    }
+
+    @include from($breakpoint-desktop) {
+      margin-bottom: 80px;
+    }
+  }
+
+  &__about {
+    @include from($breakpoint-tablet) {
+      grid-column: 1 / 8;
+    }
+
+    @include from($breakpoint-desktop) {
+      grid-column: 1 / 13;
+    }
+  }
+
+  &__specs {
+    @include from($breakpoint-tablet) {
+      grid-column: 8 / -1;
+    }
+
+    @include from($breakpoint-desktop) {
+      grid-column: 14 / -1;
+    }
+  }
+
+  .gallery {
+    display: grid;
+    gap: 16px;
+
+    @include from($breakpoint-tablet) {
+      grid-template-columns: 1fr 8fr;
+      grid-column: 1 / 8;
+    }
+
+    @include from($breakpoint-desktop) {
+      grid-template-columns: 80px 8fr;
+      grid-column: 1 / 13;
+    }
+
+    &__picture {
+      width: 100%;
+      max-height: 464px;
+      animation: picture-visibility var(--transition);
+
+      @include from($breakpoint-tablet) {
+        order: 2;
+      }
+    }
+
+    &__image {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      aspect-ratio: 1 / 1;
+    }
+
+    &__list {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+
+      @include from($breakpoint-tablet) {
+        grid-template-columns: 1fr;
+        order: 1;
+        align-content: start;
+      }
+    }
+
+    &__button {
+      border: 1px solid var(--color-elements);
+      border-radius: 4px;
+      aspect-ratio: 1 / 1;
+      width: 100%;
+      overflow: hidden;
+      padding: 4px;
+      transition: border-color var(--transition);
+      cursor: pointer;
+
+      @include from($breakpoint-desktop) {
+        padding: 7px;
+        border-radius: 8px;
+      }
+    }
+
+    &__button-image {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transition: transform var(--transition), opacity var(--transition);
+      opacity: 0.6;
+    }
+
+    &__button--active {
+      border-color: var(--color-primary);
+
+      .gallery__button-image {
+        opacity: 1;
+      }
+    }
+  }
+
+  .available-colors {
+    display: flex;
+    justify-content: space-between;
+    padding: 24px 0;
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--color-elements);
+
+    @include from($breakpoint-tablet) {
+      padding: 0 0 24px;
+    }
+
+    @include from($breakpoint-desktop) {
+      max-width: 320px;
+    }
+
+    &__title,
+    &__id {
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 15px;
+    }
+
+    &__title {
+      color: var(--color-secondary);
+      padding-bottom: 8px;
+    }
+
+    &__list {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    &__label {
+      display: block;
+      width: 32px;
+      height: 32px;
+      border: 1px solid var(--color-elements);
+      border-radius: 999px;
+      transition: border-color var(--transition);
+      cursor: pointer;
+
+      &--active {
+        border-color: var(--color-primary);
+      }
+
+      &:hover {
+        border-color: var(--color-primary);
+      }
+    }
+
+    &__input {
+      display: none;
+    }
+
+    &__circle {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border-radius: 999px;
+      border: 2px solid var(--color-white);
+    }
+
+    &__id {
+      text-transform: uppercase;
+      color: var(--color-icon);
+
+      @include from($breakpoint-desktop) {
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+    }
+  }
+
+  .available-capacity {
+    display: flex;
+    flex-direction: column;
+    padding: 24px 0;
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--color-elements);
+
+    @include from($breakpoint-tablet) {
+      padding: 0 0 24px;
+    }
+
+    @include from($breakpoint-desktop) {
+      max-width: 320px;
+      margin-bottom: 32px;
+    }
+
+    &__title {
+      color: var(--color-secondary);
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 15px;
+      padding-bottom: 8px;
+    }
+
+    &__list {
+      display: flex;
+      gap: 8px;
+    }
+
+    &__label {
+      display: block;
+      border-radius: 4px;
+      border: 1px solid var(--color-icon);
+      color: var(--color-primary);
+      font-size: 14px;
+      line-height: 21px;
+      padding: 7px 8px;
+      transition: background-color var(--transition), border-color var(--transition), color var(--transition);
+      cursor: pointer;
+
+      &--active,
+      &:hover {
+        background-color: var(--color-primary);
+        border-color: var(--color-primary);
+        color: var(--color-white);
+      }
+    }
+
+    &__input {
+      display: none;
+    }
+  }
+
+  .available-options {
+    @include from($breakpoint-desktop) {
+      max-width: 320px;
+    }
+
+    &__price {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    &__new-price {
+      color: var(--color-primary);
+      font-weight: 700;
+      font-size: 32px;
+      letter-spacing: -0.01rem;
+      line-height: 41px;
+    }
+
+    &__old-price {
+      color: var(--color-secondary);
+      font-size: 22px;
+      line-height: 30px;
+      text-decoration: line-through;
+    }
+
+    &__buttons {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 32px;
+    }
+
+    &__button-accept {
+      flex: 1;
+      min-width: 0;
+      background-color: var(--color-accent);
+      border-radius: 48px;
+      height: 48px;
+      color: var(--color-white);
+      font-size: 14px;
+      line-height: 21px;
+      font-weight: 600;
+      text-align: center;
+      transition: box-shadow var(--transition);
+      cursor: pointer;
+
+      &:hover {
+        box-shadow: 0 3px 13px 0 var(--shadow-primary);
+      }
+    }
+
+    &__button-favorite {
+      display: flex;
+      flex-shrink: 0;
+      justify-content: center;
+      align-items: center;
+      width: 48px;
+      height: 48px;
+      border: 1px solid var(--color-icon);
+      border-radius: 999px;
+      transition: border-color var(--transition);
+      cursor: pointer;
+
+      &:hover {
+        border-color: var(--color-primary);
+      }
+    }
+
+    &__icon-heart {
+      width: 16px;
+      height: 16px;
+      fill: var(--color-primary);
+    }
+
+    &__available-options--selected {
+      .available-options__icon-heart {
+        color: var(--color-secondary-accent);
+      }
+    }
+
+    &__rows {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    &__row {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__option-name,
+    &__option-desc {
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 15px;
+    }
+
+    &__option-name {
+      color: var(--color-secondary);
+    }
+
+    &__option-desc {
+      color: var(--color-primary);
+      text-transform: uppercase;
+    }
+  }
+
+  .about__title,
+  .specs__title {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 26px;
+    color: var(--color-primary);
+    padding-bottom: 16px;
+    margin-bottom: 32px;
+    border-bottom: 1px solid var(--color-elements);
+
+    @include from($breakpoint-tablet) {
+      font-weight: 700;
+      font-size: 22px;
+      line-height: 31px;
+    }
+  }
+
+  .about {
+    &__description:not(:last-child) {
+      margin-bottom: 32px;
+    }
+
+    &__description-title {
+      color: var(--color-primary);
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 26px;
+      padding-bottom: 16px;
+
+    }
+
+    &__description-text {
+      color: var(--color-secondary);
+      font-size: 14px;
+      line-height: 21px;
+    }
+  }
+
+  .specs {
+    &__list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    &__row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    &__option-name,
+    &__option-desc {
+      font-size: 14px;
+      line-height: 21px;
+      color: var(--color-primary);
+    }
+
+    &__option-name {
+      color: var(--color-secondary);
+    }
+  }
+}
+
+@keyframes picture-visibility {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gallery__picture {
+    animation: none;
+  }
+}
