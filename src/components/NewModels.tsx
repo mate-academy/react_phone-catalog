@@ -4,15 +4,23 @@ import Loading from './Loading';
 import Model from './Model';
 import { Product } from '../interface/Product';
 import AddEffect from './AddEffect';
+import { LocalProduct } from '../interface/Product';
 
-const NewModels = () => {
+const NewModels = ({
+  favorites,
+  setFavorites,
+  products,
+  setProducts,
+}: {
+  favorites: string[];
+  products: LocalProduct[];
+  setFavorites: (list: string[]) => void;
+  setProducts: (list: LocalProduct[]) => void;
+}) => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState<Product[]>([]);
   const [effect, setEffect] = useState(false);
   const [nameProduct, setNameProduct] = useState('');
-  const [favorites, setFavorites] = useState<string[]>(
-    JSON.parse(localStorage.getItem('favorites') || '[]'),
-  );
 
   useEffect(() => {
     fetch(
@@ -53,6 +61,8 @@ const NewModels = () => {
                 item={item}
                 key={item.id}
                 changeEffect={changeEffect}
+                products={products}
+                setProducts={setProducts}
               />
             );
           })}

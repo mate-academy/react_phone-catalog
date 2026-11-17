@@ -9,8 +9,19 @@ import Footer from '../components/Footer';
 import Pagination from '../components/Pagination';
 import Filters from './Filters';
 import AddEffect from '../components/AddEffect';
+import { LocalProduct } from '../interface/Product';
 
-const Accessories = () => {
+const Accessories = ({
+  favorites,
+  setFavorites,
+  products,
+  setProducts,
+}: {
+  favorites: string[];
+  setFavorites: (list: string[]) => void;
+  products: LocalProduct[];
+  setProducts: (list: LocalProduct[]) => void;
+}) => {
   const [data, setData] = useState<Product[]>([]);
   const [items, setItems] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
@@ -26,10 +37,6 @@ const Accessories = () => {
   const pages = [];
   const [effect, setEffect] = useState(false);
   const [nameProduct, setNameProduct] = useState('');
-
-  const [favorites, setFavorites] = useState<string[]>(
-    JSON.parse(localStorage.getItem('favorites') || '[]'),
-  );
 
   useEffect(() => {
     fetch(
@@ -102,6 +109,8 @@ const Accessories = () => {
                   changeEffect={changeEffect}
                   favorites={favorites}
                   setFavorites={setFavorites}
+                  products={products}
+                  setProducts={setProducts}
                 />
               );
             })}

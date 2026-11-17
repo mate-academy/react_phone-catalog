@@ -9,8 +9,19 @@ import { useEffect, useState } from 'react';
 import Loading from '../components/Loading';
 import { Product, Phone } from '../interface/Product';
 import AddEffect from '../components/AddEffect';
+import { LocalProduct } from '../interface/Product';
 
-const ProductItem = () => {
+const ProductItem = ({
+  favorites,
+  setFavorites,
+  products,
+  setProducts,
+}: {
+  favorites: string[];
+  setFavorites: (list: string[]) => void;
+  products: LocalProduct[];
+  setProducts: (list: LocalProduct[]) => void;
+}) => {
   const { product } = useParams();
 
   const [loading, setLoading] = useState(true);
@@ -175,7 +186,12 @@ const ProductItem = () => {
                     productName={productName}
                   />
                   <ProductParagraphs realProduct={realProduct} />
-                  <ProductItems />
+                  <ProductItems
+                    favorites={favorites}
+                    setFavorites={setFavorites}
+                    products={products}
+                    setProducts={setProducts}
+                  />
                 </>
               )}
             </main>

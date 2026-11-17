@@ -5,8 +5,19 @@ import { Product } from '../interface/Product';
 import { useEffect, useState } from 'react';
 // import { useParams } from 'react-router-dom';
 import AddEffect from './AddEffect';
+import { LocalProduct } from '../interface/Product';
 
-const ProductItems = () => {
+const ProductItems = ({
+  favorites,
+  setFavorites,
+  products,
+  setProducts,
+}: {
+  favorites: string[];
+  products: LocalProduct[];
+  setFavorites: (list: string[]) => void;
+  setProducts: (list: LocalProduct[]) => void;
+}) => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState<Product[]>([]);
   const [effect, setEffect] = useState(false);
@@ -93,7 +104,15 @@ const ProductItems = () => {
           <div className="product__slides" style={{ left: `${left}%` }}>
             {data.slice(0, 8).map(item => {
               return (
-                <Model item={item} key={item.id} changeEffect={changeEffect} />
+                <Model
+                  item={item}
+                  key={item.id}
+                  changeEffect={changeEffect}
+                  favorites={favorites}
+                  setFavorites={setFavorites}
+                  products={products}
+                  setProducts={setProducts}
+                />
               );
             })}
           </div>

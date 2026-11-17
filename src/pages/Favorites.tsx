@@ -7,13 +7,18 @@ import Model from '../components/Model';
 import { Product } from '../interface/Product';
 import Loading from '../components/Loading';
 import AddEffect from '../components/AddEffect';
+import { LocalProduct } from '../interface/Product';
 
 const Favorites = ({
   favorites,
   setFavorites,
+  products,
+  setProducts,
 }: {
   favorites: string[];
   setFavorites: (list: string[]) => void;
+  products: LocalProduct[];
+  setProducts: (list: LocalProduct[]) => void;
 }) => {
   const [data, setData] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
@@ -66,6 +71,8 @@ const Favorites = ({
                   setFavorites={setFavorites}
                   key={item.id}
                   item={item}
+                  products={products}
+                  setProducts={setProducts}
                 />
               );
             })

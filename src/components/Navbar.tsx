@@ -3,10 +3,17 @@
 import { useState } from 'react';
 import './Navbar.scss';
 import { useLocation } from 'react-router-dom';
+import { LocalProduct } from '../interface/Product';
 
 import { Link } from 'react-router-dom';
 
-const Navbar = ({ favorites }: { favorites: string[] }) => {
+const Navbar = ({
+  favorites,
+  products,
+}: {
+  favorites: string[];
+  products: LocalProduct[];
+}) => {
   const [showMenu, setShowMenu] = useState(false);
   const location = useLocation();
 
@@ -99,7 +106,9 @@ const Navbar = ({ favorites }: { favorites: string[] }) => {
                 : 'navbar__icon'
             }
           >
-            <div className="navbar__status">{favorites.length}</div>
+            {favorites.length > 0 && (
+              <div className="navbar__status">{favorites.length}</div>
+            )}
             <Link to="/favorites">
               <img
                 src={`${import.meta.env.VITE_PUBLIC_URL}/img/heart.svg`}
@@ -114,7 +123,9 @@ const Navbar = ({ favorites }: { favorites: string[] }) => {
                 : 'navbar__icon'
             }
           >
-            <div className="navbar__status">{/*quantityProducts*/}</div>
+            {products.length > 0 && (
+              <div className="navbar__status">{products.length}</div>
+            )}
             <Link to="/cart">
               <img
                 src={`${import.meta.env.VITE_PUBLIC_URL}/img/shopping-bag.svg`}

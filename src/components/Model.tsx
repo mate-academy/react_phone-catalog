@@ -7,6 +7,8 @@ interface ModelProps {
   changeEffect: (nam: string) => void;
   favorites: string[];
   setFavorites: (list: string[]) => void;
+  products: LocalProduct[];
+  setProducts: (list: LocalProduct[]) => void;
 }
 
 const Model = ({
@@ -15,6 +17,8 @@ const Model = ({
   changeEffect,
   favorites,
   setFavorites,
+  products,
+  setProducts,
 }: ModelProps) => {
   const navigate = useNavigate();
 
@@ -62,17 +66,15 @@ const Model = ({
           className="model_button"
           onClick={() => {
             changeEffect(item.name);
-            const cart: LocalProduct[] = JSON.parse(
-              localStorage.getItem('cart') || '[]',
-            );
 
-            if (!cart.some(c => c.id === item.itemId)) {
-              cart.push({
-                id: item.itemId,
-                color: item.color,
-                title: item.name,
-              });
-              localStorage.setItem('cart', JSON.stringify(cart));
+            if (!products.some(c => c.id === item.itemId)) {
+              const updated = [
+                ...products,
+                { id: item.itemId, color: item.color, title: item.name },
+              ];
+
+              setProducts(updated);
+              localStorage.setItem('cart', JSON.stringify(updated));
             }
           }}
         >
