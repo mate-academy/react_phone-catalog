@@ -17,11 +17,10 @@
 
 
 .column {
-  display: flex;
-  flex-flow: row wrap;
-  row-gap: 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 272px), 1fr));
+  gap: 40px 16px;
+  width: 100%;
+  min-width: 0;
 
-  @include on-mobile {
-    flex-flow: column nowrap;
-  }
 }

@@ -14,6 +14,7 @@
   &-main {
     display: grid;
     min-height: calc(100vh - vars.$header-height - vars.$footer-height);
+    min-width: 0;
     grid-column: 1 / -1;
 
     @include on-tablet {
