@@ -2,6 +2,7 @@ import { Product, Phone } from '../interface/Product';
 import { useState } from 'react';
 import ProductInfo from './ProductInfo';
 import ProductCarousel from './ProductCarousel';
+import { LocalProduct } from '../interface/Product';
 
 interface ProductDataProps {
   product: Product;
@@ -12,6 +13,10 @@ interface ProductDataProps {
   currentColor: string | undefined;
   setCurrentColor: React.Dispatch<React.SetStateAction<string | undefined>>;
   productName: () => string | undefined;
+  favorites: string[];
+  setFavorites: (list: string[]) => void;
+  products: LocalProduct[];
+  setProducts: (list: LocalProduct[]) => void;
 }
 
 const ProductData = ({
@@ -23,6 +28,10 @@ const ProductData = ({
   setCurrentCapacity,
   setCurrentColor,
   productName,
+  products,
+  setProducts,
+  favorites,
+  setFavorites,
 }: ProductDataProps) => {
   const [imageActive, setImageActive] = useState(0);
 
@@ -58,6 +67,10 @@ const ProductData = ({
             setCurrentColor={setCurrentColor}
             changeEffect={changeEffect}
             productName={productName}
+            products={products}
+            setProducts={setProducts}
+            favorites={favorites}
+            setFavorites={setFavorites}
           />
         </div>
         <span className="product__id">ID: {product.id}</span>

@@ -61,7 +61,10 @@ export const App = () => {
                 />
               }
             />
-            <Route path="cart" element={<Cart />} />
+            <Route
+              path="cart"
+              element={<Cart products={products} setProducts={setProducts} />}
+            />
             <Route
               path="favorites"
               element={

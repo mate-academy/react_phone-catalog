@@ -1,5 +1,5 @@
 import { LocalProduct, Phone } from '../interface/Product';
-import { useEffect, useState } from 'react';
+// import { useEffect, useState } from 'react';
 
 interface ProductInfoProps {
   realProduct: Phone;
@@ -9,6 +9,10 @@ interface ProductInfoProps {
   setCurrentColor: React.Dispatch<React.SetStateAction<string | undefined>>;
   changeEffect: (nam: string) => void;
   productName: () => string | undefined;
+  favorites: string[];
+  setFavorites: (list: string[]) => void;
+  products: LocalProduct[];
+  setProducts: (list: LocalProduct[]) => void;
 }
 
 const ProductInfo = ({
@@ -19,19 +23,14 @@ const ProductInfo = ({
   setCurrentColor,
   changeEffect,
   productName,
+  products,
+  setProducts,
+  favorites,
+  setFavorites,
 }: ProductInfoProps) => {
-  const [favorite, setFavorite] = useState(false);
   // const [productNameConst, setProductNameConst] = useState('');
 
-  useEffect(() => {
-    const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
-
-    setFavorite(
-      favorites.some((item: LocalProduct) => item.id === realProduct.id),
-    );
-
-    // setProductNameConst(productName());
-  }, [realProduct.name]);
+  const favorite = favorites.includes(realProduct.name);
 
   return (
     <div className="product__info">
@@ -84,21 +83,21 @@ const ProductInfo = ({
         <button
           className="product__button"
           onClick={() => {
-            const cart: LocalProduct[] = JSON.parse(
-              localStorage.getItem('cart') || '[]',
-            );
-
-            if (!cart.some(item => item.id === realProduct.id)) {
-              cart.push({
-                id: realProduct.id,
-                capacity: currentCapacity,
-                color: currentColor,
-                title: productName(),
-              });
-              localStorage.setItem('cart', JSON.stringify(cart));
-            }
-
             changeEffect(realProduct.name);
+
+            if (!products.some(c => c.id === realProduct.id)) {
+              const updated = [
+                ...products,
+                {
+                  id: realProduct.id,
+                  color: realProduct.color,
+                  title: productName(),
+                },
+              ];
+
+              setProducts(updated);
+              localStorage.setItem('cart', JSON.stringify(updated));
+            }
           }}
         >
           Add to cart
@@ -106,30 +105,12 @@ const ProductInfo = ({
         <button
           className="product__favorite"
           onClick={() => {
-            const favorites: LocalProduct[] = JSON.parse(
-              localStorage.getItem('favorites') || '[]',
-            );
+            const updated = favorite
+              ? favorites.filter(name => name !== realProduct.name)
+              : [...favorites, realProduct.name];
 
-            if (favorite) {
-              const updatedFavorites = favorites.filter(
-                item => item.id !== realProduct.id,
-              );
-
-              localStorage.setItem(
-                'favorites',
-                JSON.stringify(updatedFavorites),
-              );
-              setFavorite(false);
-            } else {
-              favorites.push({
-                id: realProduct.id,
-                capacity: currentCapacity,
-                color: currentColor,
-                title: productName(),
-              });
-              localStorage.setItem('favorites', JSON.stringify(favorites));
-              setFavorite(true);
-            }
+            setFavorites(updated);
+            localStorage.setItem('favorites', JSON.stringify(updated));
           }}
         >
           <img

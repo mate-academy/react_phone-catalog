@@ -184,6 +184,10 @@ const ProductItem = ({
                     currentCapacity={currentCapacity}
                     setCurrentCapacity={setCurrentCapacity}
                     productName={productName}
+                    favorites={favorites}
+                    setFavorites={setFavorites}
+                    products={products}
+                    setProducts={setProducts}
                   />
                   <ProductParagraphs realProduct={realProduct} />
                   <ProductItems

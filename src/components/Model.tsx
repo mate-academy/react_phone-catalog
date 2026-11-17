@@ -67,10 +67,12 @@ const Model = ({
           onClick={() => {
             changeEffect(item.name);
 
-            if (!products.some(c => c.id === item.itemId)) {
+            const itemId = item.itemId ?? item.id;
+
+            if (!products.some(c => c.id === itemId)) {
               const updated = [
                 ...products,
-                { id: item.itemId, color: item.color, title: item.name },
+                { id: itemId, color: item.color, title: item.name },
               ];
 
               setProducts(updated);
