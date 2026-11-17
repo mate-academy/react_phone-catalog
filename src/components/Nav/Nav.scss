@@ -1,0 +1,72 @@
+@use '../../styles/variables.scss' as vars;
+@use '../../styles/mixins.scss' as *;
+
+.nav {
+  margin: 0 24px;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  @include on-tablet {
+    margin: 0 16px;
+  }
+
+
+  @include on-mobile {
+    display: none;
+  }
+
+  &__list {
+    gap: 64px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    list-style: none;
+
+    @include on-tablet {
+      gap: 32px;
+    }
+  }
+
+  &__item {
+    height: 100%;
+  }
+
+  &__link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 4%;
+    color: vars.$secondary-color;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: vars.$accent;
+    }
+  }
+}
+
+.active {
+  color: vars.$nav-active-link-color;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 100%;
+    height: 4px;
+    background-color: #fff;
+    transform: translateX(-50%);
+  }
+}

@@ -1,0 +1,27 @@
+@use '../../../styles/variables.scss' as vars;
+@use '../../../styles/mixins.scss' as *;
+
+.products {
+  display: flex;
+  grid-column: 1 / -1;
+  min-width: 0;
+  width: 100%;
+
+  &__list {
+    display: flex;
+    gap: 16px;
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+
+.column {
+  display: flex;
+  flex-flow: row wrap;
+  row-gap: 40px;
+
+  @include on-mobile {
+    flex-flow: column nowrap;
+  }
+}

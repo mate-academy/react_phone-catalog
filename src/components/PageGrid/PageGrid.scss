@@ -1,0 +1,23 @@
+@use '../../styles/mixins.scss' as *;
+
+.container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.page-grid {
+  display: grid;
+  grid-template-columns: repeat(24, minmax(0, 1fr));
+  gap: 16px;
+  width: 100%;
+  max-width: 1200px;
+
+  @include on-tablet {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+
+  @include on-mobile {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
