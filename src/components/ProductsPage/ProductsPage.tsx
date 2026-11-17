@@ -35,10 +35,10 @@ export const ProductsPage = ({ category }: { category: string }) => {
         ? Number(perPageValue)
         : 16;
 
-  const sort = () => {
+  const sort = (sortType: string | null) => {
     const sortedPhones = [...products];
 
-    switch (sortParams) {
+    switch (sortType) {
       case 'newest':
         return sortedPhones.sort((phone1, phone2) => phone2.year - phone1.year);
 
@@ -80,7 +80,7 @@ export const ProductsPage = ({ category }: { category: string }) => {
           <Link to={'/'}>
             <img
               className="products-location__icon"
-              src="/icons/Home.png"
+              src="icons/Home.png"
               alt=""
             />
           </Link>

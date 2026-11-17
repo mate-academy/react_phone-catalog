@@ -66,7 +66,7 @@ export const Aside = () => {
               >
                 <img
                   className="burger-menu__content--top-logo"
-                  src="/img/Logo.png"
+                  src="img/Logo.png"
                   alt="NICE GADGETS"
                 />
               </Link>

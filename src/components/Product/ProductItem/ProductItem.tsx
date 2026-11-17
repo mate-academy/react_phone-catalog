@@ -98,13 +98,13 @@ export const ProductItem = ({
               {favourites.includes(id) ? (
                 <img
                   className="product-card__add__favourite-img-added"
-                  src="/icons/Favourites-Filled.png"
+                  src="icons/Favourites-Filled.png"
                   alt=""
                 />
               ) : (
                 <img
                   className="product-card__add__favourite-img"
-                  src="/icons/Favourites.png"
+                  src="icons/Favourites.png"
                   alt=""
                 />
               )}

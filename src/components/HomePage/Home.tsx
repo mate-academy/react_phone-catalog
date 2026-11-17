@@ -207,7 +207,7 @@ export const Home = () => {
                 <Link to={`/${key}`} className={`home-category__${key}__link`}>
                   <img
                     className={`home-category__${key}__img`}
-                    src={`/img/category-${key}.webp`}
+                    src={`/img/category-${key}.png`}
                     alt=""
                     onClick={() =>
                       window.scrollTo({

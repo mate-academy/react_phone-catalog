@@ -101,10 +101,6 @@
       background-color: vars.$surface-1-color;
     }
 
-    &__button {
-      display: flex;
-    }
-
     &__button,
     &__page {
       align-items: center;
@@ -113,18 +109,24 @@
       width: 32px;
       height: 32px;
       border: 0;
+    }
+
+    &__button {
+      display: flex;
       background-color: vars.$surface-2-color;
       transition: background-color 0.3s ease;
+
+      &--disabled {
+        border: 1px solid vars.$elements-color;
+        background-color: vars.$black;
+      }
+
+      &:not(&--disabled):hover {
+        background-color: vars.$hover-color;
+      }
     }
 
-    &--disabled {
-      border: 1px solid vars.$elements-color;
-      background-color: vars.$black;
-    }
 
-    &:not(&--disabled):hover {
-      background-color: vars.$hover-color;
-    }
 
     &__current {
       background-color: vars.$accent;

@@ -157,7 +157,7 @@ export const ProductDetail = () => {
           <Link to={'/'}>
             <img
               className="product-detail-location__icon"
-              src="/icons/Home.png"
+              src="icons/Home.png"
               alt=""
             />
           </Link>
@@ -315,13 +315,13 @@ export const ProductDetail = () => {
                   {favourites.includes(product.id) ? (
                     <img
                       className="product-detail-parameters__add__favourite-img-added"
-                      src="/icons/Favourites-Filled.png"
+                      src="icons/Favourites-Filled.png"
                       alt=""
                     />
                   ) : (
                     <img
                       className="product-detail-parameters__add__favourite-img"
-                      src="public/icons/Favourites.png"
+                      src="icons/Favourites.png"
                       alt=""
                     />
                   )}

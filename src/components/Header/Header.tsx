@@ -15,7 +15,7 @@ export const Header = () => {
         <Link to={'/'}>
           <img
             className="logo__img"
-            src="../img/Logo.png"
+            src="img/Logo.png"
             alt="NICE GADGETS LOGO"
           />
         </Link>
@@ -27,7 +27,7 @@ export const Header = () => {
         <NavLink className="favourites" to={'favourites'}>
           <img
             className="favourites__icon"
-            src="/icons/Favourites.png"
+            src="icons/Favourites.png"
             alt="favourites"
           />
           {favourites.length > 0 && (
@@ -35,7 +35,7 @@ export const Header = () => {
           )}
         </NavLink>
         <NavLink className="cart" to={'/cart'}>
-          <img className="cart__icon" src="/icons/Cart.png" alt="cart" />
+          <img className="cart__icon" src="icons/Cart.png" alt="cart" />
           {cart.length > 0 && (
             <span className="cart__counter">{cart.length}</span>
           )}

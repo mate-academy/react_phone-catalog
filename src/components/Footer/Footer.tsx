@@ -13,7 +13,7 @@ export const Footer = () => {
             <Link to={'/'}>
               <img
                 className="logo__img"
-                src="../img/Logo.png"
+                src="img/Logo.png"
                 alt="NICE GADGETS LOGO"
                 onClick={() =>
                   window.scrollTo({
