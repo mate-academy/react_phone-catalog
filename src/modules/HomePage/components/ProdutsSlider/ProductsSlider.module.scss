@@ -48,6 +48,11 @@
   display: flex;
   overflow-x: auto;
   gap: 16px;
+  scrollbar-width: none; // Firefox, and newer Chrome/Edge
+
+  &::-webkit-scrollbar {
+    display: none; // Safari, older Chrome/Edge
+  }
 
   @include on-tablet {
     padding: 0 24px;

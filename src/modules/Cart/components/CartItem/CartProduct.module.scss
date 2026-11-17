@@ -43,9 +43,12 @@
     line-height: 21px;
     color: $color-white;
     grid-area: name;
+    text-decoration: none;
+    padding: 15px 0;
 
-    @include on-tablet {
-      // max-width: 176px;
+    &:hover,
+    &:focus-visible {
+      text-decoration: underline;
     }
   }
 

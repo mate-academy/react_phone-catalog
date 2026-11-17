@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { CartItem, useCart } from '../../../../context/CartContext';
 import styles from './CartProduct.module.scss';
 
@@ -19,7 +20,13 @@ export const CartProduct: React.FC<Props> = ({ item }) => {
         alt={item.product.name}
         className={styles.item__image}
       />
-      <span className={styles.item__name}>{item.product.name}</span>
+      <Link
+        to={`/${item.product.category}/${item.product.id}`}
+        state={{ productName: item.product.name }}
+        className={styles.item__name}
+      >
+        {item.product.name}
+      </Link>
       <div className={styles.item__quantity}>
         <button
           className={styles.item__btn__decr}
@@ -32,10 +39,6 @@ export const CartProduct: React.FC<Props> = ({ item }) => {
         ></button>
       </div>
       <span className={styles.item__price}>${item.product.price}</span>
-      {/* <div className={styles.item__row1}>
-      </div> */}
-      {/* <div className={styles.item__row2}>
-      </div> */}
     </div>
   );
 };

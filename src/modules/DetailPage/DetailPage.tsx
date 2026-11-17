@@ -45,6 +45,8 @@ export const DetailPage: React.FC<Props> = ({ service }) => {
       return;
     }
 
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
     service.getAll().then(all => {
       const seen = new Set<string>();
 

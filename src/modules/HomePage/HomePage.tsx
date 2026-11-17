@@ -7,6 +7,20 @@ import { NormalizedProduct } from '../../interfaces/Product';
 import { Link } from 'react-router-dom';
 import { normalizeProduct } from '../../utils/normalizeProduct';
 
+const CATEGORIES = [
+  {
+    to: '/phones',
+    title: 'Mobile phones',
+    image: 'img/imgs/category-phone.png',
+  },
+  { to: '/tablets', title: 'Tablets', image: 'img/imgs/category-tablets.png' },
+  {
+    to: '/accessories',
+    title: 'Accessories',
+    image: 'img/imgs/category-accessories.png',
+  },
+];
+
 export const HomePage = () => {
   const [newProducts, setNewProducts] = useState<NormalizedProduct[]>([]);
   const [hotPrices, setHotPrices] = useState<NormalizedProduct[]>([]);
@@ -26,13 +40,31 @@ export const HomePage = () => {
         <h1 className={styles.header__title}>Welcome to Nice Gadgets store!</h1>
         <Slider>
           <div>
-            <img src="img/imgs/header-slider1.png" alt="Slide 1" />
+            <picture>
+              <source
+                media="(min-width: 640px)"
+                srcSet="img/imgs/header-slider1.jpg"
+              />
+              <img src="img/imgs/header-slider1-mobile.jpg" alt="Slide 1" />
+            </picture>
           </div>
           <div>
-            <img src="img/imgs/header-slider2.png" alt="Slide 2" />
+            <picture>
+              <source
+                media="(min-width: 640px)"
+                srcSet="img/imgs/header-slider2.jpg"
+              />
+              <img src="img/imgs/header-slider2-mobile.jpg" alt="Slide 2" />
+            </picture>
           </div>
           <div>
-            <img src="img/imgs/header-slider3.png" alt="Slide 3" />
+            <picture>
+              <source
+                media="(min-width: 640px)"
+                srcSet="img/imgs/header-slider3.jpg"
+              />
+              <img src="img/imgs/header-slider3-mobile.jpg" alt="Slide 3" />
+            </picture>
           </div>
         </Slider>
       </header>
@@ -42,39 +74,23 @@ export const HomePage = () => {
           <section className={styles.categories}>
             <h2 className="section-title">Shop by category</h2>
             <ul className={styles.categories__list}>
-              <li className={styles.category}>
-                <img
-                  src="img/imgs/category-phone.png"
-                  alt="Phones"
-                  className={styles.category__image}
-                />
-                <Link to="/phones" className={styles.category__name}>
-                  Mobile phones
-                </Link>
-                <span className={styles.category__info}>10 models</span>
-              </li>
-              <li className={styles.category}>
-                <img
-                  src="img/imgs/category-tablets.png"
-                  alt="Tablets"
-                  className={styles.category__image}
-                />
-                <Link to="/tablets" className={styles.category__name}>
-                  Tablets
-                </Link>
-                <span className={styles.category__info}>10 models</span>
-              </li>
-              <li className={styles.category}>
-                <img
-                  src="img/imgs/category-accessories.png"
-                  alt="Accessories"
-                  className={styles.category__image}
-                />
-                <Link to="/accessories" className={styles.category__name}>
-                  Accessories
-                </Link>
-                <span className={styles.category__info}>10 models</span>
-              </li>
+              {CATEGORIES.map(category => (
+                <li key={category.to} className={styles.categories__item}>
+                  <Link to={category.to} className={styles.category}>
+                    <div className={styles.category__imageWrapper}>
+                      <img
+                        src={category.image}
+                        alt=""
+                        className={styles.category__image}
+                      />
+                    </div>
+                    <span className={styles.category__name}>
+                      {category.title}
+                    </span>
+                    <span className={styles.category__info}>10 models</span>
+                  </Link>
+                </li>
+              ))}
             </ul>
           </section>
         </div>

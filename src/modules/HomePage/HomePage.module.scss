@@ -62,31 +62,58 @@
       gap: 16px;
     }
   }
+
+  &__item {
+    @include on-tablet {
+      flex: 1 1 0;
+    }
+  }
 }
 
 .category {
   display: flex;
   flex-direction: column;
+  text-decoration: none;
+  color: inherit;
 
-  @include on-tablet {
-    flex-grow: 1;
+  &__imageWrapper {
+    overflow: hidden; // clips the zoomed image
   }
 
   &__image {
+    display: block;
     width: 100%;
+    transition: transform 0.3s ease;
   }
 
   &__name {
     font-weight: 700;
     font-size: 20px;
     margin: 24px 0 4px;
-    text-decoration: none;
     color: $color-white;
+    transition: color 0.3s ease;
   }
 
   &__info {
     font-size: 14px;
     line-height: 21px;
     color: $color-gray-4;
+  }
+
+  &:hover,
+  &:focus-visible {
+    .category__image {
+      transform: scale(1.05);
+    }
+
+    .category__name {
+      color: $color-accent;
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-accent;
+    outline-offset: 4px;
+    border-radius: 8px;
   }
 }
