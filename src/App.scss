@@ -1,1 +1,39 @@
-// not empty
+@use './styles/variables.scss';
+
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-Regular.otf');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-SemiBold.otf');
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url('/fonts/Mont-Bold.otf');
+  font-weight: 700;
+}
+
+html {
+  font-family: Mont, sans-serif;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-page-bg);
+  color: var(--color-primary);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}

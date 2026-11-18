@@ -1,0 +1,50 @@
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-bottom: 40px;
+
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15px;
+
+  color: var(--color-secondary);
+}
+
+.homeLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 16px;
+  height: 16px;
+}
+
+.homeIcon {
+  display: block;
+
+  width: 16px;
+  height: 16px;
+}
+
+.breadcrumbChevron {
+  display: block;
+
+  width: 16px;
+  height: 16px;
+}
+
+.breadcrumbCurrent {
+  color: var(--color-secondary);
+}
+
+.categoryLink {
+  color: var(--color-secondary);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--color-primary);
+  }
+}

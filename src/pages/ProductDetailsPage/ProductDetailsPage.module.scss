@@ -1,0 +1,631 @@
+.main {
+  width: 100%;
+  max-width: 1136px;
+  margin: 0 auto;
+  padding-top: 24px;
+}
+
+.backButton {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  width: 66px;
+  height: 16px;
+  margin-top: 40px;
+  padding: 0;
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 100%;
+  color: var(--color-secondary);
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.backIcon {
+  width: 16px;
+  height: 16px;
+  transform: rotate(180deg);
+}
+
+.title {
+  margin: 16px 0 40px;
+  font-family: Mont, sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  color: var(--color-primary);
+}
+
+.productContent {
+  display: grid;
+  grid-template-columns: 560px 320px;
+  column-gap: 64px;
+  align-items: start;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: 80px 464px;
+  column-gap: 16px;
+  min-width: 0;
+}
+
+.thumbnails {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.thumbnailButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  padding: 7px;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-elements);
+  cursor: pointer;
+}
+
+.thumbnailActive {
+  border-color: var(--color-primary);
+}
+
+.thumbnailImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.mainImageWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 464px;
+  height: 464px;
+}
+
+.mainImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.productInfo {
+  width: 320px;
+}
+
+.colors {
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--color-elements);
+}
+
+.optionLabel {
+  margin: 0 0 8px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 12px;
+  color: var(--color-secondary);
+}
+
+.colorList {
+  display: flex;
+  gap: 8px;
+}
+
+.colorButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  background: none;
+  border: 1px solid var(--color-elements);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.colorButtonActive {
+  border-color: var(--color-primary);
+}
+
+.colorCircle {
+  width: 30px;
+  height: 30px;
+  border: 2px solid var(--color-white);
+  border-radius: 50%;
+}
+
+.capacities {
+  padding: 24px 0;
+  border-bottom: 1px solid var(--color-elements);
+}
+
+.capacityList {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.capacityButton {
+  height: 32px;
+  padding: 0 8px;
+  border: 1px solid var(--color-icons);
+  border-radius: 4px;
+  background-color: var(--color-white);
+  color: var(--color-primary);
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  cursor: pointer;
+}
+
+.capacityButtonActive {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.purchase {
+  padding-top: 32px;
+}
+
+.prices {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.priceDiscount {
+  color: var(--color-primary);
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+}
+
+.priceRegular {
+  color: var(--color-secondary);
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 28px;
+  text-decoration: line-through;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.addToCart {
+  flex: 1;
+  height: 48px;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--color-accent);
+  color: var(--color-on-accent);
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  cursor: pointer;
+}
+
+.addToCartActive {
+  background-color: var(--color-white);
+  color: var(--color-accent);
+  border: 1px solid var(--color-elements);
+}
+
+.addToFavorites {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  border: 1px solid var(--color-icons);
+  border-radius: 50%;
+  background-color: var(--color-white);
+  cursor: pointer;
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.addToFavoritesActive {
+  border-color: var(--color-elements);
+}
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 32px;
+}
+
+.specRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+
+  font-size: 12px;
+  line-height: 15px;
+  font-weight: 600;
+
+  span:first-child {
+    color: var(--color-secondary);
+  }
+
+  span:last-child {
+    color: var(--color-primary);
+    font-weight: 700;
+    text-align: right;
+  }
+}
+
+.productLayout {
+  position: relative;
+}
+
+.productId {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15px;
+  color: var(--color-icons);
+}
+
+.detailsSection {
+  display: grid;
+  grid-template-columns: 560px 512px;
+  gap: 64px;
+  margin-top: 80px;
+}
+
+.sectionTitle {
+  margin: 0 0 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--color-elements);
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 140%;
+  color: var(--color-primary);
+}
+
+.descriptionBlock {
+  margin-bottom: 32px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.descriptionTitle {
+  margin: 0 0 16px;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 100%;
+  color: var(--color-primary);
+}
+
+.descriptionText {
+  margin: 0 0 16px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  color: var(--color-secondary);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.techSpecs {
+  width: 100%;
+  min-width: 0;
+}
+
+.techSpecsList {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.techSpecsRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+
+  min-height: 21px;
+  font-size: 12px;
+  line-height: 21px;
+}
+
+.techSpecsLabel {
+  color: var(--color-secondary);
+}
+
+.techSpecsValue {
+  color: var(--color-primary);
+  text-align: right;
+}
+
+.suggestions {
+  margin-top: 80px;
+  margin-bottom: 80px;
+}
+
+@media (max-width: 639px) {
+  .main {
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    padding: 24px 16px 64px;
+  }
+
+  .title {
+    margin: 16px 0 32px;
+    font-size: 22px;
+    line-height: 31px;
+    overflow-wrap: break-word;
+  }
+
+  .productLayout {
+    min-width: 0;
+  }
+
+  .productId {
+    position: static;
+    display: block;
+    margin-bottom: 16px;
+    text-align: right;
+  }
+
+  .productContent {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 40px;
+  }
+
+  .gallery {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+
+  .mainImageWrapper {
+    grid-column: 1;
+    grid-row: 1;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    min-width: 0;
+  }
+
+  .mainImage {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .thumbnails {
+    grid-column: 1;
+    grid-row: 2;
+    flex-direction: row;
+    gap: 8px;
+    min-width: 0;
+    overflow-x: auto;
+  }
+
+  .thumbnailButton {
+    flex: 0 0 48px;
+    width: 48px;
+    height: 48px;
+    padding: 3px;
+  }
+
+  .productInfo {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .colorList,
+  .capacityList {
+    flex-wrap: wrap;
+  }
+
+  .detailsSection {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 56px;
+    margin-top: 56px;
+  }
+
+  .about,
+  .techSpecs {
+    min-width: 0;
+  }
+
+  .specRow,
+  .techSpecsRow {
+    min-width: 0;
+  }
+
+  .specRow span,
+  .techSpecsValue {
+    overflow-wrap: anywhere;
+  }
+
+  .suggestions {
+    margin-top: 56px;
+    margin-bottom: 56px;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1199px) {
+  .main {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 1136px;
+    min-width: 0;
+    padding: 24px 24px 80px;
+  }
+
+  .productLayout {
+    min-width: 0;
+  }
+
+  .productContent {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 40px;
+  }
+
+  .gallery {
+    width: 100%;
+    max-width: 560px;
+    grid-template-columns: 80px minmax(0, 1fr);
+    min-width: 0;
+  }
+
+  .mainImageWrapper {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    min-width: 0;
+  }
+
+  .productInfo {
+    width: 100%;
+    max-width: 320px;
+    min-width: 0;
+  }
+
+  .detailsSection {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 48px;
+    margin-top: 64px;
+  }
+
+  .about,
+  .techSpecs {
+    min-width: 0;
+  }
+}
+
+@media (min-width: 896px) and (max-width: 1199px) {
+  .productContent {
+    grid-template-columns: minmax(0, 1fr) 320px;
+    gap: 32px;
+  }
+
+  .gallery {
+    grid-template-columns: 64px minmax(0, 1fr);
+  }
+
+  .thumbnailButton {
+    width: 64px;
+    height: 64px;
+  }
+
+  .mainImageWrapper {
+    max-width: 464px;
+  }
+
+  .detailsSection {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 32px;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 895px) {
+  .productContent {
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+    gap: 24px;
+    align-items: start;
+  }
+
+  .gallery {
+    width: 100%;
+    max-width: none;
+    grid-template-columns: 40px minmax(0, 1fr);
+    column-gap: 8px;
+  }
+
+  .thumbnails {
+    gap: 8px;
+  }
+
+  .thumbnailButton {
+    width: 40px;
+    height: 40px;
+    padding: 3px;
+  }
+
+  .mainImageWrapper {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+
+  .productInfo {
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+  }
+
+  .colorList,
+  .capacityList {
+    flex-wrap: wrap;
+  }
+}
+
+.notFound {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  min-height: 420px;
+  text-align: center;
+}
+
+.notFoundImage {
+  display: block;
+  width: min(100%, 300px);
+  height: auto;
+  object-fit: contain;
+}
+
+.notFoundTitle {
+  margin: 0;
+  color: var(--color-primary);
+  font-family: Mont, sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+}
+
+@media (max-width: 639px) {
+  .notFound {
+    min-height: 360px;
+  }
+
+  .notFoundTitle {
+    font-size: 24px;
+    line-height: 31px;
+  }
+}

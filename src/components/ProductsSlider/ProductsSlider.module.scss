@@ -1,0 +1,86 @@
+.slider {
+  width: 100%;
+  min-width: 0;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  margin: 0;
+  font-family: Mont, sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  color: var(--color-primary);
+}
+
+.buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.sliderButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  background-color: var(--color-slider-button-bg);
+  border: 1px solid var(--color-icons);
+  border-radius: 50%;
+  cursor: pointer;
+
+  &:disabled {
+    background-color: transparent;
+    border-color: var(--color-elements);
+    cursor: default;
+  }
+}
+
+[data-theme='dark'] .sliderButton:not(:disabled) {
+  background-color: var(--color-hover-bg);
+  border-color: var(--color-hover-bg);
+
+  &:hover {
+    background-color: var(--color-icons);
+    border-color: var(--color-icons);
+  }
+}
+
+.productsViewport {
+  width: 100%;
+  min-width: 0;
+  margin-top: 24px;
+  overflow: hidden;
+}
+
+.products {
+  display: flex;
+  width: max-content;
+  gap: 16px;
+}
+
+.products > * {
+  flex: 0 0 272px;
+}
+
+.chevron {
+  display: block;
+  width: 16px;
+  height: 16px;
+}
+
+.sliderButton:disabled .chevron {
+  opacity: 0.4;
+}
+
+[data-theme='dark'] .sliderButton:not(:disabled) .chevron {
+  filter: brightness(0) invert(1);
+}
+

@@ -1,0 +1,150 @@
+.footer {
+  width: 100%;
+
+  background-color: var(--color-white);
+  border-top: 1px solid var(--color-elements);
+}
+
+.content {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+
+  max-width: 1440px;
+  height: 96px;
+  margin: 0 auto;
+  padding: 32px 152px;
+}
+
+.logoWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  display: block;
+  width: 89px;
+  height: auto;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.link {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+
+  color: var(--color-secondary);
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+a.link {
+  transition: color 0.3s;
+
+  &:hover {
+    color: var(--color-primary);
+  }
+}
+
+.backToTop {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.backToTopButton {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  padding: 0;
+
+  font-family: inherit;
+
+  background-color: transparent;
+  border: 0;
+
+  cursor: pointer;
+}
+
+.backToTopText {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15px;
+
+  color: var(--color-secondary);
+}
+
+.arrowButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+
+  background-color: var(--color-white);
+  border: 1px solid var(--color-icons);
+  border-radius: 48px;
+}
+
+.arrow {
+  display: block;
+
+  transform: rotate(-90deg);
+}
+
+[data-theme='dark'] .arrowButton {
+  background-color: #323542;
+  border-color: #323542;
+}
+
+[data-theme='dark'] .backToTopButton:hover .arrowButton {
+  background-color: #4a4d58;
+  border-color: #4a4d58;
+}
+
+[data-theme='dark'] .arrow {
+  filter: brightness(0) invert(1);
+}
+
+@media (min-width: 640px) and (max-width: 1199px) {
+  .content {
+    grid-template-columns: 89px minmax(0, 1fr) auto;
+    gap: 24px;
+    padding: 32px 24px;
+  }
+
+  .links {
+    justify-content: center;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 639px) {
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+
+    height: auto;
+    padding: 32px 16px;
+  }
+
+  .links {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .backToTop {
+    width: 100%;
+    justify-content: center;
+  }
+}
