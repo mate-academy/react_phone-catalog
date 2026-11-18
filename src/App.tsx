@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import { Header } from './shared/Header';
 import { Footer } from './shared/Footer';
+import { ScrollToTop } from './shared/ScrollToTop';
 import { HomePage } from './modules/HomePage';
 import { ProductCatalogPage } from './modules/ProductCatalogPage';
 import { ProductDetailsPage } from './modules/ProductDetailsPage';
@@ -10,6 +11,7 @@ import { NotFoundPage } from './modules/NotFoundPage';
 
 export const App = () => (
   <div className="app">
+    <ScrollToTop />
     <Header />
     <main className="app-main">
       <div className="container">
