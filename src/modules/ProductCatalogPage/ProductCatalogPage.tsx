@@ -1,11 +1,12 @@
 import { ChangeEvent, useEffect, useMemo, useState } from 'react';
 import { useParams, useSearchParams } from 'react-router-dom';
-import { getProductsByCategory } from '../../api/productsApi';
+import { getCatalogProducts } from '../../api/productsApi';
 import { Product } from '../../api/types';
 import { ProductsList } from '../../shared/ProductsList';
 import { Pagination } from '../../shared/Pagination';
 import { Loader } from '../../shared/Loader';
 import { Breadcrumbs } from '../../shared/Breadcrumbs';
+import { getProductPrice } from '../../shared/utils/format';
 import { NotFoundPage } from '../NotFoundPage';
 import styles from './ProductCatalogPage.module.scss';
 
@@ -28,7 +29,10 @@ export const ProductCatalogPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const query = (searchParams.get('query') ?? '').trim();
-  const sort = (searchParams.get('sort') ?? 'age') as SortValue;
+  const sortParam = searchParams.get('sort') ?? 'age';
+  const sort = SORT_VALUES.includes(sortParam as SortValue)
+    ? (sortParam as SortValue)
+    : 'age';
   const page = Number(searchParams.get('page') ?? '1');
   const perPage = (searchParams.get('perPage') ?? '16') as string;
 
@@ -42,13 +46,13 @@ export const ProductCatalogPage = () => {
     setIsLoading(true);
     setHasError(false);
 
-    getProductsByCategory(category ?? '')
+    getCatalogProducts()
       .then(items => {
         if (cancelled) {
           return;
         }
 
-        setProducts(items);
+        setProducts(items.filter(item => item.category === category));
         setIsLoading(false);
       })
       .catch(() => {
@@ -76,7 +80,7 @@ export const ProductCatalogPage = () => {
       return list.sort((a, b) => a.name.localeCompare(b.name));
     }
 
-    return list.sort((a, b) => (a.price ?? 0) - (b.price ?? 0));
+    return list.sort((a, b) => getProductPrice(a) - getProductPrice(b));
   }, [products, sort]);
 
   const visibleProducts = useMemo(() => {
@@ -91,7 +95,8 @@ export const ProductCatalogPage = () => {
     );
   }, [sortedProducts, query]);
 
-  const pageSize = perPage === 'all' ? visibleProducts.length : Number(perPage);
+  const pageSize =
+    perPage === 'all' ? Math.max(1, visibleProducts.length) : Number(perPage);
   const totalPages = Math.max(1, Math.ceil(visibleProducts.length / pageSize));
   const currentPage = Math.min(Math.max(1, page), totalPages);
   const startIndex = (currentPage - 1) * pageSize;
@@ -111,11 +116,31 @@ export const ProductCatalogPage = () => {
   };
 
   const handleSortChange = (event: ChangeEvent<HTMLSelectElement>) => {
-    updateParams({ sort: event.target.value });
+    const params = new URLSearchParams(searchParams);
+
+    params.delete('page');
+
+    if (event.target.value === 'age') {
+      params.delete('sort');
+    } else {
+      params.set('sort', event.target.value);
+    }
+
+    setSearchParams(params);
   };
 
   const handlePerPageChange = (event: ChangeEvent<HTMLSelectElement>) => {
-    updateParams({ perPage: event.target.value });
+    const params = new URLSearchParams(searchParams);
+
+    params.delete('page');
+
+    if (event.target.value === '16') {
+      params.delete('perPage');
+    } else {
+      params.set('perPage', event.target.value);
+    }
+
+    setSearchParams(params);
   };
 
   const handlePageChange = (newPage: number) => {
@@ -140,7 +165,10 @@ export const ProductCatalogPage = () => {
       <Breadcrumbs items={[{ label: crumbLabel, path: `/${category}` }]} />
       <h1 className={styles.title}>{categoryLabel}</h1>
       {!isLoading && !hasError && (
-        <p className={styles.modelsCount}>{products.length} models</p>
+        <p className={styles.modelsCount}>
+          {visibleProducts.length}{' '}
+          {visibleProducts.length === 1 ? 'model' : 'models'}
+        </p>
       )}
       <div className={styles.controls}>
         <label className={styles.control}>
