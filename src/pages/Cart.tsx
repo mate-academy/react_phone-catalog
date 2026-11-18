@@ -99,14 +99,31 @@ const Cart = ({
             <span className="cart__details">Total for {quantity} items</span>
             <div className="cart__line"></div>
             <button
-              className="cart__button"
+              className={
+                total === 0
+                  ? 'cart__button cart__button--opacity'
+                  : 'cart__button'
+              }
               onClick={() => {
-                const car = JSON.parse(localStorage.getItem('cart') || '[]');
+                // const car = JSON.parse(localStorage.getItem('cart') || '[]');
+                // localStorage.setItem('cart', JSON.stringify(car));
 
-                localStorage.setItem('cart', JSON.stringify(car));
+                if (total > 0) {
+                  const conf = window.confirm(
+                    'Checkout is not implemented yet. ' +
+                      'Do you want to clear the Cart?',
+                  );
+
+                  if (conf) {
+                    localStorage.removeItem('cart');
+                    location.reload();
+                  } else {
+                    window.alert('Please, add products to the cart first');
+                  }
+                }
               }}
             >
-              Checkout
+              Checkouts
             </button>
           </aside>
         </main>

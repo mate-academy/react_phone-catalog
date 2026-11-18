@@ -60,6 +60,16 @@ $mobile: 560px;
         padding: 14px 20px;
         width: 100%;
         cursor: pointer;
+        transition: var(--transition);
+
+        &.cart__button--opacity {
+          cursor: auto;
+          opacity: 0.5;
+        }
+
+        &:hover {
+          transform: scale(105%);
+        }
       }
     }
 
