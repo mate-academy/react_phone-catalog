@@ -20,6 +20,8 @@ export const Catalog: React.FC<Props> = ({ title, service }) => {
   const [items, setItems] = useState<ProductDetails[]>([]);
 
   useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
     service.getAll().then(setItems);
   }, []);
 

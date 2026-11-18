@@ -69,7 +69,11 @@ export const HomePage = () => {
         </Slider>
       </header>
       <div className={styles.container}>
-        <ProductsSlider title="Brand new models" products={newProducts} />
+        <ProductsSlider
+          title="Brand new models"
+          products={newProducts}
+          showOnlyFullPrice={true}
+        />
         <div className="inline-container">
           <section className={styles.categories}>
             <h2 className="section-title">Shop by category</h2>

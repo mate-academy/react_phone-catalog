@@ -11,12 +11,15 @@ import { useCart } from '../../../context/CartContext';
 
 type Props = {
   item: Product | ProductDetails | NormalizedProduct;
+  showOnlyFullPrice?: boolean;
 };
 
-export const ProductCard = ({ item }: Props) => {
+export const ProductCard = ({ item, showOnlyFullPrice = false }: Props) => {
   const product = normalizeProduct(item);
   const { toggleFavourite, isFavourite } = useFavourites();
   const { addToCart, isInCart } = useCart();
+
+  const hasDiscount = product.price !== product.fullPrice;
 
   const handleAddToCartClcik = (
     event: React.MouseEvent,
@@ -50,9 +53,17 @@ export const ProductCard = ({ item }: Props) => {
       />
       <span className={styles.card__name}>{product.name}</span>
       <div className={styles.card__prices}>
-        <span className={styles.card__price}>${product.price}</span>
-        {product.price !== product.fullPrice && (
-          <span className={styles.card__price_old}>${product.fullPrice}</span>
+        {showOnlyFullPrice ? (
+          <span className={styles.card__price}>${product.fullPrice}</span>
+        ) : (
+          <>
+            <span className={styles.card__price}>${product.price}</span>
+            {hasDiscount && (
+              <span className={styles.card__price_old}>
+                ${product.fullPrice}
+              </span>
+            )}
+          </>
         )}
       </div>
       <div className={styles.card__border}></div>

@@ -74,4 +74,18 @@
     font-size: 14px;
     line-height: 21px;
   }
+
+  &__checkout:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .modalActions {
+    display: flex;
+    gap: 16px;
+
+    > * {
+      flex: 1;
+    }
+  }
 }

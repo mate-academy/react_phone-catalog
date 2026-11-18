@@ -6,9 +6,14 @@ import { ProductCard } from '../../../shared/ProductCard';
 type Props = {
   title: string;
   products: NormalizedProduct[];
+  showOnlyFullPrice?: boolean;
 };
 
-export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
+export const ProductsSlider: React.FC<Props> = ({
+  title,
+  products,
+  showOnlyFullPrice = false,
+}) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const scrollRight = () => {
@@ -42,7 +47,11 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
       </div>
       <div ref={containerRef} className={styles.cards}>
         {products.map(product => (
-          <ProductCard key={product.id} item={product} />
+          <ProductCard
+            key={product.id}
+            item={product}
+            showOnlyFullPrice={showOnlyFullPrice}
+          />
         ))}
       </div>
     </div>

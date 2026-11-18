@@ -2,11 +2,18 @@ import { useCart } from '../../context/CartContext';
 import { CartProduct } from './components/CartItem';
 import styles from './Cart.module.scss';
 import { BackLink } from '../shared/BackLink';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { Modal } from '../shared/Modal/Modal';
 
 export const Cart = () => {
-  const { cart, totalPrice, totalItems } = useCart();
+  const { cart, totalPrice, totalItems, clearCart } = useCart();
   const summaryRef = useRef<HTMLDivElement>(null);
+  const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
+
+  const handleConfirm = () => {
+    clearCart();
+    setIsCheckoutOpen(false);
+  };
 
   useEffect(() => {
     summaryRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' });
@@ -31,7 +38,32 @@ export const Cart = () => {
               </span>
             </div>
             <div className="divider"></div>
-            <div className="btn">Checkout</div>
+            <button
+              className={`btn ${styles.summary__checkout}`}
+              onClick={() => setIsCheckoutOpen(true)}
+              disabled={cart.length === 0}
+            >
+              Checkout
+            </button>
+            <Modal
+              isOpen={isCheckoutOpen}
+              onClose={() => setIsCheckoutOpen(false)}
+            >
+              <p>
+                Checkout is not implemented yet. Do you want to clear the Cart?
+              </p>
+              <div className={styles.modalActions}>
+                <button className="btn" onClick={handleConfirm}>
+                  Clear cart
+                </button>
+                <button
+                  className="btn btn--secondary"
+                  onClick={() => setIsCheckoutOpen(false)}
+                >
+                  Cancel
+                </button>
+              </div>
+            </Modal>
           </div>
         </div>
       </div>
