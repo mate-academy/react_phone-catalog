@@ -89,7 +89,7 @@
 
 .specRow dt {
   font-size: 12px;
-  color: var(--text);
+  color: var(--muted);
 }
 
 .specRow dd {
@@ -113,7 +113,7 @@
   border: 1px solid var(--text);
   border-radius: 8px;
   background: var(--text);
-  color: #fff;
+  color: var(--on-primary);
   font-size: 14px;
   font-weight: 600;
 }

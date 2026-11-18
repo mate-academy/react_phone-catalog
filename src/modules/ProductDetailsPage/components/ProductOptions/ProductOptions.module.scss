@@ -112,7 +112,7 @@
 .capacityOption input:checked + .capacity {
   border-color: var(--text);
   background: var(--text);
-  color: var(--surface);
+  color: var(--on-primary);
 }
 
 .visuallyHidden {

@@ -15,6 +15,7 @@
   --shadow: 0 6px 20px rgba(49, 50, 55, 0.08);
   --heart: #eb5757;
   --input-bg: #fff;
+  --on-primary: #fff;
 }
 
 [data-theme='dark'] {
@@ -34,6 +35,7 @@
   --shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
   --heart: #ff6b70;
   --input-bg: #10172a;
+  --on-primary: #171e2e;
 }
 
 * {
