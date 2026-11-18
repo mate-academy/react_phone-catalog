@@ -9,6 +9,8 @@ export const Header = () => {
   const { favourites } = useFavourites();
   const { cart } = useCart();
 
+  const totalAmount = cart.reduce((total, item) => total + item.quantity, 0);
+
   return (
     <header className="header">
       <div className="header__logo">
@@ -36,8 +38,8 @@ export const Header = () => {
         </NavLink>
         <NavLink className="cart" to={'/cart'}>
           <img className="cart__icon" src="icons/Cart.png" alt="cart" />
-          {cart.length > 0 && (
-            <span className="cart__counter">{cart.length}</span>
+          {totalAmount > 0 && (
+            <span className="cart__counter">{totalAmount}</span>
           )}
         </NavLink>
       </div>

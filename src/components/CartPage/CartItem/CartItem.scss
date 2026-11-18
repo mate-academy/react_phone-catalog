@@ -80,10 +80,20 @@
       &--name {
         flex: 1;
         min-width: 0;
-        color: vars.$white;
         font-weight: 600;
         font-size: 14px;
         line-height: 21px;
+
+        &-link {
+          text-decoration: none;
+          color: vars.$white;
+          transition: color 0.3s ease;
+
+          &:hover {
+            color: vars.$accent;
+          }
+        }
+
       }
     }
 

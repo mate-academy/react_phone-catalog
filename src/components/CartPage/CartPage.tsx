@@ -1,20 +1,32 @@
 /* eslint-disable max-len */
 
 import './CartPage.scss';
-import { useState, type ComponentProps } from 'react';
+import { type ComponentProps } from 'react';
 import { useCart } from '../../context/CartContext';
 import { CartItem } from './CartItem/CartItem';
 import productsFromServer from '../../../public/api/products.json';
 import { useNavigate } from 'react-router-dom';
 
 export const CartPage = () => {
-  const { cart } = useCart();
+  const { cart, clearCart } = useCart();
+
   const products = productsFromServer.filter(product =>
-    cart.includes(product.itemId),
+    cart.some(item => item.id === product.itemId),
   );
 
-  const [totalPrice, setTotalPrice] = useState(0);
-  const [totalAmount, setTotalAmount] = useState(products.length);
+  const totalAmount = cart.reduce((total, item) => total + item.quantity, 0);
+
+  const totalPrice = products.reduce((total, product) => {
+    const cartItem = cart.find(item => item.id === product.itemId);
+
+    return total + product.price * (cartItem?.quantity ?? 1);
+  }, 0);
+
+  const handleCheckout = () => {
+    if (confirm('Do you want to clear the Cart?')) {
+      clearCart();
+    }
+  };
 
   const navigate = useNavigate();
 
@@ -47,30 +59,39 @@ export const CartPage = () => {
       </div>
       <h1 className="cart__content-main__title">Cart</h1>
       <div className="cart__content">
-        <section className="cart__content-cards">
-          {products.map(product => (
-            <CartItem
-              key={product.itemId}
-              product={
-                product as unknown as ComponentProps<typeof CartItem>['product']
-              }
-              setTotalPrice={setTotalPrice}
-              totalAmount={totalAmount}
-              setTotalAmount={setTotalAmount}
-            />
-          ))}
-        </section>
-
-        <section className="cart__content-checkout">
-          <div className="cart__content-checkout--total-amount">
-            {`$${totalPrice}`}
-          </div>
-          <div className="cart__content-checkout--total-items">
-            {`Total for ${totalAmount} items`}
-          </div>
-          <span className="cart__content-checkout--line"></span>
-          <button className="cart__content-checkout--button">Checkout</button>
-        </section>
+        {cart.length === 0 ? (
+          <p className="cart__content__empty">Your cart is empty</p>
+        ) : (
+          <>
+            <section className="cart__content-cards">
+              {products.map(product => (
+                <CartItem
+                  key={product.itemId}
+                  product={
+                    product as unknown as ComponentProps<
+                      typeof CartItem
+                    >['product']
+                  }
+                />
+              ))}
+            </section>
+            <section className="cart__content-checkout">
+              <div className="cart__content-checkout--total-amount">
+                {`$${totalPrice}`}
+              </div>
+              <div className="cart__content-checkout--total-items">
+                {`Total for ${totalAmount} items`}
+              </div>
+              <span className="cart__content-checkout--line"></span>
+              <button
+                className="cart__content-checkout--button"
+                onClick={() => handleCheckout()}
+              >
+                Checkout
+              </button>
+            </section>
+          </>
+        )}
       </div>
     </main>
   );

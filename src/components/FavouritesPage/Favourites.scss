@@ -6,6 +6,14 @@
   min-height: calc(100vh - vars.$header-height - vars.$footer-height);
   grid-column: 1 / -1;
 
+  &__empty {
+    display: flex;
+    min-width: 0;
+    grid-column: 1 / -1;
+    color: vars.$white;
+  }
+
+
   @include on-tablet {
     margin: 0 24px;
   }
@@ -65,3 +73,11 @@
   margin-bottom: 80px;
 }
 
+.favourites-models {
+  &__count {
+    color: vars.$secondary-color;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+  }
+}

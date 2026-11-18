@@ -1,40 +1,73 @@
 import { createContext, PropsWithChildren, useContext, useState } from 'react';
 
+type CartItemType = {
+  id: string;
+  quantity: number;
+};
+
 type CartContextType = {
-  cart: string[];
+  cart: CartItemType[];
   toggleCart: (id: string) => void;
   deleteCart?: (id: string) => void;
+  clearCart?: () => void;
+  changeQuantity: (id: string, amount: number) => void;
 };
 
 const CartContext = createContext<CartContextType | null>(null);
 
 export const CartProvider = ({ children }: PropsWithChildren) => {
-  const [cart, setCart] = useState<string[]>(() => {
-    return JSON.parse(localStorage.getItem('cart') || '[]');
+  const [cart, setCart] = useState<CartItemType[]>(() => {
+    const savedCart = JSON.parse(localStorage.getItem('cart') || '[]');
+
+    return savedCart.map((item: string | CartItemType) => {
+      if (typeof item === 'string') {
+        return { id: item, quantity: 1 };
+      }
+
+      return { id: item.id, quantity: Math.max(1, Number(item.quantity) || 1) };
+    });
   });
 
-  const toggleCart = (id: string) => {
-    const updatedCart = cart.includes(id)
-      ? cart.filter(item => item !== id)
-      : [...cart, id];
-
+  const updateCart = (updatedCart: CartItemType[]) => {
     setCart(updatedCart);
 
     localStorage.setItem('cart', JSON.stringify(updatedCart));
+  };
+
+  const toggleCart = (id: string) => {
+    const existingItem = cart.find(item => item.id === id);
+
+    const updatedCart = existingItem
+      ? cart.filter(item => item.id !== id)
+      : [...cart, { id, quantity: 1 }];
+
+    updateCart(updatedCart);
+  };
+
+  const clearCart = () => {
+    updateCart([]);
   };
 
   const deleteCart = (id: string) => {
-    const updatedCart = cart.includes(id)
-      ? cart.filter(item => item !== id)
-      : [...cart];
+    const updatedCart = cart.filter(item => item.id !== id);
 
-    setCart(updatedCart);
+    updateCart(updatedCart);
+  };
 
-    localStorage.setItem('cart', JSON.stringify(updatedCart));
+  const changeQuantity = (id: string, amount: number) => {
+    const updatedCart = cart.map(item =>
+      item.id === id
+        ? { ...item, quantity: Math.max(1, item.quantity + amount) }
+        : item,
+    );
+
+    updateCart(updatedCart);
   };
 
   return (
-    <CartContext.Provider value={{ cart, toggleCart, deleteCart }}>
+    <CartContext.Provider
+      value={{ cart, toggleCart, clearCart, deleteCart, changeQuantity }}
+    >
       {children}
     </CartContext.Provider>
   );

@@ -20,7 +20,7 @@ export const Favourites = () => {
           <Link to={'/'}>
             <img
               className="favourites-location__icon"
-              src="/icons/Home.png"
+              src="icons/Home.png"
               alt=""
             />
           </Link>
@@ -46,15 +46,20 @@ export const Favourites = () => {
         Favourites
         <p className="favourites-models__count">{`${favouriteProducts.length} items`}</p>
       </h1>
-
-      <section className="favourites-products">
-        <ProductList
-          products={
-            favouriteProducts as Parameters<typeof ProductList>[0]['products']
-          }
-          column={true}
-        />
-      </section>
+      {favourites.length === 0 ? (
+        <p className="favourites-main__empty">
+          You have not added anything to favourites yet.
+        </p>
+      ) : (
+        <section className="favourites-products">
+          <ProductList
+            products={
+              favouriteProducts as Parameters<typeof ProductList>[0]['products']
+            }
+            column={true}
+          />
+        </section>
+      )}
     </main>
   );
 };

@@ -4,28 +4,16 @@ import { Link } from 'react-router-dom';
 import './CartItem.scss';
 import { Product } from '../../../types/Product';
 import { useCart } from '../../../context/CartContext';
-import { useEffect, useState } from 'react';
 
 type Props = {
   product: Product;
-  setTotalPrice: React.Dispatch<React.SetStateAction<number>>;
-  totalAmount: number;
-  setTotalAmount: React.Dispatch<React.SetStateAction<number>>;
 };
 
-export const CartItem = ({
-  product,
-  setTotalPrice,
-  totalAmount,
-  setTotalAmount,
-}: Props) => {
-  const { deleteCart } = useCart();
+export const CartItem = ({ product }: Props) => {
+  const { cart, changeQuantity, deleteCart } = useCart();
 
-  const [productCount, setProductCount] = useState(1);
-
-  useEffect(() => {
-    setTotalPrice(prev => prev + product.price * productCount);
-  }, [product.price]);
+  const cartItem = cart.find(item => item.id === product.itemId);
+  const productCount = cartItem?.quantity ?? 1;
 
   return (
     <div className="cart-card">
@@ -34,7 +22,6 @@ export const CartItem = ({
           <svg
             onClick={() => {
               deleteCart?.(product.itemId);
-              setTotalPrice(prev => prev - product.price * productCount);
             }}
             className="cart-card__delete"
             xmlns="http://www.w3.org/2000/svg"
@@ -65,7 +52,14 @@ export const CartItem = ({
             />
           </Link>
 
-          <div className="cart-card__information--name">{product.name}</div>
+          <div className="cart-card__information--name">
+            <Link
+              className="cart-card__information--name-link"
+              to={`/${product.category}/${product.itemId}`}
+            >
+              {product.name}
+            </Link>
+          </div>
         </section>
 
         <div className="cart-card__content--right">
@@ -75,9 +69,7 @@ export const CartItem = ({
                 className={`cart-card__actions--button-decrease ${productCount <= 1 ? 'button--disabled' : ''}`}
                 disabled={productCount <= 1}
                 onClick={() => {
-                  setProductCount(productCount - 1);
-                  setTotalAmount(totalAmount - 1);
-                  setTotalPrice(prev => prev - product.price);
+                  changeQuantity(product.itemId, -1);
                 }}
               >
                 -
@@ -88,9 +80,7 @@ export const CartItem = ({
               <button
                 className="cart-card__actions--button-increase"
                 onClick={() => {
-                  setProductCount(productCount + 1);
-                  setTotalAmount(totalAmount + 1);
-                  setTotalPrice(prev => prev + product.price);
+                  changeQuantity(product.itemId, 1);
                 }}
               >
                 +

@@ -26,6 +26,13 @@
     gap: 16px;
     margin-bottom: 80px;
 
+    &__empty {
+      display: flex;
+      min-width: 0;
+      grid-column: 1 / -1;
+      color: vars.$white;
+    }
+
     @include on-tablet {
       flex-direction: column;
     }

@@ -33,6 +33,8 @@ export const ProductItem = ({
   const { favourites, toggleFavourite } = useFavourites();
   const { cart, toggleCart } = useCart();
 
+  const isAdded = cart.some(item => item.id === id);
+
   return (
     <>
       <div className="product-card">
@@ -87,14 +89,10 @@ export const ProductItem = ({
 
           <section className="product-card__add">
             <button
-              className={`product-card__add__cart ${cart.includes(id) ? 'product-card__add__cart-added' : ''}`}
+              className={`product-card__add__cart ${isAdded ? 'product-card__add__cart-added' : ''}`}
               onClick={() => toggleCart(id)}
             >
-              {cart.includes(id) ? (
-                <div>Added to cart</div>
-              ) : (
-                <div>Add to cart</div>
-              )}
+              {isAdded ? <div>Added to cart</div> : <div>Add to cart</div>}
             </button>
 
             <button
