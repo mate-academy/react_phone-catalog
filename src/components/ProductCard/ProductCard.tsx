@@ -3,6 +3,7 @@ import { FaRegHeart, FaHeart } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 import { useCart } from '../../hooks/useCartContext';
+import { useFavorite } from '../../hooks/useFavoriteContext';
 
 import { Product } from '../../types/Product';
 
@@ -19,9 +20,12 @@ type Specs = {
 };
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
-  const { cart, dispatch } = useCart();
-  const isFavorite = false;
+  const { cart, dispatch: cartDispatch } = useCart();
+  const { favorite, dispatch: favoriteDispath } = useFavorite();
+
   const isInCart = cart.some(isCart => isCart.id === product.id) ?? null;
+  const isInFavorite =
+    favorite.some(isFavorite => isFavorite.id === product.id) ?? null;
 
   const specs: Specs[] = [
     {
@@ -86,17 +90,18 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           className={classNames(styles['product-card__button-accept'], {
             [styles['product-card__button-accept--selected']]: isInCart,
           })}
-          onClick={() => dispatch({ type: 'add', payload: product })}
+          onClick={() => cartDispatch({ type: 'add', payload: product })}
           disabled={isInCart}
         >
           {isInCart ? 'Added to cart' : 'Add to cart'}
         </button>
         <button
           className={classNames(styles['product-card__button-favorite'], {
-            [styles['product-card__button-favorite--selected']]: isFavorite,
+            [styles['product-card__button-favorite--selected']]: isInFavorite,
           })}
+          onClick={() => favoriteDispath({ type: 'toggle', payload: product })}
         >
-          {isFavorite ? (
+          {isInFavorite ? (
             <FaHeart className={styles['product-card__icon-heart']} />
           ) : (
             <FaRegHeart className={styles['product-card__icon-heart']} />

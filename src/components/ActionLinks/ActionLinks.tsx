@@ -7,6 +7,7 @@ import classNames from 'classnames';
 
 import { useStateContext } from '../../hooks/useStateContext';
 import { useCart } from '../../hooks/useCartContext';
+import { useFavorite } from '../../hooks/useFavoriteContext';
 
 import { BurgerMenu } from '../BurgerMenu';
 
@@ -35,6 +36,7 @@ type Props = {
 export const ActionLinks: React.FC<Props> = ({ actionState = 'header' }) => {
   const { setIsMenuOpen } = useStateContext();
   const { cart } = useCart();
+  const { favorite } = useFavorite();
 
   return (
     <div
@@ -52,6 +54,9 @@ export const ActionLinks: React.FC<Props> = ({ actionState = 'header' }) => {
             <Icon className={styles['actions__action-icon']} />
             {cart.length > 0 && path === '/cart' && (
               <span className={styles.actions__count}>{cart.length}</span>
+            )}
+            {favorite.length > 0 && path === '/favorites' && (
+              <span className={styles.actions__count}>{favorite.length}</span>
             )}
           </div>
         </NavLink>

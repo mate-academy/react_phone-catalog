@@ -7,6 +7,7 @@ import { request } from '../../../utils/fetchResponse';
 import { getColor } from '../../../utils/Colors';
 
 import { useCart } from '../../../hooks/useCartContext';
+import { useFavorite } from '../../../hooks/useFavoriteContext';
 
 import { ProductDetailsData } from '../../../types/ProductDetailsData';
 import { Product } from '../../../types/Product';
@@ -18,7 +19,8 @@ type Props = {
 };
 
 export const ProductDetails: React.FC<Props> = ({ product }) => {
-  const { cart, dispatch } = useCart();
+  const { cart, dispatch: cartDispatch } = useCart();
+  const { favorite, dispatch: favoriteDispatch } = useFavorite();
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [baseProduct, setBaseProduct] = useState<Product | null>(null);
   const [isBaseProductLoading, setIsBaseProductLoading] = useState(true);
@@ -26,7 +28,9 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
 
   const id = product.capacityAvailable.map(capaciry => parseInt(capaciry));
   const isInCart = cart.some(isCart => isCart.id === baseProduct?.id);
-  const isFavorite = false;
+  const isInFavorite = favorite.some(
+    isFavotite => isFavotite.product.itemId === product.id,
+  );
 
   const specs = [
     { label: 'Screen', value: product.screen },
@@ -184,7 +188,8 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
                 )}
                 disabled={!baseProduct || isInCart}
                 onClick={() =>
-                  baseProduct && dispatch({ type: 'add', payload: baseProduct })
+                  baseProduct &&
+                  cartDispatch({ type: 'add', payload: baseProduct })
                 }
               >
                 {isBaseProductLoading ? (
@@ -198,11 +203,20 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
                   styles['available-options__button-favorite'],
                   {
                     [styles['available-options__button-favorite--selected']]:
-                      isFavorite,
+                      isInFavorite,
                   },
                 )}
+                disabled={!baseProduct}
+                aria-pressed={isInFavorite}
+                aria-label={
+                  isInFavorite ? 'Remove from favourites' : 'Add to favourites'
+                }
+                onClick={() =>
+                  baseProduct &&
+                  favoriteDispatch({ type: 'toggle', payload: baseProduct })
+                }
               >
-                {isFavorite ? (
+                {isInFavorite ? (
                   <FaHeart
                     className={styles['available-options__icon-heart']}
                   />

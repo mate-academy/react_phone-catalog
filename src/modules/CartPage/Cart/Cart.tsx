@@ -15,7 +15,7 @@ export const Cart: React.FC<Props> = ({ product: { product, quantity } }) => {
   const { dispatch } = useCart();
 
   return (
-    <div className={styles.cart}>
+    <article className={styles.cart}>
       <div className={styles.cart__info}>
         <button
           className={styles.cart__remove}
@@ -60,6 +60,6 @@ export const Cart: React.FC<Props> = ({ product: { product, quantity } }) => {
         </div>
         <p className={styles.cart__price}>${product.price * quantity}</p>
       </div>
-    </div>
+    </article>
   );
 };
