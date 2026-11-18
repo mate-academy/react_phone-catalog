@@ -121,6 +121,8 @@
       min-width: 0;
 
       @include on-mobile {
+        flex: none;
+        width: 100%;
         flex-direction: column-reverse;
         margin-bottom: 40px;
       }
@@ -167,6 +169,7 @@
       max-width: 464px;
       max-height: 464px;
       min-width: 0;
+      aspect-ratio: 1 / 1;
 
       margin-right: 64px;
 
@@ -179,8 +182,8 @@
       }
 
       @include on-tablet {
-        width: auto;
-        flex: 1 1 0;
+        flex: 0 1 464px;
+        min-width: 0;
         margin-right: 17px;
       }
 

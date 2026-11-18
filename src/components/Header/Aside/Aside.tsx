@@ -164,7 +164,7 @@ export const Aside = () => {
               >
                 <img
                   className="burger-menu__favourites__icon"
-                  src="/icons/Favourites.png"
+                  src="icons/Favourites.png"
                   alt="favourites"
                 />
                 {favourites.length > 0 && (
@@ -180,7 +180,7 @@ export const Aside = () => {
               >
                 <img
                   className="burger-menu__cart__icon"
-                  src="/icons/Cart.png"
+                  src="icons/Cart.png"
                   alt="cart"
                 />
                 {cart.length > 0 && (
