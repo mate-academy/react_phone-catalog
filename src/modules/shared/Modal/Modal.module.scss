@@ -1,0 +1,21 @@
+@use '../../../styles/variables.scss' as *;
+
+.modal {
+  padding: 0;
+  border: 1px solid $color-gray-3;
+  background-color: $color-bg-secondary;
+  color: $color-white;
+  max-width: 400px;
+  width: calc(100% - 32px);
+
+  &::backdrop {
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+
+  &__content {
+    padding: 32px 24px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+}

@@ -1,0 +1,92 @@
+@use '../../../../styles/variables.scss' as *;
+@use '../../../../styles/mixins.scss' as *;
+
+.item {
+  padding: 16px;
+  background-color: $color-bg-secondary;
+  display: grid;
+  gap: 16px;
+  grid-template:
+    'delete image name' auto
+    'quantity quantity price' auto
+    / 16px 80px 1fr;
+  align-items: center;
+
+  @include on-tablet {
+    padding: 24px;
+    gap: 24px;
+    grid-template:
+      'delete image name quantity price' auto
+      / auto auto 1fr auto 80px;
+  }
+
+  &__btn__delete {
+    @include icon-button(16px, 16px);
+
+    background-image: url('/img/icons/cross.svg');
+    flex-grow: 0;
+    grid-area: delete;
+  }
+
+  &__image {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    padding: 7px;
+    box-sizing: border-box;
+    flex-grow: 0;
+    grid-area: image;
+  }
+
+  &__name {
+    font-size: 14px;
+    line-height: 21px;
+    color: $color-white;
+    grid-area: name;
+    text-decoration: none;
+    padding: 15px 0;
+
+    &:hover,
+    &:focus-visible {
+      text-decoration: underline;
+    }
+  }
+
+  &__quantity {
+    display: flex;
+    align-items: center;
+    grid-area: quantity;
+  }
+
+  &__amount {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $color-white;
+  }
+
+  &__btn__decr {
+    @include icon-button;
+
+    background-image: url('/img/icons/minus-gray.svg');
+    border: 1px solid $color-gray-3;
+  }
+
+  &__btn__incr {
+    @include icon-button;
+
+    background-image: url('/img/icons/plus.svg');
+    background-color: $color-gray-5;
+  }
+
+  &__price {
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+    color: $color-white;
+    grid-area: price;
+    justify-self: end;
+  }
+}
