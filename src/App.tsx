@@ -9,6 +9,7 @@ import { Favourites } from './components/FavouritesPage/Favourites';
 import { CartPage } from './components/CartPage/CartPage';
 import { ProductDetail } from './components/ProductDetail/ProductDetail';
 import { PageNotFound } from './components/PageNotFound/PageNotFound';
+import { RightsPage } from './components/RightsPage/RightsPage';
 
 export const App = () => {
   return (
@@ -33,6 +34,7 @@ export const App = () => {
           <Route path="/favourites" element={<Favourites />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/:category/:productId" element={<ProductDetail />} />
+          <Route path="/rights" element={<RightsPage />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </Grid>

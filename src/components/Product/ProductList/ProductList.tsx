@@ -7,9 +7,15 @@ type Props = {
   products: Product[];
   column: boolean;
   hotPrices?: boolean;
+  productDetails?: boolean;
 };
 
-export const ProductList = ({ products, column, hotPrices = false }: Props) => {
+export const ProductList = ({
+  products,
+  column,
+  hotPrices = false,
+  productDetails = false,
+}: Props) => {
   const getHotPrices = () => {
     if (hotPrices) {
       return products
@@ -26,6 +32,7 @@ export const ProductList = ({ products, column, hotPrices = false }: Props) => {
   };
 
   const visibleProducts = hotPrices ? getHotPrices() : products;
+  const showDiscount = hotPrices === true || productDetails === true;
 
   return (
     <Grid>
@@ -43,6 +50,8 @@ export const ProductList = ({ products, column, hotPrices = false }: Props) => {
               capacity={product.capacity}
               ram={product.ram}
               image={product.image}
+              column={column}
+              showDiscount={showDiscount}
             />
           ))}
         </div>

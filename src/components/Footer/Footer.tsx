@@ -29,8 +29,12 @@ export const Footer = () => {
             <a href="https://github.com/OSI634" className="contacts__github">
               github
             </a>
-            <a className="contacts__link">contacts</a>
-            <div className="contacts__rights">rights</div>
+            <a href="mailto:hello@example.com" className="contacts__link">
+              contacts
+            </a>
+            <Link to="/rights" className="contacts__rights">
+              rights
+            </Link>
           </section>
 
           <section className="to-top">

@@ -99,7 +99,6 @@ export const ProductDetail = () => {
     }
   };
 
-
   const getCardWidth = () => {
     const slider = sliderRef.current;
 
@@ -431,6 +430,7 @@ export const ProductDetail = () => {
                   >[0]['products']
                 }
                 column={false}
+                productDetails={true}
               />
             </div>
           </section>

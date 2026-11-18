@@ -38,6 +38,16 @@
     font-weight: 600;
     font-size: 14px;
     line-height: 21px;
+
+    transition: color 0.3s ease;
+
+    &-link {
+      text-decoration: none;
+    }
+
+    &:hover {
+      color: vars.$accent;
+    }
   }
 
   &__price {

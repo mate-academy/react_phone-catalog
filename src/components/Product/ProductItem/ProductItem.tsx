@@ -13,6 +13,8 @@ type Props = {
   capacity: string;
   ram: string;
   image: string;
+  column: boolean;
+  showDiscount: boolean;
 };
 
 export const ProductItem = ({
@@ -25,6 +27,8 @@ export const ProductItem = ({
   capacity,
   ram,
   image,
+  column,
+  showDiscount,
 }: Props) => {
   const { favourites, toggleFavourite } = useFavourites();
   const { cart, toggleCart } = useCart();
@@ -46,9 +50,11 @@ export const ProductItem = ({
               }
             />
           </Link>
-          <h3 className="product-card__title">{productName}</h3>
+          <Link to={link} className="product-card__title-link">
+            <h3 className="product-card__title">{productName}</h3>
+          </Link>
           <div className="product-card__price">
-            {fullPrice !== price ? (
+            {(fullPrice !== price && column) || showDiscount ? (
               <div className="product-card__price--discount">
                 <div className="product-card__price--current">
                   {`$${price}`}

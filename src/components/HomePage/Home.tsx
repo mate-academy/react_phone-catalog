@@ -126,7 +126,8 @@ export const Home = () => {
 
   return (
     <main className="home-main">
-      <h1 className="home-main__title title">Welcome to Nice Gadgets store!</h1>
+      <h1 className="visuallyHidden ">Product Catalog</h1>
+      <h2 className="home-main__title title">Welcome to Nice Gadgets store!</h2>
 
       <Banner />
 
