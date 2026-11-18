@@ -60,6 +60,9 @@ export const ProductDetail = () => {
   const { category, productId } = useParams();
   const navigate = useNavigate();
   const product = getProductById(category, productId);
+  const sliderRef = useRef<HTMLDivElement>(null);
+  const [isAtStart, setIsAtStart] = useState(true);
+  const [isAtEnd, setIsAtEnd] = useState(false);
 
   const { favourites, toggleFavourite } = useFavourites();
   const { cart, toggleCart } = useCart();
@@ -96,9 +99,6 @@ export const ProductDetail = () => {
     }
   };
 
-  const sliderRef = useRef<HTMLDivElement>(null);
-  const [isAtStart, setIsAtStart] = useState(true);
-  const [isAtEnd, setIsAtEnd] = useState(false);
 
   const getCardWidth = () => {
     const slider = sliderRef.current;
