@@ -1,0 +1,15 @@
+
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.cart-items {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+  max-height: 700px;
+  overflow-x: hidden;
+
+  @include from($breakpoint-desktop) {
+      grid-column: 1 / 17;
+  }
+}

@@ -1,11 +1,15 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaHeart, FaRegHeart } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import classNames from 'classnames';
 
+import { request } from '../../../utils/fetchResponse';
 import { getColor } from '../../../utils/Colors';
 
+import { useCart } from '../../../hooks/useCartContext';
+
 import { ProductDetailsData } from '../../../types/ProductDetailsData';
+import { Product } from '../../../types/Product';
 
 import styles from './ProductDetails.module.scss';
 
@@ -14,11 +18,15 @@ type Props = {
 };
 
 export const ProductDetails: React.FC<Props> = ({ product }) => {
+  const { cart, dispatch } = useCart();
   const [activeImageIndex, setActiveImageIndex] = useState(0);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [isFavorite, setIsFavorite] = useState(false);
+  const [baseProduct, setBaseProduct] = useState<Product | null>(null);
+  const [isBaseProductLoading, setIsBaseProductLoading] = useState(true);
   const navigate = useNavigate();
+
   const id = product.capacityAvailable.map(capaciry => parseInt(capaciry));
+  const isInCart = cart.some(isCart => isCart.id === baseProduct?.id);
+  const isFavorite = false;
 
   const specs = [
     { label: 'Screen', value: product.screen },
@@ -34,6 +42,17 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
   const getVariantId = (capacity: string, color: string) => {
     return `${product.namespaceId}-${capacity.toLowerCase()}-${color.replace(/\s+/g, '-')}`;
   };
+
+  useEffect(() => {
+    request<Product[]>('/products.json')
+      .then(response =>
+        setBaseProduct(
+          response.find(data => data.itemId === product.id) ?? null,
+        ),
+      )
+      .catch(() => alert('Error loading product'))
+      .finally(() => setIsBaseProductLoading(false));
+  }, [product.id]);
 
   return (
     <div className={styles['product-details']}>
@@ -155,10 +174,34 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
             </div>
 
             <div className={styles['available-options__buttons']}>
-              <button className={styles['available-options__button-accept']}>
-                Add to cart
+              <button
+                className={classNames(
+                  styles['available-options__button-accept'],
+                  {
+                    [styles['available-options__button-accept--selected']]:
+                      isInCart,
+                  },
+                )}
+                disabled={!baseProduct || isInCart}
+                onClick={() =>
+                  baseProduct && dispatch({ type: 'add', payload: baseProduct })
+                }
+              >
+                {isBaseProductLoading ? (
+                  'Loading...'
+                ) : (
+                  <>{isInCart ? 'Added to cart' : 'Add to cart'}</>
+                )}
               </button>
-              <button className={styles['available-options__button-favorite']}>
+              <button
+                className={classNames(
+                  styles['available-options__button-favorite'],
+                  {
+                    [styles['available-options__button-favorite--selected']]:
+                      isFavorite,
+                  },
+                )}
+              >
                 {isFavorite ? (
                   <FaHeart
                     className={styles['available-options__icon-heart']}

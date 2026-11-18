@@ -1,0 +1,59 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.cart-checkout {
+  padding: 24px;
+  border: 1px solid var(--color-elements);
+  border-radius: 16px;
+  height: fit-content;
+  background-color: var(--color-background);
+  margin-top: 16px;
+  margin-bottom: 32px;
+
+  @include from($breakpoint-desktop) {
+    grid-column: 17 / -1;
+    margin-top: 0;
+  }
+
+  &__total-amount {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01rem;
+    color: var(--color-primary);
+    text-align: center;
+  }
+
+  &__total-items {
+    font-size: 14px;
+    line-height: 21px;
+    color: var(--color-secondary);
+    text-align: center;
+  }
+
+  &__line {
+    height: 1px;
+    background-color: var(--color-secondary);
+    margin-block: 24px;
+  }
+
+  &__button {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    width: 100%;
+    height: 48px;
+    color: var(--color-white);
+    background-color: var(--color-accent);
+    border: 1px solid var(--color-accent);
+    border-radius: 48px;
+    transition: background-color var(--transition), color var(--transition), border-color var(--transition);
+    padding: 12px;
+
+    &:hover {
+      background-color: var(--color-white);
+      border-color: var(--color-elements);
+      color: var(--color-accent);
+    }
+  }
+}

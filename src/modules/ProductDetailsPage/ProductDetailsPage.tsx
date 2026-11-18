@@ -5,7 +5,7 @@ import { request } from '../../utils/fetchResponse';
 import { isCategory } from '../../utils/isCategory';
 import { getSuggestedProducts } from '../../utils/getSuggestedProducts';
 
-import { ToBack } from './ToBack';
+import { ToBack } from '../../components/ToBack';
 import { ProductDetails } from './ProductDetails';
 import { NotFoundProducts } from '../ProductsPage/NotFoundProducts';
 

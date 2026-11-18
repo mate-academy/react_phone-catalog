@@ -4,11 +4,11 @@ import { useStateContext } from '../../hooks/useStateContext';
 
 import { Nav } from '../Nav';
 import { BurgerMenu } from '../BurgerMenu';
+import { ActionLinks } from '../ActionLinks';
 
 import logo from '../../assets/logo.svg';
 
 import styles from './Sidebar.module.scss';
-import { ActionLinks } from '../ActionLinks';
 
 export const Sidebar = () => {
   const { isMenuOpen, setIsMenuOpen } = useStateContext();

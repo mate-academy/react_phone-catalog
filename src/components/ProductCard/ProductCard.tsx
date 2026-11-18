@@ -1,18 +1,42 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { FaRegHeart, FaHeart } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+
+import { useCart } from '../../hooks/useCartContext';
 
 import { Product } from '../../types/Product';
 
 import styles from './ProductCard.module.scss';
+import classNames from 'classnames';
 
 type Props = {
   product: Product;
 };
 
+type Specs = {
+  label: string;
+  value: string;
+};
+
 export const ProductCard: React.FC<Props> = ({ product }) => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [isFavorite, setIsFavorite] = useState(false);
+  const { cart, dispatch } = useCart();
+  const isFavorite = false;
+  const isInCart = cart.some(isCart => isCart.id === product.id) ?? null;
+
+  const specs: Specs[] = [
+    {
+      label: 'Screen',
+      value: product.screen,
+    },
+    {
+      label: 'Capacity',
+      value: product.capacity,
+    },
+    {
+      label: 'RAM',
+      value: product.ram,
+    },
+  ];
 
   return (
     <article className={styles['product-card']}>
@@ -44,33 +68,33 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         <hr className={styles['product-card__line']} />
 
         <div className={styles['product-card__rows']}>
-          <div className={styles['product-card__row']}>
-            <span className={styles['product-card__row-left']}>Screen</span>
-            <span className={styles['product-card__row-right']}>
-              {product.screen}
-            </span>
-          </div>
-          <div className={styles['product-card__row']}>
-            <span className={styles['product-card__row-left']}>Capacity</span>
-            <span className={styles['product-card__row-right']}>
-              {product.capacity}
-            </span>
-          </div>
-          <div className={styles['product-card__row']}>
-            <span className={styles['product-card__row-left']}>RAM</span>
-            <span className={styles['product-card__row-right']}>
-              {product.ram}
-            </span>
-          </div>
+          {specs.map(spec => (
+            <div key={spec.label} className={styles['product-card__row']}>
+              <span className={styles['product-card__row-left']}>
+                {spec.label}
+              </span>
+              <span className={styles['product-card__row-right']}>
+                {spec.value}
+              </span>
+            </div>
+          ))}
         </div>
       </div>
 
       <div className={styles['product-card__controller']}>
-        <button className={styles['product-card__button-accept']}>
-          Add to cart
+        <button
+          className={classNames(styles['product-card__button-accept'], {
+            [styles['product-card__button-accept--selected']]: isInCart,
+          })}
+          onClick={() => dispatch({ type: 'add', payload: product })}
+          disabled={isInCart}
+        >
+          {isInCart ? 'Added to cart' : 'Add to cart'}
         </button>
         <button
-          className={`${styles['product-card__button-favorite']} ${styles['product-card__button-favorite--selected']}`}
+          className={classNames(styles['product-card__button-favorite'], {
+            [styles['product-card__button-favorite--selected']]: isFavorite,
+          })}
         >
           {isFavorite ? (
             <FaHeart className={styles['product-card__icon-heart']} />

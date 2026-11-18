@@ -110,7 +110,8 @@
     line-height: 21px;
     font-weight: 600;
     text-align: center;
-    transition: box-shadow var(--transition);
+    border: 1px solid var(--color-accent);
+    transition: color var(--transition), background-color var(--transition), border-color var(--transition), box-shadow var(--transition);
     cursor: pointer;
 
     &:hover {
@@ -141,9 +142,20 @@
     fill: var(--color-primary);
   }
 
-  &__button-favotire--selected {
+  &__button-accept--selected {
+    color: var(--color-accent);
+    border-color: var(--color-elements);
+    background-color: var(--color-white);
+
+    &:disabled {
+      box-shadow: none;
+      cursor: no-drop;
+    }
+  }
+
+  &__button-favorite--selected {
     .product-card__icon-heart {
-      color: var(--color-secondary-accent);
+      fill: var(--color-secondary-accent);
     }
   }
 }

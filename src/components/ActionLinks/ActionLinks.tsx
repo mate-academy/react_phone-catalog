@@ -6,6 +6,7 @@ import { LuShoppingBag } from 'react-icons/lu';
 import classNames from 'classnames';
 
 import { useStateContext } from '../../hooks/useStateContext';
+import { useCart } from '../../hooks/useCartContext';
 
 import { BurgerMenu } from '../BurgerMenu';
 
@@ -33,6 +34,7 @@ type Props = {
 
 export const ActionLinks: React.FC<Props> = ({ actionState = 'header' }) => {
   const { setIsMenuOpen } = useStateContext();
+  const { cart } = useCart();
 
   return (
     <div
@@ -46,7 +48,12 @@ export const ActionLinks: React.FC<Props> = ({ actionState = 'header' }) => {
           onClick={() => setIsMenuOpen(false)}
           aria-label={label}
         >
-          <Icon className={styles['actions__action-icon']} />
+          <div className={styles.actions__box}>
+            <Icon className={styles['actions__action-icon']} />
+            {cart.length > 0 && path === '/cart' && (
+              <span className={styles.actions__count}>{cart.length}</span>
+            )}
+          </div>
         </NavLink>
       ))}
 
