@@ -1,0 +1,28 @@
+.input {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  height: 40px;
+  padding: 0 12px;
+
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+
+  color: var(--color-primary);
+  background-color: var(--color-white);
+
+  border: 1px solid var(--color-icons);
+  border-radius: 8px;
+
+  &::placeholder {
+    color: var(--color-secondary);
+  }
+
+  &:hover,
+  &:focus,
+  &:focus-visible {
+    border-color: var(--color-primary);
+    outline: none;
+    box-shadow: none;
+  }
+}
