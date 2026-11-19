@@ -117,6 +117,10 @@
   display: none;
 }
 
+.mobileThemeButton {
+  display: none;
+}
+
 @media (min-width: 640px) and (max-width: 1199px) {
   .header {
     height: 48px;
@@ -194,6 +198,13 @@
     background-color: transparent;
     color: var(--color-primary);
     cursor: pointer;
+  }
+
+  .mobileThemeButton {
+    display: flex;
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
   }
 
   .burgerIcon {
@@ -285,3 +296,72 @@
   }
 }
 
+.searchArea {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 64px;
+  margin-left: auto;
+}
+
+.searchButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  padding: 0;
+
+  color: var(--color-primary);
+  background-color: transparent;
+  border: 0;
+  border-left: 1px solid var(--color-elements);
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--color-hover-bg);
+  }
+}
+
+.actionsWithSearch {
+  margin-left: 0;
+}
+
+.searchPanel {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 110;
+
+  box-sizing: border-box;
+  width: 320px;
+  max-width: calc(100vw - 32px);
+  padding: 12px;
+
+  background-color: var(--color-white);
+  border: 1px solid var(--color-elements);
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 12%);
+}
+
+@media (max-width: 1199px) {
+  .searchArea,
+  .searchButton {
+    height: 48px;
+  }
+
+  .searchButton {
+    width: 48px;
+  }
+}
+
+@media (max-width: 639px) {
+  .searchPanel {
+    position: fixed;
+    top: 56px;
+    right: 16px;
+    left: 16px;
+    width: auto;
+    max-width: none;
+  }
+}

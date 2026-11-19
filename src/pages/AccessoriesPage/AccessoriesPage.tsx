@@ -7,6 +7,7 @@ import { ProductsListSkeleton } from '../../components/Skeletons';
 import styles from './AccessoriesPage.module.scss';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { getPublicUrl } from '../../utils/getPublicUrl';
+import { formatModelCount } from '../../utils/formatModelCount';
 
 export const AccessoriesPage = () => {
   const [accessories, setAccessories] = useState<Product[]>([]);
@@ -16,6 +17,7 @@ export const AccessoriesPage = () => {
   const sort = searchParams.get('sort') || 'age';
   const perPage = searchParams.get('perPage') || 'all';
   const page = Number(searchParams.get('page')) || 1;
+  const query = (searchParams.get('query') || '').trim().toLowerCase();
 
   useEffect(() => {
     fetch(getPublicUrl('/api/products.json'))
@@ -41,19 +43,25 @@ export const AccessoriesPage = () => {
       });
   }, []);
 
-  const sortedAccessories = [...accessories].sort((accessory1, accessory2) => {
-    switch (sort) {
-      case 'title':
-        return accessory1.name.localeCompare(accessory2.name);
+  const filteredAccessories = accessories.filter(accessory =>
+    accessory.name.toLowerCase().includes(query),
+  );
 
-      case 'price':
-        return accessory1.price - accessory2.price;
+  const sortedAccessories = [...filteredAccessories].sort(
+    (accessory1, accessory2) => {
+      switch (sort) {
+        case 'title':
+          return accessory1.name.localeCompare(accessory2.name);
 
-      case 'age':
-      default:
-        return accessory2.year - accessory1.year;
-    }
-  });
+        case 'price':
+          return accessory1.price - accessory2.price;
+
+        case 'age':
+        default:
+          return accessory2.year - accessory1.year;
+      }
+    },
+  );
 
   const startIndex = (page - 1) * Number(perPage);
   const endIndex = page * Number(perPage);
@@ -84,7 +92,9 @@ export const AccessoriesPage = () => {
       <h1 className={styles.title}>Accessories</h1>
 
       <p className={styles.count}>
-        {isLoading ? 'Loading models...' : `${accessories.length} models`}
+        {isLoading
+          ? 'Loading models...'
+          : formatModelCount(filteredAccessories.length)}
       </p>
 
       <div className={styles.controls}>
@@ -157,6 +167,8 @@ export const AccessoriesPage = () => {
         </div>
       ) : accessories.length === 0 ? (
         <p>There are no accessories yet</p>
+      ) : filteredAccessories.length === 0 ? (
+        <p>There are no accessories matching the query</p>
       ) : (
         <>
           <ProductsList products={visibleAccessories} />

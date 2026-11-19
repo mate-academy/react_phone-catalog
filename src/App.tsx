@@ -14,6 +14,7 @@ import { FavoritesProvider } from './context/FavoritesContext';
 import { FavoritesPage } from './pages/FavoritesPage';
 import { ThemeProvider } from './context/ThemeContext';
 import { NotFoundPage } from './pages/NotFoundPage';
+import { SearchPage } from './pages/SearchPage';
 
 export const App = () => {
   const { pathname } = useLocation();
@@ -39,6 +40,7 @@ export const App = () => {
                 element={<ProductDetailsPage />}
               />
               <Route path="/cart" element={<CartPage />} />
+              <Route path="/search" element={<SearchPage />} />
               <Route path="/favorites" element={<FavoritesPage />} />
               <Route path="*" element={<NotFoundPage />} />
             </Routes>

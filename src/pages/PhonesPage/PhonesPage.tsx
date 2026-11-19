@@ -7,6 +7,7 @@ import { ProductsListSkeleton } from '../../components/Skeletons';
 import styles from './PhonesPage.module.scss';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { getPublicUrl } from '../../utils/getPublicUrl';
+import { formatModelCount } from '../../utils/formatModelCount';
 
 export const PhonesPage = () => {
   const [phones, setPhones] = useState<Product[]>([]);
@@ -17,6 +18,7 @@ export const PhonesPage = () => {
   const sort = searchParams.get('sort') || 'age';
   const perPage = searchParams.get('perPage') || 'all';
   const page = Number(searchParams.get('page')) || 1;
+  const query = (searchParams.get('query') || '').trim().toLowerCase();
 
   useEffect(() => {
     fetch(getPublicUrl('/api/products.json'))
@@ -42,7 +44,11 @@ export const PhonesPage = () => {
       });
   }, []);
 
-  const sortedPhones = [...phones].sort((phone1, phone2) => {
+  const filteredPhones = phones.filter(phone =>
+    phone.name.toLowerCase().includes(query),
+  );
+
+  const sortedPhones = [...filteredPhones].sort((phone1, phone2) => {
     switch (sort) {
       case 'title':
         return phone1.name.localeCompare(phone2.name);
@@ -83,7 +89,9 @@ export const PhonesPage = () => {
       <h1 className={styles.title}>Mobile phones</h1>
 
       <p className={styles.count}>
-        {isLoading ? 'Loading models...' : `${phones.length} models`}
+        {isLoading
+          ? 'Loading models...'
+          : formatModelCount(filteredPhones.length)}
       </p>
       <div className={styles.controls}>
         <label className={styles.control}>
@@ -155,6 +163,8 @@ export const PhonesPage = () => {
         </div>
       ) : phones.length === 0 ? (
         <p>There are no phones yet</p>
+      ) : filteredPhones.length === 0 ? (
+        <p>There are no phones matching the query</p>
       ) : (
         <>
           <ProductsList products={visiblePhones} />
