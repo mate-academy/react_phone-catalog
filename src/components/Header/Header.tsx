@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { Nav } from '../Nav';
@@ -8,9 +7,7 @@ import logo from '../../assets/logo.svg';
 
 import styles from './Header.module.scss';
 
-type Props = {};
-
-export const Header: React.FC<Props> = () => {
+export const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.header__inner}>

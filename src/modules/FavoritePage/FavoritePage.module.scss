@@ -34,7 +34,7 @@
 
   &__clear-button {
     background-color: var(--color-accent);
-    color: var(--color-white);
+    color: var(--color-button);
     font-size: 16px;
     line-height: 24px;
     padding: 10px 14px;
@@ -44,7 +44,7 @@
 
     &:hover {
       background-color: var(--color-white);
-      color: var(--color-accent);
+      color: var(--color-accent-selected);
     }
   }
 

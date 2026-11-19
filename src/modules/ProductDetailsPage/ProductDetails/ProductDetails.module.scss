@@ -334,7 +334,7 @@
       border: 1px solid var(--color-accent);
       border-radius: 48px;
       height: 48px;
-      color: var(--color-white);
+      color: var(--color-button);
       font-size: 14px;
       line-height: 21px;
       font-weight: 600;
@@ -377,7 +377,6 @@
     }
 
     &__button-accept--selected {
-      color: var(--color-accent);
       border-color: var(--color-elements);
       background-color: var(--color-white);
 

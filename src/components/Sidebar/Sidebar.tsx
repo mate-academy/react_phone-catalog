@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import { useStateContext } from '../../hooks/useStateContext';
@@ -12,6 +13,18 @@ import styles from './Sidebar.module.scss';
 
 export const Sidebar = () => {
   const { isMenuOpen, setIsMenuOpen } = useStateContext();
+
+  useEffect(() => {
+    const html = document.querySelector('html');
+    const body = html?.querySelector('body');
+
+    if (!html || !body) {
+      return;
+    }
+
+    html.style.overflow = isMenuOpen ? 'hidden' : '';
+    body.style.overflow = isMenuOpen ? 'hidden' : '';
+  }, [isMenuOpen]);
 
   return (
     <div

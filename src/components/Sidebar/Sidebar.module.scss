@@ -2,7 +2,7 @@
 @use '../../styles/mixins' as *;
 
 .sidebar {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 100%;
   z-index: 20;

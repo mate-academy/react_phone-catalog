@@ -46,7 +46,7 @@
     border-radius: 999px;
     background-color: var(--color-accent);
     text-align: center;
-    color: var(--color-white);
+    color: var(--color-button);
   }
 
   &__burger-menu {
@@ -75,10 +75,6 @@
     .actions__link {
       width: 100%;
       height: 64px;
-    }
-
-    .actions__link:first-of-type {
-      box-shadow: none;
     }
   }
 
