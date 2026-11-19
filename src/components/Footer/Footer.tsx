@@ -26,7 +26,12 @@ export const Footer = () => {
           </section>
 
           <section className="contacts">
-            <a href="https://github.com/OSI634" className="contacts__github">
+            <a
+              href="https://github.com/OSI634"
+              className="contacts__github"
+              target="_blank"
+              rel="noreferrer"
+            >
               github
             </a>
             <a href="mailto:hello@example.com" className="contacts__link">

@@ -297,10 +297,10 @@ export const ProductDetail = () => {
 
               <div className="product-detail-parameters__add">
                 <button
-                  className={`product-detail-parameters__add__cart ${cart.includes(product.id) ? 'product-detail-parameters__add__cart-added' : ''}`}
+                  className={`product-detail-parameters__add__cart ${cart.some(item => item.id === product.id) ? 'product-detail-parameters__add__cart-added' : ''}`}
                   onClick={() => toggleCart(product.id)}
                 >
-                  {cart.includes(product.id) ? (
+                  {cart.some(item => item.id === product.id) ? (
                     <div>Added to cart</div>
                   ) : (
                     <div>Add to cart</div>

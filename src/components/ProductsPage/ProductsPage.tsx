@@ -13,8 +13,8 @@ export const ProductsPage = ({ category }: { category: string }) => {
     product => product.category === category,
   );
 
-  const [currentPagin, setCurrentPagin] = useState(1);
   const [searchParams, setSearchParams] = useSearchParams();
+  const [currentPagin, setCurrentPagin] = useState(1);
 
   const sortValue = searchParams.get('sort');
 
@@ -58,6 +58,20 @@ export const ProductsPage = ({ category }: { category: string }) => {
       default:
         return sortedPhones;
     }
+  };
+
+  const changePage = (page: number) => {
+    setSearchParams(prev => {
+      const params = new URLSearchParams(prev);
+
+      if (page === 1) {
+        params.delete('page');
+      } else {
+        params.set('page', String(page));
+      }
+
+      return params;
+    });
   };
 
   const sortedPhones = sort(sortParams);
@@ -226,7 +240,10 @@ export const ProductsPage = ({ category }: { category: string }) => {
           <>
             <button
               className={`products-pagination__button products-pagination__button__prev ${currentPagin === 1 ? 'products-pagination__button--disabled' : ''}`}
-              onClick={() => setCurrentPagin(current => current - 1)}
+              onClick={() => {
+                setCurrentPagin(current => current - 1);
+                changePage(currentPagin - 1);
+              }}
               disabled={currentPagin === 1}
             >
               <svg
@@ -264,7 +281,10 @@ export const ProductsPage = ({ category }: { category: string }) => {
                   <button
                     key={page}
                     className={`products-pagination__page ${currentPagin === page ? 'products-pagination__current' : ''}`}
-                    onClick={() => setCurrentPagin(page)}
+                    onClick={() => {
+                      setCurrentPagin(page);
+                      changePage(page);
+                    }}
                   >
                     {page}
                   </button>
@@ -273,7 +293,10 @@ export const ProductsPage = ({ category }: { category: string }) => {
             </div>
             <button
               className={`products-pagination__button products-pagination__button__next ${currentPagin === totalPages ? 'products-pagination__button--disabled' : ''}`}
-              onClick={() => setCurrentPagin(current => current + 1)}
+              onClick={() => {
+                setCurrentPagin(current => current + 1);
+                changePage(currentPagin + 1);
+              }}
               disabled={currentPagin === totalPages}
             >
               <svg
