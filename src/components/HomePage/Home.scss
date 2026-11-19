@@ -1,0 +1,239 @@
+@use '../../styles/variables.scss' as vars;
+@use '../../styles/mixins.scss' as *;
+
+.home-main {
+  display: grid;
+  min-height: calc(100vh - vars.$header-height - vars.$footer-height);
+  min-width: 0;
+  grid-column: 1 / -1;
+
+  @include on-tablet {
+    margin: 0 24px;
+  }
+
+  @include on-mobile {
+    margin: 0 16px;
+  }
+
+  &__title {
+    margin: 40px 0;
+    gap: 8px;
+    font-size: 48px;
+    line-height: 56px;
+
+    @include on-mobile {
+      font-size: 32px;
+      line-height: 41px;
+    }
+  }
+}
+
+.title,
+.section-title {
+  font-weight: 800;
+  color: vars.$white;
+}
+
+.section-title {
+  font-size: 32px;
+  line-height: 41px;
+
+  @include on-mobile {
+    font-size: 22px;
+    line-height: 140%;
+  }
+}
+
+.brand-new {
+  margin-top: 80px;
+  min-width: 0;
+
+  @include on-tablet {
+    margin-top: 64px;
+  }
+
+  @include on-mobile {
+    margin-top: 56px;
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    min-width: 0;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    min-width: 0;
+    margin: 0;
+
+    @include on-mobile {
+      margin-right: 16px;
+    }
+  }
+
+  &__buttons {
+    gap: 16px;
+    display: flex;
+    flex-shrink: 0;
+  }
+
+  &__slider {
+    width: 100%;
+    min-width: 0;
+    overflow: hidden auto;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
+
+.button {
+  &__prev,
+  &__next {
+    border: none;
+    background-color: vars.$secondary-color;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: vars.$hover-color;
+    }
+
+    &-img {
+      display: flex;
+      place-self: center;
+    }
+  }
+
+  &--disabled {
+    cursor: auto;
+    border: 1px solid #4a4d58;
+    color: #4a4d58;
+    background-color: vars.$black;
+  }
+}
+
+.home-categories {
+  &__title {
+    margin-bottom: 24px;
+  }
+}
+
+.home-category {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+
+  @include on-mobile {
+    grid-template-columns: 1fr;
+  }
+
+  &__phones,
+  &__tablets,
+  &__accessories {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    min-width: 0;
+    height: auto;
+
+    &__link {
+      transition: transform 0.3s ease;
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+
+    &__img {
+      display: block;
+      object-fit: contain;
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      aspect-ratio: 1 / 1;
+    }
+
+    &__title {
+      display: flex;
+      gap: 4px;
+      flex-direction: column;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 100%;
+      color: vars.$white;
+    }
+
+    &__total {
+      display: flex;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 21px;
+      color: vars.$secondary-color;
+    }
+  }
+}
+
+.home-hot-prices {
+  margin: 80px 0;
+  min-width: 0;
+
+  @include on-tablet {
+    margin-top: 64px;
+  }
+
+  @include on-mobile {
+    margin-top: 56px;
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    min-width: 0;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    min-width: 0;
+    margin: 0;
+  }
+
+  &__buttons {
+    gap: 16px;
+    display: flex;
+    flex-shrink: 0;
+  }
+
+  &__slider {
+    width: 100%;
+    min-width: 0;
+    overflow: hidden auto;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
+
+
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}

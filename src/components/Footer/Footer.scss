@@ -1,0 +1,116 @@
+@use '../../styles/variables.scss' as vars;
+@use '../../styles/mixins.scss' as *;
+
+.footer {
+  width: 100%;
+  display: flex;
+  border-top: 1px solid vars.$elements-color;
+  align-items: center;
+
+  min-height: 96px;
+
+  &__content {
+    display: grid;
+    grid-column: 1 / -1;
+    flex-direction: row;
+    justify-content: space-between;
+
+    @include on-tablet {
+      margin: 0 32px;
+    }
+
+    @include on-mobile {
+      display: flex;
+      flex-direction: column;
+      margin: 32px 16px;
+      gap: 32px;
+    }
+  }
+}
+
+.logo {
+  grid-column: 1 / 8;
+
+  @include on-mobile {
+    grid-column: 1 / -1;
+  }
+}
+
+.contacts {
+  grid-column: 8 / 16;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+
+  &__github,
+  &__link,
+  &__rights  {
+    cursor: pointer;
+    color: vars.$white;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 4%;
+    text-transform: uppercase;
+  }
+
+  @include on-mobile {
+    gap: 16px;
+    grid-column: 1 / -1;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.to-top {
+  grid-column: 16 / 24;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+
+  &__text {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    color: vars.$secondary-color;
+  }
+
+  &__button {
+    cursor: pointer;
+    background-color: vars.$elements-color;
+    border: none;
+    width: 32px;
+    height: 32px;
+    transition: background-color 0.3s ease;
+
+    &--path {
+      fill: vars.$white;
+      transition: fill 0.3s ease;
+    }
+
+    &:hover &--path {
+      fill: vars.$accent;
+    }
+
+    &:hover {
+      background-color: #4A4D58;
+    }
+  }
+
+  &__icon {
+    place-self: center;
+    display: flex;
+    object-fit: contain;
+    width: 16px;
+    height: 16px;
+
+
+  }
+
+  @include on-mobile {
+    grid-column: 1 / -1;
+  }
+}

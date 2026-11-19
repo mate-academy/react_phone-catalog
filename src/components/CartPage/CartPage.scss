@@ -1,0 +1,169 @@
+@use '../../styles/variables.scss' as vars;
+@use '../../styles/mixins.scss' as *;
+
+.cart {
+  &-main {
+    display: grid;
+    align-content: start;
+    grid-column: 1 / -1;
+    min-height: calc(100vh - vars.$footer-height - vars.$header-height);
+    grid-template-columns: repeat(24, minmax(0, 1fr));
+    margin: 0 32px;
+
+    @include on-tablet {
+      margin: 0 24px;
+    }
+
+    @include on-mobile {
+      margin: 0 16px;
+    }
+
+  }
+
+  &__content {
+    display: grid;
+    grid-column: 1 / -1;
+    grid-template-columns: subgrid;
+    gap: 16px;
+    margin-bottom: 80px;
+
+    &__empty {
+      display: flex;
+      min-width: 0;
+      grid-column: 1 / -1;
+      color: vars.$white;
+    }
+
+    @include on-tablet {
+      flex-direction: column;
+    }
+
+    &-main__title{
+      grid-column: 1 / -1;
+      margin-top: 16px;
+
+      display: flex;
+      align-items: center;
+      margin-bottom: 40px;
+      color: vars.$white;
+      font-weight: 800;
+      font-size: 48px;
+      line-height: 56px;
+
+      @include on-mobile {
+        font-size: 32px;
+        line-height: 41px;
+      }
+    }
+
+    &-back {
+      margin-top: 40px;
+      align-items: center;
+      display: flex;
+      height: 16px;
+
+      &-block {
+        gap: 4px;
+        display: flex;
+        align-items: center;
+      }
+
+      &__button {
+        color: vars.$white;
+        cursor: pointer;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: vars.$accent;
+        }
+      }
+
+      &__icon {
+        width: 16px;
+        height: 16px;
+        display: flex;
+        object-fit: contain;
+      }
+    }
+
+    &-cards {
+      display: grid;
+      grid-column: 1 / 16;
+      gap: 16px;
+
+      @include on-tablet {
+        grid-column: 1 / -1;
+      }
+    }
+
+    &-checkout {
+      display: grid;
+      max-height: fit-content;
+      padding: 24px;
+      align-content: flex-start;
+      grid-column: 16 / -1;
+      border: 1px solid vars.$elements-color;
+      gap: 16px;
+
+      @include on-tablet {
+        grid-column: 1 / -1;
+      }
+
+      &--line {
+        display: flex;
+        border: 1px solid vars.$elements-color;
+      }
+
+      &--total-amount,
+      &--total-items {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+      }
+
+      &--total-amount {
+        display: flex;
+        font-weight: 800;
+        font-size: 32px;
+        line-height: 41px;
+        text-align: center;
+
+        color: vars.$white;
+      }
+
+      &--total-items {
+        display: flex;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 21px;
+
+        color: vars.$secondary-color;
+      }
+
+      &--button {
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+
+        width: 100%;
+        height: auto;
+        padding: 14px 0;
+
+        border: none;
+
+        background-color: vars.$accent;
+
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 21px;
+
+        color: vars.$white;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: vars.$accent-hover;
+        }
+      }
+    }
+  }
+}

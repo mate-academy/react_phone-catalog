@@ -1,0 +1,137 @@
+@use '../../styles/variables.scss' as vars;
+@use '../../styles/mixins.scss' as *;
+
+.header {
+  width: 100%;
+  height: vars.$header-height;
+  background-color: vars.$black;
+  display: flex;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  align-items: center;
+  box-shadow: 0 1px 0 0 vars.$surface-2-color;
+
+  @include on-tablet {
+    height: vars.$header-tablet-height;
+  }
+
+  @include on-mobile {
+    justify-content: space-between;
+    z-index: 2;
+  }
+
+  &__logo {
+    margin: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 64px;
+    width: 128px;
+
+    @include on-tablet {
+      height: 48px;
+      margin: 13px;
+      width: 96px;
+    }
+  }
+
+  &__left {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+
+    @include on-mobile {
+      display: none;
+    }
+  }
+
+  &__right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+
+    @include on-mobile {
+      display: none;
+    }
+
+
+    &--mobile {
+      display: none;
+      border-left: 1px solid vars.$surface-2-color;
+
+      @include on-mobile {
+        display: flex;
+        height: 100%;
+        align-items: center;
+      }
+    }
+  }
+}
+
+.favourites,
+.cart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: vars.$header-icon-width;
+  height: vars.$header-icon-height;
+  border-left: 1px solid vars.$surface-2-color;
+
+  @include on-tablet {
+    height: vars.$header-tablet-icon-height;
+    width: vars.$header-tablet-icon-width;
+  }
+
+  &__icon {
+    padding: 16px;
+    width: 16px;
+    height: 16px;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+}
+
+.logo__img {
+  height: 28px;
+  width: 80px;
+
+  @include on-tablet {
+    height: 22px;
+    width: 64px;
+  }
+}
+
+.cart__counter,
+.favourites__counter {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+
+  background-color: vars.$red;
+
+  font-weight: 700;
+  font-size: 9px;
+  line-height: 100%;
+
+  color: vars.$white;
+
+  @include on-tablet {
+    top: 10px;
+    right: 10px;
+  }
+}

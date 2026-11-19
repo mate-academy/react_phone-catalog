@@ -1,0 +1,209 @@
+@use '../../styles/variables.scss' as vars;
+@use '../../styles/mixins.scss' as *;
+
+.products {
+  &__arrow {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    pointer-events: none;
+    transform: translateY(-50%) rotate(0deg);
+    transition: transform 0.3s ease;
+  }
+
+  &-main {
+    display: grid;
+    min-height: calc(100vh - vars.$header-height - vars.$footer-height);
+    min-width: 0;
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      margin: 0 24px;
+    }
+
+    @include on-mobile {
+      margin: 0 16px;
+    }
+
+    &__title {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      color: vars.$white;
+      margin-top: 80px 0;
+      font-weight: 800;
+      font-size: 48px;
+      line-height: 56px;
+
+      @include on-mobile {
+        font-size: 32px;
+        line-height: 41px;
+      }
+    }
+  }
+
+  &-models__count {
+    display: flex;
+    color: vars.$secondary-color;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+  }
+
+  &-params {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+
+    &__title {
+      color: vars.$secondary-color;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 100%;
+    }
+  }
+
+  &-products {
+    margin-top: 24px;
+    width: 100%;
+
+    &__content {
+      width: 100%;
+      min-width: 0;
+    }
+  }
+
+  &-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    margin-bottom: 80px;
+
+    &__icon {
+      place-self: center;
+      object-fit: contain;
+      display: flex;
+      width: 16px;
+      height: 16px;
+    }
+
+    &__pages {
+      margin: 0 16px;
+      display: flex;
+      gap: 8px;
+    }
+
+    &__page {
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 21px;
+      color: vars.$white;
+      background-color: vars.$surface-1-color;
+    }
+
+    &__button,
+    &__page {
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      width: 32px;
+      height: 32px;
+      border: 0;
+    }
+
+    &__button {
+      display: flex;
+      background-color: vars.$surface-2-color;
+      transition: background-color 0.3s ease;
+
+      &--disabled {
+        border: 1px solid vars.$elements-color;
+        background-color: vars.$black;
+      }
+
+      &:not(&--disabled):hover {
+        background-color: vars.$hover-color;
+      }
+    }
+
+
+
+    &__current {
+      background-color: vars.$accent;
+    }
+  }
+
+  &-sort-by__select,
+  &-item-on-page__select {
+    outline: none;
+    box-shadow: none;
+    appearance: none;
+    -webkit-appearance: none;
+    -mox-apppearance: none;
+    padding: 5px;
+
+    border: none;
+    background-color: vars.$surface-2-color;
+    color: vars.$white;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+    height: 40px;
+
+    &-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+
+    &:focus + .products__arrow {
+      transform: translateY(-50%) rotate(180deg);
+    }
+  }
+
+  &-sort-by__select {
+    width: 176px;
+
+    @include on-tablet {
+      width: 187px;
+    }
+
+    @include on-mobile {
+      width: 136px;
+    }
+  }
+
+  &-item-on-page__select {
+    width: 128px;
+
+    @include on-tablet {
+      width: 136px;
+    }
+  }
+
+  &-location {
+    margin-top: 24px;
+    display: flex;
+
+    &__path {
+      gap: 8px;
+      display: flex;
+      align-items: center;
+    }
+
+    &__text {
+      color: vars.$secondary-color;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 100%;
+    }
+
+    &__icon {
+      display: flex;
+      place-self: center;
+      object-fit: contain;
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
