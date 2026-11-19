@@ -1,4 +1,4 @@
-import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 
 import { ThemeProvider } from '../context/ThemeProvider';
 import { CartProvider } from '../context/CartProvider';

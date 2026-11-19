@@ -1,4 +1,7 @@
 import { Link } from 'react-router-dom';
+import { MdOutlineSearch } from 'react-icons/md';
+
+import { useStateContext } from '../../hooks/useStateContext';
 
 import { Nav } from '../Nav';
 import { ActionLinks } from '../ActionLinks';
@@ -8,6 +11,8 @@ import logo from '../../assets/logo.svg';
 import styles from './Header.module.scss';
 
 export const Header = () => {
+  const { setIsOpenWindow } = useStateContext();
+
   return (
     <header className={styles.header}>
       <div className={styles.header__inner}>
@@ -23,7 +28,15 @@ export const Header = () => {
           <Nav orientation="horizontal" />
         </div>
 
-        <ActionLinks />
+        <div className={styles.header__row}>
+          <button
+            className={styles['header__search-button']}
+            onClick={() => setIsOpenWindow(true)}
+          >
+            <MdOutlineSearch className={styles['header__search-icon']} />
+          </button>
+          <ActionLinks />
+        </div>
       </div>
     </header>
   );
