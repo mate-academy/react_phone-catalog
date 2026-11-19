@@ -1,4 +1,5 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 import './App.scss';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
@@ -14,30 +15,38 @@ import { FavoritesPage } from './pages/FavoritesPage';
 import { ThemeProvider } from './context/ThemeContext';
 import { NotFoundPage } from './pages/NotFoundPage';
 
-export const App = () => (
-  <ThemeProvider>
-    <CartProvider>
-      <FavoritesProvider>
-        <div className="App">
-          <Header />
+export const App = () => {
+  const { pathname } = useLocation();
 
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/phones" element={<PhonesPage />} />
-            <Route path="/tablets" element={<TabletsPage />} />
-            <Route path="/accessories" element={<AccessoriesPage />} />
-            <Route
-              path="/product/:productId"
-              element={<ProductDetailsPage />}
-            />
-            <Route path="/cart" element={<CartPage />} />
-            <Route path="/favorites" element={<FavoritesPage />} />
-            <Route path="*" element={<NotFoundPage />} />
-          </Routes>
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
-          <Footer />
-        </div>
-      </FavoritesProvider>
-    </CartProvider>
-  </ThemeProvider>
-);
+  return (
+    <ThemeProvider>
+      <CartProvider>
+        <FavoritesProvider>
+          <div className="App">
+            <Header />
+
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/phones" element={<PhonesPage />} />
+              <Route path="/tablets" element={<TabletsPage />} />
+              <Route path="/accessories" element={<AccessoriesPage />} />
+              <Route
+                path="/product/:productId"
+                element={<ProductDetailsPage />}
+              />
+              <Route path="/cart" element={<CartPage />} />
+              <Route path="/favorites" element={<FavoritesPage />} />
+              <Route path="*" element={<NotFoundPage />} />
+            </Routes>
+
+            <Footer />
+          </div>
+        </FavoritesProvider>
+      </CartProvider>
+    </ThemeProvider>
+  );
+};

@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 import styles from './CartPage.module.scss';
 import { getPublicUrl } from '../../utils/getPublicUrl';
@@ -83,7 +83,14 @@ export const CartPage = () => {
                   alt={product.name}
                 />
 
-                <p className={styles.productName}>{product.name}</p>
+                <p className={styles.productName}>
+                  <Link
+                    to={`/product/${product.itemId}`}
+                    className={styles.productLink}
+                  >
+                    {product.name}
+                  </Link>
+                </p>
 
                 <div className={styles.quantityControls}>
                   <button
