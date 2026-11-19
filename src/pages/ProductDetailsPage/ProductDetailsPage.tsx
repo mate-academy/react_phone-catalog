@@ -43,7 +43,7 @@ const getColorHex = (color: string): string => {
 export const ProductDetailsPage = () => {
   const { productId } = useParams();
   const navigate = useNavigate();
-  const { addToCart, cartItems } = useCart();
+  const { addToCart, removeFromCart, cartItems } = useCart();
   const { toggleFavorite, isFavorite } = useFavorites();
   const { theme } = useTheme();
   const [product, setProduct] = useState<ProductDetails | null>(null);
@@ -271,11 +271,11 @@ export const ProductDetailsPage = () => {
             <div className={styles.purchase}>
               <div className={styles.prices}>
                 <span className={styles.priceDiscount}>
-                  ${product.priceDiscount}
+                  ${catalogProduct?.price ?? product.priceDiscount}
                 </span>
 
                 <span className={styles.priceRegular}>
-                  ${product.priceRegular}
+                  ${catalogProduct?.fullPrice ?? product.priceRegular}
                 </span>
               </div>
 
@@ -286,9 +286,14 @@ export const ProductDetailsPage = () => {
                   }`}
                   type="button"
                   disabled={!catalogProduct}
+                  aria-pressed={isInCart}
                   onClick={() => {
                     if (catalogProduct) {
-                      addToCart(catalogProduct);
+                      if (isInCart) {
+                        removeFromCart(catalogProduct.id);
+                      } else {
+                        addToCart(catalogProduct);
+                      }
                     }
                   }}
                 >

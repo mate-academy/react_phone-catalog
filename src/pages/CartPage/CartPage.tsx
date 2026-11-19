@@ -77,11 +77,16 @@ export const CartPage = () => {
                   ×
                 </button>
 
-                <img
-                  className={styles.productImage}
-                  src={getPublicUrl(product.image)}
-                  alt={product.name}
-                />
+                <Link
+                  to={`/product/${product.itemId}`}
+                  aria-label={`View details for ${product.name}`}
+                >
+                  <img
+                    className={styles.productImage}
+                    src={getPublicUrl(product.image)}
+                    alt={product.name}
+                  />
+                </Link>
 
                 <p className={styles.productName}>
                   <Link

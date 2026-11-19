@@ -12,7 +12,7 @@ type Props = {
 };
 
 export const ProductCard = ({ product, showFullPrice = false }: Props) => {
-  const { addToCart, cartItems } = useCart();
+  const { addToCart, removeFromCart, cartItems } = useCart();
   const { toggleFavorite, isFavorite } = useFavorites();
   const { theme } = useTheme();
   const isInFavorites = isFavorite(product.id);
@@ -66,7 +66,14 @@ export const ProductCard = ({ product, showFullPrice = false }: Props) => {
             isInCart ? styles.addButtonActive : ''
           }`}
           type="button"
-          onClick={() => addToCart(product)}
+          onClick={() => {
+            if (isInCart) {
+              removeFromCart(product.id);
+            } else {
+              addToCart(product);
+            }
+          }}
+          aria-pressed={isInCart}
         >
           {isInCart ? 'Added' : 'Add to cart'}
         </button>
