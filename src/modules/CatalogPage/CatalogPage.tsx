@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Product } from '../../types/Product';
 import { getProducts } from '../../api/products';
@@ -17,6 +17,32 @@ const categoryNames = {
   accessories: 'accessories',
 };
 
+const getPaginationPages = (
+  current: number,
+  total: number,
+): (number | 'dots')[] => {
+  if (total <= 5) {
+    return Array.from({ length: total }, (_, i) => i + 1);
+  }
+
+  const pages = new Set<number>([1, total, current - 1, current, current + 1]);
+  const sorted = Array.from(pages)
+    .filter(page => page >= 1 && page <= total)
+    .sort((a, b) => a - b);
+
+  const result: (number | 'dots')[] = [];
+
+  for (let i = 0; i < sorted.length; i++) {
+    if (i > 0 && sorted[i] - sorted[i - 1] > 1) {
+      result.push('dots');
+    }
+
+    result.push(sorted[i]);
+  }
+
+  return result;
+};
+
 export const CatalogPage: React.FC<Props> = ({ title, category }) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
@@ -28,7 +54,7 @@ export const CatalogPage: React.FC<Props> = ({ title, category }) => {
   const perPageParam = searchParams.get('perPage') || 'all';
   const requestedPage = Number(searchParams.get('page')) || 1;
 
-  const loadProducts = async () => {
+  const loadProducts = useCallback(async () => {
     try {
       setLoading(true);
       setHasError(false);
@@ -42,11 +68,11 @@ export const CatalogPage: React.FC<Props> = ({ title, category }) => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [category]);
 
   useEffect(() => {
     loadProducts();
-  }, [category]);
+  }, [loadProducts]);
 
   const normalizedQuery = query.trim().toLowerCase();
 
@@ -210,21 +236,25 @@ export const CatalogPage: React.FC<Props> = ({ title, category }) => {
                 ‹
               </button>
 
-              {Array.from({ length: totalPages }, (_, index) => index + 1).map(
-                page => (
+              {getPaginationPages(currentPage, totalPages).map((item, idx) =>
+                item === 'dots' ? (
+                  <span key={`dots-${idx}`} className={styles.dots}>
+                    ...
+                  </span>
+                ) : (
                   <button
                     type="button"
-                    key={page}
+                    key={item}
                     className={`${styles.pageButton} ${
-                      currentPage === page ? styles.active : ''
+                      currentPage === item ? styles.active : ''
                     }`}
                     onClick={() =>
                       updateParams({
-                        page: page === 1 ? null : String(page),
+                        page: item === 1 ? null : String(item),
                       })
                     }
                   >
-                    {page}
+                    {item}
                   </button>
                 ),
               )}

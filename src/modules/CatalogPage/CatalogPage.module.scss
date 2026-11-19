@@ -139,3 +139,14 @@
     background-color: #7b44ff;
   }
 }
+
+.dots {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 36px;
+  color: #89939a;
+  font-weight: 700;
+  user-select: none;
+}

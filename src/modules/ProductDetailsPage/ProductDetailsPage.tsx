@@ -44,44 +44,28 @@ export const ProductDetailsPage: React.FC = () => {
     return <div className={styles.loader}>Loading...</div>;
   }
 
+  const category = productId?.includes('tablet')
+    ? 'tablets'
+    : productId?.includes('accessory')
+      ? 'accessories'
+      : 'phones';
+
+  const buildItemId = (capacity: string, color: string) => {
+    const normalizedCapacity = capacity.toLowerCase().replace(/\s+/g, '');
+    const normalizedColor = color.toLowerCase().replace(/\s+/g, '-');
+
+    return `${product.namespaceId}-${normalizedCapacity}-${normalizedColor}`;
+  };
+
   const isInCart = cart.some(
     item =>
       item.product.itemId === product.id ||
       String(item.product.id) === product.id,
   );
 
-  const handleAddToCart = () => {
-    if (!isInCart) {
-      const productToAdd: Product = {
-        id: Number(product.id) || Date.now(),
-        category: productId?.includes('tablet')
-          ? 'tablets'
-          : productId?.includes('accessory')
-            ? 'accessories'
-            : 'phones',
-        itemId: product.id,
-        name: product.name,
-        fullPrice: product.priceRegular,
-        price: product.priceDiscount,
-        screen: product.screen,
-        capacity: product.capacity,
-        color: product.color,
-        ram: product.ram,
-        year: 2022,
-        image: product.images[0],
-      };
-
-      addToCart(productToAdd);
-    }
-  };
-
-  const dummyProductForFav: Product = {
-    id: Number(product.id) || 1,
-    category: productId?.includes('tablet')
-      ? 'tablets'
-      : productId?.includes('accessory')
-        ? 'accessories'
-        : 'phones',
+  const productForActions: Product = {
+    id: Number(product.id) || Date.now(),
+    category,
     itemId: product.id,
     name: product.name,
     fullPrice: product.priceRegular,
@@ -94,7 +78,13 @@ export const ProductDetailsPage: React.FC = () => {
     image: product.images[0],
   };
 
-  const favorite = isFavorite(dummyProductForFav.id);
+  const handleAddToCart = () => {
+    if (!isInCart) {
+      addToCart(productForActions);
+    }
+  };
+
+  const favorite = isFavorite(productForActions.id);
 
   return (
     <div className={styles.productDetails}>
@@ -130,16 +120,12 @@ export const ProductDetailsPage: React.FC = () => {
               <div className={styles.colorsList}>
                 {product.colorsAvailable.map(colorItem => {
                   const isSelected = colorItem === product.color;
-                  const basePath = location.pathname.substring(
-                    0,
-                    location.pathname.lastIndexOf('-'),
-                  );
-                  const targetPath = `${basePath}-${colorItem}`;
+                  const targetItemId = buildItemId(product.capacity, colorItem);
 
                   return (
                     <Link
                       key={colorItem}
-                      to={targetPath}
+                      to={`/${category}/${targetItemId}`}
                       className={`${styles.colorCircle} ${
                         isSelected ? styles.selectedColor : ''
                       }`}
@@ -156,16 +142,12 @@ export const ProductDetailsPage: React.FC = () => {
               <div className={styles.capacityList}>
                 {product.capacityAvailable.map(cap => {
                   const isSelected = cap === product.capacity;
-                  const basePath = location.pathname
-                    .split('-')
-                    .slice(0, -2)
-                    .join('-');
-                  const targetPath = `${basePath}-${cap.toLowerCase()}-${product.color}`;
+                  const targetItemId = buildItemId(cap, product.color);
 
                   return (
                     <Link
                       key={cap}
-                      to={targetPath}
+                      to={`/${category}/${targetItemId}`}
                       className={`${styles.capacityBtn} ${
                         isSelected ? styles.selectedCapacity : ''
                       }`}
@@ -198,7 +180,7 @@ export const ProductDetailsPage: React.FC = () => {
               <button
                 type="button"
                 className={styles.favBtn}
-                onClick={() => toggleFavorite(dummyProductForFav)}
+                onClick={() => toggleFavorite(productForActions)}
                 aria-label="Favorites"
               >
                 <span

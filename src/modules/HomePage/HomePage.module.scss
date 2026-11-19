@@ -1,17 +1,29 @@
-.homePage {
-  display: flex;
-  flex-direction: column;
-  gap: 80px;
-  padding: 0 24px;
-  max-width: 1250px;
+.container {
+  max-width: 1200px;
   margin: 0 auto;
+  padding: 24px 24px 80px;
+  box-sizing: border-box;
 
   @media (max-width: 640px) {
-    gap: 48px;
-    padding: 0 16px;
+    padding: 16px 16px 48px;
   }
+}
 
-  section {
-    width: 100%;
-  }
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.loader {
+  text-align: center;
+  color: #f1f2f9;
+  padding: 60px;
+  font-size: 18px;
 }

@@ -61,11 +61,13 @@
     color: #89939a;
     font-size: 12px;
     font-weight: 700;
+    white-space: nowrap;
   }
 
   .toTopButton {
     width: 32px;
     height: 32px;
+    flex-shrink: 0;
     border-radius: 50%;
     border: 1px solid #75767f;
     background: transparent;
@@ -88,6 +90,25 @@
       border-top: 2px solid #fff;
       border-right: 2px solid #fff;
       transform: translateY(2px) rotate(-45deg);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .container {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 24px;
+      padding: 0 16px;
+    }
+
+    .navBlock {
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .toTopBlock {
+      width: 100%;
+      justify-content: space-between;
     }
   }
 }
