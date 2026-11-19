@@ -67,10 +67,6 @@ export const ProductDetail = () => {
   const { favourites, toggleFavourite } = useFavourites();
   const { cart, toggleCart } = useCart();
 
-  if (cart.every(item => item.id !== product?.id)) {
-    navigate('/product-not-found');
-  }
-
   const [selectedImg, setSelectedImg] = useState(product?.images[0]);
 
   const handleColorChange = (color: string) => {
@@ -151,7 +147,12 @@ export const ProductDetail = () => {
   useEffect(() => {
     handleScroll();
     setSelectedImg(product?.images[0]);
-  }, [product]);
+
+    if(!product) {
+      navigate('/product-not-found')
+    }
+
+  }, [product, navigate]);
 
   return (
     <main className="product-detail-main">
