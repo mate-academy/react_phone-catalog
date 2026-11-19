@@ -4,6 +4,7 @@
 .cart {
   &-main {
     display: grid;
+    align-content: start;
     grid-column: 1 / -1;
     min-height: calc(100vh - vars.$footer-height - vars.$header-height);
     grid-template-columns: repeat(24, minmax(0, 1fr));

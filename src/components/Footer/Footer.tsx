@@ -27,14 +27,14 @@ export const Footer = () => {
 
           <section className="contacts">
             <a
-              href="https://github.com/OSI634"
+              href="https://github.com/OSI634/react_phone-catalog/tree/develop"
               className="contacts__github"
               target="_blank"
               rel="noreferrer"
             >
               github
             </a>
-            <a href="mailto:hello@example.com" className="contacts__link">
+            <a href="https://github.com/OSI634" className="contacts__link">
               contacts
             </a>
             <Link to="/rights" className="contacts__rights">

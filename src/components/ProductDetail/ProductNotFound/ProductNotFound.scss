@@ -1,0 +1,62 @@
+@use '../../../styles/variables.scss' as vars;
+
+.page-not-found {
+  &__main {
+    display: grid;
+    grid-column: 1 / -1;
+    min-height: calc(100vh - vars.$header-height - vars.$footer-height);
+    width: 100%;
+  }
+
+  &__content {
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+  }
+
+  &__img {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    max-width: 200px;
+    height: auto;
+    object-fit: contain;
+
+    &--wrapper {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  &__title {
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    font-weight: 800;
+    font-size: 30px;
+    color: vars.$white;
+  }
+
+  &__home {
+    cursor: pointer;
+    text-align: center;
+    width: 100%;
+    height: auto;
+    background-color: vars.$accent;
+
+    transition: background-color 0.3s ease ;
+
+    &-link {
+      text-decoration: none;
+      color: vars.$white;
+    }
+
+    &:hover {
+      background-color: vars.$accent-hover;
+    }
+  }
+}

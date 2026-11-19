@@ -13,6 +13,7 @@
   &__content {
     padding: 32px;
     display: flex;
+    box-sizing: border-box;
     flex-direction: column;
     height: 100%;
     gap: 8px;

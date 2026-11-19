@@ -17,9 +17,14 @@
     }
 
     &__icon {
-      padding: 0 20px;
+      padding: 0 16px;
+      display: flex;
       height: 100%;
       cursor: pointer;
+
+      &-close {
+        border-left: 1px solid vars.$surface-2-color;
+      }
     }
 
     &__content {
@@ -34,12 +39,12 @@
         display: flex;
         align-items: center;
         height: 48px;
-        padding: 0 16px;
         flex: 0 0 48px;
         justify-content: space-between;
         border-bottom: 1px solid vars.$surface-2-color;
 
         &-logo {
+          padding: 0 16px;
           width: 64px;
           height: 22px;
         }
@@ -70,16 +75,20 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      height: 100%;
+      position: relative;
       flex: 1;
 
       &__icon {
         width: 16px;
         height: 16px;
+        display: block;
       }
 
       &__counter {
-        position: relative;
-        bottom: 10px;
+        position: absolute;
+        top: 14px;
+        left: calc(50% + 5px);
 
         display: flex;
         align-items: center;
