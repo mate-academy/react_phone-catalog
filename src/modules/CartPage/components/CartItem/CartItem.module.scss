@@ -1,0 +1,85 @@
+.item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+}
+
+.imageLink {
+  flex-shrink: 0;
+}
+
+.image {
+  width: 96px;
+  height: 96px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.prices {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.price {
+  font-weight: 700;
+}
+
+.fullPrice {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.quantityButton {
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface-alt);
+  color: var(--text);
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.lineTotal {
+  font-weight: 700;
+}
+
+.removeButton {
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  font-size: 16px;
+}
+
+.removeButton:hover {
+  color: var(--danger);
+}

@@ -1,0 +1,39 @@
+.loader {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.item {
+  width: 240px;
+}
+
+.image {
+  width: 100%;
+  padding-top: 140%;
+  border-radius: 12px;
+  background: var(--surface-alt);
+  animation: loader-pulse 1.4s ease-in-out infinite;
+}
+
+.line {
+  height: 14px;
+  margin-top: 12px;
+  border-radius: 6px;
+  background: var(--surface-alt);
+  animation: loader-pulse 1.4s ease-in-out infinite;
+}
+
+.lineShort {
+  width: 60%;
+}
+
+@keyframes loader-pulse {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
