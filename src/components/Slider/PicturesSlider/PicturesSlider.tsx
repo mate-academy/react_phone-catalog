@@ -125,7 +125,7 @@ export const PicturesSlider: React.FC<Props> = ({ slides }) => {
             >
               <img
                 className={styles['pictures-slider__image']}
-                src={slide.src}
+                src={`${import.meta.env.BASE_URL}${slide.src}`}
                 alt={slide.alt}
               />
             </div>

@@ -24,7 +24,7 @@ export const CategoryCard: React.FC<Props> = ({
         style={{ backgroundColor: category.background }}
       >
         <img
-          src={category.src}
+          src={`${import.meta.env.BASE_URL}${category.src}`}
           alt={category.title}
           className={styles['category-card__image']}
           loading="lazy"
