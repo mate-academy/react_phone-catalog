@@ -1,0 +1,35 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.category-products {
+  display: flex;
+  flex-direction: column;
+  padding-block: 28px;
+  gap: 32px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+
+  @include from($breakpoint-tablet) {
+    padding-block: 32px;
+    gap: 16px;
+  }
+
+  @include from($breakpoint-desktop) {
+    padding-block: 40px;
+  }
+
+  &__title {
+    @include h2;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+
+    @include from($breakpoint-tablet) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}

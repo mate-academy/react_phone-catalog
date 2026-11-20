@@ -1,0 +1,27 @@
+const COLORS: Record<string, string> = {
+  spacegray: '#4c4c4e',
+  midnightgreen: '#4e5851',
+  gold: '#f5d9b8',
+  silver: '#e2e4e1',
+  black: '#1f2020',
+  green: '#aee1cd',
+  yellow: '#fae17d',
+  white: '#f9f6ef',
+  purple: '#d1cddb',
+  red: '#ba0c2e',
+  graphite: '#474a50',
+  sierrablue: '#9bb5ce',
+  blue: '#215e7c',
+  'sky-blue': '#c3d7e4',
+  pink: '#fae0d8',
+  coral: '#ee7762',
+  rosegold: '#f2c9c1',
+  'rose gold': '#f2c9c1',
+  'space gray': '#4c4c4c',
+  'space-gray': '#4c4c4c',
+  midnight: '#171e27',
+  spaceblack: '#3c3b39',
+  starlight: '#f9f3ee',
+};
+
+export const getColor = (name: string) => COLORS[name] ?? name;

@@ -1,0 +1,35 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 auto;
+  max-width: 1200px;
+
+  &__crumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    text-transform: capitalize;
+    color: var(--color-primary);
+  }
+
+  &__crumb-icon-home,
+  &__crumb-arrow {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__crumb-arrow {
+    fill: var(--color-secondary);
+  }
+
+  &__crumb.active {
+     color: var(--color-secondary);
+  }
+}

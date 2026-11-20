@@ -1,0 +1,143 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+@use 'fonts';
+@use 'reset';
+
+:root {
+  --header-height: 48px;
+
+  @include from($breakpoint-desktop) {
+    --header-height: 64px;
+  }
+
+  // Typography
+  --font-family-primary: Mont,
+  sans-serif;
+
+  // Colors
+  --color-accent-selected: var(--color-accent);
+  --color-elements-dark: #0f0f11;
+  --color-button: #fafbfc;
+  --color-accent: #4219d0;
+  --color-secondary-accent: #f4ba47;
+  --color-primary: #0f0f11;
+  --color-secondary: #89939a;
+  --color-icon: #b4bdc3;
+  --color-elements: #e2e6e9;
+  --color-background: #fafbfc;
+  --color-white: #fff;
+  --color-green: #27ae60;
+  --color-red: #eb5757;
+
+  // Toast
+  --toastify-color-progress-light: var(--color-accent);
+  --toastify-color-progress-error: var(--color-red);
+
+  // Error Message
+  --error-message: rgba(235, 87, 87, 0.7);
+
+  // Shadow
+  --shadow-primary: rgba(23, 32, 49, 0.4);
+
+  // Transition
+  --transition: 0.3s ease;
+
+  // Transform
+  --scale-hover: 1.1;
+  --translate-hover: -4px;
+
+  // DarkMode
+  --dark-background: #101013;
+}
+
+[data-theme='dark'] {
+  --color-background: #0f1121;
+  --color-white: #0f0f11;
+  --color-primary: #fafbfc;
+  --color-accent-selected: #fafbfc;
+  --color-elements-dark: #4219d0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-height);
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  overflow-x: hidden;
+  margin: 0;
+
+  font-family: var(--font-family-primary);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.5;
+
+  color: var(--color-primary);
+  background-color: var(--color-white);
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+hr {
+  border: 0;
+  margin: 0;
+}
+
+h1 {
+  @include h1;
+}
+
+h2 {
+  @include h2;
+}
+
+h3 {
+  @include h3;
+}
+
+h4 {
+  @include h4;
+}
+
+
+::selection {
+  color: var(--color-white);
+  background-color: var(--color-accent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

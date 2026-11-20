@@ -1,0 +1,96 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.products-slider {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-block: 28px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  @include from($breakpoint-tablet) {
+    padding-block: 32px;
+  }
+
+  @include from($breakpoint-desktop) {
+    padding-block: 40px;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding-right: 16px;
+
+    @include from($breakpoint-tablet) {
+      padding-right: 0;
+    }
+
+  }
+
+  &__title {
+    @include h2;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--color-icon);
+    border-radius: 999px;
+    background-color: var(--color-white);
+    transition: border-color var(--transition);
+    cursor: pointer;
+  }
+
+  &__icon-arrow {
+    width: 16px;
+    height: 16px;
+    fill: var(--color-primary);
+    transition: fill var(--transition);
+
+    &--prev {
+      transform: scaleX(-1);
+    }
+  }
+
+  &__body>* {
+    scroll-snap-align: start;
+  }
+
+  &__body {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: calc((100% - 16px) / 1.36);
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    @include from($breakpoint-tablet) {
+      grid-auto-columns: calc((100% - 32px) / 2.5);
+    }
+
+    @include from($breakpoint-desktop) {
+      grid-auto-columns: calc((100% - 48px) / 4);
+    }
+  }
+
+  &__button:disabled {
+    border-color: var(--color-elements);
+    cursor: no-drop;
+
+    .products-slider__icon-arrow {
+      fill: var(--color-elements);
+    }
+  }
+}

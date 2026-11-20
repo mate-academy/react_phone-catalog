@@ -1,0 +1,19 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.product-list {
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 40px;
+
+    @include from($breakpoint-tablet) {
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 16px;
+    }
+
+    @include from($breakpoint-desktop) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+}

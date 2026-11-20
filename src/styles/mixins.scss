@@ -1,0 +1,98 @@
+@use 'variables' as *;
+
+@mixin from($width) {
+  @media (min-width: $width) {
+    @content;
+  }
+}
+
+@mixin uppercase {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+@mixin button-text {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+@mixin h1 {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+
+  @include from($breakpoint-tablet) {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+@mixin h2 {
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 31px;
+  letter-spacing: -0.01px;
+
+  @include from($breakpoint-tablet) {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01px;
+  }
+}
+
+@mixin h3 {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 26px;
+
+  @include from($breakpoint-tablet) {
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 31px;
+  }
+}
+
+@mixin h4 {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+
+  @include from($breakpoint-tablet) {
+    font-size: 20px;
+    line-height: 26px;
+  }
+}
+
+@mixin container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-inline: 16px;
+
+  @include from($breakpoint-tablet) {
+    padding-inline: 24px;
+  }
+
+  @include from($breakpoint-desktop) {
+    padding-inline: 32px;
+  }
+}
+
+@mixin grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(4, 1fr);
+
+  @include from($breakpoint-tablet) {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  @include from($breakpoint-desktop) {
+    grid-template-columns: repeat(24, 1fr);
+  }
+}

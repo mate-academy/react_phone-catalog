@@ -1,0 +1,115 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.cart {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  border: 1px solid var(--color-elements);
+  border-radius: 24px;
+  padding: 24px;
+  background-color: var(--color-white);
+
+  @include from($breakpoint-tablet) {
+    grid-template-columns: 2.5fr 1fr;
+    gap: 24px;
+  }
+
+  &__info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 16px;
+
+    @include from($breakpoint-tablet) {
+      column-gap: 24px;
+    }
+  }
+
+  &__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: 24px;
+  }
+
+  &__remove {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+  }
+
+  &__icon-remove {
+    width: 16px;
+    height: 16px;
+    fill: var(--color-icon);
+    transition: fill var(--transition);
+  }
+
+  &__image {
+    width: 100%;
+    max-width: 80px;
+    height: 100%;
+  }
+
+  &__title {
+    width: 100%;
+    font-size: 14px;
+    line-height: 21px;
+    color: var(--color-primary);
+  }
+
+  &__quantity {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--color-icon);
+    border-radius: 999px;
+    transition: border-color var(--transition);
+    cursor: pointer;
+  }
+
+  &__quantity-icon {
+    width: 16px;
+    height: 16px;
+    fill: var(--color-primary);
+  }
+
+  &__count {
+    font-size: 14px;
+    line-height: 21px;
+    color: var(--color-primary);
+    min-width: 14px;
+  }
+
+  &__price {
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 31px;
+    color: var(--color-primary);
+  }
+
+  &__remove:hover {
+    .cart__icon-remove {
+      fill: var(--color-primary);
+    }
+  }
+
+  &__button:disabled {
+    border-color: var(--color-elements);
+    cursor: no-drop;
+
+    .cart__quantity-icon {
+      fill: var(--color-elements);
+    }
+  }
+}

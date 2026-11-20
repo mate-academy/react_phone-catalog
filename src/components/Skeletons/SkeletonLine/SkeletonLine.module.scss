@@ -1,0 +1,24 @@
+.skeleton-line {
+  flex-shrink: 0;
+  background: linear-gradient(90deg,
+      var(--color-elements) 25%,
+      var(--color-background) 50%,
+      var(--color-elements) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s linear infinite;
+  border-radius: 4px;
+  width: fit-content;
+  min-width: 80px;
+}
+
+@keyframes shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton-line {
+    animation: none;
+  }
+}

@@ -1,0 +1,10 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.product-details-page {
+  &__wrapper {
+    @include container;
+
+    padding-block: 24px;
+  }
+}

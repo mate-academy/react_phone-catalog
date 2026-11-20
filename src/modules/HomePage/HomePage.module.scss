@@ -1,0 +1,47 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+
+.page-home {
+  display: flex;
+  flex-direction: column;
+
+  &__wrapper {
+    @include container;
+
+    padding-block: 24px;
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.section-pictures {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-bottom: 28px;
+
+  @include from($breakpoint-tablet) {
+    padding-bottom: 32px;
+  }
+
+  @include from($breakpoint-desktop) {
+    padding-bottom: 40px;
+  }
+
+  &__title {
+    @include h1;
+
+    width: 100%;
+    color: var(--color-primary);
+  }
+}
