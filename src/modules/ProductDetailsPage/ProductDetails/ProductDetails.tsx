@@ -66,7 +66,7 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
         <div className={styles.gallery}>
           <div className={styles.gallery__picture} key={activeImageIndex}>
             <img
-              src={import.meta.env.BASE_URL + product.images[activeImageIndex]}
+              src={`${import.meta.env.BASE_URL}/${product.images[activeImageIndex]}`}
               alt={product.name}
               className={styles.gallery__image}
             />
@@ -84,7 +84,7 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
                   aria-current={index === activeImageIndex ? 'true' : undefined}
                 >
                   <img
-                    src={import.meta.env.BASE_URL + picture}
+                    src={`${import.meta.env.BASE_URL}/${picture}`}
                     alt=""
                     className={styles['gallery__button-image']}
                   />
