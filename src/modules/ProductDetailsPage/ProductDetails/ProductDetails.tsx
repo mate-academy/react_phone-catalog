@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FaHeart, FaRegHeart } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import classNames from 'classnames';
 
 import { request } from '../../../utils/fetchResponse';
@@ -21,11 +21,13 @@ type Props = {
 export const ProductDetails: React.FC<Props> = ({ product }) => {
   const { cart, dispatch: cartDispatch } = useCart();
   const { favorite, dispatch: favoriteDispatch } = useFavorite();
+  const { state } = useLocation();
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [baseProduct, setBaseProduct] = useState<Product | null>(null);
   const [isBaseProductLoading, setIsBaseProductLoading] = useState(true);
   const navigate = useNavigate();
 
+  const noDiscount = Boolean(state?.noDiscount);
   const id = product.capacityAvailable.map(capaciry => parseInt(capaciry));
   const isInCart = cart.some(isCart => isCart.id === baseProduct?.id);
   const isInFavorite = favorite.some(
@@ -115,11 +117,13 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
                         value={color}
                         checked={color === product.color}
                         aria-label={color}
-                        onChange={() =>
+                        onChange={() => {
                           navigate(
                             `/${product.category}/${getVariantId(product.capacity, color)}`,
-                          )
-                        }
+                            { state },
+                          );
+                          window.scrollTo({ top: 0, behavior: 'instant' });
+                        }}
                         className={styles['available-colors__input']}
                       />
                       <span
@@ -154,11 +158,13 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
                       value={capacity}
                       checked={capacity === product.capacity}
                       className={styles['available-capacity__input']}
-                      onChange={() =>
+                      onChange={() => {
                         navigate(
                           `/${product.category}/${getVariantId(capacity, product.color)}`,
-                        )
-                      }
+                          { state },
+                        );
+                        window.scrollTo({ top: 0, behavior: 'instant' });
+                      }}
                     />
                     {capacity}
                   </label>
@@ -172,9 +178,11 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
               <span className={styles['available-options__new-price']}>
                 ${product.priceDiscount}
               </span>
-              <span className={styles['available-options__old-price']}>
-                ${product.priceRegular}
-              </span>
+              {!noDiscount && (
+                <span className={styles['available-options__old-price']}>
+                  ${product.priceRegular}
+                </span>
+              )}
             </div>
 
             <div className={styles['available-options__buttons']}>

@@ -130,13 +130,15 @@ export const SearchWindow = () => {
             />
           </label>
 
-          <button
-            type="button"
-            className={styles['search-window__close-button']}
-            onClick={() => setValue('')}
-          >
-            <IoClose className={styles['search-window__close-icon']} />
-          </button>
+          {value.length > 0 && (
+            <button
+              type="button"
+              className={styles['search-window__close-button']}
+              onClick={() => setValue('')}
+            >
+              <IoClose className={styles['search-window__close-icon']} />
+            </button>
+          )}
         </div>
 
         {isLoading && <div className={styles['search-window__loader']} />}
@@ -164,28 +166,30 @@ export const SearchWindow = () => {
                 <li key={product.id} className={styles['search-window__item']}>
                   <Link
                     to={`/${product.category}/${routeId}`}
+                    onClick={() =>
+                      window.scrollTo({ top: 0, behavior: 'smooth' })
+                    }
                     className={styles['search-window__cart']}
                   >
-                    <div className={styles['search-window__row']}>
-                      <img
-                        src={import.meta.env.BASE_URL + image}
-                        alt={product.name}
-                        className={styles['search-window__image']}
-                      />
+                    <img
+                      src={`${import.meta.env.BASE_URL}/${image}`}
+                      alt={product.name}
+                      className={styles['search-window__image']}
+                    />
 
+                    <div className={styles['search-window__box']}>
                       <h2 className={styles['search-window__title']}>
                         {product.name}
                       </h2>
-                    </div>
+                      <div className={styles['search-window__price']}>
+                        <span className={styles['search-window__new-price']}>
+                          ${price}
+                        </span>
 
-                    <div className={styles['search-window__price']}>
-                      <span className={styles['search-window__new-price']}>
-                        ${price}
-                      </span>
-
-                      <span className={styles['search-window__fullprice']}>
-                        ${fullPrice}
-                      </span>
+                        <span className={styles['search-window__fullprice']}>
+                          ${fullPrice}
+                        </span>
+                      </div>
                     </div>
                   </Link>
                 </li>

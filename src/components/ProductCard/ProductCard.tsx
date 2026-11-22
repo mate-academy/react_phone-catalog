@@ -12,6 +12,7 @@ import classNames from 'classnames';
 
 type Props = {
   product: Product;
+  notVisibleFullPrice?: boolean;
 };
 
 type Specs = {
@@ -19,7 +20,10 @@ type Specs = {
   value: string;
 };
 
-export const ProductCard: React.FC<Props> = ({ product }) => {
+export const ProductCard: React.FC<Props> = ({
+  product,
+  notVisibleFullPrice = false,
+}) => {
   const { cart, dispatch: cartDispatch } = useCart();
   const { favorite, dispatch: favoriteDispath } = useFavorite();
 
@@ -46,7 +50,9 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     <article className={styles['product-card']}>
       <Link
         to={`/${product.category}/${product.itemId}`}
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         className={styles['product-card__link']}
+        state={{ noDiscount: notVisibleFullPrice }}
       >
         <div className={styles['product-card__picture']}>
           <img
@@ -64,9 +70,11 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           <span className={styles['product-card__new-price']}>
             <b>${product.price}</b>
           </span>
-          <span className={styles['product-card__old-price']}>
-            ${product.fullPrice}
-          </span>
+          {!notVisibleFullPrice && (
+            <span className={styles['product-card__old-price']}>
+              ${product.fullPrice}
+            </span>
+          )}
         </div>
 
         <hr className={styles['product-card__line']} />

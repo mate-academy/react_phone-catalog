@@ -14,6 +14,7 @@ type Props = {
   products: Product[];
   isLoading?: boolean;
   isError: boolean;
+  notVisibleFullPrice?: boolean;
 };
 
 export const ProductsSlider: React.FC<Props> = ({
@@ -21,6 +22,7 @@ export const ProductsSlider: React.FC<Props> = ({
   title,
   isLoading,
   isError,
+  notVisibleFullPrice,
 }) => {
   const trackRef = useRef<HTMLDivElement>(null);
   const [isStart, setIsStart] = useState(true);
@@ -65,7 +67,11 @@ export const ProductsSlider: React.FC<Props> = ({
     }
 
     return products.map(product => (
-      <ProductCard key={product.itemId} product={product} />
+      <ProductCard
+        key={product.itemId}
+        product={product}
+        notVisibleFullPrice={notVisibleFullPrice}
+      />
     ));
   };
 

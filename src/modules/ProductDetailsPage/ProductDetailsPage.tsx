@@ -88,12 +88,14 @@ export const ProductDetailsPage = () => {
           <ProductDetails key={product.id} product={product} />
         )}
 
-        <ProductsSlider
-          isLoading={isSuggestedLoading}
-          isError={hasSuggestedError}
-          title="You may also like"
-          products={suggested}
-        />
+        {hasError && (
+          <ProductsSlider
+            isLoading={isSuggestedLoading}
+            isError={hasSuggestedError}
+            title="You may also like"
+            products={suggested}
+          />
+        )}
       </div>
     </section>
   );

@@ -5,12 +5,17 @@ import logo from '../../assets/logo.svg';
 import styles from './Footer.module.scss';
 
 const MENU_LIST = [
-  { title: 'Github', path: '#github' },
-  { title: 'Contacts', path: '#contacts' },
-  { title: 'Rights', path: '#rights' },
+  { title: 'Github', path: 'https://github.com/AlexanderOkhotnichenko' },
+  { title: 'Contacts', path: 'https://github.com/AlexanderOkhotnichenko' },
+  {
+    title: 'Rights',
+    path:
+      'https://github.com/AlexanderOkhotnichenko' +
+      '/react_phone-catalog/tree/develop',
+  },
 ];
 
-export function Footer() {
+export const Footer = () => {
   return (
     <footer className={styles.footer}>
       <div className={styles.footer__inner}>
@@ -25,15 +30,20 @@ export function Footer() {
         <ul className={styles.footer__menu}>
           {MENU_LIST.map(item => (
             <li key={item.path} className={styles['footer__menu-item']}>
-              <a href={item.path} className={styles['footer__menu-link']}>
+              <a
+                href={item.path}
+                className={styles['footer__menu-link']}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 {item.title}
               </a>
             </li>
           ))}
         </ul>
 
-        <ScrollToTop />
+        <ScrollToTop text="Back to top" />
       </div>
     </footer>
   );
-}
+};

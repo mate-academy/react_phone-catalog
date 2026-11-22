@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { IoClose, IoAdd, IoRemove } from 'react-icons/io5';
 
 import { useCart } from '../../../hooks/useCartContext';
@@ -23,11 +24,17 @@ export const Cart: React.FC<Props> = ({ product: { product, quantity } }) => {
         >
           <IoClose className={styles['cart__icon-remove']} />
         </button>
-        <img
-          src={product.image}
-          alt={product.name}
-          className={styles.cart__image}
-        />
+        <Link
+          to={`/${product.category}/${product.itemId}`}
+          className={styles.cart__link}
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        >
+          <img
+            src={product.image}
+            alt={product.name}
+            className={styles.cart__image}
+          />
+        </Link>
         <h2 className={styles.cart__title}>{product.name}</h2>
       </div>
 

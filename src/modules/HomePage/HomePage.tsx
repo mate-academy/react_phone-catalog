@@ -63,6 +63,7 @@ export function HomePage() {
           title="Brand new models"
           isLoading={isLoading}
           isError={hasError}
+          notVisibleFullPrice={true}
         />
 
         <CategoryProducts

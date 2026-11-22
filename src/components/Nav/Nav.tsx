@@ -37,6 +37,12 @@ type Props = {
 export const Nav: React.FC<Props> = ({ orientation }) => {
   const { setIsMenuOpen } = useStateContext();
 
+  const handleCloseMenu = () => {
+    setIsMenuOpen(false);
+
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  };
+
   return (
     <nav
       className={`${styles.nav} ${styles[`nav--${orientation}`]}`}
@@ -48,7 +54,7 @@ export const Nav: React.FC<Props> = ({ orientation }) => {
             <NavLink
               to={item.path}
               className={getLinkClass}
-              onClick={() => setIsMenuOpen(false)}
+              onClick={handleCloseMenu}
             >
               {item.title}
             </NavLink>

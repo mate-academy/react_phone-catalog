@@ -17,7 +17,11 @@ export const Header = () => {
     <header className={styles.header}>
       <div className={styles.header__inner}>
         <div className={styles.header__left}>
-          <Link to="/" className={styles.header__logo}>
+          <Link
+            to="/"
+            className={styles.header__logo}
+            onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}
+          >
             <img
               src={logo}
               alt="Nice Gadgets"

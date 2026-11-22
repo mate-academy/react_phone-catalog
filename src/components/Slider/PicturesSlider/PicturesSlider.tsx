@@ -105,6 +105,7 @@ export const PicturesSlider: React.FC<Props> = ({ slides }) => {
 
         <Link
           to={slides[activeIndex].path}
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           className={styles['pictures-slider__link']}
         >
           Order now

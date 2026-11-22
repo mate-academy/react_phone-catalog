@@ -6,7 +6,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex: 1;
 
   &__icon {
     width: 100%;
@@ -20,10 +19,9 @@
   }
 
   &__message {
+    @include h2;
+
     color: var(--color-icon);
-    font-size: 20px;
-    line-height: 31px;
-    font-weight: 600;
     text-align: center;
     margin-top: 20px;
 

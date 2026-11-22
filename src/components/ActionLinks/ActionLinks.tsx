@@ -41,6 +41,12 @@ export const ActionLinks: React.FC<Props> = ({ actionState = 'header' }) => {
   const { favorite } = useFavorite();
   const { setIsMenuOpen } = useStateContext();
 
+  const handleCloseMenu = () => {
+    setIsMenuOpen(false);
+
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  };
+
   return (
     <div
       className={classNames(styles.actions, styles[`actions--${actionState}`])}
@@ -65,7 +71,7 @@ export const ActionLinks: React.FC<Props> = ({ actionState = 'header' }) => {
           to={path}
           key={path}
           className={getLinkClass}
-          onClick={() => setIsMenuOpen(false)}
+          onClick={handleCloseMenu}
           aria-label={label}
         >
           <div className={styles.actions__box}>

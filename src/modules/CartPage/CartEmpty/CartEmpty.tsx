@@ -4,7 +4,7 @@ export const CartEmpty = () => {
   return (
     <div className={styles['cart-empty']}>
       <img
-        src={`${import.meta.env.BASE_URL}img/cart-is-empty.png`}
+        src={`${import.meta.env.BASE_URL}/img/cart-is-empty.png`}
         alt="Cart is empty"
         className={styles['cart-empty__image']}
       />

@@ -35,6 +35,12 @@
     flex-shrink: 0;
     border: 1px solid var(--color-secondary);
     border-radius: 999px;
-    transform: rotate(-90deg);
+    background-color: var(--color-white);
+    transform: translateY(0) rotate(-90deg);
+    transition: transform var(--transition);
+
+    &:hover {
+      transform: translateY(var(--translate-hover)) rotate(-90deg);
+    }
   }
 }

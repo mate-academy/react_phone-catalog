@@ -46,6 +46,15 @@
     transition: fill var(--transition);
   }
 
+  &__link {
+    transition: transform var(--transition);
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(var(--scale-hover)) translateY(var(--translate-hover));
+    }
+  }
+
   &__image {
     width: 100%;
     max-width: 80px;

@@ -209,7 +209,7 @@
       cursor: pointer;
 
       &--active {
-        border-color: var(--color-primary);
+        border-color: var(--color-border-available);
       }
 
       &:hover {
@@ -377,6 +377,7 @@
     }
 
     &__button-accept--selected {
+      color: var(--color-accent-selected);
       border-color: var(--color-elements);
       background-color: var(--color-white);
 
