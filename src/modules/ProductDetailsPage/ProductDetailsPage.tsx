@@ -88,7 +88,7 @@ export const ProductDetailsPage = () => {
           <ProductDetails key={product.id} product={product} />
         )}
 
-        {hasError && (
+        {!hasError && (
           <ProductsSlider
             isLoading={isSuggestedLoading}
             isError={hasSuggestedError}
