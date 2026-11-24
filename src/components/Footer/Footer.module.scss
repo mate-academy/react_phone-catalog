@@ -1,0 +1,100 @@
+@use '/src/styles/mixins.scss' as *;
+@use '/src/styles/typography.scss' as *;
+
+.footer {
+  border-top: 1px solid var(--color-elements);
+  background-color: var(--color-bg-page);
+  margin-top: 64px;
+
+  @include on-desktop {
+    margin-top: 80px;
+  }
+
+  &__container {
+    @include container;
+
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-items: start;
+    padding-top: 32px;
+    padding-bottom: 32px;
+
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  &__img {
+    width: 89px;
+    height: 32px;
+
+    @include interactive-scale;
+  }
+
+  &__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 0;
+    padding: 0;
+
+    @include on-tablet {
+      flex-direction: row;
+    }
+
+    @include on-desktop {
+      gap: 106px;
+    }
+  }
+
+  &__link {
+    @include font-uppercase;
+
+    color: var(--color-main);
+    text-decoration: none;
+  }
+
+  &__backToTop {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__backToTopText {
+    @include font-small-text;
+
+    color: var(--color-secondary);
+  }
+
+  &__backToTopBtn {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-bg-surface-2);
+    border: none;
+    cursor: pointer;
+
+    @include smooth;
+
+    &:hover {
+      background-color: var(--color-icons);
+
+      &__arrow {
+      transform: scale(var(--hover-scale));
+    }
+    }
+  }
+
+  &__arrow {
+    height: 16px;
+    width: 16px;
+
+    @include smooth;
+  }
+}

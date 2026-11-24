@@ -1,0 +1,54 @@
+@use '/src/styles/mixins.scss' as *;
+@use '/src/styles/typography.scss' as *;
+
+.page {
+  @include container;
+
+  &__title {
+    margin-top: 24px;
+    margin-bottom: 8px;
+    color: var(--color-main);
+
+    @include font-mobile-h1;
+
+    @include on-tablet {
+      margin-top: 40px;
+
+      @include font-tablet-h1;
+    }
+  }
+
+  &__text {
+    @include font-buttons;
+
+    margin-bottom: 32px;
+    color: var(--color-secondary);
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__filters {
+    @include page-grid;
+
+    margin-bottom: 24px;
+  }
+
+
+  &__labelSort {
+    grid-column: span 2;
+
+    @include on-tablet {
+      grid-column: span 4;
+    }
+  }
+
+  &__labelPerPage {
+    grid-column: span 2;
+
+    @include on-tablet {
+      grid-column: span 3;
+    }
+  }
+}

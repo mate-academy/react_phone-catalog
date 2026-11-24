@@ -1,0 +1,135 @@
+@use '/src/styles/mixins.scss' as *;
+@use '/src/styles/typography.scss' as *;
+
+.info {
+  position: relative;
+
+  @include on-desktop {
+    > * {
+      max-width: 320px;
+    }
+  }
+
+  &__id {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: var(--color-icons);
+
+    @include font-small-text;
+  }
+
+  &__group {
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--color-elements);
+    color: var(--color-secondary);
+
+    @include font-small-text;
+  }
+
+  &__colors {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  &__color {
+    @include smooth;
+
+    position: relative;
+    box-sizing: border-box;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid var(--color-elements);
+    padding: 3px;
+    background-clip: content-box;
+    cursor: pointer;
+
+    &:has(input:checked) {
+      border-color: var(--color-main);
+    }
+
+    &:hover:not(:has(input:checked)) {
+      border-color: var(--color-secondary);
+    }
+  }
+
+  &__radio {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  &__capacities {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  &__capacity {
+    position: relative;
+    box-sizing: border-box;
+    height: 32px;
+    padding: 5px 8px;
+    border: 1px solid var(--color-icons);
+    color: var(--color-main);
+    cursor: pointer;
+
+    @include font-buttons;
+
+    &:has(input:checked) {
+      background-color: var(--color-main);
+      color: var(--color-bg-page);
+      border-color: var(--color-main);
+    }
+  }
+
+  &__prices {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  &__price {
+    color: var(--color-main);
+
+    @include font-tablet-h2;
+  }
+
+  &__priceOld {
+    @include font-mobile-h2;
+
+    color: var(--color-secondary);
+    text-decoration: line-through;
+  }
+
+  &__specs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 32px;
+  }
+
+  &__spec {
+    display: flex;
+    justify-content: space-between;
+
+    @include font-small-text;
+  }
+
+  &__specLabel {
+    color: var(--color-secondary);
+  }
+
+  &__specValue {
+    color: var(--color-main);
+  }
+}

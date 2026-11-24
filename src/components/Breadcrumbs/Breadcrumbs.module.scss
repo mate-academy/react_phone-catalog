@@ -1,0 +1,46 @@
+@use '/src/styles/mixins.scss' as *;
+@use '/src/styles/typography.scss' as *;
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-block: 24px;
+
+  @include on-tablet {
+    margin-bottom: 40px;
+  }
+
+  &__link {
+    display: flex;
+    text-decoration: none;
+  }
+
+  &__home {
+    @include smooth;
+
+    height: 16px;
+    width: 16px;
+  }
+
+  &__link:hover &__home {
+    transform: scale(var(--hover-scale));
+  }
+
+  &__arrow {
+    height: 16px;
+    width: 16px;
+  }
+
+  &__category {
+    color: var(--color-main);
+
+    @include font-small-text;
+  }
+
+  &__current {
+    color: var(--color-secondary);
+
+    @include font-small-text;
+  }
+}

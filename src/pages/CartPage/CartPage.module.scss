@@ -1,0 +1,90 @@
+@use '/src/styles/mixins.scss' as *;
+@use '/src/styles/typography.scss' as *;
+
+.cart {
+  @include container;
+
+  padding-top: 24px;
+
+  @include on-tablet {
+    padding-top: 40px;
+  }
+
+  &__title {
+    margin-block: 24px 32px;
+    color: var(--color-main);
+
+    @include font-mobile-h1;
+
+    @include on-tablet {
+      margin-top: 16px;
+
+      @include font-tablet-h1;
+    }
+  }
+
+  &__content {
+    @include page-grid;
+
+
+    row-gap: 32px;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    grid-column: 1 / -1;
+
+    @include on-desktop {
+      grid-column: span 16;
+    }
+  }
+
+  &__summary {
+    border: 1px solid var(--color-elements);
+    padding: 24px;
+
+    grid-column: 1 / -1;
+
+    @include on-desktop {
+      grid-column: span 8;
+      align-self: start;
+    }
+  }
+
+  &__total {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 1px solid var(--color-elements);
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+
+    @include on-desktop {
+      padding-bottom: 24px;
+      margin-bottom: 24px;
+    }
+  }
+
+  &__price {
+    @include font-tablet-h2;
+
+    color: var(--color-main);
+  }
+
+  &__text {
+    @include font-buttons;
+
+    color: var(--color-secondary);
+  }
+
+  &__button {
+    @include button-primary;
+    @include font-buttons;
+
+    width: 100%;
+    height: 48px;
+  }
+}

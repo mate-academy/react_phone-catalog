@@ -1,0 +1,31 @@
+@use '/src/styles/mixins.scss' as *;
+@use '/src/styles/typography.scss' as *;
+
+.message {
+  @include container;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding-block: 80px;
+  text-align: center;
+
+  &__text {
+    color: var(--color-main);
+
+    @include font-mobile-h3;
+
+    @include on-tablet {
+      @include font-tablet-h3;
+    }
+  }
+
+  &__button {
+    @include button-primary;
+    @include font-buttons;
+
+    height: 40px;
+    padding-inline: 32px;
+  }
+}

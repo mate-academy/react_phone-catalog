@@ -1,0 +1,53 @@
+@use '/src/styles/typography.scss' as *;
+@use '/src/styles/mixins.scss' as *;
+
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+
+  &__add {
+    @include button-primary;
+    @include font-buttons;
+
+    flex: 1;
+    height: 40px;
+  }
+
+  &__addSelected {
+    background-color: var(--color-bg-surface-2);
+  }
+
+  &__favorite {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: var(--color-bg-surface-2);
+    border: 1px solid transparent;
+    cursor: pointer;
+
+    @include smooth;
+
+    &:hover {
+      background-color: var(--color-icons);
+
+      &__icon {
+        transform: scale(var(--hover-scale));
+      }
+    }
+  }
+
+  &__favoriteSelected {
+    background-color: transparent;
+    border-color: var(--color-elements);
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+
+    @include smooth;
+  }
+}

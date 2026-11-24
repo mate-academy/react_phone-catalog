@@ -1,0 +1,165 @@
+@use '/src/styles/mixins.scss' as *;
+@use '/src/styles/typography.scss' as *;
+
+.cartItem {
+  background-color: var(--color-bg-surface-1);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include on-tablet {
+    padding: 24px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__info {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    @include on-tablet {
+      gap: 24px;
+      flex: 1;
+    }
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+
+  &__icon {
+    display: block;
+    height: 16px;
+    width: 16px;
+    background-color: currentColor;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    -webkit-mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+
+    @include smooth;
+  }
+
+  &__iconClose {
+    -webkit-mask-image: url('/images/icons/close.png');
+    mask-image: url('/images/icons/close.png');
+  }
+
+  &__iconMinus {
+    -webkit-mask-image: url('/images/icons/minus.png');
+    mask-image: url('/images/icons/minus.png');
+  }
+
+  &__iconPlus {
+    -webkit-mask-image: url('/images/icons/plus.png');
+    mask-image: url('/images/icons/plus.png');
+  }
+
+  &__remove {
+    color: var(--color-icons);
+
+    @include smooth;
+
+    &:hover {
+      color: var(--color-main);
+    }
+
+    &:hover .cartItem__icon {
+      transform: scale(var(--hover-scale));
+    }
+  }
+
+  &__image {
+    @include smooth;
+
+    height: 80px;
+    width: 80px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex: 1;
+    min-width: 0;
+    color: inherit;
+    text-decoration: none;
+
+    @include on-tablet {
+      gap: 24px;
+    }
+
+    &:hover .cartItem__image {
+      transform: scale(var(--hover-scale));
+    }
+  }
+
+  &__name {
+    color: var(--color-main);
+
+    @include font-buttons;
+  }
+
+  &__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  &__counter {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  &__counterButton {
+    height: 32px;
+    width: 32px;
+    background-color: var(--color-bg-surface-2);
+    border: 1px solid transparent;
+    color: var(--color-main);
+
+    @include smooth;
+
+    &:disabled {
+      color: var(--color-icons);
+      background-color: transparent;
+      border-color: var(--color-elements);
+      cursor: default;
+    }
+
+    &:hover:not(:disabled) {
+      background-color: var(--color-icons);
+    }
+  }
+
+  &__quantity {
+    color: var(--color-main);
+    min-width: 24px;
+    text-align: center;
+
+    @include font-buttons;
+  }
+
+  &__price {
+    color: var(--color-main);
+    min-width: 80px;
+    text-align: right;
+
+    @include font-tablet-h3;
+  }
+}
