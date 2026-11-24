@@ -1,0 +1,44 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.category-card {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__picture {
+    display: flex;
+    overflow: hidden;
+    max-height: 368px;
+    border-radius: 8px;
+    aspect-ratio: 1 / 1;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: var(--transition);
+
+    @include from($breakpoint-tablet) {
+      object-fit: cover;
+    }
+  }
+
+  &__title {
+    font-weight: 600;
+    font-size: 20px;
+    padding-bottom: 4px;
+  }
+
+  &__description {
+    display: block;
+    font-size: 14px;
+    line-height: 21px;
+    color: var(--color-secondary);
+  }
+
+  &__picture:hover .category-card__image {
+    transform: scale(var(--scale-hover));
+  }
+}

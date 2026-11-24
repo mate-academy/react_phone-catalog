@@ -1,0 +1,72 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.nav {
+  display: none;
+
+  &__list {
+    display: flex;
+    height: 100%;
+  }
+
+  &__item {
+    display: flex;
+  }
+
+  &__link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    color: var(--color-secondary);
+
+    @include uppercase;
+
+    &.active {
+      color: var(--color-primary);
+
+      &::before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background-color: var(--color-primary);
+      }
+    }
+  }
+
+  &--horizontal {
+    @include from($breakpoint-tablet) {
+      display: flex;
+    }
+
+    & .nav__list {
+      flex-direction: row;
+      gap: 32px;
+    }
+
+    & .nav__item {
+      height: 100%;
+    }
+  }
+
+  &--vertical {
+    display: flex;
+    justify-content: center;
+    flex: 1;
+    height: 100%;
+
+    & .nav__list {
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+    }
+
+    & .nav__link {
+      height: auto;
+      line-height: 27px;
+    }
+  }
+}

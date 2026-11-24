@@ -1,0 +1,76 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 10;
+  background-color: var(--color-white);
+  border-bottom: 1px solid var(--color-elements);
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    height: var(--header-height);
+  }
+
+  &__left {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 16px;
+    margin-right: 16px;
+
+    @include from($breakpoint-desktop) {
+      padding: 0 24px;
+      margin-right: 24px;
+    }
+  }
+
+  &__logo-image {
+    width: 64px;
+    height: 22px;
+
+    @include from($breakpoint-desktop) {
+      width: 80px;
+      height: 28px;
+    }
+  }
+
+  &__row {
+    display: flex;
+  }
+
+  &__search-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 48px;
+    height: 100%;
+    box-shadow: -1px 0 0 0 var(--color-elements);
+    background-color: var(--color-white);
+    transition: var(--transition);
+    cursor: pointer;
+
+    @include from($breakpoint-desktop) {
+      width: 64px;
+    }
+
+
+    &:hover {
+      background-color: var(--color-elements);
+    }
+  }
+
+  &__search-icon {
+    width: 16px;
+    height: 16px;
+    fill: var(--color-primary);
+  }
+}

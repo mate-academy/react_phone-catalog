@@ -1,0 +1,46 @@
+.scroll-to-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  height: 32px;
+  flex-shrink: 0;
+  white-space: nowrap;
+  cursor: pointer;
+
+  &__icon-arrow {
+    width: 16px;
+    height: 16px;
+    fill: var(--color-primary);
+    transition: fill var(--transition);
+  }
+
+  &:hover .scroll-to-top__icon-arrow {
+    fill: var(--color-secondary);
+  }
+
+  &__text {
+    line-height: 15px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-secondary);
+  }
+
+  &__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    border: 1px solid var(--color-secondary);
+    border-radius: 999px;
+    background-color: var(--color-white);
+    transform: translateY(0) rotate(-90deg);
+    transition: transform var(--transition);
+
+    &:hover {
+      transform: translateY(var(--translate-hover)) rotate(-90deg);
+    }
+  }
+}

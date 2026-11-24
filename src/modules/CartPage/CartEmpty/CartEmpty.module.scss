@@ -1,0 +1,19 @@
+.cart-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &__image {
+    width: auto;
+    max-height: 320px;
+  }
+
+  &__message {
+    color: var(--color-icon);
+    font-size: 32px;
+    line-height: 48px;
+    font-weight: 600;
+    text-align: center;
+  }
+}

@@ -1,0 +1,33 @@
+.app {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background-color: var(--color-background);
+  padding-top: var(--header-height);
+}
+
+.scroll-to-top-wrapper {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(4px);
+  transition: opacity var(--transition), visibility var(--transition), transform var(--transition);
+  z-index: 9;
+
+  &--visible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+}

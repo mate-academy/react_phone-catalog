@@ -1,0 +1,51 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.navigation {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--color-icon);
+    border-radius: 999px;
+    background-color: var(--color-white);
+    transition: border-color var(--transition);
+    cursor: pointer;
+  }
+
+  &__button-custom {
+    height: 100%;
+    border-radius: 48px;
+    display: none;
+
+    @include from($breakpoint-tablet) {
+      display: block;
+    }
+  }
+
+  &__button-icon {
+    width: 16px;
+    height: 16px;
+    fill: var(--color-primary);
+    transition: fill var(--transition);
+
+    &--prev {
+      transform: scaleX(-1);
+    }
+  }
+
+  &__button:disabled {
+    border-color: var(--color-elements);
+    cursor: no-drop;
+
+    .navigation__button-icon {
+      fill: var(--color-elements);
+    }
+  }
+}

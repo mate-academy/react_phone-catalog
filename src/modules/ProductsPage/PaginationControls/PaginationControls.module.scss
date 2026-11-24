@@ -1,0 +1,76 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-top: 40px;
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__per {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-elements);
+    width: 30px;
+    height: 30px;
+    color: var(--color-primary);
+    font-size: 14px;
+    line-height: 21px;
+    border-radius: 999px;
+
+    @include from($breakpoint-tablet) {
+      width: 32px;
+      height: 32px;
+    }
+
+    &--active {
+      background-color: var(--color-primary);
+      color: var(--color-white);
+    }
+  }
+
+
+  &__arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+    border: 1px solid var(--color-icon);
+    border-radius: 999px;
+
+    @include from($breakpoint-tablet) {
+      width: 32px;
+      height: 32px;
+    }
+
+    svg {
+      width: 16px;
+      height: 16px;
+      fill: var(--color-primary);
+    }
+
+    &--next svg {
+      transform: rotate(180deg);
+    }
+
+    &:disabled {
+      border: 1px solid var(--color-elements);
+      cursor: no-drop;
+
+      svg {
+        fill: var(--color-elements);
+      }
+    }
+  }
+
+}
