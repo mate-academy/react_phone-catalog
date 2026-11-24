@@ -1,6 +1,9 @@
+import { useTheme } from '../../hooks/useTheme';
+
 import { ScrollToTop } from '../ScrollToTop';
 
-import logo from '../../assets/logo.svg';
+import logoLight from '../../assets/logoLight.svg';
+import logoDark from '../../assets/logoDark.svg';
 
 import styles from './Footer.module.scss';
 
@@ -16,12 +19,14 @@ const MENU_LIST = [
 ];
 
 export const Footer = () => {
+  const { theme } = useTheme();
+
   return (
     <footer className={styles.footer}>
       <div className={styles.footer__inner}>
         <div className={styles.footer__logo}>
           <img
-            src={logo}
+            src={theme === 'light' ? logoDark : logoLight}
             alt="Nice Gadgets"
             className={styles['footer__logo-image']}
           />

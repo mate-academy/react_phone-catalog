@@ -16,6 +16,7 @@ type Props = {
 
 export const PicturesSlider: React.FC<Props> = ({ slides }) => {
   const trackRef = useRef<HTMLDivElement>(null);
+  const isIndexScroll = useRef(false);
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
@@ -33,6 +34,10 @@ export const PicturesSlider: React.FC<Props> = ({ slides }) => {
   }, [total]);
 
   const handleScroll = () => {
+    if (isIndexScroll.current) {
+      return;
+    };
+
     const track = trackRef.current;
 
     if (!track?.clientWidth) {
@@ -44,11 +49,17 @@ export const PicturesSlider: React.FC<Props> = ({ slides }) => {
     setActiveIndex((raw - 1 + total) % total);
   };
 
-  const goToSlide = (index: number) => scrollToRaw(index + 1);
+  const goToRaw = (raw: number) => {
+    isIndexScroll.current = true;
+    setActiveIndex((raw - 1 + total) % total);
+    scrollToRaw(raw);
+  };
 
-  const handlePrev = () => scrollToRaw(activeIndex);
+  const goToSlide = (index: number) => goToRaw(index + 1);
 
-  const handleNext = () => scrollToRaw(activeIndex + 2);
+  const handlePrev = () => goToRaw(activeIndex);
+
+  const handleNext = () => goToRaw(activeIndex + 2);
 
   useEffect(() => {
     const track = trackRef.current;
@@ -70,7 +81,10 @@ export const PicturesSlider: React.FC<Props> = ({ slides }) => {
       }
     };
 
-    track.addEventListener('scrollend', handleScrollEnd);
+    track.addEventListener('scrollend', () => {
+      handleScrollEnd();
+      isIndexScroll.current = false;
+    });
 
     return () => track.removeEventListener('scrollend', handleScrollEnd);
   }, [total]);
@@ -105,7 +119,7 @@ export const PicturesSlider: React.FC<Props> = ({ slides }) => {
 
         <Link
           to={slides[activeIndex].path}
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}
           className={styles['pictures-slider__link']}
         >
           Order now

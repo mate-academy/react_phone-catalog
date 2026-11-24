@@ -35,13 +35,16 @@ export const ProductDetailsPage = () => {
       return;
     }
 
-    setIsLoading(true);
+    if (!productId || product?.category !== category) {
+      setIsLoading(true);
+    }
+
     setHasError(false);
 
     request<ProductDetailsData[]>(`/${category}.json`)
-      .then(data =>
-        setProduct(data.find(prod => prod.id === productId) ?? null),
-      )
+      .then(data => {
+        setProduct(data.find(item => item.id === productId) ?? null);
+      })
       .catch(() => setHasError(true))
       .finally(() => setIsLoading(false));
   }, [category, productId, reloadKey]);

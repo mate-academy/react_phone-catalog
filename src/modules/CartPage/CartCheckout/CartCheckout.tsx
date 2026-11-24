@@ -10,13 +10,16 @@ export const CartCheckout = () => {
   const totalAmount = cart
     .map(item => item.product.price * item.quantity)
     .reduce((acc, current) => acc + current);
+  const totalQuantity = cart
+    .map(item => item.quantity)
+    .reduce((acc, current) => acc + current);
 
   return (
     <section className={styles['cart-checkout']}>
       <h2 className={styles['cart-checkout__total-amount']}>${totalAmount}</h2>
 
       <p className={styles['cart-checkout__total-items']}>
-        Total for {cart.length} items
+        Total for {totalQuantity} items
       </p>
 
       <hr className={styles['cart-checkout__line']} />

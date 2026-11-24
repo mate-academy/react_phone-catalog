@@ -1,16 +1,19 @@
 import { Link } from 'react-router-dom';
 import { MdOutlineSearch } from 'react-icons/md';
 
+import { useTheme } from '../../hooks/useTheme';
 import { useStateContext } from '../../hooks/useStateContext';
 
 import { Nav } from '../Nav';
 import { ActionLinks } from '../ActionLinks';
 
-import logo from '../../assets/logo.svg';
+import logoLight from '../../assets/logoLight.svg';
+import logoDark from '../../assets/logoDark.svg';
 
 import styles from './Header.module.scss';
 
 export const Header = () => {
+  const { theme } = useTheme();
   const { setIsOpenWindow } = useStateContext();
 
   return (
@@ -23,7 +26,7 @@ export const Header = () => {
             onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}
           >
             <img
-              src={logo}
+              src={theme === 'light' ? logoDark : logoLight}
               alt="Nice Gadgets"
               className={styles['header__logo-image']}
             />
