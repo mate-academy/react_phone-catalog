@@ -18,7 +18,11 @@ export const CategoryCard: React.FC<Props> = ({
   isLoading,
 }) => {
   return (
-    <Link to={category.path} onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })} className={styles['category-card']}>
+    <Link
+      to={category.path}
+      onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}
+      className={styles['category-card']}
+    >
       <div
         className={styles['category-card__picture']}
         style={{ backgroundColor: category.background }}

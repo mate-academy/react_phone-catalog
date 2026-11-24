@@ -15,7 +15,10 @@ export const request = async <T>(url: string): Promise<T> => {
         }
 
         return response.json();
-      })().catch(error => { cache.delete(url); throw error; }),
+      })().catch(error => {
+        cache.delete(url);
+        throw error;
+      }),
     );
   }
 

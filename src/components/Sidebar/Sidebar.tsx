@@ -14,7 +14,7 @@ import logoDark from '../../assets/logoDark.svg';
 import styles from './Sidebar.module.scss';
 
 export const Sidebar = () => {
-  const { theme} = useTheme(); 
+  const { theme } = useTheme();
   const { isMenuOpen, setIsMenuOpen } = useStateContext();
 
   useEffect(() => {

@@ -21,10 +21,7 @@ export const ToBack = () => {
   };
 
   return (
-    <button
-      className={styles['to-back']}
-      onClick={handleBack}
-    >
+    <button className={styles['to-back']} onClick={handleBack}>
       <IoIosArrowBack className={styles['to-back__arrow']} />
       <p className={styles['to-back__description']}>Back</p>
     </button>

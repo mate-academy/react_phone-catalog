@@ -36,7 +36,7 @@ export const PicturesSlider: React.FC<Props> = ({ slides }) => {
   const handleScroll = () => {
     if (isIndexScroll.current) {
       return;
-    };
+    }
 
     const track = trackRef.current;
 
