@@ -17,6 +17,7 @@ interface ProductDataProps {
   setFavorites: (list: string[]) => void;
   products: LocalProduct[];
   setProducts: (list: LocalProduct[]) => void;
+  getImage: (nam: string | undefined) => string | undefined;
 }
 
 const ProductData = ({
@@ -32,6 +33,7 @@ const ProductData = ({
   setProducts,
   favorites,
   setFavorites,
+  getImage,
 }: ProductDataProps) => {
   const [imageActive, setImageActive] = useState(0);
 
@@ -49,10 +51,11 @@ const ProductData = ({
             imageActive={imageActive}
             setImageActive={setImageActive}
             setCurrentImage={setCurrentImage}
+            getImage={getImage}
           />
           <img
             className="product__image"
-            src={`${import.meta.env.VITE_PUBLIC_URL}/${currentImage}`}
+            src={`${import.meta.env.VITE_PUBLIC_URL}/${getImage(currentImage)}`}
             alt={product.name}
           />
         </div>
@@ -71,6 +74,7 @@ const ProductData = ({
             setProducts={setProducts}
             favorites={favorites}
             setFavorites={setFavorites}
+            getImage={getImage}
           />
         </div>
         <span className="product__id">ID: {product.id}</span>

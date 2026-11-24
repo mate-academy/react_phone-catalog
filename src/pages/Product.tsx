@@ -118,6 +118,22 @@ const ProductItem = ({
   ];
   const capacities = ['256GB', '64GB', '32GB', '128GB', '1TB', '2TB', '512GB'];
 
+  function getImage(image: string | undefined) {
+    const colorTitle = colors.find(c =>
+      realProduct?.name.toLowerCase().includes(c.toLowerCase()),
+    );
+
+    const colorImage = colors.find(c =>
+      image?.toLowerCase().includes(c.toLowerCase()),
+    );
+
+    if (!colorTitle || !colorImage) {
+      return image;
+    }
+
+    return image?.replace(colorImage.toLowerCase(), colorTitle.toLowerCase());
+  }
+
   /* 
   const colorCurr = colors.find(col => {
     return realProduct.name.includes(col);
@@ -188,6 +204,7 @@ const ProductItem = ({
                     setFavorites={setFavorites}
                     products={products}
                     setProducts={setProducts}
+                    getImage={getImage}
                   />
                   <ProductParagraphs realProduct={realProduct} />
                   <ProductItems

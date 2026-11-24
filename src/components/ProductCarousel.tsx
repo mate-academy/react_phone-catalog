@@ -6,6 +6,7 @@ interface ProductCarouselProps {
   imageActive: number;
   setImageActive: React.Dispatch<React.SetStateAction<number>>;
   setCurrentImage: React.Dispatch<React.SetStateAction<string | undefined>>;
+  getImage: (nam: string | undefined) => string | undefined;
 }
 
 const ProductCarousel = ({
@@ -14,6 +15,7 @@ const ProductCarousel = ({
   imageActive,
   setImageActive,
   setCurrentImage,
+  getImage,
 }: ProductCarouselProps) => {
   return (
     <div className="product__carousel">
@@ -25,7 +27,7 @@ const ProductCarousel = ({
           }
           onClick={() => {
             setImageActive(i);
-            setCurrentImage(realProduct.images?.[i]);
+            setCurrentImage(getImage(realProduct.images?.[i]));
           }}
         >
           <img
