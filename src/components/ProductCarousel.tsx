@@ -1,0 +1,43 @@
+import { Phone, Product } from '../interface/Product';
+
+interface ProductCarouselProps {
+  product: Product;
+  realProduct: Phone;
+  imageActive: number;
+  setImageActive: React.Dispatch<React.SetStateAction<number>>;
+  setCurrentImage: React.Dispatch<React.SetStateAction<string | undefined>>;
+  getImage: (nam: string | undefined) => string | undefined;
+}
+
+const ProductCarousel = ({
+  product,
+  realProduct,
+  imageActive,
+  setImageActive,
+  setCurrentImage,
+  getImage,
+}: ProductCarouselProps) => {
+  return (
+    <div className="product__carousel">
+      {realProduct.images?.map((image: string, i: number) => (
+        <div
+          key={i}
+          className={
+            imageActive === i ? 'product__item active' : 'product__item'
+          }
+          onClick={() => {
+            setImageActive(i);
+            setCurrentImage(getImage(image));
+          }}
+        >
+          <img
+            src={`${import.meta.env.VITE_PUBLIC_URL}/${getImage(image)}`}
+            alt={`${product.name} ${i + 1}`}
+          />
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export default ProductCarousel;
