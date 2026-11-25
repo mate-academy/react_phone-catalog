@@ -74,7 +74,6 @@ const ProductData = ({
             setProducts={setProducts}
             favorites={favorites}
             setFavorites={setFavorites}
-            getImage={getImage}
           />
         </div>
         <span className="product__id">ID: {product.id}</span>

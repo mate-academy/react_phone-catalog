@@ -27,11 +27,11 @@ const ProductCarousel = ({
           }
           onClick={() => {
             setImageActive(i);
-            setCurrentImage(getImage(realProduct.images?.[i]));
+            setCurrentImage(getImage(image));
           }}
         >
           <img
-            src={`${import.meta.env.VITE_PUBLIC_URL}/${image}`}
+            src={`${import.meta.env.VITE_PUBLIC_URL}/${getImage(image)}`}
             alt={`${product.name} ${i + 1}`}
           />
         </div>

@@ -118,22 +118,6 @@ const ProductItem = ({
   ];
   const capacities = ['256GB', '64GB', '32GB', '128GB', '1TB', '2TB', '512GB'];
 
-  function getImage(image: string | undefined) {
-    const colorTitle = colors.find(c =>
-      realProduct?.name.toLowerCase().includes(c.toLowerCase()),
-    );
-
-    const colorImage = colors.find(c =>
-      image?.toLowerCase().includes(c.toLowerCase()),
-    );
-
-    if (!colorTitle || !colorImage) {
-      return image;
-    }
-
-    return image?.replace(colorImage.toLowerCase(), colorTitle.toLowerCase());
-  }
-
   /* 
   const colorCurr = colors.find(col => {
     return realProduct.name.includes(col);
@@ -177,6 +161,35 @@ const ProductItem = ({
     return product
       .replace(capacityCurr, currentCapacity)
       .replace(colorCurr, capitalize(currentColor));
+  }
+
+  function getImage(image: string | undefined) {
+    /*
+    const colorTitle = colors.find(c =>
+      realProduct?.name.toLowerCase().includes(c.toLowerCase()),
+    );
+
+    const colorImage = colors.find(c =>
+      image?.toLowerCase().includes(c.toLowerCase()),
+    );
+
+    if (!colorTitle || !colorImage) {
+      return image;
+    }
+
+    return image?.replace(colorImage.toLowerCase(), colorTitle.toLowerCase());
+    */
+    if (!image || !currentColor) {
+      return image;
+    }
+
+    const parts = image.split('/');
+
+    if (parts.length >= 2) {
+      parts[parts.length - 2] = currentColor.toLowerCase().replace(/\s+/g, '-');
+    }
+
+    return parts.join('/').replace(' ', '-');
   }
 
   return (

@@ -13,7 +13,6 @@ interface ProductInfoProps {
   setFavorites: (list: string[]) => void;
   products: LocalProduct[];
   setProducts: (list: LocalProduct[]) => void;
-  getImage: (nam: string | undefined) => string | undefined;
 }
 
 const ProductInfo = ({
@@ -28,7 +27,6 @@ const ProductInfo = ({
   setProducts,
   favorites,
   setFavorites,
-  getImage,
 }: ProductInfoProps) => {
   // const [productNameConst, setProductNameConst] = useState('');
 
@@ -48,7 +46,6 @@ const ProductInfo = ({
             }
             onClick={() => {
               setCurrentColor(color);
-              getImage(realProduct.images[0]);
             }}
           >
             <div
