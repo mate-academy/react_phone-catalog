@@ -1,0 +1,56 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
+.breadcrumbs {
+  padding: $spacing-md 0;
+  
+  @include respond-to('mobile') {
+    padding: $spacing-sm $spacing-container-mobile;
+  }
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: $spacing-xs;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: $font-size-sm;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  color: $color-secondary;
+}
+
+.link {
+  @include text-secondary;
+
+  font-weight: $font-weight-medium;
+  transition: color $transition-fast;
+  
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+.current {
+  @include text-primary;
+
+  font-weight: $font-weight-medium;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  color: $color-secondary;
+}
+
+.separator {
+  flex-shrink: 0;
+  color: $color-icons;
+  margin: 0 $spacing-xs;
+}

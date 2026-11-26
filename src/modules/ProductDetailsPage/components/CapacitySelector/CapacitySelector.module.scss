@@ -1,0 +1,73 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
+.selector {
+  padding: 0;
+  border: none;
+  margin: 0;
+}
+
+.legend {
+  @include uppercase-text;
+
+  margin-bottom: $spacing-sm;
+}
+
+.options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-sm;
+}
+
+.option {
+  cursor: pointer;
+}
+
+.input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.button {
+  @include text-primary;
+
+  font-family: $font-family;
+  font-weight: $font-weight-medium;
+  font-size: $font-size-sm;
+  line-height: $line-height-lg;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 72px;
+  height: 40px;
+  padding: 0 $spacing-md;
+  border: 1px solid $color-icons;
+  border-radius: $radius-sm;
+  background: $color-white;
+  color: $color-primary;
+  transition: all $transition-fast;
+
+  .input:focus-visible + & {
+    outline: none;
+    border-color: $color-primary;
+    box-shadow: 0 0 0 2px rgba($color-primary, 0.1);
+  }
+
+  .input:checked + & {
+    background: $color-primary;
+    border-color: $color-primary;
+    color: $color-white;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+
+  .input:hover:not(:checked) + & {
+    border-color: $color-primary;
+    color: $color-primary;
+  }
+}

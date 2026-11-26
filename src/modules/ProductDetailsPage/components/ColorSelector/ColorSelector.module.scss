@@ -1,0 +1,63 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
+.selector {
+  padding: 0;
+  border: none;
+  margin: 0;
+}
+
+.legend {
+  @include uppercase-text;
+
+  margin-bottom: $spacing-sm;
+}
+
+.options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-sm;
+}
+
+.option {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.swatch {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid $color-white;
+  box-shadow: 0 0 0 1px $color-elements;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all $transition-fast;
+
+  .input:focus-visible + & {
+    box-shadow: 0 0 0 2px $color-primary, 0 0 0 4px $color-white;
+  }
+
+  .input:hover + & {
+    transform: scale(1.1);
+  }
+}
+
+.checkmark {
+  width: 16px;
+  height: 16px;
+  color: $color-white;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.3));
+}

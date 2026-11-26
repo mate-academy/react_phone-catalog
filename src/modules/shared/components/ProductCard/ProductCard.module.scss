@@ -1,0 +1,152 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
+.card {
+  @include card-base;
+
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: $spacing-md;
+  border-radius: $radius-md;
+  transition: box-shadow $transition-normal, border-color $transition-normal;
+  
+  &:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-color: $color-icons;
+  }
+}
+
+.imageLink {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: $radius-sm;
+  margin-bottom: $spacing-md;
+}
+
+.image {
+  @include product-image-hover;
+
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: $color-white;
+}
+
+.title {
+  @include body-text;
+
+  font-weight: $font-weight-medium;
+  line-height: $line-height-lg;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.titleLink {
+  display: block;
+  margin-bottom: $spacing-sm;
+  text-decoration: none;
+  transition: color $transition-fast;
+  
+  &:hover {
+    .title {
+      color: $color-primary;
+    }
+  }
+}
+
+.price {
+  display: flex;
+  align-items: baseline;
+  gap: $spacing-sm;
+  margin-bottom: $spacing-md;
+}
+
+.currentPrice {
+  @include price-current;
+}
+
+.originalPrice {
+  @include price-original;
+}
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+  margin-bottom: $spacing-md;
+  padding-top: $spacing-md;
+  border-top: 1px solid $color-elements;
+}
+
+.spec {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.specLabel {
+  @include small-text;
+}
+
+.specValue {
+  @include small-text;
+
+  color: $color-primary;
+  text-align: right;
+}
+
+.actions {
+  display: flex;
+  gap: $spacing-sm;
+  margin-top: auto;
+}
+
+.addToCartButton {
+  @include button-primary;
+
+  flex: 1;
+  height: 40px;
+  border-radius: $radius-sm;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  
+  &.added {
+    background: $color-secondary;
+    cursor: default;
+    
+    &:hover {
+      background: $color-secondary;
+    }
+  }
+}
+
+.favoriteButton {
+  @include button-icon;
+
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-secondary;
+  transition: all $transition-fast;
+  
+  &.favorited {
+    border-color: $color-primary;
+    color: $color-primary;
+    background: rgba($color-primary, 0.05);
+  }
+  
+  &:hover:not(.favorited) {
+    border-color: $color-primary;
+    color: $color-primary;
+  }
+}

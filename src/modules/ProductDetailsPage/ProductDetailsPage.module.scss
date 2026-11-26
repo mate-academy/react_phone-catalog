@@ -1,0 +1,68 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.container {
+  @include container;
+
+  padding-top: $spacing-xl;
+  padding-bottom: $spacing-xxl;
+
+  @include respond-to('mobile') {
+    padding-top: $spacing-lg;
+    padding-bottom: $spacing-xl;
+  }
+}
+
+.backWrapper {
+  margin-bottom: $spacing-md;
+}
+
+.title {
+  @include heading-1;
+
+  margin-bottom: $spacing-xl;
+
+  @include respond-to('tablet') {
+    font-size: 36px;
+    line-height: 44px;
+  }
+
+  @include respond-to('mobile') {
+    font-size: 28px;
+    line-height: 36px;
+  }
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-xxl;
+
+  @include respond-to('tablet-and-up') {
+    grid-template-columns: 560px 1fr;
+    align-items: start;
+  }
+
+  @include respond-to('desktop') {
+    grid-template-columns: 500px 1fr;
+  }
+}
+
+.gallerySection {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+}
+
+.infoSection {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+}
+
+.actions {
+  display: flex;
+  gap: $spacing-md;
+  align-items: center;
+  flex-wrap: wrap;
+}

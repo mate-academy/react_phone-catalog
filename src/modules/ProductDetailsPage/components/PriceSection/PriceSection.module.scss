@@ -1,0 +1,17 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
+.price {
+  display: flex;
+  align-items: baseline;
+  gap: $spacing-sm;
+  flex-wrap: wrap;
+}
+
+.currentPrice {
+  @include price-current;
+}
+
+.originalPrice {
+  @include price-original;
+}

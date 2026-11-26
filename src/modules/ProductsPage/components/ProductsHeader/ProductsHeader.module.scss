@@ -1,0 +1,148 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+  margin-bottom: $spacing-xl;
+
+  @include respond-to('tablet-and-up') {
+    flex-flow: row wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+}
+
+.titleSection {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+}
+
+.title {
+  @include heading-1;
+
+  @include respond-to('tablet') {
+    font-size: 36px;
+    line-height: 44px;
+  }
+
+  @include respond-to('mobile') {
+    font-size: 28px;
+    line-height: 36px;
+  }
+}
+
+.count {
+  @include body-text;
+
+  color: $color-secondary;
+}
+
+.controls {
+  display: flex;
+  gap: $spacing-md;
+  flex-wrap: wrap;
+}
+
+.controlGroup {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+}
+
+.label {
+  @include uppercase-text;
+}
+
+.selectWrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.select {
+  @include text-primary;
+
+  font-family: $font-family;
+  font-weight: $font-weight-medium;
+  font-size: $font-size-sm;
+  line-height: $line-height-lg;
+  padding: $spacing-sm $spacing-lg $spacing-sm $spacing-md;
+  border: 1px solid $color-icons;
+  border-radius: $radius-sm;
+  background: $color-white;
+  cursor: pointer;
+  appearance: none;
+  min-width: 140px;
+
+  @include transition-all;
+
+  &:hover {
+    border-color: $color-primary;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $color-primary;
+    box-shadow: 0 0 0 2px rgba($color-primary, 0.1);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.chevron {
+  position: absolute;
+  right: $spacing-md;
+  width: 16px;
+  height: 16px;
+  color: $color-icons;
+  pointer-events: none;
+}
+
+.searchWrapper {
+  width: 100%;
+  max-width: 320px;
+
+  @include respond-to('tablet-and-up') {
+    width: auto;
+    flex-shrink: 0;
+  }
+}
+
+.searchLabel {
+  @include visually-hidden;
+}
+
+.searchInput {
+  @include text-primary;
+
+  font-family: $font-family;
+  font-weight: $font-weight-medium;
+  font-size: $font-size-sm;
+  line-height: $line-height-lg;
+  width: 100%;
+  padding: $spacing-sm $spacing-md;
+  border: 1px solid $color-icons;
+  border-radius: $radius-sm;
+  background: $color-white;
+  transition: border-color $transition-fast, box-shadow $transition-fast;
+
+  &::placeholder {
+    color: $color-icons;
+  }
+
+  &:hover {
+    border-color: $color-primary;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $color-primary;
+    box-shadow: 0 0 0 2px rgba($color-primary, 0.1);
+  }
+}

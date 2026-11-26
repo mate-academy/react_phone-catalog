@@ -1,0 +1,18 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.page {
+  @include container;
+
+  padding-top: $spacing-xxl;
+  padding-bottom: $spacing-xxl;
+
+  @include respond-to('mobile') {
+    padding-top: $spacing-lg;
+    padding-bottom: $spacing-lg;
+  }
+}
+
+.productsList {
+  width: 100%;
+}

@@ -1,0 +1,41 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-xxl $spacing-lg;
+  text-align: center;
+  min-height: 300px;
+
+  @include respond-to('mobile') {
+    padding: $spacing-xl $spacing-md;
+    min-height: 250px;
+  }
+}
+
+.image {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: $spacing-lg;
+
+  @include respond-to('mobile') {
+    max-width: 200px;
+    margin-bottom: $spacing-md;
+  }
+}
+
+.message {
+  margin: 0;
+
+  @include heading-2;
+
+  color: $color-primary;
+  text-align: center;
+
+  @include respond-to('mobile') {
+    @include heading-3;
+  }
+}

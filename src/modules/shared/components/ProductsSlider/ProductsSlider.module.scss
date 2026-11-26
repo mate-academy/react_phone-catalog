@@ -1,0 +1,61 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
+.slider {
+  @include respond-to('mobile') {
+    padding: 0;
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $spacing-md;
+
+  @include respond-to('mobile') {
+    padding: 0;
+  }
+}
+
+.title {
+  @include heading-2;
+
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.controls {
+  display: flex;
+  gap: $spacing-sm;
+}
+
+.track {
+  display: flex;
+  gap: $spacing-md;
+  overflow-x: auto;
+  padding: $spacing-sm 0 $spacing-md;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  > * {
+    flex: 0 0 272px;
+  }
+
+  @include respond-to('mobile') {
+    padding: $spacing-sm $spacing-container-mobile $spacing-md;
+    margin: 0 - $spacing-container-mobile;
+  }
+  }
+
+.arrowButton {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

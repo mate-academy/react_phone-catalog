@@ -1,0 +1,58 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: $font-family;
+  border: none;
+  cursor: pointer;
+  transition: all $transition-normal;
+  
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.primary {
+  @include button-primary;
+
+  height: 40px;
+  padding: 0 $spacing-md;
+  border-radius: $radius-sm;
+  
+  &:hover:not(:disabled) {
+    opacity: 0.9;
+  }
+}
+
+.icon {
+  @include button-icon;
+
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  
+  &:hover:not(:disabled) {
+    border-color: $color-primary;
+  }
+}
+
+.slider {
+  @include slider-button;
+
+  border-radius: 50%;
+}
+
+.small {
+  padding: 0 $spacing-sm;
+  height: 32px;
+  font-size: $font-size-xs;
+}
+
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

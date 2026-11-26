@@ -1,0 +1,44 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.container {
+  @include container;
+
+  padding-top: $spacing-xl;
+  padding-bottom: $spacing-xxl;
+
+  @include respond-to('mobile') {
+    padding-top: $spacing-lg;
+    padding-bottom: $spacing-xl;
+  }
+}
+
+.error {
+  @include flex-center;
+
+  flex-direction: column;
+  gap: $spacing-md;
+  min-height: 300px;
+  text-align: center;
+  padding: $spacing-xxl;
+}
+
+.errorText {
+  @include heading-3;
+
+  color: $color-secondary;
+  margin: 0;
+}
+
+.empty {
+  @include text-secondary;
+
+  font-size: $font-size-md;
+  text-align: center;
+  padding: $spacing-xxl;
+  grid-column: 1 / -1;
+}
+
+.productsList {
+  width: 100%;
+}

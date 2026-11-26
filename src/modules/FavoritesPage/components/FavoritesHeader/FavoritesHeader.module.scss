@@ -1,0 +1,55 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
+.header {
+  margin-bottom: $spacing-xl;
+
+  @include respond-to('mobile') {
+    margin-bottom: $spacing-lg;
+  }
+}
+
+.titleRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: $spacing-md;
+  margin-top: $spacing-md;
+
+  @include respond-to('mobile') {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $spacing-xs;
+    margin-top: $spacing-sm;
+  }
+}
+
+.title {
+  margin: 0;
+
+  @include heading-1;
+
+  @include respond-to('mobile') {
+    font-size: 32px;
+    line-height: 40px;
+  }
+
+  @include respond-to('tablet') {
+    font-size: $font-size-h1;
+    line-height: $line-height-h1;
+  }
+}
+
+.count {
+  margin: 0;
+
+  @include body-text;
+
+  color: $color-secondary;
+  white-space: nowrap;
+  flex-shrink: 0;
+
+  @include respond-to('mobile') {
+    @include small-text;
+  }
+}

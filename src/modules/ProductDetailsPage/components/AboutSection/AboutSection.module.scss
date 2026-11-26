@@ -1,0 +1,45 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
+.section {
+  padding-top: $spacing-xl;
+  border-top: 1px solid $color-elements;
+}
+
+.heading {
+  @include heading-3;
+
+  margin-bottom: $spacing-lg;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.itemTitle {
+  @include heading-4;
+}
+
+.itemText {
+  @include text-secondary;
+
+  font-weight: $font-weight-medium;
+  font-size: $font-size-sm;
+  line-height: $line-height-lg;
+
+  p {
+    margin: 0;
+
+    & + p {
+      margin-top: $spacing-sm;
+    }
+  }
+}

@@ -1,0 +1,47 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
+.container {
+  @include container;
+  @include flex-center;
+
+  flex-direction: column;
+  gap: $spacing-lg;
+  min-height: 60vh;
+  padding: $spacing-xxl $spacing-container;
+  text-align: center;
+
+  @include respond-to('mobile') {
+    padding: $spacing-xl $spacing-container-mobile;
+  }
+}
+
+.title {
+  @include heading-1;
+
+  margin: 0;
+}
+
+.text {
+  @include body-text;
+
+  color: $color-secondary;
+  max-width: 400px;
+}
+
+.links {
+  margin-top: $spacing-md;
+}
+
+.link {
+  @include text-primary;
+
+  font-weight: $font-weight-semibold;
+  font-size: $font-size-md;
+  text-decoration: underline;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: $color-primary;
+  }
+}

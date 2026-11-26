@@ -1,0 +1,70 @@
+// Design tokens extracted from Figma
+
+// Colors
+$color-primary: #313237;
+$color-secondary: #89939a;
+$color-elements: #e2e6e9;
+$color-icons: #b4bdc3;
+$color-white: #fff;
+$color-category-phones: #6d6474;
+$color-category-tablets: #8d8d92;
+$color-category-accessories: #973d5f;
+
+// Typography
+$font-family: 'Mont', sans-serif;
+$font-size-xs: 12px;
+$font-size-sm: 14px;
+$font-size-md: 16px;
+$font-size-lg: 20px;
+$font-size-xl: 22px;
+$font-size-xxl: 32px;
+$font-size-h1: 48px;
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+$line-height-sm: 1.4;
+$line-height-md: 1.5;
+$line-height-lg: 21px;
+$line-height-h1: 56px;
+$line-height-h2: 41px;
+$line-height-h3: 1.4;
+$line-height-h4: 1;
+$letter-spacing-tight: -0.48px;
+$letter-spacing-tighter: -1px;
+$letter-spacing-wide: 0.48px;
+$letter-spacing-wider: 4px;
+
+// Spacing
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 32px;
+$spacing-xxl: 40px;
+$spacing-container: 152px;
+$spacing-container-mobile: 16px;
+
+// Breakpoints
+$bp-mobile: 639px;
+$bp-tablet: 1199px;
+$bp-desktop: 1200px;
+
+// Border radius
+$radius-sm: 4px;
+$radius-md: 8px;
+
+// Transitions
+$transition-fast: 150ms ease;
+$transition-normal: 250ms ease;
+$transition-slow: 300ms ease;
+
+// Shadows
+$shadow-header: 0 1px 0 $color-elements;
+$shadow-footer: 0 -1px 0 $color-elements;
+$shadow-card: 0 0 0 1px $color-elements;
+$shadow-button-left: -1px 0 0 $color-elements;
+
+// Z-index
+$z-header: 100;
+$z-modal: 200;

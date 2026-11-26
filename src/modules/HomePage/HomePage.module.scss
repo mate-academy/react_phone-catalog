@@ -1,0 +1,53 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.main {
+  width: 100%;
+}
+
+.container {
+  @include container;
+}
+
+.visuallyHidden {
+  @include visually-hidden;
+}
+
+.hero {
+  position: relative;
+  padding-top: $spacing-xxl;
+  padding-bottom: $spacing-lg;
+
+  @include respond-to('mobile') {
+    padding-top: $spacing-xl;
+    padding-bottom: $spacing-md;
+  }
+}
+
+.heroTitle {
+  @include heading-1;
+
+  margin: 0;
+  max-width: 1136px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 $spacing-container;
+
+  @include respond-to('tablet') {
+    padding: 0 $spacing-md;
+  }
+
+  @include respond-to('mobile') {
+    padding: 0 $spacing-container-mobile;
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+.error {
+  @include text-secondary;
+
+  text-align: center;
+  padding: $spacing-xxl;
+  font-size: $font-size-md;
+}

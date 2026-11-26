@@ -1,0 +1,1 @@
+export { FavoritesHeader } from './FavoritesHeader';
