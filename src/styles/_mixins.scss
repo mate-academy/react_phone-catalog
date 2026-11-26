@@ -1,0 +1,231 @@
+@use 'variables' as *;
+
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == 'mobile' {
+    @media (max-width: $bp-mobile) {
+      @content;
+    }
+  } @else if $breakpoint == 'tablet' {
+    @media (min-width: 640px) and (max-width: $bp-tablet) {
+      @content;
+    }
+  } @else if $breakpoint == 'desktop' {
+    @media (min-width: $bp-desktop) {
+      @content;
+    }
+  } @else if $breakpoint == 'tablet-and-up' {
+    @media (min-width: 640px) {
+      @content;
+    }
+  } @else if $breakpoint == 'desktop-only' {
+    @media (min-width: $bp-desktop) {
+      @content;
+    }
+  }
+}
+
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin transition-all {
+  transition: all $transition-normal;
+}
+
+@mixin card-base {
+  background: $color-white;
+  border: 1px solid $color-elements;
+
+  @include transition-all;
+}
+
+@mixin button-primary {
+  background: $color-primary;
+  color: $color-white;
+  font-family: $font-family;
+  font-weight: $font-weight-semibold;
+  font-size: $font-size-sm;
+  line-height: $line-height-lg;
+  border: none;
+  cursor: pointer;
+
+  @include transition-all;
+  
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  &:hover:not(:disabled) {
+    opacity: 0.9;
+  }
+}
+
+@mixin button-icon {
+  border: 1px solid $color-icons;
+  background: $color-white;
+
+  @include transition-all;
+  
+  &:disabled {
+    border-color: $color-elements;
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &:hover:not(:disabled) {
+    border-color: $color-primary;
+  }
+}
+
+@mixin slider-button {
+  width: 32px;
+  height: 32px;
+  border: 1px solid $color-icons;
+  background: $color-white;
+
+  @include flex-center;
+  @include transition-all;
+
+  cursor: pointer;
+  
+  &:disabled {
+    border-color: $color-elements;
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &:hover:not(:disabled) {
+    border-color: $color-primary;
+  }
+}
+
+@mixin product-image-hover {
+  transition: transform $transition-normal;
+  
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+@mixin text-primary {
+  color: $color-primary;
+  font-family: $font-family;
+}
+
+@mixin text-secondary {
+  color: $color-secondary;
+  font-family: $font-family;
+}
+
+@mixin heading-1 {
+  @include text-primary;
+
+  font-weight: $font-weight-bold;
+  font-size: $font-size-h1;
+  line-height: $line-height-h1;
+  letter-spacing: $letter-spacing-tighter;
+}
+
+@mixin heading-2 {
+  @include text-primary;
+
+  font-weight: $font-weight-bold;
+  font-size: $font-size-xxl;
+  line-height: $line-height-h2;
+  letter-spacing: $letter-spacing-tight;
+}
+
+@mixin heading-3 {
+  @include text-primary;
+
+  font-weight: $font-weight-bold;
+  font-size: $font-size-xl;
+  line-height: $line-height-h3;
+}
+
+@mixin heading-4 {
+  @include text-primary;
+
+  font-weight: $font-weight-semibold;
+  font-size: $font-size-lg;
+  line-height: $line-height-h4;
+}
+
+@mixin body-text {
+  @include text-primary;
+
+  font-weight: $font-weight-medium;
+  font-size: $font-size-sm;
+  line-height: $line-height-lg;
+}
+
+@mixin small-text {
+  @include text-secondary;
+
+  font-weight: $font-weight-semibold;
+  font-size: $font-size-xs;
+  line-height: $line-height-h4;
+}
+
+@mixin uppercase-text {
+  @include text-primary;
+
+  font-weight: $font-weight-bold;
+  font-size: $font-size-xs;
+  line-height: 11px;
+  letter-spacing: $letter-spacing-wider;
+  text-transform: uppercase;
+}
+
+@mixin price-current {
+  @include text-primary;
+
+  font-weight: $font-weight-bold;
+  font-size: 22px;
+  line-height: $line-height-h3;
+}
+
+@mixin price-original {
+  @include text-secondary;
+
+  font-weight: $font-weight-medium;
+  font-size: 22px;
+  line-height: $line-height-h3;
+  text-decoration: line-through;
+}
+
+@mixin container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 $spacing-container;
+  
+  @include respond-to('tablet') {
+    padding: 0 $spacing-md;
+  }
+  
+  @include respond-to('mobile') {
+    padding: 0 $spacing-container-mobile;
+  }
+}

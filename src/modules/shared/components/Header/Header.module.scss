@@ -1,0 +1,161 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: $z-header;
+  background: $color-white;
+  box-shadow: $shadow-header;
+}
+
+.container {
+  @include container;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+  gap: $spacing-md;
+}
+
+.left {
+  flex-shrink: 0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  height: 32px;
+}
+
+.nav {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  
+  @include respond-to('mobile') {
+    position: fixed;
+    inset: 72px 0 0;
+    background: $color-white;
+    flex-direction: column;
+    padding: $spacing-xl $spacing-md;
+    box-shadow: $shadow-header;
+    transform: translateX(100%);
+    transition: transform $transition-normal;
+    
+    &.navOpen {
+      transform: translateX(0);
+    }
+  }
+}
+
+.navList {
+  display: flex;
+  gap: $spacing-xl;
+  margin: 0;
+  padding: 0;
+  
+  @include respond-to('mobile') {
+    flex-direction: column;
+    align-items: center;
+    gap: $spacing-lg;
+    width: 100%;
+  }
+}
+
+.navItem {
+  list-style: none;
+}
+
+.navLink {
+  @include uppercase-text;
+
+  padding: $spacing-sm 0;
+  position: relative;
+  transition: color $transition-fast;
+  
+  &.navLinkActive {
+    color: $color-primary;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: $color-primary;
+    }
+  }
+  
+  &:hover:not(.navLinkActive) {
+    color: $color-primary;
+  }
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  flex-shrink: 0;
+}
+
+.iconButton {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: $color-white;
+  border: none;
+  cursor: pointer;
+  transition: all $transition-fast;
+  
+  &:hover {
+    background: $color-elements;
+  }
+  
+  @include respond-to('mobile') {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.badge {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  background: $color-primary;
+  color: $color-white;
+  font-family: $font-family;
+  font-weight: $font-weight-bold;
+  font-size: 10px;
+  line-height: 16px;
+  text-align: center;
+  border-radius: 8px;
+}
+
+.menuButton {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: $color-white;
+  border: none;
+  cursor: pointer;
+  transition: all $transition-fast;
+  
+  &:hover {
+    background: $color-elements;
+  }
+  
+  @include respond-to('mobile') {
+    display: flex;
+  }
+}

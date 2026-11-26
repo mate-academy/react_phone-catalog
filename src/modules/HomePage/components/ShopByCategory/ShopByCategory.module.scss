@@ -1,0 +1,97 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
+.section {
+  padding: $spacing-xl 0;
+
+  @include respond-to('mobile') {
+    padding: $spacing-lg 0;
+  }
+}
+
+.title {
+  @include heading-2;
+
+  margin: 0 0 $spacing-xl;
+  text-align: center;
+
+  @include respond-to('mobile') {
+    text-align: left;
+    margin-bottom: $spacing-lg;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $spacing-md;
+
+  @include respond-to('tablet') {
+    grid-template-columns: repeat(3, 1fr);
+    gap: $spacing-md;
+  }
+
+  @include respond-to('mobile') {
+    grid-template-columns: 1fr;
+    gap: $spacing-md;
+  }
+}
+
+.categoryLink {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  border-radius: $radius-md;
+  overflow: hidden;
+  transition: transform $transition-normal, box-shadow $transition-normal;
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  }
+  
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+  }
+}
+
+.categoryImageWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.categoryImage {
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
+  transition: transform $transition-normal;
+  
+  .categoryLink:hover & {
+    transform: scale(1.05);
+  }
+}
+
+.categoryInfo {
+  padding: $spacing-md;
+  background: $color-white;
+  text-align: center;
+}
+
+.categoryName {
+  @include heading-4;
+
+  margin: 0 0 $spacing-xs;
+}
+
+.categoryCount {
+  @include small-text;
+
+  margin: 0;
+}

@@ -1,0 +1,41 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
+.section {
+  padding-top: $spacing-xl;
+  border-top: 1px solid $color-elements;
+}
+
+.heading {
+  @include heading-3;
+
+  margin-bottom: $spacing-lg;
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $spacing-sm $spacing-lg;
+
+  @include respond-to('mobile') {
+    grid-template-columns: 1fr;
+  }
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+}
+
+.label {
+  @include small-text;
+}
+
+.value {
+  @include text-primary;
+
+  font-weight: $font-weight-medium;
+  font-size: $font-size-sm;
+  line-height: $line-height-lg;
+}

@@ -1,0 +1,53 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.page {
+  @include container;
+
+  padding-top: $spacing-xxl;
+  padding-bottom: $spacing-xxl;
+
+  @include respond-to('mobile') {
+    padding-top: $spacing-lg;
+    padding-bottom: $spacing-lg;
+  }
+}
+
+.title {
+  margin: 0 0 $spacing-xl;
+
+  @include heading-1;
+
+  @include respond-to('mobile') {
+    margin-bottom: $spacing-lg;
+    font-size: 32px;
+    line-height: 40px;
+  }
+
+  @include respond-to('tablet') {
+    font-size: $font-size-h1;
+    line-height: $line-height-h1;
+  }
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 368px;
+  gap: $spacing-xl;
+  align-items: start;
+
+  @include respond-to('tablet') {
+    grid-template-columns: 1fr;
+  }
+}
+
+.itemsList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+  min-width: 0;
+
+  @include respond-to('mobile') {
+    gap: $spacing-sm;
+  }
+}

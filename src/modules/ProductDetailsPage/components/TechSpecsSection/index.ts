@@ -1,0 +1,1 @@
+export { TechSpecsSection } from './TechSpecsSection';

@@ -1,0 +1,25 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $spacing-md;
+  
+  @include respond-to('tablet') {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  @include respond-to('mobile') {
+    grid-template-columns: 1fr;
+  }
+}
+
+.empty {
+  @include text-secondary;
+
+  text-align: center;
+  padding: $spacing-xxl;
+  font-size: $font-size-md;
+  grid-column: 1 / -1;
+}

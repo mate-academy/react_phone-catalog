@@ -1,0 +1,1 @@
+export { ProductDetailsError } from './ProductDetailsError';

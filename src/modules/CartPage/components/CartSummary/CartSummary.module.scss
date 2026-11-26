@@ -1,0 +1,75 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
+.summary {
+  width: 368px;
+  height: 206px;
+  border: 1px solid $color-elements;
+  background: $color-white;
+  padding: $spacing-lg;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  flex-shrink: 0;
+
+  @include respond-to('mobile') {
+    width: 100%;
+    height: auto;
+    padding: $spacing-md;
+    border: none;
+    border-top: 1px solid $color-elements;
+    margin-top: $spacing-lg;
+  }
+
+  @include respond-to('tablet') {
+    width: 368px;
+    height: 206px;
+  }
+}
+
+.total {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+}
+
+.totalLabel {
+  margin: 0;
+
+  @include heading-4;
+
+  color: $color-secondary;
+  font-weight: $font-weight-regular;
+  font-size: $font-size-sm;
+  line-height: $line-height-lg;
+}
+
+.totalPrice {
+  @include price-current;
+}
+
+.divider {
+  width: 100%;
+  height: 0;
+  border: none;
+  border-top: 1px solid $color-elements;
+  margin: 0;
+}
+
+.checkoutButton {
+  width: 100%;
+  height: 48px;
+
+  @include button-primary;
+
+  font-family: $font-family;
+  font-weight: $font-weight-semibold;
+  font-size: $font-size-sm;
+  line-height: $line-height-lg;
+  border-radius: $radius-md;
+
+  @include respond-to('mobile') {
+    height: 48px;
+  }
+}

@@ -1,0 +1,100 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
+.footer {
+  background: $color-white;
+  box-shadow: $shadow-footer;
+  padding: $spacing-xl 0;
+  margin-top: auto;
+}
+
+.container {
+  @include container;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $spacing-md;
+  flex-wrap: wrap;
+}
+
+.left {
+  flex-shrink: 0;
+}
+
+.logo {
+  width: 89px;
+  height: 32px;
+}
+
+.center {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  gap: $spacing-xl;
+  flex-wrap: wrap;
+  
+  @include respond-to('mobile') {
+    order: 3;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: $spacing-md;
+    margin-top: $spacing-md;
+  }
+}
+
+.link {
+  @include uppercase-text;
+
+  color: $color-secondary;
+  transition: color $transition-fast;
+  
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+.right {
+  flex-shrink: 0;
+  
+  @include respond-to('mobile') {
+    order: 2;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.backToTop {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: all $transition-fast;
+  
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+.backToTopText {
+  @include small-text;
+
+  color: $color-secondary;
+  transition: color $transition-fast;
+}
+
+.backToTopIcon {
+  flex-shrink: 0;
+  color: $color-secondary;
+  transition: all $transition-fast;
+}
+
+.backToTop:hover .backToTopText,
+.backToTop:hover .backToTopIcon {
+  color: $color-primary;
+}

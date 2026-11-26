@@ -1,0 +1,214 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
+.item {
+  display: grid;
+  grid-template-columns: 40px 80px 1fr auto 100px;
+  gap: $spacing-lg;
+  align-items: center;
+  padding: $spacing-lg;
+  border: 1px solid $color-elements;
+  background: $color-white;
+  width: 100%;
+  box-sizing: border-box;
+
+  @include respond-to('mobile') {
+    grid-template-columns: 32px 66px 1fr;
+    grid-template-rows: auto auto auto;
+    gap: $spacing-sm $spacing-md;
+    padding: $spacing-md;
+
+    .imageLink {
+      grid-column: 2;
+      grid-row: 1 / 3;
+    }
+
+    .titleLink {
+      grid-column: 3;
+      grid-row: 1;
+    }
+
+    .quantity {
+      grid-column: 3;
+      grid-row: 2;
+      justify-self: start;
+    }
+
+    .removeButton {
+      grid-column: 1;
+      grid-row: 1;
+      justify-self: center;
+    }
+
+    .price {
+      grid-column: 1 / 4;
+      grid-row: 3;
+      justify-self: end;
+      padding-top: $spacing-sm;
+      border-top: 1px solid $color-elements;
+      width: 100%;
+    }
+  }
+
+  @include respond-to('tablet') {
+    grid-template-columns: 40px 80px 1fr auto 100px;
+    gap: $spacing-lg;
+  }
+}
+
+.removeButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: $color-icons;
+  transition: color $transition-fast;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &:hover:not(:disabled) {
+    color: $color-primary;
+  }
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.imageLink {
+  display: block;
+  width: 80px;
+  height: 80px;
+  border-radius: $radius-md;
+  overflow: hidden;
+  background: $color-elements;
+
+  @include respond-to('mobile') {
+    width: 66px;
+    height: 66px;
+  }
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+
+  @include product-image-hover;
+}
+
+.titleLink {
+  text-decoration: none;
+  color: inherit;
+  min-width: 0;
+
+  .title {
+    margin: 0;
+    font-family: $font-family;
+    font-weight: $font-weight-regular;
+    font-size: $font-size-sm;
+    line-height: $line-height-lg;
+    color: $color-primary;
+
+    @include respond-to('mobile') {
+      font-size: $font-size-sm;
+      line-height: $line-height-md;
+    }
+  }
+
+  &:hover .title {
+    color: $color-primary;
+  }
+}
+
+.quantity {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.quantityButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid $color-icons;
+  background: $color-white;
+  border-radius: 0;
+  cursor: pointer;
+  color: $color-primary;
+  transition: border-color $transition-fast, color $transition-fast;
+
+  &:first-child {
+    border-radius: $radius-sm 0 0 $radius-sm;
+    border-right: none;
+  }
+
+  &:last-child {
+    border-radius: 0 $radius-sm $radius-sm 0;
+    border-left: none;
+  }
+
+  &:disabled {
+    border-color: $color-elements;
+    color: $color-elements;
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &:hover:not(:disabled) {
+    border-color: $color-primary;
+    color: $color-primary;
+  }
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.quantityValue {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 32px;
+  border-top: 1px solid $color-icons;
+  border-bottom: 1px solid $color-icons;
+  background: $color-white;
+  font-family: $font-family;
+  font-weight: $font-weight-regular;
+  font-size: $font-size-sm;
+  line-height: $line-height-lg;
+  color: $color-primary;
+  text-align: center;
+}
+
+.price {
+  display: flex;
+  justify-content: flex-end;
+  min-width: 80px;
+}
+
+.priceValue {
+  font-family: $font-family;
+  font-weight: $font-weight-bold;
+  font-size: 22px;
+  line-height: $line-height-h3;
+  color: $color-primary;
+  white-space: nowrap;
+
+  @include respond-to('mobile') {
+    font-size: 22px;
+  }
+}

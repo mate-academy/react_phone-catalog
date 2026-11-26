@@ -1,0 +1,22 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
+.button {
+  @include button-primary;
+
+  width: 100%;
+  height: 48px;
+  border-radius: $radius-sm;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  max-width: 263px;
+
+  &:disabled {
+    background: $color-secondary;
+    cursor: default;
+
+    &:hover {
+      background: $color-secondary;
+    }
+  }
+}

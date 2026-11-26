@@ -1,0 +1,39 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.main {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-xl;
+}
+
+.container {
+  text-align: center;
+}
+
+.title {
+  @include heading-1;
+
+  margin: 0 0 $spacing-lg;
+}
+
+.link {
+  display: inline-block;
+
+  @include button-primary;
+
+  padding: $spacing-sm $spacing-lg;
+  border-radius: $radius-sm;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: $color-white;
+  text-decoration: none;
+  transition: all $transition-fast;
+  
+  &:hover {
+    opacity: 0.9;
+    color: $color-white;
+  }
+}
