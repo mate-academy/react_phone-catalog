@@ -1,0 +1,55 @@
+@use '/src/styles/mixins.scss' as *;
+@use '/src/styles/typography.scss' as *;
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 24px;
+
+  @include on-tablet {
+    margin-top: 40px;
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    background-color: var(--color-bg-surface-1);
+    color: var(--color-main);
+    border: none;
+    cursor: pointer;
+
+    @include font-buttons;
+
+    &:hover:not(:disabled) {
+      background-color: var(--color-icons);
+    }
+  }
+
+  &__arrowButton {
+    background-color: var(--color-bg-surface-2);
+
+    &:disabled {
+      background-color: transparent;
+      border: 1px solid var(--color-elements);
+      cursor: default;
+    }
+  }
+
+  &__buttonActive {
+    background-color: var(--color-accent-main);
+
+    &:hover:not(:disabled) {
+      background-color: var(--color-accent-main);
+    }
+  }
+
+  &__arrow {
+    width: 16px;
+    height: 16px;
+  }
+}

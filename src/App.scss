@@ -1,1 +1,59 @@
-// not empty
+@use './styles/mixins.scss' as *;
+
+:root {
+  --color-bg-page: #0F1121;
+  --color-bg-surface-1: #161827;
+  --color-bg-surface-2: #323542;
+  --color-main: #F1F2F9;
+  --color-secondary: #75767F;
+  --color-elements: #3B3E4A;
+  --color-icons: #4A4D58;
+  --color-accent-main: #905BFF;
+  --color-accent-red: #EB5757;
+  --color-accent-green: #27AE60;
+  --color-accent-hover: #A378FF;
+  --transition-duration: 0.6s;
+  --transition-timing: ease;
+  --hover-scale: 1.1;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Mont, sans-serif;
+  background-color: var(--color-bg-page);
+  color: var(--color-main);
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+
+  @include on-tablet {
+    padding: 0 24px;
+  }
+
+  @include on-desktop {
+    padding: 0 32px;
+  }
+}
+

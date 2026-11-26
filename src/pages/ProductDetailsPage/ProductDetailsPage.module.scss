@@ -1,0 +1,80 @@
+@use '/src/styles/mixins.scss' as *;
+@use '/src/styles/typography.scss' as *;
+
+.product {
+  @include container;
+
+  &__name {
+    margin-block: 16px 32px;
+    color: var(--color-main);
+
+    @include font-mobile-h2;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+
+      @include font-tablet-h2;
+    }
+  }
+
+  &__top,
+  &__bottom {
+    @include page-grid;
+
+    margin-bottom: 56px;
+
+    @include on-tablet {
+      margin-bottom: 64px;
+    }
+
+    @include on-desktop {
+      margin-bottom: 80px;
+    }
+
+    > * {
+      grid-column: 1 / -1;
+    }
+  }
+
+  &__top {
+    row-gap: 40px;
+
+    @include on-tablet {
+      > :first-child {
+        grid-column: span 7;
+      }
+
+      > :last-child {
+        grid-column: span 5;
+      }
+    }
+
+    @include on-desktop {
+      > :first-child {
+        grid-column: 1 / span 12;
+      }
+
+      > :last-child {
+        grid-column: 14 / -1;
+      }
+    }
+  }
+
+  &__bottom {
+    row-gap: 56px;
+
+    @include on-tablet {
+      row-gap: 64px;
+    }
+
+    @include on-desktop {
+      > :first-child {
+        grid-column: 1 / span 12;
+      }
+
+      > :last-child {
+        grid-column: 14 / -1;
+      }
+    }
+  }
+}

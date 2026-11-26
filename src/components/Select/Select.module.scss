@@ -1,0 +1,91 @@
+@use '/src/styles/mixins.scss' as *;
+@use '/src/styles/typography.scss' as *;
+
+.select {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: var(--color-secondary);
+
+  @include font-small-text;
+
+  &__label {
+    color: var(--color-secondary);
+  }
+
+  &__control {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 40px;
+    padding: 10px 12px;
+    background-color: var(--color-bg-surface-2);
+    color: var(--color-main);
+    border: 1px solid transparent;
+    border-radius: 0;
+    cursor: pointer;
+
+    @include font-buttons;
+    @include smooth;
+
+    &:hover {
+      border-color: var(--color-icons);
+    }
+
+    &Open {
+      outline: none;
+      border-color: var(--color-accent-main);
+    }
+  }
+
+  &__arrow {
+    width: 16px;
+    height: 16px;
+    background-image: url('/images/icons/arrow-down-gray.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+
+    &Open {
+      background-image: url('/images/icons/arrow-up-gray.png');
+    }
+  }
+
+  &__menu {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    z-index: 1;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    background-color: var(--color-bg-page);
+    border: 1px solid var(--color-elements);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
+  }
+
+  &__option {
+    display: flex;
+    align-items: center;
+    height: 32px;
+    padding: 8px 12px;
+    color: var(--color-secondary);
+    cursor: pointer;
+
+    @include font-small-text;
+    @include smooth;
+
+    &:hover {
+      background-color: var(--color-bg-surface-2);
+      color: var(--color-main);
+    }
+
+    &Selected {
+      color: var(--color-main);
+      background-color: var(--color-elements);
+    }
+  }
+}

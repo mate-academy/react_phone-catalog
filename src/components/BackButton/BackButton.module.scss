@@ -1,0 +1,29 @@
+@use '/src/styles/mixins.scss' as *;
+@use '/src/styles/typography.scss' as *;
+
+.backButton {
+  @include smooth;
+
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  padding: 0;
+  background: none;
+  border: none;
+  color: var(--color-main);
+  cursor: pointer;
+
+  @include font-small-text;
+
+  &:hover {
+    color: var(--color-accent-main);
+  }
+
+  &__icon {
+    height: 16px;
+    width: 16px;
+    background-color: currentColor;
+    mask: url('/images/icons/arrow-left.png') center / contain no-repeat;
+    -webkit-mask: url('/images/icons/arrow-left.png') center / contain no-repeat;
+  }
+}
