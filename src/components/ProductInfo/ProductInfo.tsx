@@ -25,7 +25,9 @@ export const ProductInfo: React.FC<Props> = ({ product, details }) => {
     const colorPart = color.replaceAll(' ', '-');
     const capacityPart = capacity.toLowerCase();
 
-    navigate(`/product/${details.namespaceId}-${capacityPart}-${colorPart}`);
+    navigate(`/product/${details.namespaceId}-${capacityPart}-${colorPart}`, {
+      replace: true,
+    });
   };
 
   return (

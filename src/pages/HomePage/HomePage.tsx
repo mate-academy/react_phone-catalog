@@ -1,7 +1,6 @@
 import { Categories } from '../../components/Categories';
 import { Hero } from '../../components/Hero';
 import { ProductsSlider } from '../../components/ProductsSlider';
-import styles from './HomePage.module.scss';
 import { Product } from '../../types/Product';
 import { useEffect, useState } from 'react';
 import { Loader } from '../../components/Loader';
@@ -56,9 +55,12 @@ export const HomePage = () => {
 
   return (
     <>
-      <h1 className={styles.visuallyHidden}>Product Catalog</h1>
       <Hero />
-      <ProductsSlider title="Brand new models" products={brandNewProducts} />
+      <ProductsSlider
+        title="Brand new models"
+        products={brandNewProducts}
+        withDiscount={false}
+      />
       <Categories
         phonesCount={phonesCount}
         tabletsCount={tabletsCount}

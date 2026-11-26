@@ -13,7 +13,7 @@ const slides = [
   },
   {
     desktop: 'img/banner-accessories.png',
-    alt: 'Accessories  banner',
+    alt: 'Accessories banner',
   },
 ];
 
@@ -47,7 +47,8 @@ export const Hero = () => {
 
   return (
     <section className={styles.hero}>
-      <h1 className={styles.hero__title}>Welcome to Nice Gadgets store!</h1>
+      <h1 className={styles.visuallyHidden}>Product Catalog</h1>
+      <h2 className={styles.hero__title}>Welcome to Nice Gadgets store!</h2>
 
       <div className={styles.hero__slider}>
         <button

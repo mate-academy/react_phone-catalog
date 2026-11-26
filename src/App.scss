@@ -33,6 +33,16 @@ body {
   color: var(--color-main);
 }
 
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -46,3 +56,4 @@ body {
     padding: 0 32px;
   }
 }
+

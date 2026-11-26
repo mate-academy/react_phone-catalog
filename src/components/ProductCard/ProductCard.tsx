@@ -6,9 +6,13 @@ import { ProductActions } from '../ProductActions';
 
 interface Props {
   product: Product;
+  withDiscount?: boolean;
 }
 
-export const ProductCard: React.FC<Props> = ({ product }) => {
+export const ProductCard: React.FC<Props> = ({
+  product,
+  withDiscount = true,
+}) => {
   return (
     <article className={styles.card}>
       <Link to={`/product/${product.itemId}`} className={styles.card__link}>
@@ -24,8 +28,12 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       </Link>
 
       <div className={styles.card__prices}>
-        <span className={styles.card__price}>${product.price}</span>
-        <span className={styles.card__priceOld}>${product.fullPrice}</span>
+        <span className={styles.card__price}>
+          ${withDiscount ? product.price : product.fullPrice}
+        </span>
+        {withDiscount && (
+          <span className={styles.card__priceOld}>${product.fullPrice}</span>
+        )}
       </div>
 
       <div className={styles.card__details}>

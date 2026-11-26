@@ -6,9 +6,14 @@ import { ProductCard } from '../ProductCard';
 interface Props {
   title: string;
   products: Product[];
+  withDiscount?: boolean;
 }
 
-export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
+export const ProductsSlider: React.FC<Props> = ({
+  title,
+  products,
+  withDiscount = true,
+}) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isAtStart, setIsAtStart] = useState(true);
   const [isAtEnd, setIsAtEnd] = useState(true);
@@ -89,7 +94,13 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
         onScroll={updateButtons}
       >
         {products.map(product => {
-          return <ProductCard key={product.id} product={product} />;
+          return (
+            <ProductCard
+              key={product.id}
+              product={product}
+              withDiscount={withDiscount}
+            />
+          );
         })}
       </div>
     </section>

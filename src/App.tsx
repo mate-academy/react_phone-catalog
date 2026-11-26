@@ -8,9 +8,11 @@ import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { ProductsPage } from './pages/ProductsPage';
 import { ProductDetailsPage } from './pages/ProductDetailsPage';
+import { ScrollToTop } from './components/ScrollToTop';
 
 export const App = () => (
   <div className="App">
+    <ScrollToTop />
     <Header />
     <main>
       <Routes>
