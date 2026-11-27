@@ -7,12 +7,7 @@ import { Back } from '../Back';
 
 type DirectionProps = {
   page:
-    | 'phones'
-    | 'tablets'
-    | 'accessories'
-    | 'favorites'
-    | 'cart'
-    | 'productID';
+    'phones' | 'tablets' | 'accessories' | 'favorites' | 'cart' | 'productID';
   product?: ProductFullInfo;
 };
 
